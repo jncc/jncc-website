@@ -1,0 +1,32 @@
+﻿@using MHC.Umbraco.Plugin.Models
+@inherits UmbracoViewPage<BiotopeModel>
+@{
+    Layout = null;
+}
+
+<div class="grid-row">
+    <div class="column-full">
+        @{Html.RenderPartial("~/Views/Partials/JNCCPackages/MHC/BiotopeTitle.cshtml");}
+    </div>
+</div>
+
+<div class="grid-row">
+    <div class="column-full">
+        @{Html.RenderPartial("~/Views/Partials/JNCCPackages/MHC/BiotopePhotos.cshtml");}
+    </div>
+</div>
+
+<div class="grid-row">
+    <div class="column-one-half">
+        <br />
+        @{Html.RenderPartial("~/Views/Partials/JNCCPackages/MHC/BiotopeSideContent.cshtml");}
+    </div>
+    <div class="column-one-half">
+        <div class="grid-row">
+            @{Html.RenderPartial("~/Views/Partials/JNCCPackages/MHC/BiotopeMap.cshtml");}
+        </div>
+    </div>
+    <div class="column-full">
+        @{Html.RenderPartial("~/Views/Partials/JNCCPackages/MHC/BiotopeMainContent.cshtml");}
+    </div>
+</div>
