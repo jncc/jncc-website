@@ -378,3 +378,6 @@ ASALocalRun/
 # Ignore Umbraco project folders
 **/[Uu]mbraco/
 **/[Uu]mbraco_client/
+
+# Ignore config Secrets folder
+**/[Cc]onfig/[Ss]ecrets/
