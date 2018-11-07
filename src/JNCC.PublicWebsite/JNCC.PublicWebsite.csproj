@@ -61,8 +61,26 @@
     <Reference Include="cms, Version=1.0.6879.21987, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\cms.dll</HintPath>
     </Reference>
+    <Reference Include="CMSImport, Version=3.7.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\CMSImport.dll</HintPath>
+    </Reference>
+    <Reference Include="CMSImport.Events, Version=3.7.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\CMSImport.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="CMSImport.Extensions, Version=3.7.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\CMSImport.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="CMSImportCore, Version=3.7.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\CMSImportCore.dll</HintPath>
+    </Reference>
+    <Reference Include="CMSImportLibrary, Version=3.7.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\CMSImportLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="controls, Version=1.0.6879.21988, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\controls.dll</HintPath>
+    </Reference>
+    <Reference Include="DTG.Spreadsheet, Version=2.7.0.0, Culture=neutral, PublicKeyToken=7b835b529fb706c3, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\DTG.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>
@@ -90,6 +108,9 @@
     </Reference>
     <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
       <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp, Version=1.14.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Markdown.1.14.7\lib\net45\MarkdownSharp.dll</HintPath>
@@ -154,6 +175,12 @@
     </Reference>
     <Reference Include="RJP.MultiUrlPicker, Version=2.2.0.17550, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RJP.UmbracoMultiUrlPicker.2.2.0\lib\net45\RJP.MultiUrlPicker.dll</HintPath>
+    </Reference>
+    <Reference Include="PackageActionsContrib, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\PackageActionsContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="PackageGarden.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CMSImport.3.7.5\lib\PackageGarden.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
@@ -296,7 +323,49 @@
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Umbraco\Plugins\cmsimport\dashboardcontrols\CMSImportDashboardControl.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\add.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\cancel.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\cmsimport-bw.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\cmsimport.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\cmsimportlogo.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\database_edit.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\dictionary.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\email_edit.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\folder.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\folder_open.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\FormRunHS.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\minus_math.svg" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\NewCardHS.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\page.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\page_recursive.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\picture_edit.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\plus_math.svg" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\refresh-bw.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\refresh.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\user.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\images\user_edit.png" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\LastRunInfo.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\License.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\MediaSettings.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\ScheduleSettings.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\ScheduleTask.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\Settings.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\Usersettings.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\pages\Wizard.aspx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\CMSImport.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\CMSImportInstaller.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\importsteps\ConfirmSelectedOptions.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\importsteps\Importing.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\importsteps\Intro.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\importsteps\MapProperties.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\importsteps\SelectDataSource.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\importsteps\SelectDataSourceType.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\importsteps\SelectImportProviderOptions.ascx" />
+    <Content Include="Umbraco\Plugins\cmsimport\usercontrols\StateError.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -347,6 +416,8 @@
     <Content Include="Views\StaffProfilePage.cshtml" />
     <Content Include="Views\NewsAndInsightsLandingPage.cshtml" />
     <Content Include="Views\NewsItemPage.cshtml" />
+    <Content Include="Umbraco\Plugins\cmsimport\config\cmsImport.config" />
+    <Content Include="Umbraco\Plugins\cmsimport\config\CMSImportScheduler.Config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
