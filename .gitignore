@@ -1,3 +1,8 @@
+# Don't ignore Umbraco packages (VisualStudio.gitignore mistakes this for a NuGet packages folder)
+# Make sure to include details from VisualStudio.gitignore BEFORE this
+!**/App_Data/[Pp]ackages/
+!**/[Uu]mbraco/[Dd]eveloper/[Pp]ackages
+
 # Created by https://www.gitignore.io/api/umbraco,visualstudio
 # Edit at https://www.gitignore.io/?templates=umbraco,visualstudio
 
@@ -366,3 +371,10 @@ ASALocalRun/
 **/App_Data/Models/ood.flag
 
 # End of https://www.gitignore.io/api/umbraco,visualstudio
+
+# Ignore Umbraco media folder
+**/media/
+
+# Ignore Umbraco project folders
+**/[Uu]mbraco/
+**/[Uu]mbraco_client/
