@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-namespace JNCC.PublicWebsite.Core
+namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Folder</summary>
 	[PublishedContentModel("Folder")]
