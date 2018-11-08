@@ -143,6 +143,12 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Our.Umbraco.InnerContent, Version=2.0.6775.8222, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Our.Umbraco.InnerContent.Core.2.0.0\lib\net45\Our.Umbraco.InnerContent.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.StackedContent, Version=2.0.6787.9654, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Our.Umbraco.StackedContent.2.0.1\lib\net45\Our.Umbraco.StackedContent.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -251,9 +257,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\InnerContent\css\innercontent.css" />
+    <Content Include="App_Plugins\InnerContent\js\innercontent.js" />
+    <Content Include="App_Plugins\InnerContent\views\innercontent.create.html" />
+    <Content Include="App_Plugins\InnerContent\views\innercontent.dialog.html" />
+    <Content Include="App_Plugins\InnerContent\views\innercontent.doctypepicker.html" />
+    <Content Include="App_Plugins\InnerContent\views\innercontent.overlay.html" />
+    <Content Include="App_Plugins\InnerContent\views\innercontent.unsavedchanges.html" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <Content Include="App_Plugins\StackedContent\css\stackedcontent.css" />
+    <Content Include="App_Plugins\StackedContent\js\stackedcontent.js" />
+    <Content Include="App_Plugins\StackedContent\views\stackedcontent.html" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -304,6 +320,8 @@
     <Content Include="config\BackOfficeTours\getting-started.json" />
     <Content Include="config\applications.config" />
     <Content Include="config\404handlers.config" />
+    <Content Include="App_Plugins\InnerContent\package.manifest" />
+    <Content Include="App_Plugins\StackedContent\package.manifest" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
