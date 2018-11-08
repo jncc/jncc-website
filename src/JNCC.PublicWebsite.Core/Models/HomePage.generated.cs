@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Hero Image: The hero image which is displayed above the main content of the page.
+		///</summary>
+		[ImplementPropertyType("heroImage")]
+		public IEnumerable<IPublishedContent> HeroImage
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("heroImage"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
