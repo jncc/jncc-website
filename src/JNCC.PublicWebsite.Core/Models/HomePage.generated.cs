@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Home Page</summary>
 	[PublishedContentModel("homePage")]
-	public partial class HomePage : PublishedContentModel
+	public partial class HomePage : PublishedContentModel, INavigationSettingsComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "homePage";
@@ -43,6 +43,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HomePage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Hide Children from Navigation: Hides any child pages from the main navigation.
+		///</summary>
+		[ImplementPropertyType("umbracoNavi")]
+		public bool UmbracoNavi
+		{
+			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNavi(this); }
+		}
+
+		///<summary>
+		/// Hide from Navigation: Hides the page from the main navigation.
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
 		}
 	}
 }
