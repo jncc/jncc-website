@@ -20,9 +20,20 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
+	// Mixin content Type 1057 with alias "navigationSettingsComposition"
+	/// <summary>Navigation Settings Composition</summary>
+	public partial interface INavigationSettingsComposition : IPublishedContent
+	{
+		/// <summary>Hide Children from Navigation</summary>
+		bool UmbracoNavi { get; }
+
+		/// <summary>Hide from Navigation</summary>
+		bool UmbracoNaviHide { get; }
+	}
+
 	/// <summary>Navigation Settings Composition</summary>
 	[PublishedContentModel("navigationSettingsComposition")]
-	public partial class NavigationSettingsComposition : PublishedContentModel
+	public partial class NavigationSettingsComposition : PublishedContentModel, INavigationSettingsComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "navigationSettingsComposition";
@@ -51,8 +62,11 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("umbracoNavi")]
 		public bool UmbracoNavi
 		{
-			get { return this.GetPropertyValue<bool>("umbracoNavi"); }
+			get { return GetUmbracoNavi(this); }
 		}
+
+		/// <summary>Static getter for Hide Children from Navigation</summary>
+		public static bool GetUmbracoNavi(INavigationSettingsComposition that) { return that.GetPropertyValue<bool>("umbracoNavi"); }
 
 		///<summary>
 		/// Hide from Navigation: Hides the page from the main navigation.
@@ -60,7 +74,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("umbracoNaviHide")]
 		public bool UmbracoNaviHide
 		{
-			get { return this.GetPropertyValue<bool>("umbracoNaviHide"); }
+			get { return GetUmbracoNaviHide(this); }
 		}
+
+		/// <summary>Static getter for Hide from Navigation</summary>
+		public static bool GetUmbracoNaviHide(INavigationSettingsComposition that) { return that.GetPropertyValue<bool>("umbracoNaviHide"); }
 	}
 }
