@@ -229,6 +229,7 @@
     <Compile Include="Models\HomePage.generated.cs" />
     <Compile Include="Models\Image.generated.cs" />
     <Compile Include="Models\Member.generated.cs" />
+    <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
