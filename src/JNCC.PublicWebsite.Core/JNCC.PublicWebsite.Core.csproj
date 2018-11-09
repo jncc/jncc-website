@@ -233,6 +233,8 @@
     <Compile Include="Models\InternalTextPage.generated.cs" />
     <Compile Include="Models\Member.generated.cs" />
     <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
+    <Compile Include="Models\NewsAndInsightsLandingPage.generated.cs" />
+    <Compile Include="Models\NewsItemPage.generated.cs" />
     <Compile Include="Models\PageHeroComposition.generated.cs" />
     <Compile Include="Models\StaffDirectoryPage.generated.cs" />
     <Compile Include="Models\StaffProfilePage.generated.cs" />
