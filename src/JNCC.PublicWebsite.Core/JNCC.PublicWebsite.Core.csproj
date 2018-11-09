@@ -224,6 +224,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BizDevServicePage.generated.cs" />
     <Compile Include="Models\ContentImageSchema.generated.cs" />
     <Compile Include="Models\File.generated.cs" />
     <Compile Include="Models\Folder.generated.cs" />
