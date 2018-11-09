@@ -338,6 +338,8 @@
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\InternalTextPage.cshtml" />
     <Content Include="Views\BizDevServicePage.cshtml" />
+    <Content Include="Views\StaffDirectoryPage.cshtml" />
+    <Content Include="Views\StaffProfilePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
