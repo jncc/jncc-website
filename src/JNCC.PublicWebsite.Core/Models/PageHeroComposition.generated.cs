@@ -20,9 +20,17 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
+	// Mixin content Type 1059 with alias "pageHeroComposition"
+	/// <summary>Page Hero Composition</summary>
+	public partial interface IPageHeroComposition : IPublishedContent
+	{
+		/// <summary>Hero Image</summary>
+		IEnumerable<IPublishedContent> HeroImage { get; }
+	}
+
 	/// <summary>Page Hero Composition</summary>
 	[PublishedContentModel("pageHeroComposition")]
-	public partial class PageHeroComposition : PublishedContentModel
+	public partial class PageHeroComposition : PublishedContentModel, IPageHeroComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "pageHeroComposition";
@@ -51,7 +59,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("heroImage")]
 		public IEnumerable<IPublishedContent> HeroImage
 		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("heroImage"); }
+			get { return GetHeroImage(this); }
 		}
+
+		/// <summary>Static getter for Hero Image</summary>
+		public static IEnumerable<IPublishedContent> GetHeroImage(IPageHeroComposition that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("heroImage"); }
 	}
 }
