@@ -229,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\BizDevServicePage.generated.cs" />
+    <Compile Include="Models\CaseStudyPage.generated.cs" />
     <Compile Include="Models\ContentAreaSchema.generated.cs" />
     <Compile Include="Models\ContentImageSchema.generated.cs" />
     <Compile Include="Models\ContentItemSchema.generated.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="Models\InternalTextPage.generated.cs" />
     <Compile Include="Models\Member.generated.cs" />
     <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
+    <Compile Include="Models\NewsAndInsightsContentPageComposition.generated.cs" />
     <Compile Include="Models\NewsAndInsightsLandingPage.generated.cs" />
     <Compile Include="Models\NewsItemPage.generated.cs" />
     <Compile Include="Models\PageHeroComposition.generated.cs" />

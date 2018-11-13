@@ -20,16 +20,27 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	/// <summary>News Item Page</summary>
-	[PublishedContentModel("NewsItemPage")]
-	public partial class NewsItemPage : PublishedContentModel, INewsAndInsightsContentPageComposition, IPageHeroComposition
+	// Mixin content Type 1098 with alias "newsAndInsightsContentPageComposition"
+	/// <summary>News and Insights Content Page Composition</summary>
+	public partial interface INewsAndInsightsContentPageComposition : IPublishedContent
+	{
+		/// <summary>Text</summary>
+		IHtmlString ContentText { get; }
+
+		/// <summary>Publish Date</summary>
+		DateTime PublishDate { get; }
+	}
+
+	/// <summary>News and Insights Content Page Composition</summary>
+	[PublishedContentModel("newsAndInsightsContentPageComposition")]
+	public partial class NewsAndInsightsContentPageComposition : PublishedContentModel, INewsAndInsightsContentPageComposition
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "NewsItemPage";
+		public new const string ModelTypeAlias = "newsAndInsightsContentPageComposition";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public NewsItemPage(IPublishedContent content)
+		public NewsAndInsightsContentPageComposition(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +51,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NewsItemPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NewsAndInsightsContentPageComposition, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -51,8 +62,11 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("contentText")]
 		public IHtmlString ContentText
 		{
-			get { return JNCC.PublicWebsite.Core.Models.NewsAndInsightsContentPageComposition.GetContentText(this); }
+			get { return GetContentText(this); }
 		}
+
+		/// <summary>Static getter for Text</summary>
+		public static IHtmlString GetContentText(INewsAndInsightsContentPageComposition that) { return that.GetPropertyValue<IHtmlString>("contentText"); }
 
 		///<summary>
 		/// Publish Date: If no value is provided the page publish date will be used instead.
@@ -60,16 +74,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("publishDate")]
 		public DateTime PublishDate
 		{
-			get { return JNCC.PublicWebsite.Core.Models.NewsAndInsightsContentPageComposition.GetPublishDate(this); }
+			get { return GetPublishDate(this); }
 		}
 
-		///<summary>
-		/// Hero Image: The hero image which is displayed above the main content of the page.
-		///</summary>
-		[ImplementPropertyType("heroImage")]
-		public IEnumerable<IPublishedContent> HeroImage
-		{
-			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
-		}
+		/// <summary>Static getter for Publish Date</summary>
+		public static DateTime GetPublishDate(INewsAndInsightsContentPageComposition that) { return that.GetPropertyValue<DateTime>("publishDate"); }
 	}
 }

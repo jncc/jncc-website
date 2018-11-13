@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	/// <summary>News Item Page</summary>
-	[PublishedContentModel("NewsItemPage")]
-	public partial class NewsItemPage : PublishedContentModel, INewsAndInsightsContentPageComposition, IPageHeroComposition
+	/// <summary>Case Study Page</summary>
+	[PublishedContentModel("caseStudyPage")]
+	public partial class CaseStudyPage : PublishedContentModel, INewsAndInsightsContentPageComposition, IPageHeroComposition
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "NewsItemPage";
+		public new const string ModelTypeAlias = "caseStudyPage";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public NewsItemPage(IPublishedContent content)
+		public CaseStudyPage(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +40,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NewsItemPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CaseStudyPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
