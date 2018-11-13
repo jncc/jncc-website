@@ -67,9 +67,9 @@ namespace JNCC.PublicWebsite.Core.Models
 		/// Read More Button: The link & text for the button that links to the full web page for this content item.
 		///</summary>
 		[ImplementPropertyType("readMoreButton")]
-		public Umbraco.Web.Models.RelatedLinks ReadMoreButton
+		public RJP.MultiUrlPicker.Models.Link ReadMoreButton
 		{
-			get { return this.GetPropertyValue<Umbraco.Web.Models.RelatedLinks>("readMoreButton"); }
+			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("readMoreButton"); }
 		}
 
 		///<summary>
