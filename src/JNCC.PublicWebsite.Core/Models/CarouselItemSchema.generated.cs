@@ -55,6 +55,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Headline: A headline to be displayed over the image.
+		///</summary>
+		[ImplementPropertyType("headline")]
+		public string Headline
+		{
+			get { return this.GetPropertyValue<string>("headline"); }
+		}
+
+		///<summary>
 		/// Image: An image to be used in the background for this carousel item.
 		///</summary>
 		[ImplementPropertyType("image")]
@@ -70,15 +79,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		public RJP.MultiUrlPicker.Models.Link ReadMoreButton
 		{
 			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("readMoreButton"); }
-		}
-
-		///<summary>
-		/// Title: A title to be displayed over the image.
-		///</summary>
-		[ImplementPropertyType("title")]
-		public string Title
-		{
-			get { return this.GetPropertyValue<string>("title"); }
 		}
 	}
 }
