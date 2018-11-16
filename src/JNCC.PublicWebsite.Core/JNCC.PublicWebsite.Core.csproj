@@ -231,6 +231,7 @@
     <Compile Include="Models\BizDevServicePage.generated.cs" />
     <Compile Include="Models\CarouselItemSchema.generated.cs" />
     <Compile Include="Models\CaseStudyPage.generated.cs" />
+    <Compile Include="Models\CategorisedFooterLinksSchema.generated.cs" />
     <Compile Include="Models\ContentAreaSchema.generated.cs" />
     <Compile Include="Models\ContentImageSchema.generated.cs" />
     <Compile Include="Models\ContentItemSchema.generated.cs" />
