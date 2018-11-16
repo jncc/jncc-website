@@ -46,12 +46,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Hero Image: The hero image which is displayed above the main content of the page.
+		/// Hero Carousel: A collection of carousel slides to be displayed at the top of the page.
 		///</summary>
-		[ImplementPropertyType("heroImage")]
-		public IEnumerable<IPublishedContent> HeroImage
+		[ImplementPropertyType("heroCarousel")]
+		public IEnumerable<IPublishedContent> HeroCarousel
 		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("heroImage"); }
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("heroCarousel"); }
 		}
 
 		///<summary>
