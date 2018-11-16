@@ -46,12 +46,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Text: The main content for the page.
+		/// Main Content: The main content for the page.
 		///</summary>
-		[ImplementPropertyType("contentText")]
-		public IHtmlString ContentText
+		[ImplementPropertyType("mainContent")]
+		public IHtmlString MainContent
 		{
-			get { return JNCC.PublicWebsite.Core.Models.NewsAndInsightsContentPageComposition.GetContentText(this); }
+			get { return JNCC.PublicWebsite.Core.Models.NewsAndInsightsContentPageComposition.GetMainContent(this); }
 		}
 
 		///<summary>

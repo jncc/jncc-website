@@ -46,12 +46,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Text: The main content of the page.
+		/// Main Content: The main content of the page.
 		///</summary>
-		[ImplementPropertyType("contentText")]
-		public IHtmlString ContentText
+		[ImplementPropertyType("mainContent")]
+		public IHtmlString MainContent
 		{
-			get { return this.GetPropertyValue<IHtmlString>("contentText"); }
+			get { return this.GetPropertyValue<IHtmlString>("mainContent"); }
 		}
 
 		///<summary>

@@ -46,21 +46,21 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Content: The main content of the page.
-		///</summary>
-		[ImplementPropertyType("content")]
-		public IEnumerable<IPublishedContent> Content
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("content"); }
-		}
-
-		///<summary>
 		/// Get In Touch Content: Optional content which appears below the main content of the page. This content is specifically for encouraging website users to navigate to the contact form.   If this content is authored a "Get in Touch" button will be displayed below.
 		///</summary>
 		[ImplementPropertyType("getInTouchContent")]
 		public IHtmlString GetInTouchContent
 		{
 			get { return this.GetPropertyValue<IHtmlString>("getInTouchContent"); }
+		}
+
+		///<summary>
+		/// Main Content: The main content of the page.
+		///</summary>
+		[ImplementPropertyType("mainContent")]
+		public IEnumerable<IPublishedContent> MainContent
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("mainContent"); }
 		}
 
 		///<summary>

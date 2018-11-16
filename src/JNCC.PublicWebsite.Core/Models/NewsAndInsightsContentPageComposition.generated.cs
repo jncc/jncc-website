@@ -24,8 +24,8 @@ namespace JNCC.PublicWebsite.Core.Models
 	/// <summary>News and Insights Content Page Composition</summary>
 	public partial interface INewsAndInsightsContentPageComposition : IPublishedContent
 	{
-		/// <summary>Text</summary>
-		IHtmlString ContentText { get; }
+		/// <summary>Main Content</summary>
+		IHtmlString MainContent { get; }
 
 		/// <summary>Publish Date</summary>
 		DateTime PublishDate { get; }
@@ -57,16 +57,16 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Text: The main content for the page.
+		/// Main Content: The main content for the page.
 		///</summary>
-		[ImplementPropertyType("contentText")]
-		public IHtmlString ContentText
+		[ImplementPropertyType("mainContent")]
+		public IHtmlString MainContent
 		{
-			get { return GetContentText(this); }
+			get { return GetMainContent(this); }
 		}
 
-		/// <summary>Static getter for Text</summary>
-		public static IHtmlString GetContentText(INewsAndInsightsContentPageComposition that) { return that.GetPropertyValue<IHtmlString>("contentText"); }
+		/// <summary>Static getter for Main Content</summary>
+		public static IHtmlString GetMainContent(INewsAndInsightsContentPageComposition that) { return that.GetPropertyValue<IHtmlString>("mainContent"); }
 
 		///<summary>
 		/// Publish Date: If no value is provided the page publish date will be used instead.
