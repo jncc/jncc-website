@@ -46,6 +46,42 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Categorised Links: Links grouped into useful categories (e.g. About, Our Services, etc) to be displayed within the footer below the main content of the page.
+		///</summary>
+		[ImplementPropertyType("footerCategorisedLinks")]
+		public IEnumerable<IPublishedContent> FooterCategorisedLinks
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("footerCategorisedLinks"); }
+		}
+
+		///<summary>
+		/// Content: A content area useful display for displaying legal & copyright information within the footer of the page.
+		///</summary>
+		[ImplementPropertyType("footerContent")]
+		public IHtmlString FooterContent
+		{
+			get { return this.GetPropertyValue<IHtmlString>("footerContent"); }
+		}
+
+		///<summary>
+		/// Social Media Links: Links to various social media channels.
+		///</summary>
+		[ImplementPropertyType("footerSocialMediaLinks")]
+		public Umbraco.Web.Models.RelatedLinks FooterSocialMediaLinks
+		{
+			get { return this.GetPropertyValue<Umbraco.Web.Models.RelatedLinks>("footerSocialMediaLinks"); }
+		}
+
+		///<summary>
+		/// Uncategorised Links: Uncategorised links that appear at the very bottom of the footer.
+		///</summary>
+		[ImplementPropertyType("footerUncategorisedLinks")]
+		public IEnumerable<RJP.MultiUrlPicker.Models.Link> FooterUncategorisedLinks
+		{
+			get { return this.GetPropertyValue<IEnumerable<RJP.MultiUrlPicker.Models.Link>>("footerUncategorisedLinks"); }
+		}
+
+		///<summary>
 		/// Hero Carousel: A collection of carousel slides to be displayed at the top of the page.
 		///</summary>
 		[ImplementPropertyType("heroCarousel")]
