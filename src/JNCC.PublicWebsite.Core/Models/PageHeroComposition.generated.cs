@@ -24,6 +24,9 @@ namespace JNCC.PublicWebsite.Core.Models
 	/// <summary>Page Hero Composition</summary>
 	public partial interface IPageHeroComposition : IPublishedContent
 	{
+		/// <summary>Headline</summary>
+		string Headline { get; }
+
 		/// <summary>Hero Image</summary>
 		IEnumerable<IPublishedContent> HeroImage { get; }
 	}
@@ -52,6 +55,18 @@ namespace JNCC.PublicWebsite.Core.Models
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Headline: A headline that appears above the main content of the page.  If no value is provided the page name will be used instead.  If a hero image is also provided then this headline appears over the hero image. Otherwise it appears just above the main content.
+		///</summary>
+		[ImplementPropertyType("headline")]
+		public string Headline
+		{
+			get { return GetHeadline(this); }
+		}
+
+		/// <summary>Static getter for Headline</summary>
+		public static string GetHeadline(IPageHeroComposition that) { return that.GetPropertyValue<string>("headline"); }
 
 		///<summary>
 		/// Hero Image: The hero image which is displayed above the main content of the page.

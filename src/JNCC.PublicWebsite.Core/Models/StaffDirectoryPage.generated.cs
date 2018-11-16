@@ -64,6 +64,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Headline: A headline that appears above the main content of the page.  If no value is provided the page name will be used instead.  If a hero image is also provided then this headline appears over the hero image. Otherwise it appears just above the main content.
+		///</summary>
+		[ImplementPropertyType("headline")]
+		public string Headline
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeadline(this); }
+		}
+
+		///<summary>
 		/// Hero Image: The hero image which is displayed above the main content of the page.
 		///</summary>
 		[ImplementPropertyType("heroImage")]

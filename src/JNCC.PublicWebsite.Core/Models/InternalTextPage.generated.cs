@@ -55,15 +55,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Title: The title for the main content of the page. If no value is authored the page name is used instead.
-		///</summary>
-		[ImplementPropertyType("contentTitle")]
-		public string ContentTitle
-		{
-			get { return this.GetPropertyValue<string>("contentTitle"); }
-		}
-
-		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
@@ -79,6 +70,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// Headline: A headline that appears above the main content of the page.  If no value is provided the page name will be used instead.  If a hero image is also provided then this headline appears over the hero image. Otherwise it appears just above the main content.
+		///</summary>
+		[ImplementPropertyType("headline")]
+		public string Headline
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeadline(this); }
 		}
 
 		///<summary>
