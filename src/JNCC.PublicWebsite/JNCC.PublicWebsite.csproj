@@ -1,4 +1,5 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\uSync.4.0.9\build\uSync.props" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.props')" />
   <Import Project="..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -102,6 +103,12 @@
     </Reference>
     <Reference Include="interfaces, Version=1.0.6879.21975, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.BackOffice, Version=4.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.4.0.9\lib\net45\Jumoo.uSync.BackOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.Core, Version=6.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.Core.6.0.9\lib\net45\Jumoo.uSync.Core.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\log4net.dll</HintPath>
@@ -592,6 +599,10 @@
     <Content Include="App_Plugins\UmbracoForms\Xslt\Templates\Schema2\UmbracoContourListComments.xslt" />
     <Content Include="App_Plugins\UmbracoForms\Xslt\Templates\UmbracoContourListComments.xslt" />
     <Content Include="App_Plugins\UmbracoForms\Xslt\xml.xslt" />
+    <Content Include="App_Plugins\uSync\uSyncDashboard.css" />
+    <Content Include="App_Plugins\uSync\uSyncDashboard.html" />
+    <Content Include="App_Plugins\uSync\uSyncDashboardController.js" />
+    <Content Include="App_Plugins\uSync\uSyncDashboardService.js" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -701,6 +712,9 @@
     <Content Include="App_Plugins\UmbracoForms\UmbracoForms.config" />
     <Content Include="App_Plugins\UmbracoForms\version" />
     <Content Include="App_Plugins\UmbracoForms\Data\Web.config" />
+    <Content Include="config\uSyncCore.Config" />
+    <Content Include="config\uSyncBackOffice.Config" />
+    <Content Include="App_Plugins\uSync\package.manifest" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
@@ -773,6 +787,8 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.12.4\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\OctoPack.3.6.3\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OctoPack.3.6.3\build\OctoPack.targets'))" />
+    <Error Condition="!Exists('..\packages\uSync.4.0.9\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.9\build\uSync.props'))" />
+    <Error Condition="!Exists('..\packages\uSync.4.0.9\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.9\build\uSync.targets'))" />
   </Target>
   <Import Project="..\packages\UmbracoCms.7.12.4\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.targets')" />
   <Import Project="..\packages\OctoPack.3.6.3\build\OctoPack.targets" Condition="Exists('..\packages\OctoPack.3.6.3\build\OctoPack.targets')" />
@@ -789,4 +805,5 @@
   <Target Name="BeforeBuild">
     <TransformXml Source="Web.config" Transform="Web.$(Configuration).config" Destination="Web.config" />
   </Target>
+  <Import Project="..\packages\uSync.4.0.9\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.targets')" />
 </Project>
