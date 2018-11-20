@@ -12,26 +12,29 @@
 	<script src="js/app.js" defer></script>
 </head>
 <body>
+	<noscript><div>Javascript must be enabled for the correct page display</div></noscript>
 	<div id="wrapper">
+		<a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
 		<header id="header">
 			<div class="container">
 				<strong class="logo">
-					<a href="#"><img src="images/logo.png" alt="JNCC"></a>
+					<a href="#" accesskey="1"><img src="images/logo.png" alt="JNCC"></a>
 				</strong>
-				<form action="#" class="top-bar search-form input-group" id="search-form" data-animate="hinge-in-from-top spin-out">
-					<input type="search" placeholder="Search" class="input-group-field">
-					<button class="input-group-button"><i class="icon-search"></i></button>
+				<form action="#" role="search" class="top-bar search-form input-group" id="search-form" data-animate="hinge-in-from-top spin-out">
+					<label for="search-field" class="show-for-sr" accesskey="4">Search:</label>
+					<input type="search" placeholder="Search" class="input-group-field" id="search-field">
+					<button class="input-group-button" aria-label="search-button"><i class="icon-search"></i></button>
 				</form>
 				<div class="show-for-small-only">
 					<div class="title-bar" data-responsive-toggle="search-form" data-hide-for="medium">
-						<button type="button" class="search-opener" data-toggle="search-form"><i class="icon-search"></i></button>
+						<button type="button" class="search-opener" data-toggle="search-form" aria-label="search-opener"><i class="icon-search"></i></button>
 					</div>
 					<div class="title-bar" data-responsive-toggle="menu" data-hide-for="medium">
-						<button type="button" class="nav-opener" data-toggle="menu" data-responsive-toggle="menu"><span></span></button>
+						<button type="button" class="nav-opener" data-toggle="menu" data-responsive-toggle="menu" aria-label="navigation-opener"><span></span></button>
 					</div>
 				</div>
 			</div>
-			<nav class="top-bar nav" id="menu" data-animate="hinge-in-from-top spin-out">
+			<nav class="top-bar nav" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
 				<div class="container">
 					<ul class="vertical medium-horizontal menu">
 						<li class="active"><a href="#">Valuing the environment</a></li>
@@ -51,7 +54,7 @@
 				</div>
 			</div>
 			<div class="container">
-				<nav>
+				<nav aria-label="breadcrumbs">
 					<ul class="breadcrumbs">
 						<li><a href="#">Home</a></li>
 						<li><span class="show-for-sr">Current: </span>Valuing the environment</li>
@@ -95,8 +98,8 @@
 					</div>
 					<aside id="sidebar">
 						<a href="#" class="button primary large medium-expanded">Get in touch</a>
-						<nav class="holder">
-							<h3>In this section</h3>
+						<nav class="holder" aria-label="aside-navigation">
+							<h2>In this section</h2>
 							<ul class="aside-nav no-bullet">
 								<li><a href="#">Valuing</a></li>
 								<li><a href="#">Mapping natural assets</a></li>
@@ -107,8 +110,8 @@
 								<li><a href="#">Child item 5</a></li>
 							</ul>
 						</nav>
-						<nav class="holder">
-							<h3>See also</h3>
+						<nav class="holder" aria-label="aside-navigation">
+							<h2>See also</h2>
 							<ul class="aside-nav no-bullet">
 								<li><a href="#">Valuing case studies</a></li>
 								<li><a href="#">Latest valuing news</a></li>
@@ -130,28 +133,22 @@
 					<h2>Related links</h2>
 					<div class="row">
 						<div class="columns small-12 medium-4">
-							<article>
-								<a href="#" class="card">
-									<span class="img-holder" style="background-image: url(images/img-4.jpg);"></span>
-									<span class="card-section"><strong>Case study</strong> : Huge cost reduction on use of satelite data</span>
-								</a>
-							</article>
+							<a href="#" class="card">
+								<span class="img-holder" style="background-image: url(images/img-4.jpg);"></span>
+								<span class="card-section"><strong>Case study</strong> : Huge cost reduction on use of satelite data</span>
+							</a>
 						</div>
 						<div class="columns small-12 medium-4">
-							<article>
-								<a href="#" class="card">
-									<span class="img-holder" style="background-image: url(images/img-3.jpg);"></span>
-									<span class="card-section">Protected areas within Great Britain now available.</span>
-								</a>
-							</article>
+							<a href="#" class="card">
+								<span class="img-holder" style="background-image: url(images/img-3.jpg);"></span>
+								<span class="card-section">Protected areas within Great Britain now available.</span>
+							</a>
 						</div>	
 						<div class="columns small-12 medium-4">
-							<article>
-								<a href="#" class="card">
-									<span class="img-holder" style="background-image: url(images/img-2.jpg);"></span>
-									<span class="card-section">A partnership working in South Africa</span>
-								</a>
-							</article>
+							<a href="#" class="card">
+								<span class="img-holder" style="background-image: url(images/img-2.jpg);"></span>
+								<span class="card-section">A partnership working in South Africa</span>
+							</a>
 						</div>	
 					</div>
 				</div>
@@ -161,20 +158,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="columns small-12 medium-4">
-						<nav class="holder">
+						<nav class="holder" id="footer-nav" aria-label="footer-navigation">
 							<h3>About Us</h3>
 							<ul class="footer-nav no-bullet">
-								<li><a href="#">News</a></li>
+								<li><a href="#" accesskey="2">News</a></li>
 								<li><a href="#">Procurement</a></li>
 								<li><a href="#">Consultations</a></li>
 								<li><a href="#">Career</a></li>
-								<li><a href="#">Contact Us</a></li>
+								<li><a href="#" accesskey="9">Contact Us</a></li>
 								<li><a href="#">More About Us</a></li>
 							</ul>
 						</nav>
 					</div>
 					<div class="columns small-12 medium-4">
-						<nav class="holder">
+						<nav class="holder" aria-label="footer-navigation">
 							<h3>OUR Science</h3>
 							<ul class="footer-nav no-bullet">
 								<li><a href="#">Data Hub</a></li>
@@ -183,7 +180,7 @@
 						</nav>
 					</div>
 					<div class="columns small-12 medium-4">
-						<nav class="holder">
+						<nav class="holder" aria-label="footer-navigation">
 							<h3>Our Services</h3>
 							<ul class="footer-nav no-bullet">
 								<li><a href="#">Valuing the Environment</a></li>
@@ -195,9 +192,9 @@
 					</div>
 				</div>
 				<ul class="social-media no-bullet">
-					<li><a href="#"><i class="icon-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-twitter"></i></a></li>
-					<li><a href="#"><i class="icon-youtube"></i></a></li>
+					<li><a href="#"><span class="show-for-sr">Facebook</span><i class="icon-facebook"></i></a></li>
+					<li><a href="#"><span class="show-for-sr">Twitter</span><i class="icon-twitter"></i></a></li>
+					<li><a href="#"><span class="show-for-sr">Youtube</span><i class="icon-youtube"></i></a></li>
 				</ul>
 			</div>
 			<div class="footer-bottom">
@@ -207,7 +204,7 @@
 						<li>Press Office<a href="tel:01733868888"> 01733 868888</a></li>
 					</ul>
 					<ul class="footer-bottom-list no-bullet info">
-						<li><a href="#">Terms of use</a></li>
+						<li><a href="#" accesskey="8">Terms of use</a></li>
 						<li><a href="#">Privacy</a></li>
 						<li><a href="#">Cookie policy</a></li>
 						<li><a href="#">Accessability</a></li>
@@ -216,5 +213,6 @@
 			</div>
 		</footer>
 	</div>
+	<a class="accessibility" href="#wrapper">Back to top</a>
 </body>
 </html>

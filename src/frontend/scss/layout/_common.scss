@@ -24,10 +24,6 @@ a {
 	@include animate(color);
 }
 
-button {
-	outline: none !important;
-}
-
 .button {
 	@include animate(color background-color border-color);
 
@@ -213,7 +209,7 @@ button {
 		}
 	}
 
-	h3 {
+	h2 {
 		font-size: rem-calc(18px);
 		margin-bottom: rem-calc(15px);
 		color: $dark-gray;
@@ -266,4 +262,19 @@ button {
 			margin: rem-calc(0 -37px); 
 		} 
 	}
+}
+
+.accessibility{
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+.accessibility:focus{
+	position:static;
+	width:auto;
+	height:auto;
 }
