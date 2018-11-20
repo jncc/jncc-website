@@ -55,7 +55,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Publish Date: If no value is provided the page publish date will be used instead.
+		/// Publish Date: This is the displayed publish date of the page. It may also also be used for sorting the article chronologically.
 		///</summary>
 		[ImplementPropertyType("publishDate")]
 		public DateTime PublishDate
