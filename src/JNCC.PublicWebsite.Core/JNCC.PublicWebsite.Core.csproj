@@ -228,6 +228,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\HtmlTextDirectionalities.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Models\BizDevServicePage.generated.cs" />
     <Compile Include="Models\CarouselItemSchema.generated.cs" />
     <Compile Include="Models\CaseStudyPage.generated.cs" />
