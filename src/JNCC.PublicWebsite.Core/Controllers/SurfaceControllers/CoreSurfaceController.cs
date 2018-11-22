@@ -1,6 +1,6 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using System.Web.Routing;
-using Umbraco.Web;
 using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -12,7 +12,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            Root = CurrentPage.AncestorOrSelf<HomePage>();
+            Root = CurrentPage.Site<HomePage>();
         }
     }
 }
