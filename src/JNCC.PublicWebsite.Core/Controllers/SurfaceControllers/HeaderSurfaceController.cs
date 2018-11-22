@@ -10,5 +10,10 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         {
             return PartialView("~/Views/Partials/Header/MainNavigation.cshtml");
         }
+        [ChildActionOnly]
+        public PartialViewResult RenderSearch()
+        {
+            return PartialView("~/Views/Partials/Header/Search.cshtml");
+        }
     }
 }
