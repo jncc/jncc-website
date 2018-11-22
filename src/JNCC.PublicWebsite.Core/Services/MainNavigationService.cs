@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +12,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public IEnumerable<MainNavigationItemViewModel> GetRootMenuItems(IPublishedContent root)
         {
-            var items = new List<MainNavigationItemViewModel>
-            {
-                ToMenuItem(root)
-            };
-
+            var items = new List<MainNavigationItemViewModel>();
             var childItems = GetMenuItems(root);
 
 
