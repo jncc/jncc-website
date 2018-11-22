@@ -17,7 +17,6 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             Root = CurrentPage.AncestorOrSelf<HomePage>();
         }
 
-
         [ChildActionOnly]
         public PartialViewResult RenderCategorisedLinks()
         {
@@ -34,6 +33,12 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         public IHtmlString RenderContent()
         {
             return Root.FooterContent;
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult RenderUncategorisedLinks()
+        {
+            return PartialView("~/Views/Partials/Footer/UncategorisedLinks.cshtml");
         }
     }
 }

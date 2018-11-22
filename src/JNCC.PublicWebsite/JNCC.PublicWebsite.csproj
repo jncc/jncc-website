@@ -761,6 +761,7 @@
     <Content Include="Views\Partials\Header\Search.cshtml" />
     <Content Include="Views\Partials\Footer\CategorisedLinks.cshtml" />
     <Content Include="Views\Partials\Footer\SocialMediaLinks.cshtml" />
+    <Content Include="Views\Partials\Footer\UncategorisedLinks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
