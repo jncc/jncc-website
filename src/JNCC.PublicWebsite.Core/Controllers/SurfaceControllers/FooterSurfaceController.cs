@@ -8,11 +8,19 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
     public sealed class FooterSurfaceController : CoreSurfaceController
     {
         private readonly SocialMediaLinksService socialMediaLinksService = new SocialMediaLinksService();
+        private readonly CategorisedFooterLinksService categorisedFooterLinksService = new CategorisedFooterLinksService();
 
         [ChildActionOnly]
-        public PartialViewResult RenderCategorisedLinks()
+        public ActionResult RenderCategorisedLinks()
         {
-            return PartialView("~/Views/Partials/Footer/CategorisedLinks.cshtml");
+            var categorisedLinks = categorisedFooterLinksService.GetViewModels(Root.FooterCategorisedLinks);
+
+            if (categorisedLinks == null || categorisedLinks.Any() == false)
+            {
+                return EmptyResult();
+            }
+
+            return PartialView("~/Views/Partials/Footer/CategorisedLinks.cshtml", categorisedLinks);
         }
 
         [ChildActionOnly]
