@@ -8,6 +8,6 @@
 
         public string Url { get; set; }
 
-        public char AccessKey { get; set; }
+        public char? AccessKey { get; set; }
     }
 }
