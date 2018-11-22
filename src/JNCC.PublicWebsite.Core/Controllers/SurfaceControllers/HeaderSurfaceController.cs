@@ -11,7 +11,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderMainNavigation()
         {
-            var menuItems = mainNavigationService.GetRootMenuItems(Root);
+            var menuItems = mainNavigationService.GetRootMenuItems(Root, CurrentPage);
 
             if (menuItems == null || menuItems.Any() == false)
             {

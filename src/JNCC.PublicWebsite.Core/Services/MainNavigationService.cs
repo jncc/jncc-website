@@ -1,8 +1,9 @@
-using JNCC.PublicWebsite.Core.Extensions;
+﻿using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -10,21 +11,19 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         private const int _maximumMenuLevel = 3;
 
-        public IEnumerable<MainNavigationItemViewModel> GetRootMenuItems(IPublishedContent root)
+        public IEnumerable<MainNavigationItemViewModel> GetRootMenuItems(IPublishedContent root, IPublishedContent currentPage)
         {
-            var items = new List<MainNavigationItemViewModel>();
-            var childItems = GetMenuItems(root);
+            var isCurrentPageRoot = currentPage.IsEqual(root);
 
-
-            if (childItems != null)
+            if (isCurrentPageRoot)
             {
-                items.AddRange(childItems);
+                return GetMenuItems(root);
             }
 
-            return items;
+            return GetMenuItems(root, currentPage);
         }
 
-        private IEnumerable<MainNavigationItemViewModel> GetMenuItems(IPublishedContent parent)
+        private IEnumerable<MainNavigationItemViewModel> GetMenuItems(IPublishedContent parent, IPublishedContent currentPage = null)
         {
             var menuItems = new List<MainNavigationItemViewModel>();
 
@@ -35,11 +34,11 @@ namespace JNCC.PublicWebsite.Core.Services
 
             foreach (var item in parent.VisibleChildren())
             {
-                var menuItem = ToMenuItem(item);
+                var menuItem = ToMenuItem(item, currentPage);
 
                 if (item.Level < _maximumMenuLevel)
                 {
-                    var childItems = GetMenuItems(item);
+                    var childItems = GetMenuItems(item, currentPage);
 
                     if (childItems != null && childItems.Any())
                     {
@@ -53,14 +52,14 @@ namespace JNCC.PublicWebsite.Core.Services
             return menuItems;
         }
 
-        private MainNavigationItemViewModel ToMenuItem(IPublishedContent content)
+        private MainNavigationItemViewModel ToMenuItem(IPublishedContent content, IPublishedContent currentPage = null)
         {
             return new MainNavigationItemViewModel()
             {
                 Text = content.Name,
-                Url = content.Url
+                Url = content.Url,
+                IsActive = currentPage != null && content.IsAncestorOrSelf(currentPage)
             };
         }
-
     }
 }
