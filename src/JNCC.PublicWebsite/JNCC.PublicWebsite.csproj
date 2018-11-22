@@ -757,6 +757,7 @@
     <Content Include="Views\NewsItemPage.cshtml" />
     <Content Include="Umbraco\Plugins\cmsimport\config\cmsImport.config" />
     <Content Include="Umbraco\Plugins\cmsimport\config\CMSImportScheduler.Config" />
+    <Content Include="Views\Partials\Header\MainNavigation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
