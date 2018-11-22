@@ -1,12 +1,22 @@
-﻿<nav class="top-bar nav" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
+﻿@model IEnumerable<MainNavigationItemViewModel>
+<nav class="top-bar nav" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
     <div class="container">
         <ul class="vertical medium-horizontal menu">
-            <li class="active"><a href="#">Valuing the environment</a></li>
-            <li><a href="#">Advice</a></li>
-            <li><a href="#">Monitoring</a></li>
-            <li><a href="#">Pressures</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            @foreach (var navigationItem in Model)
+            {
+                if (navigationItem.IsActive)
+                {
+                    <li class="active">@RenderHyperlink(navigationItem)</li>
+                }
+                else
+                {
+                    <li>@RenderHyperlink(navigationItem)</li>
+                }
+            }
         </ul>
     </div>
 </nav>
+@helper RenderHyperlink(NavigationItemViewModel navigationItem)
+{
+    <a href="@navigationItem.Url" target="@navigationItem.Target" accesskey="@navigationItem.AccessKey">@navigationItem.Text</a>
+}
