@@ -10,5 +10,11 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         {
             return PartialView("~/Views/Partials/Footer/CategorisedLinks.cshtml");
         }
+
+        [ChildActionOnly]
+        public PartialViewResult RenderSocialMediaLinks()
+        {
+            return PartialView("~/Views/Partials/Footer/SocialMediaLinks.cshtml");
+        }
     }
 }
