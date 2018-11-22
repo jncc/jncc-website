@@ -1,13 +1,24 @@
-﻿using System.Web.Mvc;
+﻿using JNCC.PublicWebsite.Core.Services;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
     public sealed class HeaderSurfaceController : CoreSurfaceController
     {
+        private readonly MainNavigationService mainNavigationService = new MainNavigationService();
+
         [ChildActionOnly]
-        public PartialViewResult RenderMainNavigation()
+        public ActionResult RenderMainNavigation()
         {
-            return PartialView("~/Views/Partials/Header/MainNavigation.cshtml");
+            var menuItems = mainNavigationService.GetRootMenuItems(Root);
+
+            if (menuItems == null || menuItems.Any() == false)
+            {
+                return EmptyResult();
+            }
+
+            return PartialView("~/Views/Partials/Header/MainNavigation.cshtml", menuItems);
         }
 
         [ChildActionOnly]
