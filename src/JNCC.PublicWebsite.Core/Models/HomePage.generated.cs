@@ -46,15 +46,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Categorised Links: Links grouped into useful categories (e.g. About, Our Services, etc) to be displayed within the footer below the main content of the page.
-		///</summary>
-		[ImplementPropertyType("footerCategorisedLinks")]
-		public IEnumerable<IPublishedContent> FooterCategorisedLinks
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("footerCategorisedLinks"); }
-		}
-
-		///<summary>
 		/// Content: A content area useful display for displaying legal & copyright information within the footer of the page.
 		///</summary>
 		[ImplementPropertyType("footerContent")]
