@@ -6,6 +6,13 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     public sealed class CategorisedFooterLinksService
     {
+        private readonly NavigationItemService _navigationItemService;
+
+        public CategorisedFooterLinksService(NavigationItemService navigationItemService)
+        {
+            _navigationItemService = navigationItemService;
+        }
+
         public IEnumerable<CategorisedFooterLinksViewModel> GetViewModels(IEnumerable<CategorisedFooterLinksSchema> schemas)
         {
             var viewModels = new List<CategorisedFooterLinksViewModel>();
@@ -17,23 +24,10 @@ namespace JNCC.PublicWebsite.Core.Services
 
             foreach (var schema in schemas)
             {
-                var links = new List<NavigationItemViewModel>();
-                foreach(var link in schema.Links)
-                {
-                    var navigationItem = new NavigationItemViewModel()
-                    {
-                        Target = link.Target,
-                        Url = link.Url,
-                        Text = link.Name
-                    };
-
-                    links.Add(navigationItem);
-                }
-
                 var categoryViewModel = new CategorisedFooterLinksViewModel()
                 {
                     Heading = schema.Heading,
-                    Links = links
+                    Links = _navigationItemService.GetViewModels(schema.Links)
                 };
 
                 viewModels.Add(categoryViewModel);
