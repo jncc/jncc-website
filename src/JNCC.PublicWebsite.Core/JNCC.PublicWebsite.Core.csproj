@@ -258,6 +258,7 @@
     <Compile Include="Models\StaffProfilePage.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MainNavigationService.cs" />
+    <Compile Include="Services\NavigationItemService.cs" />
     <Compile Include="Services\SocialMediaLinksService.cs" />
     <Compile Include="Services\CategorisedFooterLinksService.cs" />
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
