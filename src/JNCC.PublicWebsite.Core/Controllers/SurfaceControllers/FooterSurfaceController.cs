@@ -14,7 +14,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         public FooterSurfaceController()
         {
             _navigationItemService = new NavigationItemService();
-            _socialMediaLinksService = new SocialMediaLinksService();
+            _socialMediaLinksService = new SocialMediaLinksService(_navigationItemService);
             _categorisedFooterLinksService = new CategorisedFooterLinksService(_navigationItemService);
         }
 
