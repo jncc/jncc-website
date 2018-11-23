@@ -19,7 +19,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return new PageHeroViewModel()
             {
                 Headline = headline,
-                HeroImageUrl = pageHeroComposition.HeroImage.Url
+                ImageUrl = pageHeroComposition.HeroImage.Url
             };
         }
     }
