@@ -1,6 +1,7 @@
-﻿<ul class="footer-bottom-list no-bullet info">
-    <li><a href="#" accesskey="8">Terms of use</a></li>
-    <li><a href="#">Privacy</a></li>
-    <li><a href="#">Cookie policy</a></li>
-    <li><a href="#">Accessability</a></li>
+﻿@model IEnumerable<NavigationItemViewModel>
+<ul class="footer-bottom-list no-bullet info">
+    @foreach (var item in Model)
+    {
+        <li><a href="@item.Url" target="@item.Target" accesskey="@item.AccessKey">@item.Text</a></li>
+    }
 </ul>
