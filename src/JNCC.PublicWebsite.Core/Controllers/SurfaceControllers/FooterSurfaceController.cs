@@ -1,4 +1,4 @@
-using JNCC.PublicWebsite.Core.Services;
+﻿using JNCC.PublicWebsite.Core.Services;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,14 +7,21 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
     public sealed class FooterSurfaceController : CoreSurfaceController
     {
-        private readonly NavigationItemService navigationItemService = new NavigationItemService();
-        private readonly SocialMediaLinksService socialMediaLinksService = new SocialMediaLinksService();
-        private readonly CategorisedFooterLinksService categorisedFooterLinksService = new CategorisedFooterLinksService();
+        private readonly NavigationItemService _navigationItemService;
+        private readonly SocialMediaLinksService _socialMediaLinksService;
+        private readonly CategorisedFooterLinksService _categorisedFooterLinksService;
+
+        public FooterSurfaceController()
+        {
+            _navigationItemService = new NavigationItemService();
+            _socialMediaLinksService = new SocialMediaLinksService();
+            _categorisedFooterLinksService = new CategorisedFooterLinksService();
+        }
 
         [ChildActionOnly]
         public ActionResult RenderCategorisedLinks()
         {
-            var categorisedLinks = categorisedFooterLinksService.GetViewModels(Root.FooterCategorisedLinks);
+            var categorisedLinks = _categorisedFooterLinksService.GetViewModels(Root.FooterCategorisedLinks);
 
             if (categorisedLinks == null || categorisedLinks.Any() == false)
             {
@@ -27,7 +34,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderSocialMediaLinks()
         {
-            var links = socialMediaLinksService.GetSocialMediaLinks(Root.FooterSocialMediaLinks);
+            var links = _socialMediaLinksService.GetSocialMediaLinks(Root.FooterSocialMediaLinks);
 
             if (links == null || links.Any() == false)
             {
@@ -46,7 +53,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderUncategorisedLinks()
         {
-            var links = navigationItemService.GetViewModels(Root.FooterUncategorisedLinks);
+            var links = _navigationItemService.GetViewModels(Root.FooterUncategorisedLinks);
 
             if (links == null || links.Any() == false)
             {
