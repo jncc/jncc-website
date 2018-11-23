@@ -1,5 +1,6 @@
-﻿<div class="visual-section" style="background-image: url(/images/img-1.jpg);">
+﻿@model PageHeroViewModel
+<div class="visual-section" style="background-image: url(@Model.ImageUrl);">
     <div class="container">
-        <h1>Valuing the environment</h1>
+        <h1>@Model.Headline</h1>
     </div>
 </div>
