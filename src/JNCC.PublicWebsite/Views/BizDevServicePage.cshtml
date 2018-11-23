@@ -3,11 +3,7 @@
 @{
     Layout = "Master.cshtml";
 }
-<div class="visual-section" style="background-image: url(/images/img-1.jpg);">
-    <div class="container">
-        <h1>Valuing the environment</h1>
-    </div>
-</div>
+@(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
 <div class="container">
     <nav aria-label="breadcrumbs">
         <ul class="breadcrumbs">
