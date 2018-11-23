@@ -5,12 +5,7 @@
 }
 @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
 <div class="container">
-    <nav aria-label="breadcrumbs">
-        <ul class="breadcrumbs">
-            <li><a href="#">Home</a></li>
-            <li><span class="show-for-sr">Current: </span>Valuing the environment</li>
-        </ul>
-    </nav>
+    @Html.Partial("~/Views/Partials/Breadcrumbs.cshtml")
     <div class="two-columns">
         <div id="content">
             <p>The Natural Environtment provides a wide range of benefits to humans including pollination, managing the flow of nutrients etc. These are referred to as ecosystem services. The amount of these services provided is dependent on the physical environment, the biological species assemblages present and the condition they are in. Deciding how the natural environment is managed is becoming increasingly focused on adjusting the levels of these services and so it is critical to be able to quantify the services and monitor hoe they are changing (e.g. in response to interventions). This approach is known as the ecosystem services approaoch with the overall value and changes in it known as a Natural Capital.</p>
