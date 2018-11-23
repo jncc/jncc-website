@@ -37,7 +37,6 @@
             @(Html.Action<HeaderSurfaceController>("RenderMainNavigation"))
         </header>
         <main id="main">
-            @Model.Content.Name
             @RenderBody()
         </main>
         <footer id="footer" class="text-center medium-text-left">
