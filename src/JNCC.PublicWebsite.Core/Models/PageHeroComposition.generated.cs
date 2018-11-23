@@ -28,7 +28,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		string Headline { get; }
 
 		/// <summary>Hero Image</summary>
-		IEnumerable<IPublishedContent> HeroImage { get; }
+		IPublishedContent HeroImage { get; }
 	}
 
 	/// <summary>Page Hero Composition</summary>
@@ -72,12 +72,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		/// Hero Image: The hero image which is displayed above the main content of the page.
 		///</summary>
 		[ImplementPropertyType("heroImage")]
-		public IEnumerable<IPublishedContent> HeroImage
+		public IPublishedContent HeroImage
 		{
 			get { return GetHeroImage(this); }
 		}
 
 		/// <summary>Static getter for Hero Image</summary>
-		public static IEnumerable<IPublishedContent> GetHeroImage(IPageHeroComposition that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("heroImage"); }
+		public static IPublishedContent GetHeroImage(IPageHeroComposition that) { return that.GetPropertyValue<IPublishedContent>("heroImage"); }
 	}
 }

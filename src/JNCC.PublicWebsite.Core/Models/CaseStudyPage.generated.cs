@@ -76,7 +76,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		/// Hero Image: The hero image which is displayed above the main content of the page.
 		///</summary>
 		[ImplementPropertyType("heroImage")]
-		public IEnumerable<IPublishedContent> HeroImage
+		public IPublishedContent HeroImage
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
 		}
