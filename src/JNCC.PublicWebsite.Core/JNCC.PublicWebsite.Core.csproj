@@ -265,6 +265,7 @@
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
+    <Compile Include="ViewModels\PageHeroViewModel.cs" />
     <Compile Include="ViewModels\SocialMediaNavigationItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
