@@ -64,6 +64,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Preamble: Introductory content explaining the nature of the service offered.
+		///</summary>
+		[ImplementPropertyType("preamble")]
+		public IHtmlString Preamble
+		{
+			get { return this.GetPropertyValue<IHtmlString>("preamble"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
