@@ -20,9 +20,20 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
+	// Mixin content Type 1109 with alias "sidebarComposition"
+	/// <summary>Sidebar Composition</summary>
+	public partial interface ISidebarComposition : IPublishedContent
+	{
+		/// <summary>Get in Touch Button</summary>
+		RJP.MultiUrlPicker.Models.Link SidebarGetInTouchButton { get; }
+
+		/// <summary>See Also Links</summary>
+		IEnumerable<RJP.MultiUrlPicker.Models.Link> SidebarSeeAlsoLinks { get; }
+	}
+
 	/// <summary>Sidebar Composition</summary>
 	[PublishedContentModel("sidebarComposition")]
-	public partial class SidebarComposition : PublishedContentModel
+	public partial class SidebarComposition : PublishedContentModel, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "sidebarComposition";
@@ -51,8 +62,11 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("sidebarGetInTouchButton")]
 		public RJP.MultiUrlPicker.Models.Link SidebarGetInTouchButton
 		{
-			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("sidebarGetInTouchButton"); }
+			get { return GetSidebarGetInTouchButton(this); }
 		}
+
+		/// <summary>Static getter for Get in Touch Button</summary>
+		public static RJP.MultiUrlPicker.Models.Link GetSidebarGetInTouchButton(ISidebarComposition that) { return that.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("sidebarGetInTouchButton"); }
 
 		///<summary>
 		/// See Also Links: Useful links to other internal & external web pages.
@@ -60,7 +74,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("sidebarSeeAlsoLinks")]
 		public IEnumerable<RJP.MultiUrlPicker.Models.Link> SidebarSeeAlsoLinks
 		{
-			get { return this.GetPropertyValue<IEnumerable<RJP.MultiUrlPicker.Models.Link>>("sidebarSeeAlsoLinks"); }
+			get { return GetSidebarSeeAlsoLinks(this); }
 		}
+
+		/// <summary>Static getter for See Also Links</summary>
+		public static IEnumerable<RJP.MultiUrlPicker.Models.Link> GetSidebarSeeAlsoLinks(ISidebarComposition that) { return that.GetPropertyValue<IEnumerable<RJP.MultiUrlPicker.Models.Link>>("sidebarSeeAlsoLinks"); }
 	}
 }
