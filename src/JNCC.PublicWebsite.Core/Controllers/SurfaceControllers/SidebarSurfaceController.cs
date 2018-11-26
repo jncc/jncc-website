@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using JNCC.PublicWebsite.Core.Models;
+using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
@@ -7,6 +8,11 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [HttpGet]
         public ActionResult RenderSidebar()
         {
+            if (CurrentPage is ISidebarComposition == false)
+            {
+                return EmptyResult();
+            }
+
             return PartialView("~/Views/Partials/Sidebar.cshtml");
         }
     }
