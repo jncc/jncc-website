@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Biz Dev Service Page</summary>
 	[PublishedContentModel("bizDevServicePage")]
-	public partial class BizDevServicePage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition
+	public partial class BizDevServicePage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "bizDevServicePage";
@@ -115,6 +115,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IPublishedContent HeroImage
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
+		}
+
+		///<summary>
+		/// Get in Touch Button: Link & Text for an optional Get in Touch button.
+		///</summary>
+		[ImplementPropertyType("sidebarGetInTouchButton")]
+		public RJP.MultiUrlPicker.Models.Link SidebarGetInTouchButton
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarGetInTouchButton(this); }
+		}
+
+		///<summary>
+		/// See Also Links: Useful links to other internal & external web pages.
+		///</summary>
+		[ImplementPropertyType("sidebarSeeAlsoLinks")]
+		public IEnumerable<RJP.MultiUrlPicker.Models.Link> SidebarSeeAlsoLinks
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarSeeAlsoLinks(this); }
 		}
 	}
 }
