@@ -46,12 +46,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Content: A brief paragraph explaining this content item.
+		/// Content: A brief paragraph or two explaining this content item.
 		///</summary>
 		[ImplementPropertyType("content")]
-		public string Content
+		public IHtmlString Content
 		{
-			get { return this.GetPropertyValue<string>("content"); }
+			get { return this.GetPropertyValue<IHtmlString>("content"); }
 		}
 
 		///<summary>
@@ -64,30 +64,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Image: An image which illustrates this content item.
-		///</summary>
-		[ImplementPropertyType("image")]
-		public IEnumerable<IPublishedContent> Image
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("image"); }
-		}
-
-		///<summary>
 		/// Read More Button: The link & text for the button that links to the full web page for this content item.
 		///</summary>
 		[ImplementPropertyType("readMoreButton")]
 		public RJP.MultiUrlPicker.Models.Link ReadMoreButton
 		{
 			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("readMoreButton"); }
-		}
-
-		///<summary>
-		/// Title: A title which describes this content item.
-		///</summary>
-		[ImplementPropertyType("title")]
-		public string Title
-		{
-			get { return this.GetPropertyValue<string>("title"); }
 		}
 	}
 }
