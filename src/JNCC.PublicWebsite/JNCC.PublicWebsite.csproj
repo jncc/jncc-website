@@ -764,6 +764,7 @@
     <Content Include="Views\Partials\Footer\UncategorisedLinks.cshtml" />
     <Content Include="Views\Partials\PageHero.cshtml" />
     <Content Include="Views\Partials\Breadcrumbs.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ContentItemSchema.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

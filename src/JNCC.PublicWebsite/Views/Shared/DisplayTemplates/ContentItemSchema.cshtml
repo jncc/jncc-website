@@ -1,0 +1,22 @@
+﻿@model JNCC.PublicWebsite.Core.Models.ContentItemSchema
+<article class="article">
+    @if (Model.Image != null && Model.Image.Image != null)
+    {
+        <div class="img-holder">
+            <img src="@Model.Image.Image.Url" alt="@Model.Image.ImageAlternativeText">
+        </div>
+    }
+    <div class="text-holder">
+        @Model.Content
+        <div class="button-group no-bullet">
+            @if (Model.ReadMoreButton != null)
+            {
+                <a href="@Model.ReadMoreButton.Url" class="button hollow secondary read-more" target="@Model.ReadMoreButton.Target">read more<i class="icon-arrow-right"></i></a>
+            }
+            @if (Model.GetInTouchButton != null)
+            {
+                <a href="@Model.GetInTouchButton.Url" class="button primary" target="@Model.GetInTouchButton.Target">get in touch</a>
+            }
+        </div>
+    </div>
+</article>
