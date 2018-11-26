@@ -46,12 +46,21 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Content: A brief paragraph or two explaining this content item.
+		/// Content: A brief paragraph explaining this content item.
 		///</summary>
 		[ImplementPropertyType("content")]
-		public IHtmlString Content
+		public string Content
 		{
-			get { return this.GetPropertyValue<IHtmlString>("content"); }
+			get { return this.GetPropertyValue<string>("content"); }
+		}
+
+		///<summary>
+		/// Get in Touch Button: The link & text for the button that links to a full web page for getting in touch about this content item.
+		///</summary>
+		[ImplementPropertyType("getInTouchButton")]
+		public RJP.MultiUrlPicker.Models.Link GetInTouchButton
+		{
+			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("getInTouchButton"); }
 		}
 
 		///<summary>
