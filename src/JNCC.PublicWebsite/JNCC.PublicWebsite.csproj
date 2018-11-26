@@ -765,6 +765,7 @@
     <Content Include="Views\Partials\PageHero.cshtml" />
     <Content Include="Views\Partials\Breadcrumbs.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ContentItemSchema.cshtml" />
+    <Content Include="Views\Partials\Sidebar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

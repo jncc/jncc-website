@@ -18,30 +18,7 @@
                 }
             </ul>
         </div>
-        <aside id="sidebar">
-            <a href="#" class="button primary large medium-expanded">Get in touch</a>
-            <nav class="holder" aria-label="aside-navigation">
-                <h2>In this section</h2>
-                <ul class="aside-nav no-bullet">
-                    <li><a href="#">Valuing</a></li>
-                    <li><a href="#">Mapping natural assets</a></li>
-                    <li><a href="#">Child item 1</a></li>
-                    <li><a href="#">Child item 2</a></li>
-                    <li><a href="#">Child item 3</a></li>
-                    <li><a href="#">Child item 4</a></li>
-                    <li><a href="#">Child item 5</a></li>
-                </ul>
-            </nav>
-            <nav class="holder" aria-label="aside-navigation">
-                <h2>See also</h2>
-                <ul class="aside-nav no-bullet">
-                    <li><a href="#">Valuing case studies</a></li>
-                    <li><a href="#">Latest valuing news</a></li>
-                    <li><a href="#">Options appraisal</a></li>
-                    <li><a href="#">National Vegetation classification</a></li>
-                </ul>
-            </nav>
-        </aside>
+        @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
     </div>
 </div>
 @if (Model.Content.GetInTouchContent != null && string.IsNullOrWhiteSpace(Model.Content.GetInTouchContent.ToHtmlString()) == false)
