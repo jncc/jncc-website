@@ -23,5 +23,23 @@ namespace JNCC.PublicWebsite.Core.Extensions
         {
             return content.Children.Where(x => x.IsVisible());
         }
+
+        public static TOutput GetPropertyValueFirstOfTypeOrDefault<TEnumerable, TOutput>(this IPublishedContent content, string propertyAlias)
+        {
+            var values = content.GetPropertyValue<IEnumerable<TEnumerable>>(propertyAlias);
+
+            if (values == null || values.Any() == false)
+            {
+                return default(TOutput);
+            }
+
+            return values.OfType<TOutput>()
+                         .FirstOrDefault();
+        }
+
+        public static T GetPropertyValueFirstOfTypeOrDefault<T>(this IPublishedContent content, string propertyAlias)
+        {
+            return content.GetPropertyValueFirstOfTypeOrDefault<IPublishedContent, T>(propertyAlias);
+        }
     }
 }
