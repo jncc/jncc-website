@@ -267,6 +267,7 @@
     <Compile Include="Services\MainNavigationService.cs" />
     <Compile Include="Services\NavigationItemService.cs" />
     <Compile Include="Services\PageHeroService.cs" />
+    <Compile Include="Services\RelatedItemsService.cs" />
     <Compile Include="Services\SidebarService.cs" />
     <Compile Include="Services\SocialMediaLinksService.cs" />
     <Compile Include="Services\CategorisedFooterLinksService.cs" />
