@@ -258,6 +258,8 @@
     <Compile Include="Models\NewsAndInsightsLandingPage.generated.cs" />
     <Compile Include="Models\NewsItemPage.generated.cs" />
     <Compile Include="Models\PageHeroComposition.generated.cs" />
+    <Compile Include="Models\RelatedItemSchema.generated.cs" />
+    <Compile Include="Models\RelatedItemsComposition.generated.cs" />
     <Compile Include="Models\SidebarComposition.generated.cs" />
     <Compile Include="Models\StaffDirectoryPage.generated.cs" />
     <Compile Include="Models\StaffProfilePage.generated.cs" />
