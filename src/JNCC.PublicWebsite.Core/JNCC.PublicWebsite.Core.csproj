@@ -264,7 +264,10 @@
     <Compile Include="Models\StaffDirectoryPage.generated.cs" />
     <Compile Include="Models\StaffProfilePage.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IDataHubQueryRelatedItemsService.cs" />
+    <Compile Include="Services\IManuallyAuthoredRelatedItemsService.cs" />
     <Compile Include="Services\MainNavigationService.cs" />
+    <Compile Include="Services\ManuallyAuthoredRelatedItemsService.cs" />
     <Compile Include="Services\NavigationItemService.cs" />
     <Compile Include="Services\PageHeroService.cs" />
     <Compile Include="Services\RelatedItemsService.cs" />

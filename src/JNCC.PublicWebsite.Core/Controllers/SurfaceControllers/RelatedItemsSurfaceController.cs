@@ -9,11 +9,13 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
     {
         private readonly NavigationItemService _navigationItemService;
         private readonly RelatedItemsService _relatedItemsService;
+        private readonly IManuallyAuthoredRelatedItemsService _manuallyAuthoredRelatedItemsService;
 
         public RelatedItemsSurfaceController()
         {
             _navigationItemService = new NavigationItemService();
-            _relatedItemsService = new RelatedItemsService(_navigationItemService);
+            _manuallyAuthoredRelatedItemsService = new ManuallyAuthoredRelatedItemsService(_navigationItemService);
+            _relatedItemsService = new RelatedItemsService(_manuallyAuthoredRelatedItemsService);
         }
 
         [ChildActionOnly]

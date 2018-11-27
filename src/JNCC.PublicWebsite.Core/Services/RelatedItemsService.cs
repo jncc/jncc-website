@@ -2,24 +2,33 @@
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class RelatedItemsService
+    internal sealed class RelatedItemsService
     {
-        private NavigationItemService _navigationItemService;
         private const int _maxNumberOfRelatedItems = 3;
+        private readonly IManuallyAuthoredRelatedItemsService _manuallyAuthoredRelatedItemsService;
+        private readonly IDataHubQueryRelatedItemsService _dataHubQueryRelatedItemsService;
 
-        public RelatedItemsService(NavigationItemService navigationItemService)
+        public RelatedItemsService(IManuallyAuthoredRelatedItemsService manuallyAuthoredRelatedItemsService = null, IDataHubQueryRelatedItemsService dataHubQueryRelatedItemsService = null)
         {
-            _navigationItemService = navigationItemService;
+            _manuallyAuthoredRelatedItemsService = manuallyAuthoredRelatedItemsService;
+            _dataHubQueryRelatedItemsService = dataHubQueryRelatedItemsService;
         }
 
         public IEnumerable<RelatedItemViewModel> GetViewModels(IRelatedItemsComposition composition)
         {
             var viewModels = new List<RelatedItemViewModel>();
-            var manuallyAuthoredViewModels = GetViewModels(composition.RelatedItemsManuallyAuthoredItems);
+
+            if (_manuallyAuthoredRelatedItemsService == null)
+            {
+                return viewModels;
+            }
+
+            var manuallyAuthoredViewModels = _manuallyAuthoredRelatedItemsService.GetViewModels(composition.RelatedItemsManuallyAuthoredItems);
 
             if (manuallyAuthoredViewModels.Any())
             {
@@ -28,57 +37,17 @@ namespace JNCC.PublicWebsite.Core.Services
 
             var currentNumberOfRelatedItems = viewModels.Count();
 
-            if (currentNumberOfRelatedItems == _maxNumberOfRelatedItems || string.IsNullOrWhiteSpace(composition.RelatedItemsDataHubQuery))
+            if (currentNumberOfRelatedItems == _maxNumberOfRelatedItems || _dataHubQueryRelatedItemsService == null)
             {
                 return viewModels;
             }
 
             var numberOfItemsRequiredFromDataHub = _maxNumberOfRelatedItems - currentNumberOfRelatedItems;
-            var dataHubQueryViewModels = GetViewModels(composition.RelatedItemsDataHubQuery, numberOfItemsRequiredFromDataHub);
+            var dataHubQueryViewModels = _dataHubQueryRelatedItemsService.GetViewModels(composition.RelatedItemsDataHubQuery, numberOfItemsRequiredFromDataHub);
 
             if (dataHubQueryViewModels.Any())
             {
                 viewModels.AddRange(dataHubQueryViewModels);
-            }
-
-            return viewModels;
-        }
-
-        private IEnumerable<RelatedItemViewModel> GetViewModels(string relatedItemsDataHubQuery, int numberOfItemsRequiredFromDataHub)
-        {
-            var viewModels = new List<RelatedItemViewModel>();
-
-            return viewModels;
-        }
-
-        private IEnumerable<RelatedItemViewModel> GetViewModels(IEnumerable<IPublishedContent> relatedItemsManuallyAuthoredItems)
-        {
-            var viewModels = new List<RelatedItemViewModel>();
-            if (relatedItemsManuallyAuthoredItems == null)
-            {
-                return viewModels;
-            }
-
-            var typedItems = relatedItemsManuallyAuthoredItems.OfType<RelatedItemSchema>();
-            if (typedItems.Any() == false)
-            {
-                return viewModels;
-            }
-
-            foreach (var item in typedItems)
-            {
-                var viewModel = new RelatedItemViewModel()
-                {
-                    Content = item.Content,
-                    Link = _navigationItemService.GetViewModel(item.Link)
-                };
-
-                if (item.Image != null)
-                {
-                    viewModel.ImageUrl = item.Image.Url;
-                }
-
-                viewModels.Add(viewModel);
             }
 
             return viewModels;
