@@ -766,6 +766,7 @@
     <Content Include="Views\Partials\Breadcrumbs.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ContentItemSchema.cshtml" />
     <Content Include="Views\Partials\Sidebar.cshtml" />
+    <Content Include="Views\Partials\RelatedItems.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

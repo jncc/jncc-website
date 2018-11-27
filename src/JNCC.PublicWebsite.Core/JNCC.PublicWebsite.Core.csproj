@@ -234,6 +234,7 @@
     <Compile Include="Controllers\SurfaceControllers\FooterSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\HeaderSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageHeroSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\RelatedItemsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SidebarSurfaceController.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\PublishedContentExtensions.cs" />
