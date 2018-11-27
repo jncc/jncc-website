@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -40,6 +40,23 @@ namespace JNCC.PublicWebsite.Core.Extensions
         public static T GetPropertyValueFirstOfTypeOrDefault<T>(this IPublishedContent content, string propertyAlias) where T : IPublishedContent 
         {
             return content.GetPropertyValueFirstOfTypeOrDefault<IPublishedContent, T>(propertyAlias);
+        }
+
+        public static IEnumerable<TOutput> GetPropertyValueOfTypeOrDefault<TEnumerable, TOutput>(this IPublishedContent content, string propertyAlias) where TOutput : TEnumerable
+        {
+            var values = content.GetPropertyValue<IEnumerable<TEnumerable>>(propertyAlias);
+
+            if (values == null || values.Any() == false)
+            {
+                return default(IEnumerable<TOutput>);
+            }
+
+            return values.OfType<TOutput>();
+        }
+
+        public static IEnumerable<T> GetPropertyValueOfTypeOrDefault<T>(this IPublishedContent content, string propertyAlias) where T : IPublishedContent
+        {
+            return content.GetPropertyValueOfTypeOrDefault<IPublishedContent, T>(propertyAlias);
         }
     }
 }
