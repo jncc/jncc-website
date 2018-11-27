@@ -15,7 +15,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             _sidebarService = new SidebarService(_navigationItemService);
         }
 
-        [HttpGet]
+        [ChildActionOnly]
         public ActionResult RenderSidebar()
         {
             if (CurrentPage is ISidebarComposition == false)
