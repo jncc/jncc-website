@@ -20,9 +20,20 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
+	// Mixin content Type 1112 with alias "relatedItemsComposition"
+	/// <summary>Related Items Composition</summary>
+	public partial interface IRelatedItemsComposition : IPublishedContent
+	{
+		/// <summary>Data Hub Query</summary>
+		string RelatedItemsDataHubQuery { get; }
+
+		/// <summary>Manually Authored Items</summary>
+		IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems { get; }
+	}
+
 	/// <summary>Related Items Composition</summary>
 	[PublishedContentModel("relatedItemsComposition")]
-	public partial class RelatedItemsComposition : PublishedContentModel
+	public partial class RelatedItemsComposition : PublishedContentModel, IRelatedItemsComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "relatedItemsComposition";
@@ -46,13 +57,16 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Data Hub Query: A query which pulls related items from the data hub. This can be used with or instead of manually authored items.   If the maximum number of items have been manually authored then this query is ignored.   If no query is authored & no items are found no related items will be displayed.
+		/// Data Hub Query: A query which pulls related items from the data hub. This can be used with or instead of manually authored items.   If the maximum number of items have been manually authored then this query is ignored.   If no items are manually authored, no data hub query is authored or no items are found from the data hub query then no related items will be displayed.
 		///</summary>
 		[ImplementPropertyType("relatedItemsDataHubQuery")]
 		public string RelatedItemsDataHubQuery
 		{
-			get { return this.GetPropertyValue<string>("relatedItemsDataHubQuery"); }
+			get { return GetRelatedItemsDataHubQuery(this); }
 		}
+
+		/// <summary>Static getter for Data Hub Query</summary>
+		public static string GetRelatedItemsDataHubQuery(IRelatedItemsComposition that) { return that.GetPropertyValue<string>("relatedItemsDataHubQuery"); }
 
 		///<summary>
 		/// Manually Authored Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored and/or optionally populated by an data hub query below.  If no manually authored are provided then the data hub query will be used instead.
@@ -60,7 +74,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("relatedItemsManuallyAuthoredItems")]
 		public IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems
 		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("relatedItemsManuallyAuthoredItems"); }
+			get { return GetRelatedItemsManuallyAuthoredItems(this); }
 		}
+
+		/// <summary>Static getter for Manually Authored Items</summary>
+		public static IEnumerable<IPublishedContent> GetRelatedItemsManuallyAuthoredItems(IRelatedItemsComposition that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("relatedItemsManuallyAuthoredItems"); }
 	}
 }

@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Biz Dev Service Page</summary>
 	[PublishedContentModel("bizDevServicePage")]
-	public partial class BizDevServicePage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, ISidebarComposition
+	public partial class BizDevServicePage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IRelatedItemsComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "bizDevServicePage";
@@ -115,6 +115,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IPublishedContent HeroImage
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
+		}
+
+		///<summary>
+		/// Data Hub Query: A query which pulls related items from the data hub. This can be used with or instead of manually authored items.   If the maximum number of items have been manually authored then this query is ignored.   If no items are manually authored, no data hub query is authored or no items are found from the data hub query then no related items will be displayed.
+		///</summary>
+		[ImplementPropertyType("relatedItemsDataHubQuery")]
+		public string RelatedItemsDataHubQuery
+		{
+			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsDataHubQuery(this); }
+		}
+
+		///<summary>
+		/// Manually Authored Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored and/or optionally populated by an data hub query below.  If no manually authored are provided then the data hub query will be used instead.
+		///</summary>
+		[ImplementPropertyType("relatedItemsManuallyAuthoredItems")]
+		public IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems
+		{
+			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsManuallyAuthoredItems(this); }
 		}
 
 		///<summary>
