@@ -630,6 +630,9 @@
     <Content Include="images\img-2.jpg" />
     <Content Include="images\img-3.jpg" />
     <Content Include="images\img-4.jpg" />
+    <Content Include="images\img-5.jpg" />
+    <Content Include="images\img-6.jpg" />
+    <Content Include="images\img-7.jpg" />
     <Content Include="images\isle-of-wight.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\whale-tail-breach.jpg" />
