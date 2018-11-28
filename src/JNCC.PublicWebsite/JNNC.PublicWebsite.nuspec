@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>JNCC.PublicWebsite</id>
+    <title>$title$</title>
+    <version>$version$</version>
+    <authors>$authors$</authors>
+    <owners>JNCC</owners>
+    <licenseUrl>TBC</licenseUrl>
+    <projectUrl>https://github.com/jncc/jncc-website</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The JNNC Public Website Refresh</description>
+    <releaseNotes>TBC</releaseNotes>
+  </metadata>
+  <files>
+      <file src="App_Browsers*\" target="App_Browsers" />
+      <file src="Config\Splashes*\" target="Config\Splashes" />
+      <file src="Umbraco*\." target="Umbraco" />
+      <file src="Umbraco_Client**\.*" target="Umbraco_Client" />
+  </files>
+</package>
