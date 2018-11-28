@@ -758,7 +758,6 @@
     <Content Include="Views\StaffDirectoryPage.cshtml" />
     <Content Include="Views\StaffProfilePage.cshtml" />
     <Content Include="Views\NewsAndInsightsLandingPage.cshtml" />
-    <Content Include="Views\NewsItemPage.cshtml" />
     <Content Include="Umbraco\Plugins\cmsimport\config\cmsImport.config" />
     <Content Include="Umbraco\Plugins\cmsimport\config\CMSImportScheduler.Config" />
     <Content Include="Views\Partials\Header\MainNavigation.cshtml" />
@@ -771,6 +770,7 @@
     <Content Include="Views\Shared\DisplayTemplates\ContentItemSchema.cshtml" />
     <Content Include="Views\Partials\Sidebar.cshtml" />
     <Content Include="Views\Partials\RelatedItems.cshtml" />
+    <Content Include="Views\ArticlePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
