@@ -19,7 +19,7 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var viewModel = new SidebarViewModel()
             {
-                GetInTouchButton = _navigationItemService.GetViewModel(composition.SidebarGetInTouchButton),
+                PrimaryCallToActionButton = _navigationItemService.GetViewModel(composition.SidebarPrimaryCallToActionButton),
                 InThisSectionLinks = GetInThisSectionLinks(composition),
                 SeeAlsoLinks = _navigationItemService.GetViewModels(composition.SidebarSeeAlsoLinks)
             };

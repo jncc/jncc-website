@@ -4,7 +4,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
 {
     public class SidebarViewModel
     {
-        public NavigationItemViewModel GetInTouchButton { get; set; }
+        public NavigationItemViewModel PrimaryCallToActionButton { get; set; }
 
         public IEnumerable<NavigationItemViewModel> InThisSectionLinks { get; set; }
 

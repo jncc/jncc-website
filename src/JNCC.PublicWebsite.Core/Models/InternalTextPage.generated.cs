@@ -109,12 +109,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Get in Touch Button: Link & Text for an optional Get in Touch button.
+		/// Primary Call To Action Button: Link & Text for an optional Call to Action button.  This could be various purposes, for example "Get in Touch" or "Download Data".
 		///</summary>
-		[ImplementPropertyType("sidebarGetInTouchButton")]
-		public RJP.MultiUrlPicker.Models.Link SidebarGetInTouchButton
+		[ImplementPropertyType("sidebarPrimaryCallToActionButton")]
+		public RJP.MultiUrlPicker.Models.Link SidebarPrimaryCallToActionButton
 		{
-			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarGetInTouchButton(this); }
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarPrimaryCallToActionButton(this); }
 		}
 
 		///<summary>

@@ -1,8 +1,8 @@
 ﻿@model SidebarViewModel
 <aside id="sidebar">
-    @if (Model.GetInTouchButton != null)
+    @if (Model.PrimaryCallToActionButton != null)
     {
-        <a href="@Model.GetInTouchButton.Url" class="button primary large medium-expanded" target="@Model.GetInTouchButton.Target">Get in touch</a>
+        <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
     }
     @if (Model.InThisSectionLinks != null && Model.InThisSectionLinks.Any())
     {

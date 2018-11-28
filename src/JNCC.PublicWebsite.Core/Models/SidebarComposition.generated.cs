@@ -24,8 +24,8 @@ namespace JNCC.PublicWebsite.Core.Models
 	/// <summary>Sidebar Composition</summary>
 	public partial interface ISidebarComposition : IPublishedContent
 	{
-		/// <summary>Get in Touch Button</summary>
-		RJP.MultiUrlPicker.Models.Link SidebarGetInTouchButton { get; }
+		/// <summary>Primary Call To Action Button</summary>
+		RJP.MultiUrlPicker.Models.Link SidebarPrimaryCallToActionButton { get; }
 
 		/// <summary>See Also Links</summary>
 		IEnumerable<RJP.MultiUrlPicker.Models.Link> SidebarSeeAlsoLinks { get; }
@@ -57,16 +57,16 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Get in Touch Button: Link & Text for an optional Get in Touch button.
+		/// Primary Call To Action Button: Link & Text for an optional Call to Action button.  This could be various purposes, for example "Get in Touch" or "Download Data".
 		///</summary>
-		[ImplementPropertyType("sidebarGetInTouchButton")]
-		public RJP.MultiUrlPicker.Models.Link SidebarGetInTouchButton
+		[ImplementPropertyType("sidebarPrimaryCallToActionButton")]
+		public RJP.MultiUrlPicker.Models.Link SidebarPrimaryCallToActionButton
 		{
-			get { return GetSidebarGetInTouchButton(this); }
+			get { return GetSidebarPrimaryCallToActionButton(this); }
 		}
 
-		/// <summary>Static getter for Get in Touch Button</summary>
-		public static RJP.MultiUrlPicker.Models.Link GetSidebarGetInTouchButton(ISidebarComposition that) { return that.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("sidebarGetInTouchButton"); }
+		/// <summary>Static getter for Primary Call To Action Button</summary>
+		public static RJP.MultiUrlPicker.Models.Link GetSidebarPrimaryCallToActionButton(ISidebarComposition that) { return that.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("sidebarPrimaryCallToActionButton"); }
 
 		///<summary>
 		/// See Also Links: Useful links to other internal & external web pages.
