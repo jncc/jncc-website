@@ -5,7 +5,7 @@
 	padding-top: 2rem;
 
 	@include breakpoint(large) {
-		padding-top: rem-calc(68px);
+		padding-top: rem-calc(59px);
 	}
 
 	.row {
@@ -27,23 +27,28 @@
 	h3 {
 		font-size: rem-calc(18px);
 		text-transform: uppercase;
-		margin-bottom: rem-calc(13px);
-		font-weight: 400;
+		margin-bottom: rem-calc(19px);
+		font-weight: 700;
+		letter-spacing: 1px;
 	}
 
 	.holder {
-		padding: rem-calc(0 15px);
-
 		@include breakpoint(xlarge) {
-			padding: rem-calc(0 20px 32px);
-		} 
+			padding: rem-calc(0 0 24px);
+		}
+
+		&.holder-p {
+			@include breakpoint(xlarge) {
+				padding-left: rem-calc(70px);
+			}
+		}
 	}
 
 	>.container {
 		padding-bottom: 1rem;
 
 		@include breakpoint(large) {
-			padding-bottom: rem-calc(58px);
+			padding-bottom: rem-calc(55px);
 		}
 	}
 }
@@ -51,19 +56,18 @@
 .footer-nav {
 	li {
 		@include breakpoint(large) {
-			margin-bottom: rem-calc(11px);
+			margin-bottom: rem-calc(13px);
 		}
 	}
 }
 
 .social-media {
-	padding: rem-calc(0 15px);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin: 0 -5px !important;
 
 	@include breakpoint(medium) {
-		margin: rem-calc(0 -5px);
 		justify-content: flex-start;
 	}
 
@@ -100,13 +104,7 @@
 	padding: 1rem 0;
 
 	@include breakpoint(large) {
-		padding: rem-calc(22px 0);
-	}
-
-	.container {
-		@include breakpoint(large) {
-			padding: rem-calc(0 36px);
-		}
+		padding: rem-calc(26px 0);
 	}
 }
 
@@ -124,7 +122,7 @@
 		@include breakpoint(medium) {
 			border-right: 1px solid $white;
 			padding: rem-calc(0 7px);
-			margin-bottom: rem-calc(20px);
+			margin-bottom: rem-calc(22px);
 		}
 
 		&:last-child {

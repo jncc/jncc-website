@@ -24,7 +24,9 @@
 		display: block !important;
 	}
 
-	.two-columns {
+	.two-columns,
+	.row,
+	.columns {
 		display: block !important;
 	}
 
@@ -33,6 +35,7 @@
 		width: 100% !important;
 		max-width: 100% !important;
 		padding-right: 0 !important;
+		padding-left: 0 !important;;
 	}
 
 	a {
@@ -44,11 +47,15 @@
 	}
 	
 	h1 {
-		padding-left: 0;
+		padding-left: 0 !important;
 	}
 
 	#header {
 		border-top-width: 0 !important;
+	}
+
+	.header-top {
+		text-align: left !important;
 	}
 
 	#footer {
@@ -64,6 +71,14 @@
 			&.info {
 				display: none !important;
 			}
+		}
+	}
+
+	.card {
+		page-break-inside: avoid;
+
+		.card-section {
+			padding: 15px !important;
 		}
 	}
 

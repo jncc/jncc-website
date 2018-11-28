@@ -1,21 +1,41 @@
 #header {
 	position: relative;
-	border-top: rem-calc(10px) solid $green;
-
-	@include breakpoint(medium) {
-		border-top-width: rem-calc(36px);
-	}
 
 	>.container {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-top: rem-calc(11px);
-		padding-bottom: rem-calc(22px);
+		padding-top: rem-calc(12px);
+		padding-bottom: rem-calc(11px);
 
 		@include breakpoint(medium) {
 			align-items: flex-end;
+			padding-top: rem-calc(17px);
+			padding-bottom: rem-calc(16px);
 		}
+	}
+
+	.search-form {
+		@include breakpoint(large) {
+			margin-bottom: rem-calc(4px);
+		}	
+	}
+}
+
+.header-top {
+	background: $green;
+	color: $white;
+	text-align: center;
+	font-size: rem-calc(11px);
+	letter-spacing: 1px;
+	padding: rem-calc(8px 0 7px);
+
+	@include breakpoint(medium) {
+		font-size: rem-calc(14px);
+	}
+
+	p {
+		margin-bottom: 0;
 	}
 }
 
@@ -41,7 +61,7 @@
 
 .search-opener {
 	@include animate(background color);
-	@include size(3.125rem);
+	@include size(3.875rem, 3.125rem,);
 
 	position: relative;
 	color: $green;
@@ -53,7 +73,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		font-size: rem-calc(22px);
+		font-size: rem-calc(20px);
 	}
 }
 
@@ -97,6 +117,10 @@
 	}
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+}
+
 .nav {
 	@include animate(opacity visibility);
 	position: absolute;
@@ -112,6 +136,7 @@
 .menu {
 	font-size: 1rem;
 	font-weight: 500;
+	letter-spacing: 1px;
 
 	@include breakpoint(medium) {
 		margin-left: rem-calc(-15px);
@@ -119,20 +144,19 @@
 	}
 	
 	@include breakpoint(large) {
-		margin-left: rem-calc(-25px);
+		margin-left: rem-calc(-20px);
 	}
 
 	li {
 		padding: rem-calc(0 15px);
 
 		@include breakpoint(large) {
-			padding: rem-calc(0 25px);
+			padding: rem-calc(0 20px);
 		}
 
 		&.active {
 			a {
-				color: $green;
-				border-bottom: 3px solid $green;
+				border-bottom: rem-calc(3px) solid $green;
 			}
 		}
 	}
@@ -141,11 +165,10 @@
 		@include animate(color border-color);
 
 		color: $dark-gray;
-		padding: rem-calc(23px 0 21px);
-		border-bottom: 3px solid transparent;
+		padding: rem-calc(25px 0 21px);
+		border-bottom: rem-calc(3px) solid transparent;
 
 		&:hover {
-			color: $green;
 			border-bottom-color: $green;
 		}
 	}

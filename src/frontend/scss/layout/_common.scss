@@ -30,6 +30,46 @@ a {
 	text-transform: uppercase;
 	font-weight: 500;
 	letter-spacing: 1px;
+
+	&.prev,
+	&.next {
+		text-transform: none;
+		font-size: rem-calc(14px);
+		font-weight: 400;
+		text-align: center;
+		padding-left: rem-calc(30px);
+		padding-right: rem-calc(30px);
+		position: relative;
+		border-radius: rem-calc(3px);
+		min-width: rem-calc(126px);
+
+		@include breakpoint(large) {
+			min-width: rem-calc(200px);
+		}
+
+		&:before {
+			@include size(.5625rem);
+			
+			content: '';
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%) rotate(45deg);
+			left: rem-calc(17px);
+			border-left: 3px solid $white;
+			border-bottom: 3px solid $white;
+		}
+	}
+
+	&.next {
+		&:before {
+			left: auto;
+			right: rem-calc(17px);
+			border-left: none;
+			border-bottom: none;
+			border-top: 3px solid $white;
+			border-right: 3px solid $white;
+		}
+	}
 }
 
 .read-more {
@@ -154,7 +194,7 @@ a {
 	overflow: hidden;
 
 	@include breakpoint(medium) {
-		height: rem-calc(522px);
+		height: rem-calc(520px);
 	}
 
 	h1 {
@@ -166,7 +206,7 @@ a {
 		padding: rem-calc(9px 27px 14px);
 
 		@include breakpoint(medium) {
-			margin-top: rem-calc(40px);
+			margin-bottom: 1rem;
 		}
 	}
 }
@@ -183,7 +223,7 @@ a {
 	}
 
 	&:only-child {
-		width: 100%;
+		width: 100% !important;
 	}
 }
 
@@ -218,12 +258,65 @@ a {
 	.holder {
 		padding: rem-calc(25px 10px 4px);
 	}
+
+	.search-form {
+		position: static;
+		margin-bottom: rem-calc(30px);
+
+		@include breakpoint(xlarge) {
+			margin-bottom: rem-calc(69px);
+		}
+	}
 }
 
 .two-columns {
 	@include breakpoint(medium) {
 		display: flex;
 		align-items: flex-start;
+	}
+
+	&.stretch-layout {
+		@include breakpoint(medium) {
+			align-items: stretch;
+		}
+
+		#sidebar,
+		#content {
+			@include breakpoint(medium) {
+				padding-top: rem-calc(30px);
+			}
+
+			@include breakpoint(xlarge) {
+				padding-top: rem-calc(60px);
+			}
+		}
+	}
+
+	&.columns-reverse-layout {
+		#content {
+			@include breakpoint(medium) {
+				padding-right: 0;
+				padding-left: rem-calc(15px);
+			}
+
+			@include breakpoint(xlarge) {
+				padding-left: rem-calc(25px);
+				width: calc(100% - 16.1875rem);
+			}
+		}
+
+		#sidebar {
+			@include breakpoint(medium) {
+				border-left: none;
+				border-right: 1px solid #d8d8d8;
+				padding-left: 0;
+				padding-right: rem-calc(18px);
+			}
+
+			@include breakpoint(xlarge) {
+				width: 16.1875rem;
+			}
+		}
 	}
 }
 
@@ -264,6 +357,223 @@ a {
 	}
 }
 
+.staff-directory {
+	padding-top: 2rem;
+
+	@include breakpoint(medium) {
+		font-size: rem-calc(14px);
+		padding-top: 0;
+	}
+
+	h2 {
+		font-weight: 700;
+		line-height: 1.2;
+		color: #495651;
+
+		@include breakpoint(xlarge) {
+			margin-bottom: rem-calc(30px);
+		}
+	}
+
+	p {
+		@include breakpoint(medium) {
+			line-height: 1.78571429;
+		}
+	}
+}
+
+.staff-holder {
+	padding-bottom: 2rem;
+	color: #7a869a;
+
+	@include breakpoint(xlarge) {
+		padding-bottom: rem-calc(91px);
+	}
+}
+
+.check-list {
+	color: #666262;
+
+	@include breakpoint(xlarge) {
+		padding: rem-calc(3px 0 3px);
+	}
+
+	li {
+		margin-bottom: rem-calc(5px);
+
+		@include breakpoint(xlarge) {
+			margin-bottom: rem-calc(17px);
+		}
+	}
+}
+
+.staff-checkbox-form {
+	h2 {
+		font-weight: 500;
+	}
+
+	input[type="checkbox"] {
+		position: fixed;
+		left: 0;
+		top: 0;
+		opacity: 0;
+		z-index: -1;
+	}
+
+	label {
+		position: relative;
+		display: block;
+		padding-left: rem-calc(32px);
+	}
+
+	.fake-input{
+		@include animate(border-color);
+
+		width: rem-calc(22px);
+		height: rem-calc(22px);
+		border: 1px solid #b6b6b6;
+		border-radius: rem-calc(2px);
+		background-color: #f4f4f4;
+		position: absolute;
+		top: rem-calc(2px);
+		left: 0;
+
+		&:before {
+			@include animate(opacity);
+
+			content: '';
+			width: 14px;
+			height: 9px;
+			position: absolute;
+			top: 35%;
+			left: 42%;
+			border: 3px solid $green;
+			border-width: 0 0 3px 3px;
+			opacity: 0;
+			-moz-transform: rotate(-45deg);
+			-ms-transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			margin: -4px 0 0 -5px;
+		}
+	}
+
+	input[type="checkbox"]:checked + .fake-input {
+		border-color: $green;
+
+		&:before {
+			opacity: 1;
+		}
+	}
+}
+
+.filtration-section {
+	@include breakpoint(xlarge) {
+		padding-top: rem-calc(40px);
+	}
+
+	.card {
+		border-radius: rem-calc(3px);
+
+		@include breakpoint(medium) {
+			margin-bottom: rem-calc(30px);
+			height: calc(100% - 1.875rem);
+		}
+
+		@include breakpoint(xlarge) {
+			margin-bottom: rem-calc(50px);
+			height: calc(100% - 3.125rem);
+		}
+
+		.img-holder {
+			padding-top: 81%;
+			position: relative;
+			overflow: hidden;
+			background: none;
+
+			img {
+				display: block;
+			   position: absolute;
+			   top: 50%;
+			   left: 50%;
+			   transform: translate(-50%, -50%);
+			   height: auto;
+			   min-width: 100%;
+			   min-height: 100%;
+			   max-width: none;
+			}
+		}
+
+		.card-section {
+			padding: 1rem;
+			border: 1px solid #dae3df;
+			border-radius: rem-calc(0 0 3px 3px);
+			border-top: none;
+
+			@include breakpoint(large) {
+				padding: rem-calc(30px);
+			}
+		}
+
+		h3 {
+			font-size: rem-calc(18px);
+			font-weight: 700;
+			margin-bottom: rem-calc(10px);
+			color: #495651;
+		}
+
+		.subtitle {
+			display: block;
+			font-size: rem-calc(13px);
+			color: $green;
+			font-weight: 500;
+			margin-bottom: rem-calc(13px);
+		}
+		
+		.text {
+			color: #7a869a;
+
+			p {
+				line-height: 1.78571429;
+				margin-bottom: 0;
+			}
+		} 
+	}
+}
+
+.filtration-items-holder {
+	.row {
+		margin: rem-calc(0 -12px); 
+	}
+
+	.columns {
+		padding: rem-calc(0 12px);
+
+		@media screen and (max-width: 768px) {
+			flex: 0 0 50%;
+		}
+
+		@media screen and (max-width: 480px) {
+			flex: 0 0 100%;
+		}
+	}
+}
+
+.filtration-buttons-holder {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin: rem-calc(0 -10px 10px);
+
+	@include breakpoint(xlarge) {
+		margin-top: rem-calc(-10px);
+	}
+
+	.button {
+		margin: rem-calc(0 10px);
+	}
+}
+
 .accessibility{
 	position:absolute;
 	left:-10000px;
@@ -277,4 +587,8 @@ a {
 	position:static;
 	width:auto;
 	height:auto;
+}
+
+input[type="checkbox"]:focus + .fake-input {
+	border: 1px solid blue !important;
 }
