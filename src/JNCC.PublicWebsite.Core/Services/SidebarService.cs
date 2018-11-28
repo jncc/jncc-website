@@ -8,7 +8,7 @@ namespace JNCC.PublicWebsite.Core.Services
     internal sealed class SidebarService
     {
         private readonly NavigationItemService _navigationItemService;
-        private const int _sectionRootLevel = 3;
+        private const int _sectionRootLevel = 2;
 
         public SidebarService(NavigationItemService navigationItemService)
         {
