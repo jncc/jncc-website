@@ -6,10 +6,10 @@
     <version>$version$</version>
     <authors>$authors$</authors>
     <owners>JNCC</owners>
-    <licenseUrl>TBC</licenseUrl>
+    <licenseUrl>MIT</licenseUrl>
     <projectUrl>https://github.com/jncc/jncc-website</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The JNNC Public Website Refresh</description>
+    <description>The JNCC Public website.</description>
     <releaseNotes>TBC</releaseNotes>
   </metadata>
   <files>

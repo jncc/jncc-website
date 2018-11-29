@@ -738,6 +738,7 @@
     <Content Include="fonts\roboto-medium-webfont.woff2" />
     <Content Include="fonts\roboto-regular-webfont.woff" />
     <Content Include="fonts\roboto-regular-webfont.woff2" />
+    <Content Include="JNCC.PublicWebsite.nuspec" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
