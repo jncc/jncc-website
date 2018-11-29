@@ -2,11 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>JNCC.PublicWebsite</id>
-    <title>$title$</title>
-    <version>$version$</version>
-    <authors>$authors$</authors>
+    <title>JNCC.PublicWebsite</title>
+    <version>1.0.0</version>
+    <authors>C6D and JNCC</authors>
     <owners>JNCC</owners>
-    <licenseUrl>MIT</licenseUrl>
     <projectUrl>https://github.com/jncc/jncc-website</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The JNCC Public website.</description>
