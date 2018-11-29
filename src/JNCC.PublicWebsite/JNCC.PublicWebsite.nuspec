@@ -12,8 +12,6 @@
     <releaseNotes>TBC</releaseNotes>
   </metadata>
   <files>
-      <file src="App_Browsers*\" target="App_Browsers" />
-      <file src="Config\Splashes*\" target="Config\Splashes" />
       <file src="Umbraco*\." target="Umbraco" />
       <file src="Umbraco_Client**\.*" target="Umbraco_Client" />
   </files>
