@@ -12,7 +12,7 @@
     <releaseNotes>TBC</releaseNotes>
   </metadata>
   <files>
-      <file src="Umbraco*\." target="Umbraco" />
-      <file src="Umbraco_Client**\.*" target="Umbraco_Client" />
+      <file src="Umbraco\**" target="Umbraco" />
+      <file src="umbraco_client\**" target="umbraco_client" />
   </files>
 </package>
