@@ -772,6 +772,8 @@
     <Content Include="Views\Partials\RelatedItems.cshtml" />
     <Content Include="Views\ArticlePage.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Partials\StaffDirectory\Listing.cshtml" />
+    <Content Include="Views\Partials\StaffDirectory\Filtering.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
