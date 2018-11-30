@@ -1,11 +1,13 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
-using System.Web.Routing;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
     public sealed class StaffDirectorySurfaceController : CoreSurfaceController
     {
+        private readonly StaffDirectoryService _staffDirectoryService = new StaffDirectoryService();
+
         [ChildActionOnly]
         public ActionResult RenderFiltering()
         {
@@ -17,15 +19,18 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml");
         }
 
+        [HttpGet]
         [ChildActionOnly]
-        public ActionResult RenderListing()
+        public ActionResult RenderListing(int pageNumber = 1)
         {
             if (CurrentPage is StaffDirectoryPage == false)
             {
                 return EmptyResult();
             }
 
-            return PartialView("~/Views/Partials/StaffDirectory/Listing.cshtml");
+            var results = _staffDirectoryService.GetViewModels(CurrentPage as StaffDirectoryPage, pageNumber);
+
+            return PartialView("~/Views/Partials/StaffDirectory/Listing.cshtml", results);
         }
     }
 }
