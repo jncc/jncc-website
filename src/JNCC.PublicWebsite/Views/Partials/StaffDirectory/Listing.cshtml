@@ -1,94 +1,34 @@
-﻿<div class="filtration-section">
+﻿@model PagedResult<StaffDirectoryProfileViewModel>
+<div class="filtration-section">
     <div class="filtration-items-holder">
         <div class="row">
-            <div class="columns medium-6 large-4">
-                <a href="#" class="card">
-                    <div class="img-holder">
-                        <img src="/images/img-5.jpg" alt="employee photo">
-                    </div>
-                    <div class="card-section">
-                        <h3>Full Name1</h3>
-                        <span class="subtitle">Job Title1</span>
-                        <div class="text">
-                            <p>Businesses often become known today through effective marketing. The marketing may be in the form.</p>
+            @foreach (var profile in Model.Items)
+            {
+                <div class="columns medium-6 large-4">
+                    <a href="@profile.Url" class="card">
+                        <div class="img-holder">
+                            <img src="@profile.ImageUrl" alt="@profile.Name photo">
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="columns medium-6 large-4">
-                <a href="#" class="card">
-                    <div class="img-holder">
-                        <img src="/images/img-6.jpg" alt="employee photo">
-                    </div>
-                    <div class="card-section">
-                        <h3>Full Name1</h3>
-                        <span class="subtitle">Job Title2</span>
-                        <div class="text">
-                            <p>Businesses often become known today through effective marketing. The marketing may be in the form.</p>
+                        <div class="card-section">
+                            <h3>@profile.Name</h3>
+                            <span class="subtitle">@profile.JobTitle</span>
+                            <div class="text">
+                                @profile.Description
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="columns medium-6 large-4">
-                <a href="#" class="card">
-                    <div class="img-holder">
-                        <img src="/images/img-7.jpg" alt="employee photo">
-                    </div>
-                    <div class="card-section">
-                        <h3>Full Name1</h3>
-                        <span class="subtitle">Job Title3</span>
-                        <div class="text">
-                            <p>Businesses often become known today through effective marketing. The marketing may be in the form.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="columns medium-6 large-4">
-                <a href="#" class="card">
-                    <div class="img-holder">
-                        <img src="/images/img-5.jpg" alt="employee photo">
-                    </div>
-                    <div class="card-section">
-                        <h3>Full Name1</h3>
-                        <span class="subtitle">Job Title4</span>
-                        <div class="text">
-                            <p>Businesses often become known today through effective marketing. The marketing may be in the form.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="columns medium-6 large-4">
-                <a href="#" class="card">
-                    <div class="img-holder">
-                        <img src="/images/img-6.jpg" alt="employee photo">
-                    </div>
-                    <div class="card-section">
-                        <h3>Full Name1</h3>
-                        <span class="subtitle">Job Title5</span>
-                        <div class="text">
-                            <p>Businesses often become known today through effective marketing. The marketing may be in the form.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="columns medium-6 large-4">
-                <a href="#" class="card">
-                    <div class="img-holder">
-                        <img src="/images/img-7.jpg" alt="employee photo">
-                    </div>
-                    <div class="card-section">
-                        <h3>Full Name1</h3>
-                        <span class="subtitle">Job Title6</span>
-                        <div class="text">
-                            <p>Businesses often become known today through effective marketing. The marketing may be in the form.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         </div>
     </div>
     <div class="filtration-buttons-holder">
-        <a href="#" class="button prev">Previous</a>
-        <a href="#" class="button next">Next</a>
+        @if (Model.IsPageNumberGreaterThanFirst())
+        {
+            <a href="?pageNumber=@Model.PreviousPageNumber()" class="button prev">Previous</a>
+        }
+        @if (Model.IsPageNumberLessThanLast())
+        {
+            <a href="?pageNumber=@Model.NextPageNumber()" class="button next">Next</a>
+        }
     </div>
 </div>
