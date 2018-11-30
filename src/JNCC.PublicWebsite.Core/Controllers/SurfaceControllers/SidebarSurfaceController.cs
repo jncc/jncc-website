@@ -27,5 +27,19 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
         }
+
+        [ChildActionOnly]
+        public ActionResult RenderArticlePageSidebar()
+        {
+            if (CurrentPage is ArticlePage == false)
+            {
+                return EmptyResult();
+            }
+
+            var viewModel = _sidebarService.GetViewModelForArticlePage(CurrentPage as ArticlePage);
+
+            return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
+        }
+
     }
 }
