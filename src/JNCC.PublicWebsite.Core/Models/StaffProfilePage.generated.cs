@@ -55,6 +55,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Content: A brief paragraph describing this staff profile when listed on the Staff Directory Page.
+		///</summary>
+		[ImplementPropertyType("directoryListingContent")]
+		public IHtmlString DirectoryListingContent
+		{
+			get { return this.GetPropertyValue<IHtmlString>("directoryListingContent"); }
+		}
+
+		///<summary>
 		/// Job Title
 		///</summary>
 		[ImplementPropertyType("jobTitle")]
