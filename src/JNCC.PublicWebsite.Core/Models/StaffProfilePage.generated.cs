@@ -64,6 +64,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Full Name: The full name of the staff member. If no value is authored the page name is used instead.  This is useful if two staff members share the same name. Umbraco page names must be unique when they share a parent page such Staff Directory Page.  This allows authors to display all "John Smith"s as "John Smith" rather than; "John Smith", "John Smith (1)", "John Smith (2)".
+		///</summary>
+		[ImplementPropertyType("fullName")]
+		public string FullName
+		{
+			get { return this.GetPropertyValue<string>("fullName"); }
+		}
+
+		///<summary>
 		/// Job Title
 		///</summary>
 		[ImplementPropertyType("jobTitle")]
