@@ -27,6 +27,17 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModel;
         }
 
+        public SidebarViewModel GetViewModelForArticlePage(ArticlePage composition)
+        {
+            var viewModel = new SidebarViewModel()
+            {
+                PrimaryCallToActionButton = _navigationItemService.GetViewModel(composition.SidebarPrimaryCallToActionButton),
+                SeeAlsoLinks = _navigationItemService.GetViewModels(composition.SidebarSeeAlsoLinks)
+            };
+
+            return viewModel;
+        }
+
         private IEnumerable<NavigationItemViewModel> GetInThisSectionLinks(ISidebarComposition composition)
         {
             var sectionRoot = composition.AncestorOrSelf(_sectionRootLevel);
