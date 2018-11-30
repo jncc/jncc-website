@@ -46,7 +46,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Article Type
+		/// Article Type: Classifies the article so it can be filtered by users.
 		///</summary>
 		[ImplementPropertyType("articleType")]
 		public string ArticleType
