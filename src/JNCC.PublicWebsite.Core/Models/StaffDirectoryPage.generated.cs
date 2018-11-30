@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Preamble: Introductory content that appears before the staff directory profiles.
+		///</summary>
+		[ImplementPropertyType("preamble")]
+		public IHtmlString Preamble
+		{
+			get { return this.GetPropertyValue<IHtmlString>("preamble"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
