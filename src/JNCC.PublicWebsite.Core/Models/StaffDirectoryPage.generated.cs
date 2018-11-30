@@ -55,6 +55,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Profiles Per Page: Determines how many profiles should be shown per page by default.
+		///</summary>
+		[ImplementPropertyType("profilesPerPage")]
+		public decimal ProfilesPerPage
+		{
+			get { return this.GetPropertyValue<decimal>("profilesPerPage"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
