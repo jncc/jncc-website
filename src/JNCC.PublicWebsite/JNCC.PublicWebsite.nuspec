@@ -14,5 +14,6 @@
   <files>
       <file src="Umbraco\**" target="Umbraco" />
       <file src="umbraco_client\**" target="umbraco_client" />
+      <file src="uSync\**" target="uSync" />
   </files>
 </package>
