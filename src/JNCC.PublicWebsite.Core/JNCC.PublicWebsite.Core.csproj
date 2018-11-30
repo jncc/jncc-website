@@ -274,6 +274,7 @@
     <Compile Include="Services\SidebarService.cs" />
     <Compile Include="Services\SocialMediaLinksService.cs" />
     <Compile Include="Services\CategorisedFooterLinksService.cs" />
+    <Compile Include="Services\StaffDirectoryService.cs" />
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
