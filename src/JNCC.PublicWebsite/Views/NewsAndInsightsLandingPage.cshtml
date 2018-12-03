@@ -1,5 +1,17 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NewsAndInsightsLandingPage>
 @using ContentModels = JNCC.PublicWebsite.Core.Models;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
+@(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+<div class="container">
+    <div class="two-columns stretch-layout staff-directory columns-reverse-layout">
+        @(Html.Action<NewsAndInsightsLandingSurfaceController>("RenderFiltering"))
+        <div id="content">
+            <section class="staff-holder">
+                @Model.Content.Preamble
+                @(Html.Action<NewsAndInsightsLandingSurfaceController>("RenderListing"))
+            </section>
+        </div>
+    </div>
+</div>
