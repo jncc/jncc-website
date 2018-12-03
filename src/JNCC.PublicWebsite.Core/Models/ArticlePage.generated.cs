@@ -55,6 +55,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Content: A brief paragraph describing this article when listed on the News and Insights Landing Page.
+		///</summary>
+		[ImplementPropertyType("landingPageContent")]
+		public IHtmlString LandingPageContent
+		{
+			get { return this.GetPropertyValue<IHtmlString>("landingPageContent"); }
+		}
+
+		///<summary>
 		/// Main Content: The main content for the page.
 		///</summary>
 		[ImplementPropertyType("mainContent")]
