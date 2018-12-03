@@ -623,6 +623,7 @@
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="css\app.css" />
+    <Content Include="css\headings.css" />
     <Content Include="default.aspx" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
