@@ -773,6 +773,7 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Partials\StaffDirectory\Listing.cshtml" />
     <Content Include="Views\Partials\StaffDirectory\Filtering.cshtml" />
+    <Content Include="Views\Partials\SeoMetaData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
