@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Staff Profile Page</summary>
 	[PublishedContentModel("StaffProfilePage")]
-	public partial class StaffProfilePage : PublishedContentModel
+	public partial class StaffProfilePage : PublishedContentModel, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "StaffProfilePage";
@@ -124,6 +124,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IHtmlString ResearchContent
 		{
 			get { return this.GetPropertyValue<IHtmlString>("researchContent"); }
+		}
+
+		///<summary>
+		/// SEO Settings
+		///</summary>
+		[ImplementPropertyType("seoSettings")]
+		public SEOChecker.MVC.MetaData SeoSettings
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
 		}
 	}
 }

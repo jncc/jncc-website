@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Home Page</summary>
 	[PublishedContentModel("homePage")]
-	public partial class HomePage : PublishedContentModel, INavigationSettingsComposition
+	public partial class HomePage : PublishedContentModel, INavigationSettingsComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "homePage";
@@ -97,6 +97,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// SEO Settings
+		///</summary>
+		[ImplementPropertyType("seoSettings")]
+		public SEOChecker.MVC.MetaData SeoSettings
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
 		}
 	}
 }
