@@ -1,0 +1,34 @@
+﻿@model PagedResult<ArticleListingViewModel>
+<div class="filtration-section">
+    <div class="filtration-items-holder">
+        <div class="row">
+            @foreach (var article in Model.Items)
+            {
+                <div class="columns medium-6 large-4">
+                    <a href="@article.Url" class="card">
+                        <div class="img-holder">
+                            <img src="@article.ImageUrl" alt="@article.Title thumbnail">
+                        </div>
+                        <div class="card-section">
+                            <h3>@article.Title</h3>
+                            <span class="subtitle">@Html.DisplayFor(model => article.PublishDate)</span>
+                            <div class="text">
+                                @article.Description
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="filtration-buttons-holder">
+        @if (Model.IsPageNumberGreaterThanFirst())
+        {
+            <a href="?pageNumber=@Model.PreviousPageNumber()" class="button prev">Previous</a>
+        }
+        @if (Model.IsPageNumberLessThanLast())
+        {
+            <a href="?pageNumber=@Model.NextPageNumber()" class="button next">Next</a>
+        }
+    </div>
+</div>

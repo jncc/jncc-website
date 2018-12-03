@@ -237,6 +237,7 @@
     <Compile Include="Controllers\SurfaceControllers\PageHeroSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\RelatedItemsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SidebarSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\NewsAndInsightsLandingSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\StaffDirectorySurfaceController.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
