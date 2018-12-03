@@ -10740,14 +10740,9 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 
 	.staff-directory {
-		font-size: .875rem;
 		padding-top: 0;
 	}
-
-	.staff-directory p {
-		line-height: 1.78571429;
-	}
-
+	
 	.filtration-section .card {
 		margin-bottom: 1.875rem;
 		height: calc(100% - 1.875rem);
