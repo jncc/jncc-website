@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Article Page</summary>
 	[PublishedContentModel("ArticlePage")]
-	public partial class ArticlePage : PublishedContentModel, IPageHeroComposition, IRelatedItemsComposition, ISidebarComposition
+	public partial class ArticlePage : PublishedContentModel, IPageHeroComposition, IRelatedItemsComposition, ISeoComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "ArticlePage";
@@ -106,6 +106,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems
 		{
 			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsManuallyAuthoredItems(this); }
+		}
+
+		///<summary>
+		/// SEO Settings
+		///</summary>
+		[ImplementPropertyType("seoSettings")]
+		public SEOChecker.MVC.MetaData SeoSettings
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
 		}
 
 		///<summary>

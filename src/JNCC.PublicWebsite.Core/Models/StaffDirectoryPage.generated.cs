@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Staff Directory Page</summary>
 	[PublishedContentModel("StaffDirectoryPage")]
-	public partial class StaffDirectoryPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition
+	public partial class StaffDirectoryPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "StaffDirectoryPage";
@@ -97,6 +97,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IPublishedContent HeroImage
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
+		}
+
+		///<summary>
+		/// SEO Settings
+		///</summary>
+		[ImplementPropertyType("seoSettings")]
+		public SEOChecker.MVC.MetaData SeoSettings
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
 		}
 	}
 }

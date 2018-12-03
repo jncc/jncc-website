@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>News and Insights Landing Page</summary>
 	[PublishedContentModel("NewsAndInsightsLandingPage")]
-	public partial class NewsAndInsightsLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition
+	public partial class NewsAndInsightsLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "NewsAndInsightsLandingPage";
@@ -88,6 +88,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IPublishedContent HeroImage
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
+		}
+
+		///<summary>
+		/// SEO Settings
+		///</summary>
+		[ImplementPropertyType("seoSettings")]
+		public SEOChecker.MVC.MetaData SeoSettings
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
 		}
 	}
 }
