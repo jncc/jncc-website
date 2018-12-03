@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\uSync.4.0.9\build\uSync.props" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.props')" />
   <Import Project="..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -81,7 +81,7 @@
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\controls.dll</HintPath>
     </Reference>
     <Reference Include="DTG.Spreadsheet, Version=2.7.0.0, Culture=neutral, PublicKeyToken=7b835b529fb706c3, processorArchitecture=MSIL">
-      <HintPath>..\packages\CMSImport.3.7.5\lib\DTG.Spreadsheet.dll</HintPath>
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\DTG.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\EPPlus.dll</HintPath>
@@ -120,7 +120,7 @@
       <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CMSImport.3.7.5\lib\LumenWorks.Framework.IO.dll</HintPath>
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp, Version=1.14.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Markdown.1.14.7\lib\net45\MarkdownSharp.dll</HintPath>
@@ -183,56 +183,53 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PackageGarden.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\PackageGarden.Licensing.dll</HintPath>
+    </Reference>
     <Reference Include="RJP.MultiUrlPicker, Version=2.2.0.17550, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RJP.UmbracoMultiUrlPicker.2.2.0\lib\net45\RJP.MultiUrlPicker.dll</HintPath>
     </Reference>
     <Reference Include="PackageActionsContrib, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CMSImport.3.7.5\lib\PackageActionsContrib.dll</HintPath>
     </Reference>
-    <Reference Include="PackageGarden.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CMSImport.3.7.5\lib\PackageGarden.Licensing.dll</HintPath>
-    </Reference>
-    <Reference Include="PackageGarden.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\PackageGarden.Licensing.dll</HintPath>
-    </Reference>
     <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.dll</HintPath>
+    <Reference Include="SEOChecker, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.Core, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.Core.dll</HintPath>
+    <Reference Include="SEOChecker.Core, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.DataTypes, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.DataTypes.dll</HintPath>
+    <Reference Include="SEOChecker.DataTypes, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.DataTypes.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.Events, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.Events.dll</HintPath>
+    <Reference Include="SEOChecker.Events, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.Events.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.Extensions, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.Extensions.dll</HintPath>
+    <Reference Include="SEOChecker.Extensions, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.Library, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.Library.dll</HintPath>
+    <Reference Include="SEOChecker.Library, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.Library.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.Logging, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.Logging.dll</HintPath>
+    <Reference Include="SEOChecker.Logging, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.MVC, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.MVC.dll</HintPath>
+    <Reference Include="SEOChecker.MVC, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.MVC.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.PropertyEditorConverters, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.PropertyEditorConverters.dll</HintPath>
+    <Reference Include="SEOChecker.PropertyEditorConverters, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.PropertyEditorConverters.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.Providers, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.Providers.dll</HintPath>
+    <Reference Include="SEOChecker.Providers, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.UI, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.UI.dll</HintPath>
+    <Reference Include="SEOChecker.UI, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.UI.dll</HintPath>
     </Reference>
-    <Reference Include="SEOChecker.Validators, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SEOChecker.2.2.0\lib\SEOChecker.Validators.dll</HintPath>
+    <Reference Include="SEOChecker.Validators, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SEOChecker.2.2.1\lib\SEOChecker.Validators.dll</HintPath>
     </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.6879.21988, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\SQLCE4Umbraco.dll</HintPath>
@@ -363,9 +360,6 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
     <Content Include="App_Plugins\RJP.MultiUrlPicker\MultiUrlPicker.html" />
     <Content Include="App_Plugins\RJP.MultiUrlPicker\MultiUrlPicker.js" />
-    <Content Include="App_Plugins\StackedContent\css\stackedcontent.css" />
-    <Content Include="App_Plugins\StackedContent\js\stackedcontent.js" />
-    <Content Include="App_Plugins\StackedContent\views\stackedcontent.html" />
     <Content Include="App_Plugins\seochecker\backoffice\seochecker\configurationissues.controller.js" />
     <Content Include="App_Plugins\seochecker\backoffice\seochecker\configurationissues.html" />
     <Content Include="App_Plugins\seochecker\backoffice\seochecker\definitionsettings.html" />
@@ -466,6 +460,9 @@
     <Content Include="App_Plugins\seochecker\lang\nl.xml" />
     <Content Include="App_Plugins\seochecker\resources\seocheckerbackofficeresources.js" />
     <Content Include="App_Plugins\seochecker\services\seocheckerhelper.js" />
+    <Content Include="App_Plugins\StackedContent\css\stackedcontent.css" />
+    <Content Include="App_Plugins\StackedContent\js\stackedcontent.js" />
+    <Content Include="App_Plugins\StackedContent\views\stackedcontent.html" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\defaultform.css" />
@@ -712,10 +709,6 @@
     <Content Include="config\404handlers.config" />
     <Content Include="App_Plugins\InnerContent\package.manifest" />
     <Content Include="App_Plugins\StackedContent\package.manifest" />
-    <Content Include="App_Plugins\seochecker\mailtemplates\Web.config" />
-    <Content Include="App_Plugins\seochecker\mailtemplates\scheduledtask-mail.cshtml" />
-    <Content Include="App_Plugins\seochecker\mailtemplates\notification-mail.cshtml" />
-    <Content Include="App_Plugins\seochecker\Config\SEOChecker_BotFilter.config" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\commentform.json" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\contactform.json" />
     <Content Include="App_Plugins\UmbracoForms\Fonts\icomoon.eot" />
@@ -740,6 +733,11 @@
     <Content Include="fonts\roboto-regular-webfont.woff" />
     <Content Include="fonts\roboto-regular-webfont.woff2" />
     <Content Include="JNCC.PublicWebsite.nuspec" />
+    <Content Include="App_Plugins\seochecker\mailtemplates\Web.config" />
+    <Content Include="App_Plugins\seochecker\mailtemplates\scheduledtask-mail.cshtml" />
+    <Content Include="App_Plugins\seochecker\mailtemplates\notification-mail.cshtml" />
+    <Content Include="App_Plugins\seochecker\Config\SEOChecker_BotFilter.config" />
+    <Content Include="App_Plugins\seochecker\Config\SEOChecker.config" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
