@@ -450,6 +450,8 @@ a {
 }
 
 .filtration-section {
+	font-size: 0.875rem;
+
 	@include breakpoint(xlarge) {
 		padding-top: rem-calc(40px);
 	}
@@ -520,6 +522,12 @@ a {
 				margin-bottom: 0;
 			}
 		} 
+	}
+
+	p {
+		@include breakpoint(medium) {
+			line-height: 1.78571429;
+		}
 	}
 }
 

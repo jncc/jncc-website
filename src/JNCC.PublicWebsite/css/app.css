@@ -12876,8 +12876,13 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 
 	.filtration-section {
+        font-size: 0.875rem;
 		padding-top: 2.5rem;
 	}
+
+    .filtration-section p {
+		line-height: 1.78571429;
+    }
 
 	.filtration-section .card {
 		margin-bottom: 3.125rem;
