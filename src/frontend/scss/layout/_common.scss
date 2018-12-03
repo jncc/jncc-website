@@ -361,7 +361,6 @@ a {
 	padding-top: 2rem;
 
 	@include breakpoint(medium) {
-		font-size: rem-calc(14px);
 		padding-top: 0;
 	}
 
@@ -372,12 +371,6 @@ a {
 
 		@include breakpoint(xlarge) {
 			margin-bottom: rem-calc(30px);
-		}
-	}
-
-	p {
-		@include breakpoint(medium) {
-			line-height: 1.78571429;
 		}
 	}
 }
