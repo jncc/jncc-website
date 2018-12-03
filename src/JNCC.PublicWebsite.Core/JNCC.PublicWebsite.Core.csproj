@@ -285,6 +285,7 @@
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
     <Compile Include="ViewModels\PageHeroViewModel.cs" />
     <Compile Include="ViewModels\RelatedItemViewModel.cs" />
+    <Compile Include="ViewModels\SeoMetaDataViewModel.cs" />
     <Compile Include="ViewModels\SidebarViewModel.cs" />
     <Compile Include="ViewModels\SocialMediaNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\StaffDirectoryProfileViewModel.cs" />
