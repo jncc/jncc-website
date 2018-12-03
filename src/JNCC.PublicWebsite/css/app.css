@@ -7958,12 +7958,6 @@ a {
 	padding-top: 2rem;
 }
 
-.staff-directory h2 {
-	font-weight: 700;
-	line-height: 1.2;
-	color: #495651;
-}
-
 .staff-holder {
 	padding-bottom: 2rem;
 }
@@ -12867,10 +12861,6 @@ input[type="search"]::-webkit-search-cancel-button {
 
 	.links-section .row {
 		margin: 0 -2.3125rem;
-	}
-
-	.staff-directory h2 {
-		margin-bottom: 1.875rem;
 	}
 
 	.staff-holder {
