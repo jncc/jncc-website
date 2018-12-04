@@ -1,28 +1,26 @@
 ﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Linq;
-using Umbraco.Core.Models;
-using Umbraco.Core.Persistence;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class StaffDirectoryService
+    internal sealed class StaffDirectoryService : ListingService<StaffDirectoryPage, StaffProfilePage, StaffDirectoryProfileViewModel>
     {
-        public Paged​Result<StaffDirectoryProfileViewModel> GetViewModels(StaffDirectoryPage staffDirectoryPage, int pageNumber)
+        protected override int GetItemsPerPage(StaffDirectoryPage parent)
         {
-            var profilesPerPage = decimal.ToInt32(staffDirectoryPage.ProfilesPerPage);
-
-            var children = staffDirectoryPage.Children<StaffProfilePage>();
-            var results = new Paged​Result<StaffDirectoryProfileViewModel>(children.LongCount(), pageNumber, profilesPerPage);
-            var viewModels = children.Skip(results.GetSkipSize()).Take(profilesPerPage).Select(ToViewModel);
-            results.Items = viewModels;
-
-            return results;
+            return parent.ProfilesPerPage;
         }
 
-        private StaffDirectoryProfileViewModel ToViewModel(StaffProfilePage content)
+        protected override IOrderedEnumerable<StaffProfilePage> GetOrderedChildren(StaffDirectoryPage parent)
+        {
+            return parent.Children<StaffProfilePage>()
+                         .OrderByFirstAvailableProperty(x => new string[] { x.SortName, x.FullName, x.Name });
+        }
+
+        protected override StaffDirectoryProfileViewModel ToViewModel(StaffProfilePage content)
         {
             var viewModel = new StaffDirectoryProfileViewModel
             {
