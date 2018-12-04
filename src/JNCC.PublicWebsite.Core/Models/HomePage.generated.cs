@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Content: Content to be displayed informing users of the website cookie policy
+		///</summary>
+		[ImplementPropertyType("cookieBannerContent")]
+		public IHtmlString CookieBannerContent
+		{
+			get { return this.GetPropertyValue<IHtmlString>("cookieBannerContent"); }
+		}
+
+		///<summary>
 		/// Content: A content area useful display for displaying legal & copyright information within the footer of the page.
 		///</summary>
 		[ImplementPropertyType("footerContent")]
