@@ -1,25 +1,27 @@
 ﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Linq;
-using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class NewsAndInsightsLandingService
+    internal sealed class NewsAndInsightsLandingService : ListingService<NewsAndInsightsLandingPage, ArticlePage, ArticleListingViewModel>
     {
-        internal PagedResult<ArticleListingViewModel> GetViewModels(NewsAndInsightsLandingPage newsAndInsightsLandingPage, int pageNumber)
+        protected override int GetItemsPerPage(NewsAndInsightsLandingPage parent)
         {
-            var children = newsAndInsightsLandingPage.Children<ArticlePage>();
-            var results = new Paged​Result<ArticleListingViewModel>(children.LongCount(), pageNumber, newsAndInsightsLandingPage.ArticlesPerPage);
-            var viewModels = children.Skip(results.GetSkipSize()).Take(newsAndInsightsLandingPage.ArticlesPerPage).Select(ToViewModel);
-            results.Items = viewModels;
-
-            return results;
+            return parent.ArticlesPerPage;
         }
 
-        private ArticleListingViewModel ToViewModel(ArticlePage content)
+        protected override IOrderedEnumerable<ArticlePage> GetOrderedChildren(NewsAndInsightsLandingPage parent)
+        {
+            return parent.Children<ArticlePage>()
+                         .OrderByDescending(x => x.PublishDate)
+                         .ThenByFirstAvailableProperty(x => new string[] { x.Headline, x.Name });
+        }
+
+        protected override ArticleListingViewModel ToViewModel(ArticlePage content)
         {
             var viewModel = new ArticleListingViewModel
             {
