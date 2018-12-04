@@ -5,6 +5,7 @@
 }
 @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
 <div class="container">
+    @Html.Partial("~/Views/Partials/Breadcrumbs.cshtml")
     <div class="two-columns stretch-layout staff-directory columns-reverse-layout">
         @(Html.Action<NewsAndInsightsLandingSurfaceController>("RenderFiltering"))
         <div id="content">
