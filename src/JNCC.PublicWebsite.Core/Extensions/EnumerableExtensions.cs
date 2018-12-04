@@ -13,5 +13,13 @@ namespace JNCC.PublicWebsite.Core.Extensions
                                                      .FirstOrDefault()
                                      );
         }
+
+        public static IOrderedEnumerable<T> ThenByFirstAvailableProperty<T>(this IOrderedEnumerable<T> enumerable, Func<T, IEnumerable<string>> properties)
+        {
+            return enumerable.ThenBy(x => properties.Invoke(x)
+                                                    .Where(y => string.IsNullOrWhiteSpace(y) == false)
+                                                    .FirstOrDefault()
+                                    );
+        }
     }
 }
