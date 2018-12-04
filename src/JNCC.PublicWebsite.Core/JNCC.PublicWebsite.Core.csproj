@@ -276,6 +276,7 @@
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
+    <Compile Include="Controllers\SurfaceControllers\CookieBannerSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CoreSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\FooterSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\HeaderSurfaceController.cs" />

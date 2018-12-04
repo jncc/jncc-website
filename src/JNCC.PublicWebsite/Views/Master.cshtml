@@ -13,11 +13,12 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
     <script>window.jQuery || document.write('<script src="/js/jquery-3.3.1.min.js" defer><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" defer></script>
+    @(Html.Action<CookieBannerTemplateSurfaceController>("RenderCookieBannerTemplate"))
     <script src="~/js/app.js" defer></script>
 </head>
 <body>
     <noscript><div>Javascript must be enabled for the correct page display</div></noscript>
-    <div id="wrapper">
+    <div id="wrapper" class="js-cookie-banner-container">
         <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
         <header id="header">
             <div class="container">
