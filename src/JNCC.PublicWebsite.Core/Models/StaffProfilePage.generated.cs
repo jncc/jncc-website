@@ -127,6 +127,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Sort Name: The value used to sort an item in Staff Directory Page.  If no value is specified then the full name will be used followed by the node name.  This property is useful if the profile should be sorted without a title. For example: "Dr. Jane Smith" would typically be sorted under D, but specifying the value "Jane Smith" would sort the profile under J.
+		///</summary>
+		[ImplementPropertyType("sortName")]
+		public string SortName
+		{
+			get { return this.GetPropertyValue<string>("sortName"); }
+		}
+
+		///<summary>
 		/// SEO Settings
 		///</summary>
 		[ImplementPropertyType("seoSettings")]
