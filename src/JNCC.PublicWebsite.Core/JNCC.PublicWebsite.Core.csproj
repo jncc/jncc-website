@@ -286,6 +286,7 @@
     <Compile Include="Controllers\SurfaceControllers\SidebarSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\NewsAndInsightsLandingSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\StaffDirectorySurfaceController.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
     <Compile Include="Extensions\PublishedContentExtensions.cs" />
