@@ -8351,7 +8351,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 #footer a:hover {
-	color: #666262;
+    text-decoration: underline;
 }
 
 #footer h3 {
