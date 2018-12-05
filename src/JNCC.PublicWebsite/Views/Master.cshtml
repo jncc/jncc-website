@@ -1,9 +1,8 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-@{
+﻿@{
     Layout = null;
 }
 <!doctype html>
-<html lang="@Model.CurrentCulture" dir="@Html.Directionality(Model.CurrentCulture)">
+<html @(Html.Action<PageAttributesSurfaceController>("RenderAttributes"))>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
