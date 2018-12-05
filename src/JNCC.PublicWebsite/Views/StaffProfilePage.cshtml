@@ -1,5 +1,41 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.StaffProfilePage>
 @using ContentModels = JNCC.PublicWebsite.Core.Models;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
+<div class="container">
+    @Html.Partial("~/Views/Partials/Breadcrumbs.cshtml")
+    <div class="two-columns">
+        <div id="content">
+            <h1>@Model.Content.Name</h1>
+            <h2>@Model.Content.JobTitle</h2>
+            <p>
+                @foreach (var tag in Model.Content.ProfileTags){<span class="label">@tag</span> }
+            </p>
+            <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" id="profile-tabs">
+                <li class="tabs-title is-active"><a href="#biography" aria-selected="true">Biography</a></li>
+                <li class="tabs-title"><a href="#projects">Projects</a></li>
+                <li class="tabs-title"><a href="#publications">Publications</a></li>
+                <li class="tabs-title"><a href="#research">Research</a></li>
+            </ul>
+            <div class="tabs-content" data-tabs-content="profile-tabs">
+                <div class="tabs-panel is-active" id="biography">
+                    @Model.Content.BiographyContent
+                </div>
+                <div class="tabs-panel" id="projects">
+                    @Model.Content.ProjectsContent
+                </div>
+                <div class="tabs-panel" id="publications">
+                    @Model.Content.PublicationsContent
+                </div>
+                <div class="tabs-panel" id="research">
+                    @Model.Content.ResearchContent
+                </div>
+            </div>
+        </div>
+        <aside id="sidebar">
+            <img src="@Model.Content.ProfilePicture.Url" alt="@Model.Content.Name photo" />
+        </aside>
+    </div>
+</div>
+@(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
