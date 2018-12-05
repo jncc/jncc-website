@@ -3176,7 +3176,7 @@ a {
 
 a:hover,
 a:focus {
-	color: #3e923a;
+	color: #276923;
 }
 
 a img {
@@ -3701,7 +3701,7 @@ select[multiple] {
 
 .button:hover,
 .button:focus {
-	background-color: #3d9139;
+	background-color: #266823;
 	color: #fefefe;
 }
 
@@ -3731,7 +3731,7 @@ select[multiple] {
 
 .button.primary:hover,
 .button.primary:focus {
-	background-color: #3a8836;
+	background-color: #246221;
 	color: #fefefe;
 }
 
@@ -3897,8 +3897,8 @@ select[multiple] {
 
 .button.hollow:hover,
 .button.hollow:focus {
-	border-color: #245522;
-	color: #245522;
+	border-color: #173d15;
+	color: #173d15;
 }
 
 .button.hollow:hover.disabled,
@@ -3916,8 +3916,8 @@ select[multiple] {
 
 .button.hollow.primary:hover,
 .button.hollow.primary:focus {
-	border-color: #245522;
-	color: #245522;
+	border-color: #173d15;
+	color: #173d15;
 }
 
 .button.hollow.primary:hover.disabled,
@@ -4026,8 +4026,8 @@ select[multiple] {
 
 .button.clear:hover,
 .button.clear:focus {
-	border-color: #245522;
-	color: #245522;
+	border-color: #173d15;
+	color: #173d15;
 }
 
 .button.clear:hover.disabled,
@@ -4057,8 +4057,8 @@ select[multiple] {
 
 .button.clear.primary:hover,
 .button.clear.primary:focus {
-	border-color: #245522;
-	color: #245522;
+	border-color: #173d15;
+	color: #173d15;
 }
 
 .button.clear.primary:hover.disabled,
@@ -4489,6 +4489,7 @@ a.button:focus {
 
 .breadcrumbs li {
 	float: left;
+	font-size: inherit;
 	color: #2d7a29;
 	cursor: default;
 }
@@ -4580,7 +4581,7 @@ a.button:focus {
 
 .button-group.primary .button:hover,
 .button-group.primary .button:focus {
-	background-color: #3a8836;
+	background-color: #246221;
 	color: #fefefe;
 }
 
@@ -4676,7 +4677,7 @@ a.button:focus {
 }
 
 .callout.primary {
-	background-color: #e2f3e2;
+	background-color: #d9f2d8;
 	color: #666262;
 }
 
@@ -6110,7 +6111,7 @@ a.button:focus {
 }
 
 .slider-handle:hover {
-	background-color: #3d9139;
+	background-color: #266823;
 }
 
 .slider-handle.is-dragging {
@@ -6553,7 +6554,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .tabs.primary > li > a:hover,
 .tabs.primary > li > a:focus {
-	background: #44a240;
+	background: #32872d;
 }
 
 .tabs-title {
@@ -6574,7 +6575,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .tabs-title > a:hover {
 	background: #fefefe;
-	color: #3e923a;
+	color: #276923;
 }
 
 .tabs-title > a:focus,
@@ -6623,7 +6624,7 @@ a.thumbnail {
 
 a.thumbnail:hover,
 a.thumbnail:focus {
-	box-shadow: 0 0 6px 1px rgba(72, 170, 67, .5);
+	box-shadow: 0 0 6px 1px rgba(45, 122, 41, .5);
 }
 
 a.thumbnail image {
@@ -7803,8 +7804,8 @@ a {
 }
 
 .read-more:hover {
-	border-color: #398535 !important;
-	color: #398535 !important;
+	border-color: #1f541c !important;
+	color: #1f541c !important;
 }
 
 .read-more i {
@@ -7916,6 +7917,7 @@ a {
 }
 
 #sidebar .button.large {
+	font-size: 1rem;
 	padding-top: 1.3125rem;
 	padding-bottom: 1.1875rem;
 	border-radius: .125rem;
@@ -8027,6 +8029,10 @@ a {
 	opacity: 1;
 }
 
+.filtration-section {
+	font-size: .875rem;
+}
+
 .filtration-section .card {
 	border-radius: .1875rem;
 }
@@ -8128,19 +8134,19 @@ input[type="checkbox"]:focus + .fake-input {
 }
 
 .cookie-banner {
-    background-color: #2d7a29;
-    color: #fefefe;
-    text-align: center;
-    padding: 0.5rem 0;
+	background-color: #2d7a29;
+	color: #fefefe;
+	text-align: center;
+	padding: .5rem 0;
 }
 
 .cookie-banner a {
-    color: #fefefe;
-    text-decoration: underline;
+	color: #fefefe;
+	text-decoration: underline;
 }
 
 .cookie-banner .container > :last-child {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 #header {
@@ -8351,7 +8357,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 #footer a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 #footer h3 {
@@ -10758,6 +10764,10 @@ input[type="search"]::-webkit-search-cancel-button {
 		height: calc(100% - 1.875rem);
 	}
 
+	.filtration-section p {
+		line-height: 1.78571429;
+	}
+
 	#header > .container {
 		-webkit-box-align: end;
 		-ms-flex-align: end;
@@ -12892,13 +12902,8 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 
 	.filtration-section {
-        font-size: 0.875rem;
 		padding-top: 2.5rem;
 	}
-
-    .filtration-section p {
-		line-height: 1.78571429;
-    }
 
 	.filtration-section .card {
 		margin-bottom: 3.125rem;
@@ -13492,4 +13497,4 @@ input[type="search"]::-webkit-search-cancel-button {
 		transform: rotate(0);
 	}
 }
-
+
