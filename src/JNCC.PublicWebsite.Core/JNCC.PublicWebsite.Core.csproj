@@ -276,6 +276,7 @@
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
+    <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CookieBannerSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CoreSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\FooterSurfaceController.cs" />
@@ -333,6 +334,7 @@
     <Compile Include="Services\CategorisedFooterLinksService.cs" />
     <Compile Include="Services\StaffDirectoryService.cs" />
     <Compile Include="ViewModels\ArticleListingViewModel.cs" />
+    <Compile Include="ViewModels\BreadcrumbsViewModel.cs" />
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />

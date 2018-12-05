@@ -1,10 +1,10 @@
-﻿@inherits UmbracoViewPage
+﻿@model BreadcrumbsViewModel
 <nav aria-label="breadcrumbs">
     <ul class="breadcrumbs">
-        @foreach (var ancestor in Model.Ancestors().OrderBy(x => x.Level))
+        @foreach (var ancestor in Model.Ancestors)
         {
-            <li><a href="@ancestor.Url">@ancestor.Name</a></li>
+            <li><a href="@ancestor.Url">@ancestor.Text</a></li>
         }
-        <li><span class="show-for-sr">Current: </span>@Model.Name</li>
+        <li><span class="show-for-sr">Current: </span>@Model.CurrentPage</li>
     </ul>
 </nav>

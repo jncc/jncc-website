@@ -5,7 +5,7 @@
 }
 @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
 <div class="container">
-    @Html.Partial("~/Views/Partials/Breadcrumbs.cshtml")
+    @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
     <div class="two-columns">
         <div id="content">
             @Model.Content.MainContent
