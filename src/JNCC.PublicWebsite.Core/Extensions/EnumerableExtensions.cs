@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Umbraco.Core;
 
 namespace JNCC.PublicWebsite.Core.Extensions
 {
@@ -20,6 +21,11 @@ namespace JNCC.PublicWebsite.Core.Extensions
                                                     .Where(y => string.IsNullOrWhiteSpace(y) == false)
                                                     .FirstOrDefault()
                                     );
+        }
+
+        public static bool IsFirst<T>(this IEnumerable<T> enumerable, T element)
+        {
+            return enumerable.IndexOf(element) == 0;
         }
     }
 }
