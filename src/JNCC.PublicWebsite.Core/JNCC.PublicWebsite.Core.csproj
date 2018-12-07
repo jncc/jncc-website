@@ -333,6 +333,7 @@
     <Compile Include="Services\SocialMediaLinksService.cs" />
     <Compile Include="Services\CategorisedFooterLinksService.cs" />
     <Compile Include="Services\StaffDirectoryService.cs" />
+    <Compile Include="Utilities\ExistenceUtility.cs" />
     <Compile Include="ViewModels\ArticleListingViewModel.cs" />
     <Compile Include="ViewModels\BreadcrumbsViewModel.cs" />
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
