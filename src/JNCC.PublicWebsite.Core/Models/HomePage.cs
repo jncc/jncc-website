@@ -3,6 +3,7 @@ using System.Linq;
 using Umbraco.Core.Models;
 using Umbraco.ModelsBuilder;
 using Umbraco.Web;
+using JNCC.PublicWebsite.Core.Extensions;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
@@ -16,6 +17,15 @@ namespace JNCC.PublicWebsite.Core.Models
         {
             get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("footerCategorisedLinks")
                              .OfType<CategorisedFooterLinksSchema>(); }
+        }
+
+        ///<summary>
+        /// Callout Cards: Boxes for important information which will appear below the hero carousel.
+        ///</summary>
+        [ImplementPropertyType("calloutCards")]
+        public IEnumerable<CalloutCardSchema> CalloutCards
+        {
+            get { return this.GetPropertyValueOfTypeOrDefault<CalloutCardSchema>("calloutCards"); }
         }
     }
 }
