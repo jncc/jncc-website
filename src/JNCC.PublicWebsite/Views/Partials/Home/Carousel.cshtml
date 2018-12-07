@@ -1,0 +1,27 @@
+﻿@model HomePageViewModel
+@if (Model.Carousel != null)
+{
+    <div class="visual-section">
+        <div class="container">
+            <div class="row">
+                <div class="columns medium-8">
+                    <h1>@Model.Carousel.Headline</h1>
+                    @if (Model.Carousel.Text != null && string.IsNullOrWhiteSpace(Model.Carousel.Text.ToHtmlString()) == false)
+                    {
+                        <div class="text-block">
+                            @Model.Carousel.Text
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="main-slider">
+            @foreach (var url in Model.Carousel.ImageUrls)
+            {
+                <div class="slide">
+                    <div class="slider-image" style="background-image: url(@url);"></div>
+                </div>
+            }
+        </div>
+    </div>
+}
