@@ -50,7 +50,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 {
                     viewModel.Image = new ImageViewModel()
                     {
-                        Url = card.Image.Url,
+                        Url = card.Image.Image.Url,
                         AlternativeText = card.Image.ImageAlternativeText
                     };
                 };
