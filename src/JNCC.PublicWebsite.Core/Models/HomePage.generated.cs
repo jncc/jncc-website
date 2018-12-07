@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Home Page</summary>
 	[PublishedContentModel("homePage")]
-	public partial class HomePage : PublishedContentModel, INavigationSettingsComposition, ISeoComposition
+	public partial class HomePage : PublishedContentModel, INavigationSettingsComposition, IPageHeroCarouselComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "homePage";
@@ -82,15 +82,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Hero Carousel: A collection of carousel slides to be displayed at the top of the page.
-		///</summary>
-		[ImplementPropertyType("heroCarousel")]
-		public IEnumerable<IPublishedContent> HeroCarousel
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("heroCarousel"); }
-		}
-
-		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
@@ -106,6 +97,33 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// Headline: A headline which appears within the Hero Carousel.
+		///</summary>
+		[ImplementPropertyType("headline")]
+		public string Headline
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroCarouselComposition.GetHeadline(this); }
+		}
+
+		///<summary>
+		/// Hero Content: A brief paragraph to be displayed within the hero carousel.
+		///</summary>
+		[ImplementPropertyType("heroContent")]
+		public IHtmlString HeroContent
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroCarouselComposition.GetHeroContent(this); }
+		}
+
+		///<summary>
+		/// Hero Images: Images to be displayed in the hero image carousel
+		///</summary>
+		[ImplementPropertyType("heroImages")]
+		public IEnumerable<IPublishedContent> HeroImages
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroCarouselComposition.GetHeroImages(this); }
 		}
 
 		///<summary>
