@@ -1,5 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Services;
-using System.Linq;
+using JNCC.PublicWebsite.Core.Utilities;
 using System.Web;
 using System.Web.Mvc;
 
@@ -23,7 +23,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         {
             var categorisedLinks = _categorisedFooterLinksService.GetViewModels(Root.FooterCategorisedLinks);
 
-            if (categorisedLinks == null || categorisedLinks.Any() == false)
+            if (ExistenceUtility.IsNullOrEmpty(categorisedLinks))
             {
                 return EmptyResult();
             }
@@ -36,7 +36,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         {
             var links = _socialMediaLinksService.GetSocialMediaLinks(Root.FooterSocialMediaLinks);
 
-            if (links == null || links.Any() == false)
+            if (ExistenceUtility.IsNullOrEmpty(links))
             {
                 return EmptyResult();
             }
@@ -55,7 +55,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         {
             var links = _navigationItemService.GetViewModels(Root.FooterUncategorisedLinks);
 
-            if (links == null || links.Any() == false)
+            if (ExistenceUtility.IsNullOrEmpty(links))
             {
                 return EmptyResult();
             }
