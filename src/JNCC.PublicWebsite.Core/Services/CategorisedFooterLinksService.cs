@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class CategorisedFooterLinksService
+    internal sealed class CategorisedFooterLinksService
     {
         private readonly NavigationItemService _navigationItemService;
 

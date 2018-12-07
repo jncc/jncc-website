@@ -6,7 +6,7 @@ using System.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class StaffProfileService
+    internal sealed class StaffProfileService
     {
         public StaffProfilePageViewModel GetViewModel(StaffProfilePage content)
         {

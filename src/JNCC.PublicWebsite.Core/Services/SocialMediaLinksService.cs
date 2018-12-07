@@ -4,7 +4,7 @@ using Umbraco.Web.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class SocialMediaLinksService
+    internal sealed class SocialMediaLinksService
     {
         private readonly NavigationItemService _navigationItemService;
 

@@ -7,7 +7,7 @@ using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class MainNavigationService
+    internal sealed class MainNavigationService
     {
         private const int _maximumMenuLevel = 3;
 

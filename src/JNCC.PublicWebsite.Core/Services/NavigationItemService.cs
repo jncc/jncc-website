@@ -8,7 +8,7 @@ using Umbraco.Web.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class NavigationItemService
+    internal sealed class NavigationItemService
     {
         public IEnumerable<NavigationItemViewModel> GetViewModels(IEnumerable<Link> links)
         {
