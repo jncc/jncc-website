@@ -1,40 +1,35 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.StaffProfilePage>
-@using ContentModels = JNCC.PublicWebsite.Core.Models;
+﻿@model StaffProfilePageViewModel
 @{
     Layout = "Master.cshtml";
 }
 <div class="container">
-    @Html.Partial("~/Views/Partials/Breadcrumbs.cshtml")
+    @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
     <div class="two-columns">
         <div id="content">
-            <h1>@Model.Content.Name</h1>
-            <h2>@Model.Content.JobTitle</h2>
+            <h1>@Model.Name</h1>
+            <h2>@Model.JobTitle</h2>
             <p>
-                @foreach (var tag in Model.Content.ProfileTags){<span class="label">@tag</span> }
+                @foreach (var tag in Model.ProfileTags) {<span class="label">@tag</span> }
             </p>
-            <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" id="profile-tabs">
-                <li class="tabs-title is-active"><a href="#biography" aria-selected="true">Biography</a></li>
-                <li class="tabs-title"><a href="#projects">Projects</a></li>
-                <li class="tabs-title"><a href="#publications">Publications</a></li>
-                <li class="tabs-title"><a href="#research">Research</a></li>
+            <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-tabs" id="profile-tabs">
+                @foreach (var tabKey in Model.TabbedContent.Keys)
+                {
+                    var cssClass = Model.TabbedContent.Keys.IsFirst(tabKey) ? "tabs-title is-active" : "tabs-title";
+                    <li class="@cssClass"><a href="#@tabKey">@tabKey</a></li>
+                }
             </ul>
             <div class="tabs-content" data-tabs-content="profile-tabs">
-                <div class="tabs-panel is-active" id="biography">
-                    @Model.Content.BiographyContent
-                </div>
-                <div class="tabs-panel" id="projects">
-                    @Model.Content.ProjectsContent
-                </div>
-                <div class="tabs-panel" id="publications">
-                    @Model.Content.PublicationsContent
-                </div>
-                <div class="tabs-panel" id="research">
-                    @Model.Content.ResearchContent
-                </div>
+                @foreach (var tab in Model.TabbedContent)
+                {
+                    var cssClass = Model.TabbedContent.IsFirst(tab) ? "tabs-panel is-active" : "tabs-panel";
+                    <div class="@cssClass" id="@tab.Key">
+                        @tab.Value
+                    </div>
+                }
             </div>
         </div>
         <aside id="sidebar">
-            <img src="@Model.Content.ProfilePicture.Url" alt="@Model.Content.Name photo" />
+            <img src="@Model.ImageUrl" alt="@Model.Name photo" />
         </aside>
     </div>
 </div>
