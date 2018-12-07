@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Linq;
@@ -8,6 +8,13 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class HomePageService
     {
+        private readonly NavigationItemService _navigationItemService;
+
+        public HomePageService(NavigationItemService navigationItemService)
+        {
+            _navigationItemService = navigationItemService;
+        }
+
         public HomePageViewModel GetViewModel(HomePage content)
         {
             var viewModel = new HomePageViewModel()

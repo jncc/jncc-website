@@ -7,7 +7,14 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 {
     public sealed class HomePageController : RenderMvcController
     {
-        private readonly HomePageService _homePageService = new HomePageService();
+        private readonly NavigationItemService _navigationItemService;
+        private readonly HomePageService _homePageService;
+
+        public HomePageController()
+        {
+            _navigationItemService = new NavigationItemService();
+            _homePageService = new HomePageService(_navigationItemService);
+        }
 
         public ActionResult Index(HomePage model)
         {
