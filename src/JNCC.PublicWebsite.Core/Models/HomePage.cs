@@ -27,5 +27,15 @@ namespace JNCC.PublicWebsite.Core.Models
         {
             get { return this.GetPropertyValueOfTypeOrDefault<CalloutCardSchema>("calloutCards"); }
         }
+
+        ///<summary>
+        /// Items
+        ///</summary>
+        [ImplementPropertyType("resourcesItems")]
+        public IEnumerable<ResourceItemSchema> ResourcesItems
+        {
+            get { return this.GetPropertyValueOfTypeOrDefault<ResourceItemSchema>("resourcesItems"); }
+        }
+
     }
 }

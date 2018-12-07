@@ -82,15 +82,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Items
-		///</summary>
-		[ImplementPropertyType("resourcesItems")]
-		public IEnumerable<IPublishedContent> ResourcesItems
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("resourcesItems"); }
-		}
-
-		///<summary>
 		/// Title: A title to be given to the resources section.
 		///</summary>
 		[ImplementPropertyType("resourcesTitle")]
