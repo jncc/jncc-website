@@ -1,5 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Services;
-using System.Linq;
+using JNCC.PublicWebsite.Core.Utilities;
 using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -13,7 +13,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         {
             var menuItems = mainNavigationService.GetRootMenuItems(Root, CurrentPage);
 
-            if (menuItems == null || menuItems.Any() == false)
+            if (ExistenceUtility.IsNullOrEmpty(menuItems))
             {
                 return EmptyResult();
             }

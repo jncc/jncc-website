@@ -1,6 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
-using System.Linq;
+using JNCC.PublicWebsite.Core.Utilities;
 using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -28,7 +28,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             var viewModels = _relatedItemsService.GetViewModels(CurrentPage as IRelatedItemsComposition);
 
-            if (viewModels == null || viewModels.Any() == false)
+            if (ExistenceUtility.IsNullOrEmpty(viewModels))
             {
                 return EmptyResult();
             }
