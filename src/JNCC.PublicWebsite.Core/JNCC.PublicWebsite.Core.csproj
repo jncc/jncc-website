@@ -344,6 +344,7 @@
     <Compile Include="ViewModels\SidebarViewModel.cs" />
     <Compile Include="ViewModels\SocialMediaNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\StaffDirectoryProfileViewModel.cs" />
+    <Compile Include="ViewModels\StaffProfilePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
