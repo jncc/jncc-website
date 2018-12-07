@@ -1,0 +1,31 @@
+﻿@model HomePageViewModel
+@if (Model.CalloutCards.Any())
+{
+    <div class="articles-section">
+        <div class="container">
+            <div class="row">
+                @foreach (var card in Model.CalloutCards)
+                {
+                    <div class="columns small-12 medium-6">
+                        <article class="card">
+                            @if (card.Image != null)
+                            {
+                                <div class="img-holder img-for-print">
+                                    <img src="@card.Image.Url" alt="@card.Image.AlternativeText">
+                                </div>
+                            }
+                            <div class="card-section">
+                                <h2>@card.Title</h2>
+                                @card.Content
+                                @if (card.ReadMoreButton != null)
+                                {
+                                    <a href="@card.ReadMoreButton.Url" class="button expanded">@card.ReadMoreButton.Text</a>
+                                }
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
