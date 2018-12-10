@@ -781,6 +781,7 @@
     <Content Include="Views\Partials\PageAttributes.cshtml" />
     <Content Include="Views\Partials\Home\Carousel.cshtml" />
     <Content Include="Views\Partials\Home\CalloutCards.cshtml" />
+    <Content Include="Views\Partials\Home\Resources.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
