@@ -8,5 +8,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public IEnumerable<CalloutCardViewModel> CalloutCards { get; set; }
         public string ResourcesTitle { get; set; }
         public IEnumerable<ResourceItemViewModel> ResourcesItems { get; set; }
+        public IEnumerable<LatestNewsItemViewModel> LatestNews { get; set; }
     }
 }
