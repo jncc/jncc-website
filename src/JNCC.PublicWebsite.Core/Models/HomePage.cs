@@ -15,8 +15,7 @@ namespace JNCC.PublicWebsite.Core.Models
         [ImplementPropertyType("footerCategorisedLinks")]
         public IEnumerable<CategorisedFooterLinksSchema> FooterCategorisedLinks
         {
-            get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("footerCategorisedLinks")
-                             .OfType<CategorisedFooterLinksSchema>(); }
+            get { return this.GetPropertyValueOfTypeOrDefault<CategorisedFooterLinksSchema>("footerCategorisedLinks"); }
         }
 
         ///<summary>
