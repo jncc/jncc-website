@@ -550,6 +550,7 @@ a {
 }
 
 .filtration-section {
+	position: relative;
 	font-size: 0.875rem;
 
 	@include breakpoint(xlarge) {
@@ -608,12 +609,6 @@ a {
 				margin-bottom: 0;
 			}
 		} 
-	}
-
-	p {
-		@include breakpoint(medium) {
-			line-height: 1.78571429;
-		}
 	}
 }
 
