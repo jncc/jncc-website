@@ -22,10 +22,40 @@ namespace JNCC.PublicWebsite.Core.Services
             var viewModel = new HomePageViewModel()
             {
                 Carousel = GetCarouselViewModel(content),
-                CalloutCards = GetCalloutCards(content)
+                CalloutCards = GetCalloutCards(content),
+                ResourcesTitle = content.ResourcesTitle,
+                ResourcesItems = GetResourcesItems(content)
             };
 
             return viewModel;
+        }
+
+        private IEnumerable<ResourceItemViewModel> GetResourcesItems(HomePage content)
+        {
+            var viewModels = new List<ResourceItemViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(content.ResourcesItems))
+            {
+                return viewModels;
+            }
+
+            foreach (var item in content.ResourcesItems)
+            {
+                var viewModel = new ResourceItemViewModel()
+                {
+                    Content = item.Content,
+                    ReadMoreButton = _navigationItemService.GetViewModel(item.Link)
+                };
+
+                if (item.Image != null)
+                {
+                    viewModel.ImageUrl = item.Image.Url;
+                }
+
+                viewModels.Add(viewModel);
+            }
+
+            return viewModels;
         }
 
         private IEnumerable<CalloutCardViewModel> GetCalloutCards(HomePage content)
