@@ -1,0 +1,40 @@
+﻿@model HomePageViewModel
+<section class="widget-section">
+    <img src="images/logo-decor.png" alt="decoration" class="decor">
+    <div class="container">
+        <div class="row">
+            @if (Model.LatestNews.Any())
+            {
+                <div class="columns small-12 large-8">
+                    <h2>Latest News</h2>
+                    <div class="news-holder">
+                        @foreach (var newsItem in Model.LatestNews)
+                        {
+                            <article class="card">
+                                <div class="img-holder img-for-print">
+                                    <img src="@newsItem.ImageUrl" alt="@newsItem.Title thumbnail">
+                                </div>
+                                <div class="card-section">
+                                    <h3>@newsItem.Title</h3>
+                                    <ul class="footer-list no-bullet">
+                                        @*<li>by <a href="#" class="author">Nick</a></li>*@
+                                        <li>@Html.DisplayFor(model => newsItem.PublishDate)</li>
+                                        @*<li>Uncategorized</li>*@
+                                    </ul>
+                                    @newsItem.Description
+                                    <a href="@newsItem.Url" class="button expanded">Read More</a>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                </div>
+            }
+            <div class="columns small-12 large-4 twitter-print-hide">
+                <h2>Twitter</h2>
+                <div class="twitter-widget">
+                    <p>To be integrated.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
