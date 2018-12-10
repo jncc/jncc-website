@@ -91,6 +91,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Show Latest News
+		///</summary>
+		[ImplementPropertyType("showLatestNews")]
+		public bool ShowLatestNews
+		{
+			get { return this.GetPropertyValue<bool>("showLatestNews"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
