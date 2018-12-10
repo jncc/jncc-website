@@ -6,5 +6,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         public CarouselViewModel Carousel { get; set; }
         public IEnumerable<CalloutCardViewModel> CalloutCards { get; set; }
+        public string ResourcesTitle { get; set; }
+        public IEnumerable<ResourceItemViewModel> ResourcesItems { get; set; }
     }
 }
