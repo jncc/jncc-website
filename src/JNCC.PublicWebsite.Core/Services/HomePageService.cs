@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System;
@@ -11,10 +11,12 @@ namespace JNCC.PublicWebsite.Core.Services
     internal sealed class HomePageService
     {
         private readonly NavigationItemService _navigationItemService;
+        private readonly UmbracoHelper _umbracoHelper;
 
-        public HomePageService(NavigationItemService navigationItemService)
+        public HomePageService(NavigationItemService navigationItemService, UmbracoHelper umbracoHelper)
         {
             _navigationItemService = navigationItemService;
+            _umbracoHelper = umbracoHelper;
         }
 
         public HomePageViewModel GetViewModel(HomePage content)
