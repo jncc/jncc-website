@@ -783,6 +783,9 @@
     <Content Include="Views\Partials\Home\CalloutCards.cshtml" />
     <Content Include="Views\Partials\Home\Resources.cshtml" />
     <Content Include="Views\Partials\Home\LatestNewsAndSocialFeed.cshtml" />
+    <Content Include="PostDeploy.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
