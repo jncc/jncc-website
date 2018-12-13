@@ -2,6 +2,7 @@
 using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
+using JNCC.PublicWebsite.Core.Utilities;
 using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -26,16 +27,22 @@ namespace JNCC.PublicWebsite.Core.Services
             };
         }
 
-        public PageHeroAvailability GetPageHeroAvailabilty(IPublishedContent currentPage)
+        public bool HasPageHero(IPublishedContent currentPage)
         {
-            if (currentPage is IPageHeroComposition == false)
+            var isPageHeroComposition = currentPage is IPageHeroCarouselComposition;
+            var isPageHeroCarouselComposition = currentPage is IPageHeroCarouselComposition;
+
+            if (isPageHeroComposition == false && isPageHeroCarouselComposition == false)
             {
-                return PageHeroAvailability.NotApplicable;
+                return false;
             }
 
-            var hasPageHero = (currentPage as IPageHeroComposition).HasPageHeroImage();
-
-            return hasPageHero ? PageHeroAvailability.Authored : PageHeroAvailability.NotAuthored;
+            if (isPageHeroComposition)
+            {
+                return (currentPage as IPageHeroComposition).HasPageHeroImage();
+            }
+            
+            return ExistenceUtility.IsNullOrEmpty((currentPage as IPageHeroCarouselComposition).HeroImages) == false;
         }
     }
 }
