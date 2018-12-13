@@ -8,6 +8,7 @@
     @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
     <div class="two-columns">
         <div id="content">
+            @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
             @Model.Content.MainContent
         </div>
         @(Html.Action<SidebarSurfaceController>("RenderSidebar"))

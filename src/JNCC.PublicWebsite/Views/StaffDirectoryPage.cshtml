@@ -10,6 +10,7 @@
         @(Html.Action<StaffDirectorySurfaceController>("RenderFiltering"))
         <div id="content">
             <section class="staff-holder">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 @Model.Content.Preamble
                 @(Html.Action<StaffDirectorySurfaceController>("RenderListing"))
             </section>

@@ -8,6 +8,7 @@
     @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
     <div class="two-columns">
         <div id="content">
+            @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
             <p>@Html.DisplayFor(model => Model.Content.PublishDate)</p>
             @Model.Content.MainContent
         </div>
