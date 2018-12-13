@@ -293,6 +293,7 @@
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
+    <Compile Include="Extensions\PageHeroCompositionExtensions.cs" />
     <Compile Include="Extensions\PublishedContentExtensions.cs" />
     <Compile Include="Models\ArticlePage.generated.cs" />
     <Compile Include="Models\BizDevServicePage.generated.cs" />
