@@ -29,7 +29,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public bool HasPageHero(IPublishedContent currentPage)
         {
-            var isPageHeroComposition = currentPage is IPageHeroCarouselComposition;
+            var isPageHeroComposition = currentPage is IPageHeroComposition;
             var isPageHeroCarouselComposition = currentPage is IPageHeroCarouselComposition;
 
             if (isPageHeroComposition == false && isPageHeroCarouselComposition == false)
