@@ -1,8 +1,8 @@
-﻿@model IEnumerable<MainNavigationItemViewModel>
-<nav class="top-bar nav" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
+﻿@model MainNavigationViewModel
+<nav class="top-bar nav @Html.If(Model.HasPageHero == false, "no-page-hero")" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
     <div class="container">
         <ul class="vertical medium-horizontal menu">
-            @foreach (var navigationItem in Model)
+            @foreach (var navigationItem in Model.Items)
             {
                 if (navigationItem.IsActive)
                 {
