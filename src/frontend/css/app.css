@@ -8198,6 +8198,7 @@ a {
 }
 
 .filtration-section {
+	position: relative;
 	font-size: .875rem;
 }
 
@@ -8596,6 +8597,10 @@ input[type="search"]::-webkit-search-cancel-button {
 	top: 100%;
 	left: 0;
 	right: 0;
+}
+
+.nav.no-page-hero {
+	position: static;
 }
 
 .menu {
@@ -11105,10 +11110,6 @@ input[type="search"]::-webkit-search-cancel-button {
 	.filtration-section .card {
 		margin-bottom: 1.875rem;
 		height: calc(100% - 1.875rem);
-	}
-
-	.filtration-section p {
-		line-height: 1.78571429;
 	}
 
 	.slick-next,
