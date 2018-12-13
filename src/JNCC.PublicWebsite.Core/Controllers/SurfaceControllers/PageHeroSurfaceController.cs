@@ -1,6 +1,7 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
+using JNCC.PublicWebsite.Core.Extensions;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
@@ -25,5 +26,23 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             return PartialView("~/Views/Partials/PageHero.cshtml", viewModel);
         }
+        [ChildActionOnly]
+        public ActionResult RenderNoPageHeroHeadline()
+        {
+            if (CurrentPage is IPageHeroComposition == false)
+            {
+                return EmptyResult();
+            }
+
+            var composition = CurrentPage as IPageHeroComposition;
+
+            if (composition.HasPageHeroImage() == false)
+            {
+                return EmptyResult();
+            }
+
+            return PartialView("~/Views/Partials/NoPageHeroHeadline.cshtml", composition);
+        }
+
     }
 }

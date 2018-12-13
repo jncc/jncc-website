@@ -1,0 +1,3 @@
+﻿@model ContentModels.IPageHeroComposition
+@using ContentModels = JNCC.PublicWebsite.Core.Models;
+<h1>@Html.IfElse(string.IsNullOrWhiteSpace(Model.Headline), Model.Name, Model.Headline)</h1>
