@@ -1,5 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Constants;
 using System.Globalization;
+using System.Web;
 using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Extensions
@@ -14,6 +15,23 @@ namespace JNCC.PublicWebsite.Core.Extensions
             }
 
             return cultureInfo.TextInfo.IsRightToLeft ? HtmlTextDirectionalities.RightToLeft : HtmlTextDirectionalities.LeftToRight;
+        }
+
+        public static IHtmlString If(this HtmlHelper htmlHelper, bool condition, object value)
+        {
+            return htmlHelper.IfElse(condition, value, null);
+        }
+
+        public static IHtmlString IfElse(this HtmlHelper htmlHelper, bool condition, object valueIfTrue, object valueIfFalse)
+        {
+            var value = condition ? valueIfTrue : valueIfFalse;
+
+            if (value == null)
+            {
+                return null;
+            }
+
+            return new MvcHtmlString(value.ToString());
         }
     }
 }
