@@ -1,7 +1,8 @@
-using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -31,25 +32,14 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var tabbedContent = new Dictionary<string, IHtmlString>
             {
-                { "Biography", content.BiographyContent }
+                { "Biography", content.BiographyContent },
+                { "Projects", content.ProjectsContent },
+                { "Publications", content.PublicationsContent },
+                { "Research", content.ResearchContent }
             };
 
-            if (ExistenceUtility.IsNullOrWhiteSpace(content.ProjectsContent) == false)
-            {
-                tabbedContent.Add("Projects", content.ProjectsContent);
-            }
-
-            if (ExistenceUtility.IsNullOrWhiteSpace(content.PublicationsContent) == false)
-            {
-                tabbedContent.Add("Publications", content.PublicationsContent);
-            }
-
-            if (ExistenceUtility.IsNullOrWhiteSpace(content.ResearchContent) == false)
-            {
-                tabbedContent.Add("Research", content.ResearchContent);
-            }
-
-            return tabbedContent;
+            return tabbedContent.Where(x => ExistenceUtility.IsNullOrWhiteSpace(x.Value) == false)
+                                .ToDictionary(x => x.Key, x => x.Value);
         }
     }
 }
