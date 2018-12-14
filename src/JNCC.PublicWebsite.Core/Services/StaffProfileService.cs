@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
@@ -14,7 +14,8 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 Name = string.IsNullOrWhiteSpace(content.FullName) ? content.Name : content.FullName,
                 JobTitle = content.JobTitle,
-                ProfileTags = content.ProfileTags,
+                Locations = content.ProfileLocations,
+                Teams = content.ProfileTeams,
                 TabbedContent = GetTabbedContent(content)
             };
 

@@ -82,6 +82,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Location(s): The location(s) this staff member commonly works at.
+		///</summary>
+		[ImplementPropertyType("profileLocations")]
+		public IEnumerable<string> ProfileLocations
+		{
+			get { return this.GetPropertyValue<IEnumerable<string>>("profileLocations"); }
+		}
+
+		///<summary>
 		/// Profile Picture
 		///</summary>
 		[ImplementPropertyType("profilePicture")]
@@ -91,12 +100,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Profile Tags: Tags to group staff profiles by shared attributes (e.g. location or division)
+		/// Team(s): The team(s) this staff member works for.
 		///</summary>
-		[ImplementPropertyType("profileTags")]
-		public IEnumerable<string> ProfileTags
+		[ImplementPropertyType("profileTeams")]
+		public IEnumerable<string> ProfileTeams
 		{
-			get { return this.GetPropertyValue<IEnumerable<string>>("profileTags"); }
+			get { return this.GetPropertyValue<IEnumerable<string>>("profileTeams"); }
 		}
 
 		///<summary>

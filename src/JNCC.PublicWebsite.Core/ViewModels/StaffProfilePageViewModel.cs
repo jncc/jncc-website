@@ -8,7 +8,8 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public string JobTitle { get; set; }
-        public IEnumerable<string> ProfileTags { get; set; }
+        public IEnumerable<string> Locations { get; set; }
+        public IEnumerable<string> Teams { get; set; }
         public IReadOnlyDictionary<string, IHtmlString> TabbedContent { get; set; }
     }
 }
