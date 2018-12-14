@@ -12,8 +12,9 @@
     <releaseNotes>TBC</releaseNotes>
   </metadata>
   <files>
-      <file src="Umbraco\**" target="Umbraco" />
-      <file src="umbraco_client\**" target="umbraco_client" />
-      <file src="uSync\**" target="uSync" />
+    <file src="Umbraco\**" target="Umbraco" />
+    <file src="umbraco_client\**" target="umbraco_client" />
+    <file src="uSync\**" target="uSync" />
+    <file src="sql\**" target="sql" />
   </files>
 </package>
