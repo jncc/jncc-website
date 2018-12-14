@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Web;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
@@ -11,5 +11,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public IEnumerable<string> Locations { get; set; }
         public IEnumerable<string> Teams { get; set; }
         public IReadOnlyDictionary<string, IHtmlString> TabbedContent { get; set; }
+        public string DirectoryPageUrl { get; set; }
     }
 }

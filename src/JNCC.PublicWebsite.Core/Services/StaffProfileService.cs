@@ -17,7 +17,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 JobTitle = content.JobTitle,
                 Locations = content.ProfileLocations,
                 Teams = content.ProfileTeams,
-                TabbedContent = GetTabbedContent(content)
+                TabbedContent = GetTabbedContent(content),
+                DirectoryPageUrl = content.Parent.Url
             };
 
             if (content.ProfilePicture != null)

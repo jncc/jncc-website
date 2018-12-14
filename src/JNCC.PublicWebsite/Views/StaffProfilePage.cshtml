@@ -1,4 +1,4 @@
-﻿@model StaffProfilePageViewModel
+@model StaffProfilePageViewModel
 @{
     Layout = "Master.cshtml";
 }
@@ -8,10 +8,10 @@
         <div id="content">
             <h1>@Model.Name</h1>
             <h2>@Model.JobTitle</h2>
-            <p>
-                @foreach (var tag in Model.Locations) {<span class="label location">@tag</span> }
-                @foreach (var tag in Model.Teams) {<span class="label team">@tag</span> }
-            </p>
+                <p>
+                    @foreach (var tag in Model.Locations) {<a href="@Model.DirectoryPageUrl?locations=@tag"><span class="label location">@tag</span></a> }
+                    @foreach (var tag in Model.Teams) {<a href="@Model.DirectoryPageUrl?teams=@tag"><span class="label team">@tag</span></a> }
+                </p>
             <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-tabs" id="profile-tabs">
                 @foreach (var tabKey in Model.TabbedContent.Keys)
                 {
