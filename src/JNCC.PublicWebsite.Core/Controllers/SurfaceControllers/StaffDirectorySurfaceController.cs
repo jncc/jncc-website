@@ -9,14 +9,16 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         private readonly StaffDirectoryService _staffDirectoryService = new StaffDirectoryService();
 
         [ChildActionOnly]
-        public ActionResult RenderFiltering()
+        public ActionResult RenderFiltering(string[] locations, string[] teams)
         {
             if (CurrentPage is StaffDirectoryPage == false)
             {
                 return EmptyResult();
             }
+            var service = new StaffDirectoryFilteringService(Services.TagService);
+            var viewModel = service.GetFilteringViewModel(locations, teams);
 
-            return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml");
+            return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml", viewModel);
         }
 
         [HttpGet]
