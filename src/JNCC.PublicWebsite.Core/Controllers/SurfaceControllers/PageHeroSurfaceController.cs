@@ -36,7 +36,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             var composition = CurrentPage as IPageHeroComposition;
 
-            if (composition.HasPageHeroImage() == false)
+            if (composition.HasPageHeroImage())
             {
                 return EmptyResult();
             }
