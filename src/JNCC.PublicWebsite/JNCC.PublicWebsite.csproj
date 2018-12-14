@@ -928,6 +928,8 @@
     <Content Include="Umbraco\Plugins\courier\masterpages\CourierDialog.Master" />
     <Content Include="Umbraco\Plugins\courier\masterpages\CourierPage.Master" />
     <Content Include="Umbraco\Plugins\courier\webservices\TreeData.ashx" />
+    <Content Include="Views\MacroPartials\InsertUmbracoFormWithTheme.cshtml" />
+    <Content Include="Views\MacroPartials\RenderUmbracoFormScripts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
