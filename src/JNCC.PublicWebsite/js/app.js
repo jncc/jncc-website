@@ -74,6 +74,13 @@ function initAjaxFiltering() {
 			}
 		},
 		findElements: function() {
+            function createButton(btnClass, btnText, $container, append) {
+                var html = '<a href="#" class="button ' + btnClass + '">' + btnText + '</a>';
+                var $btn = append ? $(html).appendTo($container) : $(html).prependTo($container);
+                $btn.hide();
+
+                return $btn;
+            }
 			this.page = $('html, body');
 			this.holder = $(this.options.holder);
 			this.filterForm = this.holder.find('.staff-checkbox-form');
