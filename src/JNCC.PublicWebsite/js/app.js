@@ -38,7 +38,7 @@ function initSlickCarousel() {
 function initAjaxFiltering() {
 	jQuery('.filter-section').ajaxFiltering({
 		container: '.filtration-items-holder .row',
-		items: '.columns',
+        items: '.js-listing-item',
 		filtersItems: '.check-list :checkbox',
 		loadClass: 'loading',
 		btnPrev: '.prev',
