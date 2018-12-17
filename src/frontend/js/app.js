@@ -36,44 +36,44 @@ function initSlickCarousel() {
 
 // Ajax Filtering init
 function initAjaxFiltering() {
-	jQuery('.filter-section').ajaxFiltering({
-		container: '.filtration-items-holder .row',
+    jQuery('.filter-section').ajaxFiltering({
+        container: '.filtration-items-holder .row',
         items: '.js-listing-item',
-		filtersItems: '.check-list :checkbox',
-		loadClass: 'loading',
-		btnPrev: '.prev',
-		btnNext: '.next'
-	});
+        filtersItems: '.check-list :checkbox',
+        loadClass: 'loading',
+        btnPrev: '.prev',
+        btnNext: '.next'
+    });
 }
 
 /*
  * jQuery ajax filtering plugin
  */
 ;(function($) {
-	function AjaxFiltering(options) {
-		this.options = $.extend({
-			container: '.js-ajax-container',
-			items: '.item-event',
-			filtersItems: '.filters-list a',
-			loadClass: 'ajaxLoaded',
-			btnPrev: '.btn-prev',
-			btnNext: '.btn-next',
-			activeClass: 'active',
+    function AjaxFiltering(options) {
+        this.options = $.extend({
+            container: '.js-ajax-container',
+            items: '.item-event',
+            filtersItems: '.filters-list a',
+            loadClass: 'ajaxLoaded',
+            btnPrev: '.btn-prev',
+            btnNext: '.btn-next',
+            activeClass: 'active',
             paginationContainer: '.filtration-buttons-holder',
-			delay: 500
-		}, options);
-		this.init();
-	}
+            delay: 500
+        }, options);
+        this.init();
+    }
 
-	AjaxFiltering.prototype = {
-		init: function() {
-			if (this.options.holder) {
-				this.findElements();
-				this.attachEvents();
-				this.makeCallback('onInit', this);
-			}
-		},
-		findElements: function() {
+    AjaxFiltering.prototype = {
+        init: function () {
+            if (this.options.holder) {
+                this.findElements();
+                this.attachEvents();
+                this.makeCallback('onInit', this);
+            }
+        },
+        findElements: function () {
             function createButton(btnClass, btnText, $container, append) {
                 var html = '<a href="#" class="button ' + btnClass + '">' + btnText + '</a>';
                 var $btn = append ? $(html).appendTo($container) : $(html).prependTo($container);
@@ -81,124 +81,126 @@ function initAjaxFiltering() {
 
                 return $btn;
             }
-			this.page = $('html, body');
-			this.holder = $(this.options.holder);
+            this.page = $('html, body');
+            this.holder = $(this.options.holder);
             
             var btnPrev = this.holder.find(this.options.btnPrev);
             var btnNext = this.holder.find(this.options.btnNext);
 
-			this.filterForm = this.holder.find('.staff-checkbox-form');
-			this.searchForm = this.holder.find('.search-form');
-			this.container = this.holder.find(this.options.container);
+            this.filterForm = this.holder.find('.staff-checkbox-form');
+            this.searchForm = this.holder.find('.search-form');
+            this.container = this.holder.find(this.options.container);
             this.paginationContainer = this.holder.find(this.options.paginationContainer);
-			this.filtersItems = this.holder.find(this.options.filtersItems);
+            this.filtersItems = this.holder.find(this.options.filtersItems);
             this.btnPrev = btnPrev.length ? btnPrev : createButton('prev', 'Previous', this.paginationContainer, false);
             this.btnNext = btnNext.length ? btnNext : createButton('next', 'Next', this.paginationContainer, true);
-			this.ajaxBusy = false;
-			this.numPage = 1;
-		},
-		attachEvents: function() {
-			var self = this;
+            this.ajaxBusy = false;
+            this.numPage = 1;
+        },
+        attachEvents: function () {
+            var self = this;
 
-			this.btnPrev.on('click', function(e) {
-				e.preventDefault();
-				self.changeHandler(self.btnPrev.attr('href'));
-			});
+            this.btnPrev.on('click', function (e) {
+                e.preventDefault();
+                self.changeHandler(self.btnPrev.attr('href'));
+            });
 
-			this.btnNext.on('click', function(e) {
-				e.preventDefault();
-				self.changeHandler(self.btnNext.attr('href'));
-			});
+            this.btnNext.on('click', function (e) {
+                e.preventDefault();
+                self.changeHandler(self.btnNext.attr('href'));
+            });
 
-			this.onClickHandler = function(e) {
-				self.clickHandler(e);
-			};
+            this.onClickHandler = function (e) {
+                self.clickHandler(e);
+            };
 
-			this.filtersItems.on('change', function() {
-				self.changeHandler();
-			});
+            this.filtersItems.on('change', function () {
+                self.changeHandler();
+            });
 
-			this.searchForm.on('submit', function(e) {
-				e.preventDefault();
-				self.changeHandler();
-			});
-		},
-		changeHandler: function(src) {
-			if (!this.ajaxBusy) {
-				this.container.find(this.options.items).css('opacity', 0);
-				this.holder.addClass(this.options.loadClass);
-				this.ajaxBusy = true;
-				this.ajaxRequest(src);
-			}
-		},
-		ajaxRequest: function(src) {
-			var self = this;
+            this.searchForm.on('submit', function (e) {
+                e.preventDefault();
+                self.changeHandler();
+            });
+        },
+        changeHandler: function (src) {
+            if (!this.ajaxBusy) {
+                this.container.find(this.options.items).css('opacity', 0);
+                this.holder.addClass(this.options.loadClass);
+                this.ajaxBusy = true;
+                this.ajaxRequest(src);
+            }
+        },
+        ajaxRequest: function (src) {
+            var self = this;
+            var ajaxUrl = src ? src : this.filterForm.attr('action');
+            var ajaxData = 'ajax=1&' + (this.filterForm.serialize() !== '' ? (this.filterForm.serialize() + '&') : '') + this.searchForm.serialize();
 
-			$.ajax({
-				url: src ? src : this.filterForm.attr('action'),
-				type: 'GET',
-				data: 'ajax=1&' + (this.filterForm.serialize() !=='' ? (this.filterForm.serialize() + '&') : '') + this.searchForm.serialize(),
-				dataType: 'text',
-				success: function(data) {
-					self.onSuccess(data);
-				}
-			});
-		},
-		onSuccess: function(data) {
-			var self = this;
-			var loadedBlock = $('<div/>').html(data);
+            $.ajax({
+                url: ajaxUrl,
+                type: 'GET',
+                data: ajaxData,
+                dataType: 'text',
+                success: function (data) {
+                    self.onSuccess(data);
+                }
+            });
+        },
+        onSuccess: function (data) {
+            var self = this;
+            var loadedBlock = $('<div/>').html(data);
 
-			this.container.empty();
+            this.container.empty();
 
-			var items = loadedBlock.find(this.options.items).appendTo(this.container).css('opacity', 0);
-			var btnPrev = loadedBlock.find(this.options.btnPrev);
-			var btnNext = loadedBlock.find(this.options.btnNext);
+            var items = loadedBlock.find(this.options.items).appendTo(this.container).css('opacity', 0);
+            var btnPrev = loadedBlock.find(this.options.btnPrev);
+            var btnNext = loadedBlock.find(this.options.btnNext);
 
-			if (btnPrev.length) {
-				this.btnPrev.attr('href', btnPrev.attr('href')).show();
-			} else {
-				this.btnPrev.hide();
-			}
+            if (btnPrev.length) {
+                this.btnPrev.attr('href', btnPrev.attr('href')).show();
+            } else {
+                this.btnPrev.hide();
+            }
 
-			if (btnNext.length) {
-				this.btnNext.attr('href', btnNext.attr('href')).show();
-			} else {
-				this.btnNext.hide();
-			}
+            if (btnNext.length) {
+                this.btnNext.attr('href', btnNext.attr('href')).show();
+            } else {
+                this.btnNext.hide();
+            }
 
-			setTimeout(function() {
-				self.makeCallback('ajaxComplete', items);
+            setTimeout(function () {
+                self.makeCallback('ajaxComplete', items);
 
-				items.animate({
-					opacity: 1
-				}, self.options.delay);
+                items.animate({
+                    opacity: 1
+                }, self.options.delay);
 
-				self.page.animate({
-					scrollTop: self.holder.offset().top
-				}, self.options.delay);
+                self.page.animate({
+                    scrollTop: self.holder.offset().top
+                }, self.options.delay);
 
-				self.holder.removeClass(self.options.loadClass);
-				self.ajaxBusy = false;
-			}, this.options.delay);
-		},
-		makeCallback: function(name) {
-			if (typeof this.options[name] === 'function') {
-				var args = Array.prototype.slice.call(arguments);
+                self.holder.removeClass(self.options.loadClass);
+                self.ajaxBusy = false;
+            }, this.options.delay);
+        },
+        makeCallback: function (name) {
+            if (typeof this.options[name] === 'function') {
+                var args = Array.prototype.slice.call(arguments);
 
-				args.shift();
-				this.options[name].apply(this, args);
-			}
-		}
-	};
+                args.shift();
+                this.options[name].apply(this, args);
+            }
+        }
+    };
 
-	// jQuery plugin interface
-	$.fn.ajaxFiltering = function(opt) {
-		return this.each(function() {
-			$(this).data('AjaxFiltering', new AjaxFiltering($.extend(opt, {
-				holder: this
-			})));
-		});
-	};
+    // jQuery plugin interface
+    $.fn.ajaxFiltering = function (opt) {
+        return this.each(function () {
+            $(this).data('AjaxFiltering', new AjaxFiltering($.extend(opt, {
+                holder: this
+            })));
+        });
+    };
 }(jQuery));
 
 // Cookie Policy Banner
