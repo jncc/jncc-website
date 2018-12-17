@@ -4,7 +4,7 @@
     {
         <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
     }
-    @if (Model.InThisSectionLinks != null && Model.InThisSectionLinks.Any())
+    @if (Model.HasInThisSectionLinks)
     {
         <nav class="holder" aria-label="aside-navigation">
             <h2>In this section</h2>
@@ -16,7 +16,21 @@
             </ul>
         </nav>
     }
-    @if (Model.SeeAlsoLinks != null && Model.SeeAlsoLinks.Any())
+
+    @if (Model.HasAlsoInLinks)
+    {
+        <nav class="holder" aria-label="aside-navigation">
+            <h2>@Model.AlsoInLinksTitle</h2>
+            <ul class="aside-nav no-bullet">
+                @foreach (var link in Model.AlsoInLinks)
+                {
+                    <li><a href="@link.Url">@link.Text</a></li>
+                }
+            </ul>
+        </nav>
+    }
+
+    @if (Model.HasSeeAlsoLinks)
     {
         <nav class="holder" aria-label="aside-navigation">
             <h2>See also</h2>
