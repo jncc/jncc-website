@@ -59,6 +59,7 @@ function initAjaxFiltering() {
 			btnPrev: '.btn-prev',
 			btnNext: '.btn-next',
 			activeClass: 'active',
+            paginationContainer: '.filtration-buttons-holder',
 			delay: 500
 		}, options);
 		this.init();
@@ -78,6 +79,7 @@ function initAjaxFiltering() {
 			this.filterForm = this.holder.find('.staff-checkbox-form');
 			this.searchForm = this.holder.find('.search-form');
 			this.container = this.holder.find(this.options.container);
+            this.paginationContainer = this.holder.find(this.options.paginationContainer);
 			this.filtersItems = this.holder.find(this.options.filtersItems);
 			this.btnPrev = this.holder.find(this.options.btnPrev);
 			this.btnNext = this.holder.find(this.options.btnNext);
