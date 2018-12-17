@@ -10,14 +10,22 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         private readonly StaffDirectoryService _staffDirectoryService = new StaffDirectoryService();
 
         [ChildActionOnly]
-        public ActionResult RenderFiltering(string[] locations, string[] teams)
+        public ActionResult RenderFiltering(string[] locations, string[] teams, string searchTerm)
         {
             if (CurrentPage is StaffDirectoryPage == false)
             {
                 return EmptyResult();
             }
+
+            var filters = new StaffDirectoryFilteringModel
+            {
+                Locations = locations,
+                Teams = teams,
+                SearchTerm = searchTerm
+            };
+
             var service = new StaffDirectoryFilteringService(Services.TagService);
-            var viewModel = service.GetFilteringViewModel(locations, teams);
+            var viewModel = service.GetFilteringViewModel(filters);
 
             return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml", viewModel);
         }

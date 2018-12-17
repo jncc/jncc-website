@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Utilities;
+﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,23 @@ namespace JNCC.PublicWebsite.Core.Services
             _tagService = tagService;
         }
 
-        public StaffDirectoryFilteringViewModel GetFilteringViewModel(string[] locations, string[] teams)
+        public StaffDirectoryFilteringViewModel GetFilteringViewModel(StaffDirectoryFilteringModel filteringModel)
         {
             var allLocations = GetAllLocations();
             var allTeams = GetAllTeams();
 
-            return new StaffDirectoryFilteringViewModel()
+            var viewModel = new StaffDirectoryFilteringViewModel()
             {
-                Locations = GetFilters(allLocations, locations),
-                Teams = GetFilters(allTeams, teams)
+                Locations = GetFilters(allLocations, filteringModel.Locations),
+                Teams = GetFilters(allTeams, filteringModel.Teams)
             };
+
+            if (string.IsNullOrWhiteSpace(filteringModel.SearchTerm) == false)
+            {
+                viewModel.SearchTerm = filteringModel.SearchTerm;
+            }
+
+            return viewModel;
         }
 
         private IReadOnlyDictionary<string, bool> GetFilters(IEnumerable<string> allFilters, string[] selectedFilters)

@@ -33,6 +33,11 @@ namespace JNCC.PublicWebsite.Core.Services
                 }
             }
 
+            if (string.IsNullOrWhiteSpace(filteringModel.SearchTerm) == false)
+            {
+                collection.Add("searchTerm", filteringModel.SearchTerm);
+            }
+
             return collection;
         }
 
