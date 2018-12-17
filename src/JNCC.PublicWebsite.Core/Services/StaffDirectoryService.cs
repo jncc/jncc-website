@@ -1,23 +1,64 @@
 ﻿using JNCC.PublicWebsite.Core.Constants;
 using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class StaffDirectoryService : ListingService<StaffDirectoryPage, StaffProfilePage, StaffDirectoryProfileViewModel>
+    internal sealed class StaffDirectoryService : ListingService<StaffDirectoryPage, StaffProfilePage, StaffDirectoryProfileViewModel, StaffDirectoryFilteringModel>
     {
-        protected override int GetItemsPerPage(StaffDirectoryPage parent)
+        public override NameValueCollection ConvertFiltersToNameValueCollection(StaffDirectoryFilteringModel filteringModel)
         {
-            return parent.ProfilesPerPage;
+            var collection = new NameValueCollection();
+
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.Locations) == false)
+            {
+                foreach (var value in filteringModel.Locations)
+                {
+                    collection.Add("locations", value);
+                }
+            }
+
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.Teams) == false)
+            {
+                foreach (var value in filteringModel.Teams)
+                {
+                    collection.Add("teams", value);
+                }
+            }
+
+            return collection;
         }
 
-        protected override IOrderedEnumerable<StaffProfilePage> GetOrderedChildren(StaffDirectoryPage parent)
+        protected override int GetItemsPerPage(StaffDirectoryPage parent)
         {
-            return parent.Children<StaffProfilePage>()
-                         .OrderByFirstAvailableProperty(x => new string[] { x.SortName, x.FullName, x.Name });
+            return 1;// parent.ProfilesPerPage;
+        }
+
+        protected override IOrderedEnumerable<StaffProfilePage> GetOrderedChildren(StaffDirectoryPage parent, StaffDirectoryFilteringModel filteringModel)
+        {
+            var allChildren = parent.Children<StaffProfilePage>();
+            var conditions = new List<Func<StaffProfilePage, bool>>();
+
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.Teams) == false)
+            {
+                conditions.Add(x => filteringModel.Teams.Any(y => x.ProfileTeams.Contains(y, StringComparer.OrdinalIgnoreCase)));
+            }
+
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.Locations) == false)
+            {
+                conditions.Add(x => filteringModel.Locations.Any(y => x.ProfileLocations.Contains(y, StringComparer.OrdinalIgnoreCase)));
+            }
+
+            var actualChildren = ExistenceUtility.IsNullOrEmpty(conditions) ? allChildren : allChildren.Where(x => conditions.All(y => y.Invoke(x)));
+
+            return actualChildren.OrderByFirstAvailableProperty(x => new string[] { x.SortName, x.FullName, x.Name });
         }
 
         protected override StaffDirectoryProfileViewModel ToViewModel(StaffProfilePage content)

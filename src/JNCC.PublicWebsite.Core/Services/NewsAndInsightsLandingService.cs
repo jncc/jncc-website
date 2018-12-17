@@ -2,19 +2,25 @@
 using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
+using System.Collections.Specialized;
 using System.Linq;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class NewsAndInsightsLandingService : ListingService<NewsAndInsightsLandingPage, ArticlePage, ArticleListingViewModel>
+    internal sealed class NewsAndInsightsLandingService : ListingService<NewsAndInsightsLandingPage, ArticlePage, ArticleListingViewModel, ListFilteringModel>
     {
+        public override NameValueCollection ConvertFiltersToNameValueCollection(ListFilteringModel filteringModel)
+        {
+            return new NameValueCollection();
+        }
+
         protected override int GetItemsPerPage(NewsAndInsightsLandingPage parent)
         {
             return parent.ArticlesPerPage;
         }
 
-        protected override IOrderedEnumerable<ArticlePage> GetOrderedChildren(NewsAndInsightsLandingPage parent)
+        protected override IOrderedEnumerable<ArticlePage> GetOrderedChildren(NewsAndInsightsLandingPage parent, ListFilteringModel filteringModel)
         {
             return parent.Children<ArticlePage>()
                          .OrderByDescending(x => x.PublishDate)
