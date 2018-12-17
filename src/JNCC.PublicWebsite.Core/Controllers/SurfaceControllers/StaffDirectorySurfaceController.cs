@@ -10,47 +10,32 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         private readonly StaffDirectoryService _staffDirectoryService = new StaffDirectoryService();
 
         [ChildActionOnly]
-        public ActionResult RenderFiltering(string[] locations, string[] teams, string searchTerm)
+        public ActionResult RenderFiltering(StaffDirectoryFilteringModel model)
         {
             if (CurrentPage is StaffDirectoryPage == false)
             {
                 return EmptyResult();
             }
 
-            var filters = new StaffDirectoryFilteringModel
-            {
-                Locations = locations,
-                Teams = teams,
-                SearchTerm = searchTerm
-            };
-
             var service = new StaffDirectoryFilteringService(Services.TagService);
-            var viewModel = service.GetFilteringViewModel(filters);
+            var viewModel = service.GetFilteringViewModel(model);
 
             return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml", viewModel);
         }
 
         [HttpGet]
         [ChildActionOnly]
-        public ActionResult RenderListing(string[] locations, string[] teams, string searchTerm, int pageNumber = 1)
+        public ActionResult RenderListing(StaffDirectoryFilteringModel model)
         {
             if (CurrentPage is StaffDirectoryPage == false)
             {
                 return EmptyResult();
             }
 
-            var filters = new StaffDirectoryFilteringModel
-            {
-                Locations = locations,
-                Teams = teams,
-                PageNumber = pageNumber,
-                SearchTerm = searchTerm
-            };
-
             var viewModel = new StaffDirectoryListingViewModel
             {
-                Items = _staffDirectoryService.GetViewModels(CurrentPage as StaffDirectoryPage, filters),
-                Filters = _staffDirectoryService.ConvertFiltersToNameValueCollection(filters)
+                Items = _staffDirectoryService.GetViewModels(CurrentPage as StaffDirectoryPage, model),
+                Filters = _staffDirectoryService.ConvertFiltersToNameValueCollection(model)
             };
 
             return PartialView("~/Views/Partials/StaffDirectory/Listing.cshtml", viewModel);
