@@ -1,3 +1,4 @@
+﻿using JNCC.PublicWebsite.Core.Utilities;
 using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
@@ -21,6 +22,16 @@ namespace JNCC.PublicWebsite.Core.ViewModels
             get
             {
                 return ExistenceUtility.IsNullOrEmpty(SeeAlsoLinks) == false;
+            }
+        }
+
+        public string AlsoInLinksTitle { get; set; }
+        public IEnumerable<NavigationItemViewModel> AlsoInLinks { get; set; }
+        public bool HasAlsoInLinks
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(AlsoInLinks) == false;
             }
         }
     }
