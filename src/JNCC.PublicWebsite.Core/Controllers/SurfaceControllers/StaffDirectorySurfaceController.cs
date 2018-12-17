@@ -7,8 +7,6 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
     public sealed class StaffDirectorySurfaceController : CoreSurfaceController
     {
-        private readonly StaffDirectoryService _staffDirectoryService = new StaffDirectoryService();
-
         [ChildActionOnly]
         public ActionResult RenderFiltering(StaffDirectoryFilteringModel model)
         {
@@ -23,7 +21,6 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml", viewModel);
         }
 
-        [HttpGet]
         [ChildActionOnly]
         public ActionResult RenderListing(StaffDirectoryFilteringModel model)
         {
@@ -32,10 +29,11 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
                 return EmptyResult();
             }
 
+            var service = new StaffDirectoryService();
             var viewModel = new StaffDirectoryListingViewModel
             {
-                Items = _staffDirectoryService.GetViewModels(CurrentPage as StaffDirectoryPage, model),
-                Filters = _staffDirectoryService.ConvertFiltersToNameValueCollection(model)
+                Items = service.GetViewModels(CurrentPage as StaffDirectoryPage, model),
+                Filters = service.ConvertFiltersToNameValueCollection(model)
             };
 
             return PartialView("~/Views/Partials/StaffDirectory/Listing.cshtml", viewModel);
