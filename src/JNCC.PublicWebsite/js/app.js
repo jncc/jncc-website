@@ -83,13 +83,17 @@ function initAjaxFiltering() {
             }
 			this.page = $('html, body');
 			this.holder = $(this.options.holder);
+            
+            var btnPrev = this.holder.find(this.options.btnPrev);
+            var btnNext = this.holder.find(this.options.btnNext);
+
 			this.filterForm = this.holder.find('.staff-checkbox-form');
 			this.searchForm = this.holder.find('.search-form');
 			this.container = this.holder.find(this.options.container);
             this.paginationContainer = this.holder.find(this.options.paginationContainer);
-			this.filtersItems = this.holder.find(this.options.filtersItems);
-			this.btnPrev = this.holder.find(this.options.btnPrev);
-			this.btnNext = this.holder.find(this.options.btnNext);
+            this.filtersItems = this.holder.find(this.options.filtersItems);
+            this.btnPrev = btnPrev.length ? btnPrev : createButton('prev', 'Previous', this.paginationContainer, false);
+            this.btnNext = btnNext.length ? btnNext : createButton('next', 'Next', this.paginationContainer, true);
 			this.ajaxBusy = false;
 			this.numPage = 1;
 		},
