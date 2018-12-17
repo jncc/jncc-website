@@ -24,7 +24,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
         [HttpGet]
         [ChildActionOnly]
-        public ActionResult RenderListing(string[] locations, string[] teams, int pageNumber = 1)
+        public ActionResult RenderListing(string[] locations, string[] teams, string searchTerm, int pageNumber = 1)
         {
             if (CurrentPage is StaffDirectoryPage == false)
             {
@@ -35,7 +35,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             {
                 Locations = locations,
                 Teams = teams,
-                PageNumber = pageNumber
+                PageNumber = pageNumber,
+                SearchTerm = searchTerm
             };
 
             var viewModel = new StaffDirectoryListingViewModel
