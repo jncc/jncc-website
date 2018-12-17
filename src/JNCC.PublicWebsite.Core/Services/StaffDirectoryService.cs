@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using Umbraco.Core;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -59,6 +60,15 @@ namespace JNCC.PublicWebsite.Core.Services
             if (ExistenceUtility.IsNullOrEmpty(filteringModel.Locations) == false)
             {
                 conditions.Add(x => filteringModel.Locations.Any(y => x.ProfileLocations.Contains(y, StringComparer.OrdinalIgnoreCase)));
+            }
+
+            if (string.IsNullOrEmpty(filteringModel.SearchTerm) == false)
+            {
+                conditions.Add(x => x.Name.InvariantContains(filteringModel.SearchTerm)
+                                 || x.FullName.InvariantContains(filteringModel.SearchTerm)
+                                 || x.JobTitle.InvariantContains(filteringModel.SearchTerm)
+                                 || (ExistenceUtility.IsNullOrWhiteSpace(x.DirectoryListingContent) == false && x.DirectoryListingContent.ToString().InvariantContains(filteringModel.SearchTerm))
+                              );
             }
 
             var actualChildren = ExistenceUtility.IsNullOrEmpty(conditions) ? allChildren : allChildren.Where(x => conditions.All(y => y.Invoke(x)));
