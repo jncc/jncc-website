@@ -1,13 +1,27 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public class SidebarViewModel
+    public sealed class SidebarViewModel
     {
         public NavigationItemViewModel PrimaryCallToActionButton { get; set; }
 
         public IEnumerable<NavigationItemViewModel> InThisSectionLinks { get; set; }
+        public bool HasInThisSectionLinks
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(InThisSectionLinks) == false;
+            }
+        }
 
         public IEnumerable<NavigationItemViewModel> SeeAlsoLinks { get; set; }
+        public bool HasSeeAlsoLinks
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(SeeAlsoLinks) == false;
+            }
+        }
     }
 }
