@@ -352,6 +352,7 @@
     <Compile Include="ViewModels\BreadcrumbsViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
+    <Compile Include="ViewModels\FilteringViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\LatestNewsItemViewModel.cs" />
