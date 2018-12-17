@@ -38,7 +38,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         protected override int GetItemsPerPage(StaffDirectoryPage parent)
         {
-            return 1;// parent.ProfilesPerPage;
+            return parent.ProfilesPerPage;
         }
 
         protected override IOrderedEnumerable<StaffProfilePage> GetOrderedChildren(StaffDirectoryPage parent, StaffDirectoryFilteringModel filteringModel)
