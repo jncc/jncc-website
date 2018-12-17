@@ -315,6 +315,7 @@
     <Compile Include="Models\InternalTextPage.generated.cs" />
     <Compile Include="Models\Member.generated.cs" />
     <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
+    <Compile Include="Models\NewsAndInsightsLandingFilteringModel.cs" />
     <Compile Include="Models\NewsAndInsightsLandingPage.cs" />
     <Compile Include="Models\NewsAndInsightsLandingPage.generated.cs" />
     <Compile Include="Models\PageHeroCarouselComposition.generated.cs" />
