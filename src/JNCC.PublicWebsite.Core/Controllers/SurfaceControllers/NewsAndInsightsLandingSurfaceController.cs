@@ -28,7 +28,12 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
                 return EmptyResult();
             }
 
-            var results = _newsAndInsightsLandingService.GetViewModels(CurrentPage as NewsAndInsightsLandingPage, pageNumber);
+            var filtering = new ListFilteringModel()
+            {
+                PageNumber = pageNumber
+            };
+
+            var results = _newsAndInsightsLandingService.GetViewModels(CurrentPage as NewsAndInsightsLandingPage, filtering);
 
             return PartialView("~/Views/Partials/NewsAndInsightsLanding/Listing.cshtml", results);
         }
