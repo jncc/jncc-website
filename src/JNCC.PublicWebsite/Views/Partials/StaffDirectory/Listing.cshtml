@@ -1,10 +1,11 @@
-﻿@model PagedResult<StaffDirectoryProfileViewModel>
+﻿@model StaffDirectoryListingViewModel
 <div class="filtration-section">
+    <div class="loader">Loading...</div>
     <div class="filtration-items-holder">
         <div class="row">
-            @foreach (var profile in Model.Items)
+            @foreach (var profile in Model.Items.Items)
             {
-                <div class="columns medium-6 large-4">
+                <div class="columns medium-6 large-4 js-listing-item">
                     <a href="@profile.Url" class="card">
                         <div class="img-holder">
                             <img src="@profile.ImageUrl" alt="@profile.Name photo">
@@ -22,13 +23,13 @@
         </div>
     </div>
     <div class="filtration-buttons-holder">
-        @if (Model.IsPageNumberGreaterThanFirst())
+        @if (Model.Items.IsPageNumberGreaterThanFirst())
         {
-            <a href="?pageNumber=@Model.PreviousPageNumber()" class="button prev">Previous</a>
+            <a href="@Url.PaginationQueryString(Model.Items.PreviousPageNumber(), Model.Filters)" class="button prev">Previous</a>
         }
-        @if (Model.IsPageNumberLessThanLast())
+        @if (Model.Items.IsPageNumberLessThanLast())
         {
-            <a href="?pageNumber=@Model.NextPageNumber()" class="button next">Next</a>
+            <a href="@Url.PaginationQueryString(Model.Items.NextPageNumber(), Model.Filters)" class="button next">Next</a>
         }
     </div>
 </div>

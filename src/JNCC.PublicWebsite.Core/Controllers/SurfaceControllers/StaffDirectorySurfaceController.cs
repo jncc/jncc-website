@@ -1,5 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
+using JNCC.PublicWebsite.Core.ViewModels;
 using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -23,16 +24,27 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
         [HttpGet]
         [ChildActionOnly]
-        public ActionResult RenderListing(int pageNumber = 1)
+        public ActionResult RenderListing(string[] locations, string[] teams, int pageNumber = 1)
         {
             if (CurrentPage is StaffDirectoryPage == false)
             {
                 return EmptyResult();
             }
 
-            var results = _staffDirectoryService.GetViewModels(CurrentPage as StaffDirectoryPage, pageNumber);
+            var filters = new StaffDirectoryFilteringModel
+            {
+                Locations = locations,
+                Teams = teams,
+                PageNumber = pageNumber
+            };
 
-            return PartialView("~/Views/Partials/StaffDirectory/Listing.cshtml", results);
+            var viewModel = new StaffDirectoryListingViewModel
+            {
+                Items = _staffDirectoryService.GetViewModels(CurrentPage as StaffDirectoryPage, filters),
+                Filters = _staffDirectoryService.ConvertFiltersToNameValueCollection(filters)
+            };
+
+            return PartialView("~/Views/Partials/StaffDirectory/Listing.cshtml", viewModel);
         }
     }
 }
