@@ -8,7 +8,7 @@ using Umbraco.Core.Services;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class StaffDirectoryFilteringService
+    internal sealed class StaffDirectoryFilteringService : FilteringService<StaffDirectoryFilteringModel, StaffDirectoryFilteringViewModel>
     {
         private ITagService _tagService;
 
@@ -17,7 +17,7 @@ namespace JNCC.PublicWebsite.Core.Services
             _tagService = tagService;
         }
 
-        public StaffDirectoryFilteringViewModel GetFilteringViewModel(StaffDirectoryFilteringModel filteringModel)
+        public override StaffDirectoryFilteringViewModel GetFilteringViewModel(StaffDirectoryFilteringModel filteringModel)
         {
             var allLocations = GetAllLocations();
             var allTeams = GetAllTeams();

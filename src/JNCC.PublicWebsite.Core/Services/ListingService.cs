@@ -5,11 +5,11 @@ using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal abstract class ListingService<TParent, TChild, TViewModel, TListFilteringModel> where TParent : IPublishedContent
+    internal abstract class ListingService<TParent, TChild, TViewModel, TFilteringModel> where TParent : IPublishedContent
                                                                                              where TChild : IPublishedContent
-                                                                                             where TListFilteringModel : ListFilteringModel
+                                                                                             where TFilteringModel : FilteringModel
     {
-        public Paged​Result<TViewModel> GetViewModels(TParent parent, TListFilteringModel filteringModel)
+        public Paged​Result<TViewModel> GetViewModels(TParent parent, TFilteringModel filteringModel)
         {
             var children = GetOrderedChildren(parent, filteringModel);
             var numberOfItemsPerPage = GetItemsPerPage(parent);
@@ -24,11 +24,11 @@ namespace JNCC.PublicWebsite.Core.Services
             return results;
         }
 
-        public abstract NameValueCollection ConvertFiltersToNameValueCollection(TListFilteringModel filteringModel);
+        public abstract NameValueCollection ConvertFiltersToNameValueCollection(TFilteringModel filteringModel);
 
         protected abstract int GetItemsPerPage(TParent parent);
 
-        protected abstract IOrderedEnumerable<TChild> GetOrderedChildren(TParent parent, TListFilteringModel filteringModel);
+        protected abstract IOrderedEnumerable<TChild> GetOrderedChildren(TParent parent, TFilteringModel filteringModel);
 
         protected abstract TViewModel ToViewModel(TChild content);
 

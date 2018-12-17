@@ -1,8 +1,8 @@
 ﻿namespace JNCC.PublicWebsite.Core.Models
 {
-    public class ListFilteringModel
+    public class FilteringModel
     {
-        public ListFilteringModel()
+        public FilteringModel()
         {
             PageNumber = 1;
         }

@@ -28,7 +28,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
                 return EmptyResult();
             }
 
-            var filtering = new ListFilteringModel()
+            var filtering = new FilteringModel()
             {
                 PageNumber = pageNumber
             };

@@ -8,9 +8,9 @@ using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class NewsAndInsightsLandingService : ListingService<NewsAndInsightsLandingPage, ArticlePage, ArticleListingViewModel, ListFilteringModel>
+    internal sealed class NewsAndInsightsLandingService : ListingService<NewsAndInsightsLandingPage, ArticlePage, ArticleListingViewModel, FilteringModel>
     {
-        public override NameValueCollection ConvertFiltersToNameValueCollection(ListFilteringModel filteringModel)
+        public override NameValueCollection ConvertFiltersToNameValueCollection(FilteringModel filteringModel)
         {
             return new NameValueCollection();
         }
@@ -20,7 +20,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return parent.ArticlesPerPage;
         }
 
-        protected override IOrderedEnumerable<ArticlePage> GetOrderedChildren(NewsAndInsightsLandingPage parent, ListFilteringModel filteringModel)
+        protected override IOrderedEnumerable<ArticlePage> GetOrderedChildren(NewsAndInsightsLandingPage parent, FilteringModel filteringModel)
         {
             return parent.Children<ArticlePage>()
                          .OrderByDescending(x => x.PublishDate)

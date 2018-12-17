@@ -307,12 +307,12 @@
     <Compile Include="Models\ContentItemSchema.cs" />
     <Compile Include="Models\ContentItemSchema.generated.cs" />
     <Compile Include="Models\File.generated.cs" />
+    <Compile Include="Models\FilteringModel.cs" />
     <Compile Include="Models\Folder.generated.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\HomePage.generated.cs" />
     <Compile Include="Models\Image.generated.cs" />
     <Compile Include="Models\InternalTextPage.generated.cs" />
-    <Compile Include="Models\ListingFilteringModel.cs" />
     <Compile Include="Models\Member.generated.cs" />
     <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
     <Compile Include="Models\NewsAndInsightsLandingPage.cs" />
@@ -329,6 +329,7 @@
     <Compile Include="Models\StaffDirectoryPage.generated.cs" />
     <Compile Include="Models\StaffProfilePage.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FilteringService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
     <Compile Include="Services\HomePageService.cs" />
