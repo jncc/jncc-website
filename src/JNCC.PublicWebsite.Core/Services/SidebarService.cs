@@ -1,6 +1,8 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
+using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -17,6 +19,8 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public SidebarViewModel GetViewModel(ISidebarComposition composition)
         {
+            var sectionRoot = GetSectionAncestor(composition);
+
             var viewModel = new SidebarViewModel()
             {
                 PrimaryCallToActionButton = _navigationItemService.GetViewModel(composition.SidebarPrimaryCallToActionButton),
@@ -24,7 +28,20 @@ namespace JNCC.PublicWebsite.Core.Services
                 SeeAlsoLinks = _navigationItemService.GetViewModels(composition.SidebarSeeAlsoLinks)
             };
 
+            if (sectionRoot != null && sectionRoot.IsNotEqual(composition))
+            {
+                viewModel.AlsoInLinksTitle = GetAlsoInLinksTitle(sectionRoot);
+                viewModel.AlsoInLinks = GetAlsoInLinks(sectionRoot);
+            }
+
             return viewModel;
+        }
+
+        private IPublishedContent GetSectionAncestor(ISidebarComposition composition)
+        {
+            return composition.Ancestors()
+                              .OrderBy(x => x.Level)
+                              .FirstOrDefault(x => x.Level == _sectionRootLevel);
         }
 
         public SidebarViewModel GetViewModelForArticlePage(ArticlePage composition)
@@ -40,14 +57,17 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IEnumerable<NavigationItemViewModel> GetInThisSectionLinks(ISidebarComposition composition)
         {
-            var sectionRoot = composition.AncestorOrSelf(_sectionRootLevel);
+            return _navigationItemService.GetViewModels(composition.Children);
+        }
 
-            if (sectionRoot == null)
-            {
-                return null;
-            }
+        private string GetAlsoInLinksTitle(IPublishedContent root)
+        {
+            return string.Format("Also in {0}", root.Name);
+        }
 
-            return _navigationItemService.GetViewModels(sectionRoot.Children);
+        private IEnumerable<NavigationItemViewModel> GetAlsoInLinks(IPublishedContent root)
+        {
+            return _navigationItemService.GetViewModels(root.Children);
         }
     }
 }
