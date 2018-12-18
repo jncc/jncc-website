@@ -8511,6 +8511,11 @@ input[type="checkbox"]:focus + .fake-input {
 	margin-bottom: 0;
 }
 
+.header-top a {
+	color: #fefefe;
+	text-decoration: underline;
+}
+
 .logo {
 	width: 6.25rem;
 	-ms-flex-negative: 0;
