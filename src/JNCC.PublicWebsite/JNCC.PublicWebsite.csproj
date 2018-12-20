@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\uSync.4.0.9\build\uSync.props" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.props')" />
   <Import Project="..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -691,7 +691,9 @@
     <Content Include="images\logo.png" />
     <Content Include="images\whale-tail-breach.jpg" />
     <Content Include="js\app.js" />
-    <Content Include="js\jquery-3.3.1.min.js" />
+    <Content Include="js\lib\foundation-6.3.1.min.js" />
+    <Content Include="js\lib\jquery.validate-1.15.0.min.js" />
+    <Content Include="js\lib\jquery.validate.unobtrusive.min.js" />
     <Content Include="Umbraco\Plugins\cmsimport\dashboardcontrols\CMSImportDashboardControl.ascx" />
     <Content Include="Umbraco\Plugins\cmsimport\images\add.png" />
     <Content Include="Umbraco\Plugins\cmsimport\images\cancel.png" />
@@ -876,6 +878,7 @@
     <Content Include="App_Plugins\seochecker\Config\SEOChecker.config" />
     <Content Include="config\courier.config" />
     <Content Include="App_Plugins\DiploTraceLogViewer\package.manifest" />
+    <Content Include="js\lib\jquery-2.2.4.min.js" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
