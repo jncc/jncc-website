@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -338,6 +338,7 @@
     <Compile Include="Providers\UmbracoArticleYearsProvider.cs" />
     <Compile Include="Providers\UmbracoContentTagsProvider.cs" />
     <Compile Include="Services\FilteringService.cs" />
+    <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
     <Compile Include="Services\HomePageService.cs" />
@@ -361,6 +362,7 @@
     <Compile Include="ViewModels\BreadcrumbsViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
+    <Compile Include="ViewModels\FilterGroupViewModel.cs" />
     <Compile Include="ViewModels\FilteringViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
