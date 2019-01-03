@@ -19,7 +19,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public abstract TViewModel GetFilteringViewModel(TModel filteringModel, TRoot root);
 
-        protected IReadOnlyDictionary<string, bool> GetFilters(IEnumerable<string> allFilters, string[] selectedFilters)
+        protected IReadOnlyDictionary<string, bool> GetFilters(IEnumerable<string> allFilters, IEnumerable<string> selectedFilters)
         {
             if (ExistenceUtility.IsNullOrEmpty(allFilters))
             {
