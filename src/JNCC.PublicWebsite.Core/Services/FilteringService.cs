@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -18,6 +19,22 @@ namespace JNCC.PublicWebsite.Core.Services
         }
 
         public abstract TViewModel GetFilteringViewModel(TModel filteringModel, TRoot root);
+
+        protected IReadOnlyDictionary<string, bool> GetFilters(IEnumerable<int> allFilters, IEnumerable<int> selectedFilters)
+        {
+            if (ExistenceUtility.IsNullOrEmpty(allFilters))
+            {
+                return null;
+            }
+
+            if (ExistenceUtility.IsNullOrEmpty(selectedFilters))
+            {
+                return allFilters.AllToString()
+                                 .ToDictionary(x => x, x => false);
+            }
+
+            return allFilters.ToDictionary(x => x.ToString(), x => selectedFilters.Contains(x));
+        }
 
         protected IReadOnlyDictionary<string, bool> GetFilters(IEnumerable<string> allFilters, IEnumerable<string> selectedFilters)
         {
