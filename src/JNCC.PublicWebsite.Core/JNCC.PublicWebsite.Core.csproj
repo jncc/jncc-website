@@ -273,6 +273,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\FilterNames.cs" />
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
