@@ -1,10 +1,11 @@
 ﻿@model PagedResult<ArticleListingViewModel>
 <div class="filtration-section">
+    <div class="loader">Loading...</div>
     <div class="filtration-items-holder">
         <div class="row">
             @foreach (var article in Model.Items)
             {
-                <div class="columns medium-6 large-4">
+                <div class="columns medium-6 large-4 js-listing-item">
                     <a href="@article.Url" class="card">
                         <div class="img-holder">
                             <img src="@article.ImageUrl" alt="@article.Title thumbnail">
