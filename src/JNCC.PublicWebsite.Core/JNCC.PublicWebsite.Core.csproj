@@ -372,6 +372,7 @@
     <Compile Include="ViewModels\MainNavigationViewModel.cs" />
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
     <Compile Include="ViewModels\NewsAndInsightsLandingFilteringViewModel.cs" />
+    <Compile Include="ViewModels\NewsAndInsightsLandingListingViewModel.cs" />
     <Compile Include="ViewModels\PageHeroViewModel.cs" />
     <Compile Include="ViewModels\RelatedItemViewModel.cs" />
     <Compile Include="ViewModels\ResourceItemViewModel.cs" />
