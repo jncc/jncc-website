@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 foreach (var value in filteringModel.ArticleTypes)
                 {
-                    collection.Add("articleTypes", value);
+                    collection.Add(FilterNames.ArticleTypes, value);
                 }
             }
 
@@ -30,20 +30,20 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 foreach (var value in filteringModel.Teams)
                 {
-                    collection.Add("teams", value);
+                    collection.Add(FilterNames.Teams, value);
                 }
             }
 
             if (string.IsNullOrWhiteSpace(filteringModel.SearchTerm) == false)
             {
-                collection.Add("searchTerm", filteringModel.SearchTerm);
+                collection.Add(FilterNames.SearchTerm, filteringModel.SearchTerm);
             }
 
             if (ExistenceUtility.IsNullOrEmpty(filteringModel.Years) == false)
             {
                 foreach (var value in filteringModel.Years.AllToString())
                 {
-                    collection.Add("years", value);
+                    collection.Add(FilterNames.Years, value);
                 }
             }
 

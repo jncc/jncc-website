@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
@@ -22,13 +23,13 @@ namespace JNCC.PublicWebsite.Core.Services
                 Locations = new FilterGroupViewModel()
                 {
                     Title = "Location",
-                    Group = "locations",
+                    Group = FilterNames.Locations,
                     Values = GetFilters(allLocations, filteringModel.Locations)
                 },
                 Teams = new FilterGroupViewModel()
                 {
                     Title = "Team",
-                    Group = "teams",
+                    Group = FilterNames.Teams,
                     Values = GetFilters(allTeams, filteringModel.Teams)
                 }
             };

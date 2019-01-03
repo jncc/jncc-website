@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.ViewModels;
 using Umbraco.Core.Models;
@@ -27,19 +28,19 @@ namespace JNCC.PublicWebsite.Core.Services
                 Teams = new FilterGroupViewModel()
                 {
                     Title = "Team",
-                    Group = "teams",
+                    Group = FilterNames.Teams,
                     Values = GetFilters(allTeams, filteringModel.Teams)
                 },
                 ArticleTypes = new FilterGroupViewModel()
                 {
                     Title = "Article Type",
-                    Group = "articleTypes",
+                    Group = FilterNames.ArticleTypes,
                     Values = GetFilters(articleTypes, filteringModel.ArticleTypes)
                 },
                 Years = new FilterGroupViewModel()
                 {
                     Title = "Year",
-                    Group = "years",
+                    Group = FilterNames.Years,
                     Values = GetFilters(articleYears, filteringModel.Years)
                 }
             };

@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 foreach (var value in filteringModel.Locations)
                 {
-                    collection.Add("locations", value);
+                    collection.Add(FilterNames.Locations, value);
                 }
             }
 
@@ -30,13 +30,13 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 foreach (var value in filteringModel.Teams)
                 {
-                    collection.Add("teams", value);
+                    collection.Add(FilterNames.Teams, value);
                 }
             }
 
             if (string.IsNullOrWhiteSpace(filteringModel.SearchTerm) == false)
             {
-                collection.Add("searchTerm", filteringModel.SearchTerm);
+                collection.Add(FilterNames.SearchTerm, filteringModel.SearchTerm);
             }
 
             return collection;
