@@ -70,6 +70,11 @@ namespace JNCC.PublicWebsite.Core.Services
                 conditions.Add(x => filteringModel.ArticleTypes.Contains(x.ArticleType));
             }
 
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.Teams) == false)
+            {
+                conditions.Add(x => filteringModel.Teams.Any(y => x.ArticleTeams.Contains(y, StringComparer.OrdinalIgnoreCase)));
+            }
+
             if (string.IsNullOrEmpty(filteringModel.SearchTerm) == false)
             {
                 conditions.Add(x => x.Name.InvariantContains(filteringModel.SearchTerm)
