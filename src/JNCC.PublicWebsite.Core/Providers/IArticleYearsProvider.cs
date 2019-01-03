@@ -6,5 +6,12 @@ namespace JNCC.PublicWebsite.Core.Providers
     {
         IEnumerable<int> GetAll();
         IEnumerable<int> GetAllDescending();
+
+    }
+
+    public interface IArticleYearsProvider<TRoot>
+    {
+        IEnumerable<int> GetAllByRoot(TRoot root);
+        IEnumerable<int> GetAllByRootDescending(TRoot root);
     }
 }

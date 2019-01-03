@@ -6,4 +6,9 @@ namespace JNCC.PublicWebsite.Core.Providers
     {
         IEnumerable<string> GetAll();
     }
+
+    public interface IArticleTypesProvider<TRoot>
+    {
+        IEnumerable<string> GetAllByRoot(TRoot root);
+    }
 }
