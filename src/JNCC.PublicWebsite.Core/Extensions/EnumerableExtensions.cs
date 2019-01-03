@@ -27,5 +27,10 @@ namespace JNCC.PublicWebsite.Core.Extensions
         {
             return enumerable.IndexOf(element) == 0;
         }
+
+        public static IEnumerable<string> AllToString<T>(this IEnumerable<T> enumerable)
+        {
+            return enumerable.Select(x => x.ToString());
+        }
     }
 }
