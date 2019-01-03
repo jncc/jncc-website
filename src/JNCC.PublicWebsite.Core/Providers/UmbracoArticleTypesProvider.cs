@@ -1,5 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
-using JNCC.PublicWebsite.Core.Utilities;
+﻿using JNCC.PublicWebsite.Core.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core.Models;
@@ -7,20 +6,20 @@ using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Providers
 {
-    internal sealed class UmbracoArticleTypesProvider : IArticleTypesProvider<IPublishedContent>
+    internal sealed class UmbracoArticleTypesProvider : UmbracoArticlePagesProvider, IArticleTypesProvider<IPublishedContent>
     {
         public IEnumerable<string> GetAllByRoot(IPublishedContent root)
         {
-            var children = root.Children<ArticlePage>();
+            var articlePages = GetArticlePages(root);
 
-            if (ExistenceUtility.IsNullOrEmpty(children))
+            if (ExistenceUtility.IsNullOrEmpty(articlePages))
             {
                 return Enumerable.Empty<string>();
             }
 
-            return children.Select(x => x.ArticleType)
-                           .Distinct()
-                           .OrderBy(x => x);
+            return articlePages.Select(x => x.ArticleType)
+                               .Distinct()
+                               .OrderBy(x => x);
         }
     }
 }
