@@ -1,6 +1,6 @@
 ﻿namespace JNCC.PublicWebsite.Core.Models
 {
-    public class FilteringModel
+    public abstract class FilteringModel
     {
         public FilteringModel()
         {
