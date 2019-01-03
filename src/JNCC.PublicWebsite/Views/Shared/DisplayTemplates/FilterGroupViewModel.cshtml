@@ -1,0 +1,17 @@
+﻿@model JNCC.PublicWebsite.Core.ViewModels.FilterGroupViewModel
+@if (Model.HasValues)
+{
+    <h2>@Model.Title</h2>
+    <ul class="check-list no-bullet">
+        @foreach (var filter in Model.Values)
+        {
+            <li>
+                <label for="@Model.Group-@filter.Key">
+                    <input id="@Model.Group-@filter.Key" type="checkbox" name="@Model.Group" value="@filter.Key" checked="@Html.If(filter.Value, "checked")">
+                    <span class="fake-input"></span>
+                    <span class="fake-label">@filter.Key</span>
+                </label>
+            </li>
+        }
+    </ul>
+}

@@ -989,6 +989,7 @@
     <Content Include="Views\Partials\Forms\Themes\foundation6\Render.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\foundation6\Script.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\foundation6\Submitted.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\FilterGroupViewModel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
