@@ -330,6 +330,8 @@
     <Compile Include="Models\StaffDirectoryPage.generated.cs" />
     <Compile Include="Models\StaffProfilePage.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ITagsProvider.cs" />
+    <Compile Include="Providers\UmbracoContentTagsProvider.cs" />
     <Compile Include="Services\FilteringService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
