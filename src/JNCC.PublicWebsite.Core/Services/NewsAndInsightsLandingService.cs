@@ -16,7 +16,38 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         public override NameValueCollection ConvertFiltersToNameValueCollection(NewsAndInsightsLandingFilteringModel filteringModel)
         {
-            return new NameValueCollection();
+            var collection = new NameValueCollection();
+
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.ArticleTypes) == false)
+            {
+                foreach (var value in filteringModel.ArticleTypes)
+                {
+                    collection.Add("articleTypes", value);
+                }
+            }
+
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.Teams) == false)
+            {
+                foreach (var value in filteringModel.Teams)
+                {
+                    collection.Add("teams", value);
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(filteringModel.SearchTerm) == false)
+            {
+                collection.Add("searchTerm", filteringModel.SearchTerm);
+            }
+
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.Years) == false)
+            {
+                foreach (var value in filteringModel.Years.AllToString())
+                {
+                    collection.Add("years", value);
+                }
+            }
+
+            return collection;
         }
 
         protected override int GetItemsPerPage(NewsAndInsightsLandingPage parent)
