@@ -8,8 +8,8 @@ using System.Linq;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal abstract class FilteringService<TModel, TViewModel> where TModel : FilteringModel
-                                                                 where TViewModel : FilteringViewModel
+    internal abstract class FilteringService<TModel, TViewModel, TRoot> where TModel : FilteringModel
+                                                                        where TViewModel : FilteringViewModel
     {
         protected readonly ITagsProvider _tagsProvider;
         public FilteringService(ITagsProvider tagsProvider)
@@ -17,7 +17,7 @@ namespace JNCC.PublicWebsite.Core.Services
             _tagsProvider = tagsProvider;
         }
 
-        public abstract TViewModel GetFilteringViewModel(TModel filteringModel);
+        public abstract TViewModel GetFilteringViewModel(TModel filteringModel, TRoot root);
 
         protected IReadOnlyDictionary<string, bool> GetFilters(IEnumerable<string> allFilters, string[] selectedFilters)
         {

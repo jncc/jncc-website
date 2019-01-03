@@ -17,7 +17,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             }
             var tagsProvider = new UmbracoContentTagsProvider(Services.TagService);
             var service = new StaffDirectoryFilteringService(tagsProvider);
-            var viewModel = service.GetFilteringViewModel(model);
+            var viewModel = service.GetFilteringViewModel(model, CurrentPage);
 
             return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml", viewModel);
         }
