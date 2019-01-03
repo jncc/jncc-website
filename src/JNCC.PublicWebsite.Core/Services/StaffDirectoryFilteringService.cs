@@ -19,8 +19,18 @@ namespace JNCC.PublicWebsite.Core.Services
 
             var viewModel = new StaffDirectoryFilteringViewModel()
             {
-                Locations = GetFilters(allLocations, filteringModel.Locations),
-                Teams = GetFilters(allTeams, filteringModel.Teams)
+                Locations = new FilterGroupViewModel()
+                {
+                    Title = "Location",
+                    Group = "locations",
+                    Values = GetFilters(allLocations, filteringModel.Locations)
+                },
+                Teams = new FilterGroupViewModel()
+                {
+                    Title = "Team",
+                    Group = "teams",
+                    Values = GetFilters(allTeams, filteringModel.Teams)
+                }
             };
 
             if (string.IsNullOrWhiteSpace(filteringModel.SearchTerm) == false)

@@ -7,28 +7,8 @@
         <button class="input-group-button" aria-label="sidebar-search-button"><i class="icon-search"></i></button>
     </form>
     <form action="#" class="staff-checkbox-form">
-        @RenderFilterGroup(Model.Locations, "Location", "locations")
-        @RenderFilterGroup(Model.Teams, "Team", "teams")
+        @Html.DisplayFor(model => model.Locations)
+        @Html.DisplayFor(model => model.Teams)
         <input type="submit" name="staff-checkbox-form-submit" class="show-for-sr">
     </form>
 </aside>
-
-@helper RenderFilterGroup(IReadOnlyDictionary<string, bool> filters, string title, string groupName)
-{
-    if (filters != null)
-    {
-        <h2>@title</h2>
-        <ul class="check-list no-bullet">
-            @foreach (var filter in filters)
-            {
-                <li>
-                    <label for="@groupName-@filter.Key">
-                        <input id="@groupName-@filter.Key" type="checkbox" name="@groupName" value="@filter.Key" checked="@Html.If(filter.Value, "checked")">
-                        <span class="fake-input"></span>
-                        <span class="fake-label">@filter.Key</span>
-                    </label>
-                </li>
-            }
-        </ul>
-    }
-}
