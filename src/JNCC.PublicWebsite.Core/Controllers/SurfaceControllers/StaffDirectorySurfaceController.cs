@@ -1,4 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Services;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Web.Mvc;
@@ -14,8 +15,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             {
                 return EmptyResult();
             }
-
-            var service = new StaffDirectoryFilteringService(Services.TagService);
+            var tagsProvider = new UmbracoContentTagsProvider(Services.TagService);
+            var service = new StaffDirectoryFilteringService(tagsProvider);
             var viewModel = service.GetFilteringViewModel(model);
 
             return PartialView("~/Views/Partials/StaffDirectory/Filtering.cshtml", viewModel);

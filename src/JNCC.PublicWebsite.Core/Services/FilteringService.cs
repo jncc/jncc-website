@@ -1,20 +1,20 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Umbraco.Core.Services;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal abstract class FilteringService<TModel, TViewModel> where TModel : FilteringModel
                                                                  where TViewModel : FilteringViewModel
     {
-        protected readonly ITagService _tagService;
-        public FilteringService(ITagService tagService)
+        protected readonly ITagsProvider _tagsProvider;
+        public FilteringService(ITagsProvider tagsProvider)
         {
-            _tagService = tagService;
+            _tagsProvider = tagsProvider;
         }
 
         public abstract TViewModel GetFilteringViewModel(TModel filteringModel);
@@ -36,10 +36,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         protected virtual IEnumerable<string> GetAllTeams()
         {
-            return _tagService.GetAllTags("Teams")
-                              .Where(x => x.NodeCount > 0)
-                              .OrderBy(x => x.Text)
-                              .Select(x => x.Text);
+            return _tagsProvider.GetTags("Teams");
         }
     }
 }

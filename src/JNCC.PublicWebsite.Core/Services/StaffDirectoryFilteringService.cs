@@ -1,14 +1,13 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
-using Umbraco.Core.Services;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class StaffDirectoryFilteringService : FilteringService<StaffDirectoryFilteringModel, StaffDirectoryFilteringViewModel>
     {
-        public StaffDirectoryFilteringService(ITagService tagService) : base(tagService)
+        public StaffDirectoryFilteringService(ITagsProvider tagsProvider) : base(tagsProvider)
         {
         }
 
@@ -33,10 +32,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IEnumerable<string> GetAllLocations()
         {
-            return _tagService.GetAllTags("Locations")
-                              .Where(x => x.NodeCount > 0)
-                              .OrderBy(x => x.Text)
-                              .Select(x => x.Text);
+            return _tagsProvider.GetTags("Locations");
         }
     }
 }
