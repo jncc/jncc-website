@@ -34,6 +34,11 @@ namespace JNCC.PublicWebsite.Core.Services
                 conditions.Add(x => filteringModel.Years.Contains(x.PublishDate.Year));
             }
 
+            if (ExistenceUtility.IsNullOrEmpty(filteringModel.ArticleTypes) == false)
+            {
+                conditions.Add(x => filteringModel.ArticleTypes.Contains(x.ArticleType));
+            }
+
             if (string.IsNullOrEmpty(filteringModel.SearchTerm) == false)
             {
                 conditions.Add(x => x.Name.InvariantContains(filteringModel.SearchTerm)
