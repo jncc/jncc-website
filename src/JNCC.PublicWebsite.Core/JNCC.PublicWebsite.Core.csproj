@@ -333,6 +333,7 @@
     <Compile Include="Providers\IArticleTypesProvider.cs" />
     <Compile Include="Providers\IArticleYearsProvider.cs" />
     <Compile Include="Providers\ITagsProvider.cs" />
+    <Compile Include="Providers\UmbracoArticlePagesProvider.cs" />
     <Compile Include="Providers\UmbracoArticleTypesProvider.cs" />
     <Compile Include="Providers\UmbracoContentTagsProvider.cs" />
     <Compile Include="Services\FilteringService.cs" />
