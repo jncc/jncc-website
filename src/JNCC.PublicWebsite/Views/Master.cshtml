@@ -37,9 +37,7 @@
             </div>
             @(Html.Action<HeaderSurfaceController>("RenderMainNavigation"))
         </header>
-        <main id="main">
-            @RenderBody()
-        </main>
+        @RenderBody()
         <footer id="footer" class="text-center medium-text-left">
             <div class="container">
                 @(Html.Action<FooterSurfaceController>("RenderCategorisedLinks"))

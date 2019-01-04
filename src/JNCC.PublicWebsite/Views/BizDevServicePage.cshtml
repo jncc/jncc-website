@@ -3,35 +3,37 @@
 @{
     Layout = "Master.cshtml";
 }
-@(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
-<div class="container">
-    @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
-    <div class="two-columns">
-        <div id="content">
-            @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
-            @Model.Content.Preamble
-            <ul class="articles-list no-bullet">
-                @foreach (var item in Model.Content.MainContent)
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Content.Preamble
+                <ul class="articles-list no-bullet">
+                    @foreach (var item in Model.Content.MainContent)
+                    {
+                        <li>
+                            @Html.DisplayFor(model => item)
+                        </li>
+                    }
+                </ul>
+            </div>
+            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
+        </div>
+    </div>
+    @if (Model.Content.GetInTouchContent != null && string.IsNullOrWhiteSpace(Model.Content.GetInTouchContent.ToHtmlString()) == false)
+    {
+        <div class="info-section">
+            <div class="container">
+                @Model.Content.GetInTouchContent
+                @if (Model.Content.GetInTouchButton != null)
                 {
-                    <li>
-                        @Html.DisplayFor(model => item)
-                    </li>
+                    <a href="@Model.Content.GetInTouchButton.Url" class="button primary" target="@Model.Content.GetInTouchButton.Target">Get in touch</a>
                 }
-            </ul>
+            </div>
         </div>
-        @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
-    </div>
-</div>
-@if (Model.Content.GetInTouchContent != null && string.IsNullOrWhiteSpace(Model.Content.GetInTouchContent.ToHtmlString()) == false)
-{
-    <div class="info-section">
-        <div class="container">
-            @Model.Content.GetInTouchContent
-            @if (Model.Content.GetInTouchButton != null)
-            {
-                <a href="@Model.Content.GetInTouchButton.Url" class="button primary" target="@Model.Content.GetInTouchButton.Target">Get in touch</a>
-            }
-        </div>
-    </div>
-}
-@(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+    }
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>

@@ -2,39 +2,41 @@
 @{
     Layout = "Master.cshtml";
 }
-<div class="container">
-    @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
-    <div class="two-columns">
-        <div id="content">
-            <h1>@Model.Name</h1>
-            <h2>@Model.JobTitle</h2>
-            @if (Model.HasCategorisation)
-            {
-                <p>
-                    @foreach (var tag in Model.Locations) {<a href="@Model.DirectoryPageUrl?locations=@tag"><span class="label location">@tag</span></a> }
-                    @foreach (var tag in Model.Teams) {<a href="@Model.DirectoryPageUrl?teams=@tag"><span class="label team">@tag</span></a> }
-                </p>
-            }
-            <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-tabs" id="profile-tabs">
-                @foreach (var tabKey in Model.TabbedContent.Keys)
+<main id="main">
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                <h1>@Model.Name</h1>
+                <h2>@Model.JobTitle</h2>
+                @if (Model.HasCategorisation)
                 {
-                    var cssClass = Model.TabbedContent.Keys.IsFirst(tabKey) ? "tabs-title is-active" : "tabs-title";
-                    <li class="@cssClass"><a href="#@tabKey">@tabKey</a></li>
+                    <p>
+                        @foreach (var tag in Model.Locations) {<a href="@Model.DirectoryPageUrl?locations=@tag"><span class="label location">@tag</span></a> }
+                        @foreach (var tag in Model.Teams) {<a href="@Model.DirectoryPageUrl?teams=@tag"><span class="label team">@tag</span></a> }
+                    </p>
                 }
-            </ul>
-            <div class="tabs-content" data-tabs-content="profile-tabs">
-                @foreach (var tab in Model.TabbedContent)
-                {
-                    var cssClass = Model.TabbedContent.IsFirst(tab) ? "tabs-panel is-active" : "tabs-panel";
-                    <div class="@cssClass" id="@tab.Key">
-                        @tab.Value
-                    </div>
-                }
+                <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-tabs" id="profile-tabs">
+                    @foreach (var tabKey in Model.TabbedContent.Keys)
+                    {
+                        var cssClass = Model.TabbedContent.Keys.IsFirst(tabKey) ? "tabs-title is-active" : "tabs-title";
+                        <li class="@cssClass"><a href="#@tabKey">@tabKey</a></li>
+                    }
+                </ul>
+                <div class="tabs-content" data-tabs-content="profile-tabs">
+                    @foreach (var tab in Model.TabbedContent)
+                    {
+                        var cssClass = Model.TabbedContent.IsFirst(tab) ? "tabs-panel is-active" : "tabs-panel";
+                        <div class="@cssClass" id="@tab.Key">
+                            @tab.Value
+                        </div>
+                    }
+                </div>
             </div>
+            <aside id="sidebar">
+                <img src="@Model.ImageUrl" alt="@Model.Name photo" />
+            </aside>
         </div>
-        <aside id="sidebar">
-            <img src="@Model.ImageUrl" alt="@Model.Name photo" />
-        </aside>
     </div>
-</div>
-@(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>
