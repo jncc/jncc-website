@@ -873,6 +873,14 @@
 	content: "\e906";
 }
 
+.icon-linkedin:before {
+	content: "\eac9";
+}
+
+.icon-instagram:before {
+	content: "\ea92";
+}
+
 .icon-keyboard-arrow-right:before {
 	content: "\e905";
 }
