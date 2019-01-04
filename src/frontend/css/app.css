@@ -8479,6 +8479,10 @@ input[type="checkbox"]:focus + .fake-input {
 	position: relative;
 }
 
+button.slick-arrow {
+	text-indent: -100000px;
+}
+
 #header {
 	position: relative;
 	z-index: 500;
