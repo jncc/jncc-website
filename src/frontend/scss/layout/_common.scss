@@ -351,6 +351,12 @@ a {
 	}
 }
 
+.no-breadcrumbs {
+	.two-columns {
+		margin-top: $breadcrumbs-margin-top;
+	}
+}
+
 .two-columns {
 	@include breakpoint(medium) {
 		display: flex;
@@ -872,7 +878,7 @@ input[type="checkbox"]:focus + .fake-input {
 			}
 		}
 	}
-	
+
 	.row {
 		margin: 0 -.625rem;
 	}
