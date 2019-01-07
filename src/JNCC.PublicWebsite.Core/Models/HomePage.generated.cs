@@ -82,15 +82,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Number of Tweets: Determines how many Tweets should be displayed in the Social Feed.
-		///</summary>
-		[ImplementPropertyType("numberOfTweets")]
-		public decimal NumberOfTweets
-		{
-			get { return this.GetPropertyValue<decimal>("numberOfTweets"); }
-		}
-
-		///<summary>
 		/// Title: A title to be given to the resources section.
 		///</summary>
 		[ImplementPropertyType("resourcesTitle")]
