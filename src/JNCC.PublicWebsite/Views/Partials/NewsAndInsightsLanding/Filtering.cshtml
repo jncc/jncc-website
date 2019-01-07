@@ -1,80 +1,16 @@
-﻿<aside id="sidebar">
+﻿@using JNCC.PublicWebsite.Core.Constants
+@model NewsAndInsightsLandingFilteringViewModel
+<aside id="sidebar">
     <form action="#" role="search" class="search-form input-group">
         <label for="sidebar-search-field">
-            <input type="search" placeholder="Search" class="input-group-field" id="sidebar-search-field" aria-label="Sidebar Search">
+            <input type="search" placeholder="Search" class="input-group-field" id="sidebar-search-field" aria-label="Sidebar Search" name="@FilterNames.SearchTerm" value="@Model.SearchTerm">
         </label>
         <button class="input-group-button" aria-label="sidebar-search-button"><i class="icon-search"></i></button>
     </form>
     <form action="#" class="staff-checkbox-form">
-        <h2>Location</h2>
-        <ul class="check-list no-bullet">
-            <li>
-                <label for="check-1">
-                    <input id="check-1" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details1</span>
-                </label>
-            </li>
-            <li>
-                <label for="check-2">
-                    <input id="check-2" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details2</span>
-                </label>
-            </li>
-            <li>
-                <label for="check-3">
-                    <input id="check-3" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details3</span>
-                </label>
-            </li>
-            <li>
-                <label for="check-4">
-                    <input id="check-4" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details4</span>
-                </label>
-            </li>
-            <li>
-                <label for="check-5">
-                    <input id="check-5" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details5</span>
-                </label>
-            </li>
-            <li>
-                <label for="check-6">
-                    <input id="check-6" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details6</span>
-                </label>
-            </li>
-        </ul>
-        <h2>District</h2>
-        <ul class="check-list no-bullet">
-            <li>
-                <label for="check-7">
-                    <input id="check-7" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details7</span>
-                </label>
-            </li>
-            <li>
-                <label for="check-8">
-                    <input id="check-8" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details8</span>
-                </label>
-            </li>
-            <li>
-                <label for="check-9">
-                    <input id="check-9" type="checkbox">
-                    <span class="fake-input"></span>
-                    <span class="fake-label">Location Details9</span>
-                </label>
-            </li>
-        </ul>
+        @Html.DisplayFor(model => model.ArticleTypes)
+        @Html.DisplayFor(model => model.Years)
+        @Html.DisplayFor(model => model.Teams)
         <input type="submit" name="staff-checkbox-form-submit" class="show-for-sr">
     </form>
 </aside>

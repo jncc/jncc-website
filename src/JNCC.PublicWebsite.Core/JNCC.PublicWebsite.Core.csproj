@@ -273,6 +273,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\FilterNames.cs" />
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
@@ -330,7 +331,15 @@
     <Compile Include="Models\StaffDirectoryPage.generated.cs" />
     <Compile Include="Models\StaffProfilePage.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\IArticleTypesProvider.cs" />
+    <Compile Include="Providers\IArticleYearsProvider.cs" />
+    <Compile Include="Providers\ITagsProvider.cs" />
+    <Compile Include="Providers\UmbracoArticlePagesProvider.cs" />
+    <Compile Include="Providers\UmbracoArticleTypesProvider.cs" />
+    <Compile Include="Providers\UmbracoArticleYearsProvider.cs" />
+    <Compile Include="Providers\UmbracoContentTagsProvider.cs" />
     <Compile Include="Services\FilteringService.cs" />
+    <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
     <Compile Include="Services\HomePageService.cs" />
@@ -354,6 +363,7 @@
     <Compile Include="ViewModels\BreadcrumbsViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\CategorisedFooterLinksViewModel.cs" />
+    <Compile Include="ViewModels\FilterGroupViewModel.cs" />
     <Compile Include="ViewModels\FilteringViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
@@ -362,6 +372,8 @@
     <Compile Include="ViewModels\MainNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationViewModel.cs" />
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
+    <Compile Include="ViewModels\NewsAndInsightsLandingFilteringViewModel.cs" />
+    <Compile Include="ViewModels\NewsAndInsightsLandingListingViewModel.cs" />
     <Compile Include="ViewModels\PageHeroViewModel.cs" />
     <Compile Include="ViewModels\RelatedItemViewModel.cs" />
     <Compile Include="ViewModels\ResourceItemViewModel.cs" />

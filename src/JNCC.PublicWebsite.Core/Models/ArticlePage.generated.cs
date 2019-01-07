@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Team(s): The team(s) related or involved in this article page.
+		///</summary>
+		[ImplementPropertyType("articleTeams")]
+		public IEnumerable<string> ArticleTeams
+		{
+			get { return this.GetPropertyValue<IEnumerable<string>>("articleTeams"); }
+		}
+
+		///<summary>
 		/// Article Type: Classifies the article so it can be filtered by users.
 		///</summary>
 		[ImplementPropertyType("articleType")]

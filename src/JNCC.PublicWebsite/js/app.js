@@ -25,9 +25,7 @@ function initFoundation() {
 function initSlickCarousel() {
 	jQuery('.main-slider').slick({
 		slidesToScroll: 1,
-		rows: 0,
-		prevArrow: '<button class="slick-prev"></button>',
-		nextArrow: '<button class="slick-next"></button>',
+        rows: 0,
 		centerMode: true,
 		centerPadding: '0px',
 		adaptiveHeight: true

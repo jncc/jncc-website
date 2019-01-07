@@ -1,5 +1,7 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Services;
+using JNCC.PublicWebsite.Core.ViewModels;
 using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -13,8 +15,14 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             {
                 return EmptyResult();
             }
+            var tagsProvider = new UmbracoContentTagsProvider(Services.TagService);
+            var articleTypesProvider = new UmbracoArticleTypesProvider();
+            var articleYearsProvider = new UmbracoArticleYearsProvider();
 
-            return PartialView("~/Views/Partials/NewsAndInsightsLanding/Filtering.cshtml");
+            var service = new NewsAndInsightsLandingFilteringService(tagsProvider, articleTypesProvider, articleYearsProvider);
+            var viewModel = service.GetFilteringViewModel(model, CurrentPage);
+
+            return PartialView("~/Views/Partials/NewsAndInsightsLanding/Filtering.cshtml", viewModel);
         }
 
         [ChildActionOnly]
@@ -26,9 +34,14 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             }
 
             var service = new NewsAndInsightsLandingService();
-            var results = service.GetViewModels(CurrentPage as NewsAndInsightsLandingPage, model);
 
-            return PartialView("~/Views/Partials/NewsAndInsightsLanding/Listing.cshtml", results);
+            var viewModel = new NewsAndInsightsLandingListingViewModel
+            {
+                Items = service.GetViewModels(CurrentPage as NewsAndInsightsLandingPage, model),
+                Filters = service.ConvertFiltersToNameValueCollection(model)
+            };
+
+            return PartialView("~/Views/Partials/NewsAndInsightsLanding/Listing.cshtml", viewModel);
         }
     }
 }

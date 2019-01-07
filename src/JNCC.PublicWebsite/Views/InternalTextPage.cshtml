@@ -3,15 +3,17 @@
 @{
     Layout = "Master.cshtml";
 }
-@(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
-<div class="container">
-    @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
-    <div class="two-columns">
-        <div id="content">
-            @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
-            @Model.Content.MainContent
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Content.MainContent
+            </div>
+            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
         </div>
-        @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
     </div>
-</div>
-@(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>

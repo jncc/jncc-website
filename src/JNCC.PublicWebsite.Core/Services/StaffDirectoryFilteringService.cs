@@ -1,31 +1,37 @@
-﻿using JNCC.PublicWebsite.Core.Models;
-using JNCC.PublicWebsite.Core.Utilities;
+﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Umbraco.Core.Services;
+using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class StaffDirectoryFilteringService : FilteringService<StaffDirectoryFilteringModel, StaffDirectoryFilteringViewModel>
+    internal sealed class StaffDirectoryFilteringService : FilteringService<StaffDirectoryFilteringModel, StaffDirectoryFilteringViewModel, IPublishedContent>
     {
-        private ITagService _tagService;
-
-        public StaffDirectoryFilteringService(ITagService tagService)
+        public StaffDirectoryFilteringService(ITagsProvider tagsProvider) : base(tagsProvider)
         {
-            _tagService = tagService;
         }
 
-        public override StaffDirectoryFilteringViewModel GetFilteringViewModel(StaffDirectoryFilteringModel filteringModel)
+        public override StaffDirectoryFilteringViewModel GetFilteringViewModel(StaffDirectoryFilteringModel filteringModel, IPublishedContent root)
         {
             var allLocations = GetAllLocations();
             var allTeams = GetAllTeams();
 
             var viewModel = new StaffDirectoryFilteringViewModel()
             {
-                Locations = GetFilters(allLocations, filteringModel.Locations),
-                Teams = GetFilters(allTeams, filteringModel.Teams)
+                Locations = new FilterGroupViewModel()
+                {
+                    Title = "Location",
+                    Group = FilterNames.Locations,
+                    Values = GetFilters(allLocations, filteringModel.Locations)
+                },
+                Teams = new FilterGroupViewModel()
+                {
+                    Title = "Team",
+                    Group = FilterNames.Teams,
+                    Values = GetFilters(allTeams, filteringModel.Teams)
+                }
             };
 
             if (string.IsNullOrWhiteSpace(filteringModel.SearchTerm) == false)
@@ -36,34 +42,9 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModel;
         }
 
-        private IReadOnlyDictionary<string, bool> GetFilters(IEnumerable<string> allFilters, string[] selectedFilters)
-        {
-            if (ExistenceUtility.IsNullOrEmpty(allFilters))
-            {
-                return null;
-            }
-
-            if (ExistenceUtility.IsNullOrEmpty(selectedFilters))
-            {
-                return allFilters.ToDictionary(x => x, x => false);
-            }
-
-            return allFilters.ToDictionary(x => x, x => selectedFilters.Contains(x, StringComparer.OrdinalIgnoreCase));
-        }
-
         private IEnumerable<string> GetAllLocations()
         {
-            return _tagService.GetAllTags("Locations")
-                              .Where(x => x.NodeCount > 0)
-                              .OrderBy(x => x.Text)
-                              .Select(x => x.Text);
-        }
-        private IEnumerable<string> GetAllTeams()
-        {
-            return _tagService.GetAllTags("Teams")
-                              .Where(x => x.NodeCount > 0)
-                              .OrderBy(x => x.Text)
-                              .Select(x => x.Text);
+            return _tagsProvider.GetTags("Locations");
         }
     }
 }

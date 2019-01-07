@@ -873,6 +873,14 @@
 	content: "\e906";
 }
 
+.icon-linkedin:before {
+	content: "\eac9";
+}
+
+.icon-instagram:before {
+	content: "\ea92";
+}
+
 .icon-keyboard-arrow-right:before {
 	content: "\e905";
 }
@@ -8477,6 +8485,10 @@ input[type="checkbox"]:focus + .fake-input {
 
 .widget-section .container {
 	position: relative;
+}
+
+button.slick-arrow {
+	text-indent: -100000px;
 }
 
 #header {
