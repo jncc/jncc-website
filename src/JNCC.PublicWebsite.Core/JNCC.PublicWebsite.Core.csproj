@@ -307,6 +307,7 @@
     <Compile Include="Models\ContentImageSchema.generated.cs" />
     <Compile Include="Models\ContentItemSchema.cs" />
     <Compile Include="Models\ContentItemSchema.generated.cs" />
+    <Compile Include="Models\CustomErrorPage.generated.cs" />
     <Compile Include="Models\File.generated.cs" />
     <Compile Include="Models\FilteringModel.cs" />
     <Compile Include="Models\Folder.generated.cs" />
