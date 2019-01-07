@@ -82,6 +82,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Number of Tweets: Determines how many Tweets should be displayed in the Social Feed.
+		///</summary>
+		[ImplementPropertyType("numberOfTweets")]
+		public decimal NumberOfTweets
+		{
+			get { return this.GetPropertyValue<decimal>("numberOfTweets"); }
+		}
+
+		///<summary>
 		/// Title: A title to be given to the resources section.
 		///</summary>
 		[ImplementPropertyType("resourcesTitle")]
@@ -97,6 +106,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool ShowLatestNews
 		{
 			get { return this.GetPropertyValue<bool>("showLatestNews"); }
+		}
+
+		///<summary>
+		/// Show Social Feed
+		///</summary>
+		[ImplementPropertyType("showSocialFeed")]
+		public bool ShowSocialFeed
+		{
+			get { return this.GetPropertyValue<bool>("showSocialFeed"); }
+		}
+
+		///<summary>
+		/// Twitter Feed URL: If no URL is authored, the Social Feed will not be displayed even if the "Show Social Feed" is enabled.  URL format must begin with https://twitter.com/ followed by the Twitter account handle.  Example: https://twitter.com/jncc_uk
+		///</summary>
+		[ImplementPropertyType("twitterFeedURL")]
+		public string TwitterFeedUrl
+		{
+			get { return this.GetPropertyValue<string>("twitterFeedURL"); }
 		}
 
 		///<summary>
