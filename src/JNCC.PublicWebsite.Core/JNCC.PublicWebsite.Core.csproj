@@ -379,6 +379,7 @@
     <Compile Include="ViewModels\ResourceItemViewModel.cs" />
     <Compile Include="ViewModels\SeoMetaDataViewModel.cs" />
     <Compile Include="ViewModels\SidebarViewModel.cs" />
+    <Compile Include="ViewModels\SocialFeedViewModel.cs" />
     <Compile Include="ViewModels\SocialMediaNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\StaffDirectoryListingViewModel.cs" />
     <Compile Include="ViewModels\StaffDirectoryFilteringViewModel.cs" />
