@@ -8415,6 +8415,10 @@ input[type="checkbox"]:focus + .fake-input {
 	font-weight: 400;
 }
 
+.home-a .card.full-border .card-section {
+	border-top: 1px solid #dae3df;
+}
+
 .home-a .row {
 	margin: 0 -.625rem;
 }

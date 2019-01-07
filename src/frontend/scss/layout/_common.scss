@@ -865,6 +865,14 @@ input[type="checkbox"]:focus + .fake-input {
 		}
 	}
 
+	.card {
+		&.full-border {
+			.card-section {
+				border-top: 1px solid #dae3df;
+			}
+		}
+	}
+	
 	.row {
 		margin: 0 -.625rem;
 	}
