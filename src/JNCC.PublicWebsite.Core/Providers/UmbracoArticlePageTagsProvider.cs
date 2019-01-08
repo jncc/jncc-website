@@ -11,6 +11,10 @@ namespace JNCC.PublicWebsite.Core.Providers
 {
     internal sealed class UmbracoArticlePageTagsProvider : UmbracoArticlePagesProvider, ITagsProvider<IPublishedContent>
     {
+        public UmbracoArticlePageTagsProvider(ICacheProvider cacheProvider) : base(cacheProvider)
+        {
+        }
+
         public IEnumerable<string> GetTagsByRoot(IPublishedContent root, string tagGroup)
         {
             var articlePages = GetArticlePages(root);

@@ -1,6 +1,7 @@
 ﻿using JNCC.PublicWebsite.Core.Utilities;
 using System.Collections.Generic;
 using System.Linq;
+using Umbraco.Core.Cache;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
@@ -8,6 +9,10 @@ namespace JNCC.PublicWebsite.Core.Providers
 {
     internal sealed class UmbracoArticleYearsProvider : UmbracoArticlePagesProvider, IArticleYearsProvider<IPublishedContent>
     {
+        public UmbracoArticleYearsProvider(ICacheProvider cacheProvider) : base(cacheProvider)
+        {
+        }
+
         private IEnumerable<int> GetArticleYears(IPublishedContent root)
         {
             var articlePages = GetArticlePages(root);

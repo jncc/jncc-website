@@ -15,9 +15,11 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             {
                 return EmptyResult();
             }
-            var tagsProvider = new UmbracoContentTagsProvider(Services.TagService);
-            var articleTypesProvider = new UmbracoArticleTypesProvider();
-            var articleYearsProvider = new UmbracoArticleYearsProvider();
+
+            var cacheProvider = ApplicationContext.ApplicationCache.RequestCache;
+            var tagsProvider = new UmbracoArticlePageTagsProvider(cacheProvider);
+            var articleTypesProvider = new UmbracoArticleTypesProvider(cacheProvider);
+            var articleYearsProvider = new UmbracoArticleYearsProvider(cacheProvider);
 
             var service = new NewsAndInsightsLandingFilteringService(tagsProvider, articleTypesProvider, articleYearsProvider);
             var viewModel = service.GetFilteringViewModel(model, CurrentPage);

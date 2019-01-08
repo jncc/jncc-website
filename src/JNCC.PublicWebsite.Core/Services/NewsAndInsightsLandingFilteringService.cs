@@ -11,7 +11,7 @@ namespace JNCC.PublicWebsite.Core.Services
         private readonly IArticleTypesProvider<IPublishedContent> _articleTypesProvider;
         private readonly IArticleYearsProvider<IPublishedContent> _articleYearsProvider;
 
-        public NewsAndInsightsLandingFilteringService(ITagsProvider tagsProvider, IArticleTypesProvider<IPublishedContent> articleTypesProvider, IArticleYearsProvider<IPublishedContent> articleYearsProvider) : base(tagsProvider)
+        public NewsAndInsightsLandingFilteringService(ITagsProvider<IPublishedContent> tagsProvider, IArticleTypesProvider<IPublishedContent> articleTypesProvider, IArticleYearsProvider<IPublishedContent> articleYearsProvider) : base(tagsProvider)
         {
             _articleTypesProvider = articleTypesProvider;
             _articleYearsProvider = articleYearsProvider;
