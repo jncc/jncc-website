@@ -8070,6 +8070,16 @@ a {
 	width: 100% !important;
 }
 
+#content > p a,
+#content > ul a,
+#content > ol a {
+	text-decoration: underline;
+}
+
+#content .button-group a.button {
+	text-decoration: none;
+}
+
 #sidebar .button.large {
 	font-size: 1rem;
 	padding-top: 1.3125rem;
@@ -8090,10 +8100,6 @@ a {
 #sidebar .search-form {
 	position: static;
 	margin-bottom: 1.875rem;
-}
-
-.no-breadcrumbs .two-columns {
-	margin-top: 2.875rem;
 }
 
 .info-section {
@@ -8417,10 +8423,6 @@ input[type="checkbox"]:focus + .fake-input {
 	border-radius: .1875rem;
 	padding-top: .8125rem;
 	font-weight: 400;
-}
-
-.home-a .card.full-border .card-section {
-	border-top: 1px solid #dae3df;
 }
 
 .home-a .row {

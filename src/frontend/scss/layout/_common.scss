@@ -307,6 +307,18 @@ a {
 	&:only-child {
 		width: 100% !important;
 	}
+	
+	> p, > ul, > ol {
+		a {
+			text-decoration: underline;
+		}
+	}
+
+	.button-group {
+		a.button {
+			text-decoration: none;
+		}
+	}
 }
 
 #sidebar {
@@ -348,12 +360,6 @@ a {
 		@include breakpoint(xlarge) {
 			margin-bottom: rem-calc(69px);
 		}
-	}
-}
-
-.no-breadcrumbs {
-	.two-columns {
-		margin-top: $breadcrumbs-margin-top;
 	}
 }
 
@@ -871,14 +877,6 @@ input[type="checkbox"]:focus + .fake-input {
 		}
 	}
 
-	.card {
-		&.full-border {
-			.card-section {
-				border-top: 1px solid #dae3df;
-			}
-		}
-	}
-
 	.row {
 		margin: 0 -.625rem;
 	}
@@ -1093,7 +1091,6 @@ input[type="checkbox"]:focus + .fake-input {
 		position: relative;
 	}
 }
-
 button.slick-arrow {
 	text-indent: -100000px;
 }
