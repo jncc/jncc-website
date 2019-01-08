@@ -47,6 +47,7 @@
                 <div class="container">
                     @(Html.Action<FooterSurfaceController>("RenderContent"))
                     @(Html.Action<FooterSurfaceController>("RenderUncategorisedLinks"))
+                    <p>Template name: @(Html.Action<TemplateSurfaceController>("RenderTemplateName"))</p>
                 </div>
             </div>
         </footer>
