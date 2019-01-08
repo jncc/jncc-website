@@ -1,6 +1,6 @@
 ﻿@model SidebarViewModel
 <aside id="sidebar">
-    @if (Model.PrimaryCallToActionButton != null)
+    @if (Model.HasPrimaryCallToActionButton)
     {
         <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
     }
