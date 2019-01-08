@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Extensions;
+﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
@@ -54,7 +55,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         protected virtual IEnumerable<string> GetAllTeams(IPublishedContent root)
         {
-            return _tagsProvider.GetTagsByRoot(root, "Teams");
+            return _tagsProvider.GetTagsByRoot(root, TagGroups.Teams);
         }
     }
 }

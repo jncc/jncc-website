@@ -2,7 +2,6 @@
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.ViewModels;
-using System.Collections.Generic;
 using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -15,7 +14,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public override StaffDirectoryFilteringViewModel GetFilteringViewModel(StaffDirectoryFilteringModel filteringModel, IPublishedContent root)
         {
-            var allLocations = _tagsProvider.GetTagsByRoot(root, "Locations");
+            var allLocations = _tagsProvider.GetTagsByRoot(root, TagGroups.Locations);
             var allTeams = GetAllTeams(root);
 
             var viewModel = new StaffDirectoryFilteringViewModel()

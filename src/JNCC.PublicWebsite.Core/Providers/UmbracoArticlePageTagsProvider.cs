@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core.Cache;
@@ -18,7 +19,7 @@ namespace JNCC.PublicWebsite.Core.Providers
 
             switch (tagGroup)
             {
-                case "Teams":
+                case TagGroups.Teams:
                     return articlePages.SelectMany(x => x.ArticleTeams)
                                        .Distinct()
                                        .OrderBy(x => x);
