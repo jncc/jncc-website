@@ -6,4 +6,9 @@ namespace JNCC.PublicWebsite.Core.Providers
     {
         IEnumerable<string> GetTags(string tagGroup);
     }
+
+    public interface ITagsProvider<TRoot>
+    {
+        IEnumerable<string> GetTagsByRoot(TRoot root, string tagGroup);
+    }
 }
