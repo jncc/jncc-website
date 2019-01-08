@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Utilities;
+﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core.Cache;
@@ -7,7 +8,7 @@ using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Providers
 {
-    internal sealed class UmbracoArticleTypesProvider : UmbracoArticlePagesProvider, IArticleTypesProvider<IPublishedContent>
+    internal sealed class UmbracoArticleTypesProvider : UmbracoPagesProvider<ArticlePage>, IArticleTypesProvider<IPublishedContent>
     {
         public UmbracoArticleTypesProvider(ICacheProvider cacheProvider) : base(cacheProvider)
         {
@@ -15,7 +16,7 @@ namespace JNCC.PublicWebsite.Core.Providers
 
         public IEnumerable<string> GetAllByRoot(IPublishedContent root)
         {
-            var articlePages = GetArticlePages(root);
+            var articlePages = GetContentPages(root);
 
             if (ExistenceUtility.IsNullOrEmpty(articlePages))
             {

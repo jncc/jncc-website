@@ -9,7 +9,7 @@ using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Providers
 {
-    internal sealed class UmbracoArticlePageTagsProvider : UmbracoArticlePagesProvider, ITagsProvider<IPublishedContent>
+    internal sealed class UmbracoArticlePageTagsProvider : UmbracoPagesProvider<ArticlePage>, ITagsProvider<IPublishedContent>
     {
         public UmbracoArticlePageTagsProvider(ICacheProvider cacheProvider) : base(cacheProvider)
         {
@@ -17,7 +17,7 @@ namespace JNCC.PublicWebsite.Core.Providers
 
         public IEnumerable<string> GetTagsByRoot(IPublishedContent root, string tagGroup)
         {
-            var articlePages = GetArticlePages(root);
+            var articlePages = GetContentPages(root);
 
             switch (tagGroup)
             {
