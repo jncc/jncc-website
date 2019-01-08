@@ -1,4 +1,11 @@
 ﻿@model SidebarViewModel
+@if (Model.HasPrimaryCallToActionButton == false
+    && Model.HasInThisSectionLinks == false
+    && Model.HasAlsoInLinks == false
+    && Model.HasSeeAlsoLinks == false)
+{
+    return;
+}
 <aside id="sidebar">
     @if (Model.HasPrimaryCallToActionButton)
     {
