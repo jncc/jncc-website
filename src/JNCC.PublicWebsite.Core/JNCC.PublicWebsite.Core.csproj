@@ -337,6 +337,7 @@
     <Compile Include="Providers\IArticleYearsProvider.cs" />
     <Compile Include="Providers\ITagsProvider.cs" />
     <Compile Include="Providers\UmbracoArticlePagesProvider.cs" />
+    <Compile Include="Providers\UmbracoArticlePageTagsProvider.cs" />
     <Compile Include="Providers\UmbracoArticleTypesProvider.cs" />
     <Compile Include="Providers\UmbracoArticleYearsProvider.cs" />
     <Compile Include="Providers\UmbracoContentTagsProvider.cs" />
