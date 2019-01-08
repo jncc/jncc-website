@@ -36,5 +36,13 @@ namespace JNCC.PublicWebsite.Core.Models
             get { return this.GetPropertyValueOfTypeOrDefault<ResourceItemSchema>("resourcesItems"); }
         }
 
+        ///<summary>
+        /// Number of Tweets: Determines how many Tweets should be displayed in the Social Feed.
+        ///</summary>
+        [ImplementPropertyType("numberOfTweets")]
+        public int NumberOfTweets
+        {
+            get { return this.GetPropertyValue<int>("numberOfTweets"); }
+        }
     }
 }

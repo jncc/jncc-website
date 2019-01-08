@@ -31,8 +31,24 @@ namespace JNCC.PublicWebsite.Core.Services
                 CalloutCards = GetCalloutCards(content),
                 ResourcesTitle = content.ResourcesTitle,
                 ResourcesItems = GetResourcesItems(content),
-                LatestNews = GetLatestNewsItems(content)
+                LatestNews = GetLatestNewsItems(content),
+                SocialFeed = GetSocialFeed(content)
             };
+
+            return viewModel;
+        }
+
+        private SocialFeedViewModel GetSocialFeed(HomePage content)
+        {
+            var viewModel = new SocialFeedViewModel();
+
+            if (content.ShowSocialFeed == false)
+            {
+                return viewModel;
+            }
+
+            viewModel.TwitterFeedUrl = content.TwitterFeedUrl;
+            viewModel.NumberOfTweets = content.NumberOfTweets;
 
             return viewModel;
         }

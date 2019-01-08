@@ -351,6 +351,12 @@ a {
 	}
 }
 
+.no-breadcrumbs {
+	.two-columns {
+		margin-top: $breadcrumbs-margin-top;
+	}
+}
+
 .two-columns {
 	@include breakpoint(medium) {
 		display: flex;
@@ -862,6 +868,14 @@ input[type="checkbox"]:focus + .fake-input {
 			border-radius: rem-calc(3px);
 			padding-top: rem-calc(13px);
 			font-weight: 400;
+		}
+	}
+
+	.card {
+		&.full-border {
+			.card-section {
+				border-top: 1px solid #dae3df;
+			}
 		}
 	}
 

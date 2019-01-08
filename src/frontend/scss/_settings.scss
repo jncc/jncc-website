@@ -267,7 +267,8 @@ $badge-font-size: 0.6rem;
 // 10. Breadcrumbs
 // ---------------
 
-$breadcrumbs-margin: 2.875rem 0 2.9375rem 0;
+$breadcrumbs-margin-top: 2.875rem;
+$breadcrumbs-margin: $breadcrumbs-margin-top 0 2.9375rem 0;
 $breadcrumbs-item-font-size: inherit;
 $breadcrumbs-item-color: $black;
 $breadcrumbs-item-color-current: $primary-color;

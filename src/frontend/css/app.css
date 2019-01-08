@@ -8092,6 +8092,10 @@ a {
 	margin-bottom: 1.875rem;
 }
 
+.no-breadcrumbs .two-columns {
+	margin-top: 2.875rem;
+}
+
 .info-section {
 	background-color: #faf9f9;
 	padding: 2rem 0;
@@ -8413,6 +8417,10 @@ input[type="checkbox"]:focus + .fake-input {
 	border-radius: .1875rem;
 	padding-top: .8125rem;
 	font-weight: 400;
+}
+
+.home-a .card.full-border .card-section {
+	border-top: 1px solid #dae3df;
 }
 
 .home-a .row {

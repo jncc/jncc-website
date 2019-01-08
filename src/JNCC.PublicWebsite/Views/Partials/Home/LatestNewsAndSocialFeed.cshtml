@@ -29,12 +29,20 @@
                     </div>
                 </div>
             }
-            <div class="columns small-12 large-4 twitter-print-hide">
-                <h2>Twitter</h2>
-                <div class="twitter-widget">
-                    <p>To be integrated.</p>
+            @if (Model.SocialFeed != null && Model.SocialFeed.HasTwitterFeedUrl)
+            {
+                <div class="columns small-12 large-4 twitter-print-hide">
+                    <h2>Twitter</h2>
+                    <div class="twitter-widget">
+                        <article class="card full-border">
+                            <div class="card-section">
+                                <a class="twitter-timeline" href="@Model.SocialFeed.TwitterFeedUrl?ref_src=twsrc%5Etfw" data-chrome="noheader nofooter noborders" data-tweet-limit="@Model.SocialFeed.NumberOfTweets">Tweets by JNCC_UK</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </section>

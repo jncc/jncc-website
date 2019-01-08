@@ -100,6 +100,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Show Social Feed
+		///</summary>
+		[ImplementPropertyType("showSocialFeed")]
+		public bool ShowSocialFeed
+		{
+			get { return this.GetPropertyValue<bool>("showSocialFeed"); }
+		}
+
+		///<summary>
+		/// Twitter Feed URL: If no URL is authored, the Social Feed will not be displayed even if the "Show Social Feed" is enabled.  URL format must begin with https://twitter.com/ followed by the Twitter account handle.  Example: https://twitter.com/jncc_uk
+		///</summary>
+		[ImplementPropertyType("twitterFeedURL")]
+		public string TwitterFeedUrl
+		{
+			get { return this.GetPropertyValue<string>("twitterFeedURL"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
