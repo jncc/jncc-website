@@ -19,7 +19,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public override NewsAndInsightsLandingFilteringViewModel GetFilteringViewModel(NewsAndInsightsLandingFilteringModel filteringModel, IPublishedContent root)
         {
-            var allTeams = GetAllTeams();
+            var allTeams = GetAllTeams(root);
             var articleTypes = _articleTypesProvider.GetAllByRoot(root);
             var articleYears = _articleYearsProvider.GetAllByRootDescending(root);
 

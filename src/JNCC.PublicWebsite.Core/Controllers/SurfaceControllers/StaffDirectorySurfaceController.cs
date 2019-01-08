@@ -15,7 +15,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             {
                 return EmptyResult();
             }
-            var tagsProvider = new UmbracoContentTagsProvider(Services.TagService);
+            var tagsProvider = new UmbracoStaffProfilePageTagsProvider(ApplicationContext.ApplicationCache.RequestCache);
             var service = new StaffDirectoryFilteringService(tagsProvider);
             var viewModel = service.GetFilteringViewModel(model, CurrentPage);
 
