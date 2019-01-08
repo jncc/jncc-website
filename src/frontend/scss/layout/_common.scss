@@ -307,7 +307,7 @@ a {
 	&:only-child {
 		width: 100% !important;
 	}
-	
+
 	> p, > ul, > ol {
 		a {
 			text-decoration: underline;
@@ -372,17 +372,6 @@ a {
 	&.stretch-layout {
 		@include breakpoint(medium) {
 			align-items: stretch;
-		}
-
-		#sidebar,
-		#content {
-			@include breakpoint(medium) {
-				padding-top: rem-calc(30px);
-			}
-
-			@include breakpoint(xlarge) {
-				padding-top: rem-calc(60px);
-			}
 		}
 	}
 
