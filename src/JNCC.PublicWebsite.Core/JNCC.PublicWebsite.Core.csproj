@@ -351,6 +351,7 @@
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\FilteringService.cs" />
     <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
+    <Compile Include="Services\PageIncludesService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
