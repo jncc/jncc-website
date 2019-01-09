@@ -8102,6 +8102,10 @@ a {
 	margin-bottom: 1.875rem;
 }
 
+.no-breadcrumbs .two-columns {
+	margin-top: 1.4375rem;
+}
+
 .info-section {
 	background-color: #faf9f9;
 	padding: 2rem 0;
