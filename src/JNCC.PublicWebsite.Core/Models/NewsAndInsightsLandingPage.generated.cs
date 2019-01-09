@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>News and Insights Landing Page</summary>
 	[PublishedContentModel("NewsAndInsightsLandingPage")]
-	public partial class NewsAndInsightsLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, ISeoComposition
+	public partial class NewsAndInsightsLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "NewsAndInsightsLandingPage";
@@ -88,6 +88,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IPublishedContent HeroImage
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
+		}
+
+		///<summary>
+		/// Page-specific BODY Includes: Authored code includes which will only appear on this page and will be rendered at the end of the BODY tag in the HTML.  This is useful for adding tracking code. Styling should not be authored here and should instead be authored in the head.  This should be edited by administrators only.
+		///</summary>
+		[ImplementPropertyType("pageSpecificBodyIncludes")]
+		public string PageSpecificBodyIncludes
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageSpecificIncludesComposition.GetPageSpecificBodyIncludes(this); }
+		}
+
+		///<summary>
+		/// Page-specific HEAD Includes: Authored code includes which will only appear on this page and will be rendered at the end of the HEAD tag in the HTML.  This is useful for adding tracking code and style elements.  This should be edited by administrators only.
+		///</summary>
+		[ImplementPropertyType("pageSpecificHeadIncludes")]
+		public string PageSpecificHeadIncludes
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageSpecificIncludesComposition.GetPageSpecificHeadIncludes(this); }
 		}
 
 		///<summary>
