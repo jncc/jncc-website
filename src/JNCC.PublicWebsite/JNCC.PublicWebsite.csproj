@@ -189,6 +189,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\UmbracoCourier\bin\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="Our.Umbraco.HideProperties, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Our.Umbraco.HideProperties.0.3.2\lib\net45\Our.Umbraco.HideProperties.dll</HintPath>
+    </Reference>
     <Reference Include="Our.Umbraco.InnerContent, Version=2.0.6775.8222, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Our.Umbraco.InnerContent.Core.2.0.0\lib\net45\Our.Umbraco.InnerContent.dll</HintPath>
     </Reference>
@@ -519,6 +522,17 @@
     <Content Include="App_Plugins\StackedContent\css\stackedcontent.css" />
     <Content Include="App_Plugins\StackedContent\js\stackedcontent.js" />
     <Content Include="App_Plugins\StackedContent\views\stackedcontent.html" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\dashboard\dashboard.controller.js" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\dashboard\dashboard.html" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\overlays\propertyPicker\propertyPicker.overlay.controller.js" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\overlays\propertyPicker\propertyPicker.overlay.html" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\overlays\ruleBuilder\ruleBuilder.overlay.controller.js" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\overlays\ruleBuilder\ruleBuilder.overlay.html" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\overlays\tabPicker\tabPicker.overlay.controller.js" />
+    <Content Include="App_Plugins\umbraco-hide-properties\backoffice\overlays\tabPicker\tabPicker.overlay.html" />
+    <Content Include="App_Plugins\umbraco-hide-properties\lang\en-US.xml" />
+    <Content Include="App_Plugins\umbraco-hide-properties\lang\nl-NL.xml" />
+    <Content Include="App_Plugins\umbraco-hide-properties\resources\hide-properties.resource.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\defaultform.css" />
@@ -657,6 +671,7 @@
     <Content Include="App_Plugins\uSync\uSyncDashboardController.js" />
     <Content Include="App_Plugins\uSync\uSyncDashboardService.js" />
     <Content Include="config\grid.editors.config.js" />
+    <Content Include="config\hideProperties.rules.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
     <Content Include="config\Lang\de-DE.user.xml" />
@@ -887,6 +902,7 @@
     <Content Include="config\courier.config" />
     <Content Include="App_Plugins\DiploTraceLogViewer\package.manifest" />
     <Content Include="js\lib\jquery-2.2.4.min.js" />
+    <Content Include="App_Plugins\umbraco-hide-properties\package.manifest" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
