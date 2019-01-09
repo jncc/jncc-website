@@ -15,6 +15,7 @@
     @(Html.Action<SeoMetaDataSurfaceController>("RenderSeoMetaData"))
     <link rel="stylesheet" href="~/css/app.css">
     @Html.RenderJsHere()
+    @(Html.Action<PageIncludesSurfaceController>("RenderHeadIncludes"))
 </head>
 <body>
     <noscript><div>Javascript must be enabled for the correct page display</div></noscript>
@@ -55,5 +56,6 @@
     <a class="accessibility" href="#wrapper">Back to top</a>
     @(Html.Action<CookieBannerTemplateSurfaceController>("RenderCookieBannerTemplate"))
     <script src="~/js/app.js"></script>
+    @(Html.Action<PageIncludesSurfaceController>("RenderBodyIncludes"))
 </body>
 </html>
