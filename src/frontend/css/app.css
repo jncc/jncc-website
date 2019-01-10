@@ -8542,6 +8542,18 @@ button.slick-arrow {
 	text-decoration: underline;
 }
 
+.header-top.logout p,
+.header-top.logout form {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.header-top.logout form .button.hollow {
+	color: #fefefe;
+	border-color: #fefefe;
+	margin: 0;
+}
+
 .logo {
 	width: 6.25rem;
 	-ms-flex-negative: 0;

@@ -42,6 +42,21 @@
 		color: $white;
 		text-decoration: underline;
 	}
+
+	&.logout{
+		p, form {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		form {
+			.button.hollow {
+				color: $white;
+				border-color: $white;
+				margin: 0;
+			}
+		}
+	}
 }
 
 .logo {
