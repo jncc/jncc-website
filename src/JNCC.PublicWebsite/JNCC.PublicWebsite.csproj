@@ -1015,6 +1015,7 @@
     <Content Include="Views\Partials\Forms\Themes\foundation6\Submitted.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\FilterGroupViewModel.cshtml" />
     <Content Include="Views\CustomErrorPage.cshtml" />
+    <Content Include="Views\LoginPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
