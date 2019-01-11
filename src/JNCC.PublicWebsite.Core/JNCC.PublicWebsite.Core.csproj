@@ -191,6 +191,7 @@
     <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\System.Data.SqlServerCe.dll</HintPath>
@@ -321,6 +322,7 @@
     <Compile Include="Models\HomePage.generated.cs" />
     <Compile Include="Models\Image.generated.cs" />
     <Compile Include="Models\InternalTextPage.generated.cs" />
+    <Compile Include="Models\LoginFormModel.cs" />
     <Compile Include="Models\LoginPage.generated.cs" />
     <Compile Include="Models\Member.generated.cs" />
     <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
