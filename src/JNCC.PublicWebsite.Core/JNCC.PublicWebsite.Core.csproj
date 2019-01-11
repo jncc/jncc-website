@@ -281,6 +281,7 @@
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CookieBannerSurfaceController.cs" />
