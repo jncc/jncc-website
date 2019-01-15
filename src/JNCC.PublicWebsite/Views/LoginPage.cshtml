@@ -1,7 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.LoginPage>
 @using ContentModels = JNCC.PublicWebsite.Core.Models;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
 <main id="main">
     @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
@@ -9,11 +9,13 @@
         @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
         <div class="two-columns">
             <div id="content">
-                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
-                @(Html.Action<LoginFormSurfaceController>("RenderLoginForm"))
+                <div class="row collapse">
+                    <div class="columns large-6">
+                        @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                        @(Html.Action<LoginFormSurfaceController>("RenderLoginForm"))
+                    </div>
+                </div>
             </div>
-            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
         </div>
     </div>
-    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
 </main>
