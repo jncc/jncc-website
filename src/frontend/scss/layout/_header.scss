@@ -43,7 +43,7 @@
 		text-decoration: underline;
 	}
 
-	&.logout{
+	&.logged-in {
 		p, form {
 			display: inline-block;
 			vertical-align: middle;
@@ -54,6 +54,7 @@
 				color: $white;
 				border-color: $white;
 				margin: 0;
+                text-decoration: none;
 			}
 		}
 	}
