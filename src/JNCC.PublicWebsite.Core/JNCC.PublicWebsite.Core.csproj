@@ -289,6 +289,7 @@
     <Compile Include="Controllers\SurfaceControllers\FooterSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\HeaderSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\LoginFormSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\LogoutSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageAttributesSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageHeroSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageIncludesSurfaceController.cs" />

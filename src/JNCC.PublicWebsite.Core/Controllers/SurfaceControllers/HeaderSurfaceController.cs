@@ -11,6 +11,17 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         private readonly PageHeroService _pageHeroService = new PageHeroService();
 
         [ChildActionOnly]
+        public ActionResult RenderLoggedInMemberBar()
+        {
+            if (Members.IsLoggedIn() == false)
+            {
+                return EmptyResult();
+            }
+
+            return View("~/Views/Partials/Header/LoggedInMemberBar.cshtml");
+        }
+
+        [ChildActionOnly]
         public ActionResult RenderMainNavigation()
         {
             var viewModel = new MainNavigationViewModel

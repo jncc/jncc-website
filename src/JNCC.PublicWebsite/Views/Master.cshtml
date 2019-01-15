@@ -22,6 +22,7 @@
     <div id="wrapper">
         <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
         <header id="header" class="js-cookie-banner-container">
+            @(Html.Action<HeaderSurfaceController>("RenderLoggedInMemberBar"))
             <div class="container">
                 <strong class="logo">
                     <a href="/" accesskey="1"><img src="~/images/logo.png" alt="JNCC"></a>
