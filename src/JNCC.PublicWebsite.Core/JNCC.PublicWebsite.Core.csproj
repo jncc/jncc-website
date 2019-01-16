@@ -311,6 +311,7 @@
     <Compile Include="Models\CalloutCardSchema.generated.cs" />
     <Compile Include="Models\CarouselItemSchema.generated.cs" />
     <Compile Include="Models\CategorisedFooterLinksSchema.generated.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\ChangePasswordPage.generated.cs" />
     <Compile Include="Models\ContentAreaSchema.generated.cs" />
     <Compile Include="Models\ContentImageSchema.generated.cs" />
