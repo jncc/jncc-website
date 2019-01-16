@@ -1019,6 +1019,7 @@
     <Content Include="Views\Partials\LoginForm.cshtml" />
     <Content Include="Views\Partials\Header\LoggedInMemberBar.cshtml" />
     <Content Include="Views\ChangePasswordPage.cshtml" />
+    <Content Include="Views\Partials\ChangePasswordForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
