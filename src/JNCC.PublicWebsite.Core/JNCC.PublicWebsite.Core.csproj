@@ -361,6 +361,7 @@
     <Compile Include="Providers\UmbracoStaffProfilePageTagsProvider.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\FilteringService.cs" />
+    <Compile Include="Services\MemberLoggedInBarService.cs" />
     <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
     <Compile Include="Services\PageIncludesService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
@@ -395,6 +396,7 @@
     <Compile Include="ViewModels\ListingViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationViewModel.cs" />
+    <Compile Include="ViewModels\MemberLoggedInBarViewModel.cs" />
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
     <Compile Include="ViewModels\NewsAndInsightsLandingFilteringViewModel.cs" />
     <Compile Include="ViewModels\NewsAndInsightsLandingListingViewModel.cs" />
