@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Change Password Page: The page logged in members will be able to change their password.
+		///</summary>
+		[ImplementPropertyType("changePasswordPage")]
+		public IPublishedContent ChangePasswordPage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("changePasswordPage"); }
+		}
+
+		///<summary>
 		/// Content: Content to be displayed informing users of the website cookie policy
 		///</summary>
 		[ImplementPropertyType("cookieBannerContent")]
