@@ -1,13 +1,7 @@
 ﻿@model JNCC.PublicWebsite.Core.Models.LoginFormModel
-@{
-    var validationSummaryHtmlAttributes = new Dictionary<string, object>()
-    {
-        { "class", "callout alert validation-summary" }
-    };
-}
 @using (Html.BeginUmbracoForm<LoginFormSurfaceController>("PerformLogin"))
 {
-    @Html.ValidationSummary(htmlAttributes: validationSummaryHtmlAttributes)
+    @Html.FoundationValidationSummary()
     <div class="form-field">
         <label for="@Html.NameFor(model => model.Username)">
             Username
