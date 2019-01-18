@@ -192,6 +192,7 @@
       <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\System.Data.SqlServerCe.dll</HintPath>
@@ -275,6 +276,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
+    <Compile Include="Configuration\ResetPasswordConfiguration.cs" />
     <Compile Include="Constants\FilterNames.cs" />
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
