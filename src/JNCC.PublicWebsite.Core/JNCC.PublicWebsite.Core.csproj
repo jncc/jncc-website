@@ -302,6 +302,7 @@
     <Compile Include="Controllers\SurfaceControllers\PageHeroSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageIncludesSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\RelatedItemsSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\ResetPasswordFormSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SeoMetaDataSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SidebarSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\NewsAndInsightsLandingSurfaceController.cs" />
