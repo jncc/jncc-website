@@ -341,6 +341,7 @@
     <Compile Include="Models\PageSpecificIncludesComposition.generated.cs" />
     <Compile Include="Models\RelatedItemSchema.generated.cs" />
     <Compile Include="Models\RelatedItemsComposition.generated.cs" />
+    <Compile Include="Models\ResetPasswordPage.generated.cs" />
     <Compile Include="Models\ResourceItemSchema.generated.cs" />
     <Compile Include="Models\SeoComposition.generated.cs" />
     <Compile Include="Models\SidebarComposition.generated.cs" />
