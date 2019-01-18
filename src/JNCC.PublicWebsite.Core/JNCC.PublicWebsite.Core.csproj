@@ -369,7 +369,9 @@
     <Compile Include="Providers\UmbracoStaffProfilePageTagsProvider.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\FilteringService.cs" />
+    <Compile Include="Services\IMemberNotificationService.cs" />
     <Compile Include="Services\IResetPasswordRequestService.cs" />
+    <Compile Include="Services\MemberEmailNotificationService.cs" />
     <Compile Include="Services\MemberLoggedInBarService.cs" />
     <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
     <Compile Include="Services\PageIncludesService.cs" />
