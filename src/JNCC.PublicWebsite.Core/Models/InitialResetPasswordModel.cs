@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-    public sealed class RequestResetPasswordModel
+    public sealed class InitialResetPasswordModel
     {
         [Required]
         [DisplayName("Email Address")]
