@@ -283,6 +283,7 @@
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
+    <Compile Include="Constants\ResetPasswordRequestStatusCDs.cs" />
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ChangePasswordPageController.cs" />
@@ -368,9 +369,11 @@
     <Compile Include="Providers\UmbracoStaffProfilePageTagsProvider.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\FilteringService.cs" />
+    <Compile Include="Services\IResetPasswordRequestService.cs" />
     <Compile Include="Services\MemberLoggedInBarService.cs" />
     <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
     <Compile Include="Services\PageIncludesService.cs" />
+    <Compile Include="Services\PetaPocoResetPasswordRequestService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
