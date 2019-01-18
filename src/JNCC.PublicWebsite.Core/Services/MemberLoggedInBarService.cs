@@ -7,7 +7,14 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         internal MemberLoggedInBarViewModel GetViewModel(HomePage root)
         {
-            return new MemberLoggedInBarViewModel();
+            var viewModel = new MemberLoggedInBarViewModel();
+
+            if (root.ChangePasswordPage != null)
+            {
+                viewModel.ChangePasswordPageUrl = root.ChangePasswordPage.Url;
+            }
+
+            return viewModel;
         }
     }
 }
