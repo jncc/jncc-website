@@ -12,7 +12,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         private readonly MemberLoggedInBarService _memberLoggedInBarService = new MemberLoggedInBarService();
 
         [ChildActionOnly]
-        public ActionResult RenderLoggedInMemberBar()
+        public ActionResult RenderMemberLoggedInBar()
         {
             if (Members.IsLoggedIn() == false)
             {
@@ -21,7 +21,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             var viewModel = _memberLoggedInBarService.GetViewModel(Root);
 
-            return View("~/Views/Partials/Header/LoggedInMemberBar.cshtml", viewModel);
+            return View("~/Views/Partials/Header/MemberLoggedInBar.cshtml", viewModel);
         }
 
         [ChildActionOnly]

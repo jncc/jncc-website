@@ -1017,7 +1017,7 @@
     <Content Include="Views\CustomErrorPage.cshtml" />
     <Content Include="Views\LoginPage.cshtml" />
     <Content Include="Views\Partials\LoginForm.cshtml" />
-    <Content Include="Views\Partials\Header\LoggedInMemberBar.cshtml" />
+    <Content Include="Views\Partials\Header\MemberLoggedInBar.cshtml" />
     <Content Include="Views\ChangePasswordPage.cshtml" />
     <Content Include="Views\Partials\ChangePasswordForm.cshtml" />
     <None Include="Web.Debug.config">
