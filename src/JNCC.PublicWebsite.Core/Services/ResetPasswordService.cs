@@ -1,42 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
-using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class ResetPasswordService
     {
+        private readonly IMemberService _memberService;
         private readonly IResetPasswordRequestService _passwordRequestService;
-        private readonly IMemberNotificationService _memberNotificationService;
-        public ResetPasswordService(IMemberService memberService, IResetPasswordRequestService passwordRequestService, IMemberNotificationService memberNotificationService)
+
+        public ResetPasswordService(IMemberService memberService, IResetPasswordRequestService passwordRequestService)
         {
+            _memberService = memberService;
             _passwordRequestService = passwordRequestService;
-            _memberNotificationService = memberNotificationService;
         }
 
-        internal bool TrySetInitialRequest(IMember existingMember, IPublishedContent currentPage)
+        internal bool TryCreateInitialRequest(IMember existingMember, out Guid requestToken)
         {
             try
             {
-                var token = _passwordRequestService.Create(existingMember.Key, DateTime.Now);
-                var data = new Dictionary<string, object>()
-                {
-                    { "Token", token },
-                    { "ResetPasswordPageUrl", currentPage.UrlWithDomain() }
-                };
+                var request = _passwordRequestService.Create(existingMember.Key, DateTime.Now);
 
-                _memberNotificationService.SendNotification(existingMember, data);
-
+                requestToken = request.Id;
                 return true;
             }
             catch (Exception ex)
             {
                 LogHelper.Error<ResetPasswordService>("Error in TrySetInitialRequest", ex);
+
+                requestToken = Guid.Empty;
                 return false;
             }
+        }
+
+        internal bool IsRequestTokenValid(string requestToken)
+        {
+            Guid parsedRequestToken;
+
+            if (Guid.TryParse(requestToken, out parsedRequestToken) == false)
+            {
+                return false;
+            }
+
+            var entry = _passwordRequestService.Get(parsedRequestToken);
+
+            if (entry == null)
+            {
+                return false;
+            }
+
+            if (entry.ProcessedDate.HasValue)
+            {
+                return false;
+            }
+
+            return entry.ExpirationDate > DateTime.Now;
         }
     }
 }

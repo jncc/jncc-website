@@ -9,8 +9,9 @@ namespace JNCC.PublicWebsite.Core.Models
     {
         [PrimaryKeyColumn(AutoIncrement = false)]
         public Guid Id { get; set; }
-        public string MemberKey { get; set; }
-        public string StatusCD { get; set; }
+        public Guid MemberKey { get; set; }
         public DateTime ExpirationDate { get; set; }
+        [NullSetting(NullSetting = NullSettings.Null)]
+        public DateTime? ProcessedDate { get; set; }
     }
 }

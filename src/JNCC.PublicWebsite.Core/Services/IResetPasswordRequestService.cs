@@ -1,9 +1,12 @@
-﻿using System;
+﻿using JNCC.PublicWebsite.Core.Models;
+using System;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal interface IResetPasswordRequestService
     {
-        string Create(object memberKey, DateTime expiration);
+        ResetPasswordRequestModel Create(Guid memberKey, DateTime currentTime);
+        ResetPasswordRequestModel Get(Guid requestToken);
+        void Update(ResetPasswordRequestModel entry);
     }
 }

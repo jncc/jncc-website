@@ -1,8 +1,8 @@
 ﻿using JNCC.PublicWebsite.Core.Configuration;
-using JNCC.PublicWebsite.Core.Constants;
 using JNCC.PublicWebsite.Core.Models;
 using System;
 using Umbraco.Core;
+using Umbraco.Core.Persistence;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -17,20 +17,33 @@ namespace JNCC.PublicWebsite.Core.Services
             _resetPasswordConfiguration = resetPasswordConfiguration;
         }
 
-        public string Create(object memberKey, DateTime dateTime)
+        public ResetPasswordRequestModel Create(Guid memberKey, DateTime currentDateTime)
         {
-            var expirationDate = dateTime.AddMinutes(_resetPasswordConfiguration.RequestExpirationInMinutes);
+            var expirationDate = currentDateTime.AddMinutes(_resetPasswordConfiguration.RequestExpirationInMinutes);
             var request = new ResetPasswordRequestModel()
             {
                 Id = Guid.NewGuid(),
-                MemberKey = memberKey.ToString(),
-                StatusCD = ResetPasswordRequestStatusCDs.New,
+                MemberKey = memberKey,
                 ExpirationDate = expirationDate
             };
 
             _databaseContext.Database.Insert(request);
 
-            return request.Id.ToString();
+            return request;
+        }
+
+        public ResetPasswordRequestModel Get(Guid requestToken)
+        {
+            var sql = new Sql()
+                               .From<ResetPasswordRequestModel>(_databaseContext.SqlSyntax)
+                               .Where<ResetPasswordRequestModel>(x => x.Id == requestToken, _databaseContext.SqlSyntax);
+
+            return _databaseContext.Database.FirstOrDefault<ResetPasswordRequestModel>(sql);
+        }
+
+        public void Update(ResetPasswordRequestModel entry)
+        {
+            _databaseContext.Database.Update(entry);
         }
     }
 }
