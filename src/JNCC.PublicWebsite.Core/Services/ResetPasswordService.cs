@@ -1,3 +1,4 @@
+﻿using JNCC.PublicWebsite.Core.Models;
 using System;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
@@ -36,26 +37,51 @@ namespace JNCC.PublicWebsite.Core.Services
 
         internal bool IsRequestTokenValid(string requestToken)
         {
-            Guid parsedRequestToken;
+            var entry = _passwordRequestService.Get(requestToken);
 
-            if (Guid.TryParse(requestToken, out parsedRequestToken) == false)
+            return IsRequestValid(entry);
+        }
+
+        internal bool IsRequestValid(ResetPasswordRequestModel request)
+        {
+            if (request == null)
             {
                 return false;
             }
 
-            var entry = _passwordRequestService.Get(parsedRequestToken);
-
-            if (entry == null)
+            if (request.ProcessedDate.HasValue)
             {
                 return false;
             }
 
-            if (entry.ProcessedDate.HasValue)
+            return request.ExpirationDate > DateTime.Now;
+        }
+
+        internal IMember GetMemberByRequest(ResetPasswordRequestModel request)
+        {
+            return _memberService.GetByKey(request.MemberKey);
+        }
+
+        internal bool ResetPassword(IMember existingMember, ResetPasswordRequestModel request, string newPassword)
+        {
+            if (existingMember == null)
             {
                 return false;
             }
 
-            return entry.ExpirationDate > DateTime.Now;
+            try
+            {
+                _memberService.SavePassword(existingMember, newPassword);
+                request.ProcessedDate = DateTime.Now;
+                _passwordRequestService.Update(request);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error<ResetPasswordService>("Error in ResetPassword", ex);
+                return false;
+            }
         }
     }
 }
