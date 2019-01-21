@@ -19,13 +19,14 @@ namespace JNCC.PublicWebsite.Core.Services
             _templatesProvider = new UmbracoFileSystemEmailTemplatesProvider();
         }
 
-        private void SendNotification(IMember member, string templateName, IDictionary<string, object> data = null)
+        private void SendNotification(IMember member, string subject, string templateName, IDictionary<string, object> data = null)
         {
             var templateContent = _templatesProvider.GetTemplateContent(templateName);
             var templateBody = data == null ? templateContent : BuildTemplate(templateContent, data);
 
             var message = new MailMessage(_resetPasswordConfiguration.FromEmailAddress, member.Email)
             {
+                Subject = subject,
                 IsBodyHtml = true,
                 Body = templateBody
             };
@@ -56,7 +57,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 { "ResetPasswordPageUrl", currentPage.UrlWithDomain() }
             };
 
-            SendNotification(member, _resetPasswordConfiguration.CompletedRequestEmailTemplatePath, data);
+            SendNotification(member, "Reset Password Complete", _resetPasswordConfiguration.CompletedRequestEmailTemplatePath, data);
         }
 
         internal void SendInitialRequestEmail(IMember member, Guid token, IPublishedContent currentPage)
@@ -67,7 +68,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 { "ResetPasswordPageUrl", currentPage.UrlWithDomain() }
             };
 
-            SendNotification(member, _resetPasswordConfiguration.InitialRequestEmailTemplatePath, data);
+            SendNotification(member, "Reset Password Request", _resetPasswordConfiguration.InitialRequestEmailTemplatePath, data);
         }
     }
 }
