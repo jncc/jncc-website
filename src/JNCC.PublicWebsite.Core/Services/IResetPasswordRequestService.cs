@@ -7,6 +7,7 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         ResetPasswordRequestModel Create(Guid memberKey, DateTime currentTime);
         ResetPasswordRequestModel Get(Guid requestToken);
+        ResetPasswordRequestModel Get(string requestToken);
         void Update(ResetPasswordRequestModel entry);
     }
 }

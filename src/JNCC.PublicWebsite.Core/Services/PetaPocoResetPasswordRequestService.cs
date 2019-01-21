@@ -32,6 +32,18 @@ namespace JNCC.PublicWebsite.Core.Services
             return request;
         }
 
+        public ResetPasswordRequestModel Get(string requestToken)
+        {
+            Guid parsedRequestToken;
+
+            if (Guid.TryParse(requestToken, out parsedRequestToken) == false)
+            {
+                return default(ResetPasswordRequestModel);
+            }
+
+            return Get(parsedRequestToken);
+        }
+
         public ResetPasswordRequestModel Get(Guid requestToken)
         {
             var sql = new Sql()
