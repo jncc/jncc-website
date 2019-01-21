@@ -837,6 +837,8 @@
     <Content Include="Umbraco\Plugins\courier\ViewTaskManager.aspx" />
     <Content Include="Umbraco\Plugins\courier\webservices\Courier.asmx" />
     <Content Include="Umbraco\Plugins\courier\webservices\Repository.asmx" />
+    <Content Include="Views\EmailTemplates\ResetPassword\CompletedRequest.html" />
+    <Content Include="Views\EmailTemplates\ResetPassword\InitialRequest.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1015,6 +1017,16 @@
     <Content Include="Views\Partials\Forms\Themes\foundation6\Submitted.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\FilterGroupViewModel.cshtml" />
     <Content Include="Views\CustomErrorPage.cshtml" />
+    <Content Include="Views\LoginPage.cshtml" />
+    <Content Include="Views\Partials\LoginForm.cshtml" />
+    <Content Include="Views\Partials\Header\MemberLoggedInBar.cshtml" />
+    <Content Include="Views\ChangePasswordPage.cshtml" />
+    <Content Include="Views\Partials\ChangePasswordForm.cshtml" />
+    <Content Include="Views\ResetPasswordPage.cshtml" />
+    <Content Include="Views\Partials\ResetPassword\InitialForm.cshtml" />
+    <Content Include="Views\Partials\ResetPassword\ResetPasswordForm.cshtml" />
+    <Content Include="Views\Partials\ResetPassword\InvalidRequestToken.cshtml" />
+    <Content Include="Views\Partials\ResetPassword\Success.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1032,6 +1044,7 @@
       <Name>JNCC.PublicWebsite.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

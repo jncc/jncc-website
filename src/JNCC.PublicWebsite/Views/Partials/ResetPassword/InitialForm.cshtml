@@ -1,0 +1,23 @@
+﻿@using JNCC.PublicWebsite.Core.Constants
+@model JNCC.PublicWebsite.Core.Models.InitialResetPasswordModel
+@using (Html.BeginUmbracoForm<ResetPasswordFormSurfaceController>("PerformInitialResetPassword"))
+{
+    if (TempData.HasSuccessFlag(SuccessFlags.InitialResetPasswordRequestSuccess))
+    {
+        <p>Instructions to reset your password have been sent to the provided email address.</p>
+    }
+    else
+    {
+        @Html.FoundationValidationSummary()
+        <div class="form-field">
+            <label for="@Html.NameFor(model => model.EmailAddress)">
+                Email Address
+                @Html.TextBoxFor(model => model.EmailAddress)
+            </label>
+        </div>
+        <div class="form-field">
+            <input type="submit" value="Reset Password" class="button primary">
+        </div>
+        @Html.AntiForgeryToken()
+    }
+}

@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 
 namespace JNCC.PublicWebsite.Core.Extensions
 {
@@ -32,6 +33,11 @@ namespace JNCC.PublicWebsite.Core.Extensions
             }
 
             return new MvcHtmlString(value.ToString());
+        }
+
+        public static IHtmlString FoundationValidationSummary(this HtmlHelper htmlHelper)
+        {
+            return htmlHelper.ValidationSummary(string.Empty, new { @class = "callout alert validation-summary" });
         }
     }
 }

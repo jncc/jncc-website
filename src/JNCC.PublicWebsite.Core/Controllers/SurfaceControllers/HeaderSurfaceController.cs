@@ -9,6 +9,20 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
     {
         private readonly MainNavigationService mainNavigationService = new MainNavigationService();
         private readonly PageHeroService _pageHeroService = new PageHeroService();
+        private readonly MemberLoggedInBarService _memberLoggedInBarService = new MemberLoggedInBarService();
+
+        [ChildActionOnly]
+        public ActionResult RenderMemberLoggedInBar()
+        {
+            if (Members.IsLoggedIn() == false)
+            {
+                return EmptyResult();
+            }
+
+            var viewModel = _memberLoggedInBarService.GetViewModel(Root);
+
+            return View("~/Views/Partials/Header/MemberLoggedInBar.cshtml", viewModel);
+        }
 
         [ChildActionOnly]
         public ActionResult RenderMainNavigation()

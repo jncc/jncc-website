@@ -8542,6 +8542,19 @@ button.slick-arrow {
 	text-decoration: underline;
 }
 
+.header-top.logged-in p,
+.header-top.logged-in form {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.header-top.logged-in form .button.hollow {
+	color: #fefefe;
+	border-color: #fefefe;
+	margin: 0;
+	text-decoration: none;
+}
+
 .logo {
 	width: 6.25rem;
 	-ms-flex-negative: 0;
