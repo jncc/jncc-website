@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using System;
 using System.Web.Mvc;
 using Umbraco.Core.Logging;
@@ -55,7 +56,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
                 return CurrentUmbracoPage();
             }
-            TempData.Add("Success", true);
+            TempData.SetSuccessFlag();
 
             return RedirectToCurrentUmbracoPage();
         }
