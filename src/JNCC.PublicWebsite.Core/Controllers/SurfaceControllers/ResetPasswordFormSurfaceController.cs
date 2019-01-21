@@ -1,4 +1,4 @@
-using JNCC.PublicWebsite.Core.Attributes.Routing;
+﻿using JNCC.PublicWebsite.Core.Attributes.Routing;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
@@ -15,6 +15,11 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderForm()
         {
+            if (TempData.ContainsKey("ResetPasswordSuccess") && TempData["ResetPasswordSuccess"] != null)
+            {
+                return PartialView("~/Views/Partials/ResetPassword/Success.cshtml", new InitialResetPasswordModel());
+            }
+
             return PartialView("~/Views/Partials/ResetPassword/InitialForm.cshtml", new InitialResetPasswordModel());
         }
 
