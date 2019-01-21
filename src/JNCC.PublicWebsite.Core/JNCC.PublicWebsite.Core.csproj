@@ -365,11 +365,13 @@
     <Compile Include="PropertyValueConverters\TagsValueConverter.cs" />
     <Compile Include="Providers\IArticleTypesProvider.cs" />
     <Compile Include="Providers\IArticleYearsProvider.cs" />
+    <Compile Include="Providers\INotificationTemplatesProvider.cs" />
     <Compile Include="Providers\ITagsProvider.cs" />
     <Compile Include="Providers\UmbracoArticlePageTagsProvider.cs" />
     <Compile Include="Providers\UmbracoArticleTypesProvider.cs" />
     <Compile Include="Providers\UmbracoArticleYearsProvider.cs" />
     <Compile Include="Providers\UmbracoContentTagsProvider.cs" />
+    <Compile Include="Providers\UmbracoFileSystemEmailTemplatesProvider.cs" />
     <Compile Include="Providers\UmbracoPagesProvider.cs" />
     <Compile Include="Providers\UmbracoStaffProfilePageTagsProvider.cs" />
     <Compile Include="Services\ArticleService.cs" />
