@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Attributes.Routing;
+using JNCC.PublicWebsite.Core.Attributes.Routing;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
@@ -72,9 +72,39 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PerformResetPassword(ResetPasswordModel model)
+        [RequireParameter("requestToken")]
+        public ActionResult PerformResetPassword(ResetPasswordModel model, string requestToken)
         {
-            return CurrentUmbracoPage();
+            if (ModelState.IsValid == false)
+            {
+                return CurrentUmbracoPage();
+            }
+
+            var config = ResetPasswordConfiguration.GetConfig();
+            var requestService = new PetaPocoResetPasswordRequestService(ApplicationContext.DatabaseContext, config);
+            var service = new ResetPasswordService(Services.MemberService, requestService);
+
+            var request = requestService.Get(requestToken);
+
+            if (service.IsRequestTokenValid(requestToken) == false)
+            {
+                return PartialView("~/Views/Partials/ResetPassword/InvalidRequestToken.cshtml");
+            }
+
+            var existingMember = service.GetMemberByRequest(request);
+
+            if (service.ResetPassword(existingMember, request, model.NewPassword) == false)
+            {
+                ModelState.AddModelError("Model", "Unable to reset password at this time.");
+                return CurrentUmbracoPage();
+            }
+
+            var notificationService = new ResetPasswordEmailNotificationService(config);
+            notificationService.SendCompletedRequestEmail(existingMember, CurrentPage);
+
+            TempData.Add("ResetPasswordSuccess", true);
+
+            return RedirectToCurrentUmbracoPage();
         }
     }
 }
