@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -372,13 +372,12 @@
     <Compile Include="Providers\UmbracoStaffProfilePageTagsProvider.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\FilteringService.cs" />
-    <Compile Include="Services\IMemberNotificationService.cs" />
     <Compile Include="Services\IResetPasswordRequestService.cs" />
-    <Compile Include="Services\MemberEmailNotificationService.cs" />
     <Compile Include="Services\MemberLoggedInBarService.cs" />
     <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
     <Compile Include="Services\PageIncludesService.cs" />
     <Compile Include="Services\PetaPocoResetPasswordRequestService.cs" />
+    <Compile Include="Services\ResetPasswordEmailNotificationService.cs" />
     <Compile Include="Services\ResetPasswordService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
