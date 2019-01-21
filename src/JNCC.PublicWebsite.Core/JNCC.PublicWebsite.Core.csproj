@@ -277,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBootstrap.cs" />
+    <Compile Include="Attributes\Routing\RequireParameterAttribute.cs" />
     <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
     <Compile Include="Configuration\ResetPasswordConfiguration.cs" />
     <Compile Include="Constants\FilterNames.cs" />
