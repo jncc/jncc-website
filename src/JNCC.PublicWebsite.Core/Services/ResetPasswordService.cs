@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
@@ -27,7 +27,7 @@ namespace JNCC.PublicWebsite.Core.Services
             }
             catch (Exception ex)
             {
-                LogHelper.Error<ResetPasswordService>("Error in TrySetInitialRequest", ex);
+                LogHelper.Error<ResetPasswordService>("Error in TryCreateInitialRequest", ex);
 
                 requestToken = Guid.Empty;
                 return false;
