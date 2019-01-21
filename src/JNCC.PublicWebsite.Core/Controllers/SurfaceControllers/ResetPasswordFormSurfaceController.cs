@@ -1,4 +1,4 @@
-using JNCC.PublicWebsite.Core.Attributes.Routing;
+﻿using JNCC.PublicWebsite.Core.Attributes.Routing;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
@@ -16,6 +16,23 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         public ActionResult RenderForm()
         {
             return PartialView("~/Views/Partials/ResetPassword/InitialForm.cshtml", new InitialResetPasswordModel());
+        }
+
+        [ChildActionOnly]
+        [ActionName("RenderForm")]
+        [RequireParameter("requestToken")]
+        public ActionResult RenderForm(string requestToken)
+        {
+            var config = ResetPasswordConfiguration.GetConfig();
+            var requestService = new PetaPocoResetPasswordRequestService(ApplicationContext.DatabaseContext, config);
+            var service = new ResetPasswordService(Services.MemberService, requestService);
+
+            if (service.IsRequestTokenValid(requestToken) == false)
+            {
+                return PartialView("~/Views/Partials/ResetPassword/InvalidRequestToken.cshtml");
+            }
+
+            return PartialView("~/Views/Partials/ResetPassword/ResetPasswordForm.cshtml", new ResetPasswordModel());
         }
 
         [HttpPost]
@@ -51,6 +68,13 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             TempData.Add("InitialRequestSuccess", true);
 
             return RedirectToCurrentUmbracoPage();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PerformResetPassword(ResetPasswordModel model)
+        {
+            return CurrentUmbracoPage();
         }
     }
 }
