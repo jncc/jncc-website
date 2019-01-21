@@ -314,6 +314,7 @@
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
     <Compile Include="Extensions\PageHeroCompositionExtensions.cs" />
     <Compile Include="Extensions\PublishedContentExtensions.cs" />
+    <Compile Include="Extensions\TempDataDictionaryExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Models\ArticlePage.generated.cs" />
     <Compile Include="Models\BizDevServicePage.generated.cs" />
