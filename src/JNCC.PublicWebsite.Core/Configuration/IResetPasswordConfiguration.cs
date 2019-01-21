@@ -3,7 +3,8 @@
     internal interface IResetPasswordConfiguration
     {
         string FromEmailAddress { get; }
-        string EmailTemplatePath { get; }
+        string InitialRequestEmailTemplatePath { get; }
+        string CompletedRequestEmailTemplatePath { get; }
         int RequestExpirationInMinutes { get; }
     }
 }

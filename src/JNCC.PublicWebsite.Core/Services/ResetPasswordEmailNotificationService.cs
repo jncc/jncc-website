@@ -20,24 +20,15 @@ namespace JNCC.PublicWebsite.Core.Services
             _fileSystem = FileSystemProviderManager.Current.GetUnderlyingFileSystemProvider("emailTemplates");
         }
 
-        public void SendInitialRequestEmail(IMember member, Guid token, IPublishedContent currentPage)
+        private void SendNotification(IMember member, string templateName, IDictionary<string, object> data = null)
         {
-            var data = new Dictionary<string, object>()
-            {
-                { "Token", token },
-                { "ResetPasswordPageUrl", currentPage.UrlWithDomain() }
-            };
+            var templateContent = GetTemplateContent(templateName);
+            var templateBody = data == null ? templateContent : BuildTemplate(templateContent, data);
 
-            SendNotification(member, data, _resetPasswordConfiguration.EmailTemplatePath);
-        }
-
-        private void SendNotification(IMember member, IDictionary<string, object> data, string templateName)
-        {
-            var templateBody = GetTemplateContent(templateName);
             var message = new MailMessage(_resetPasswordConfiguration.FromEmailAddress, member.Email)
             {
                 IsBodyHtml = true,
-                Body = BuildTemplate(templateBody, data)
+                Body = templateBody
             };
 
             using (var smtp = new SmtpClient())
@@ -68,6 +59,27 @@ namespace JNCC.PublicWebsite.Core.Services
             }
 
             return modifiedTemplateBody;
+        }
+
+        internal void SendCompletedRequestEmail(IMember member, IPublishedContent currentPage)
+        {
+            var data = new Dictionary<string, object>()
+            {
+                { "ResetPasswordPageUrl", currentPage.UrlWithDomain() }
+            };
+
+            SendNotification(member, _resetPasswordConfiguration.CompletedRequestEmailTemplatePath, data);
+        }
+
+        internal void SendInitialRequestEmail(IMember member, Guid token, IPublishedContent currentPage)
+        {
+            var data = new Dictionary<string, object>()
+            {
+                { "Token", token },
+                { "ResetPasswordPageUrl", currentPage.UrlWithDomain() }
+            };
+
+            SendNotification(member, _resetPasswordConfiguration.InitialRequestEmailTemplatePath, data);
         }
     }
 }
