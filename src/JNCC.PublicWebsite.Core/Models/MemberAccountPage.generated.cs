@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	/// <summary>Change Password Page</summary>
-	[PublishedContentModel("changePasswordPage")]
-	public partial class ChangePasswordPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition
+	/// <summary>Member Account Page</summary>
+	[PublishedContentModel("memberAccountPage")]
+	public partial class MemberAccountPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "changePasswordPage";
+		public new const string ModelTypeAlias = "memberAccountPage";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public ChangePasswordPage(IPublishedContent content)
+		public MemberAccountPage(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +40,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ChangePasswordPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<MemberAccountPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}

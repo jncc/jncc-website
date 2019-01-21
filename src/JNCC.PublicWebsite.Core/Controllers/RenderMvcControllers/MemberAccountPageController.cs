@@ -4,9 +4,9 @@ using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 {
-    public sealed class ChangePasswordPageController : RenderMvcController
+    public sealed class MemberAccountPageController : RenderMvcController
     {
-        public ActionResult Index(ChangePasswordPage model)
+        public ActionResult Index(MemberAccountPage model)
         {
             if (Members.IsLoggedIn() == false)
             {

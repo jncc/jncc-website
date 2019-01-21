@@ -1020,13 +1020,13 @@
     <Content Include="Views\LoginPage.cshtml" />
     <Content Include="Views\Partials\LoginForm.cshtml" />
     <Content Include="Views\Partials\Header\MemberLoggedInBar.cshtml" />
-    <Content Include="Views\ChangePasswordPage.cshtml" />
     <Content Include="Views\Partials\ChangePasswordForm.cshtml" />
     <Content Include="Views\ResetPasswordPage.cshtml" />
     <Content Include="Views\Partials\ResetPassword\InitialForm.cshtml" />
     <Content Include="Views\Partials\ResetPassword\ResetPasswordForm.cshtml" />
     <Content Include="Views\Partials\ResetPassword\InvalidRequestToken.cshtml" />
     <Content Include="Views\Partials\ResetPassword\Success.cshtml" />
+    <Content Include="Views\MemberAccountPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

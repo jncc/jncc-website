@@ -2,12 +2,12 @@
 {
     public sealed class MemberLoggedInBarViewModel
     {
-        public string ChangePasswordPageUrl { get; set; }
-        public bool HasChangePasswordPageUrl
+        public string MemberAccountPageUrl { get; set; }
+        public bool HasMemberAccountPageUrl
         {
             get
             {
-                return string.IsNullOrWhiteSpace(ChangePasswordPageUrl) == false;
+                return string.IsNullOrWhiteSpace(MemberAccountPageUrl) == false;
             }
         }
     }

@@ -9,9 +9,9 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var viewModel = new MemberLoggedInBarViewModel();
 
-            if (root.ChangePasswordPage != null)
+            if (root.MemberAccountPage != null)
             {
-                viewModel.ChangePasswordPageUrl = root.ChangePasswordPage.Url;
+                viewModel.MemberAccountPageUrl = root.MemberAccountPage.Url;
             }
 
             return viewModel;

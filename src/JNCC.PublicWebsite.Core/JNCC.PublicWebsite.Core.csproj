@@ -288,9 +288,9 @@
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
-    <Compile Include="Controllers\RenderMvcControllers\ChangePasswordPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\ChangePasswordFormSurfaceController.cs" />
@@ -324,7 +324,6 @@
     <Compile Include="Models\CarouselItemSchema.generated.cs" />
     <Compile Include="Models\CategorisedFooterLinksSchema.generated.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
-    <Compile Include="Models\ChangePasswordPage.generated.cs" />
     <Compile Include="Models\ContentAreaSchema.generated.cs" />
     <Compile Include="Models\ContentImageSchema.generated.cs" />
     <Compile Include="Models\ContentItemSchema.cs" />
@@ -342,6 +341,7 @@
     <Compile Include="Models\LoginFormModel.cs" />
     <Compile Include="Models\LoginPage.generated.cs" />
     <Compile Include="Models\Member.generated.cs" />
+    <Compile Include="Models\MemberAccountPage.generated.cs" />
     <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
     <Compile Include="Models\NewsAndInsightsLandingFilteringModel.cs" />
     <Compile Include="Models\NewsAndInsightsLandingPage.cs" />
