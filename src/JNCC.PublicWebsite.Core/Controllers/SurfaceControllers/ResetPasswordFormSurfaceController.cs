@@ -1,12 +1,11 @@
 ﻿using JNCC.PublicWebsite.Core.Attributes.Routing;
 using JNCC.PublicWebsite.Core.Configuration;
+using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
-using JNCC.PublicWebsite.Core.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
@@ -15,7 +14,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderForm()
         {
-            if (TempData.ContainsKey("ResetPasswordSuccess") && TempData["ResetPasswordSuccess"] != null)
+            if (TempData.HasSuccessFlag(SuccessFlags.CompletedResetPasswordSuccess))
             {
                 return PartialView("~/Views/Partials/ResetPassword/Success.cshtml", new InitialResetPasswordModel());
             }
@@ -70,7 +69,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             var notificationService = new ResetPasswordEmailNotificationService(config);
             notificationService.SendInitialRequestEmail(existingMember, token, CurrentPage);
 
-            TempData.Add("InitialRequestSuccess", true);
+            TempData.SetSuccessFlag(SuccessFlags.InitialResetPasswordRequestSuccess);
 
             return RedirectToCurrentUmbracoPage();
         }
@@ -107,7 +106,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             var notificationService = new ResetPasswordEmailNotificationService(config);
             notificationService.SendCompletedRequestEmail(existingMember, CurrentPage);
 
-            TempData.Add("ResetPasswordSuccess", true);
+            TempData.SetSuccessFlag(SuccessFlags.CompletedResetPasswordSuccess);
 
             return RedirectToCurrentUmbracoPage();
         }

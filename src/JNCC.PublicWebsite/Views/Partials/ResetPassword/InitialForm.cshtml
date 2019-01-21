@@ -1,7 +1,8 @@
-﻿@model JNCC.PublicWebsite.Core.Models.InitialResetPasswordModel
+﻿@using JNCC.PublicWebsite.Core.Constants
+@model JNCC.PublicWebsite.Core.Models.InitialResetPasswordModel
 @using (Html.BeginUmbracoForm<ResetPasswordFormSurfaceController>("PerformInitialResetPassword"))
 {
-    if (TempData.ContainsKey("InitialRequestSuccess") && TempData["InitialRequestSuccess"] != null)
+    if (TempData.HasSuccessFlag(SuccessFlags.InitialResetPasswordRequestSuccess))
     {
         <p>Instructions to reset your password have been sent to the provided email address.</p>
     }
