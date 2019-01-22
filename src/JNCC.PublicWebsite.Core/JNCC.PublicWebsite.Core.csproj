@@ -291,6 +291,7 @@
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\ChangePasswordFormSurfaceController.cs" />
