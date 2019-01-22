@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Reset Password Page: The page members who have forgotten their password can go to reset their password.
+		///</summary>
+		[ImplementPropertyType("resetPasswordPage")]
+		public IPublishedContent ResetPasswordPage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("resetPasswordPage"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]

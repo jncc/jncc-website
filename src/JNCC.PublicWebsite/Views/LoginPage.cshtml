@@ -13,6 +13,10 @@
                     <div class="columns large-6">
                         @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                         @(Html.Action<LoginFormSurfaceController>("RenderLoginForm"))
+                        @if(Model.Content.ResetPasswordPage != null)
+                        {
+                            <p><a href="@Model.Content.ResetPasswordPage.Url" class="button hollow secondary">Reset Password</a></p>
+                        }
                     </div>
                 </div>
             </div>
