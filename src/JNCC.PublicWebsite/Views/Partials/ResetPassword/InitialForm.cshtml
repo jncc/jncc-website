@@ -10,7 +10,7 @@
     {
         @Html.FoundationValidationSummary()
         <div class="form-field">
-            <label for="@Html.NameFor(model => model.EmailAddress)">
+            <label for="@Html.IdFor(model => model.EmailAddress)">
                 Email Address
                 @Html.TextBoxFor(model => model.EmailAddress)
             </label>
