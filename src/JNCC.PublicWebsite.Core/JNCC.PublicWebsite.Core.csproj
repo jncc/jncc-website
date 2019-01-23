@@ -319,6 +319,13 @@
     <Compile Include="Extensions\TempDataDictionaryExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Models\ArticlePage.generated.cs" />
+    <Compile Include="Models\Articulate.generated.cs" />
+    <Compile Include="Models\ArticulateArchive.generated.cs" />
+    <Compile Include="Models\ArticulateAuthor.generated.cs" />
+    <Compile Include="Models\ArticulateAuthors.generated.cs" />
+    <Compile Include="Models\ArticulateMarkdown.generated.cs" />
+    <Compile Include="Models\ArticulatePost.generated.cs" />
+    <Compile Include="Models\ArticulateRichText.generated.cs" />
     <Compile Include="Models\BizDevServicePage.generated.cs" />
     <Compile Include="Models\CalloutCardSchema.cs" />
     <Compile Include="Models\CalloutCardSchema.generated.cs" />
