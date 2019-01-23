@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.LoginPage>
+@using ContentModels = JNCC.PublicWebsite.Core.Models;
+@{
+    Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                <div class="row collapse">
+                    <div class="columns large-6">
+                        @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                        @(Html.Action<LoginFormSurfaceController>("RenderLoginForm"))
+                        @if(Model.Content.ResetPasswordPage != null)
+                        {
+                            <p><a href="@Model.Content.ResetPasswordPage.Url" class="button hollow secondary">Reset Password</a></p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

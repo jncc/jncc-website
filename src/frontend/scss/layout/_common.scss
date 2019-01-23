@@ -307,6 +307,18 @@ a {
 	&:only-child {
 		width: 100% !important;
 	}
+
+	> p, > ul, > ol {
+		a {
+			text-decoration: underline;
+		}
+	}
+
+	.button-group {
+		a.button {
+			text-decoration: none;
+		}
+	}
 }
 
 #sidebar {
@@ -351,6 +363,10 @@ a {
 	}
 }
 
+.no-breadcrumbs .two-columns {
+	margin-top: $breadcrumbs-margin-top;
+}
+
 .two-columns {
 	@include breakpoint(medium) {
 		display: flex;
@@ -360,17 +376,6 @@ a {
 	&.stretch-layout {
 		@include breakpoint(medium) {
 			align-items: stretch;
-		}
-
-		#sidebar,
-		#content {
-			@include breakpoint(medium) {
-				padding-top: rem-calc(30px);
-			}
-
-			@include breakpoint(xlarge) {
-				padding-top: rem-calc(60px);
-			}
 		}
 	}
 
@@ -1079,7 +1084,6 @@ input[type="checkbox"]:focus + .fake-input {
 		position: relative;
 	}
 }
-
 button.slick-arrow {
 	text-indent: -100000px;
 }

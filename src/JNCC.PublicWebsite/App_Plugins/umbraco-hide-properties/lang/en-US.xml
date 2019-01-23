@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<language alias="en" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+  <area alias="hideProperties">
+    <key alias="createRule">Create a new rule</key>    
+
+    <key alias="contentType">Content type</key>
+    <key alias="contentTypeDescription">Select the content type to which this rule applies</key>
+    <key alias="tabs">Tabs</key>
+    <key alias="tabsDescription">Select zero or more tabs to which this rule applies</key>
+    <key alias="properties">Properties</key>
+    <key alias="propertiesDescription">Select zero or more properties to which this rule applies</key>
+    <key alias="userGroups">User groups</key>
+    <key alias="userGroupsDescription">Select one or more user groups to which this rule applies</key>
+
+    <key alias="ruleOverlay">Rule</key>
+    <key alias="contentTypeOverlay">Select content type</key>
+    <key alias="tabOverlay">Select tabs</key>
+    <key alias="propertyOverlay">Select properties</key>
+    <key alias="userGroupOverlay">Select user groups</key>
+
+    <key alias="noRules">Create new rules</key>
+    <key alias="noContentTypeSelected">Select a content type</key>
+    <key alias="noTabsOrPropertiesSelected">Select one or more tabs or properties</key>
+    <key alias="noUserGroupsSelected">Select one or more user groups</key>
+
+    <key alias="enableRules">Enable rules</key>
+    <key alias="disableRules">Disable rules</key>
+    <key alias="deleteRules">Delete rules</key>
+
+    <key alias="exportRules">Export rules</key>
+    <key alias="importRules">Import rules</key>
+  </area>
+</language>

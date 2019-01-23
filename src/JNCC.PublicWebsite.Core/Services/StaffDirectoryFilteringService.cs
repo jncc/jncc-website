@@ -2,21 +2,20 @@
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.ViewModels;
-using System.Collections.Generic;
 using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class StaffDirectoryFilteringService : FilteringService<StaffDirectoryFilteringModel, StaffDirectoryFilteringViewModel, IPublishedContent>
     {
-        public StaffDirectoryFilteringService(ITagsProvider tagsProvider) : base(tagsProvider)
+        public StaffDirectoryFilteringService(ITagsProvider<IPublishedContent> tagsProvider) : base(tagsProvider)
         {
         }
 
         public override StaffDirectoryFilteringViewModel GetFilteringViewModel(StaffDirectoryFilteringModel filteringModel, IPublishedContent root)
         {
-            var allLocations = GetAllLocations();
-            var allTeams = GetAllTeams();
+            var allLocations = _tagsProvider.GetTagsByRoot(root, TagGroups.Locations);
+            var allTeams = GetAllTeams(root);
 
             var viewModel = new StaffDirectoryFilteringViewModel()
             {
@@ -40,11 +39,6 @@ namespace JNCC.PublicWebsite.Core.Services
             }
 
             return viewModel;
-        }
-
-        private IEnumerable<string> GetAllLocations()
-        {
-            return _tagsProvider.GetTags("Locations");
         }
     }
 }

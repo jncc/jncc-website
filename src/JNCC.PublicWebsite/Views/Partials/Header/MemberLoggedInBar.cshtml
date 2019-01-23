@@ -1,0 +1,5 @@
+﻿@model MemberLoggedInBarViewModel
+<div class="header-top logged-in">
+    <p>You are currently logged in.</p>
+    @using(Html.BeginUmbracoForm<LogoutSurfaceController>("PerformLogout")) {if (Model.HasMemberAccountPageUrl) {<a href="@Model.MemberAccountPageUrl" class="button hollow secondary">Manage Account</a> }<button class="button hollow secondary">Logout</button>}
+</div>

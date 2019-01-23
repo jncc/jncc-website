@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<language alias="nl" intName="Dutch" localName="Nederlands" lcid="" culture="nl-NL">
+  <area alias="hideProperties">
+    <key alias="createRule">Maak een nieuwe regel</key>
+
+    <key alias="contentType">Inhoudstype</key>
+    <key alias="contentTypeDescription">Selecteer het inhoudstype waarop deze regel van toepassing is</key>
+    <key alias="tabs">Tabs</key>
+    <key alias="tabsDescription">Selecteer geen, één of meer tabbladen waarop deze regel van toepassing is</key>
+    <key alias="properties">Eigenschappen</key>
+    <key alias="propertiesDescription">Selecteer geen, één of meer eigenschappen waarop deze regel van toepassing is</key>
+    <key alias="userGroups">Gebruikersgroepen</key>
+    <key alias="userGroupsDescription">Selecteer één of meer gebruikersgroepen waarop deze regel van toepassing is</key>
+
+    <key alias="ruleOverlay">Regel</key>
+    <key alias="contentTypeOverlay">Selecteer inhoudstype</key>
+    <key alias="tabOverlay">Selecteer tabs</key>
+    <key alias="propertyOverlay">Selecteer eigenschappen</key>
+    <key alias="userGroupOverlay">Selecteer gebruikersgroepen</key>
+
+    <key alias="noRules">Maak nieuwe regels</key>
+    <key alias="noContentTypeSelected">Selecteer een inhoudstype</key>
+    <key alias="noTabsOrPropertiesSelected">Selecteer één of meer tabs of eigenschappen</key>
+    <key alias="noUserGroupsSelected">Selecteer één of meer gebruikersgroepen</key>
+
+    <key alias="enableRules">Schakel regels in</key>
+    <key alias="disableRules">Schakel regels uit</key>
+    <key alias="deleteRules">Verwijder regels</key>
+
+    <key alias="exportRules">Exporteer regels</key>
+    <key alias="importRules">Importeer regels</key>
+  </area>
+</language>

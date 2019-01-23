@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.MemberAccountPage>
+@using ContentModels = JNCC.PublicWebsite.Core.Models;
+@{
+	Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                <div class="row collapse">
+                    <div class="columns large-6">
+                        @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                        @(Html.Action<ChangePasswordFormSurfaceController>("RenderChangePasswordForm"))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

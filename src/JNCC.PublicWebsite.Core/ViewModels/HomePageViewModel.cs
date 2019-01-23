@@ -9,5 +9,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public string ResourcesTitle { get; set; }
         public IEnumerable<ResourceItemViewModel> ResourcesItems { get; set; }
         public IEnumerable<LatestNewsItemViewModel> LatestNews { get; set; }
+        public SocialFeedViewModel SocialFeed { get; set; }
     }
 }
