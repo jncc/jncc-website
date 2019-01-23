@@ -1,0 +1,26 @@
+@using ClientDependency.Core.Mvc
+@using Articulate;
+@using JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+@model Articulate.Models.IMasterModel
+
+@section AdditionalHeadIncludes {
+    @Html.MetaTags(Model)
+    @Html.SocialMetaTags(Model)
+    @Html.AdvertiseWeblogApi(Model)
+    @Html.RssFeed(Model)
+    @Html.RenderOpenSearch(Model)
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</main>
