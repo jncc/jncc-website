@@ -1,4 +1,5 @@
 ﻿using Aws4RequestSigner;
+using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -13,8 +14,15 @@ using System.Threading.Tasks;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public class SearchService
+    internal sealed class SearchService
     {
+        private readonly ISearchConfiguration _searchConfiguration;
+
+        public SearchService(ISearchConfiguration searchConfiguration)
+        {
+            _searchConfiguration = searchConfiguration;
+        }
+
         public SearchModel EsGet(string q, int size, int start)
         {
             return Task.Run(() => ESGetAsync(q, size, start)).Result;
@@ -62,7 +70,7 @@ namespace JNCC.PublicWebsite.Core.Services
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(ConfigurationManager.AppSettings["JNCC.PublicWebsite.Core.AWS-ES-Endpoint"] + ConfigurationManager.AppSettings["JNCC.PublicWebsite.Core.AWS-ES-Index"]),
+                RequestUri = new Uri(_searchConfiguration.AWSESEndpoint + _searchConfiguration.AWSESIndex),
                 Content = new StringContent(JsonConvert.SerializeObject(q, Formatting.None), Encoding.UTF8, "application/json")
             };
 
@@ -73,10 +81,10 @@ namespace JNCC.PublicWebsite.Core.Services
             return JsonConvert.DeserializeObject<SearchModel>(responseString);
         }
 
-        static async Task<HttpRequestMessage> GetSignedRequest(HttpRequestMessage request)
+        internal async Task<HttpRequestMessage> GetSignedRequest(HttpRequestMessage request)
         {
-            var signer = new AWS4RequestSigner(ConfigurationManager.AppSettings["JNCC.PublicWebsite.Core.AWS-ES-AccessKey"], ConfigurationManager.AppSettings["JNCC.PublicWebsite.Core.AWS-ES-SecretKey"]);
-            return await signer.Sign(request, ConfigurationManager.AppSettings["JNCC.PublicWebsite.Core.AWS-Service"], ConfigurationManager.AppSettings["JNCC.PublicWebsite.Core.AWS-ES-Region"]);
+            var signer = new AWS4RequestSigner(_searchConfiguration.AWSESAccessKey, _searchConfiguration.AWSESSecretKey);
+            return await signer.Sign(request, _searchConfiguration.AWSService, _searchConfiguration.AWSESRegion);
         }
 
         public SearchViewModel GetViewModel(SearchModel searchResults, string searchTerm, int pageSize, int currentPage)

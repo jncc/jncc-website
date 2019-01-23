@@ -283,7 +283,9 @@
     <Compile Include="ApplicationBootstrap.cs" />
     <Compile Include="Attributes\Routing\RequireParameterAttribute.cs" />
     <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
+    <Compile Include="Configuration\ISearchConfiguration.cs" />
     <Compile Include="Configuration\ResetPasswordConfiguration.cs" />
+    <Compile Include="Configuration\SearchConfiguration.cs" />
     <Compile Include="Constants\FilterNames.cs" />
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />

@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Services;
+﻿using JNCC.PublicWebsite.Core.Configuration;
+using JNCC.PublicWebsite.Core.Services;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 
         public SearchResultsPageController()
         {
-            _searchService = new SearchService();
+            var config = SearchConfiguration.GetConfig();
+            _searchService = new SearchService(config);
         }
 
         public ActionResult Index(string searchTerm, int currentPage = 1)
