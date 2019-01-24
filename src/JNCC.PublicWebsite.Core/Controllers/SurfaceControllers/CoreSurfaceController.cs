@@ -2,6 +2,7 @@
 using JNCC.PublicWebsite.Core.Models;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Umbraco.Core.Models;
 using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -20,6 +21,14 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         protected EmptyResult EmptyResult()
         {
             return emptyResult;
+        }
+
+        protected override IPublishedContent CurrentPage
+        {
+            get
+            {
+                return Umbraco.AssignedContentItem;
+            }
         }
     }
 }
