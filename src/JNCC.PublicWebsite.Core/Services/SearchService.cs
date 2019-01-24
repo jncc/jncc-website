@@ -70,7 +70,7 @@ namespace JNCC.PublicWebsite.Core.Services
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(_searchConfiguration.AWSESEndpoint + _searchConfiguration.AWSESIndex),
+                RequestUri = new Uri(_searchConfiguration.AWSESEndpoint + _searchConfiguration.AWSESIndex + "/_search/"),
                 Content = new StringContent(JsonConvert.SerializeObject(q, Formatting.None), Encoding.UTF8, "application/json")
             };
 
