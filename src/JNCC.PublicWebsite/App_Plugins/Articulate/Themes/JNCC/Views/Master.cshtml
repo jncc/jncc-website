@@ -12,6 +12,7 @@
     @Html.AdvertiseWeblogApi(Model)
     @Html.RssFeed(Model)
     @Html.RenderOpenSearch(Model)
+    @RenderSection("Header", false)
 }
 <main id="main">
     @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
