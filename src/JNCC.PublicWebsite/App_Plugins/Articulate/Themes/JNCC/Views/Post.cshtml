@@ -77,9 +77,7 @@
         
         @if (Model.EnableComments)
         {
-            @Html.ThemedPartial(Model, "CommentsDisqus")
-            @*@Html.ThemedPartial(Model, "CommentsGooglePlus")*@
-            @*@Html.ThemedPartial(Model, "CommentsFacebook")*@
+            @Html.ThemedPartial(Model, "CommentsUmbracoForms")
         }
 
     </article>

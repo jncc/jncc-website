@@ -971,6 +971,7 @@
     <Content Include="App_Plugins\Articulate\Themes\JNCC\Views\Post.cshtml" />
     <Content Include="App_Plugins\Articulate\Themes\JNCC\Views\Tags.cshtml" />
     <Content Include="App_Plugins\Articulate\Themes\JNCC\Views\Web.config" />
+    <Content Include="App_Plugins\Articulate\Themes\JNCC\Views\Partials\CommentsUmbracoForms.cshtml" />
     <None Include="App_Plugins\UmbracoForms\UmbracoForms.Release.config">
       <DependentUpon>UmbracoForms.config</DependentUpon>
     </None>
@@ -1103,6 +1104,7 @@
     <Content Include="Views\Partials\ResetPassword\InvalidRequestToken.cshtml" />
     <Content Include="Views\Partials\ResetPassword\Success.cshtml" />
     <Content Include="Views\MemberAccountPage.cshtml" />
+    <Content Include="Views\Partials\Blog\CommentsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
