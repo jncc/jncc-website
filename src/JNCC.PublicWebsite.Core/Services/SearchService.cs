@@ -84,7 +84,7 @@ namespace JNCC.PublicWebsite.Core.Services
         internal async Task<HttpRequestMessage> GetSignedRequest(HttpRequestMessage request)
         {
             var signer = new AWS4RequestSigner(_searchConfiguration.AWSESAccessKey, _searchConfiguration.AWSESSecretKey);
-            return await signer.Sign(request, _searchConfiguration.AWSService, _searchConfiguration.AWSESRegion);
+            return await signer.Sign(request, "es", _searchConfiguration.AWSESRegion);
         }
 
         public SearchViewModel GetViewModel(SearchModel searchResults, string searchTerm, int pageSize, int currentPage)
