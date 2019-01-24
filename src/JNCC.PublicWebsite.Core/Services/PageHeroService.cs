@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Constants;
 using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -31,8 +31,11 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var isPageHeroComposition = currentPage is IPageHeroComposition;
             var isPageHeroCarouselComposition = currentPage is IPageHeroCarouselComposition;
+            var isArticulatePost = currentPage is ArticulatePost;
+            var blogRoot = currentPage.AncestorOrSelf<Articulate>();
+            var hasBlogRoot = blogRoot != null;
 
-            if (isPageHeroComposition == false && isPageHeroCarouselComposition == false)
+            if (isPageHeroComposition == false && isPageHeroCarouselComposition == false && isArticulatePost == false && hasBlogRoot == false)
             {
                 return false;
             }
@@ -41,8 +44,37 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 return (currentPage as IPageHeroComposition).HasPageHeroImage();
             }
-            
-            return ExistenceUtility.IsNullOrEmpty((currentPage as IPageHeroCarouselComposition).HeroImages) == false;
+
+            if (isArticulatePost)
+            {
+                var post = (currentPage as ArticulatePost);
+                var postImage = post.PostImage;
+
+                if (postImage == null)
+                {
+                    return false;
+                }
+
+                return postImage.HasCrop("wide");
+            }
+            else if (hasBlogRoot)
+            {
+                var blogBanner = blogRoot.BlogBanner;
+
+                if (blogBanner == null)
+                {
+                    return false;
+                }
+
+                return blogBanner.HasCrop("wide");
+            }
+
+            if (isPageHeroCarouselComposition)
+            {
+                return ExistenceUtility.IsNullOrEmpty((currentPage as IPageHeroCarouselComposition).HeroImages) == false;
+            }
+
+            return false;
         }
     }
 }
