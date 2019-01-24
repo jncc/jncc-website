@@ -1,15 +1,67 @@
-using JNCC.PublicWebsite.Core.Constants;
-using JNCC.PublicWebsite.Core.Extensions;
+﻿using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
-using JNCC.PublicWebsite.Core.ViewModels;
 using JNCC.PublicWebsite.Core.Utilities;
+using JNCC.PublicWebsite.Core.ViewModels;
 using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class PageHeroService
     {
-        public PageHeroViewModel GetViewModel(IPageHeroComposition pageHeroComposition)
+        public PageHeroViewModel GetViewModel(IPublishedContent publishedContent)
+        {
+            if (publishedContent is IPageHeroComposition)
+            {
+                return GetPageHeroViewModel(publishedContent as IPageHeroComposition);
+            }
+
+            if (publishedContent is ArticulatePost)
+            {
+                return GetBlogPostViewModel(publishedContent as ArticulatePost);
+            }
+            else
+            {
+                var blogRoot = publishedContent.AncestorOrSelf<Articulate>();
+
+                if (blogRoot != null)
+                {
+                    return GetBlogViewModel(blogRoot);
+                }
+            }
+
+            return null;
+        }
+
+        private PageHeroViewModel GetBlogViewModel(Articulate articulate)
+        {
+            if (articulate.BlogBanner == null)
+            {
+                return null;
+            }
+
+            return new PageHeroViewModel()
+            {
+                Headline = articulate.Name,
+                ImageUrl = articulate.GetCropUrl("blogBanner", "wide")
+            };
+        }
+
+        private PageHeroViewModel GetBlogPostViewModel(ArticulatePost articulatePost)
+        {
+            if (articulatePost.PostImage == null)
+            {
+                return null;
+            }
+
+            return new PageHeroViewModel()
+            {
+                Headline = articulatePost.Name,
+                ImageUrl = articulatePost.GetCropUrl("postImage", "wide")
+            };
+        }
+
+        private PageHeroViewModel GetPageHeroViewModel(IPageHeroComposition pageHeroComposition)
         {
             if (pageHeroComposition.HeroImage == null)
             {

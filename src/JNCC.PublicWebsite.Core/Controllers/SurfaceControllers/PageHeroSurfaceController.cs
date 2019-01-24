@@ -1,7 +1,6 @@
-using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
-using JNCC.PublicWebsite.Core.Extensions;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
@@ -12,12 +11,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderPageHero()
         {
-            if (CurrentPage is IPageHeroComposition == false)
-            {
-                return EmptyResult();
-            }
-
-            var viewModel = _pageHeroService.GetViewModel(CurrentPage as IPageHeroComposition);
+            var viewModel = _pageHeroService.GetViewModel(CurrentPage);
 
             if (viewModel == null)
             {
