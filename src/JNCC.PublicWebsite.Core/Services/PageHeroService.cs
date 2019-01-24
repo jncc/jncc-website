@@ -76,5 +76,26 @@ namespace JNCC.PublicWebsite.Core.Services
 
             return false;
         }
+
+        public NoPageHeroHeadlineViewModel GetNoPageHeroHeadlineViewModel(IPublishedContent currentPage)
+        {
+            if (currentPage is IPageHeroComposition)
+            {
+                var headline = (currentPage as IPageHeroComposition).Headline;
+
+                if (string.IsNullOrWhiteSpace(headline) == false)
+                {
+                    return new NoPageHeroHeadlineViewModel()
+                    {
+                        Headline = headline
+                    };
+                }
+            }
+
+            return new NoPageHeroHeadlineViewModel()
+            {
+                Headline = currentPage.Name
+            };
+        }
     }
 }
