@@ -1,0 +1,39 @@
+.resultsSearchBar {
+    margin: auto;
+    width: 50%;
+    padding-bottom: rem-calc(12px);
+}
+
+.resultsSearchBar .search-form {
+    max-width: rem-calc(460px);
+}
+
+.resultsSearchBar .search-form input {
+    border:rem-calc(1px) solid #eeebeb;
+}
+
+.resultsSearchBar .input-group-button {
+    background-color: #276923;
+    color: white;
+    padding: rem-calc(12px);
+    width: rem-calc(6rem);
+}
+
+.label.datahub{
+    background: #a80c0c;
+    color: #fefefe;
+}
+
+.resultContent{
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 1.52631579;     /* fallback */
+   max-height: rem-calc(88px);    /* fallback */
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.filtration-buttons-holder{
+    padding: rem-calc(12px 0);
+}

@@ -37,6 +37,9 @@
     <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="Aws4RequestSigner, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aws4RequestSigner.0.3.0\lib\net45\Aws4RequestSigner.dll</HintPath>
+    </Reference>
     <Reference Include="businesslogic, Version=1.0.6879.21987, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\businesslogic.dll</HintPath>
     </Reference>
@@ -206,6 +209,7 @@
     <Reference Include="System.Reflection.Metadata, Version=1.0.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reflection.Metadata.1.0.21\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
     </Reference>
@@ -279,7 +283,9 @@
     <Compile Include="ApplicationBootstrap.cs" />
     <Compile Include="Attributes\Routing\RequireParameterAttribute.cs" />
     <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
+    <Compile Include="Configuration\ISearchConfiguration.cs" />
     <Compile Include="Configuration\ResetPasswordConfiguration.cs" />
+    <Compile Include="Configuration\SearchConfiguration.cs" />
     <Compile Include="Constants\FilterNames.cs" />
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
@@ -292,6 +298,7 @@
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\ChangePasswordFormSurfaceController.cs" />
@@ -356,6 +363,11 @@
     <Compile Include="Models\ResetPasswordPage.generated.cs" />
     <Compile Include="Models\ResetPasswordRequestModel.cs" />
     <Compile Include="Models\ResourceItemSchema.generated.cs" />
+    <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Models\SearchResultsPage.generated.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="ViewModels\SearchResultViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Models\SeoComposition.generated.cs" />
     <Compile Include="Models\SidebarComposition.generated.cs" />
     <Compile Include="Models\StaffDirectoryFilteringModel.cs" />

@@ -1037,6 +1037,7 @@
     <Content Include="Views\Partials\ResetPassword\InvalidRequestToken.cshtml" />
     <Content Include="Views\Partials\ResetPassword\Success.cshtml" />
     <Content Include="Views\MemberAccountPage.cshtml" />
+    <Content Include="Views\SearchResultsPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
