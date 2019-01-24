@@ -410,6 +410,7 @@
     <Compile Include="Services\ResetPasswordEmailNotificationService.cs" />
     <Compile Include="Services\ResetPasswordService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
+    <Compile Include="Services\UmbracoFormsBlogCommentsService.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
     <Compile Include="ViewModels\BlogCommentViewModel.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
