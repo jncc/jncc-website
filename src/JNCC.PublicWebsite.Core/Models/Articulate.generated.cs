@@ -100,6 +100,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Comments Form: The Umbraco Form used by website users to submit comments to blog posts in this blog. If no form is selected users will not be able to submit comments.
+		///</summary>
+		[ImplementPropertyType("commentsForm")]
+		public object CommentsForm
+		{
+			get { return this.GetPropertyValue("commentsForm"); }
+		}
+
+		///<summary>
 		/// Custom RSS Feed Url: Optional custom rss feed URL (i.e. if you use feedburner, etc...)
 		///</summary>
 		[ImplementPropertyType("customRssFeedUrl")]
