@@ -10,6 +10,26 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class UmbracoFormsBlogCommentsService
     {
+        public void DeleteComments(int pageId, Guid formId)
+        {
+            using (var formStorage = new FormStorage())
+            {
+                using (var recordStorage = new RecordStorage())
+                {
+                    var form = formStorage.GetForm(formId);
+
+                    var records = recordStorage.GetAllRecords(form)
+                                               .Where(x => x.UmbracoPageId == pageId)
+                                               .ToList();
+
+                    foreach (var record in records)
+                    {
+                        recordStorage.DeleteRecord(record, form);
+                    }
+                }
+            }
+        }
+
         public IEnumerable<BlogCommentViewModel> GetComments(int pageId, Guid formId)
         {
             var approvedRecords = GetApprovedRecords(pageId, formId);
