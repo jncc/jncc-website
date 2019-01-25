@@ -127,6 +127,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Enable Comments: If this is disabled then comments will not be allowed within this blog regardless of individual blog post settings.
+		///</summary>
+		[ImplementPropertyType("enableComments")]
+		public bool EnableComments
+		{
+			get { return this.GetPropertyValue<bool>("enableComments"); }
+		}
+
+		///<summary>
 		/// Extract First Image to Property: When Windows Live Writer (or compatible WebBlog API tool) is used to create blog posts, with this option enabled it will set the first image found in the blog post to the blog's image property if one is found.
 		///</summary>
 		[ImplementPropertyType("extractFirstImage")]
