@@ -82,6 +82,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Member Account Page: The page logged in members will be able to manage their account.
+		///</summary>
+		[ImplementPropertyType("memberAccountPage")]
+		public IPublishedContent MemberAccountPage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("memberAccountPage"); }
+		}
+
+		///<summary>
 		/// Title: A title to be given to the resources section.
 		///</summary>
 		[ImplementPropertyType("resourcesTitle")]

@@ -8542,6 +8542,19 @@ button.slick-arrow {
 	text-decoration: underline;
 }
 
+.header-top.logged-in p,
+.header-top.logged-in form {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.header-top.logged-in form .button.hollow {
+	color: #fefefe;
+	border-color: #fefefe;
+	margin: 0;
+	text-decoration: none;
+}
+
 .logo {
 	width: 6.25rem;
 	-ms-flex-negative: 0;
@@ -8791,6 +8804,46 @@ input[type="search"]::-webkit-search-cancel-button {
 .footer-bottom-list.info {
 	opacity: .8;
 	margin: 0 -.5625rem !important;
+}
+
+.resultsSearchBar {
+	margin: auto;
+	width: 50%;
+	padding-bottom: .75rem;
+}
+
+.resultsSearchBar .search-form {
+	max-width: 28.75rem;
+}
+
+.resultsSearchBar .search-form input {
+	border: .0625rem solid #eeebeb;
+}
+
+.resultsSearchBar .input-group-button {
+	background-color: #276923;
+	color: white;
+	padding: .75rem;
+	width: 6rem;
+}
+
+.label.datahub {
+	background: #a80c0c;
+	color: #fefefe;
+}
+
+.resultContent {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 1.52631579; /* fallback */
+	max-height: 5.5rem; /* fallback */
+	-webkit-line-clamp: 3; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+
+.filtration-buttons-holder {
+	padding: .75rem 0;
 }
 
 @media screen and (orientation: landscape) {

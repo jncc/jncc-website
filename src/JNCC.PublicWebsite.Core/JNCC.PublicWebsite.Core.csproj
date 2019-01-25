@@ -206,6 +206,7 @@
     <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -228,6 +229,7 @@
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -290,23 +292,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationBootstrap.cs" />
+    <Compile Include="Attributes\Routing\RequireParameterAttribute.cs" />
+    <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
+    <Compile Include="Configuration\ISearchConfiguration.cs" />
+    <Compile Include="Configuration\ResetPasswordConfiguration.cs" />
+    <Compile Include="Configuration\SearchConfiguration.cs" />
     <Compile Include="Constants\FilterNames.cs" />
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
+    <Compile Include="Constants\ResetPasswordRequestStatusCDs.cs" />
+    <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\ChangePasswordFormSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CookieBannerSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CoreSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\FooterSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\HeaderSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\LoginFormSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\LogoutSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageAttributesSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageHeroSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageIncludesSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\RelatedItemsSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\ResetPasswordFormSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SeoMetaDataSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SidebarSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\NewsAndInsightsLandingSurfaceController.cs" />
@@ -318,6 +336,7 @@
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
     <Compile Include="Extensions\PageHeroCompositionExtensions.cs" />
     <Compile Include="Extensions\PublishedContentExtensions.cs" />
+    <Compile Include="Extensions\TempDataDictionaryExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Models\ArticlePage.generated.cs" />
     <Compile Include="Models\BizDevServicePage.generated.cs" />
@@ -325,6 +344,7 @@
     <Compile Include="Models\CalloutCardSchema.generated.cs" />
     <Compile Include="Models\CarouselItemSchema.generated.cs" />
     <Compile Include="Models\CategorisedFooterLinksSchema.generated.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\ContentAreaSchema.generated.cs" />
     <Compile Include="Models\ContentImageSchema.generated.cs" />
     <Compile Include="Models\ContentItemSchema.cs" />
@@ -337,8 +357,12 @@
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\HomePage.generated.cs" />
     <Compile Include="Models\Image.generated.cs" />
+    <Compile Include="Models\InitialResetPasswordModel.cs" />
     <Compile Include="Models\InternalTextPage.generated.cs" />
+    <Compile Include="Models\LoginFormModel.cs" />
+    <Compile Include="Models\LoginPage.generated.cs" />
     <Compile Include="Models\Member.generated.cs" />
+    <Compile Include="Models\MemberAccountPage.generated.cs" />
     <Compile Include="Models\NavigationSettingsComposition.generated.cs" />
     <Compile Include="Models\NewsAndInsightsLandingFilteringModel.cs" />
     <Compile Include="Models\NewsAndInsightsLandingPage.cs" />
@@ -348,7 +372,15 @@
     <Compile Include="Models\PageSpecificIncludesComposition.generated.cs" />
     <Compile Include="Models\RelatedItemSchema.generated.cs" />
     <Compile Include="Models\RelatedItemsComposition.generated.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
+    <Compile Include="Models\ResetPasswordPage.generated.cs" />
+    <Compile Include="Models\ResetPasswordRequestModel.cs" />
     <Compile Include="Models\ResourceItemSchema.generated.cs" />
+    <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Models\SearchResultsPage.generated.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="ViewModels\SearchResultViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Models\SeoComposition.generated.cs" />
     <Compile Include="Models\SidebarComposition.generated.cs" />
     <Compile Include="Models\StaffDirectoryFilteringModel.cs" />
@@ -359,18 +391,24 @@
     <Compile Include="PropertyValueConverters\TagsValueConverter.cs" />
     <Compile Include="Providers\IArticleTypesProvider.cs" />
     <Compile Include="Providers\IArticleYearsProvider.cs" />
+    <Compile Include="Providers\INotificationTemplatesProvider.cs" />
     <Compile Include="Providers\ITagsProvider.cs" />
     <Compile Include="Providers\UmbracoArticlePageTagsProvider.cs" />
     <Compile Include="Providers\UmbracoArticleTypesProvider.cs" />
     <Compile Include="Providers\UmbracoArticleYearsProvider.cs" />
     <Compile Include="Providers\UmbracoContentTagsProvider.cs" />
+    <Compile Include="Providers\UmbracoFileSystemEmailTemplatesProvider.cs" />
     <Compile Include="Providers\UmbracoPagesProvider.cs" />
     <Compile Include="Providers\UmbracoStaffProfilePageTagsProvider.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\FilteringService.cs" />
+    <Compile Include="Services\IResetPasswordRequestService.cs" />
+    <Compile Include="Services\MemberLoggedInBarService.cs" />
     <Compile Include="Services\NewsAndInsightsLandingFilteringService.cs" />
     <Compile Include="Services\PageIncludesService.cs" />
-    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\PetaPocoResetPasswordRequestService.cs" />
+    <Compile Include="Services\ResetPasswordEmailNotificationService.cs" />
+    <Compile Include="Services\ResetPasswordService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
@@ -403,6 +441,7 @@
     <Compile Include="ViewModels\ListingViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationItemViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationViewModel.cs" />
+    <Compile Include="ViewModels\MemberLoggedInBarViewModel.cs" />
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
     <Compile Include="ViewModels\NewsAndInsightsLandingFilteringViewModel.cs" />
     <Compile Include="ViewModels\NewsAndInsightsLandingListingViewModel.cs" />
