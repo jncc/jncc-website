@@ -5,6 +5,8 @@
 @{
     Layout = "Master.cshtml";
     ViewBag.CssBodyClass = "post-template";
+
+    var blogHasCommentsEnabled = Model.RootBlogNode.GetPropertyValue<bool>("enableComments");
 }
 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
 <p>@Html.DisplayFor(model => Model.PublishedDate)</p>
@@ -40,8 +42,7 @@
         </li>
     </ul>
 </section>
-
-@if (Model.EnableComments)
+@if (blogHasCommentsEnabled && Model.EnableComments)
 {
     @Html.ThemedPartial(Model, "CommentsUmbracoForms")
 }
