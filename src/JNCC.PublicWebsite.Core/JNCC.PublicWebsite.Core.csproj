@@ -58,6 +58,9 @@
     <Reference Include="DTG.Spreadsheet, Version=2.7.0.0, Culture=neutral, PublicKeyToken=7b835b529fb706c3, processorArchitecture=MSIL">
       <HintPath>..\packages\SEOChecker.Core.2.2.1\lib\DTG.Spreadsheet.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>
     </Reference>
@@ -263,6 +266,21 @@
     <Reference Include="umbraco.editorControls, Version=1.0.6879.21992, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.editorControls.dll</HintPath>
     </Reference>
+    <Reference Include="Umbraco.Forms.Core, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core.Providers, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Core.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web.XmlSerializers, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Licensing, Version=2.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Licensing.dll</HintPath>
+    </Reference>
     <Reference Include="umbraco.MacroEngines, Version=1.0.6879.21992, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.MacroEngines.dll</HintPath>
     </Reference>
@@ -300,6 +318,7 @@
     <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\BlogUmbracoCommentsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\ChangePasswordFormSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CookieBannerSurfaceController.cs" />
@@ -326,6 +345,13 @@
     <Compile Include="Extensions\TempDataDictionaryExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Models\ArticlePage.generated.cs" />
+    <Compile Include="Models\Articulate.generated.cs" />
+    <Compile Include="Models\ArticulateArchive.generated.cs" />
+    <Compile Include="Models\ArticulateAuthor.generated.cs" />
+    <Compile Include="Models\ArticulateAuthors.generated.cs" />
+    <Compile Include="Models\ArticulateMarkdown.generated.cs" />
+    <Compile Include="Models\ArticulatePost.generated.cs" />
+    <Compile Include="Models\ArticulateRichText.generated.cs" />
     <Compile Include="Models\BizDevServicePage.generated.cs" />
     <Compile Include="Models\CalloutCardSchema.cs" />
     <Compile Include="Models\CalloutCardSchema.generated.cs" />
@@ -397,7 +423,9 @@
     <Compile Include="Services\ResetPasswordEmailNotificationService.cs" />
     <Compile Include="Services\ResetPasswordService.cs" />
     <Compile Include="Services\StaffDirectoryFilteringService.cs" />
+    <Compile Include="Services\UmbracoFormsBlogCommentsService.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
+    <Compile Include="ViewModels\BlogCommentViewModel.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
     <Compile Include="Services\HomePageService.cs" />
     <Compile Include="Services\IDataHubQueryRelatedItemsService.cs" />
@@ -432,6 +460,7 @@
     <Compile Include="ViewModels\NavigationItemViewModel.cs" />
     <Compile Include="ViewModels\NewsAndInsightsLandingFilteringViewModel.cs" />
     <Compile Include="ViewModels\NewsAndInsightsLandingListingViewModel.cs" />
+    <Compile Include="ViewModels\NoPageHeroHeadlineViewModel.cs" />
     <Compile Include="ViewModels\PageHeroViewModel.cs" />
     <Compile Include="ViewModels\RelatedItemViewModel.cs" />
     <Compile Include="ViewModels\ResourceItemViewModel.cs" />

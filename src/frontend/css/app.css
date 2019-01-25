@@ -881,6 +881,10 @@
 	content: "\ea92";
 }
 
+.icon-google-plus:before {
+	content: "\ea8b";
+}
+
 .icon-keyboard-arrow-right:before {
 	content: "\e905";
 }

@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @(Html.Action<SeoMetaDataSurfaceController>("RenderSeoMetaData"))
     <link rel="stylesheet" href="~/css/app.css">
+    @RenderSection("AdditionalHeadIncludes", false)
     @Html.RenderJsHere()
     @(Html.Action<PageIncludesSurfaceController>("RenderHeadIncludes"))
 </head>

@@ -1,7 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
-using JNCC.PublicWebsite.Core.Extensions;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
@@ -12,12 +11,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderPageHero()
         {
-            if (CurrentPage is IPageHeroComposition == false)
-            {
-                return EmptyResult();
-            }
-
-            var viewModel = _pageHeroService.GetViewModel(CurrentPage as IPageHeroComposition);
+            var viewModel = _pageHeroService.GetViewModel(CurrentPage);
 
             if (viewModel == null)
             {
@@ -26,22 +20,23 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             return PartialView("~/Views/Partials/PageHero.cshtml", viewModel);
         }
+
         [ChildActionOnly]
         public ActionResult RenderNoPageHeroHeadline()
         {
-            if (CurrentPage is IPageHeroComposition == false)
+            if (_pageHeroService.HasPageHero(CurrentPage))
             {
                 return EmptyResult();
             }
 
-            var composition = CurrentPage as IPageHeroComposition;
+            var viewModel = _pageHeroService.GetNoPageHeroHeadlineViewModel(CurrentPage);
 
-            if (composition.HasPageHeroImage())
+            if (viewModel == null)
             {
                 return EmptyResult();
             }
 
-            return PartialView("~/Views/Partials/NoPageHeroHeadline.cshtml", composition);
+            return PartialView("~/Views/Partials/NoPageHeroHeadline.cshtml", viewModel);
         }
 
     }

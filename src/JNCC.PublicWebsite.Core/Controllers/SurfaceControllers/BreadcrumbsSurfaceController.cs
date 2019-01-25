@@ -7,7 +7,7 @@ using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
-    public sealed class BreadcrumbsSurfaceController : SurfaceController
+    public sealed class BreadcrumbsSurfaceController : CoreSurfaceController
     {
         private readonly NavigationItemService _navigationItemService = new NavigationItemService();
 
@@ -15,7 +15,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         public ActionResult RenderBreadcrumbs()
         {
             var orderedAncestors = CurrentPage.Ancestors()
-                                              .OrderBy(x => x.Level);
+                                                  .OrderBy(x => x.Level);
             var viewModel = new BreadcrumbsViewModel()
             {
                 Ancestors = _navigationItemService.GetViewModels(orderedAncestors),

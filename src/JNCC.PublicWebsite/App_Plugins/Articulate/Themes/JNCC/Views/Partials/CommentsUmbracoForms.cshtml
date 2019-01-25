@@ -1,0 +1,29 @@
+@using JNCC.PublicWebsite.Core.Controllers.SurfaceControllers;
+@model Articulate.Models.PostModel
+@(Html.Action<BlogUmbracoCommentsSurfaceController>("RenderCommentsList"))
+@{
+    var commentsFormId = Model.GetPropertyValue<string>("commentsForm", true);
+
+    if (string.IsNullOrWhiteSpace(commentsFormId))
+    {
+        return;
+    }
+
+    var theme = "foundation6";
+    var includeScripts = true;
+    var formGuid = Guid.Empty;
+    var recordGuid = Guid.Empty;
+
+    if (Guid.TryParse(commentsFormId, out formGuid) == false)
+    {
+        return;
+    }
+
+    Html.RenderAction("RenderForm", "UmbracoForms", new
+    {
+        formId = formGuid,
+        recordId = recordGuid,
+        theme = theme,
+        includeScripts = includeScripts
+    });
+}

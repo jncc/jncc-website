@@ -1,0 +1,16 @@
+@using Articulate
+@model Articulate.Models.PostModel
+
+@if (Model.Tags.Any() || Model.Categories.Any())
+{
+    <p>
+    @if (Model.Categories.Any())
+    {
+        foreach (var category in Model.Categories) {<a href="@Url.ArticulateCategoryUrl(Model, category)"><span class="label location">@category</span></a>}
+    }
+    @if (Model.Tags.Any())
+    {
+        foreach (var tag in Model.Tags) {<a href="@Url.ArticulateTagUrl(Model, tag)"><span class="label location">@tag</span></a>}
+    }
+    </p>
+}

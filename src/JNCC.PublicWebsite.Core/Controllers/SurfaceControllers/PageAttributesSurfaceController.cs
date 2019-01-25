@@ -1,10 +1,9 @@
 ﻿using System.Web.Mvc;
 using Umbraco.Web;
-using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
-    public sealed class PageAttributesSurfaceController : SurfaceController
+    public sealed class PageAttributesSurfaceController : CoreSurfaceController
     {
         [ChildActionOnly]
         public ActionResult RenderAttributes()
