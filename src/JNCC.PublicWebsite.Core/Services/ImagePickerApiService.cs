@@ -1,10 +1,10 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    public sealed class ImagePickerApiService
+    internal sealed class ImagePickerApiService
     {
         private readonly UmbracoHelper _umbracoHelper;
 
