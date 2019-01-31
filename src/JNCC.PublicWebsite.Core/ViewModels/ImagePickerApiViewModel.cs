@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public sealed class ImageApiViewModel
+    public sealed class ImagePickerApiViewModel
     {
         public string Url { get; set; }
         public int Width { get; set; }

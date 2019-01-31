@@ -31,7 +31,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return root is Folder;
         }
 
-        public IEnumerable<ImageApiViewModel> GetImages(IPublishedContent root)
+        public IEnumerable<ImagePickerApiViewModel> GetImages(IPublishedContent root)
         {
             foreach (var image in root.Descendants<Image>())
             {
@@ -39,9 +39,9 @@ namespace JNCC.PublicWebsite.Core.Services
             }
         }
 
-        private ImageApiViewModel GetImage(Image image)
+        private ImagePickerApiViewModel GetImage(Image image)
         {
-            return new ImageApiViewModel()
+            return new ImagePickerApiViewModel()
             {
                 EditorName = image.WriterName,
                 FileType = image.UmbracoExtension,
