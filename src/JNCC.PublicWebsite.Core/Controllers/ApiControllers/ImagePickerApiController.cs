@@ -1,4 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Services;
+using System;
 using System.Net;
 using System.Web.Http;
 using Umbraco.Core.Models;
@@ -11,7 +12,9 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
-            var service = new ImagePickerApiService(Umbraco);
+            var leftPart = Request.RequestUri.GetLeftPart(UriPartial.Authority);
+            var mediaUrlResolverService = new MediaUrlResolverService(leftPart);
+            var service = new ImagePickerApiService(Umbraco, mediaUrlResolverService);
             IPublishedContent root;
 
             if (service.TryFindRoot(id, out root) == false)
@@ -26,7 +29,9 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
                 }
             }
 
-            return Ok();
+            var images = service.GetImages(root);
+
+            return Ok(images);
         }
     }
 }
