@@ -33,7 +33,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public IEnumerable<ImagePickerApiViewModel> GetImages(IPublishedContent root)
         {
-            foreach (var image in root.Descendants<Image>())
+            foreach (var image in root.Children<Image>())
             {
                 if (string.IsNullOrWhiteSpace(image.Url) == false)
                 {
