@@ -3,6 +3,7 @@
 
 <select class="@Html.GetFormFieldClass(Model.FieldTypeName)"  name="@Model.Name" id="@Model.Id"
 @if (Model.Mandatory){<text> data-val="true" data-val-required="@Model.RequiredErrorMessage"</text>}
+@{if (!string.IsNullOrWhiteSpace(Model.ToolTip)) {<text> aria-describedby="help-text_@(Model.Id)"</text>} }
 >
     <option value=""></option>
     @foreach (var pv in Model.PreValues)

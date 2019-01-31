@@ -59,7 +59,7 @@
 
                                 @if (!string.IsNullOrEmpty(f.ToolTip))
                                 {
-                                    <span class="umbraco-forms-tooltip help-text">@f.ToolTip</span>
+                                    <span class="umbraco-forms-tooltip help-text" id="help-text_@(f.Id)">@f.ToolTip</span>
                                 }
 
                                 <div class="umbraco-forms-field-wrapper">
