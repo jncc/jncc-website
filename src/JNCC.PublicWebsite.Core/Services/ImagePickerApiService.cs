@@ -35,7 +35,10 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             foreach (var image in root.Descendants<Image>())
             {
-                yield return GetImage(image);
+                if (string.IsNullOrWhiteSpace(image.Url) == false)
+                {
+                    yield return GetImage(image);
+                }
             }
         }
 
