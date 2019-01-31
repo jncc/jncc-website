@@ -1,17 +1,22 @@
-@model Umbraco.Forms.Mvc.Models.FieldViewModel  
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
 @using Umbraco.Forms.Mvc
-  
+
 @{ var i = 0; }
-   
-<div class="@Html.GetFormFieldClass(Model.FieldTypeName)  radiobuttonlist" id="@Model.Id">
-@foreach (Umbraco.Forms.Mvc.Models.PrevalueViewModel pv in Model.PreValues)  
-{
-    <input type="radio" name="@Model.Id" id="@string.Concat(Model.Id,"_",i)" value="@pv.Value" 
-    @if (Model.Mandatory) {<text>data-val="true" data-val-requiredlist="@Model.RequiredErrorMessage"</text>}
-    @if (Model.ContainsValue(pv.Value)){<text>checked="checked"</text>} />
-    <label for="@string.Concat(Model.Id,"_",i)">@pv.Value</label>
-    <br />
-    
-    i++;
-}
+
+<div class="@Html.GetFormFieldClass(Model.FieldTypeName) radiobuttonlist" id="@Model.Id">
+    @foreach (Umbraco.Forms.Mvc.Models.PrevalueViewModel pv in Model.PreValues)
+    {
+        var itemId = string.Concat(Model.Id, "_", i);
+        <div class="row collapse">
+            <div class="column small-1 text-center">
+                <input type="radio" name="@Model.Id" id="@string.Concat(Model.Id,"_",i)" value="@pv.Value"
+                       @if (Model.Mandatory) { <text> data-val="true" data-val-requiredlist="@Model.RequiredErrorMessage" </text> }
+                       @if (Model.ContainsValue(pv.Value)) { <text> checked="checked" </text> } />
+            </div>
+            <div class="column small-11">
+                <label for="@string.Concat(Model.Id,"_",i)">@pv.Value</label>
+            </div>
+        </div>
+        i++;
+    }
 </div>
