@@ -47,7 +47,10 @@ namespace JNCC.PublicWebsite.Core.Services
                 FileType = image.UmbracoExtension,
                 LastEdited = image.UpdateDate,
                 Url = _mediaUrlResolverService.ResolveUrl(image.Url),
-                Crops = GetImageCrops(image)
+                Crops = GetImageCrops(image),
+                Width = image.UmbracoWidth,
+                Height = image.UmbracoHeight,
+                SizeInKB = (image.UmbracoBytes / 1024f)
             };
         }
 
