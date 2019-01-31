@@ -11,6 +11,21 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
+            var service = new ImagePickerApiService(Umbraco);
+            IPublishedContent root;
+
+            if (service.TryFindRoot(id, out root) == false)
+            {
+                if (root == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return StatusCode(HttpStatusCode.UnsupportedMediaType);
+                }
+            }
+
             return Ok();
         }
     }
