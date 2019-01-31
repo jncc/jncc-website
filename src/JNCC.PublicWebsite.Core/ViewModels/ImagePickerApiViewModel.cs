@@ -11,7 +11,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public string FileType { get; set; }
         public string EditorName { get; set; }
         public DateTime LastEdited { get; set; }
-        public int SizeInKB { get; set; }
+        public double SizeInKB { get; set; }
         public IDictionary<string, string> Crops { get; set; }
     }
 }
