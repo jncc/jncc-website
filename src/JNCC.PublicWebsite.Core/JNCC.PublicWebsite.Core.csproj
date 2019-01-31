@@ -311,6 +311,7 @@
     <Compile Include="Constants\ResetPasswordRequestStatusCDs.cs" />
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
+    <Compile Include="Controllers\ApiControllers\ImagePickerApiController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
