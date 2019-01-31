@@ -393,6 +393,7 @@
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />
+    <Compile Include="Services\MediaUrlResolverService.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="ViewModels\ImageApiViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
