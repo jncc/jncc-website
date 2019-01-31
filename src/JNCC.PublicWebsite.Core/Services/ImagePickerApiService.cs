@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using Umbraco.Core.Models;
@@ -56,15 +56,14 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IDictionary<string, string> GetImageCrops(Image image)
         {
-            var cropsData = image.GetPropertyValue<ImageCropDataSet>(Conventions.Media.File);
             var dictionary = new Dictionary<string, string>();
 
-            if (cropsData == null)
+            if (image.UmbracoFile == null)
             {
                 return dictionary;
             }
 
-            foreach (var crop in cropsData.Crops)
+            foreach (var crop in image.UmbracoFile.Crops)
             {
                 var url = image.GetCropUrl(crop.Alias);
                 var resolvedUrl = _mediaUrlResolverService.ResolveUrl(url);
