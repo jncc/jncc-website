@@ -370,6 +370,7 @@
     <Compile Include="Models\GlobalIncludesComposition.generated.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\HomePage.generated.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Image.generated.cs" />
     <Compile Include="Models\InitialResetPasswordModel.cs" />
     <Compile Include="Models\InternalTextPage.generated.cs" />

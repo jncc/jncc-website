@@ -46,15 +46,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Size
-		///</summary>
-		[ImplementPropertyType("umbracoBytes")]
-		public string UmbracoBytes
-		{
-			get { return this.GetPropertyValue<string>("umbracoBytes"); }
-		}
-
-		///<summary>
 		/// Type
 		///</summary>
 		[ImplementPropertyType("umbracoExtension")]
@@ -70,24 +61,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		public Umbraco.Web.Models.ImageCropDataSet UmbracoFile
 		{
 			get { return this.GetPropertyValue<Umbraco.Web.Models.ImageCropDataSet>("umbracoFile"); }
-		}
-
-		///<summary>
-		/// Height
-		///</summary>
-		[ImplementPropertyType("umbracoHeight")]
-		public string UmbracoHeight
-		{
-			get { return this.GetPropertyValue<string>("umbracoHeight"); }
-		}
-
-		///<summary>
-		/// Width
-		///</summary>
-		[ImplementPropertyType("umbracoWidth")]
-		public string UmbracoWidth
-		{
-			get { return this.GetPropertyValue<string>("umbracoWidth"); }
 		}
 	}
 }
