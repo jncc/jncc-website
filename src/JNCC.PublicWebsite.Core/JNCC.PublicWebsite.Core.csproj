@@ -392,6 +392,7 @@
     <Compile Include="Models\ResourceItemSchema.generated.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
+    <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
