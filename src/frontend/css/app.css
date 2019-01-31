@@ -3696,9 +3696,9 @@ legend {
 }
 
 .fieldset {
-	margin: 1.125rem 0;
-	padding: 1.25rem;
-	border: 1px solid #cacaca;
+	margin: 0;
+	padding: 0 0 1.25rem 0;
+	border: 0 none transparent;
 }
 
 .fieldset legend {
