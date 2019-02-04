@@ -8,37 +8,62 @@
 }
 @if (!Model.Children.Any())
 {
-    <article>No blog posts found</article>        
+    <article>No blog posts found</article>
 }
 else
 {
-    foreach (var post in Model.Posts)
-    {
-        <article class="preview">
-            <header>
-                <h1 class="post-title"><a href="@post.Url">@post.Name</a></h1>
-                <div class="post-meta">
-                    @Html.DisplayFor(model => post.PublishedDate)
-                </div>
-            </header>
-            <section class="post-excerpt">
-                @if (!post.PostImageUrl.IsNullOrWhiteSpace())
-                {
-                    var thumbnail = post.GetCropUrl("postImage", "thumbnail");
-                    if (!thumbnail.IsNullOrWhiteSpace())
-                    {
-                        <img class="thumb" src="@thumbnail" alt="@post.Name" />
-                    }
-                }
-                <p>
-                    @post.Excerpt&hellip;
-                </p>
-                <div class="button-group no-bullet">
-                    <a href="@post.Url" class="button hollow secondary read-more">Read More <i class="icon-arrow-right"></i></a>
-                </div>
-            </section>
-        </article>
-    }
-    
-    @Html.ThemedPartial(Model, "Pager", Model.Pages)   
+    <ol class="no-bullet blog-list">
+        @foreach (var post in Model.Posts)
+        {
+            var author = post.Author;
+            <li class="blog-item">
+                <article>
+                    <div class="row collapse">
+                        <div class="column small-12 medium-9">
+                            <header>
+                                <h2 class="blog-item-title"><a href="@post.Url">@post.Name</a></h2>
+                                <div class="post-meta">
+                                    @Html.DisplayFor(model => post.PublishedDate) by @if (!author.BlogUrl.IsNullOrWhiteSpace())
+                                    {<a href="@author.BlogUrl">@author.Name</a>}
+                                else
+                                {@author.Name}
+                                </div>
+                                @if (post.Tags.Any() || post.Categories.Any())
+                                {
+                                    <p>
+                                        @if (post.Categories.Any())
+                                        {
+                                            foreach (var category in post.Categories)
+                                            {<a href="@Url.ArticulateCategoryUrl(Model, category)"><span class="label location">@category</span></a>}
+                                    }
+                                        @if (post.Tags.Any())
+                                        {
+                                            foreach (var tag in post.Tags)
+                                            {<a href="@Url.ArticulateTagUrl(Model, tag)"><span class="label location">@tag</span></a>}
+                                    }
+                                    </p>
+                                }
+                            </header>
+                        </div>
+                        <div class="column hide-for-small-only medium-3">
+                            <section class="post-excerpt">
+                                @if (string.IsNullOrWhiteSpace(author.Image) == false)
+                                {
+                                    <img src="@author.Image" alt="@author.Name profile picture" class="blog-author-image" />
+                                }
+                                else
+                                {
+                                    <div class="blog-author-image anon">
+                                        <i class="icon-user"></i>
+                                    </div>
+                                }
+                            </section>
+                        </div>
+                    </div>
+                </article>
+            </li>
+        }
+    </ol>
+
+    @Html.ThemedPartial(Model, "Pager", Model.Pages)
 }
