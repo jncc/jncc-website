@@ -1087,3 +1087,17 @@ input[type="checkbox"]:focus + .fake-input {
 button.slick-arrow {
 	text-indent: -100000px;
 }
+
+.blog-list {
+	.blog-item {
+		background-color: $light-gray;
+		padding: 1rem;
+		margin: 0 0 1rem 0;
+
+		.blog-item-title {
+			a {
+				color: inherit;
+			}
+		}
+	}
+}

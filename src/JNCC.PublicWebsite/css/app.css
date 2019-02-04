@@ -8513,6 +8513,16 @@ button.slick-arrow {
 	text-indent: -100000px;
 }
 
+.blog-list .blog-item {
+	background-color: #faf9f9;
+	padding: 1rem;
+	margin: 0 0 1rem 0;
+}
+
+.blog-list .blog-item .blog-item-title a {
+	color: inherit;
+}
+
 #header {
 	position: relative;
 	z-index: 500;
