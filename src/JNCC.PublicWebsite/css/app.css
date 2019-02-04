@@ -893,6 +893,10 @@
 	content: "\e907";
 }
 
+.icon-user:before {
+	content: "\e971";
+}
+
 @font-face {
 	font-family: "robotoregular";
 	src: url("../fonts/roboto-regular-webfont.woff2") format("woff2"), url("../fonts/roboto-regular-webfont.woff") format("woff");
