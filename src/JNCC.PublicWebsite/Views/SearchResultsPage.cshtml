@@ -9,7 +9,7 @@
             <div id="content">
                 <div class="resultsSearchBar">
                     <form action="/search" role="search" method="GET" class="top-bar search-form input-group" id="search-page-form" data-animate="hinge-in-from-top spin-out">
-                        <input type="text" name="q" class="input-group-field" id="search-page-form-field" placeholder="Search" value="@(!Model.SearchTerm.IsNullOrWhiteSpace() ? Model.SearchTerm : "Search")" aria-label="Search" />
+                        <input type="text" name="q" class="input-group-field" id="search-page-form-field" placeholder="Search" value="@Html.If(Model.SearchTerm.IsNullOrWhiteSpace() != false, Model.SearchTerm)" aria-label="Search" />
                         <button class="input-group-button" aria-label="search-button">Search</button>
                     </form>
                 </div>
