@@ -8523,6 +8523,25 @@ button.slick-arrow {
 	color: inherit;
 }
 
+.blog-list .blog-item .blog-author-image {
+	width: 8rem;
+	height: 8rem;
+	border-radius: 50% !important;
+}
+
+.blog-list .blog-item .blog-author-image.anon {
+	line-height: 8rem;
+	background-color: #fefefe;
+	font-size: 4rem;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.blog-list .blog-item .blog-author-image.anon .icon-user {
+	line-height: inherit;
+}
+
 #header {
 	position: relative;
 	z-index: 500;

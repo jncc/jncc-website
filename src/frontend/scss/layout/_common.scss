@@ -1099,5 +1099,24 @@ button.slick-arrow {
 				color: inherit;
 			}
 		}
+
+		.blog-author-image {
+			@include box(8rem, $circle: true);
+
+			&.anon {
+				line-height: 8rem;
+				background-color: $white;
+
+				font-size: 4rem;
+
+				text-align: center;
+				vertical-align: middle;
+				display: inline-block;
+
+				.icon-user {
+					line-height: inherit;
+				}
+			}
+		}
 	}
 }
