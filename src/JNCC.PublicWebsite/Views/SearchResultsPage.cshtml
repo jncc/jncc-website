@@ -1,4 +1,4 @@
-﻿@model SearchViewModel
+@model SearchViewModel
 @{
     Layout = "Master.cshtml";
 }
@@ -13,49 +13,51 @@
                         <button class="input-group-button" aria-label="search-button">Search</button>
                     </form>
                 </div>
-                <h1>Search results</h1>
-                <p>@Model.TotalResults results for '@Model.SearchTerm'</p>
-                @if (Model.TotalResults != 0)
+                @if (string.IsNullOrWhiteSpace(Model.SearchTerm) == false)
                 {
-                    foreach (var result in Model.PagedResults)
+                    <h2>Search results</h2>
+                    <p>@Model.TotalResults results for '@Model.SearchTerm'</p>
+                    if (Model.TotalResults != 0)
                     {
-                        <h3><a href="@result.Url">@result.Title</a></h3>
-                        <p>
-                            <span>Source:</span> <a href="/"><span class="label datahub">@result.Site</span></a> | Published: @result.PublishDate.ToString("dd MMMM yyyy")
-                        </p>
-                        <p class="resultContent">@result.Content</p>
-                        <hr />
-                    }
-
-                    <div class="filtration-buttons-holder">
-                        @if (Model.CurrentPage > 1)
+                        foreach (var result in Model.PagedResults)
                         {
-                            <a class="button prev" href="?q=@(Model.SearchTerm)&p=@(Model.CurrentPage-1)">Previous</a>
+                            <h3><a href="@result.Url">@result.Title</a></h3>
+                            <p>
+                                <span>Source:</span> <a href="/"><span class="label datahub">@result.Site</span></a> | Published: @result.PublishDate.ToString("dd MMMM yyyy")
+                            </p>
+                            <p class="resultContent">@result.Content</p>
+                            <hr />
                         }
 
-                        @*@for (var i = 1; i <= Model.TotalPages; i++)
-                {
-                    if (i == Model.CurrentPage)
-                    {
-                        <span class="page">@i</span>
+                        <div class="filtration-buttons-holder">
+                            @if (Model.CurrentPage > 1)
+                            {
+                                <a class="button prev" href="?q=@(Model.SearchTerm)&p=@(Model.CurrentPage - 1)">Previous</a>
+                            }
+
+                            @*@for (var i = 1; i <= Model.TotalPages; i++)
+                                {
+                                    if (i == Model.CurrentPage)
+                                    {
+                                        <span class="page">@i</span>
+                                    }
+                                    else
+                                    {
+                                        <a class="page" href="?q=@(Model.SearchTerm)&p=@(i)">@i</a>
+                                    }
+                                }*@
+
+                            @if (Model.CurrentPage < Model.TotalPages)
+                            {
+                                <a class="button next" href="?q=@(Model.SearchTerm)&p=@(Model.CurrentPage + 1)">Next</a>
+                            }
+                        </div>
                     }
                     else
                     {
-                        <a class="page" href="?q=@(Model.SearchTerm)&p=@(i)">@i</a>
+                        <p>Sorry, no results were found</p>
                     }
-                }*@
-
-                        @if (Model.CurrentPage < Model.TotalPages)
-                        {
-                            <a class="button next" href="?q=@(Model.SearchTerm)&p=@(Model.CurrentPage + 1)">Next</a>
-                        }
-                    </div>
                 }
-                else
-                {
-                    <p>Sorry, no results were found</p>
-                }
-
             </div>
         </div>
     </div>
