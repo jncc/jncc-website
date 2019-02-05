@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Providers
                 return Enumerable.Empty<string>();
             }
 
-            return blogPosts.SelectMany(x => x.Categories).Distinct();
+            return blogPosts.SelectMany(x => x.Categories).Distinct().OrderBy(x => x);
         }
     }
 }
