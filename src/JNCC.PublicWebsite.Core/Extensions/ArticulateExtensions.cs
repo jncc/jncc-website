@@ -1,4 +1,4 @@
-using Articulate.Models;
+﻿using Articulate.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using System.Collections.Generic;
 using Umbraco.Core;
@@ -15,6 +15,12 @@ namespace JNCC.PublicWebsite.Core.Extensions
             var provider = new UmbracoBlogCategoriesProvider(cacheProvider ?? _defaultCacheProvider);
 
             return provider.GetAllCategoriesByRoot(articulate.BlogArchiveNode);
+        }
+        public static IEnumerable<string> AllTags(this IMasterModel articulate, ICacheProvider cacheProvider = null)
+        {
+            var provider = new UmbracoBlogTagsProvider(cacheProvider ?? _defaultCacheProvider);
+
+            return provider.GetAllTagsByRoot(articulate.BlogArchiveNode);
         }
     }
 }
