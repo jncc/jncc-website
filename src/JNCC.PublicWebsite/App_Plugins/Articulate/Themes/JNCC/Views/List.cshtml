@@ -2,9 +2,13 @@
 @using Articulate.Models
 @using Umbraco.Core
 @using Umbraco.Web
+@using JNCC.PublicWebsite.Core.Extensions
 @model Articulate.Models.ListModel
 @{
     Layout = "Master.cshtml";
+
+    var allCategories = Model.AllCategories();
+
 }
 @if (!Model.Children.Any())
 {
@@ -66,4 +70,19 @@ else
     </ol>
 
     @Html.ThemedPartial(Model, "Pager", Model.Pages)
+}
+
+@section Sidebar {
+    @if (allCategories.Any())
+    {
+        <aside id="sidebar">
+            <h2>Browse by Category</h2>
+            <ul>
+                @foreach (var category in allCategories)
+                {
+                    <li><a href="@Url.ArticulateCategoryUrl(Model, category)">@category</a></li>
+                }
+            </ul>
+        </aside>
+    }
 }
