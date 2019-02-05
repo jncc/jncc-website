@@ -1,4 +1,4 @@
-﻿using Articulate.Models;
+using Articulate.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using System.Collections.Generic;
 using Umbraco.Core;
@@ -8,9 +8,11 @@ namespace JNCC.PublicWebsite.Core.Extensions
 {
     public static class ArticulateExtensions
     {
+        private static readonly ICacheProvider _defaultCacheProvider = ApplicationContext.Current.ApplicationCache.RequestCache;
+
         public static IEnumerable<string> AllCategories(this IMasterModel articulate, ICacheProvider cacheProvider = null)
         {
-            var provider = new UmbracoBlogCategoriesProvider(cacheProvider ?? ApplicationContext.Current.ApplicationCache.RequestCache);
+            var provider = new UmbracoBlogCategoriesProvider(cacheProvider ?? _defaultCacheProvider);
 
             return provider.GetAllCategoriesByRoot(articulate.BlogArchiveNode);
         }
