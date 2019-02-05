@@ -413,7 +413,9 @@
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
     <Compile Include="Providers\IBlogCategoriesProvider.cs" />
+    <Compile Include="Providers\IBlogTagsProvider.cs" />
     <Compile Include="Providers\UmbracoBlogCategoriesProvider.cs" />
+    <Compile Include="Providers\UmbracoBlogTagsProvider.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\MediaUrlResolverService.cs" />
     <Compile Include="Services\SearchService.cs" />
