@@ -269,6 +269,9 @@
     <Reference Include="Umbraco.Core, Version=1.0.6879.21982, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\Umbraco.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Umbraco.Courier.Core">
+      <HintPath>..\..\lib\UmbracoCourier\bin\Umbraco.Courier.Core.dll</HintPath>
+    </Reference>
     <Reference Include="umbraco.DataLayer, Version=1.0.6879.21987, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.DataLayer.dll</HintPath>
     </Reference>
@@ -330,7 +333,6 @@
     <Compile Include="Controllers\SurfaceControllers\NewsAndInsightsLandingSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\StaffDirectorySurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\TemplateSurfaceController.cs" />
-    <Compile Include="Events\SearchEvents.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
@@ -338,6 +340,7 @@
     <Compile Include="Extensions\PublishedContentExtensions.cs" />
     <Compile Include="Extensions\TempDataDictionaryExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Indexers\ElasticPublishedContentMediaIndexer.cs" />
     <Compile Include="Models\ArticlePage.generated.cs" />
     <Compile Include="Models\BizDevServicePage.generated.cs" />
     <Compile Include="Models\CalloutCardSchema.cs" />
