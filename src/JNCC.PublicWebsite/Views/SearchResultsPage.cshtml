@@ -1,12 +1,14 @@
-@model SearchViewModel
+﻿@model SearchViewModel
 @{
     Layout = "Master.cshtml";
 }
 <main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
     <div class="container">
         @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
         <div class="two-columns">
             <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 <div class="resultsSearchBar">
                     <form action="/search" role="search" method="GET" class="top-bar search-form input-group" id="search-page-form" data-animate="hinge-in-from-top spin-out">
                         <input type="text" name="q" class="input-group-field" id="search-page-form-field" placeholder="Search" value="@Html.If(string.IsNullOrWhiteSpace(Model.SearchTerm) == false, Model.SearchTerm)" aria-label="Search" />
