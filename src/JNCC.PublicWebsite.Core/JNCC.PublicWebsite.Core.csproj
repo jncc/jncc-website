@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -356,6 +356,7 @@
     <Compile Include="Controllers\SurfaceControllers\NewsAndInsightsLandingSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\StaffDirectorySurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\TemplateSurfaceController.cs" />
+    <Compile Include="Extensions\ArticulateExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
@@ -412,6 +413,7 @@
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
     <Compile Include="Providers\IBlogCategoriesProvider.cs" />
+    <Compile Include="Providers\UmbracoBlogCategoriesProvider.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\MediaUrlResolverService.cs" />
     <Compile Include="Services\SearchService.cs" />
