@@ -1120,3 +1120,23 @@ button.slick-arrow {
 		}
 	}
 }
+
+.comment-section {
+	.comment {
+		background-color: $light-gray;
+		padding: 1rem;
+		margin: 0 0 1rem 0;
+
+		.comment-meta {
+			margin-bottom: 1rem;
+			
+			h3 {
+				font-size: inherit;
+			}
+		}
+
+		p:last-child() {
+			margin: 0;
+		}
+	}
+}

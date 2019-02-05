@@ -8542,6 +8542,24 @@ button.slick-arrow {
 	line-height: inherit;
 }
 
+.comment-section .comment {
+	background-color: #faf9f9;
+	padding: 1rem;
+	margin: 0 0 1rem 0;
+}
+
+.comment-section .comment .comment-meta {
+	margin-bottom: 1rem;
+}
+
+.comment-section .comment .comment-meta h3 {
+	font-size: inherit;
+}
+
+.comment-section .comment p:last-child {
+	margin: 0;
+}
+
 #header {
 	position: relative;
 	z-index: 500;
