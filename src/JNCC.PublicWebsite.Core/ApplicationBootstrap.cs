@@ -7,6 +7,7 @@ using Umbraco.Core.Events;
 using Umbraco.Core.Models;
 using Umbraco.Core.Persistence;
 using Umbraco.Core.Services;
+using ArticulateModel = JNCC.PublicWebsite.Core.Models.Articulate;
 
 namespace JNCC.PublicWebsite.Core
 {
@@ -36,7 +37,7 @@ namespace JNCC.PublicWebsite.Core
                     break;
                 }
 
-                var blogRoot = entity.Ancestors().FirstOrDefault(x => x.ContentType.Alias == Articulate.ModelTypeAlias);
+                var blogRoot = entity.Ancestors().FirstOrDefault(x => x.ContentType.Alias == ArticulateModel.ModelTypeAlias);
 
                 if (blogRoot == null)
                 {
