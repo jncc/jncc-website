@@ -8,7 +8,10 @@
     Layout = "Master.cshtml";
 
     var allCategories = Model.AllCategories();
+    var allTags = Model.AllTags();
 
+    var hasCategories = allCategories.Any();
+    var hasTags = allTags.Any();
 }
 @if (!Model.Children.Any())
 {
@@ -73,9 +76,11 @@ else
 }
 
 @section Sidebar {
-    @if (allCategories.Any())
+    @if (hasCategories || hasTags)
     {
-        <aside id="sidebar">
+    <aside id="sidebar">
+        @if (hasCategories)
+        {
             <h2>Browse by Category</h2>
             <ul>
                 @foreach (var category in allCategories)
@@ -83,6 +88,17 @@ else
                     <li><a href="@Url.ArticulateCategoryUrl(Model, category)">@category</a></li>
                 }
             </ul>
-        </aside>
+        }
+        @if (hasTags)
+        {
+            <h2>Browse by Tags</h2>
+            <ul>
+                @foreach (var tag in allTags)
+                {
+                    <li><a href="@Url.ArticulateTagUrl(Model, tag)">@tag</a></li>
+                }
+            </ul>
+        }
+    </aside>
     }
 }
