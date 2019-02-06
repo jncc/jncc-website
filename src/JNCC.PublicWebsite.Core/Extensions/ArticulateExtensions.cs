@@ -1,8 +1,10 @@
 ﻿using Articulate.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using System.Collections.Generic;
 using Umbraco.Core;
 using Umbraco.Core.Cache;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Extensions
 {
@@ -21,6 +23,10 @@ namespace JNCC.PublicWebsite.Core.Extensions
             var provider = new UmbracoBlogTagsProvider(cacheProvider ?? _defaultCacheProvider);
 
             return provider.GetAllTagsByRoot(articulate.BlogArchiveNode);
+        }
+        public static StaffProfilePage StaffProfilePage(this PostModel post)
+        {
+            return post.GetPropertyValue<StaffProfilePage>("authorStaffProfilePage");
         }
     }
 }
