@@ -175,7 +175,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
             try
             {
-                var pdf = System.IO.File.ReadAllBytes(FileSystemProviderManager.Current.GetFileSystemProvider<MediaFileSystem>().GetFullPath(filePath));
+                var pdf = System.IO.File.ReadAllBytes(filePath);
                 var pdfEncoded = Convert.ToBase64String(pdf);
 
                 var simpleMessage = new

@@ -3,6 +3,8 @@ using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -23,6 +25,8 @@ namespace JNCC.PublicWebsite.Core.Indexers
             _umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
             var config = SearchConfiguration.GetConfig();
             _searchService = new SearchService(config);
+            SupportedExtensions = new[] { ".pdf" };
+            UmbracoFileProperty = "umbracoFile";
         }
 
         // let Umbraco know that we support Content and Media
@@ -31,6 +35,23 @@ namespace JNCC.PublicWebsite.Core.Indexers
         private UmbracoHelper _umbracoHelper;
 
         protected override IEnumerable<string> SupportedTypes => _supportedTypes;
+
+        public IEnumerable<string> SupportedExtensions { get; set; }
+
+        public string UmbracoFileProperty { get; set; }
+
+        public override void Initialize(string name, NameValueCollection config)
+        {
+            base.Initialize(name, config);
+
+            if (!string.IsNullOrEmpty(config["extensions"]))
+                SupportedExtensions = config["extensions"].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            //checks if a custom field alias is specified
+            if (!string.IsNullOrEmpty(config["umbracoFileProperty"]))
+                UmbracoFileProperty = config["umbracoFileProperty"];
+        }
+
 
         public override void ReIndexNode(XElement node, string type)
         {
@@ -159,30 +180,42 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 }
                 else if (type.ToFirstUpper() == PublishedItemType.Media.ToString())
                 {
+
                     values.TryGetValue("nodeName", out string nodeName);
                     values.TryGetValue("updateDate", out string publishDate);
                     values.TryGetValue("urlName", out string urlName);
-                    values.TryGetValue(Umbraco.Core.Constants.Conventions.Media.File, out string filePath);
-                    values.TryGetValue(Umbraco.Core.Constants.Conventions.Media.Extension, out string nodeExtension);
-                    values.TryGetValue(Umbraco.Core.Constants.Conventions.Media.Bytes, out string nodeBytes);
 
-                    
-
-                    // We only support indexing PDFs
-                    if (nodeExtension == "pdf")
+                    var filePath = node.Elements().FirstOrDefault(x =>
                     {
+                        if (x.Attribute("alias") != null)
+                        {
+                            return (string)x.Attribute("alias") == this.UmbracoFileProperty;
+                        }
+                        else
+                        {
+                            return x.Name == this.UmbracoFileProperty;
+                        }
+                    });
+                    if (FileExists(filePath))
+                    {
+                        //get the file path from the data service
+                        var fullPath = this.DataService.MapPath((string)filePath);
+                        var fileInfo = new FileInfo(fullPath);
+
+                        if (!SupportedExtensions.Select(x => x.ToUpper()).Contains(fileInfo.Extension.ToUpper()))
+                        {
+                            throw new NotSupportedException("The file with the extension specified is not supported");
+                        }
+
                         // index the node
-                        _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), urlName, filePath, nodeExtension, nodeBytes);
+                        _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), filePath.Value, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                     }
                     else
                     {
                         DataService.LogService.AddVerboseLog((int)node.Attribute("id"), string.Format("Index only supports PDF files"));
                         LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File type is not a PDF");
                     }
-
                 }
-
-                
             }
         }
 
@@ -199,6 +232,11 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 AddNodesToQueue(children, type);
             }
 
+        }
+
+        private static bool FileExists(XElement filePath)
+        {
+            return filePath != default(XElement) && !string.IsNullOrEmpty((string)filePath);
         }
     }
 }
