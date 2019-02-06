@@ -22,7 +22,7 @@ else
     <ol class="no-bullet blog-list">
         @foreach (var post in Model.Posts)
         {
-            var author = post.Author;
+            var authorStaffProfilePage = post.StaffProfilePage();
             <li class="blog-item">
                 <article>
                     <div class="row collapse">
@@ -30,10 +30,7 @@ else
                             <header>
                                 <h2 class="blog-item-title"><a href="@post.Url">@post.Name</a></h2>
                                 <div class="post-meta">
-                                    @Html.DisplayFor(model => post.PublishedDate) by @if (!author.BlogUrl.IsNullOrWhiteSpace())
-                                    {<a href="@author.BlogUrl">@author.Name</a>}
-                                else
-                                {@author.Name}
+                                    @Html.DisplayFor(model => post.PublishedDate) by @if (authorStaffProfilePage != null) {<a href="@authorStaffProfilePage.Url">@post.Author.Name</a>} else {@post.Author.Name}
                                 </div>
                                 @if (post.Tags.Any() || post.Categories.Any())
                                 {
@@ -54,9 +51,9 @@ else
                         </div>
                         <div class="column hide-for-small-only medium-3 text-right">
                             <section class="post-excerpt">
-                                @if (string.IsNullOrWhiteSpace(author.Image) == false)
+                                @if (authorStaffProfilePage != null && authorStaffProfilePage.ProfilePicture != null)
                                 {
-                                    <img src="@author.Image" alt="@author.Name profile picture" class="blog-author-image" />
+                                    <img src="@authorStaffProfilePage.ProfilePicture.GetCropUrl("Square")" alt="@post.Author.Name profile picture" class="blog-author-image" />
                                 }
                                 else
                                 {
