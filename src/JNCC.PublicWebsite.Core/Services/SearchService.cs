@@ -106,7 +106,11 @@ namespace JNCC.PublicWebsite.Core.Services
         public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
         {
             if (!_searchConfiguration.EnableIndexing)
+            {
+                LogHelper.Info<SearchService>("Skipping indexing for Content name " + nodeName + " with ID " + pageId + ". EnableIndexing is disabled.");
                 return;
+            }
+
             var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
@@ -226,6 +230,7 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             if (!_searchConfiguration.EnableIndexing)
                 return;
+
             var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
@@ -261,7 +266,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
             catch (Exception ex)
             {
-                LogHelper.Error<SearchService>("Documen with ID " + pageId + " failed pushing to SQS for deletion", ex);
+                LogHelper.Error<SearchService>("Document with ID " + pageId + " failed pushing to SQS for deletion", ex);
             }
         }
 
