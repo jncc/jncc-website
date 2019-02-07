@@ -35,8 +35,8 @@ namespace JNCC.PublicWebsite.Core.Configuration
         [ConfigurationProperty("AWSSQSPayloadBucket")]
         public string AWSSQSPayloadBucket { get { return (string)this["AWSSQSPayloadBucket"]; } }
 
-        [ConfigurationProperty("IsMaster")]
-        public bool IsMaster { get { return (bool)this["IsMaster"]; } }
+        [ConfigurationProperty("EnableIndexing")]
+        public bool EnableIndexing { get { return (bool)this["EnableIndexing"]; } }
 
         internal static SearchConfiguration GetConfig()
         {

@@ -109,7 +109,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public async System.Threading.Tasks.Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
         {
-            if (!_searchConfiguration.IsMaster)
+            if (!_searchConfiguration.EnableIndexing)
                 return;
             var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
@@ -163,7 +163,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public async System.Threading.Tasks.Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
         {
-            if (!_searchConfiguration.IsMaster)
+            if (!_searchConfiguration.EnableIndexing)
                 return;
             var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
@@ -228,7 +228,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public async System.Threading.Tasks.Task DeleteFromIndexAsync(string pageId)
         {
-            if (!_searchConfiguration.IsMaster)
+            if (!_searchConfiguration.EnableIndexing)
                 return;
             var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);

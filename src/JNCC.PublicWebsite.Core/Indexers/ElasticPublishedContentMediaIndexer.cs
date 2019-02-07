@@ -17,25 +17,22 @@ namespace JNCC.PublicWebsite.Core.Indexers
 {
     public class ElasticPublishedContentMediaIndexer : UmbracoExamine.UmbracoContentIndexer
     {
-        private SearchService _searchService;
-        private readonly ISearchConfiguration _searchConfiguration;
-
         public ElasticPublishedContentMediaIndexer() : base()
         {
-            _umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
             var config = SearchConfiguration.GetConfig();
             _searchService = new SearchService(config);
             SupportedExtensions = new[] { ".pdf" };
             UmbracoFileProperty = "umbracoFile";
         }
 
-        // let Umbraco know that we support Content and Media
-        private static List<string> _supportedTypes = new List<string>() { UmbracoExamine.IndexTypes.Content, UmbracoExamine.IndexTypes.Media };
+        private SearchService _searchService;
 
-        private UmbracoHelper _umbracoHelper;
+        // Let Umbraco know that we support Content and Media
+        private static List<string> _supportedTypes = new List<string>() { UmbracoExamine.IndexTypes.Content, UmbracoExamine.IndexTypes.Media };
 
         protected override IEnumerable<string> SupportedTypes => _supportedTypes;
 
+        // This is to support multiple file extensions
         public IEnumerable<string> SupportedExtensions { get; set; }
 
         public string UmbracoFileProperty { get; set; }
@@ -52,10 +49,17 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 UmbracoFileProperty = config["umbracoFileProperty"];
         }
 
-
         public override void ReIndexNode(XElement node, string type)
         {
+            // Check to make sure we're running on PRD-WEB
+            //TODO: Check to make sure we're running on PRD-WEB
+
+            // Check to make sure it's a supported type (Content or Media)
             if (!_supportedTypes.Contains(type))
+                return;
+
+            // Check if page is hidden
+            if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
                 return;
 
             AddSingleNodeToIndex(node, type);
@@ -67,76 +71,6 @@ namespace JNCC.PublicWebsite.Core.Indexers
             DataService.LogService.AddVerboseLog((int)node.Attribute("id"), string.Format("AddSingleNodeToIndex with type: {0}", type));
 
             AddNodesToQueue(new XElement[] { node }, type);
-        }
-
-        public override void DeleteFromIndex(string nodeId)
-        {
-            // delete the node from index
-            _searchService.DeleteFromIndex(nodeId);
-            //LogHelper.Info<SearchService>($"Removed document with id: {nodeId} from index");
-
-        }
-
-        public override void RebuildIndex()
-        {
-            LogHelper.Info<SearchService>($"Rebuild Elastic Index triggered");
-
-            base.RebuildIndex();
-        }
-
-        protected override void PerformIndexAll(string type)
-        {
-            if (!SupportedTypes.Contains(type))
-                return;
-
-            var xPath = "//*[(number(@id) > 0 and (@isDoc or @nodeTypeAlias)){0}]"; //we'll add more filters to this below if needed
-
-            var sb = new StringBuilder();
-
-            //create the xpath statement to match node type aliases if specified
-            if (IndexerData.IncludeNodeTypes.Any())
-            {
-                sb.Append("(");
-                foreach (var field in IndexerData.IncludeNodeTypes)
-                {
-                    //this can be used across both schemas
-                    const string nodeTypeAlias = "(@nodeTypeAlias='{0}' or (count(@nodeTypeAlias)=0 and name()='{0}'))";
-
-                    sb.Append(string.Format(nodeTypeAlias, field));
-                    sb.Append(" or ");
-                }
-                sb.Remove(sb.Length - 4, 4); //remove last " or "
-                sb.Append(")");
-            }
-
-            //create the xpath statement to match all children of the current node.
-            if (IndexerData.ParentNodeId.HasValue && IndexerData.ParentNodeId.Value > 0)
-            {
-                if (sb.Length > 0)
-                    sb.Append(" and ");
-                sb.Append("(");
-                sb.Append("contains(@path, '," + IndexerData.ParentNodeId.Value + ",')"); //if the path contains comma - id - comma then the nodes must be a child
-                sb.Append(")");
-            }
-
-            //create the full xpath statement to match the appropriate nodes. If there is a filter
-            //then apply it, otherwise just select all nodes.
-            var filter = sb.ToString();
-            xPath = string.Format(xPath, filter.Length > 0 ? " and " + filter : "");
-
-            //raise the event and set the xpath statement to the value returned
-            var args = new IndexingNodesEventArgs(IndexerData, xPath, type);
-            OnNodesIndexing(args);
-            if (args.Cancel)
-            {
-                return;
-            }
-
-            xPath = args.XPath;
-
-            DataService.LogService.AddVerboseLog(-1, string.Format("({0}) PerformIndexAll with XPATH: {1}", this.Name, xPath));
-
-            AddNodesToQueue(xPath, type);
         }
 
         protected void AddNodesToQueue(IEnumerable<XElement> nodes, string type)
@@ -219,8 +153,74 @@ namespace JNCC.PublicWebsite.Core.Indexers
             }
         }
 
+        public override void RebuildIndex()
+        {
+            LogHelper.Info<SearchService>($"Rebuild Elastic Index triggered");
+
+            base.RebuildIndex();
+        }
+
+        protected override void PerformIndexAll(string type)
+        {
+            if (!SupportedTypes.Contains(type))
+                return;
+
+            var xPath = "//*[(number(@id) > 0 and (@isDoc or @nodeTypeAlias)){0}]"; //we'll add more filters to this below if needed
+
+            var sb = new StringBuilder();
+
+            //create the xpath statement to match node type aliases if specified
+            if (IndexerData.IncludeNodeTypes.Any())
+            {
+                sb.Append("(");
+                foreach (var field in IndexerData.IncludeNodeTypes)
+                {
+                    //this can be used across both schemas
+                    const string nodeTypeAlias = "(@nodeTypeAlias='{0}' or (count(@nodeTypeAlias)=0 and name()='{0}'))";
+
+                    sb.Append(string.Format(nodeTypeAlias, field));
+                    sb.Append(" or ");
+                }
+                sb.Remove(sb.Length - 4, 4); //remove last " or "
+                sb.Append(")");
+            }
+
+            //create the xpath statement to match all children of the current node.
+            if (IndexerData.ParentNodeId.HasValue && IndexerData.ParentNodeId.Value > 0)
+            {
+                if (sb.Length > 0)
+                    sb.Append(" and ");
+                sb.Append("(");
+                sb.Append("contains(@path, '," + IndexerData.ParentNodeId.Value + ",')"); //if the path contains comma - id - comma then the nodes must be a child
+                sb.Append(")");
+            }
+
+            //create the full xpath statement to match the appropriate nodes. If there is a filter
+            //then apply it, otherwise just select all nodes.
+            var filter = sb.ToString();
+            xPath = string.Format(xPath, filter.Length > 0 ? " and " + filter : "");
+
+            //raise the event and set the xpath statement to the value returned
+            var args = new IndexingNodesEventArgs(IndexerData, xPath, type);
+            OnNodesIndexing(args);
+            if (args.Cancel)
+            {
+                return;
+            }
+
+            xPath = args.XPath;
+
+            DataService.LogService.AddVerboseLog(-1, string.Format("({0}) PerformIndexAll with XPATH: {1}", this.Name, xPath));
+
+            AddNodesToQueue(xPath, type);
+        }
+
         private void AddNodesToQueue(string xPath, string type)
         {
+            //TODO: Check if page is hidden
+            //if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
+            //    return;
+
             // Get all the nodes of nodeTypeAlias == nodeTypeAlias
             XDocument xDoc = GetXDocument(xPath, type);
             if (xDoc != null)
@@ -233,6 +233,24 @@ namespace JNCC.PublicWebsite.Core.Indexers
             }
 
         }
+
+        //public override void DeleteFromIndex(string nodeId)
+        //{
+        //    //find all descendants based on path
+        //    var descendantPath = string.Format(@"\-1\,*{0}\,*", nodeId);
+        //    var rawQuery = string.Format("{0}:{1}", IndexPathFieldName, descendantPath);
+        //    var c = InternalSearcher.CreateSearchCriteria();
+        //    var filtered = c.RawQuery(rawQuery);
+        //    var results = InternalSearcher.Search(filtered);
+
+        //    //need to create a delete queue item for each one found
+        //    foreach (var r in results)
+        //    {
+        //        // delete the node from index
+        //        _searchService.DeleteFromIndex(r.Id.ToString());
+        //    }
+            
+        //}
 
         private static bool FileExists(XElement filePath)
         {

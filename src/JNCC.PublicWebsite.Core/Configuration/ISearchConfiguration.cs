@@ -12,6 +12,6 @@
         string AWSSQSPayloadBucket { get; }
         string AWSESWriteAccessKey { get; }
         string AWSESWriteSecretKey{ get; }
-        bool IsMaster { get; }
+        bool EnableIndexing { get; }
     }
 }
