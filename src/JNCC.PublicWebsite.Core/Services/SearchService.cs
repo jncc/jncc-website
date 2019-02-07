@@ -1,4 +1,4 @@
-﻿using Aws4RequestSigner;
+using Aws4RequestSigner;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
@@ -102,7 +102,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModel;
         }
 
-        private IEnumerable<SearchResultViewModel> GetPagedSearchResults(SearchModel searchResults,int pageSize, int currentPage)
+        private IEnumerable<SearchResultViewModel> GetPagedSearchResults(SearchModel searchResults, int pageSize, int currentPage)
         {
             var viewModels = new List<SearchResultViewModel>();
 
@@ -119,14 +119,15 @@ namespace JNCC.PublicWebsite.Core.Services
                     Content = result.Source.Content,
                     DataType = result.Source.DataType,
                     Site = result.Source.Site,
+                    Url = result.Source.Url,
                     PublishDate = result.Source.PublishedDate
-                    
+
                 };
 
                 viewModels.Add(viewModel);
             }
-            return viewModels;
 
+            return viewModels;
         }
     }
 }
