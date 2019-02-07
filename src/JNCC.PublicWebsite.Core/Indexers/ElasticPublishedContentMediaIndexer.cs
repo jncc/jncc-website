@@ -1,4 +1,4 @@
-using Examine;
+﻿using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using System;
@@ -60,10 +60,12 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
             // Check if page is hidden
             if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
+            {
+                DeleteFromIndex(node.Attribute("id").Value);
                 return;
+            }
 
             AddSingleNodeToIndex(node, type);
-
         }
 
         protected override void AddSingleNodeToIndex(XElement node, string type)
