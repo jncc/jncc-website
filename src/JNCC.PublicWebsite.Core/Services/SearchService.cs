@@ -29,7 +29,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public SearchModel EsGet(string q, int size, int start)
         {
-            return System.Threading.Tasks.Task.Run(() => ESGetAsync(q, size, start)).Result;
+            return Task.Run(() => ESGetAsync(q, size, start)).Result;
         }
         public async Task<SearchModel> ESGetAsync(string query, int size, int start)
         {
@@ -94,15 +94,15 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
         {
-            System.Threading.Tasks.Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, mainContent));
+            Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, mainContent));
         }
 
         public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
         {
-            System.Threading.Tasks.Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, filePath, nodeExtension, nodeBytes));
+            Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, filePath, nodeExtension, nodeBytes));
         }
 
-        public async System.Threading.Tasks.Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
+        public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
         {
             if (!_searchConfiguration.EnableIndexing)
                 return;
@@ -156,7 +156,7 @@ namespace JNCC.PublicWebsite.Core.Services
             }
         }
 
-        public async System.Threading.Tasks.Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
+        public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
         {
             if (!_searchConfiguration.EnableIndexing)
                 return;
@@ -218,10 +218,10 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public void DeleteFromIndex(string pageId)
         {
-            System.Threading.Tasks.Task.Run(() => DeleteFromIndexAsync(pageId));
+            Task.Run(() => DeleteFromIndexAsync(pageId));
         }
 
-        public async System.Threading.Tasks.Task DeleteFromIndexAsync(string pageId)
+        public async Task DeleteFromIndexAsync(string pageId)
         {
             if (!_searchConfiguration.EnableIndexing)
                 return;
