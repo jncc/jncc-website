@@ -342,6 +342,7 @@
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
     <Compile Include="Constants\ResetPasswordRequestStatusCDs.cs" />
+    <Compile Include="Constants\SearchIndexingVerbs.cs" />
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\ApiControllers\ImagePickerApiController.cs" />
