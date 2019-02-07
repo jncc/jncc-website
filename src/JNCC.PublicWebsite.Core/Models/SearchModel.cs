@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -16,13 +16,15 @@ namespace JNCC.PublicWebsite.Core.Models
         public string Site { get; set; }
         [JsonProperty("title")]
         public string Title { get; set; }
-        [JsonProperty("content")]
+        [JsonProperty("content_truncated")]
         public string Content { get; set; }
         //public List<Keyword> keywords { get; set; }
         [JsonProperty("published_date")]
         public DateTime PublishedDate { get; set; }
         [JsonProperty("data_type")]
         public string DataType { get; set; }
+        [JsonProperty("url")]
+        public string Url { get; set; }
         //public List<DatahubKeyword> datahub_keywords { get; set; }
     }
 
