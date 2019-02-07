@@ -11,15 +11,10 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Umbraco.Core;
-using Umbraco.Core.IO;
 using Umbraco.Core.Logging;
-using Umbraco.Core.Models;
-using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
