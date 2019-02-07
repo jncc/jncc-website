@@ -1,3 +1,8 @@
+﻿using Amazon;
+using Amazon.Runtime;
+using Amazon.S3;
+using Amazon.SQS;
+using Amazon.SQS.ExtendedClient;
 using Aws4RequestSigner;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Models;
@@ -6,10 +11,15 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Umbraco.Core;
+using Umbraco.Core.IO;
 using Umbraco.Core.Logging;
+using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -24,7 +34,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public SearchModel EsGet(string q, int size, int start)
         {
-            return Task.Run(() => ESGetAsync(q, size, start)).Result;
+            return System.Threading.Tasks.Task.Run(() => ESGetAsync(q, size, start)).Result;
         }
         public async Task<SearchModel> ESGetAsync(string query, int size, int start)
         {
@@ -86,6 +96,179 @@ namespace JNCC.PublicWebsite.Core.Services
             return await signer.Sign(request, "es", _searchConfiguration.AWSESRegion);
         }
 
+
+        public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
+        {
+            System.Threading.Tasks.Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, mainContent));
+        }
+
+        public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
+        {
+            System.Threading.Tasks.Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, filePath, nodeExtension, nodeBytes));
+        }
+
+        public async System.Threading.Tasks.Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
+        {
+            if (!_searchConfiguration.EnableIndexing)
+                return;
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
+            var s3 = new AmazonS3Client(credentials, region);
+            var sqs = new AmazonSQSClient(credentials, region);
+            var sqsExtendedClient = new AmazonSQSExtendedClient(sqs,
+                new ExtendedClientConfiguration().WithLargePayloadSupportEnabled(s3, _searchConfiguration.AWSSQSPayloadBucket)
+            );
+
+            try
+            {
+                    // this is content
+                    var simpleMessage = new
+                    {
+                        verb = "upsert",
+                        index = _searchConfiguration.AWSESIndex,
+                        document = new
+                        {
+                            id = pageId.ToString(), // ID managed by Umbraco
+                            site = "website", // as opposed to datahub|sac|mhc
+                            title = nodeName,
+                            content = mainContent,
+                            url = "http://jncc.local/" + urlName, // the URL of the page, for clicking through
+                            keywords = new[]
+                                {
+                        new { vocab = "http://vocab.jncc.gov.uk/jncc-web", value = "Example" }
+                                },
+                            published_date = publishDate.ToString("yyyy-MM-dd"),
+
+                        }
+                    };
+
+                    var basicResponse = await sqsExtendedClient.SendMessageAsync(_searchConfiguration.AWSSQSEndpoint,
+                    JsonConvert.SerializeObject(simpleMessage, Formatting.None));
+
+                    if (basicResponse.HttpStatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        LogHelper.Info<SearchService>("Content name " + nodeName + " with ID " + pageId + " has been pushed up to SQS");
+                    }
+                    else
+                    {
+                        LogHelper.Info<SearchService>("Content name " + nodeName + " with ID " + pageId + " failed to push up to SQS. MD5 of message attributes: " + basicResponse.MD5OfMessageAttributes + "MD5 of message body:" + basicResponse.MD5OfMessageBody);
+                    }
+            }
+
+            catch (Exception ex)
+            {
+                LogHelper.Error<SearchService>("Node name " + nodeName + " with ID " + pageId + " failed pushing to SQS", ex);
+            }
+        }
+
+        public async System.Threading.Tasks.Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
+        {
+            if (!_searchConfiguration.EnableIndexing)
+                return;
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
+            var s3 = new AmazonS3Client(credentials, region);
+            var sqs = new AmazonSQSClient(credentials, region);
+            var sqsExtendedClient = new AmazonSQSExtendedClient(sqs,
+                new ExtendedClientConfiguration().WithLargePayloadSupportEnabled(s3, _searchConfiguration.AWSSQSPayloadBucket)
+            );
+
+            try
+            {
+                var pdf = System.IO.File.ReadAllBytes(filePath);
+                var pdfEncoded = Convert.ToBase64String(pdf);
+
+                var simpleMessage = new
+                {
+                    verb = "upsert",
+                    index = _searchConfiguration.AWSESIndex,
+                    document = new
+                    {
+                        id = pageId.ToString(), // ID managed by Umbraco
+                        site = "website", // as opposed to datahub|sac|mhc
+                        title = nodeName,
+                        content = "Umbraco Media Content",
+                        url = "http://jncc.local" + urlName, // the URL of the page, for clicking through
+                        keywords = new[]
+                            {
+                        new { vocab = "http://vocab.jncc.gov.uk/jncc-web", value = "Example" }
+                                },
+                        published_date = publishDate.ToString("yyyy-MM-dd"),
+                        file_base64 = pdfEncoded, // base-64 encoded file
+                        file_extension = nodeExtension,   // when this is a downloadable
+                        file_bytes = nodeBytes,   // file such as a PDF, etc.
+
+                    }
+                };
+
+                var basicResponse = await sqsExtendedClient.SendMessageAsync(_searchConfiguration.AWSSQSEndpoint,
+                JsonConvert.SerializeObject(simpleMessage, Formatting.None));
+
+                if (basicResponse.HttpStatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + pageId + " has been pushed up to SQS");
+                }
+                else
+                {
+                    LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + pageId + " has been pushed up to SQS. MD5 of message attributes: " + basicResponse.MD5OfMessageAttributes + "MD5 of message body:" + basicResponse.MD5OfMessageBody);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error<SearchService>("Node name " + nodeName + " with ID " + pageId + " failed pushing to SQS", ex);
+            }
+            
+            
+        }
+
+        public void DeleteFromIndex(string pageId)
+        {
+            System.Threading.Tasks.Task.Run(() => DeleteFromIndexAsync(pageId));
+        }
+
+        public async System.Threading.Tasks.Task DeleteFromIndexAsync(string pageId)
+        {
+            if (!_searchConfiguration.EnableIndexing)
+                return;
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
+            var s3 = new AmazonS3Client(credentials, region);
+            var sqs = new AmazonSQSClient(credentials, region);
+            var sqsExtendedClient = new AmazonSQSExtendedClient(sqs,
+                new ExtendedClientConfiguration().WithLargePayloadSupportEnabled(s3, _searchConfiguration.AWSSQSPayloadBucket)
+            );
+            try
+            {
+                var simpleMessage = new
+                {
+                    verb = "delete",
+                    index = _searchConfiguration.AWSESIndex,
+                    document = new
+                    {
+                        id = pageId // ID managed by Umbraco
+                    }
+                };
+
+                var basicResponse = await sqsExtendedClient.SendMessageAsync(_searchConfiguration.AWSSQSEndpoint,
+                    JsonConvert.SerializeObject(simpleMessage, Formatting.None)
+                );
+
+                if (basicResponse.HttpStatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    LogHelper.Info<SearchService>("Document name with ID " + pageId + " has been pushed up to SQS for deletion");
+                }
+                else
+                {
+                    LogHelper.Info<SearchService>("Document name with ID " + pageId + " has been pushed up to SQS for deletion. MD5 of message attributes: " + basicResponse.MD5OfMessageAttributes + "MD5 of message body:" + basicResponse.MD5OfMessageBody);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                LogHelper.Error<SearchService>("Documen with ID " + pageId + " failed pushing to SQS for deletion", ex);
+            }
+        }
+
         public SearchViewModel GetViewModel(SearchModel searchResults, string searchTerm, int pageSize, int currentPage)
         {
             var viewModel = new SearchViewModel()
@@ -96,7 +279,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 PageSize = pageSize,
                 SearchTerm = searchTerm,
                 CurrentPage = Math.Max(1, Math.Min((int)Math.Ceiling((decimal)searchResults.Hits.Total / pageSize), currentPage))
-        };
+            };
 
             return viewModel;
         }

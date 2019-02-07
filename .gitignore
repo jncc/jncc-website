@@ -381,3 +381,6 @@ ASALocalRun/
 
 # Ignore config Secrets folder
 **/[Cc]onfig/[Ss]ecrets/
+
+# Ignore Umbraco Courier
+**/App_Data/courier
