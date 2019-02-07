@@ -4,6 +4,7 @@ using Amazon.S3;
 using Amazon.SQS;
 using Amazon.SQS.ExtendedClient;
 using Aws4RequestSigner;
+using JNCC.PublicWebsite.Core.Constants;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
@@ -116,38 +117,38 @@ namespace JNCC.PublicWebsite.Core.Services
 
             try
             {
-                    // this is content
-                    var simpleMessage = new
+                // this is content
+                var simpleMessage = new
+                {
+                    verb = SearchIndexingVerbs.Upsert,
+                    index = _searchConfiguration.AWSESIndex,
+                    document = new
                     {
-                        verb = "upsert",
-                        index = _searchConfiguration.AWSESIndex,
-                        document = new
-                        {
-                            id = pageId.ToString(), // ID managed by Umbraco
-                            site = "website", // as opposed to datahub|sac|mhc
-                            title = nodeName,
-                            content = mainContent,
-                            url = "http://jncc.local/" + urlName, // the URL of the page, for clicking through
-                            keywords = new[]
-                                {
+                        id = pageId.ToString(), // ID managed by Umbraco
+                        site = "website", // as opposed to datahub|sac|mhc
+                        title = nodeName,
+                        content = mainContent,
+                        url = "http://jncc.local/" + urlName, // the URL of the page, for clicking through
+                        keywords = new[]
+                            {
                         new { vocab = "http://vocab.jncc.gov.uk/jncc-web", value = "Example" }
                                 },
-                            published_date = publishDate.ToString("yyyy-MM-dd"),
+                        published_date = publishDate.ToString("yyyy-MM-dd"),
 
-                        }
-                    };
-
-                    var basicResponse = await sqsExtendedClient.SendMessageAsync(_searchConfiguration.AWSSQSEndpoint,
-                    JsonConvert.SerializeObject(simpleMessage, Formatting.None));
-
-                    if (basicResponse.HttpStatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        LogHelper.Info<SearchService>("Content name " + nodeName + " with ID " + pageId + " has been pushed up to SQS");
                     }
-                    else
-                    {
-                        LogHelper.Info<SearchService>("Content name " + nodeName + " with ID " + pageId + " failed to push up to SQS. MD5 of message attributes: " + basicResponse.MD5OfMessageAttributes + "MD5 of message body:" + basicResponse.MD5OfMessageBody);
-                    }
+                };
+
+                var basicResponse = await sqsExtendedClient.SendMessageAsync(_searchConfiguration.AWSSQSEndpoint,
+                JsonConvert.SerializeObject(simpleMessage, Formatting.None));
+
+                if (basicResponse.HttpStatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    LogHelper.Info<SearchService>("Content name " + nodeName + " with ID " + pageId + " has been pushed up to SQS");
+                }
+                else
+                {
+                    LogHelper.Info<SearchService>("Content name " + nodeName + " with ID " + pageId + " failed to push up to SQS. MD5 of message attributes: " + basicResponse.MD5OfMessageAttributes + "MD5 of message body:" + basicResponse.MD5OfMessageBody);
+                }
             }
 
             catch (Exception ex)
@@ -175,7 +176,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
                 var simpleMessage = new
                 {
-                    verb = "upsert",
+                    verb = SearchIndexingVerbs.Upsert,
                     index = _searchConfiguration.AWSESIndex,
                     document = new
                     {
@@ -212,8 +213,8 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 LogHelper.Error<SearchService>("Node name " + nodeName + " with ID " + pageId + " failed pushing to SQS", ex);
             }
-            
-            
+
+
         }
 
         public void DeleteFromIndex(string pageId)
@@ -236,7 +237,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 var simpleMessage = new
                 {
-                    verb = "delete",
+                    verb = SearchIndexingVerbs.Delete,
                     index = _searchConfiguration.AWSESIndex,
                     document = new
                     {
