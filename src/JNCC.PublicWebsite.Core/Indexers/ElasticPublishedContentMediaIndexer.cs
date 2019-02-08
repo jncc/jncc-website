@@ -58,11 +58,15 @@ namespace JNCC.PublicWebsite.Core.Indexers
             if (!_supportedTypes.Contains(type))
                 return;
 
-            // Check if page is hidden
-            if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
+            // Check if type is a content page and has UmbracoNaviHide property
+            if (node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide) != null && type.ToFirstUpper() == PublishedItemType.Content.ToString())
             {
-                DeleteFromIndex(node.Attribute("id").Value);
-                return;
+                // Check if content page is hidden
+                if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
+                {
+                    DeleteFromIndex(node.Attribute("id").Value);
+                    return;
+                }
             }
 
             AddSingleNodeToIndex(node, type);
