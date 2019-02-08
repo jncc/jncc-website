@@ -67,10 +67,10 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 return;
 
             // Check if type is a content page and has UmbracoNaviHide property
-            if (node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide) != null && type.ToFirstUpper() == PublishedItemType.Content.ToString())
+            if (node.Element(Conventions.Content.NaviHide) != null && type.ToFirstUpper() == PublishedItemType.Content.ToString())
             {
                 // Check if content page is hidden
-                if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
+                if ((bool)node.Element(Conventions.Content.NaviHide))
                 {
                     DeleteFromIndex(node.Attribute("id").Value);
                     return;
@@ -259,7 +259,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
         private void AddNodesToQueue(string xPath, string type)
         {
             //TODO: Check if page is hidden
-            //if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
+            //if ((bool)node.Element(Conventions.Content.NaviHide))
             //    return;
 
             // Get all the nodes of nodeTypeAlias == nodeTypeAlias
