@@ -1,4 +1,4 @@
-using Examine;
+﻿using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using System;
@@ -11,7 +11,6 @@ using System.Xml.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
-using Umbraco.Web;
 using static Umbraco.Core.Constants;
 
 namespace JNCC.PublicWebsite.Core.Indexers
