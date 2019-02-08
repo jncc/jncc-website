@@ -132,7 +132,6 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 {
                     values.TryGetValue("nodeName", out string nodeName);
                     values.TryGetValue("updateDate", out string publishDate);
-                    values.TryGetValue("urlName", out string urlName);
 
                     var fileExtension = node.Elements().FirstOrDefault(x =>
                     {
@@ -188,8 +187,9 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     }
 
                     var fileInfo = new FileInfo(fullPath);
+                    var url = fullUrlResolverService.ResolveMediaFullUrl(filePath.Value);
                     // index the node
-                    _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), filePath.Value, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
+                    _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                 }
             }
         }
