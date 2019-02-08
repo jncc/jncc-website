@@ -132,6 +132,31 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     values.TryGetValue("updateDate", out string publishDate);
                     values.TryGetValue("urlName", out string urlName);
 
+                    var fileExtension = node.Elements().FirstOrDefault(x =>
+                    {
+                        if (x.Attribute("alias") != null)
+                        {
+                            return (string)x.Attribute("alias") == this.UmbracoExtensionProperty;
+                        }
+                        else
+                        {
+                            return x.Name == this.UmbracoExtensionProperty;
+                        }
+                    });
+
+                    if (HasNode(fileExtension) == false)
+                    {
+                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
+                        return;
+                    }
+
+                    if (!SupportedExtensions.Contains(fileExtension.Value, StringComparer.OrdinalIgnoreCase))
+                    {
+                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
+                        return;
+                    }
+
+
                     var filePath = node.Elements().FirstOrDefault(x =>
                     {
                         if (x.Attribute("alias") != null)
@@ -143,32 +168,26 @@ namespace JNCC.PublicWebsite.Core.Indexers
                             return x.Name == this.UmbracoFileProperty;
                         }
                     });
-                    if (HasFilePath(filePath))
+
+
+                    if (HasNode(filePath) == false)
                     {
-                        //get the file path from the data service
-                        var fullPath = this.DataService.MapPath((string)filePath);
-
-                        if (System.IO.File.Exists(fullPath) == false)
-                        {
-                            LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
-                            return;
-                        }
-
-                        var fileInfo = new FileInfo(fullPath);
-
-                        if (!SupportedExtensions.Select(x => x.ToUpper()).Contains(fileInfo.Extension.ToUpper()))
-                        {
-                            throw new NotSupportedException("The file with the extension specified is not supported");
-                        }
-
-                        // index the node
-                        _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), filePath.Value, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
+                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
+                        return;
                     }
-                    else
+
+                    //get the file path from the data service
+                    var fullPath = this.DataService.MapPath((string)filePath);
+
+                    if (System.IO.File.Exists(fullPath) == false)
                     {
-                        DataService.LogService.AddVerboseLog((int)node.Attribute("id"), string.Format("Index only supports PDF files"));
-                        LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File type is not a PDF");
+                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
+                        return;
                     }
+
+                    var fileInfo = new FileInfo(fullPath);
+                    // index the node
+                    _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), filePath.Value, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                 }
             }
         }
@@ -274,9 +293,9 @@ namespace JNCC.PublicWebsite.Core.Indexers
             }
         }
 
-        private static bool HasFilePath(XElement filePath)
+        private static bool HasNode(XElement node)
         {
-            return filePath != default(XElement) && !string.IsNullOrEmpty((string)filePath);
+            return node != default(XElement) && !string.IsNullOrEmpty((string)node);
         }
     }
 }
