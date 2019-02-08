@@ -1,4 +1,4 @@
-﻿using Examine;
+using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using System;
@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
+using Umbraco.Web;
 using static Umbraco.Core.Constants;
 
 namespace JNCC.PublicWebsite.Core.Indexers
@@ -21,6 +22,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
         {
             var config = SearchConfiguration.GetConfig();
             _searchService = new SearchService(config);
+
             SupportedExtensions = new[] { "pdf" };
             UmbracoFileProperty = Conventions.Media.File;
             UmbracoExtensionProperty = Conventions.Media.Extension;
@@ -87,6 +89,8 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         protected void AddNodesToQueue(IEnumerable<XElement> nodes, string type)
         {
+            var fullUrlResolverService = new FullUrlResolverService(UmbracoContext.Current);
+
             foreach (var node in nodes)
             {
                 DataService.LogService.AddVerboseLog((int)node.Attribute("id"), string.Format("AddSingleNodeToIndex with type: {0}", type));
@@ -102,9 +106,9 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 // Determine if this is content or media
                 if (type.ToFirstUpper() == PublishedItemType.Content.ToString())
                 {
+                    var url = fullUrlResolverService.ResolveContentFullUrlById(nodeId);
                     values.TryGetValue("nodeName", out string nodeName);
                     values.TryGetValue("updateDate", out string publishDate);
-                    values.TryGetValue("urlName", out string urlName);
 
                     // Get content based on content fields in order of priority
                     string content = string.Empty;
@@ -122,11 +126,10 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     }
 
                     // index the node
-                    _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), urlName, content);
+                    _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, content);
                 }
                 else if (type.ToFirstUpper() == PublishedItemType.Media.ToString())
                 {
-
                     values.TryGetValue("nodeName", out string nodeName);
                     values.TryGetValue("updateDate", out string publishDate);
                     values.TryGetValue("urlName", out string urlName);
