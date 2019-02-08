@@ -1,6 +1,6 @@
 ﻿namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class MediaUrlResolverService
+    internal sealed class MediaUrlResolverService : IMediaFullUrlResolver
     {
         private readonly string _leftPart;
 
@@ -9,7 +9,7 @@
             _leftPart = leftPart;
         }
 
-        public string ResolveUrl(string url)
+        public string ResolveMediaFullUrl(string url)
         {
             if (url.StartsWith("/"))
             {

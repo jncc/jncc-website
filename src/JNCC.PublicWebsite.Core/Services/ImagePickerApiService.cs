@@ -11,9 +11,9 @@ namespace JNCC.PublicWebsite.Core.Services
     internal sealed class ImagePickerApiService
     {
         private readonly UmbracoHelper _umbracoHelper;
-        private readonly MediaUrlResolverService _mediaUrlResolverService;
+        private readonly IMediaFullUrlResolver _mediaUrlResolverService;
 
-        public ImagePickerApiService(UmbracoHelper umbracoHelper, MediaUrlResolverService mediaUrlResolverService)
+        public ImagePickerApiService(UmbracoHelper umbracoHelper, IMediaFullUrlResolver mediaUrlResolverService)
         {
             _umbracoHelper = umbracoHelper;
             _mediaUrlResolverService = mediaUrlResolverService;
@@ -49,7 +49,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 EditorName = image.WriterName,
                 FileType = image.UmbracoExtension,
                 LastEdited = image.UpdateDate,
-                Url = _mediaUrlResolverService.ResolveUrl(image.Url),
+                Url = _mediaUrlResolverService.ResolveMediaFullUrl(image.Url),
                 Crops = GetImageCrops(image),
                 Width = image.UmbracoWidth,
                 Height = image.UmbracoHeight,
@@ -69,7 +69,7 @@ namespace JNCC.PublicWebsite.Core.Services
             foreach (var crop in image.UmbracoFile.Crops)
             {
                 var url = image.GetCropUrl(crop.Alias);
-                var resolvedUrl = _mediaUrlResolverService.ResolveUrl(url);
+                var resolvedUrl = _mediaUrlResolverService.ResolveMediaFullUrl(url);
 
                 dictionary.Add(crop.Alias, resolvedUrl);
             }
