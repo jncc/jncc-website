@@ -98,9 +98,9 @@ namespace JNCC.PublicWebsite.Core.Services
             Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, url, mainContent));
         }
 
-        public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
+        public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string url, string filePath, string nodeExtension, string nodeBytes)
         {
-            Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, filePath, nodeExtension, nodeBytes));
+            Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, url, filePath, nodeExtension, nodeBytes));
         }
 
         public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string url, string mainContent)
@@ -160,7 +160,7 @@ namespace JNCC.PublicWebsite.Core.Services
             }
         }
 
-        public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
+        public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string url, string filePath, string nodeExtension, string nodeBytes)
         {
             if (!_searchConfiguration.EnableIndexing)
             {
@@ -190,7 +190,7 @@ namespace JNCC.PublicWebsite.Core.Services
                         site = "website", // as opposed to datahub|sac|mhc
                         title = nodeName,
                         content = "Umbraco Media Content",
-                        url = "http://jncc.local" + urlName, // the URL of the page, for clicking through
+                        url = url, // the URL of the page, for clicking through
                         keywords = new[]
                             {
                         new { vocab = "http://vocab.jncc.gov.uk/jncc-web", value = "Example" }
