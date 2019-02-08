@@ -1,4 +1,4 @@
-using Examine;
+﻿using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using System;
@@ -140,6 +140,13 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     {
                         //get the file path from the data service
                         var fullPath = this.DataService.MapPath((string)filePath);
+
+                        if (System.IO.File.Exists(fullPath) == false)
+                        {
+                            LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
+                            return;
+                        }
+
                         var fileInfo = new FileInfo(fullPath);
 
                         if (!SupportedExtensions.Select(x => x.ToUpper()).Contains(fileInfo.Extension.ToUpper()))
