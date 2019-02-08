@@ -146,13 +146,13 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     if (HasNode(fileExtension) == false)
                     {
                         LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
-                        return;
+                        continue;
                     }
 
                     if (!SupportedExtensions.Contains(fileExtension.Value, StringComparer.OrdinalIgnoreCase))
                     {
                         LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
-                        return;
+                        continue;
                     }
 
 
@@ -172,7 +172,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     if (HasNode(filePath) == false)
                     {
                         LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
-                        return;
+                        continue;
                     }
 
                     //get the file path from the data service
@@ -181,7 +181,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     if (System.IO.File.Exists(fullPath) == false)
                     {
                         LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
-                        return;
+                        continue;
                     }
 
                     var fileInfo = new FileInfo(fullPath);
