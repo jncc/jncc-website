@@ -12,6 +12,7 @@ using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using static Umbraco.Core.Constants;
 
 namespace JNCC.PublicWebsite.Core.Indexers
 {
@@ -23,6 +24,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
             _searchService = new SearchService(config);
             SupportedExtensions = new[] { ".pdf" };
             UmbracoFileProperty = "umbracoFile";
+            UmbracoExtensionProperty = Conventions.Media.Extension;
         }
 
         private SearchService _searchService;
@@ -36,6 +38,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
         public IEnumerable<string> SupportedExtensions { get; set; }
 
         public string UmbracoFileProperty { get; set; }
+        public string UmbracoExtensionProperty { get; set; }
 
         public override void Initialize(string name, NameValueCollection config)
         {
@@ -47,6 +50,10 @@ namespace JNCC.PublicWebsite.Core.Indexers
             //checks if a custom field alias is specified
             if (!string.IsNullOrEmpty(config["umbracoFileProperty"]))
                 UmbracoFileProperty = config["umbracoFileProperty"];
+
+            //checks if a custom field alias is specified
+            if (!string.IsNullOrEmpty(config["umbracoExtensionProperty"]))
+                UmbracoExtensionProperty = config["umbracoExtensionProperty"];
         }
 
         public override void ReIndexNode(XElement node, string type)
