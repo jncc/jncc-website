@@ -1,4 +1,4 @@
-﻿using Examine;
+using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using System;
@@ -136,7 +136,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                             return x.Name == this.UmbracoFileProperty;
                         }
                     });
-                    if (FileExists(filePath))
+                    if (HasFilePath(filePath))
                     {
                         //get the file path from the data service
                         var fullPath = this.DataService.MapPath((string)filePath);
@@ -260,7 +260,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
             }
         }
 
-        private static bool FileExists(XElement filePath)
+        private static bool HasFilePath(XElement filePath)
         {
             return filePath != default(XElement) && !string.IsNullOrEmpty((string)filePath);
         }
