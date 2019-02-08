@@ -433,10 +433,10 @@
     <Compile Include="Providers\IBlogTagsProvider.cs" />
     <Compile Include="Providers\UmbracoBlogCategoriesProvider.cs" />
     <Compile Include="Providers\UmbracoBlogTagsProvider.cs" />
+    <Compile Include="Services\FullUrlResolverService.cs" />
     <Compile Include="Services\IContentFullUrlResolver.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\IMediaFullUrlResolver.cs" />
-    <Compile Include="Services\MediaUrlResolverService.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
