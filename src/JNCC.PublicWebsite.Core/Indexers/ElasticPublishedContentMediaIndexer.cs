@@ -104,7 +104,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 values = indexingNodeDataArgs.Fields;
 
                 // Determine if this is content or media
-                if (type.ToFirstUpper() == PublishedItemType.Content.ToString())
+                if (string.Equals(type, UmbracoExamine.IndexTypes.Content, StringComparison.OrdinalIgnoreCase))
                 {
                     var url = fullUrlResolverService.ResolveContentFullUrlById(nodeId);
                     values.TryGetValue("nodeName", out string nodeName);
@@ -128,7 +128,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     // index the node
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, content);
                 }
-                else if (type.ToFirstUpper() == PublishedItemType.Media.ToString())
+                else if (string.Equals(type, UmbracoExamine.IndexTypes.Media, StringComparison.OrdinalIgnoreCase))
                 {
                     values.TryGetValue("nodeName", out string nodeName);
                     values.TryGetValue("updateDate", out string publishDate);
@@ -156,7 +156,6 @@ namespace JNCC.PublicWebsite.Core.Indexers
                         LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
                         continue;
                     }
-
 
                     var filePath = node.Elements().FirstOrDefault(x =>
                     {
