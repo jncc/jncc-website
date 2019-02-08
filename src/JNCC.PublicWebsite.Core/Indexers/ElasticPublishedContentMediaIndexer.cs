@@ -23,7 +23,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
             var config = SearchConfiguration.GetConfig();
             _searchService = new SearchService(config);
             SupportedExtensions = new[] { ".pdf" };
-            UmbracoFileProperty = "umbracoFile";
+            UmbracoFileProperty = Conventions.Media.File;
             UmbracoExtensionProperty = Conventions.Media.Extension;
         }
 
