@@ -93,9 +93,9 @@ namespace JNCC.PublicWebsite.Core.Services
         }
 
 
-        public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
+        public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string url, string mainContent)
         {
-            Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, mainContent));
+            Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, url, mainContent));
         }
 
         public void UpdateIndex(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
@@ -103,7 +103,7 @@ namespace JNCC.PublicWebsite.Core.Services
             Task.Run(() => UpdateIndexAsync(pageId, nodeName, publishDate, urlName, filePath, nodeExtension, nodeBytes));
         }
 
-        public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string mainContent)
+        public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string url, string mainContent)
         {
             if (!_searchConfiguration.EnableIndexing)
             {
@@ -131,7 +131,7 @@ namespace JNCC.PublicWebsite.Core.Services
                         site = "website", // as opposed to datahub|sac|mhc
                         title = nodeName,
                         content = mainContent,
-                        url = "http://jncc.local/" + urlName, // the URL of the page, for clicking through
+                        url = url, // the URL of the page, for clicking through
                         keywords = new[]
                             {
                         new { vocab = "http://vocab.jncc.gov.uk/jncc-web", value = "Example" }
