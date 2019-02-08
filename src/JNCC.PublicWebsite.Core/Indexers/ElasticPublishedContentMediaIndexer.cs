@@ -151,7 +151,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     if (!SupportedExtensions.Contains(fileExtension.Value, StringComparer.OrdinalIgnoreCase))
                     {
-                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
+                        LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
                         return;
                     }
 
