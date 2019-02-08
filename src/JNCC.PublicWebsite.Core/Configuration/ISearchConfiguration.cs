@@ -10,8 +10,8 @@
         string AWSESIndex { get; }
         string AWSSQSEndpoint { get; }
         string AWSSQSPayloadBucket { get; }
-        string AWSESWriteAccessKey { get; }
-        string AWSESWriteSecretKey{ get; }
+        string AWSSQSAccessKey { get; }
+        string AWSSQSSecretKey { get; }
         bool EnableIndexing { get; }
     }
 }

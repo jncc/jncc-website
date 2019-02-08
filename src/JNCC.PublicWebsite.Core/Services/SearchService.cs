@@ -110,8 +110,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 LogHelper.Info<SearchService>("Skipping indexing for Content name " + nodeName + " with ID " + pageId + ". EnableIndexing is disabled.");
                 return;
             }
-
-            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSSQSAccessKey, _searchConfiguration.AWSSQSSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
             var sqs = new AmazonSQSClient(credentials, region);
@@ -164,8 +163,11 @@ namespace JNCC.PublicWebsite.Core.Services
         public async Task UpdateIndexAsync(int pageId, string nodeName, DateTime publishDate, string urlName, string filePath, string nodeExtension, string nodeBytes)
         {
             if (!_searchConfiguration.EnableIndexing)
+            {
+                LogHelper.Info<SearchService>("Skipping indexing for Media name " + nodeName + " with ID " + pageId + ". EnableIndexing is disabled.");
                 return;
-            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            }
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSSQSAccessKey, _searchConfiguration.AWSSQSSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
             var sqs = new AmazonSQSClient(credentials, region);
@@ -229,9 +231,11 @@ namespace JNCC.PublicWebsite.Core.Services
         public async Task DeleteFromIndexAsync(string pageId)
         {
             if (!_searchConfiguration.EnableIndexing)
+            {
+                LogHelper.Info<SearchService>("Skipping indexing for ID " + pageId + ". EnableIndexing is disabled.");
                 return;
-
-            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            }
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSSQSAccessKey, _searchConfiguration.AWSSQSSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
             var sqs = new AmazonSQSClient(credentials, region);
