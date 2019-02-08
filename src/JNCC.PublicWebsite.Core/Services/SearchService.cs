@@ -107,7 +107,7 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             if (!_searchConfiguration.EnableIndexing)
                 return;
-            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSSQSAccessKey, _searchConfiguration.AWSSQSSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
             var sqs = new AmazonSQSClient(credentials, region);
@@ -161,7 +161,7 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             if (!_searchConfiguration.EnableIndexing)
                 return;
-            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSSQSAccessKey, _searchConfiguration.AWSESSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
             var sqs = new AmazonSQSClient(credentials, region);
@@ -226,7 +226,7 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             if (!_searchConfiguration.EnableIndexing)
                 return;
-            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSESWriteAccessKey, _searchConfiguration.AWSESWriteSecretKey);
+            var credentials = new BasicAWSCredentials(_searchConfiguration.AWSSQSAccessKey, _searchConfiguration.AWSESSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
             var sqs = new AmazonSQSClient(credentials, region);

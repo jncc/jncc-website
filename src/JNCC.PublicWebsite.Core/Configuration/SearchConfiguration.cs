@@ -11,11 +11,11 @@ namespace JNCC.PublicWebsite.Core.Configuration
         [ConfigurationProperty("AWSESSecretKey")]
         public string AWSESSecretKey { get { return (string)this["AWSESSecretKey"]; } }
 
-        [ConfigurationProperty("AWSESWriteAccessKey")]
-        public string AWSESWriteAccessKey { get { return (string)this["AWSESWriteAccessKey"]; } }
+        [ConfigurationProperty("AWSSQSAccessKey")]
+        public string AWSSQSAccessKey { get { return (string)this["AWSSQSAccessKey"]; } }
 
-        [ConfigurationProperty("AWSESWriteSecretKey")]
-        public string AWSESWriteSecretKey { get { return (string)this["AWSESWriteSecretKey"]; } }
+        [ConfigurationProperty("AWSSQSSecretKey")]
+        public string AWSSQSSecretKey { get { return (string)this["AWSSQSSecretKey"]; } }
 
         [ConfigurationProperty("AWSESRegion")]
         public string AWSESRegion { get { return (string)this["AWSESRegion"]; } }
