@@ -60,10 +60,12 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
             // Check if page is hidden
             if ((bool)node.Element(Umbraco.Core.Constants.Conventions.Content.NaviHide))
+            {
+                DeleteFromIndex(node.Attribute("id").Value);
                 return;
+            }
 
             AddSingleNodeToIndex(node, type);
-
         }
 
         protected override void AddSingleNodeToIndex(XElement node, string type)
@@ -231,26 +233,28 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                 AddNodesToQueue(children, type);
             }
-
         }
 
-        //public override void DeleteFromIndex(string nodeId)
-        //{
-        //    //find all descendants based on path
-        //    var descendantPath = string.Format(@"\-1\,*{0}\,*", nodeId);
-        //    var rawQuery = string.Format("{0}:{1}", IndexPathFieldName, descendantPath);
-        //    var c = InternalSearcher.CreateSearchCriteria();
-        //    var filtered = c.RawQuery(rawQuery);
-        //    var results = InternalSearcher.Search(filtered);
+        public override void DeleteFromIndex(string nodeId)
+        {
+            var internalSearcher = ExamineManager.Instance.SearchProviderCollection["InternalSearcher"];
 
-        //    //need to create a delete queue item for each one found
-        //    foreach (var r in results)
-        //    {
-        //        // delete the node from index
-        //        _searchService.DeleteFromIndex(r.Id.ToString());
-        //    }
-            
-        //}
+            var descendantPath = string.Format(@"\-1\,*{0}\,*", nodeId);
+            var rawQuery = string.Format("{0}:{1}", IndexPathFieldName, descendantPath);
+            var c = internalSearcher.CreateSearchCriteria();
+            var filtered = c.RawQuery(rawQuery);
+            var descendants = internalSearcher.Search(filtered);
+
+            DataService.LogService.AddVerboseLog(int.Parse(nodeId), string.Format("DeleteFromIndex with query: {0} (found {1} descandant(s))", rawQuery, descendants.Count()));
+
+            _searchService.DeleteFromIndex(nodeId);
+
+            //need to create a delete queue item for each one found
+            foreach (var node in descendants)
+            {
+                _searchService.DeleteFromIndex(node.Id.ToString());
+            }
+        }
 
         private static bool FileExists(XElement filePath)
         {
