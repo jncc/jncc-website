@@ -17,7 +17,14 @@
         ul {
             margin-left: 3rem;
         }
-        #table-modal .expand-table {display:none}
+        #table-modal .expand-table {
+            display:none
+        }
+        #table-modal table.scroll
+        {
+            max-height:inherit;overflow-y:inherit;
+        }
+        table.scroll {max-height:50rem; overflow-y:scroll;}
     </style>
 </head>
 
@@ -1711,7 +1718,7 @@
                     <aside id="sidebar">
                         <a href="#" class="button primary large medium-expanded">Get in touch</a>
                         <nav class="holder" aria-label="aside-navigation">
-                            <h2>Ramsar</h2>
+                            <h2><a href="science-category-ramsar.html">Ramsar</a></h2>
                             <ul class="aside-nav no-bullet">
                                 <li><a href="science-detail-ramsar.html">About Ramsar</a></li>
                                 <li><a href="science-detail-ramsar-uk.html">Ramsar sites in the UK</a></li>
@@ -1726,7 +1733,15 @@
                                 <li><a href="#">Special areas of conservation</a></li>
                             </ul>
                         </nav>
+
+                        <nav class="holder" aria-label="aside-navigation">
+                            <h2>See also</h2>
+                            <ul class="aside-nav no-bullet">
+                                <li><a href="#">Ramsar in the Datahub</a></li>
+                            </ul>
+                        </nav>
                     </aside>
+
                 </div>
             </div>
             <div class="info-section">
