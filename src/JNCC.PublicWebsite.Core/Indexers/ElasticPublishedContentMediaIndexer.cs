@@ -124,7 +124,10 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     {
                         content = calloutCards;
                     }
-
+                    else if (values.TryGetValue("richText", out string richText))
+                    {
+                        content = richText;
+                    }
                     // index the node
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, content);
                 }
