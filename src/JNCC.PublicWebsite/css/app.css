@@ -8901,6 +8901,16 @@ input[type="search"]::-webkit-search-cancel-button {
 	padding: .75rem 0;
 }
 
+img.float-left {
+	margin-bottom: 1rem;
+	margin-right: 1rem;
+}
+
+img.float-right {
+	margin-bottom: 1rem;
+	margin-left: 1rem;
+}
+
 @media screen and (orientation: landscape) {
 	.show-for-landscape,
 	.hide-for-portrait {
