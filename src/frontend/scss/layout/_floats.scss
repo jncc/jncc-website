@@ -1,0 +1,11 @@
+img {
+    &.float-left {
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+    }
+
+    &.float-right {
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }
+}
