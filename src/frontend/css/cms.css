@@ -34,3 +34,11 @@ img.float-left {
 img.float-right {
   margin-bottom: 1rem;
   margin-left: 1rem; }
+
+.float-left img {
+  margin-bottom: 1rem;
+  margin-right: 1rem; }
+
+.float-right img {
+  margin-bottom: 1rem;
+  margin-left: 1rem; }
