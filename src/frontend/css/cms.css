@@ -1,0 +1,36 @@
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.5.0
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
+.float-left {
+  float: left !important; }
+
+.float-right {
+  float: right !important; }
+
+.float-center {
+  display: block;
+  margin-right: auto;
+  margin-left: auto; }
+
+.clearfix::before, .clearfix::after {
+  display: table;
+  content: ' ';
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.clearfix::after {
+  clear: both; }
+
+img.float-left {
+  margin-bottom: 1rem;
+  margin-right: 1rem; }
+
+img.float-right {
+  margin-bottom: 1rem;
+  margin-left: 1rem; }

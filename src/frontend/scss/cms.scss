@@ -1,0 +1,6 @@
+@import 'settings';
+@import 'bower_components/foundation-sites/scss/foundation';
+
+@include foundation-float-classes;
+
+@import 'layout/floats';
