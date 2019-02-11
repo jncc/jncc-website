@@ -11,9 +11,13 @@
     <script>window.jQuery || document.write('<script src="js/jquery-3.3.1.min.js" defer><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" defer></script>
     <script src="js/app.js" defer></script>
+    <link rel="stylesheet" href="css/foundation-icons.css" />
 
     <style>
-        ul { margin-left: 3rem;}
+        ul {
+            margin-left: 3rem;
+        }
+        #table-modal .expand-table {display:none}
     </style>
 </head>
 
@@ -83,8 +87,8 @@
                         <p>The RIS were updated during 2004, and revised data was submitted ahead of the 9th Ramsar Conference of Parties (CoP) held in November 2005.</p>
 
 
-                        <table summary="UK Ramsar sites" class="scroll">
-                            <caption>Ramsar sites&nbsp;4 August 2017</caption>
+                        <table id="ukramsar" summary="UK Ramsar sites" class="scroll">
+                            <caption>Ramsar sites&nbsp;4 August 2017 <a class="expand-table" href="#" onclick="openmodel(this);"><i class="step fi-arrows-out size-18"></i></a></caption>
                             <thead>
                                 <tr>
                                     <th class="ImmTextAlign_Left" style="WIDTH: 30%">Name</th>
@@ -1822,6 +1826,21 @@
         </footer>
     </div>
     <a class="accessibility" href="#wrapper">Back to top</a>
+    <div class="reveal large" id="table-modal" data-reveal>
+        <div id="table-modal-body"></div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <script>
+        function openmodel(e) {
+            var $modal = $('#table-modal');
+            var $body = $(e).closest("table").clone();
+            var $modalbd = $('#table-modal-body').html($body);
+
+            $modal.foundation('open');
+        }
+    </script>
 </body>
 
 </html>
