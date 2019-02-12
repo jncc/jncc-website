@@ -13,7 +13,53 @@
     <script src="/js/app.js" defer></script>
 
     <style>
-        ul { margin-left: 3rem;}
+        ul {
+            margin-left: 3rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #table-modal table.scroll {
+            max-height: inherit;
+            overflow-y: inherit;
+        }
+
+            #table-modal table.scroll caption {
+                text-align: center;
+            }
+
+        table.scroll {
+            max-height: 30rem;
+            overflow-y: scroll;
+        }
+
+            table.scroll caption {
+                text-align: left;
+            }
+
+        #table-modal .expand-table {
+            display: none
+        }
+
+        #meta a.label:hover {
+            cursor: pointer;
+            color: white;
+            text-decoration: underline;
+        }
+
+        #meta p {
+            margin-bottom: 0;
+        }
+
+            #meta p.tags {
+                margin-bottom: 0.5rem;
+            }
+
+        #meta {
+            padding-bottom: 1rem;
+        }
     </style>
 </head>
 
@@ -24,13 +70,13 @@
     <div id="wrapper">
         <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
         <header id="header">
-            <div class="header-top">
+            <!--<div class="header-top">
                 <p>JNCC EMODnet uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>.</p>
             </div>
             <div class="header-top logged-in">
                 <p>You are currently logged in.</p>
                 <form action="#"><button class="button hollow secondary">Logout</button></form>
-            </div>
+            </div>-->
             <div class="container">
                 <strong class="logo">
                     <a href="#" accesskey="1"><img src="/images/logo.png" alt="JNCC"></a>
@@ -52,10 +98,10 @@
             <nav class="top-bar nav  no-page-hero" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
                 <div class="container">
                     <ul class="vertical medium-horizontal menu">
-                        <li><a href="#">Valuing the environment</a></li>
+                        <li><a href="#">Our biodiversity</a></li>
+                        <li><a href="#">Evaluating choices</a></li>
                         <li><a href="#">Advice</a></li>
                         <li><a href="#">Monitoring</a></li>
-                        <li><a href="#">Pressures</a></li>
                         <li><a href="#">About</a></li>
                         <li class="active"><a href="#">Resources</a></li>
                         <li><a href="#">Contact</a></li>
@@ -80,7 +126,7 @@
                         <p>Details of new Ramsar sites for designation are submitted to the Ramsar Secretariat on Ramsar Information Sheets (RIS), in accordance with the <a href="http://www.ramsar.org/cda/en/ramsar-documents-info-information-sheet-on/main/ramsar/1-31-59%5E21253_4000_0__" target="_blank">Explanatory notes and guidelines for completing the Information Sheet on Ramsar Wetlands</a>. The hyperlinks within each Ramsar site code in the table below link to a PDF file (size < 170kb) of the relevant RIS, as submitted to the Ramsar Secretariat. RIS are not available for proposed sites.</p>
                         <p>The RIS were updated during 2004, and revised data was submitted ahead of the 9th Ramsar Conference of Parties (CoP) held in November 2005. Also during 2004, the <a href="http://www.ukotcf.org/" target="_blank">UK Overseas Territories Conservation Forum (UKOTCF)</a> undertook a review of existing and potential Ramsar sites in UK Overseas Territories and Crown Dependencies, under contract from <a href="https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs" target="_blank">Defra</a>. The final report of that Review was published in February 2005, and identified a large number of new potential Ramsar sites, together with potential changes to existing designated sites and to the existing list of proposed sites. The table below takes account of the findings of the Review. <a href="http://jncc.defra.gov.uk/page-3509" target="_blank">Further details are available in the report</a> or from the <a href="http://www.ukotcf.org" target="_blank">UKOTCF website</a>.</p>
                         <table summary="Designated and proposed Ramsar sites in UK Overseas territories" class="scroll">
-                            <caption>Ramsar sites 21 October 2015</caption>
+                            <caption><a class="expand-table" href="#" onclick="openmodel(this);"><i class="step fi-arrows-out size-18"></i></a> Ramsar sites 21 October 2015</caption>
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -1039,6 +1085,20 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <div id="meta" class="callout secondary">
+                            <p><strong>Categories:</strong></p>
+                            <p class="tags"> <a href="science-category-ramsar.html" class="label location">Ramsar (Category)</a> <a href="science-category-conventions-legislation.html" class="label location">Conventions and legislation</a></p>
+                            <div class="row collapse">
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="1" title="The date this/ page was first published">Published</span>: 01 May 2017. </p>
+                                </div>
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="2" title="The date the content last had a meaningful editorial review">Reviewed</span>: 02 Jan 2019.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <aside id="sidebar">
                         <a href="#" class="button primary large medium-expanded">Get in touch</a>
@@ -1158,6 +1218,21 @@
             </div>
         </footer>
     </div>
+    <div class="reveal large" id="table-modal" data-reveal>
+        <div id="table-modal-body"></div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <script>
+        function openmodel(e) {
+            var $modal = $('#table-modal');
+            var $body = $(e).closest("table").clone();
+            var $modalbd = $('#table-modal-body').html($body);
+
+            $modal.foundation('open');
+        }
+    </script>
     <a class="accessibility" href="#wrapper">Back to top</a>
 </body>
 
