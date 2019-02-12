@@ -13,7 +13,53 @@
     <script src="/js/app.js" defer></script>
 
     <style>
-        ul { margin-left: 3rem;}
+        ul {
+            margin-left: 3rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #table-modal table.scroll {
+            max-height: inherit;
+            overflow-y: inherit;
+        }
+
+            #table-modal table.scroll caption {
+                text-align: center;
+            }
+
+        table.scroll {
+            max-height: 30rem;
+            overflow-y: scroll;
+        }
+
+            table.scroll caption {
+                text-align: left;
+            }
+
+        #table-modal .expand-table {
+            display: none
+        }
+
+        #meta a.label:hover {
+            cursor: pointer;
+            color: white;
+            text-decoration: underline;
+        }
+
+        #meta p {
+            margin-bottom: 0;
+        }
+
+            #meta p.tags {
+                margin-bottom: 0.5rem;
+            }
+
+        #meta {
+            padding-bottom: 1rem;
+        }
     </style>
 </head>
 
@@ -24,13 +70,13 @@
     <div id="wrapper">
         <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
         <header id="header">
-            <div class="header-top">
+            <!-- <div class="header-top">
                 <p>JNCC EMODnet uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>.</p>
             </div>
             <div class="header-top logged-in">
                 <p>You are currently logged in.</p>
                 <form action="#"><button class="button hollow secondary">Logout</button></form>
-            </div>
+     </div>-->
             <div class="container">
                 <strong class="logo">
                     <a href="#" accesskey="1"><img src="/images/logo.png" alt="JNCC"></a>
@@ -52,10 +98,10 @@
             <nav class="top-bar nav" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
                 <div class="container">
                     <ul class="vertical medium-horizontal menu">
-                        <li><a href="#">Valuing the environment</a></li>
+                        <li><a href="#">Our biodiversity</a></li>
+                        <li><a href="#">Evaluating choices</a></li>
                         <li><a href="#">Advice</a></li>
                         <li><a href="#">Monitoring</a></li>
-                        <li><a href="#">Pressures</a></li>
                         <li><a href="#">About</a></li>
                         <li class="active"><a href="#">Resources</a></li>
                         <li><a href="#">Contact</a></li>
@@ -64,7 +110,7 @@
             </nav>
         </header>
         <main id="main">
-            <div class="visual-section" style="background-image: url(/images/img-1.jpg);">
+            <div class="visual-section" style="background-image: url(/images/arun-valley.jpg);">
                 <div class="container">
                     <h1>Ramsar Convention</h1>
                 </div>
@@ -143,7 +189,7 @@
                                 </tr>
                                 <tr class="c15">
                                     <td class="c0" colspan="1" rowspan="1">
-                                        UK
+                                        <a href="science-detail-ramsar-uk.html">UK</a>
                                     </td>
                                     <td class="c11" colspan="1" rowspan="1">
                                         England
@@ -227,7 +273,7 @@
                                 </tr>
                                 <tr class="c15">
                                     <td class="c0" colspan="1" rowspan="1">
-                                        Overseas Territories
+                                        <a href="science-detail-ramsar-overseas.html">Overseas Territories</a>
                                     </td>
                                     <td class="c11" colspan="1" rowspan="1">
                                         Anguilla
@@ -367,7 +413,7 @@
                                 </tr>
                                 <tr class="c15">
                                     <td class="c0" colspan="1" rowspan="1">
-                                        <span class="c10">Crown Dependencies
+                                        <a href="science-detail-ramsar-overseas.html">Crown Dependencies</a>
                                     </td>
                                     <td class="c11" colspan="1" rowspan="1">
                                         Alderney
@@ -437,9 +483,11 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p>List of proposed and designated Ramsar sites in the UK [LINK to equivalent of http://jncc.defra.gov.uk/page-1389 minus the overseas sites]</p>
+                        <ul>
+                            <li><a href="science-detail-ramsar-uk.html">List of proposed and designated Ramsar sites in the UK</a></li>
 
-                        <p>List of proposed and designated Ramsar sites in the Overseas Territories and Crown Dependencies [LINK to equivalent of http://jncc.defra.gov.uk/page-1394]</p>
+                            <li><a href="science-detail-ramsar-overseas.html">List of proposed and designated Ramsar sites in the Overseas Territories and Crown Dependencies</a></li>
+                        </ul>
                         <h2 id="s4">Data sources</h2>
                         <ul>
                             <li><a href="http://jncc-datahub-docker-test.i2kpi2cz8h.eu-west-1.elasticbeanstalk.com/assets/f0e372e3-1580-4bf4-b31a-2b18ab9ca51d" target="_blank">Site boundaries</a> GIS data files showing the boundaries of existing Ramsar sites within the UK</li>
@@ -453,7 +501,19 @@
                             <li><a href="#">Site supplement to Ramsar National Report for CoP7 (1999)</a> report providing site accounts and an overview of ecological character and conservation measures for designated UK and Overseas Territories Ramsar sites prior to CoP7 fulfilling a commitment made in the National Report.</li>
                             <li><a href="#">Ramsar National Report to CoP7 (1999)</a> summary of the UK experience and progress in implementing the Ramsar convention presented in 1999</li>
                         </ul>
-                        <div class="callout secondary"><p><strong>Categories:</strong> <a href="science-category-conventions.html">Conventions and Legislation</a>, <a href="science-category-ramsar.html">Ramsar (Category)</a></p></div>
+
+                        <div id="meta" class="callout secondary">
+                            <p><strong>Categories:</strong></p>
+                            <p class="tags"><a href="science-category-ramsar.html" class="label location">Ramsar (Category)</a> <a href="science-category-conventions-legislation.html" class="label location">Conventions and legislation</a></p>
+                            <div class="row collapse">
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="1" title="The date this/ page was first published">Published</span>: 01 May 2017. </p>
+                                </div>
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="2" title="The date the content last had a meaningful editorial review">Reviewed</span>: 02 Jan 2019.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <aside id="sidebar">
                         <a href="#" class="button primary large medium-expanded">Get in touch</a>

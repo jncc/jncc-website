@@ -17,7 +17,50 @@
         ul {
             margin-left: 3rem;
         }
-        #table-modal .expand-table {display:none}
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #table-modal table.scroll {
+            max-height: inherit;
+            overflow-y: inherit;
+        }
+
+            #table-modal table.scroll caption {
+                text-align: center;
+            }
+
+        table.scroll {
+            max-height: 30rem;
+            overflow-y: scroll;
+        }
+
+            table.scroll caption {
+                text-align: left;
+            }
+
+        #table-modal .expand-table {
+            display: none
+        }
+
+        #meta a.label:hover {
+            cursor: pointer;
+            color: white;
+            text-decoration: underline;
+        }
+
+        #meta p {
+            margin-bottom: 0;
+        }
+
+            #meta p.tags {
+                margin-bottom: 0.5rem;
+            }
+
+        #meta {
+            padding-bottom: 1rem;
+        }
     </style>
 </head>
 
@@ -28,13 +71,13 @@
     <div id="wrapper">
         <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
         <header id="header">
-            <div class="header-top">
+            <!--<div class="header-top">
                 <p>JNCC EMODnet uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>.</p>
             </div>
             <div class="header-top logged-in">
                 <p>You are currently logged in.</p>
                 <form action="#"><button class="button hollow secondary">Logout</button></form>
-            </div>
+            </div>-->
             <div class="container">
                 <strong class="logo">
                     <a href="#" accesskey="1"><img src="/images/logo.png" alt="JNCC"></a>
@@ -56,10 +99,10 @@
             <nav class="top-bar nav  no-page-hero" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
                 <div class="container">
                     <ul class="vertical medium-horizontal menu">
-                        <li><a href="#">Valuing the environment</a></li>
+                        <li><a href="#">Our biodiversity</a></li>
+                        <li><a href="#">Evaluating choices</a></li>
                         <li><a href="/advice/">Advice</a></li>
                         <li><a href="#">Monitoring</a></li>
-                        <li><a href="#">Pressures</a></li>
                         <li><a href="#">About</a></li>
                         <li class="active"><a href="#">Resources</a></li>
                         <li><a href="#">Contact</a></li>
@@ -88,7 +131,7 @@
 
 
                         <table id="ukramsar" summary="UK Ramsar sites" class="scroll">
-                            <caption>Ramsar sites&nbsp;4 August 2017 <a class="expand-table" href="#" onclick="openmodel(this);"><i class="step fi-arrows-out size-18"></i></a></caption>
+                            <caption><a class="expand-table" href="#" onclick="openmodel(this);"><i class="step fi-arrows-out size-18"></i></a> Ramsar sites&nbsp;4 August 2017</caption>
                             <thead>
                                 <tr>
                                     <th class="ImmTextAlign_Left" style="WIDTH: 30%">Name</th>
@@ -1705,7 +1748,18 @@
 
                             </tbody>
                         </table>
-                        <div class="callout secondary"><p><strong>Categories:</strong> <a href="science-category-protected-sites.html">Protected sites in the UK</a>, <a href="science-category-ramsar.html">Ramsar (Category)</a></p></div>
+                        <div id="meta" class="callout secondary">
+                            <p><strong>Categories:</strong></p>
+                            <p class="tags"><a class="label location" href="science-category-protected-sites.html">Protected sites in the UK</a> <a href="science-category-ramsar.html" class="label location" >Ramsar (Category)</a> <a href="science-category-conventions-legislation.html" class="label location" >Conventions and legislation</a></p>
+                            <div class="row collapse">
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="1" title="The date this/ page was first published">Published</span>: 01 May 2017. </p>
+                                </div>
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="2" title="The date the content last had a meaningful editorial review">Reviewed</span>: 02 Jan 2019.</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <aside id="sidebar">
@@ -1724,6 +1778,14 @@
                                 <li><a href="#">Common Standards Monitoring</a></li>
                                 <li><a href="science-detail-ramsar.html">About Ramsar</a></li>
                                 <li><a href="#">Special areas of conservation</a></li>
+                            </ul>
+                        </nav>
+                        <nav class="holder" aria-label="aside-navigation">
+                            <h2><a href="science-category-conventions-legislation.html">Conventions and Legislation</a></h2>
+                            <ul class="aside-nav no-bullet">
+                                <li><a href="science-detail-conventions.html">Conventions</a></li>
+                                <li><a href="#">UK Legislation</a></li>
+                                <li><a href="#">EU Legislation</a></li>
                             </ul>
                         </nav>
                     </aside>
