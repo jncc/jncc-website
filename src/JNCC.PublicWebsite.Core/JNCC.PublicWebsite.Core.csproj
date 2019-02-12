@@ -31,6 +31,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Argotic.Common, Version=2008.0.2.0, Culture=neutral, PublicKeyToken=84b2ce808fb02469, processorArchitecture=MSIL">
+      <HintPath>..\packages\Argotic.Common.2008.0.2.0\lib\Net35\Argotic.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Argotic.Core, Version=2008.0.2.0, Culture=neutral, PublicKeyToken=84b2ce808fb02469, processorArchitecture=MSIL">
+      <HintPath>..\packages\Argotic.Core.2008.0.2.0\lib\Net35\Argotic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Argotic.Extensions, Version=2008.0.2.0, Culture=neutral, PublicKeyToken=84b2ce808fb02469, processorArchitecture=MSIL">
+      <HintPath>..\packages\Argotic.Extensions.2008.0.2.0\lib\Net35\Argotic.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Articulate, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Articulate.3.0.2\lib\net45\Articulate.dll</HintPath>
+    </Reference>
+    <Reference Include="Amazon.SQS.ExtendedClient, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amazon.SQS.ExtendedClient.1.2.0\lib\net45\Amazon.SQS.ExtendedClient.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
@@ -39,6 +54,15 @@
     </Reference>
     <Reference Include="Aws4RequestSigner, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Aws4RequestSigner.0.3.0\lib\net45\Aws4RequestSigner.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.3.31.3\lib\net45\AWSSDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.S3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.S3.3.3.31.11\lib\net45\AWSSDK.S3.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.SQS, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.SQS.3.3.3.50\lib\net45\AWSSDK.SQS.dll</HintPath>
     </Reference>
     <Reference Include="businesslogic, Version=1.0.6879.21987, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\businesslogic.dll</HintPath>
@@ -54,6 +78,9 @@
     </Reference>
     <Reference Include="controls, Version=1.0.6879.21988, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\controls.dll</HintPath>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
     <Reference Include="DTG.Spreadsheet, Version=2.7.0.0, Culture=neutral, PublicKeyToken=7b835b529fb706c3, processorArchitecture=MSIL">
       <HintPath>..\packages\SEOChecker.Core.2.2.1\lib\DTG.Spreadsheet.dll</HintPath>
@@ -90,6 +117,9 @@
     </Reference>
     <Reference Include="LumenWorks.Framework.IO, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SEOChecker.Core.2.2.1\lib\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownDeep, Version=1.5.4615.26275, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MarkdownDeep.NET.1.5\lib\.NetFramework 3.5\MarkdownDeep.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp, Version=1.14.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Markdown.1.14.7\lib\net45\MarkdownSharp.dll</HintPath>
@@ -140,7 +170,7 @@
       <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -260,6 +290,9 @@
     <Reference Include="Umbraco.Core, Version=1.0.6879.21982, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\Umbraco.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Umbraco.Courier.Core">
+      <HintPath>..\..\lib\UmbracoCourier\bin\Umbraco.Courier.Core.dll</HintPath>
+    </Reference>
     <Reference Include="umbraco.DataLayer, Version=1.0.6879.21987, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.DataLayer.dll</HintPath>
     </Reference>
@@ -309,8 +342,10 @@
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
     <Compile Include="Constants\ResetPasswordRequestStatusCDs.cs" />
+    <Compile Include="Constants\SearchIndexingVerbs.cs" />
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
+    <Compile Include="Controllers\ApiControllers\ImagePickerApiController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
@@ -337,6 +372,7 @@
     <Compile Include="Controllers\SurfaceControllers\NewsAndInsightsLandingSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\StaffDirectorySurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\TemplateSurfaceController.cs" />
+    <Compile Include="Extensions\ArticulateExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\PagedResultExtensionMethods.cs" />
@@ -344,6 +380,7 @@
     <Compile Include="Extensions\PublishedContentExtensions.cs" />
     <Compile Include="Extensions\TempDataDictionaryExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Indexers\ElasticPublishedContentMediaIndexer.cs" />
     <Compile Include="Models\ArticlePage.generated.cs" />
     <Compile Include="Models\Articulate.generated.cs" />
     <Compile Include="Models\ArticulateArchive.generated.cs" />
@@ -369,6 +406,7 @@
     <Compile Include="Models\GlobalIncludesComposition.generated.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\HomePage.generated.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Image.generated.cs" />
     <Compile Include="Models\InitialResetPasswordModel.cs" />
     <Compile Include="Models\InternalTextPage.generated.cs" />
@@ -391,7 +429,16 @@
     <Compile Include="Models\ResourceItemSchema.generated.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
+    <Compile Include="Providers\IBlogCategoriesProvider.cs" />
+    <Compile Include="Providers\IBlogTagsProvider.cs" />
+    <Compile Include="Providers\UmbracoBlogCategoriesProvider.cs" />
+    <Compile Include="Providers\UmbracoBlogTagsProvider.cs" />
+    <Compile Include="Services\FullUrlResolverService.cs" />
+    <Compile Include="Services\IContentFullUrlResolver.cs" />
+    <Compile Include="Services\ImagePickerApiService.cs" />
+    <Compile Include="Services\IMediaFullUrlResolver.cs" />
     <Compile Include="Services\SearchService.cs" />
+    <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Models\SeoComposition.generated.cs" />
@@ -475,21 +522,50 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="App_Plugins\Articulate\package.manifest" />
+    <None Include="App_Plugins\Articulate\Views\MarkdownEditor.cshtml" />
     <None Include="App_Plugins\ModelsBuilder\package.manifest" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Analyzer Include="..\packages\AWSSDK.S3.3.3.31.11\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
+    <Analyzer Include="..\packages\AWSSDK.SQS.3.3.3.50\analyzers\dotnet\cs\AWSSDK.SQS.CodeAnalysis.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\Articulate\Assets\md-editor.css" />
+    <Content Include="App_Plugins\Articulate\Assets\md-editor.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\ArticulateThemes\create.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\ArticulateThemes\create.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\ArticulateThemes\delete.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\ArticulateThemes\delete.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\ArticulateThemes\edit.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\ArticulateThemes\edit.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\articulatemgmt.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\articulatemgmt.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\blogexporter.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\blogexporter.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\blogimporter.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\blogimporter.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\datainstaller.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Dashboards\datainstaller.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\Installer.ascx" />
+    <Content Include="App_Plugins\Articulate\BackOffice\PropertyEditors\themepicker.controller.js" />
+    <Content Include="App_Plugins\Articulate\BackOffice\PropertyEditors\ThemePicker.html" />
+    <Content Include="App_Plugins\Articulate\BackOffice\theme.resource.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
     <Content Include="App_Plugins\RJP.MultiUrlPicker\MultiUrlPicker.html" />
     <Content Include="App_Plugins\RJP.MultiUrlPicker\MultiUrlPicker.js" />
+    <Content Include="media\articulate\7406981406_1aff1cb527_o.jpg" />
+    <Content Include="media\articulate\capture3.png" />
+    <Content Include="media\articulate\random-mask.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Plugins\Articulate\Themes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
 </Project>

@@ -59,7 +59,7 @@
 
                                 @if (!string.IsNullOrEmpty(f.ToolTip))
                                 {
-                                    <span class="umbraco-forms-tooltip help-block">@f.ToolTip</span>
+                                    <span class="umbraco-forms-tooltip help-text" id="help-text_@(f.Id)">@f.ToolTip</span>
                                 }
 
                                 <div class="umbraco-forms-field-wrapper">
@@ -84,7 +84,7 @@
     }
 
     <div style="display: none">
-        <input type="text" name="@Model.FormId.ToString().Replace("-", "")" />
+        <input type="hidden" name="@Model.FormId.ToString().Replace("-", "")" />
     </div>
 
 
@@ -96,7 +96,7 @@
                 if (!Model.IsFirstPage)
                 {
                     <input 
-                          class="button prev cancel" 
+                          class="button secondary hollow cancel form-previous" 
                           type="submit" 
                           value="@Model.PreviousCaption" 
                           name="__prev" />
@@ -105,7 +105,7 @@
                 if (!Model.IsLastPage)
                 {
                     <input type="submit" 
-                           class="button next" 
+                           class="button primary form-next" 
                            value="@Model.NextCaption" 
                            name="__next" />
                 }

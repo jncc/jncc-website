@@ -11,6 +11,12 @@ namespace JNCC.PublicWebsite.Core.Configuration
         [ConfigurationProperty("AWSESSecretKey")]
         public string AWSESSecretKey { get { return (string)this["AWSESSecretKey"]; } }
 
+        [ConfigurationProperty("AWSSQSAccessKey")]
+        public string AWSSQSAccessKey { get { return (string)this["AWSSQSAccessKey"]; } }
+
+        [ConfigurationProperty("AWSSQSSecretKey")]
+        public string AWSSQSSecretKey { get { return (string)this["AWSSQSSecretKey"]; } }
+
         [ConfigurationProperty("AWSESRegion")]
         public string AWSESRegion { get { return (string)this["AWSESRegion"]; } }
 
@@ -22,6 +28,15 @@ namespace JNCC.PublicWebsite.Core.Configuration
 
         [ConfigurationProperty("AWSESIndex")]
         public string AWSESIndex { get { return (string)this["AWSESIndex"]; } }
+
+        [ConfigurationProperty("AWSSQSEndpoint")]
+        public string AWSSQSEndpoint { get { return (string)this["AWSSQSEndpoint"]; } }
+
+        [ConfigurationProperty("AWSSQSPayloadBucket")]
+        public string AWSSQSPayloadBucket { get { return (string)this["AWSSQSPayloadBucket"]; } }
+
+        [ConfigurationProperty("EnableIndexing")]
+        public bool EnableIndexing { get { return (bool)this["EnableIndexing"]; } }
 
         internal static SearchConfiguration GetConfig()
         {

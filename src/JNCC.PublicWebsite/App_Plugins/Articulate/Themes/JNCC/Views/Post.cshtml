@@ -1,16 +1,18 @@
 @using Articulate
 @using Umbraco.Core
 @using JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
+@using JNCC.PublicWebsite.Core.Extensions
 @model Articulate.Models.PostModel
 @{
     Layout = "Master.cshtml";
     ViewBag.CssBodyClass = "post-template";
 
     var blogHasCommentsEnabled = Model.RootBlogNode.GetPropertyValue<bool>("enableComments");
+    var authorStaffProfilePage = Model.StaffProfilePage();
 }
 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
 <p>@Html.DisplayFor(model => Model.PublishedDate)</p>
-<p>By @if (!Model.Author.BlogUrl.IsNullOrWhiteSpace()) {<a href="@Model.Author.BlogUrl">@Model.Author.Name</a>} else {@Model.Author.Name}</p>
+<p>By @if (authorStaffProfilePage != null) {<a href="@authorStaffProfilePage.Url">@Model.Author.Name</a>} else {@Model.Author.Name}</p>
 @Html.ThemedPartial(Model, "PostTags")
 @Model.Body
 <section class="share">

@@ -1,0 +1,28 @@
+
+$floating-image-margin: 1rem;
+
+img {
+    &.float-left {
+        margin-bottom: $floating-image-margin;
+        margin-right: $floating-image-margin;
+    }
+
+    &.float-right {
+        margin-bottom: $floating-image-margin;
+        margin-left: $floating-image-margin;
+    }
+}
+
+.float-left {
+    img {
+        margin-bottom: $floating-image-margin;
+        margin-right: $floating-image-margin;
+    }
+}
+
+.float-right {
+    img {
+        margin-bottom: $floating-image-margin;
+        margin-left: $floating-image-margin;
+    }
+}

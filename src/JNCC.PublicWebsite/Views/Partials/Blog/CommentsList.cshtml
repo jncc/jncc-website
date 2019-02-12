@@ -1,17 +1,15 @@
 ﻿@model IEnumerable<BlogCommentViewModel>
 <!-- comments -->
-<div class="comment-section-container">
+<div class="comment-section" id="comments">
     <h2>Comments (@Model.Count())</h2>
     @foreach (var comment in Model)
     {
         <div class="comment" id="@comment.Id">
-            <div class="comment-author">
-                <div class="comment-name">
-                    <h3>@comment.Name</h3>
-                    <p><a href="#@comment.Id">@Html.DisplayFor(model => comment.Created)</a></p>
-                </div>
+            <div class="comment-meta">
+                <h3>@comment.Name</h3>
+                <p><a href="#@comment.Id">@Html.DisplayFor(model => comment.Created)</a></p>
             </div>
-            <div class="comment-section-text">
+            <div class="comment-text">
                 <p>
                     @Html.Raw(comment.Comment)
                 </p>

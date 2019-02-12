@@ -6,6 +6,6 @@
 
     @if(Model.Mandatory){<text>  data-val="true" data-val-requiredcb="@Model.RequiredErrorMessage"</text>}
     @if (Model.ContainsValue(true) || Model.ContainsValue("true") || Model.ContainsValue("on"))
-    {<text>checked="checked"</text>}       
-                                                                                                         
+    {<text>checked="checked"</text>}  
+    @{if (!string.IsNullOrWhiteSpace(Model.ToolTip)) {<text> aria-describedby="help-text_@(Model.Id)"</text>} }                                                                                
 />

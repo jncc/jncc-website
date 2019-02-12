@@ -1087,3 +1087,56 @@ input[type="checkbox"]:focus + .fake-input {
 button.slick-arrow {
 	text-indent: -100000px;
 }
+
+.blog-list {
+	.blog-item {
+		background-color: $light-gray;
+		padding: 1rem;
+		margin: 0 0 1rem 0;
+
+		.blog-item-title {
+			a {
+				color: inherit;
+			}
+		}
+
+		.blog-author-image {
+			@include box(8rem, $circle: true);
+
+			&.anon {
+				line-height: 8rem;
+				background-color: $white;
+
+				font-size: 4rem;
+
+				text-align: center;
+				vertical-align: middle;
+				display: inline-block;
+
+				.icon-user {
+					line-height: inherit;
+				}
+			}
+		}
+	}
+}
+
+.comment-section {
+	.comment {
+		background-color: $light-gray;
+		padding: 1rem;
+		margin: 0 0 1rem 0;
+
+		.comment-meta {
+			margin-bottom: 1rem;
+			
+			h3 {
+				font-size: inherit;
+			}
+		}
+
+		p:last-child() {
+			margin: 0;
+		}
+	}
+}

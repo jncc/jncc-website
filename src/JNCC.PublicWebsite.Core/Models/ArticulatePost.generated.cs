@@ -55,6 +55,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Author Staff Profile Page: The Staff Profile Page of the current author. This will link the author to their staff directory page.
+		///</summary>
+		[ImplementPropertyType("authorStaffProfilePage")]
+		public IPublishedContent AuthorStaffProfilePage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("authorStaffProfilePage"); }
+		}
+
+		///<summary>
 		/// Categories
 		///</summary>
 		[ImplementPropertyType("categories")]

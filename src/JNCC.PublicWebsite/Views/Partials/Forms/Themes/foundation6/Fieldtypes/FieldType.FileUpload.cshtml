@@ -3,7 +3,8 @@
 @model Umbraco.Forms.Mvc.Models.FieldViewModel
 
 <input type="file" class="@Html.GetFormFieldClass(Model.FieldTypeName)" name="@Model.Name" id="@Model.Id" multiple
-       @if (Model.Mandatory) { <text> data-val="true" data-val-required="@Model.RequiredErrorMessage" </text> } />
+       @if (Model.Mandatory) { <text> data-val="true" data-val-required="@Model.RequiredErrorMessage" </text> } 
+       @{if (!string.IsNullOrWhiteSpace(Model.ToolTip)) {<text> aria-describedby="help-text_@(Model.Id)"</text>} }/>
 
 @if (Model.Values != null && Model.Values.Any())
 {

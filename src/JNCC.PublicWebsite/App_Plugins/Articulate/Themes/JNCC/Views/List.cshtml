@@ -2,43 +2,100 @@
 @using Articulate.Models
 @using Umbraco.Core
 @using Umbraco.Web
+@using JNCC.PublicWebsite.Core.Extensions
 @model Articulate.Models.ListModel
 @{
     Layout = "Master.cshtml";
+
+    var allCategories = Model.AllCategories();
+    var allTags = Model.AllTags();
+
+    var hasCategories = allCategories.Any();
+    var hasTags = allTags.Any();
 }
 @if (!Model.Children.Any())
 {
-    <article>No blog posts found</article>        
+    <article>No blog posts found</article>
 }
 else
 {
-    foreach (var post in Model.Posts)
+    <ol class="no-bullet blog-list">
+        @foreach (var post in Model.Posts)
+        {
+            var authorStaffProfilePage = post.StaffProfilePage();
+            <li class="blog-item">
+                <article>
+                    <div class="row collapse">
+                        <div class="column small-12 medium-9">
+                            <header>
+                                <h2 class="blog-item-title"><a href="@post.Url">@post.Name</a></h2>
+                                <div class="post-meta">
+                                    @Html.DisplayFor(model => post.PublishedDate) by @if (authorStaffProfilePage != null) {<a href="@authorStaffProfilePage.Url">@post.Author.Name</a>} else {@post.Author.Name}
+                                </div>
+                                @if (post.Tags.Any() || post.Categories.Any())
+                                {
+                                    <p>
+                                        @if (post.Categories.Any())
+                                        {
+                                            foreach (var category in post.Categories)
+                                            {<a href="@Url.ArticulateCategoryUrl(Model, category)"><span class="label location">@category</span></a>}
+                                    }
+                                        @if (post.Tags.Any())
+                                        {
+                                            foreach (var tag in post.Tags)
+                                            {<a href="@Url.ArticulateTagUrl(Model, tag)"><span class="label location">@tag</span></a>}
+                                    }
+                                    </p>
+                                }
+                            </header>
+                        </div>
+                        <div class="column hide-for-small-only medium-3 text-right">
+                            <section class="post-excerpt">
+                                @if (authorStaffProfilePage != null && authorStaffProfilePage.ProfilePicture != null)
+                                {
+                                    <img src="@authorStaffProfilePage.ProfilePicture.GetCropUrl("Square")" alt="@post.Author.Name profile picture" class="blog-author-image" />
+                                }
+                                else
+                                {
+                                    <div class="blog-author-image anon">
+                                        <i class="icon-user"></i>
+                                    </div>
+                                }
+                            </section>
+                        </div>
+                    </div>
+                </article>
+            </li>
+        }
+    </ol>
+
+    @Html.ThemedPartial(Model, "Pager", Model.Pages)
+}
+
+@section Sidebar {
+    @if (hasCategories || hasTags)
     {
-        <article class="preview">
-            <header>
-                <h1 class="post-title"><a href="@post.Url">@post.Name</a></h1>
-                <div class="post-meta">
-                    @Html.DisplayFor(model => post.PublishedDate)
-                </div>
-            </header>
-            <section class="post-excerpt">
-                @if (!post.PostImageUrl.IsNullOrWhiteSpace())
+    <aside id="sidebar">
+        @if (hasCategories)
+        {
+            <h2>Browse by Category</h2>
+            <ul>
+                @foreach (var category in allCategories)
                 {
-                    var thumbnail = post.GetCropUrl("postImage", "thumbnail");
-                    if (!thumbnail.IsNullOrWhiteSpace())
-                    {
-                        <img class="thumb" src="@thumbnail" alt="@post.Name" />
-                    }
+                    <li><a href="@Url.ArticulateCategoryUrl(Model, category)">@category</a></li>
                 }
-                <p>
-                    @post.Excerpt&hellip;
-                </p>
-                <div class="button-group no-bullet">
-                    <a href="@post.Url" class="button hollow secondary read-more">Read More <i class="icon-arrow-right"></i></a>
-                </div>
-            </section>
-        </article>
+            </ul>
+        }
+        @if (hasTags)
+        {
+            <h2>Browse by Tags</h2>
+            <ul>
+                @foreach (var tag in allTags)
+                {
+                    <li><a href="@Url.ArticulateTagUrl(Model, tag)">@tag</a></li>
+                }
+            </ul>
+        }
+    </aside>
     }
-    
-    @Html.ThemedPartial(Model, "Pager", Model.Pages)   
 }

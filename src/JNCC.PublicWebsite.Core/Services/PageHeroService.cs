@@ -4,6 +4,7 @@ using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using ArticulateModel = JNCC.PublicWebsite.Core.Models.Articulate;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -22,7 +23,7 @@ namespace JNCC.PublicWebsite.Core.Services
             }
             else
             {
-                var blogRoot = publishedContent.AncestorOrSelf<Articulate>();
+                var blogRoot = publishedContent.AncestorOrSelf<ArticulateModel>();
 
                 if (blogRoot != null)
                 {
@@ -33,7 +34,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return null;
         }
 
-        private PageHeroViewModel GetBlogViewModel(Articulate articulate)
+        private PageHeroViewModel GetBlogViewModel(ArticulateModel articulate)
         {
             if (articulate.BlogBanner == null)
             {
@@ -84,7 +85,7 @@ namespace JNCC.PublicWebsite.Core.Services
             var isPageHeroComposition = currentPage is IPageHeroComposition;
             var isPageHeroCarouselComposition = currentPage is IPageHeroCarouselComposition;
             var isArticulatePost = currentPage is ArticulatePost;
-            var blogRoot = currentPage.AncestorOrSelf<Articulate>();
+            var blogRoot = currentPage.AncestorOrSelf<ArticulateModel>();
             var hasBlogRoot = blogRoot != null;
 
             if (isPageHeroComposition == false && isPageHeroCarouselComposition == false && isArticulatePost == false && hasBlogRoot == false)
