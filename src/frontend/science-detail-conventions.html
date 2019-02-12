@@ -11,10 +11,54 @@
     <script>window.jQuery || document.write('<script src="js/jquery-3.3.1.min.js" defer><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" defer></script>
     <script src="js/app.js" defer></script>
+    <link rel="stylesheet" href="css/foundation-icons.css" />
 
     <style>
         ul {
             margin-left: 3rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        #table-modal table.scroll {
+            max-height: inherit;
+            overflow-y: inherit;
+        }
+
+            #table-modal table.scroll caption {
+                text-align: center;
+            }
+
+        table.scroll {
+            max-height: 30rem;
+            overflow-y: scroll;
+        }
+
+            table.scroll caption {
+                text-align: left;
+            }
+
+        #table-modal .expand-table {
+            display: none
+        }
+
+        #meta a.label:hover {
+            cursor: pointer;
+            color: white;
+            text-decoration: underline;
+        }
+
+        #meta p {
+            margin-bottom: 0;
+        }
+
+            #meta p.tags {
+                margin-bottom: 0.5rem;
+            }
+
+        #meta {
+            padding-bottom: 1rem;
         }
     </style>
 </head>
@@ -26,13 +70,13 @@
     <div id="wrapper">
         <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
         <header id="header">
-            <div class="header-top">
-                <p>JNCC EMODnet uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>.</p>
-            </div>
-            <div class="header-top logged-in">
-                <p>You are currently logged in.</p>
-                <form action="#"><button class="button hollow secondary">Logout</button></form>
-            </div>
+            <!--<div class="header-top">
+        <p>JNCC EMODnet uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>.</p>
+    </div>
+    <div class="header-top logged-in">
+        <p>You are currently logged in.</p>
+        <form action="#"><button class="button hollow secondary">Logout</button></form>
+    </div>-->
             <div class="container">
                 <strong class="logo">
                     <a href="#" accesskey="1"><img src="images/logo.png" alt="JNCC"></a>
@@ -54,10 +98,10 @@
             <nav class="top-bar nav no-page-hero" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
                 <div class="container">
                     <ul class="vertical medium-horizontal menu">
-                        <li><a href="#">Valuing the environment</a></li>
+                        <li><a href="#">Our biodiversity</a></li>
+                        <li><a href="#">Evaluating choices</a></li>
                         <li><a href="#">Advice</a></li>
                         <li><a href="#">Monitoring</a></li>
-                        <li><a href="#">Pressures</a></li>
                         <li><a href="#">About</a></li>
                         <li class="active"><a href="#">Resources</a></li>
                         <li><a href="#">Contact</a></li>
@@ -85,7 +129,7 @@
 
                         <div class="row">
                             <div class="columns small-12 medium-6 callout toc">
-                                <h4>Contents</h4>
+                                <h4 id="toc">Contents</h4>
                                 <ol>
                                     <li><a href="#s1">The Ramsar Convention</a></li>
                                     <li><a href="#s2">The Convention Concerning the Protection of the World Cultural and Natural Heritage (UNESCO World Heritage Convention)</a></li>
@@ -102,33 +146,49 @@
 
                         <p>The Convention on Wetlands of International Importance especially as Waterfowl Habitat (<a href="science-detail-ramsar-uk.html">‘Ramsar Convention’</a> or ‘Wetlands Convention’) was adopted in Ramsar, Iran in February 1971 and came into force in December 1975. It provides the only international mechanism for protecting sites of global importance and is thus of key conservation significance.</p>
                         <p>As at May 2018, there are 175 designated <a href="science-detail-ramsar-uk.html">Ramsar sites in the UK</a>, its <a href="science-detail-ramsar-overseas.html">Overseas Territories and Crown Dependencies</a>, covering over 1 million hectares.</p>
+                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
                         <h2 id="s2">The Convention Concerning the Protection of the World Cultural and Natural Heritage (UNESCO World Heritage Convention)</h2>
-                        <p>The Convention Concerning the Protection of the World Cultural and Natural Heritage [LINK to UNESCO World Heritage page) (the UNESCO World Heritage Convention) was adopted in Paris, France in November 1972 and came into force in December 1975. The Convention is a unique international instrument in that it seeks to protect both cultural and natural heritage. </p>
+                        <p><a href="science-detail-unesco.html">The Convention Concerning the Protection of the World Cultural and Natural Heritage</a> (the UNESCO World Heritage Convention) was adopted in Paris, France in November 1972 and came into force in December 1975. The Convention is a unique international instrument in that it seeks to protect both cultural and natural heritage. </p>
+                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
                         <h2 id="s3">Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES)</h2>
-                        <p>The Convention on International Trade in Endangered Species of Wild Fauna and Flora [LINK to CITES page] (CITES - also less commonly known as the Washington Convention) was adopted in Washington DC, USA, in March 1973 and entered into force in July 1975. CITES aims to regulate international trade in species which are endangered or which may become endangered if their exploitation is not controlled. </p>
+                        <p>The Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES - also less commonly known as the Washington Convention) was adopted in Washington DC, USA, in March 1973 and entered into force in July 1975. CITES aims to regulate international trade in species which are endangered or which may become endangered if their exploitation is not controlled. </p>
+                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
                         <h2 id="s4">Bern Convention</h2>
-                        <p>The Convention on the Conservation of European Wildlife and Natural Habitats [LINK to Bern Convention page] (the Bern Convention) was adopted in Bern, Switzerland in 1979, and came into force in 1982. The principal aims of the Convention are to ensure conservation and protection of wild plant and animal species and their natural habitats, to increase cooperation between contracting parties, and to regulate the exploitation of those species (including migratory species). To this end the Convention imposes legal obligations on contracting parties, protecting over 500 wild plant species and more than 1,000 wild animal species.</p>
+                        <p>The Convention on the Conservation of European Wildlife and Natural Habitats (the Bern Convention) was adopted in Bern, Switzerland in 1979, and came into force in 1982. The principal aims of the Convention are to ensure conservation and protection of wild plant and animal species and their natural habitats, to increase cooperation between contracting parties, and to regulate the exploitation of those species (including migratory species). To this end the Convention imposes legal obligations on contracting parties, protecting over 500 wild plant species and more than 1,000 wild animal species.</p>
+                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
                         <h2 id="s5">Bonn Convention</h2>
-                        <p>The Convention on the Conservation of Migratory Species of Wild Animals [LINK to Bonn cluster] (Bonn Convention or CMS) was adopted in Bonn, Germany in 1979 and came into force in 1985. Contracting Parties work together to conserve migratory species and their habitats by providing strict protection for endangered migratory species, concluding multilateral Agreements for the conservation and management of migratory species which require or would benefit from international cooperation (listed in Appendix II), and by undertaking cooperative research activities.</p>
+                        <p>The Convention on the Conservation of Migratory Species of Wild Animals  (Bonn Convention or CMS) was adopted in Bonn, Germany in 1979 and came into force in 1985. Contracting Parties work together to conserve migratory species and their habitats by providing strict protection for endangered migratory species, concluding multilateral Agreements for the conservation and management of migratory species which require or would benefit from international cooperation (listed in Appendix II), and by undertaking cooperative research activities.</p>
+                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
                         <h2 id="s6">Convention on Biological Diversity</h2>
-                        <p>The Convention on Biological Diversity [LINK to CBD page] (Biodiversity Convention or CBD) was adopted at the Earth Summit in Rio de Janeiro, Brazil in June 1992, and entered into force in December 1993. As the first global treaty to provide a legal framework for biodiversity conservation, the Convention established three main goals:</p>
+                        <p>The Convention on Biological Diversity (Biodiversity Convention or CBD) was adopted at the Earth Summit in Rio de Janeiro, Brazil in June 1992, and entered into force in December 1993. As the first global treaty to provide a legal framework for biodiversity conservation, the Convention established three main goals:</p>
                         <p>International cooperation to protect the marine environment of the north-east Atlantic is achieved through the OSPAR Convention [LINK to CBD page]. With the adoption of Annex V in 1998, the Convention embraced a more holistic responsibility for environmental protection in the region, including its biodiversity.</p>
                         <ul>
                             <li>the conservation of biological diversity,</li>
                             <li>the sustainable use of its components,</li>
                             <li>the fair and equitable sharing of the benefits arising from the use of genetic resources.</li>
                         </ul>
+                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
                         <h2 id="s7">The Convention for the Protection of the Marine Environment of the North-East Atlantic (the OSPAR Convention)</h2>
                         <p>International cooperation to protect the marine environment of the north-east Atlantic is achieved through the OSPAR Convention [LINK to CBD page]. With the adoption of Annex V in 1998, the Convention embraced a more holistic responsibility for environmental protection in the region, including its biodiversity. </p>
 
 
 
-                        <div class="callout secondary"><p><strong>Categories:</strong> <a href="science-category-conventions-legislation.html">Conventions and Legislation</a>, <a href="science-category-ramsar.html">Ramsar (Category)</a></p></div>
-                        <p>Last updated: May 2017</p>
+                        <div class="callout secondary">
+                            <p><strong>Categories:</strong></p>
+                            <p class="tags"><a href="science-category-ramsar.html" class="label location">Ramsar (Category)</a> <a href="science-category-conventions-legislation.html" class="label location">Conventions and legislation</a></p>
+                            <div class="row collapse">
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="1" title="The date this/ page was first published">Published</span>: 01 May 2017. </p>
+                                </div>
+                                <div class="column small-12 medium-6">
+                                    <p><span data-tooltip tabindex="2" title="The date the content last had a meaningful editorial review">Reviewed</span>: 02 Jan 2019.</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <aside id="sidebar">
-                        <a href="#" class="button primary large medium-expanded">Get in touch</a>
+                        <a href="/evaluating-choices/" class="button primary large medium-expanded">Find out about Evaluating choices</a>
                         <nav class="holder" aria-label="aside-navigation">
                             <h2><a href="science-category-conventions-legislation.html">Conventions and Legislation</a></h2>
                             <ul class="aside-nav no-bullet">
@@ -142,13 +202,8 @@
             </div>
             <div class="info-section">
                 <div class="container">
-                    <p>
-                        Lorem ipsum dolor sit amet, pro iudico eleifend ea, usu tollit doctus pertinacia ut, quo amet noster salutandi
-                        et. Cu homero insolens sea, pro no audire inimicus. Per aeque laoreet corpora cu, at cum primis euismod
-                        corrumpit. Mucius offendit cum ex. Hinc delicatissimi at vel, qui detraxit eloquentiam signiferumque ei.Ei dicunt
-                        audire tritani vix.
-                    </p>
-                    <a href="#" class="button primary">Get in touch</a>
+                    <p>Our work on International Conventions forms part of the work of our International Team.  Find out more about our Monitoring work.</p>
+                    <a href="/evaluating-choices/" class="button primary">Evaluating choices</a>
                 </div>
             </div>
             <section class="links-section">
