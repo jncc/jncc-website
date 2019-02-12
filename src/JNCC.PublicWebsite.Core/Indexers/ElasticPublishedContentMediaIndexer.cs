@@ -111,23 +111,18 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     values.TryGetValue("updateDate", out string publishDate);
 
                     // Get content based on content fields in order of priority
-                    string content = string.Empty;
-                    if (values.TryGetValue("preamble", out string preamble))
+                    var contentBuilder = new StringBuilder();
+
+                    foreach (var contentField in values.Where(x => IndexerData.UserFields.Select(y => y.Name).Contains(x.Key)))
                     {
-                        content = preamble;
+                        // Check if it has a value and append it
+                        if (!string.IsNullOrEmpty(contentField.Value))
+                        {
+                            contentBuilder.Append(contentField.Value);
+                        }
                     }
-                    else if (values.TryGetValue("mainContent", out string mainContent))
-                    {
-                        content = mainContent;
-                    }
-                    else if (values.TryGetValue("calloutCards", out string calloutCards))
-                    {
-                        content = calloutCards;
-                    }
-                    else if (values.TryGetValue("richText", out string richText))
-                    {
-                        content = richText;
-                    }
+                    string content = contentBuilder.ToString();
+
                     // index the node
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, content);
                 }
