@@ -127,11 +127,19 @@ namespace JNCC.PublicWebsite.Core.Indexers
                             {
                                 var processedJsonValue = ProcessJsonValue(parsedJson);
 
-                                contentBuilder.AppendLine(processedJsonValue);
+                                if (string.IsNullOrEmpty(processedJsonValue) == false)
+                                {
+                                    contentBuilder.AppendLine(processedJsonValue);
+                                }
                             }
                             else
                             {
-                                contentBuilder.AppendLine(contentFieldValue.StripHtml());
+                                var sanitisedValue = contentFieldValue.StripHtml();
+
+                                if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
+                                {
+                                    contentBuilder.AppendLine(sanitisedValue);
+                                }
                             }
                         }
                     }
@@ -230,11 +238,19 @@ namespace JNCC.PublicWebsite.Core.Indexers
                         {
                             var innerValue = ProcessJsonValue(value);
 
-                            processedValue.AppendLine(innerValue);
+                            if (string.IsNullOrWhiteSpace(innerValue) == false)
+                            {
+                                processedValue.AppendLine(innerValue);
+                            }
                         }
                         else
                         {
-                            processedValue.AppendLine(value.StripHtml());
+                            var sanitisedValue = value.StripHtml();
+
+                            if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
+                            {
+                                processedValue.AppendLine(sanitisedValue);
+                            }
                         }
                     }
                 }
@@ -264,11 +280,19 @@ namespace JNCC.PublicWebsite.Core.Indexers
                             {
                                 var innerValue = ProcessJsonValue(value);
 
-                                processedValue.AppendLine(innerValue);
+                                if (string.IsNullOrWhiteSpace(innerValue) == false)
+                                {
+                                    processedValue.AppendLine(innerValue);
+                                }
                             }
                             else
                             {
-                                processedValue.AppendLine(value.StripHtml());
+                                var sanitisedValue = value.StripHtml();
+
+                                if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
+                                {
+                                    processedValue.AppendLine(sanitisedValue);
+                                }
                             }
                         }
                     }
