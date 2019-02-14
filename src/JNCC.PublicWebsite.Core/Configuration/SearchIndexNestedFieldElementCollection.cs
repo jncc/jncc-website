@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 
@@ -32,7 +32,7 @@ namespace JNCC.PublicWebsite.Core.Configuration
 
         public override bool IsReadOnly()
         {
-            return true;
+            return false;
         }
 
         protected override ConfigurationElement CreateNewElement()
