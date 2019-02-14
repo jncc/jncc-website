@@ -1,4 +1,6 @@
-﻿namespace JNCC.PublicWebsite.Core.Configuration
+﻿using System.Collections.Generic;
+
+namespace JNCC.PublicWebsite.Core.Configuration
 {
     internal interface ISearchConfiguration
     {
@@ -13,5 +15,6 @@
         string AWSSQSAccessKey { get; }
         string AWSSQSSecretKey { get; }
         bool EnableIndexing { get; }
+        IEnumerable<ISearchIndexNestedField> NestedIndexFields { get; } 
     }
 }

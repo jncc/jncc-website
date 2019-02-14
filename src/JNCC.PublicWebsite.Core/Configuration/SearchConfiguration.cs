@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Configuration;
 
 namespace JNCC.PublicWebsite.Core.Configuration
@@ -37,6 +37,17 @@ namespace JNCC.PublicWebsite.Core.Configuration
 
         [ConfigurationProperty("EnableIndexing")]
         public bool EnableIndexing { get { return (bool)this["EnableIndexing"]; } }
+
+        [ConfigurationProperty("indexNestedFields")]
+        public SearchIndexNestedFieldElementCollection NestedIndexFieldsCollection
+        {
+            get { return this["indexNestedFields"] as SearchIndexNestedFieldElementCollection; }
+        }
+
+        public IEnumerable<ISearchIndexNestedField> NestedIndexFields
+        {
+            get { return NestedIndexFieldsCollection; }
+        }
 
         internal static SearchConfiguration GetConfig()
         {
