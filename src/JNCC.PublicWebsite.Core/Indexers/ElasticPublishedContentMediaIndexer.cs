@@ -1,6 +1,9 @@
 using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
+using JNCC.PublicWebsite.Core.Utilities;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -116,10 +119,20 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     foreach (var contentField in values.Where(x => IndexerData.UserFields.Select(y => y.Name).Contains(x.Key)))
                     {
+                        var contentFieldValue = contentField.Value;
                         // Check if it has a value and append it
-                        if (!string.IsNullOrEmpty(contentField.Value))
+                        if (string.IsNullOrEmpty(contentFieldValue) == false)
                         {
-                            contentBuilder.Append(contentField.Value);
+                            if (contentFieldValue.DetectIsJson() && JsonUtility.TryParseJson(contentFieldValue, out object parsedJson))
+                            {
+                                var processedJsonValue = ProcessJsonValue(parsedJson);
+
+                                contentBuilder.AppendLine(processedJsonValue);
+                            }
+                            else
+                            {
+                                contentBuilder.AppendLine(contentFieldValue.StripHtml());
+                            }
                         }
                     }
                     string content = contentBuilder.ToString();
@@ -190,6 +203,79 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                 }
             }
+        }
+
+        private string ProcessJsonValue(object obj)
+        {
+            var processedValue = new StringBuilder();
+            var objType = obj.GetType();
+
+            if (objType == typeof(JObject))
+            {
+                var jObj = obj as JObject;
+                if (jObj != null)
+                {
+                    foreach (var field in _searchConfiguration.NestedIndexFields)
+                    {
+                        var nestedField = jObj[field.Alias];
+                        if (nestedField == null)
+                        {
+                            continue;
+                        }
+
+                        var valueType = nestedField.GetType();
+                        var value = nestedField.Value<string>();
+
+                        if (typeof(JContainer).IsAssignableFrom(valueType))
+                        {
+                            var innerValue = ProcessJsonValue(value);
+
+                            processedValue.AppendLine(innerValue);
+                        }
+                        else
+                        {
+                            processedValue.AppendLine(value.StripHtml());
+                        }
+                    }
+                }
+            }
+            else if (objType == typeof(JArray))
+            {
+                var jArr = obj as JArray;
+                if (jArr != null)
+                {
+                    for (var i = 0; i < jArr.Count; i++)
+                    {
+                        var item = jArr[i];
+
+                        foreach (var field in _searchConfiguration.NestedIndexFields)
+                        {
+                            var nestedField = item[field.Alias];
+
+                            if (nestedField == null)
+                            {
+                                continue;
+                            }
+
+                            var valueType = nestedField.GetType();
+                            var value = nestedField.Value<string>();
+
+                            if (typeof(JContainer).IsAssignableFrom(valueType))
+                            {
+                                var innerValue = ProcessJsonValue(value);
+
+                                processedValue.AppendLine(innerValue);
+                            }
+                            else
+                            {
+                                processedValue.AppendLine(value.StripHtml());
+                            }
+                        }
+                    }
+                }
+            }
+
+            return processedValue.ToString();
         }
 
         public override void RebuildIndex()
