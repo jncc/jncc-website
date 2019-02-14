@@ -18,10 +18,11 @@ namespace JNCC.PublicWebsite.Core.Indexers
 {
     public class ElasticPublishedContentMediaIndexer : UmbracoExamine.UmbracoContentIndexer
     {
+        private readonly ISearchConfiguration _searchConfiguration = SearchConfiguration.GetConfig();
+
         public ElasticPublishedContentMediaIndexer() : base()
         {
-            var config = SearchConfiguration.GetConfig();
-            _searchService = new SearchService(config);
+            _searchService = new SearchService(_searchConfiguration);
 
             SupportedExtensions = new[] { "pdf" };
             UmbracoFileProperty = Conventions.Media.File;
