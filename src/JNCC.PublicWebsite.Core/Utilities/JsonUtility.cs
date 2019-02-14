@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 
 namespace JNCC.PublicWebsite.Core.Utilities
 {
@@ -10,13 +9,15 @@ namespace JNCC.PublicWebsite.Core.Utilities
             try
             {
                 // Validate missing fields of object
-                JsonSerializerSettings settings = new JsonSerializerSettings();
-                settings.MissingMemberHandling = MissingMemberHandling.Error;
+                var settings = new JsonSerializerSettings
+                {
+                    MissingMemberHandling = MissingMemberHandling.Error
+                };
 
                 result = JsonConvert.DeserializeObject<T>(obj, settings);
                 return true;
             }
-            catch (Exception)
+            catch
             {
                 result = default(T);
                 return false;
