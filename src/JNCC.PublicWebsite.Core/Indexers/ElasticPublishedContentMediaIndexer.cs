@@ -1,6 +1,9 @@
 using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
+using JNCC.PublicWebsite.Core.Utilities;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -18,10 +21,11 @@ namespace JNCC.PublicWebsite.Core.Indexers
 {
     public class ElasticPublishedContentMediaIndexer : UmbracoExamine.UmbracoContentIndexer
     {
+        private readonly ISearchConfiguration _searchConfiguration = SearchConfiguration.GetConfig();
+
         public ElasticPublishedContentMediaIndexer() : base()
         {
-            var config = SearchConfiguration.GetConfig();
-            _searchService = new SearchService(config);
+            _searchService = new SearchService(_searchConfiguration);
 
             SupportedExtensions = new[] { "pdf" };
             UmbracoFileProperty = Conventions.Media.File;
@@ -111,23 +115,36 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     values.TryGetValue("updateDate", out string publishDate);
 
                     // Get content based on content fields in order of priority
-                    string content = string.Empty;
-                    if (values.TryGetValue("preamble", out string preamble))
+                    var contentBuilder = new StringBuilder();
+
+                    foreach (var contentField in values.Where(x => IndexerData.UserFields.Select(y => y.Name).Contains(x.Key)))
                     {
-                        content = preamble;
+                        var contentFieldValue = contentField.Value;
+                        // Check if it has a value and append it
+                        if (string.IsNullOrEmpty(contentFieldValue) == false)
+                        {
+                            if (contentFieldValue.DetectIsJson() && JsonUtility.TryParseJson(contentFieldValue, out object parsedJson))
+                            {
+                                var processedJsonValue = ProcessJsonValue(parsedJson);
+
+                                if (string.IsNullOrEmpty(processedJsonValue) == false)
+                                {
+                                    contentBuilder.AppendLine(processedJsonValue);
+                                }
+                            }
+                            else
+                            {
+                                var sanitisedValue = contentFieldValue.StripHtml().Trim();
+
+                                if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
+                                {
+                                    contentBuilder.AppendLine(sanitisedValue);
+                                }
+                            }
+                        }
                     }
-                    else if (values.TryGetValue("mainContent", out string mainContent))
-                    {
-                        content = mainContent;
-                    }
-                    else if (values.TryGetValue("calloutCards", out string calloutCards))
-                    {
-                        content = calloutCards;
-                    }
-                    else if (values.TryGetValue("richText", out string richText))
-                    {
-                        content = richText;
-                    }
+                    string content = contentBuilder.ToString().Trim();
+
                     // index the node
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, content);
                 }
@@ -194,6 +211,95 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                 }
             }
+        }
+
+        private string ProcessJsonValue(object obj)
+        {
+            var processedValue = new StringBuilder();
+            var objType = obj.GetType();
+
+            if (objType == typeof(JObject))
+            {
+                var jObj = obj as JObject;
+                if (jObj != null)
+                {
+                    foreach (var field in _searchConfiguration.NestedIndexFields)
+                    {
+                        var nestedField = jObj[field.Alias];
+                        if (nestedField == null)
+                        {
+                            continue;
+                        }
+
+                        var valueType = nestedField.GetType();
+                        var value = nestedField.Value<string>();
+
+                        if (typeof(JContainer).IsAssignableFrom(valueType))
+                        {
+                            var innerValue = ProcessJsonValue(value);
+
+                            if (string.IsNullOrWhiteSpace(innerValue) == false)
+                            {
+                                processedValue.AppendLine(innerValue);
+                            }
+                        }
+                        else
+                        {
+                            var sanitisedValue = value.StripHtml().Trim();
+
+                            if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
+                            {
+                                processedValue.AppendLine(sanitisedValue);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (objType == typeof(JArray))
+            {
+                var jArr = obj as JArray;
+                if (jArr != null)
+                {
+                    for (var i = 0; i < jArr.Count; i++)
+                    {
+                        var item = jArr[i];
+
+                        foreach (var field in _searchConfiguration.NestedIndexFields)
+                        {
+                            var nestedField = item[field.Alias];
+
+                            if (nestedField == null)
+                            {
+                                continue;
+                            }
+
+                            var valueType = nestedField.GetType();
+                            var value = nestedField.Value<string>();
+
+                            if (typeof(JContainer).IsAssignableFrom(valueType))
+                            {
+                                var innerValue = ProcessJsonValue(value);
+
+                                if (string.IsNullOrWhiteSpace(innerValue) == false)
+                                {
+                                    processedValue.AppendLine(innerValue);
+                                }
+                            }
+                            else
+                            {
+                                var sanitisedValue = value.StripHtml().Trim();
+
+                                if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
+                                {
+                                    processedValue.AppendLine(sanitisedValue);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return processedValue.ToString().Trim();
         }
 
         public override void RebuildIndex()
