@@ -134,7 +134,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                             }
                             else
                             {
-                                var sanitisedValue = contentFieldValue.StripHtml();
+                                var sanitisedValue = contentFieldValue.StripHtml().Trim();
 
                                 if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
                                 {
@@ -143,7 +143,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                             }
                         }
                     }
-                    string content = contentBuilder.ToString();
+                    string content = contentBuilder.ToString().Trim();
 
                     // index the node
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, content);
@@ -245,7 +245,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                         }
                         else
                         {
-                            var sanitisedValue = value.StripHtml();
+                            var sanitisedValue = value.StripHtml().Trim();
 
                             if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
                             {
@@ -287,7 +287,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                             }
                             else
                             {
-                                var sanitisedValue = value.StripHtml();
+                                var sanitisedValue = value.StripHtml().Trim();
 
                                 if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
                                 {
@@ -299,7 +299,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                 }
             }
 
-            return processedValue.ToString();
+            return processedValue.ToString().Trim();
         }
 
         public override void RebuildIndex()
