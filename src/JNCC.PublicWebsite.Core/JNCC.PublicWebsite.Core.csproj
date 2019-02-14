@@ -441,6 +441,7 @@
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\IMediaFullUrlResolver.cs" />
     <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
