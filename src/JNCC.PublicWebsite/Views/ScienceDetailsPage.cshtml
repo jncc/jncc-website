@@ -1,5 +1,37 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ScienceDetailsPage>
-@using ContentModels = JNCC.PublicWebsite.Core.Models;
+﻿@model ScienceDetailsPageViewModel
 @{
     Layout = "Master.cshtml";
 }
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Preamble
+                @if (Model.HasSections)
+                {
+                    <div class="row">
+                        <div class="columns small-12 medium-6 callout toc">
+                            <h4 id="toc">Contents</h4>
+                            <ol>
+                                @foreach (var section in Model.Sections)
+                                {
+                                    <li><a href="#@(section.HtmlId)">@(section.Headline)</a></li>
+                                }
+                            </ol>
+                        </div>
+                    </div>
+                    foreach (var section in Model.Sections)
+                    {
+                        <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                        @Html.DisplayFor(model => section)
+                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>
