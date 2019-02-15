@@ -7,7 +7,12 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         public ScienceDetailsPageViewModel GetViewModel(ScienceDetailsPage model)
         {
-            return new ScienceDetailsPageViewModel();
+            var viewModel = new ScienceDetailsPageViewModel()
+            {
+                Preamble = model.Preamble
+            };
+
+            return viewModel;
         }
     }
 }
