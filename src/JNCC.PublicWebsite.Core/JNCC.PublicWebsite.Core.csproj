@@ -428,6 +428,7 @@
     <Compile Include="Models\ResetPasswordRequestModel.cs" />
     <Compile Include="Models\ResourceItemSchema.generated.cs" />
     <Compile Include="Models\ScienceCategoryPage.generated.cs" />
+    <Compile Include="Models\ScienceDetailsPage.generated.cs" />
     <Compile Include="Models\ScienceLandingPage.generated.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
