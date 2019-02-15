@@ -1,0 +1,40 @@
+html {
+    scroll-behavior: smooth;
+}
+
+table.scroll {
+    max-height: 30rem;
+    overflow-y: scroll;
+
+    caption {
+        text-align: left;
+    }
+}
+
+#table-modal .expand-table {
+    display: none;
+
+    table.scroll {
+        max-height: inherit;
+        overflow-y: inherit;
+        
+        caption {
+            text-align: center;
+        }
+    }
+}
+
+#meta {
+    padding-bottom: 1rem;
+
+    a.label:hover {
+        cursor: pointer;
+        color: white;
+        text-decoration: underline;
+    }
+
+    .tags {
+        margin-bottom: 0.5rem;
+        margin-bottom: 0;
+    }
+}
