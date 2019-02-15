@@ -8901,6 +8901,47 @@ input[type="search"]::-webkit-search-cancel-button {
 	padding: .75rem 0;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
+table.scroll {
+	max-height: 30rem;
+	overflow-y: scroll;
+}
+
+table.scroll caption {
+	text-align: left;
+}
+
+#table-modal .expand-table {
+	display: none;
+}
+
+#table-modal .expand-table table.scroll {
+	max-height: inherit;
+	overflow-y: inherit;
+}
+
+#table-modal .expand-table table.scroll caption {
+	text-align: center;
+}
+
+#meta {
+	padding-bottom: 1rem;
+}
+
+#meta a.label:hover {
+	cursor: pointer;
+	color: white;
+	text-decoration: underline;
+}
+
+#meta .tags {
+	margin-bottom: .5rem;
+	margin-bottom: 0;
+}
+
 img.float-left {
 	margin-bottom: 1rem;
 	margin-right: 1rem;
