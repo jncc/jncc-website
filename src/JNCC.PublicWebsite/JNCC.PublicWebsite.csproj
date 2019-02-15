@@ -1379,6 +1379,7 @@
     <Content Include="Views\MemberAccountPage.cshtml" />
     <Content Include="Views\SearchResultsPage.cshtml" />
     <Content Include="Views\Partials\Blog\CommentsList.cshtml" />
+    <Content Include="Views\ScienceCategoryPage.cshtml" />
     <Content Include="Views\ScienceLandingPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
