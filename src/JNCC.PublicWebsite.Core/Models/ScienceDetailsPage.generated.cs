@@ -46,6 +46,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Main Content: The main content for the page. Each section added here will be used to create an entry in the table of contents.  If no sections are authored then no table of content will be created.
+		///</summary>
+		[ImplementPropertyType("mainContent")]
+		public IEnumerable<IPublishedContent> MainContent
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("mainContent"); }
+		}
+
+		///<summary>
+		/// Preamble: Introductory content explaining the purpose of the page.
+		///</summary>
+		[ImplementPropertyType("preamble")]
+		public IHtmlString Preamble
+		{
+			get { return this.GetPropertyValue<IHtmlString>("preamble"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
