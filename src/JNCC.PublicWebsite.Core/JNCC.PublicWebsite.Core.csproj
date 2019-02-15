@@ -424,6 +424,7 @@
     <Compile Include="Models\NewsAndInsightsLandingPage.generated.cs" />
     <Compile Include="Models\PageHeroCarouselComposition.generated.cs" />
     <Compile Include="Models\PageHeroComposition.generated.cs" />
+    <Compile Include="Models\PageMetaInformationComposition.generated.cs" />
     <Compile Include="Models\PageSpecificIncludesComposition.generated.cs" />
     <Compile Include="Models\RelatedItemSchema.generated.cs" />
     <Compile Include="Models\RelatedItemsComposition.generated.cs" />
