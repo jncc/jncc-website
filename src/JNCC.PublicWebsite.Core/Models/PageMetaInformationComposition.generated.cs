@@ -20,9 +20,20 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
+	// Mixin content Type 1160 with alias "pageMetaInformationComposition"
+	/// <summary>Page Meta Information Composition</summary>
+	public partial interface IPageMetaInformationComposition : IPublishedContent
+	{
+		/// <summary>Published Date</summary>
+		DateTime PublishedDate { get; }
+
+		/// <summary>Review Date</summary>
+		DateTime ReviewDate { get; }
+	}
+
 	/// <summary>Page Meta Information Composition</summary>
 	[PublishedContentModel("pageMetaInformationComposition")]
-	public partial class PageMetaInformationComposition : PublishedContentModel
+	public partial class PageMetaInformationComposition : PublishedContentModel, IPageMetaInformationComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "pageMetaInformationComposition";
@@ -51,8 +62,11 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("publishedDate")]
 		public DateTime PublishedDate
 		{
-			get { return this.GetPropertyValue<DateTime>("publishedDate"); }
+			get { return GetPublishedDate(this); }
 		}
+
+		/// <summary>Static getter for Published Date</summary>
+		public static DateTime GetPublishedDate(IPageMetaInformationComposition that) { return that.GetPropertyValue<DateTime>("publishedDate"); }
 
 		///<summary>
 		/// Review Date: The date the page last had a meaningful editorial review.
@@ -60,7 +74,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("reviewDate")]
 		public DateTime ReviewDate
 		{
-			get { return this.GetPropertyValue<DateTime>("reviewDate"); }
+			get { return GetReviewDate(this); }
 		}
+
+		/// <summary>Static getter for Review Date</summary>
+		public static DateTime GetReviewDate(IPageMetaInformationComposition that) { return that.GetPropertyValue<DateTime>("reviewDate"); }
 	}
 }
