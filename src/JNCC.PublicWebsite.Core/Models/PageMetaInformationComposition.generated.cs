@@ -27,8 +27,8 @@ namespace JNCC.PublicWebsite.Core.Models
 		/// <summary>Published Date</summary>
 		DateTime PublishedDate { get; }
 
-		/// <summary>Review Date</summary>
-		DateTime ReviewDate { get; }
+		/// <summary>Reviewed Date</summary>
+		DateTime ReviewedDate { get; }
 	}
 
 	/// <summary>Page Meta Information Composition</summary>
@@ -69,15 +69,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public static DateTime GetPublishedDate(IPageMetaInformationComposition that) { return that.GetPropertyValue<DateTime>("publishedDate"); }
 
 		///<summary>
-		/// Review Date: The date the page last had a meaningful editorial review.
+		/// Reviewed Date: The date the page last had a meaningful editorial review.
 		///</summary>
-		[ImplementPropertyType("reviewDate")]
-		public DateTime ReviewDate
+		[ImplementPropertyType("reviewedDate")]
+		public DateTime ReviewedDate
 		{
-			get { return GetReviewDate(this); }
+			get { return GetReviewedDate(this); }
 		}
 
-		/// <summary>Static getter for Review Date</summary>
-		public static DateTime GetReviewDate(IPageMetaInformationComposition that) { return that.GetPropertyValue<DateTime>("reviewDate"); }
+		/// <summary>Static getter for Reviewed Date</summary>
+		public static DateTime GetReviewedDate(IPageMetaInformationComposition that) { return that.GetPropertyValue<DateTime>("reviewedDate"); }
 	}
 }

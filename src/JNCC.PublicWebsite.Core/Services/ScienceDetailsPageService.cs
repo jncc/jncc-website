@@ -15,7 +15,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 Preamble = model.Preamble,
                 Sections = GetSectionViewModels(model.MainContent),
                 PublishedDate = model.PublishedDate,
-                ReviewedDate = GetReviewedDate(model.ReviewDate)
+                ReviewedDate = GetReviewedDate(model.ReviewedDate)
             };            
 
             return viewModel;
