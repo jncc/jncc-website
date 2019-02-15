@@ -335,8 +335,11 @@
     <Compile Include="Attributes\Routing\RequireParameterAttribute.cs" />
     <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
     <Compile Include="Configuration\ISearchConfiguration.cs" />
+    <Compile Include="Configuration\ISearchIndexNestedField.cs" />
     <Compile Include="Configuration\ResetPasswordConfiguration.cs" />
     <Compile Include="Configuration\SearchConfiguration.cs" />
+    <Compile Include="Configuration\SearchIndexNestedFieldElement.cs" />
+    <Compile Include="Configuration\SearchIndexNestedFieldElementCollection.cs" />
     <Compile Include="Constants\FilterNames.cs" />
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
@@ -441,6 +444,7 @@
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\IMediaFullUrlResolver.cs" />
     <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
