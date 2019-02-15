@@ -1,4 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Web;
 
@@ -15,5 +16,8 @@ namespace JNCC.PublicWebsite.Core.ViewModels
                 return ExistenceUtility.IsNullOrEmpty(Sections) == false;
             }
         }
+
+        public DateTime PublishedDate { get; set; }
+        public DateTime? ReviewedDate { get; set; }
     }
 }
