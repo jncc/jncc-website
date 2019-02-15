@@ -14,13 +14,9 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 Preamble = model.Preamble,
                 Sections = GetSectionViewModels(model.MainContent),
-                PublishedDate = model.PublishedDate
-            };
-
-            if (model.ReviewDate != default(DateTime))
-            {
-                viewModel.ReviewedDate = model.ReviewDate;
-            }
+                PublishedDate = model.PublishedDate,
+                ReviewedDate = GetReviewedDate(model.ReviewDate)
+            };            
 
             return viewModel;
         }
@@ -50,6 +46,16 @@ namespace JNCC.PublicWebsite.Core.Services
             }
 
             return viewModels;
+        }
+
+        private DateTime? GetReviewedDate(DateTime reviewDate)
+        {
+            if (reviewDate == default(DateTime))
+            {
+                return null;
+            }
+
+            return reviewDate;
         }
     }
 }
