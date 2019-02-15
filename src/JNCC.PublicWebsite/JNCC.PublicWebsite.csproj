@@ -1382,6 +1382,7 @@
     <Content Include="Views\ScienceCategoryPage.cshtml" />
     <Content Include="Views\ScienceDetailsPage.cshtml" />
     <Content Include="Views\ScienceLandingPage.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ScienceDetailsRichTextSectionViewModel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
