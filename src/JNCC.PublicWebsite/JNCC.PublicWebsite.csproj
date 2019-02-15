@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\uSync.4.0.9\build\uSync.props" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.props')" />
   <Import Project="..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -1380,6 +1380,7 @@
     <Content Include="Views\SearchResultsPage.cshtml" />
     <Content Include="Views\Partials\Blog\CommentsList.cshtml" />
     <Content Include="Views\ScienceCategoryPage.cshtml" />
+    <Content Include="Views\ScienceDetailsPage.cshtml" />
     <Content Include="Views\ScienceLandingPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
