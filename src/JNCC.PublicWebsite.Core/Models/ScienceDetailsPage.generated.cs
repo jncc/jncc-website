@@ -100,12 +100,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Review Date: The date the page last had a meaningful editorial review.
+		/// Reviewed Date: The date the page last had a meaningful editorial review.
 		///</summary>
-		[ImplementPropertyType("reviewDate")]
-		public DateTime ReviewDate
+		[ImplementPropertyType("reviewedDate")]
+		public DateTime ReviewedDate
 		{
-			get { return JNCC.PublicWebsite.Core.Models.PageMetaInformationComposition.GetReviewDate(this); }
+			get { return JNCC.PublicWebsite.Core.Models.PageMetaInformationComposition.GetReviewedDate(this); }
 		}
 
 		///<summary>
