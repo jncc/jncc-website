@@ -448,6 +448,7 @@
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
+    <Compile Include="Services\ScienceDetailsPageService.cs" />
     <Compile Include="ViewModels\ScienceDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsSectionViewModel.cs" />
