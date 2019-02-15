@@ -1,5 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using Umbraco.Core;
 
@@ -12,8 +13,14 @@ namespace JNCC.PublicWebsite.Core.Services
             var viewModel = new ScienceDetailsPageViewModel()
             {
                 Preamble = model.Preamble,
-                Sections = GetSectionViewModels(model.MainContent)
+                Sections = GetSectionViewModels(model.MainContent),
+                PublishedDate = model.PublishedDate
             };
+
+            if (model.ReviewDate != default(DateTime))
+            {
+                viewModel.ReviewedDate = model.ReviewDate;
+            }
 
             return viewModel;
         }
