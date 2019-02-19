@@ -31,6 +31,12 @@
                     }
                 }
                 <div id="meta" class="callout secondary">
+                    @if (Model.HasCategories)
+                    {
+                        <p><strong>Categories:</strong></p>
+                        <p class="tags">@foreach(var category in Model.Categories) {<a class="label location" href="@category.Url">@category.Text</a> }</p>
+                    }
+
                     <div class="row collapse">
                         <div class="column small-12 medium-6">
                             <p><span data-tooltip tabindex="1" title="The date this page was first published">Published</span>: @Html.DisplayFor(model => model.PublishedDate). </p>
