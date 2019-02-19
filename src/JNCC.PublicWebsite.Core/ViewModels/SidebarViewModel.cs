@@ -14,15 +14,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
             }
         }
 
-        public IEnumerable<NavigationItemViewModel> SeeAlsoLinks { get; set; }
-        public bool HasSeeAlsoLinks
-        {
-            get
-            {
-                return ExistenceUtility.IsNullOrEmpty(SeeAlsoLinks) == false;
-            }
-        }
-
         public string AlsoInLinksTitle { get; set; }
         public IEnumerable<NavigationItemViewModel> AlsoInLinks { get; set; }
         public bool HasAlsoInLinks
