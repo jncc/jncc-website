@@ -1,9 +1,11 @@
-using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using JNCC.PublicWebsite.Core.Providers;
 using System;
 using System.Collections.Generic;
 using Umbraco.Core;
+using JNCC.PublicWebsite.Core.Utilities;
+using System.Linq;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -23,10 +25,27 @@ namespace JNCC.PublicWebsite.Core.Services
                 Preamble = model.Preamble,
                 Sections = GetSectionViewModels(model.MainContent),
                 PublishedDate = model.PublishedDate,
-                ReviewedDate = GetReviewedDate(model.ReviewedDate)
-            };            
+                ReviewedDate = GetReviewedDate(model.ReviewedDate),
+                Categories = GetCategories(model)
+            };
 
             return viewModel;
+        }
+
+        private IEnumerable<NavigationItemViewModel> GetCategories(ScienceDetailsPage model)
+        {
+            var categories = _sciencePageCategoriesProvider.GetCategories(model);
+
+            if (ExistenceUtility.IsNullOrEmpty(categories))
+            {
+                return Enumerable.Empty<NavigationItemViewModel>();
+            }
+
+            return categories.Select(x => new NavigationItemViewModel()
+            {
+                Text = x.Name,
+                Url = x.Url
+            });
         }
 
         private IEnumerable<ScienceDetailsSectionViewModel> GetSectionViewModels(IEnumerable<ScienceDetailsSectionBaseSchema> mainContent)
