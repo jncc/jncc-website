@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using JNCC.PublicWebsite.Core.Utilities;
+using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
@@ -6,5 +7,12 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         public bool IsActive { get; set; }
         public IEnumerable<MainNavigationItemViewModel> Children { get; set; }
+        public bool HasChildren
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(Children) == false;
+            }
+        }
     }
 }
