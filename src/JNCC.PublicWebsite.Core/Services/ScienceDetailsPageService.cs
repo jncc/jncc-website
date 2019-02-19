@@ -77,7 +77,8 @@ namespace JNCC.PublicWebsite.Core.Services
             return new ScienceSidebarViewModel
             {
                 PrimaryCallToActionButton = _navigationItemService.GetViewModel(model.SidebarPrimaryCallToActionButton),
-                Categories = GetCategoriesWithFeaturedPages(model)
+                Categories = GetCategoriesWithFeaturedPages(model),
+                SeeAlsoLinks = _navigationItemService.GetViewModels(model.SidebarSeeAlsoLinks)
             };
         }
 
