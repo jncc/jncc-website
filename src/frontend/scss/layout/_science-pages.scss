@@ -33,8 +33,11 @@ table.scroll {
         text-decoration: underline;
     }
 
-    .tags {
-        margin-bottom: 0.5rem;
+    p {
         margin-bottom: 0;
+        
+        &.tags {
+            margin-bottom: 0.5rem;
+        }
     }
 }

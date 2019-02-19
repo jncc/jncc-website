@@ -8937,9 +8937,12 @@ table.scroll caption {
 	text-decoration: underline;
 }
 
-#meta .tags {
-	margin-bottom: .5rem;
+#meta p {
 	margin-bottom: 0;
+}
+
+#meta p.tags {
+	margin-bottom: .5rem;
 }
 
 img.float-left {
