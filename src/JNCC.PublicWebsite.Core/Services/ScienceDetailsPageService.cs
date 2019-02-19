@@ -1,5 +1,6 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
+using JNCC.PublicWebsite.Core.Providers;
 using System;
 using System.Collections.Generic;
 using Umbraco.Core;
@@ -8,6 +9,13 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class ScienceDetailsPageService
     {
+        private readonly ISciencePageCategoriesProvider _sciencePageCategoriesProvider;
+        public ScienceDetailsPageService(ISciencePageCategoriesProvider sciencePageCategoriesProvider)
+        {
+            _sciencePageCategoriesProvider = sciencePageCategoriesProvider;
+        }
+
+
         public ScienceDetailsPageViewModel GetViewModel(ScienceDetailsPage model)
         {
             var viewModel = new ScienceDetailsPageViewModel()
