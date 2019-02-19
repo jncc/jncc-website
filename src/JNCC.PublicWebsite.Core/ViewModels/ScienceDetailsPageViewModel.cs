@@ -19,5 +19,13 @@ namespace JNCC.PublicWebsite.Core.ViewModels
 
         public DateTime PublishedDate { get; set; }
         public DateTime? ReviewedDate { get; set; }
+        public IEnumerable<NavigationItemViewModel> Categories { get; set; }
+        public bool HasCategories
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(Categories) == false;
+            }
+        }
     }
 }
