@@ -11,12 +11,13 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class ScienceDetailsPageService
     {
+        private readonly NavigationItemService _navigationItemService;
         private readonly ISciencePageCategoriesProvider _sciencePageCategoriesProvider;
-        public ScienceDetailsPageService(ISciencePageCategoriesProvider sciencePageCategoriesProvider)
+        public ScienceDetailsPageService(ISciencePageCategoriesProvider sciencePageCategoriesProvider, NavigationItemService navigationItemService)
         {
             _sciencePageCategoriesProvider = sciencePageCategoriesProvider;
+            _navigationItemService = navigationItemService;
         }
-
 
         public ScienceDetailsPageViewModel GetViewModel(ScienceDetailsPage model)
         {
@@ -41,11 +42,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 return Enumerable.Empty<NavigationItemViewModel>();
             }
 
-            return categories.Select(x => new NavigationItemViewModel()
-            {
-                Text = x.Name,
-                Url = x.Url
-            });
+            return _navigationItemService.GetViewModels(categories);
         }
 
         private IEnumerable<ScienceDetailsSectionViewModel> GetSectionViewModels(IEnumerable<ScienceDetailsSectionBaseSchema> mainContent)
