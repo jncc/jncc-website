@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Featured Pages: The main science details pages that define this section.
+		///</summary>
+		[ImplementPropertyType("featuredPages")]
+		public IEnumerable<IPublishedContent> FeaturedPages
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("featuredPages"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
