@@ -72,6 +72,31 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
+        public ScienceSidebarViewModel GetSidebarViewModel(ScienceDetailsPage model)
+        {
+            return new ScienceSidebarViewModel
+            {
+                PrimaryCallToActionButton = _navigationItemService.GetViewModel(model.SidebarPrimaryCallToActionButton),
+                Categories = GetCategoriesWithFeaturedPages(model)
+            };
+        }
+
+        private IEnumerable<MainNavigationItemViewModel> GetCategoriesWithFeaturedPages(ScienceDetailsPage model)
+        {
+            var categories = _sciencePageCategoriesProvider.GetCategories(model);
+
+            var viewModels = new List<MainNavigationItemViewModel>();
+
+            foreach(var category in categories)
+            {
+                var viewModel = _navigationItemService.GetViewModel<MainNavigationItemViewModel>(category);
+
+                viewModels.Add(viewModel);
+            }
+
+            return viewModels;
+        }
+
         private DateTime? GetReviewedDate(DateTime reviewDate)
         {
             if (reviewDate == default(DateTime))
