@@ -438,6 +438,7 @@
     <Compile Include="Models\ScienceDetailsSectionBaseSchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceLandingPage.generated.cs" />
+    <Compile Include="Models\SciencePageCategorisationComposition.generated.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
     <Compile Include="Providers\IBlogCategoriesProvider.cs" />
