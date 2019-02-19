@@ -91,6 +91,7 @@ namespace JNCC.PublicWebsite.Core.Services
             foreach(var category in categories)
             {
                 var viewModel = _navigationItemService.GetViewModel<MainNavigationItemViewModel>(category);
+                viewModel.Children = _navigationItemService.GetViewModels<MainNavigationItemViewModel>(category.FeaturedPages);
 
                 viewModels.Add(viewModel);
             }
