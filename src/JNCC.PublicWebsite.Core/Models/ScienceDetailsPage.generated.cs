@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Science Details Page</summary>
 	[PublishedContentModel("scienceDetailsPage")]
-	public partial class ScienceDetailsPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageMetaInformationComposition, IPageSpecificIncludesComposition, ISeoComposition
+	public partial class ScienceDetailsPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageMetaInformationComposition, IPageSpecificIncludesComposition, IScienceSidebarComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "scienceDetailsPage";
@@ -124,6 +124,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public string PageSpecificHeadIncludes
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageSpecificIncludesComposition.GetPageSpecificHeadIncludes(this); }
+		}
+
+		///<summary>
+		/// Primary Call To Action Button: Link & Text for an optional Call to Action button.  This could be various purposes, for example "Get in Touch" or "Download Data".
+		///</summary>
+		[ImplementPropertyType("sidebarPrimaryCallToActionButton")]
+		public RJP.MultiUrlPicker.Models.Link SidebarPrimaryCallToActionButton
+		{
+			get { return JNCC.PublicWebsite.Core.Models.ScienceSidebarComposition.GetSidebarPrimaryCallToActionButton(this); }
 		}
 
 		///<summary>
