@@ -453,6 +453,7 @@
     <Compile Include="Services\IMediaFullUrlResolver.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
+    <Compile Include="ViewModels\BasicSidebarViewModel.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="Services\ScienceDetailsPageService.cs" />
     <Compile Include="ViewModels\ScienceDetailsPageViewModel.cs" />

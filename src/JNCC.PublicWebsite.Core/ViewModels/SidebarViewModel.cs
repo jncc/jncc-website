@@ -3,17 +3,8 @@ using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public sealed class SidebarViewModel
+    public sealed class SidebarViewModel : BasicSidebarViewModel
     {
-        public NavigationItemViewModel PrimaryCallToActionButton { get; set; }
-        public bool HasPrimaryCallToActionButton
-        {
-            get
-            {
-                return PrimaryCallToActionButton != null;
-            }
-        }
-
         public IEnumerable<NavigationItemViewModel> InThisSectionLinks { get; set; }
         public bool HasInThisSectionLinks
         {
