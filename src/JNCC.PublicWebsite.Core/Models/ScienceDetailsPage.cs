@@ -1,5 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Extensions;
 using System.Collections.Generic;
+using System.Linq;
 using Umbraco.Core.Models;
 using Umbraco.ModelsBuilder;
 using Umbraco.Web;
@@ -23,7 +24,7 @@ namespace JNCC.PublicWebsite.Core.Models
         [ImplementPropertyType("categories")]
         public IEnumerable<ScienceCategoryPage> Categories
         {
-            get { return this.GetPropertyValue<IEnumerable<ScienceCategoryPage>>("categories"); }
+            get { return this.GetPropertyValueOfTypeOrDefault<ScienceCategoryPage>("categories").ToArray(); }
         }
     }
 }
