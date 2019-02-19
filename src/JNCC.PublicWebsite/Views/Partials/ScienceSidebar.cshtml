@@ -1,0 +1,30 @@
+﻿@model ScienceSidebarViewModel
+@if (Model.HasPrimaryCallToActionButton == false
+    && Model.HasCategories == false)
+{
+    return;
+}
+<aside id="sidebar">
+    @if (Model.HasPrimaryCallToActionButton)
+    {
+        <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
+    }
+    @if (Model.HasCategories)
+    {
+        foreach (var category in Model.Categories)
+        {
+            <nav class="holder" aria-label="aside-navigation">
+                <h2><a href="@category.Url">@category.Text</a></h2>
+                @if (category.HasChildren)
+                {
+                    <ul class="aside-nav no-bullet">
+                        @foreach (var link in category.Children)
+                        {
+                            <li><a href="@link.Url">@link.Text</a></li>
+                        }
+                    </ul>
+                }
+            </nav>
+        }
+    }
+</aside>
