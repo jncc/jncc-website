@@ -1,5 +1,4 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
-using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
 
@@ -40,22 +39,6 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             var viewModel = _sidebarService.GetViewModelForArticlePage(CurrentPage as ArticlePage);
 
             return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
-        }
-
-        [ChildActionOnly]
-        public ActionResult RenderScienceDetailsPageSidebar()
-        {
-            if (CurrentPage is ScienceDetailsPage == false)
-            {
-                return EmptyResult();
-            }
-
-            var categoriesProvider = new UmbracoSciencePageCategoriesProvider(ApplicationContext.ApplicationCache.RequestCache);
-            var service = new ScienceDetailsPageService(categoriesProvider, _navigationItemService);
-
-            var viewModel = service.GetSidebarViewModel(CurrentPage as ScienceDetailsPage);
-
-            return PartialView("~/Views/Partials/ScienceSidebar.cshtml", viewModel);
         }
     }
 }

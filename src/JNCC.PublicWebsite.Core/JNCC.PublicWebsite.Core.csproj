@@ -355,12 +355,14 @@
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceCategoryPageController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\ScienceSidebarSurfaceController.cs" />
     <Compile Include="Extensions\PageHeroExtensions.cs" />
     <Compile Include="Extensions\SciencePagesExtensions.cs" />
     <Compile Include="Models\ScienceCategoryPage.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
     <Compile Include="Providers\UmbracoScienceDetailsPageProvider.cs" />
     <Compile Include="Services\ScienceCategoryPageService.cs" />
+    <Compile Include="Services\ScienceSidebarService.cs" />
     <Compile Include="ViewModels\ScienceCategoryPageViewModel.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceDetailsPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />

@@ -1,11 +1,11 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
-using JNCC.PublicWebsite.Core.ViewModels;
 using JNCC.PublicWebsite.Core.Providers;
+using JNCC.PublicWebsite.Core.Utilities;
+using JNCC.PublicWebsite.Core.ViewModels;
 using System;
 using System.Collections.Generic;
-using Umbraco.Core;
-using JNCC.PublicWebsite.Core.Utilities;
 using System.Linq;
+using Umbraco.Core;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -67,33 +67,6 @@ namespace JNCC.PublicWebsite.Core.Services
                     viewModel.HtmlId = section.Headline.ToUrlSegment();
                     viewModels.Add(viewModel);
                 }
-            }
-
-            return viewModels;
-        }
-
-        public ScienceSidebarViewModel GetSidebarViewModel(ScienceDetailsPage model)
-        {
-            return new ScienceSidebarViewModel
-            {
-                PrimaryCallToActionButton = _navigationItemService.GetViewModel(model.SidebarPrimaryCallToActionButton),
-                Categories = GetCategoriesWithFeaturedPages(model),
-                SeeAlsoLinks = _navigationItemService.GetViewModels(model.SidebarSeeAlsoLinks)
-            };
-        }
-
-        private IEnumerable<MainNavigationItemViewModel> GetCategoriesWithFeaturedPages(ScienceDetailsPage model)
-        {
-            var categories = _sciencePageCategoriesProvider.GetCategories(model);
-
-            var viewModels = new List<MainNavigationItemViewModel>();
-
-            foreach(var category in categories)
-            {
-                var viewModel = _navigationItemService.GetViewModel<MainNavigationItemViewModel>(category);
-                viewModel.Children = _navigationItemService.GetViewModels<MainNavigationItemViewModel>(category.FeaturedPages);
-
-                viewModels.Add(viewModel);
             }
 
             return viewModels;
