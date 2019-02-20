@@ -8,7 +8,7 @@ using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 {
-    public class ScienceCategoryPageController : RenderMvcController
+    public sealed class ScienceCategoryPageController : RenderMvcController
     {
         public ActionResult Index(ScienceCategoryPage model)
         {
