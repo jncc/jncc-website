@@ -16,5 +16,13 @@ namespace JNCC.PublicWebsite.Core.ViewModels
                 return ExistenceUtility.IsNullOrEmpty(CategorisedPages) == false;
             }
         }
+        public IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> RelatedCategories { get; set; }
+        public bool HasRelatedCategories
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(RelatedCategories) == false;
+            }
+        }
     }
 }
