@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Science Category Page</summary>
 	[PublishedContentModel("scienceCategoryPage")]
-	public partial class ScienceCategoryPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISciencePageCategorisationComposition, ISeoComposition
+	public partial class ScienceCategoryPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISciencePageCategorisationComposition, ISeoComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "scienceCategoryPage";
@@ -133,6 +133,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public SEOChecker.MVC.MetaData SeoSettings
 		{
 			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
+		}
+
+		///<summary>
+		/// Primary Call To Action Button: Link & Text for an optional Call to Action button.  This could be various purposes, for example "Get in Touch" or "Download Data".
+		///</summary>
+		[ImplementPropertyType("sidebarPrimaryCallToActionButton")]
+		public RJP.MultiUrlPicker.Models.Link SidebarPrimaryCallToActionButton
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarPrimaryCallToActionButton(this); }
+		}
+
+		///<summary>
+		/// See Also Links: Useful links to other internal & external web pages.
+		///</summary>
+		[ImplementPropertyType("sidebarSeeAlsoLinks")]
+		public IEnumerable<RJP.MultiUrlPicker.Models.Link> SidebarSeeAlsoLinks
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarSeeAlsoLinks(this); }
 		}
 	}
 }
