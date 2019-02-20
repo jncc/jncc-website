@@ -34,7 +34,7 @@
                     @if (Model.HasCategories)
                     {
                         <p><strong>Categories:</strong></p>
-                        <p class="tags">@foreach(var category in Model.Categories) {<a class="label location" href="@category.Url">@category.Text</a> }</p>
+                        <p class="tags">@foreach (var category in Model.Categories) {<a class="label location" href="@category.Url">@category.Text</a> }</p>
                     }
 
                     <div class="row collapse">
