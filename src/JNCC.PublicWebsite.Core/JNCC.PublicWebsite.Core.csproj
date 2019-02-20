@@ -357,6 +357,7 @@
     <Compile Include="Controllers\RenderMvcControllers\ScienceCategoryPageController.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
     <Compile Include="Providers\UmbracoScienceDetailsPageProvider.cs" />
+    <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="ViewModels\ScienceCategoryPageViewModel.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceDetailsPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />
