@@ -20,9 +20,20 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
+	// Mixin content Type 1168 with alias "getInTouchComposition"
+	/// <summary>Get in Touch Composition</summary>
+	public partial interface IGetInTouchComposition : IPublishedContent
+	{
+		/// <summary>Get in Touch Button</summary>
+		RJP.MultiUrlPicker.Models.Link GetInTouchButton { get; }
+
+		/// <summary>Get In Touch Content</summary>
+		IHtmlString GetInTouchContent { get; }
+	}
+
 	/// <summary>Get in Touch Composition</summary>
 	[PublishedContentModel("getInTouchComposition")]
-	public partial class GetInTouchComposition : PublishedContentModel
+	public partial class GetInTouchComposition : PublishedContentModel, IGetInTouchComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "getInTouchComposition";
@@ -51,8 +62,11 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("getInTouchButton")]
 		public RJP.MultiUrlPicker.Models.Link GetInTouchButton
 		{
-			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("getInTouchButton"); }
+			get { return GetGetInTouchButton(this); }
 		}
+
+		/// <summary>Static getter for Get in Touch Button</summary>
+		public static RJP.MultiUrlPicker.Models.Link GetGetInTouchButton(IGetInTouchComposition that) { return that.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("getInTouchButton"); }
 
 		///<summary>
 		/// Get In Touch Content: Optional content which appears below the main content of the page. This content is specifically for encouraging website users to navigate to the contact form.
@@ -60,7 +74,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("getInTouchContent")]
 		public IHtmlString GetInTouchContent
 		{
-			get { return this.GetPropertyValue<IHtmlString>("getInTouchContent"); }
+			get { return GetGetInTouchContent(this); }
 		}
+
+		/// <summary>Static getter for Get In Touch Content</summary>
+		public static IHtmlString GetGetInTouchContent(IGetInTouchComposition that) { return that.GetPropertyValue<IHtmlString>("getInTouchContent"); }
 	}
 }
