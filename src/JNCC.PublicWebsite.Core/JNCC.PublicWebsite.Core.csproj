@@ -406,6 +406,7 @@
     <Compile Include="Models\File.generated.cs" />
     <Compile Include="Models\FilteringModel.cs" />
     <Compile Include="Models\Folder.generated.cs" />
+    <Compile Include="Models\GetInTouchComposition.generated.cs" />
     <Compile Include="Models\GlobalIncludesComposition.generated.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\HomePage.generated.cs" />
