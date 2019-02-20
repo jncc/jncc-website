@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Science Category Page</summary>
 	[PublishedContentModel("scienceCategoryPage")]
-	public partial class ScienceCategoryPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISeoComposition
+	public partial class ScienceCategoryPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISciencePageCategorisationComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "scienceCategoryPage";
@@ -124,6 +124,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public string PageSpecificHeadIncludes
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageSpecificIncludesComposition.GetPageSpecificHeadIncludes(this); }
+		}
+
+		///<summary>
+		/// Category Ordering Name: [Optional] Determines how the page is categorised on a Science Category Page.   If no value is authored then the headline is used followed by the page name.
+		///</summary>
+		[ImplementPropertyType("categoryOrderingName")]
+		public string CategoryOrderingName
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SciencePageCategorisationComposition.GetCategoryOrderingName(this); }
 		}
 
 		///<summary>
