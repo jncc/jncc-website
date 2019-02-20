@@ -20,6 +20,8 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             return new ScienceCategoryPageViewModel()
             {
+                Headline = scienceCategoryPage.GetHeadline(),
+                Preamble = scienceCategoryPage.Preamble,
                 CategorisedPages = GetCategorisedPages(scienceCategoryPage)
             };
         }
