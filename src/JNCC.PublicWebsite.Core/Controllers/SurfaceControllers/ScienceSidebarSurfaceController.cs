@@ -1,4 +1,4 @@
-using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
@@ -27,6 +27,19 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             }
 
             var viewModel = _sidebarService.GetSidebarViewModel(CurrentPage as ScienceDetailsPage);
+
+            return PartialView("~/Views/Partials/ScienceSidebar.cshtml", viewModel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult RenderScienceCategoryPageSidebar()
+        {
+            if (CurrentPage is ScienceCategoryPage == false)
+            {
+                return EmptyResult();
+            }
+
+            var viewModel = _sidebarService.GetSidebarViewModel(CurrentPage as ScienceCategoryPage);
 
             return PartialView("~/Views/Partials/ScienceSidebar.cshtml", viewModel);
         }
