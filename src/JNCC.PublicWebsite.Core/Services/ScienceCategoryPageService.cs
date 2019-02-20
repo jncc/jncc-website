@@ -30,24 +30,24 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> GetCategorisedPages(ScienceCategoryPage scienceCategoryPage)
         {
-            return _pagesProvider.GetByCategory(scienceCategoryPage)
-                                 .GroupBy(x => x.GetCategorisationCharacter())
-                                 .OrderBy(x => x.Key)
-                                 .ToDictionary(x => x.Key, x => x.Select(y => new NavigationItemViewModel()
-                                 {
-                                     Text = y.GetHeadline(),
-                                     Url = y.Url
-                                 }));
+            var pages = _pagesProvider.GetByCategory(scienceCategoryPage);
+
+            return CategorisePages(pages);
         }
+
         private IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> GetRelatedCategories(ScienceCategoryPage scienceCategoryPage)
         {
-            if (ExistenceUtility.IsNullOrEmpty(scienceCategoryPage.RelatedCategories))
+            return CategorisePages(scienceCategoryPage.RelatedCategories);
+        }
+
+        private IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> CategorisePages<T>(IEnumerable<T> pages) where T : ISciencePageCategorisationComposition, IPageHeroComposition
+        {
+            if (ExistenceUtility.IsNullOrEmpty(pages))
             {
                 return null;
             }
 
-            return scienceCategoryPage.RelatedCategories
-                        .GroupBy(x => x.GetCategorisationCharacter())
+            return pages.GroupBy(x => x.GetCategorisationCharacter())
                         .OrderBy(x => x.Key)
                         .ToDictionary(x => x.Key, x => x.Select(y => new NavigationItemViewModel()
                         {
@@ -55,5 +55,6 @@ namespace JNCC.PublicWebsite.Core.Services
                             Url = y.Url
                         }));
         }
+
     }
 }
