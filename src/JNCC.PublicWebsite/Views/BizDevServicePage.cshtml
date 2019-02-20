@@ -23,17 +23,5 @@
             @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
         </div>
     </div>
-    @if (Model.Content.GetInTouchContent != null && string.IsNullOrWhiteSpace(Model.Content.GetInTouchContent.ToHtmlString()) == false)
-    {
-        <div class="info-section">
-            <div class="container">
-                @Model.Content.GetInTouchContent
-                @if (Model.Content.GetInTouchButton != null)
-                {
-                    <a href="@Model.Content.GetInTouchButton.Url" class="button primary" target="@Model.Content.GetInTouchButton.Target">Get in touch</a>
-                }
-            </div>
-        </div>
-    }
     @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
 </main>
