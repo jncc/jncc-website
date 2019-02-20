@@ -55,6 +55,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Preamble: Introductory content explaining the purpose of the page.
+		///</summary>
+		[ImplementPropertyType("preamble")]
+		public IHtmlString Preamble
+		{
+			get { return this.GetPropertyValue<IHtmlString>("preamble"); }
+		}
+
+		///<summary>
+		/// Related Categories: Allows editors to related categories to the current category.  This is a one way process, if the linked category is also related to this one, it must be authored on the other category page too.
+		///</summary>
+		[ImplementPropertyType("relatedCategories")]
+		public IEnumerable<IPublishedContent> RelatedCategories
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("relatedCategories"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
