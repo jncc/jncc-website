@@ -9,20 +9,25 @@
         <div class="two-columns">
             <div id="content">
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
-                <div class="row small-collapse small-up-1 medium-up-2">
-                    @foreach (var kvp in Model.CategorisedPages)
-                    {
-                    <div class="column">
-                        <h3>@kvp.Key</h3>
-                        <ul>
-                            @foreach (var page in kvp.Value)
-                            {
-                                <li><a href="@page.Url">@page.Text</a></li>
-                            }
-                        </ul>
+                @Model.Preamble
+                @if (Model.HasCategorisedPages)
+                {
+                    <h2>Pages in @Model.Headline</h2>
+                    <div class="row small-collapse small-up-1 medium-up-2">
+                        @foreach (var kvp in Model.CategorisedPages)
+                        {
+                            <div class="column">
+                                <h3>@kvp.Key</h3>
+                                <ul>
+                                    @foreach (var page in kvp.Value)
+                                    {
+                                        <li><a href="@page.Url">@page.Text</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        }
                     </div>
-                    }
-                </div>
+                }
             </div>
             @(Html.Action<SidebarSurfaceController>("RenderScienceDetailsPageSidebar"))
         </div>
