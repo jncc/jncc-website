@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Science Category Page</summary>
 	[PublishedContentModel("scienceCategoryPage")]
-	public partial class ScienceCategoryPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISciencePageCategorisationComposition, ISeoComposition, ISidebarComposition
+	public partial class ScienceCategoryPage : PublishedContentModel, IGetInTouchComposition, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, IRelatedItemsComposition, ISciencePageCategorisationComposition, ISeoComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "scienceCategoryPage";
@@ -61,6 +61,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IHtmlString Preamble
 		{
 			get { return this.GetPropertyValue<IHtmlString>("preamble"); }
+		}
+
+		///<summary>
+		/// Get in Touch Button: The link & text for the Get in Touch button which accompanies the Get in Touch content below the main content of the page.
+		///</summary>
+		[ImplementPropertyType("getInTouchButton")]
+		public RJP.MultiUrlPicker.Models.Link GetInTouchButton
+		{
+			get { return JNCC.PublicWebsite.Core.Models.GetInTouchComposition.GetGetInTouchButton(this); }
+		}
+
+		///<summary>
+		/// Get In Touch Content: Optional content which appears below the main content of the page. This content is specifically for encouraging website users to navigate to the contact form.
+		///</summary>
+		[ImplementPropertyType("getInTouchContent")]
+		public IHtmlString GetInTouchContent
+		{
+			get { return JNCC.PublicWebsite.Core.Models.GetInTouchComposition.GetGetInTouchContent(this); }
 		}
 
 		///<summary>
@@ -115,6 +133,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public string PageSpecificHeadIncludes
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageSpecificIncludesComposition.GetPageSpecificHeadIncludes(this); }
+		}
+
+		///<summary>
+		/// Data Hub Query: A query which pulls related items from the data hub. This can be used with or instead of manually authored items.   If the maximum number of items have been manually authored then this query is ignored.   If no items are manually authored, no data hub query is authored or no items are found from the data hub query then no related items will be displayed.
+		///</summary>
+		[ImplementPropertyType("relatedItemsDataHubQuery")]
+		public string RelatedItemsDataHubQuery
+		{
+			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsDataHubQuery(this); }
+		}
+
+		///<summary>
+		/// Manually Authored Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored and/or optionally populated by an data hub query below.  If no manually authored are provided then the data hub query will be used instead.
+		///</summary>
+		[ImplementPropertyType("relatedItemsManuallyAuthoredItems")]
+		public IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems
+		{
+			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsManuallyAuthoredItems(this); }
 		}
 
 		///<summary>
