@@ -31,7 +31,7 @@ namespace JNCC.PublicWebsite.Core.Services
                                  .OrderBy(x => x.Key)
                                  .ToDictionary(x => x.Key, x => x.Select(y => new NavigationItemViewModel()
                                  {
-                                     Text = y.Name,
+                                     Text = y.GetHeadline(),
                                      Url = y.Url
                                  }));
         }
