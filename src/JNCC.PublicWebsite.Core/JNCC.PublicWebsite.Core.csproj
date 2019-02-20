@@ -362,6 +362,7 @@
     <Compile Include="Controllers\SurfaceControllers\CookieBannerSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CoreSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\FooterSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\GetInTouchSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\HeaderSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\LoginFormSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\LogoutSurfaceController.cs" />
