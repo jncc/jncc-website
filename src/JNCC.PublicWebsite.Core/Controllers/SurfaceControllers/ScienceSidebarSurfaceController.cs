@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
@@ -25,8 +25,6 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             {
                 return EmptyResult();
             }
-
-            var categoriesProvider = new UmbracoSciencePageCategoriesProvider(ApplicationContext.ApplicationCache.RequestCache);
 
             var viewModel = _sidebarService.GetSidebarViewModel(CurrentPage as ScienceDetailsPage);
 
