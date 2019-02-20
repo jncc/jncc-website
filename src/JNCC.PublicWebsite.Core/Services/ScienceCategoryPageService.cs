@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace JNCC.PublicWebsite.Core.Services
         private IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> GetCategorisedPages(ScienceCategoryPage scienceCategoryPage)
         {
             return _pagesProvider.GetByCategory(scienceCategoryPage)
-                                 .GroupBy(x => x.Name.First())
+                                 .GroupBy(x => x.GetCategorisationCharacter())
                                  .OrderBy(x => x.Key)
                                  .ToDictionary(x => x.Key, x => x.Select(y => new NavigationItemViewModel()
                                  {
