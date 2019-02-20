@@ -1,0 +1,13 @@
+﻿@model JNCC.PublicWebsite.Core.Models.IGetInTouchComposition
+@if (Model.GetInTouchContent != null && string.IsNullOrWhiteSpace(Model.GetInTouchContent.ToHtmlString()) == false)
+{
+    <div class="info-section">
+        <div class="container">
+            @Model.GetInTouchContent
+            @if (Model.GetInTouchButton != null)
+            {
+                <a href="@Model.GetInTouchButton.Url" class="button primary" target="@Model.GetInTouchButton.Target">@Model.GetInTouchButton.Name</a>
+            }
+        </div>
+    </div>
+}
