@@ -2,19 +2,27 @@ html {
     scroll-behavior: smooth;
 }
 
-table.scroll {
-    max-height: 30rem;
-    overflow-y: scroll;
+#content {
+    table {
+        display: block;
+        width: 100%;
+        max-height: 30rem;
+        overflow: auto;
 
-    caption {
-        text-align: left;
+        caption {
+            text-align: left;
+
+            .expand-table {
+                margin-right: 0.5rem;
+            }
+        }
     }
 }
 
 #table-modal .expand-table {
     display: none;
 
-    table.scroll {
+    table {
         max-height: inherit;
         overflow-y: inherit;
         

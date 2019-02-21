@@ -8905,25 +8905,31 @@ html {
 	scroll-behavior: smooth;
 }
 
-table.scroll {
+#content table {
+	display: block;
+	width: 100%;
 	max-height: 30rem;
-	overflow-y: scroll;
+	overflow: auto;
 }
 
-table.scroll caption {
+#content table caption {
 	text-align: left;
+}
+
+#content table caption .expand-table {
+	margin-right: .5rem;
 }
 
 #table-modal .expand-table {
 	display: none;
 }
 
-#table-modal .expand-table table.scroll {
+#table-modal .expand-table table {
 	max-height: inherit;
 	overflow-y: inherit;
 }
 
-#table-modal .expand-table table.scroll caption {
+#table-modal .expand-table table caption {
 	text-align: center;
 }
 
