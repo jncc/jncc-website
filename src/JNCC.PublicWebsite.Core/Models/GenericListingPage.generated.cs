@@ -46,15 +46,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Items Per Page: Determines how many pages should be shown per page by default.
-		///</summary>
-		[ImplementPropertyType("itemsPerPage")]
-		public decimal ItemsPerPage
-		{
-			get { return this.GetPropertyValue<decimal>("itemsPerPage"); }
-		}
-
-		///<summary>
 		/// Post-listing Content: Rich text content which will appear below the listing.
 		///</summary>
 		[ImplementPropertyType("postListingContent")]
