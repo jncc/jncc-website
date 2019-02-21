@@ -1,5 +1,43 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.GenericListingPage>
-@using ContentModels = JNCC.PublicWebsite.Core.Models;
+﻿@model GenericListingPageViewModel
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns filter-section">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Preamble
+                <div class="filtration-section">
+                    <div class="loader">Loading...</div>
+                    <div class="filtration-items-holder">
+                        <div class="row">
+                            <ul class="js-listing-item">
+                                @foreach (var item in Model.Items.Items)
+                                {
+                                    <li><a href="@item.Url">@item.Text</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filtration-buttons-holder">
+                        @if (Model.Items.IsPageNumberGreaterThanFirst())
+                        {
+                            <a href="@Url.PaginationQueryString(Model.Items.PreviousPageNumber(), Model.Filters)" class="button prev">Previous</a>
+                        }
+                        @if (Model.Items.IsPageNumberLessThanLast())
+                        {
+                            <a href="@Url.PaginationQueryString(Model.Items.NextPageNumber(), Model.Filters)" class="button next">Next</a>
+                        }
+                    </div>
+                </div>
+                @Model.PostListingContent
+            </div>
+            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
+        </div>
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>
