@@ -440,6 +440,7 @@
     <Compile Include="Providers\UmbracoBlogCategoriesProvider.cs" />
     <Compile Include="Providers\UmbracoBlogTagsProvider.cs" />
     <Compile Include="Services\FullUrlResolverService.cs" />
+    <Compile Include="Services\GenericListingPageService.cs" />
     <Compile Include="Services\IContentFullUrlResolver.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\IMediaFullUrlResolver.cs" />
