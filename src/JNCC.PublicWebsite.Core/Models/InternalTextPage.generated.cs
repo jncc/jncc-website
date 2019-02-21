@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Internal Text Page</summary>
 	[PublishedContentModel("internalTextPage")]
-	public partial class InternalTextPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, IRelatedItemsComposition, ISeoComposition, ISidebarComposition
+	public partial class InternalTextPage : PublishedContentModel, IGetInTouchComposition, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, IRelatedItemsComposition, ISeoComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "internalTextPage";
@@ -52,6 +52,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IHtmlString MainContent
 		{
 			get { return this.GetPropertyValue<IHtmlString>("mainContent"); }
+		}
+
+		///<summary>
+		/// Get in Touch Button: The link & text for the Get in Touch button which accompanies the Get in Touch content below the main content of the page.
+		///</summary>
+		[ImplementPropertyType("getInTouchButton")]
+		public RJP.MultiUrlPicker.Models.Link GetInTouchButton
+		{
+			get { return JNCC.PublicWebsite.Core.Models.GetInTouchComposition.GetGetInTouchButton(this); }
+		}
+
+		///<summary>
+		/// Get In Touch Content: Optional content which appears below the main content of the page. This content is specifically for encouraging website users to navigate to the contact form.
+		///</summary>
+		[ImplementPropertyType("getInTouchContent")]
+		public IHtmlString GetInTouchContent
+		{
+			get { return JNCC.PublicWebsite.Core.Models.GetInTouchComposition.GetGetInTouchContent(this); }
 		}
 
 		///<summary>
