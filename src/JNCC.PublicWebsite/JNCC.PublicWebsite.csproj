@@ -1380,6 +1380,7 @@
     <Content Include="Views\SearchResultsPage.cshtml" />
     <Content Include="Views\Partials\Blog\CommentsList.cshtml" />
     <Content Include="Views\Partials\GetInTouch.cshtml" />
+    <Content Include="Views\GenericListingPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
