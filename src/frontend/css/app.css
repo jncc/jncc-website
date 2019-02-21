@@ -8232,6 +8232,14 @@ a {
 	font-size: .875rem;
 }
 
+.filtration-section.generic-listing {
+	font-size: inherit;
+}
+
+.filtration-section.generic-listing .loader {
+	top: 2.5rem;
+}
+
 .filtration-section .card {
 	border-radius: .1875rem;
 }
@@ -13513,6 +13521,10 @@ img.float-right {
 
 	.filtration-section {
 		padding-top: 2.5rem;
+	}
+
+	.filtration-section.generic-listing {
+		padding-top: 0;
 	}
 
 	.filtration-section .card {
