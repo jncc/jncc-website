@@ -1,4 +1,4 @@
-﻿@model GenericListingPageViewModel
+@model GenericListingPageViewModel
 @{
     Layout = "Master.cshtml";
 }
@@ -10,16 +10,18 @@
             <div id="content">
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 @Model.Preamble
-                <div class="filtration-section">
-                    <div class="loader">Loading...</div>
+                <div class="filtration-section generic-listing">
+                    <div class="loader top">Loading...</div>
                     <div class="filtration-items-holder">
                         <div class="row">
-                            <ul class="js-listing-item">
-                                @foreach (var item in Model.Items.Items)
-                                {
-                                    <li><a href="@item.Url">@item.Text</a></li>
-                                }
-                            </ul>
+                            <div class="column js-listing-item">
+                                <ul>
+                                    @foreach (var item in Model.Items.Items)
+                                    {
+                                        <li><a href="@item.Url">@item.Text</a></li>
+                                    }
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="filtration-buttons-holder">
