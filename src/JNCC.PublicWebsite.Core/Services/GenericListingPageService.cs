@@ -26,7 +26,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         protected override int GetItemsPerPage(GenericListingPage parent)
         {
-            return 3;
+            return parent.ItemsPerPage;
         }
 
         protected override IOrderedEnumerable<IPublishedContent> GetOrderedChildren(GenericListingPage parent, FilteringModel filteringModel)
