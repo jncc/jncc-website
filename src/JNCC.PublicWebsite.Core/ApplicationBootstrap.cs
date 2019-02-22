@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web.Http;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
 using Umbraco.Core;
@@ -13,6 +14,12 @@ namespace JNCC.PublicWebsite.Core
 {
     internal sealed class ApplicationBootstrap : ApplicationEventHandler
     {
+        protected override void ApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
+        {
+            base.ApplicationStarting(umbracoApplication, applicationContext);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+        }
+
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
             CreateResetPasswordRequestDatabaseTable(applicationContext);
