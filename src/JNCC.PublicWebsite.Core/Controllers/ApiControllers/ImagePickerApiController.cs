@@ -2,6 +2,7 @@
 using System;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Umbraco.Core.Models;
 using Umbraco.Web.WebApi;
 
@@ -10,6 +11,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
     public sealed class ImagePickerApiController : UmbracoApiController
     {
         [HttpGet]
+        [EnableCors("*", "*", "get")]
         public IHttpActionResult Get(int id)
         {
             var leftPart = Request.RequestUri.GetLeftPart(UriPartial.Authority);
