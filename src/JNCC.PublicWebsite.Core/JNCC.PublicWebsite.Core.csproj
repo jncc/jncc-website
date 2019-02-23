@@ -356,6 +356,7 @@
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />
+    <Compile Include="Services\IndividualJobPageService.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BlogUmbracoCommentsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
