@@ -3165,6 +3165,7 @@ h1,
 h2,
 h3,
 h4,
+h2#toc,
 h5,
 h6,
 pre,
@@ -3208,6 +3209,7 @@ h2,
 h3,
 .h3,
 h4,
+h2#toc,
 .h4,
 h5,
 .h5,
@@ -3227,6 +3229,7 @@ h2 small,
 h3 small,
 .h3 small,
 h4 small,
+h2#toc small,
 .h4 small,
 h5 small,
 .h5 small,
@@ -3261,6 +3264,7 @@ h3,
 }
 
 h4,
+h2#toc,
 .h4 {
 	font-size: 1.125rem;
 	line-height: 1.4;
@@ -10893,6 +10897,7 @@ img.float-right {
 	}
 
 	h4,
+	h2#toc,
 	.h4 {
 		font-size: 1.5625rem;
 	}

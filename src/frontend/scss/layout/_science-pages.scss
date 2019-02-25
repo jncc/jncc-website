@@ -49,3 +49,7 @@ html {
         }
     }
 }
+
+h2#toc {
+    @extend h4;
+}
