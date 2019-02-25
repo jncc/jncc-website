@@ -1200,6 +1200,12 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Web.config" />
     <Content Include="config\uSyncCore.Config" />
     <Content Include="config\uSyncBackOffice.Config" />
+    <None Include="config\uSyncBackOffice.Debug.config">
+      <DependentUpon>uSyncBackOffice.config</DependentUpon>
+    </None>
+    <None Include="config\uSyncBackOffice.Release.config">
+      <DependentUpon>uSyncBackOffice.config</DependentUpon>
+    </None>
     <Content Include="App_Plugins\uSync\package.manifest" />
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
