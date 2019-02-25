@@ -39,12 +39,12 @@
 
                     <div class="row collapse">
                         <div class="column small-12 medium-6">
-                            <p><span data-tooltip tabindex="1" title="The date this page was first published">Published</span>: @Html.DisplayFor(model => model.PublishedDate). </p>
+                            <p><span data-tooltip title="The date this page was first published">Published</span>: @Html.DisplayFor(model => model.PublishedDate). </p>
                         </div>
                         @if (Model.ReviewedDate.HasValue)
                         {
                             <div class="column small-12 medium-6">
-                                <p><span data-tooltip tabindex="2" title="The date the content last had a meaningful editorial review">Reviewed</span>: @Html.DisplayFor(model => model.ReviewedDate.Value).</p>
+                                <p><span data-tooltip title="The date the content last had a meaningful editorial review">Reviewed</span>: @Html.DisplayFor(model => model.ReviewedDate.Value).</p>
                             </div>
                         }
                     </div>
