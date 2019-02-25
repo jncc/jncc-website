@@ -261,7 +261,7 @@ function initAjaxFiltering() {
 
 // Expanding Tables
 (function ($) {
-    var html = '<button class="expand-table"><i class="step fi-arrows-out size-18"></i></button>';
+    var html = '<button class="expand-table" role="button" aria-label="Expand Table"><i class="step fi-arrows-out size-18"></i></button>';
     var tableCache = {};
 
     var $modal = $('#table-modal');
