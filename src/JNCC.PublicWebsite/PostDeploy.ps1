@@ -1,13 +1,3 @@
-
-
-$octopusActionName = $OctopusParameters["Octopus.Action.Name"]
-$destination = $OctopusParameters["Octopus.Action[" + $octopusActionName + "].Output.Package.InstallationDirectoryPath"]
-$permissionsUsers = "IIS_IUSRS,NETWORK SERVICE,IUSR";
-
-Copy-Item -Path $UmbracoLicensesPath -Destination $destination -Recurse -Force -Verbose;
-
-ApplyPermissions "$destination\views" $permissionsUsers "Modify";
-
 function ApplyPermissions
 {
     param([string]$path, [string]$users, [string]$permission)
@@ -30,3 +20,11 @@ function ApplyPermissions
         }
     }
 }
+
+$octopusActionName = $OctopusParameters["Octopus.Action.Name"]
+$destination = $OctopusParameters["Octopus.Action[" + $octopusActionName + "].Output.Package.InstallationDirectoryPath"]
+$permissionsUsers = "IIS_IUSRS,NETWORK SERVICE,IUSR";
+
+Copy-Item -Path $UmbracoLicensesPath -Destination $destination -Recurse -Force -Verbose;
+
+ApplyPermissions "$destination\views" $permissionsUsers "Modify";
