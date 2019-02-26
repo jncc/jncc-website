@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\uSync.4.0.9\build\uSync.props" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.props')" />
   <Import Project="..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -1200,6 +1200,12 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Web.config" />
     <Content Include="config\uSyncCore.Config" />
     <Content Include="config\uSyncBackOffice.Config" />
+    <None Include="config\uSyncBackOffice.Debug.config">
+      <DependentUpon>uSyncBackOffice.config</DependentUpon>
+    </None>
+    <None Include="config\uSyncBackOffice.Release.config">
+      <DependentUpon>uSyncBackOffice.config</DependentUpon>
+    </None>
     <Content Include="App_Plugins\uSync\package.manifest" />
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
@@ -1379,6 +1385,7 @@
     <Content Include="Views\MemberAccountPage.cshtml" />
     <Content Include="Views\SearchResultsPage.cshtml" />
     <Content Include="Views\Partials\Blog\CommentsList.cshtml" />
+    <Content Include="Views\Partials\GetInTouch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1447,6 +1454,7 @@
   <Target Name="BeforeBuild">
     <TransformXml Source="Web.config" Transform="Web.$(Configuration).config" Destination="Web.config" />
     <TransformXml Source="Config\UmbracoSettings.config" Transform="Config\UmbracoSettings.$(Configuration).config" Destination="Config\UmbracoSettings.config" />
+    <TransformXml Source="Config\uSyncBackOffice.config" Transform="Config\uSyncBackOffice.$(Configuration).config" Destination="Config\uSyncBackOffice.config" />
     <TransformXml Source="App_Plugins\UmbracoForms\UmbracoForms.config" Transform="App_Plugins\UmbracoForms\UmbracoForms.$(Configuration).config" Destination="App_Plugins\UmbracoForms\UmbracoForms.config" />
   </Target>
   <Import Project="..\packages\uSync.4.0.9\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.targets')" />

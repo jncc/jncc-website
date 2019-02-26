@@ -46,7 +46,6 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             return new ImagePickerApiViewModel()
             {
-                EditorName = image.WriterName,
                 FileType = image.UmbracoExtension,
                 LastEdited = image.UpdateDate,
                 Url = _mediaUrlResolverService.ResolveMediaFullUrl(image.Url),

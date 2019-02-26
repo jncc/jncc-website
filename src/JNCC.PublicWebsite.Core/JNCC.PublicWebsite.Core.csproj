@@ -333,6 +333,7 @@
   <ItemGroup>
     <Compile Include="ApplicationBootstrap.cs" />
     <Compile Include="Attributes\Routing\RequireParameterAttribute.cs" />
+    <Compile Include="Attributes\WebApi\SimpleEnableCorsAttribute.cs" />
     <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
     <Compile Include="Configuration\ISearchConfiguration.cs" />
     <Compile Include="Configuration\ISearchIndexNestedField.cs" />
@@ -362,6 +363,7 @@
     <Compile Include="Controllers\SurfaceControllers\CookieBannerSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CoreSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\FooterSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\GetInTouchSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\HeaderSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\LoginFormSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\LogoutSurfaceController.cs" />
@@ -406,6 +408,7 @@
     <Compile Include="Models\File.generated.cs" />
     <Compile Include="Models\FilteringModel.cs" />
     <Compile Include="Models\Folder.generated.cs" />
+    <Compile Include="Models\GetInTouchComposition.generated.cs" />
     <Compile Include="Models\GlobalIncludesComposition.generated.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\HomePage.generated.cs" />

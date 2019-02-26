@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Services;
+﻿using JNCC.PublicWebsite.Core.Attributes.WebApi;
+using JNCC.PublicWebsite.Core.Services;
 using System;
 using System.Net;
 using System.Web.Http;
@@ -10,6 +11,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
     public sealed class ImagePickerApiController : UmbracoApiController
     {
         [HttpGet]
+        [SimpleEnableCors]
         public IHttpActionResult Get(int id)
         {
             var leftPart = Request.RequestUri.GetLeftPart(UriPartial.Authority);
