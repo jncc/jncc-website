@@ -40,6 +40,5 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
         }
-
     }
 }
