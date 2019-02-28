@@ -350,6 +350,7 @@
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\ApiControllers\ImagePickerApiController.cs" />
+    <Compile Include="Controllers\GenericListingPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
@@ -419,6 +420,8 @@
     <Compile Include="Models\File.generated.cs" />
     <Compile Include="Models\FilteringModel.cs" />
     <Compile Include="Models\Folder.generated.cs" />
+    <Compile Include="Models\GenericListingPage.cs" />
+    <Compile Include="Models\GenericListingPage.generated.cs" />
     <Compile Include="Models\GetInTouchComposition.generated.cs" />
     <Compile Include="Models\GlobalIncludesComposition.generated.cs" />
     <Compile Include="Models\HomePage.cs" />
@@ -461,12 +464,14 @@
     <Compile Include="Providers\UmbracoBlogTagsProvider.cs" />
     <Compile Include="Providers\UmbracoSciencePageCategoriesProvider.cs" />
     <Compile Include="Services\FullUrlResolverService.cs" />
+    <Compile Include="Services\GenericListingPageService.cs" />
     <Compile Include="Services\IContentFullUrlResolver.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\IMediaFullUrlResolver.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="ViewModels\BasicSidebarViewModel.cs" />
+    <Compile Include="ViewModels\GenericListingPageViewModel.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="Services\ScienceDetailsPageService.cs" />
     <Compile Include="ViewModels\ScienceDetailsPageViewModel.cs" />
