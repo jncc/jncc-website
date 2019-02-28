@@ -49,6 +49,11 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var viewModels = new List<ScienceDetailsSectionViewModel>();
 
+            if (ExistenceUtility.IsNullOrEmpty(mainContent))
+            {
+                return viewModels;
+            }
+
             foreach (var section in mainContent)
             {
                 ScienceDetailsSectionViewModel viewModel = null;
