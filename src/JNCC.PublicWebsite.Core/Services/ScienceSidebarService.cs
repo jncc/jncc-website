@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -62,13 +62,19 @@ namespace JNCC.PublicWebsite.Core.Services
 
             foreach (var category in categories)
             {
-                var viewModel = _navigationItemService.GetViewModel<MainNavigationItemViewModel>(category);
-                viewModel.Children = _navigationItemService.GetViewModels<MainNavigationItemViewModel>(category.FeaturedPages);
-
+                var viewModel = GetCategoryWithFeaturedPages(category);
                 viewModels.Add(viewModel);
             }
 
             return viewModels;
+        }
+
+        private MainNavigationItemViewModel GetCategoryWithFeaturedPages(ScienceCategoryPage category)
+        {
+            var viewModel = _navigationItemService.GetViewModel<MainNavigationItemViewModel>(category);
+            viewModel.Children = _navigationItemService.GetViewModels<MainNavigationItemViewModel>(category.FeaturedPages);
+
+            return viewModel;
         }
     }
 }
