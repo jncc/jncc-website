@@ -1,8 +1,9 @@
-using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
+using Umbraco.Core;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -46,9 +47,9 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IEnumerable<MainNavigationItemViewModel> GetCategoriesWithFeaturedPages(ScienceCategoryPage model)
         {
-            var categories = model.RelatedCategories;
+            var category = GetCategoryWithFeaturedPages(model);
 
-            return GetCategoriesWithFeaturedPages(categories);
+            return category.AsEnumerableOfOne();
         }
 
         private IEnumerable<MainNavigationItemViewModel> GetCategoriesWithFeaturedPages(IEnumerable<ScienceCategoryPage> categories)
