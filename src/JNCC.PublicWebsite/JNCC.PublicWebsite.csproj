@@ -1200,6 +1200,12 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Web.config" />
     <Content Include="config\uSyncCore.Config" />
     <Content Include="config\uSyncBackOffice.Config" />
+    <None Include="config\courier.Release.config">
+      <DependentUpon>courier.config</DependentUpon>
+    </None>
+    <None Include="config\courier.Debug.config">
+      <DependentUpon>courier.config</DependentUpon>
+    </None>
     <None Include="config\uSyncBackOffice.Debug.config">
       <DependentUpon>uSyncBackOffice.config</DependentUpon>
     </None>
