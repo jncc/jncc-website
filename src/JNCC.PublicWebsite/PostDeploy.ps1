@@ -21,16 +21,25 @@ function ApplyPermissions
     }
 }
 
+Write-Host "== Octopus PostDeploy script started. =="
+
 $octopusActionName = $OctopusParameters["Octopus.Action.Name"]
 $destination = $OctopusParameters["Octopus.Action[" + $octopusActionName + "].Output.Package.InstallationDirectoryPath"]
 $permissionsUsers = "IIS_IUSRS,NETWORK SERVICE,IUSR";
 
+Write-Host "Copying Umbraco License files.`n From: \"$UmbracoLicensesPath\"`n To: \"$destination\"."
 Copy-Item -Path $UmbracoLicensesPath -Destination $destination -Recurse -Force -Verbose;
 
+Write-Host "Applying permissions."
 ApplyPermissions "$destination\views" $permissionsUsers "Modify";
 
 $courierRepoVisible = $OctopusParameters["COURIER_REPO_VISIBLE"];
 
 if ($courierRepoVisible) {
+    Write-Host "Creating Courier App_Data folder."
     New-Item "$destination\App_Data\Courier" -ItemType "directory";
+} else {
+    Write-Host "Skipping Courier App_Data folder creation. Courier is not visible on this web application."
 }
+
+Write-Host "== Octopus PostDeploy script completed. =="
