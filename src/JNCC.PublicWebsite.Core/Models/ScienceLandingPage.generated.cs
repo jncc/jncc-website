@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Science Landing Page</summary>
 	[PublishedContentModel("scienceLandingPage")]
-	public partial class ScienceLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageSpecificIncludesComposition, ISeoComposition
+	public partial class ScienceLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "scienceLandingPage";
@@ -61,6 +61,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// Headline: A headline that appears above the main content of the page.  If no value is provided the page name will be used instead.  If a hero image is also provided then this headline appears over the hero image. Otherwise it appears just above the main content.
+		///</summary>
+		[ImplementPropertyType("headline")]
+		public string Headline
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeadline(this); }
+		}
+
+		///<summary>
+		/// Hero Image: The hero image which is displayed above the main content of the page.
+		///</summary>
+		[ImplementPropertyType("heroImage")]
+		public IPublishedContent HeroImage
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
 		}
 
 		///<summary>
