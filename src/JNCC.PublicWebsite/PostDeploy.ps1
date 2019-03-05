@@ -28,3 +28,9 @@ $permissionsUsers = "IIS_IUSRS,NETWORK SERVICE,IUSR";
 Copy-Item -Path $UmbracoLicensesPath -Destination $destination -Recurse -Force -Verbose;
 
 ApplyPermissions "$destination\views" $permissionsUsers "Modify";
+
+$courierRepoVisible = $OctopusParameters["COURIER_REPO_VISIBLE"];
+
+if ($courierRepoVisible) {
+    New-Item "$destination\App_Data\Courier" -ItemType "directory";
+}
