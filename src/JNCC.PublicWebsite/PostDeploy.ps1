@@ -35,7 +35,7 @@ ApplyPermissions "$destination\views" $permissionsUsers "Modify";
 
 $courierRepoVisible = $OctopusParameters["COURIER_REPO_VISIBLE"];
 
-if ($courierRepoVisible) {
+if ($courierRepoVisible -like $true) {
     Write-Host "Creating Courier App_Data folder."
     New-Item "$destination\App_Data\Courier" -ItemType "directory";
 } else {
