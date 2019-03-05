@@ -1,0 +1,55 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#content {
+    table {
+        display: block;
+        width: 100%;
+        max-height: 30rem;
+        overflow: auto;
+
+        caption {
+            text-align: left;
+
+            .expand-table {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+
+#table-modal .expand-table {
+    display: none;
+
+    table {
+        max-height: inherit;
+        overflow-y: inherit;
+        
+        caption {
+            text-align: center;
+        }
+    }
+}
+
+#meta {
+    padding-bottom: 1rem;
+
+    a.label:hover {
+        cursor: pointer;
+        color: white;
+        text-decoration: underline;
+    }
+
+    p {
+        margin-bottom: 0;
+        
+        &.tags {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+h2#toc {
+    @extend h4;
+}

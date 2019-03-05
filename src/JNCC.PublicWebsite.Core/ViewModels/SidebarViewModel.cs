@@ -3,32 +3,14 @@ using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public sealed class SidebarViewModel
+    public sealed class SidebarViewModel : BasicSidebarViewModel
     {
-        public NavigationItemViewModel PrimaryCallToActionButton { get; set; }
-        public bool HasPrimaryCallToActionButton
-        {
-            get
-            {
-                return PrimaryCallToActionButton != null;
-            }
-        }
-
         public IEnumerable<NavigationItemViewModel> InThisSectionLinks { get; set; }
         public bool HasInThisSectionLinks
         {
             get
             {
                 return ExistenceUtility.IsNullOrEmpty(InThisSectionLinks) == false;
-            }
-        }
-
-        public IEnumerable<NavigationItemViewModel> SeeAlsoLinks { get; set; }
-        public bool HasSeeAlsoLinks
-        {
-            get
-            {
-                return ExistenceUtility.IsNullOrEmpty(SeeAlsoLinks) == false;
             }
         }
 

@@ -558,8 +558,20 @@ a {
 	position: relative;
 	font-size: 0.875rem;
 
+	&.generic-listing {
+		font-size: inherit;
+
+		.loader {
+			top: 2.5rem;
+		}
+	}
+
 	@include breakpoint(xlarge) {
 		padding-top: rem-calc(40px);
+		
+		&.generic-listing {
+			padding-top: 0;
+		}
 	}
 
 	.card {

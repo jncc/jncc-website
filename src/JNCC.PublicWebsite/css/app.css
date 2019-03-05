@@ -3165,6 +3165,7 @@ h1,
 h2,
 h3,
 h4,
+h2#toc,
 h5,
 h6,
 pre,
@@ -3208,6 +3209,7 @@ h2,
 h3,
 .h3,
 h4,
+h2#toc,
 .h4,
 h5,
 .h5,
@@ -3227,6 +3229,7 @@ h2 small,
 h3 small,
 .h3 small,
 h4 small,
+h2#toc small,
 .h4 small,
 h5 small,
 .h5 small,
@@ -3261,6 +3264,7 @@ h3,
 }
 
 h4,
+h2#toc,
 .h4 {
 	font-size: 1.125rem;
 	line-height: 1.4;
@@ -3324,12 +3328,12 @@ li {
 }
 
 ul {
-	margin-left: 1.25rem;
+	margin-left: 3rem;
 	list-style-type: disc;
 }
 
 ol {
-	margin-left: 1.25rem;
+	margin-left: 3rem;
 }
 
 ul ul,
@@ -8232,6 +8236,14 @@ a {
 	font-size: .875rem;
 }
 
+.filtration-section.generic-listing {
+	font-size: inherit;
+}
+
+.filtration-section.generic-listing .loader {
+	top: 2.5rem;
+}
+
 .filtration-section .card {
 	border-radius: .1875rem;
 }
@@ -8899,6 +8911,56 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .filtration-buttons-holder {
 	padding: .75rem 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+#content table {
+	display: block;
+	width: 100%;
+	max-height: 30rem;
+	overflow: auto;
+}
+
+#content table caption {
+	text-align: left;
+}
+
+#content table caption .expand-table {
+	margin-right: .5rem;
+}
+
+#table-modal .expand-table {
+	display: none;
+}
+
+#table-modal .expand-table table {
+	max-height: inherit;
+	overflow-y: inherit;
+}
+
+#table-modal .expand-table table caption {
+	text-align: center;
+}
+
+#meta {
+	padding-bottom: 1rem;
+}
+
+#meta a.label:hover {
+	cursor: pointer;
+	color: white;
+	text-decoration: underline;
+}
+
+#meta p {
+	margin-bottom: 0;
+}
+
+#meta p.tags {
+	margin-bottom: .5rem;
 }
 
 img.float-left {
@@ -10843,6 +10905,7 @@ img.float-right {
 	}
 
 	h4,
+	h2#toc,
 	.h4 {
 		font-size: 1.5625rem;
 	}
@@ -13513,6 +13576,10 @@ img.float-right {
 
 	.filtration-section {
 		padding-top: 2.5rem;
+	}
+
+	.filtration-section.generic-listing {
+		padding-top: 0;
 	}
 
 	.filtration-section .card {
