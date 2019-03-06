@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// A to Z Page Link: The link to the A to Z directory of all science pages.  This link appears below the latest update items. If no link is authored then the link will not be displayed.
+		///</summary>
+		[ImplementPropertyType("aToZPageLink")]
+		public RJP.MultiUrlPicker.Models.Link AToZpageLink
+		{
+			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("aToZPageLink"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
