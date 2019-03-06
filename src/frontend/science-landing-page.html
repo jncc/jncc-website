@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en-US">
 
 <head>
@@ -15,6 +15,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100i,400" rel="stylesheet">
     <style>
 
+        .articles-section.resources.latest-updates {
+            padding: 3rem 0;
+        }
+
+            .articles-section.resources.latest-updates h3 {
+                font-size: 1.5rem;
+                border-bottom:2px solid #2d7a29
+            }
+
         .articles-section.resources .card {
             margin-bottom: 2rem !important;
             height: calc(100% - 2rem);
@@ -28,12 +37,12 @@
         .row1 p {
             color: rgb(102, 98, 98) !important;
         }
-
-
-        .articles-section.resources .card-section h3 {
-            font-size: 1.5rem;
+        
+        .articles-section.resources.science-group {
+            padding: 3rem 0;
+            background-image: none;
         }
-
+        
         .widget-section h2 {
             margin-bottom: 2rem;
         }
@@ -122,33 +131,35 @@
                     </div>
                 </div>
             </div>
-            <section class="articles-section resources" style="padding: 3rem 0;">
+            <section class="articles-section resources latest-updates">
                 <div class="container">
                     <h2 style="margin-bottom:2rem">Latest updates</h2>
                     <div class="row row1">
                         <div class="columns small-12 medium-4">
                             <div class="card">
                                 <a href="#">
-                                    <div class="img-holder" style="background-image: url(images/arun-valley-thumb.jpg);"></div>
                                     <div class="card-section">
-                                        <h3>Ramsar convention</h3>
-                                        <p>
-                                            Ramsar sites are wetlands of international importance that have been designated ...
-                                        </p>
-
+                                        <a href="#">
+                                            <h3>Ramsar convention</h3>
+                                            <p>
+                                                Ramsar sites are wetlands of international importance that have been designated ...
+                                            </p>
+                                        </a>
+                                        <a href="#" class="button expanded">Read RAMSAR Convention</a>
                                     </div>
-                                    <p></p>
+
                                 </a>
                             </div>
                         </div>
                         <div class="columns small-12 medium-4">
                             <div class="card">
                                 <a href="#">
-                                    <div class="img-holder" style="background-image: url(images/unesco-thumb.png);"></div>
                                     <div class="card-section">
-                                        <h3>UNESCO Convention</h3>
-                                        <p>The UNESCO World Heritage Convention was adopted in Paris, France in Nov...</p>
-
+                                        <a href="#">
+                                            <h3>UNESCO Convention</h3>
+                                            <p>The UNESCO World Heritage Convention was adopted in Paris, France in Nov...</p>
+                                        </a>
+                                        <a href="#" class="button expanded">Read UNESCO Convention</a>
                                     </div>
                                 </a>
                             </div>
@@ -156,11 +167,12 @@
                         <div class="columns small-12 medium-4">
                             <div class="card">
                                 <a href="#">
-                                    <div class="img-holder" style="background-image: url(images/img-9.jpg);"></div>
                                     <div class="card-section">
-                                        <h3>Marine species</h3>
-                                        <p>Marine species occurring in UK waters are protected under various international, European...</p>
-
+                                        <a href="#">
+                                            <h3>Marine species</h3>
+                                            <p>Marine species occurring in UK waters are protected under various international...</p>
+                                        </a>
+                                        <a href="#" class="button expanded">Read Marine species</a>
                                     </div>
                                 </a>
                             </div>
@@ -169,23 +181,24 @@
 
                     <div class="row">
                         <div class="columns small-12 medium-6 medium-push-3">
-                            <a href="#" class="button expanded">View an A to Z List of Science Pages</a>
+                            <a href="#" class="button expanded">A to Z List of Reference Resources</a>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="articles-section resources" style="padding: 3rem 0; background-image:none">
+            <section class="articles-section resources science-group">
                 <div class="container">
                     <h2 style="margin-bottom:2rem">Key marine references</h2>
                     <div class="row row1">
                         <div class="columns small-12 medium-4">
                             <div class="card">
-                                <a href="#">
-                                </a><div class="card-section">
+                                <a href="#"><div class="img-holder" style="background-image: url(images/img-9.jpg);"></div></a>
+                                <div class="card-section">
+
                                     <a href="#">
-                                        <h3 style="border-bottom:2px solid #2d7a29">Offshore MPAs</h3>
+                                        <h3>Offshore MPAs</h3>
                                         <p>Detailed site based accounts of the offshore Marine Protected areas where JNCC has operational responsibility</p>
-                                    </a><a href="#" class="button expanded">Read More</a>
+                                    </a>
                                 </div>
                                 <p></p>
 
@@ -194,23 +207,25 @@
                         <div class="columns small-12 medium-4">
                             <div class="card">
                                 <a href="#">
+                                    <div class="img-holder" style="background-image: url(images/img-11.jpg);"></div>
+
                                 </a><div class="card-section">
                                     <a href="#">
-                                        <h3 style="border-bottom:2px solid #2d7a29">Marine habitat classification</h3>
+                                        <h3>Marine habitat classification</h3>
                                         <p>Detailed site based accounts of the offshore Marine Protected areas where JNCC has operational responsibility</p>
-                                    </a><a href="#" class="button expanded">Read More</a>
+                                    </a>
                                 </div>
 
                             </div>
                         </div>
                         <div class="columns small-12 medium-4">
                             <div class="card">
-                                <a href="#">
-                                </a><div class="card-section">
+                                <a href="#"><div class="img-holder" style="background-image: url(images/img-9.jpg);"></div></a>
+                                <div class="card-section">
                                     <a href="#">
-                                        <h3 style="border-bottom:2px solid #2d7a29">Marine habitat maps</h3>
+                                        <h3>Marine habitat maps</h3>
                                         <p>Access to maintained broad scale benthic marine habitat maps which underpin regional strategies and actions</p>
-                                    </a><a href="#" class="button expanded">Read More</a>
+                                    </a>
                                 </div>
 
                             </div>
@@ -219,12 +234,12 @@
                     <div class="row row1">
                         <div class="columns small-12 medium-4">
                             <div class="card">
-                                <a href="#">
-                                </a><div class="card-section">
+                                <a href="#"><div class="img-holder" style="background-image: url(images/img-9.jpg);"></div></a>
+                                <div class="card-section">
                                     <a href="#">
-                                        <h3 style="border-bottom:2px solid #2d7a29">Marine Monitoring methods</h3>
+                                        <h3>Marine Monitoring methods</h3>
                                         <p>Advice and guidance on broad approach and detailed methods to monitor marine biodiversity</p>
-                                    </a><a href="#" class="button expanded">Read More</a>
+                                    </a>
                                 </div>
                                 <p></p>
 
@@ -233,24 +248,33 @@
                         <div class="columns small-12 medium-4">
                             <div class="card">
                                 <a href="#">
+                                    <div class="img-holder" style="background-image: url(images/img-11.jpg);"></div>
+
                                 </a><div class="card-section">
                                     <a href="#">
-                                        <h3 style="border-bottom:2px solid #2d7a29">Marine pressures</h3>
+                                        <h3>Marine pressures</h3>
                                         <p>Approach to assessing pressures on biodiversity in the marine environment and their potential impacts</p>
-                                    </a><a href="#" class="button expanded">Read More</a>
+                                    </a>
                                 </div>
 
                             </div>
                         </div>
+
                     </div>
                 </div>
+
             </section>
+            <div class="row">
+                <div class="columns small-12 medium-6 medium-push-3">
+                    <a href="#" class="button expanded">All Reference Resources in Marine Category</a>
+                </div>
+            </div>
             <section class="widget-section" style="padding: 2rem 0;">
                 <img src="images/logo-decor.png" alt="decoration" class="decor">
                 <div class="container">
                     <div class="row">
                         <div class="columns small-12 large-8">
-                            <h2>Latest Science News</h2>
+                            <h2>Latest  News</h2>
                             <div class="news-holder">
                                 <article class="card">
                                     <div class="img-holder img-for-print">
