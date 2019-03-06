@@ -362,6 +362,7 @@
     <Compile Include="Extensions\PageHeroExtensions.cs" />
     <Compile Include="Extensions\SciencePagesExtensions.cs" />
     <Compile Include="Models\ScienceCategoryPage.cs" />
+    <Compile Include="Models\ScienceLandingPage.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
     <Compile Include="Providers\UmbracoScienceDetailsPageProvider.cs" />
     <Compile Include="Services\CalloutCardsService.cs" />
