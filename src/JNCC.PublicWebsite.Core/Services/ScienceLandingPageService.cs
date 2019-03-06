@@ -42,7 +42,8 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var viewModel = new ScienceLatestUpdatesSectionViewModel()
             {
-                Pages = GetLatestUpdatedPages(model)
+                Pages = GetLatestUpdatedPages(model),
+                AToZPageLink = _navigationItemService.GetViewModel(model.AToZpageLink)
             };
 
             return viewModel;
