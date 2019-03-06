@@ -1398,6 +1398,7 @@
     <Content Include="Views\Partials\ScienceSidebar.cshtml" />
     <Content Include="Views\Partials\GetInTouch.cshtml" />
     <Content Include="Views\GenericListingPage.cshtml" />
+    <Content Include="Views\Partials\ScienceLanding\LatestUpdates.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
