@@ -34,7 +34,8 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 CalloutCards = _calloutCardsService.GetCalloutCards(model.CalloutCards),
                 LatestNewsSection = _latestNewsSectionService.GetViewModel(homePage),
-                LatestUpdates = GetLatestUpdates(model)
+                LatestUpdates = GetLatestUpdates(model),
+                ResourcesCollections = GetResourcesCollections(model)
             };
         }
 
@@ -75,6 +76,30 @@ namespace JNCC.PublicWebsite.Core.Services
                 {
                     viewModel.Content = _htmlStringUtilities.Truncate(page.Preamble.ToHtmlString(), LatestUpdateItemContentLength, true, false);
                 }
+
+                viewModels.Add(viewModel);
+            }
+
+            return viewModels;
+        }
+
+        private IEnumerable<ResourcesCollectionViewModel> GetResourcesCollections(ScienceLandingPage model)
+        {
+            var viewModels = new List<ResourcesCollectionViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(model.ResourcesCollections))
+            {
+                return viewModels;
+            }
+
+            foreach (var collection in model.ResourcesCollections)
+            {
+                var viewModel = new ResourcesCollectionViewModel()
+                {
+                    Title = collection.Title,
+                    Resources = _calloutCardsService.GetCalloutCards(collection.Resources),
+                    ReadMoreLink = _navigationItemService.GetViewModel(collection.ReadMoreLink)
+                };
 
                 viewModels.Add(viewModel);
             }
