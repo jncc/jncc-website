@@ -486,6 +486,8 @@
     <Compile Include="ViewModels\ScienceDetailsRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceLandingPageViewModel.cs" />
+    <Compile Include="ViewModels\ScienceLatestUpdatedPageViewModel.cs" />
+    <Compile Include="ViewModels\ScienceLatestUpdatesSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceSidebarViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
