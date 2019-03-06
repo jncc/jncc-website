@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -16,9 +17,12 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public ScienceLandingPageViewModel GetViewModel(ScienceLandingPage model)
         {
+            var homePage = model.Site<HomePage>();
+
             return new ScienceLandingPageViewModel()
             {
-                CalloutCards = _calloutCardsService.GetCalloutCards(model.CalloutCards)
+                CalloutCards = _calloutCardsService.GetCalloutCards(model.CalloutCards),
+                LatestNewsSection = _latestNewsSectionService.GetViewModel(homePage)
             };
         }
     }
