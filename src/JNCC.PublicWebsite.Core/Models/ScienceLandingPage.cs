@@ -14,5 +14,14 @@ namespace JNCC.PublicWebsite.Core.Models
         {
             get { return this.GetPropertyValueOfTypeOrDefault<CalloutCardSchema>("calloutCards"); }
         }
+
+        ///<summary>
+        /// Collections: Key resource collections to be rendered on the page the below Latest Updates section.
+        ///</summary>
+        [ImplementPropertyType("resourcesCollections")]
+        public IEnumerable<ResourcesCollectionSchema> ResourcesCollections
+        {
+            get { return this.GetPropertyValueOfTypeOrDefault<ResourcesCollectionSchema>("resourcesCollections"); }
+        }
     }
 }
