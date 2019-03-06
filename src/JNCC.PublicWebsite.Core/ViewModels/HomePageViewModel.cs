@@ -2,7 +2,7 @@
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public sealed class HomePageViewModel
+    public sealed class HomePageViewModel : IHasCalloutCardsViewModel
     {
         public CarouselViewModel Carousel { get; set; }
         public IEnumerable<CalloutCardViewModel> CalloutCards { get; set; }
