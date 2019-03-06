@@ -363,6 +363,7 @@
     <Compile Include="Models\ScienceCategoryPage.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
     <Compile Include="Providers\UmbracoScienceDetailsPageProvider.cs" />
+    <Compile Include="Services\CalloutCardsService.cs" />
     <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="Services\ScienceSidebarService.cs" />
     <Compile Include="ViewModels\ScienceCategoryPageViewModel.cs" />
