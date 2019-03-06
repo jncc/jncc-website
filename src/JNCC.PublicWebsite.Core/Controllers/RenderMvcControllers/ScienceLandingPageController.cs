@@ -15,7 +15,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
         {
             _navigationItemService = new NavigationItemService();
             _calloutCardsService = new CalloutCardsService(_navigationItemService);
-            _scienceLandingPageService = new ScienceLandingPageService();
+            _scienceLandingPageService = new ScienceLandingPageService(_calloutCardsService);
         }
 
         public ActionResult Index(ScienceLandingPage model)
