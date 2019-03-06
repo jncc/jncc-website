@@ -11,18 +11,15 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class HomePageService
     {
-        private const string XPathForLatestNewsItems = "//ArticlePage[@isDoc]";
-        private const int NumberOfLatestNewsItems = 2;
-
         private readonly NavigationItemService _navigationItemService;
         private readonly CalloutCardsService _calloutCardsService;
-        private readonly UmbracoHelper _umbracoHelper;
+        private readonly LatestNewsSectionService _latestNewsSectionService;
 
-        public HomePageService(CalloutCardsService calloutCardsService, NavigationItemService navigationItemService, UmbracoHelper umbracoHelper)
+        public HomePageService(CalloutCardsService calloutCardsService, NavigationItemService navigationItemService, LatestNewsSectionService latestNewsSectionService)
         {
             _calloutCardsService = calloutCardsService;
             _navigationItemService = navigationItemService;
-            _umbracoHelper = umbracoHelper;
+            _latestNewsSectionService = latestNewsSectionService;
         }
 
         public HomePageViewModel GetViewModel(HomePage content)
@@ -33,66 +30,10 @@ namespace JNCC.PublicWebsite.Core.Services
                 CalloutCards = _calloutCardsService.GetCalloutCards(content.CalloutCards),
                 ResourcesTitle = content.ResourcesTitle,
                 ResourcesItems = GetResourcesItems(content),
-                LatestNews = GetLatestNewsItems(content),
-                SocialFeed = GetSocialFeed(content)
+                LatestNewsSection = _latestNewsSectionService.GetViewModel(content)
             };
 
             return viewModel;
-        }
-
-        private SocialFeedViewModel GetSocialFeed(HomePage content)
-        {
-            var viewModel = new SocialFeedViewModel();
-
-            if (content.ShowSocialFeed == false)
-            {
-                return viewModel;
-            }
-
-            viewModel.TwitterFeedUrl = content.TwitterFeedUrl;
-            viewModel.NumberOfTweets = content.NumberOfTweets;
-
-            return viewModel;
-        }
-
-        private IEnumerable<LatestNewsItemViewModel> GetLatestNewsItems(HomePage content)
-        {
-            var viewModels = new List<LatestNewsItemViewModel>();
-
-            if (content.ShowLatestNews == false)
-            {
-                return viewModels;
-            }
-
-            var latestNewsItems = _umbracoHelper.TypedContentAtXPath(XPathForLatestNewsItems)
-                                                .OfType<ArticlePage>()
-                                                .OrderByDescending(x => x.PublishDate)
-                                                .Take(NumberOfLatestNewsItems);
-
-            if (ExistenceUtility.IsNullOrEmpty(latestNewsItems))
-            {
-                return viewModels;
-            }
-
-            foreach (var newsItem in latestNewsItems)
-            {
-                var viewModel = new LatestNewsItemViewModel
-                {
-                    Title = string.IsNullOrWhiteSpace(newsItem.Headline) ? newsItem.Name : newsItem.Headline,
-                    PublishDate = newsItem.PublishDate,
-                    Description = newsItem.LandingPageContent,
-                    Url = newsItem.Url
-                };
-
-                if (newsItem.HeroImage != null)
-                {
-                    viewModel.ImageUrl = newsItem.HeroImage.GetCropUrl(ImageCropAliases.ListingThumbnail);
-                }
-
-                viewModels.Add(viewModel);
-            }
-
-            return viewModels;
         }
 
         private IEnumerable<ResourceItemViewModel> GetResourcesItems(HomePage content)

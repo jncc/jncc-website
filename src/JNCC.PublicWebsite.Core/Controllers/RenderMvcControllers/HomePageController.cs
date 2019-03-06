@@ -18,7 +18,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 
         public ActionResult Index(HomePage model)
         {
-            var homePageService = new HomePageService(_calloutCardsService, _navigationItemService, Umbraco);
+            var latestNewsSectionService = new LatestNewsSectionService(Umbraco);
+            var homePageService = new HomePageService(_calloutCardsService, _navigationItemService, latestNewsSectionService);
             var viewModel = homePageService.GetViewModel(model);
 
             return CurrentTemplate(viewModel);
