@@ -14,7 +14,10 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public ScienceLandingPageViewModel GetViewModel(ScienceLandingPage model)
         {
-            return new ScienceLandingPageViewModel();
+            return new ScienceLandingPageViewModel()
+            {
+                CalloutCards = _calloutCardsService.GetCalloutCards(model.CalloutCards)
+            };
         }
     }
 }
