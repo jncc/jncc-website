@@ -370,6 +370,7 @@
     <Compile Include="Services\ScienceLandingPageService.cs" />
     <Compile Include="Services\ScienceSidebarService.cs" />
     <Compile Include="ViewModels\IHasCalloutCardsViewModel.cs" />
+    <Compile Include="ViewModels\LatestNewsSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceCategoryPageViewModel.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceDetailsPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />
