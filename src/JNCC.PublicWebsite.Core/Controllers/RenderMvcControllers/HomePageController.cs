@@ -8,15 +8,17 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
     public sealed class HomePageController : RenderMvcController
     {
         private readonly NavigationItemService _navigationItemService;
+        private readonly CalloutCardsService _calloutCardsService;
 
         public HomePageController()
         {
             _navigationItemService = new NavigationItemService();
+            _calloutCardsService = new CalloutCardsService(_navigationItemService);
         }
 
         public ActionResult Index(HomePage model)
         {
-            var homePageService = new HomePageService(_navigationItemService, Umbraco);
+            var homePageService = new HomePageService(_calloutCardsService, _navigationItemService, Umbraco);
             var viewModel = homePageService.GetViewModel(model);
 
             return CurrentTemplate(viewModel);

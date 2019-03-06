@@ -15,10 +15,12 @@ namespace JNCC.PublicWebsite.Core.Services
         private const int NumberOfLatestNewsItems = 2;
 
         private readonly NavigationItemService _navigationItemService;
+        private readonly CalloutCardsService _calloutCardsService;
         private readonly UmbracoHelper _umbracoHelper;
 
-        public HomePageService(NavigationItemService navigationItemService, UmbracoHelper umbracoHelper)
+        public HomePageService(CalloutCardsService calloutCardsService, NavigationItemService navigationItemService, UmbracoHelper umbracoHelper)
         {
+            _calloutCardsService = calloutCardsService;
             _navigationItemService = navigationItemService;
             _umbracoHelper = umbracoHelper;
         }
@@ -28,7 +30,7 @@ namespace JNCC.PublicWebsite.Core.Services
             var viewModel = new HomePageViewModel()
             {
                 Carousel = GetCarouselViewModel(content),
-                CalloutCards = GetCalloutCards(content),
+                CalloutCards = _calloutCardsService.GetCalloutCards(content.CalloutCards),
                 ResourcesTitle = content.ResourcesTitle,
                 ResourcesItems = GetResourcesItems(content),
                 LatestNews = GetLatestNewsItems(content),
@@ -114,39 +116,6 @@ namespace JNCC.PublicWebsite.Core.Services
                 {
                     viewModel.ImageUrl = item.Image.Url;
                 }
-
-                viewModels.Add(viewModel);
-            }
-
-            return viewModels;
-        }
-
-        private IEnumerable<CalloutCardViewModel> GetCalloutCards(HomePage content)
-        {
-            var viewModels = new List<CalloutCardViewModel>();
-
-            if (ExistenceUtility.IsNullOrEmpty(content.CalloutCards))
-            {
-                return viewModels;
-            }
-
-            foreach (var card in content.CalloutCards)
-            {
-                var viewModel = new CalloutCardViewModel()
-                {
-                    Title = card.Title,
-                    Content = card.Content,
-                    ReadMoreButton = _navigationItemService.GetViewModel(card.ReadMoreButton)
-                };
-
-                if (card.Image != null)
-                {
-                    viewModel.Image = new ImageViewModel()
-                    {
-                        Url = card.Image.Image.Url,
-                        AlternativeText = card.Image.ImageAlternativeText
-                    };
-                };
 
                 viewModels.Add(viewModel);
             }
