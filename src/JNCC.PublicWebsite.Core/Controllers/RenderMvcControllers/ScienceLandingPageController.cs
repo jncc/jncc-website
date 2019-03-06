@@ -18,7 +18,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 
         public ActionResult Index(ScienceLandingPage model)
         {
-            var scienceLandingPageService = new ScienceLandingPageService(_calloutCardsService);
+            var latestNewsSectionService = new LatestNewsSectionService(Umbraco);
+            var scienceLandingPageService = new ScienceLandingPageService(_calloutCardsService, latestNewsSectionService);
             var viewModel = scienceLandingPageService.GetViewModel(model);
 
             return CurrentTemplate(viewModel);
