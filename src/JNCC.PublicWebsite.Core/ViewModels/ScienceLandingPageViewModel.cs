@@ -7,5 +7,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public IEnumerable<CalloutCardViewModel> CalloutCards { get; set; }
         public LatestNewsSectionViewModel LatestNewsSection { get; set; }
         public ScienceLatestUpdatesSectionViewModel LatestUpdates { get; set; }
+        public IEnumerable<ResourcesCollectionViewModel> ResourcesCollections { get; set; }
     }
 }
