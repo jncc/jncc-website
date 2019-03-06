@@ -1,14 +1,14 @@
-﻿@model HomePageViewModel
+﻿@model IHasLatestNewsSectionViewModel
 <section class="widget-section">
     <img src="images/logo-decor.png" alt="decoration" class="decor">
     <div class="container">
         <div class="row">
-            @if (Model.LatestNews.Any())
+            @if (Model.LatestNewsSection.LatestNews.Any())
             {
                 <div class="columns small-12 large-8">
                     <h2>Latest News</h2>
                     <div class="news-holder">
-                        @foreach (var newsItem in Model.LatestNews)
+                        @foreach (var newsItem in Model.LatestNewsSection.LatestNews)
                         {
                             <article class="card">
                                 <div class="img-holder img-for-print">
@@ -29,14 +29,14 @@
                     </div>
                 </div>
             }
-            @if (Model.SocialFeed != null && Model.SocialFeed.HasTwitterFeedUrl)
+            @if (Model.LatestNewsSection.SocialFeed != null && Model.LatestNewsSection.SocialFeed.HasTwitterFeedUrl)
             {
                 <div class="columns small-12 large-4 twitter-print-hide">
                     <h2>Twitter</h2>
                     <div class="twitter-widget">
                         <article class="card full-border">
                             <div class="card-section">
-                                <a class="twitter-timeline" href="@Model.SocialFeed.TwitterFeedUrl?ref_src=twsrc%5Etfw" data-chrome="noheader nofooter noborders" data-tweet-limit="@Model.SocialFeed.NumberOfTweets">Tweets by JNCC_UK</a>
+                                <a class="twitter-timeline" href="@Model.LatestNewsSection.SocialFeed.TwitterFeedUrl?ref_src=twsrc%5Etfw" data-chrome="noheader nofooter noborders" data-tweet-limit="@Model.LatestNewsSection.SocialFeed.NumberOfTweets">Tweets by JNCC_UK</a>
                                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                             </div>
                         </article>
