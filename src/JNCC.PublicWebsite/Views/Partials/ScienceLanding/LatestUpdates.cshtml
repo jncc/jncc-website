@@ -1,25 +1,33 @@
-@model ScienceLandingPageViewModel
+﻿@model ScienceLandingPageViewModel
 @if (Model.LatestUpdates.Pages.Any())
 {
-<section class="articles-section resources latest-updates">
-    <div class="container">
-        <h2 style="margin-bottom:2rem">Latest updates</h2>
-        <div class="row row1">
-            @foreach (var item in Model.LatestUpdates.Pages)
-            {
-                <div class="columns small-12 medium-4">
-                    <div class="card">
-                        <div class="card-section">
-                            <a href="@item.ReadMoreLink.Url" target="@item.ReadMoreLink.Target">
-                                <h3>@item.Title</h3>
-                                @item.Content
-                            </a>
-                            <a href="@item.ReadMoreLink.Url" class="button expanded" target="@item.ReadMoreLink.Target">Read @item.ReadMoreLink.Text</a>
+    <section class="articles-section resources latest-updates">
+        <div class="container">
+            <h2 style="margin-bottom:2rem">Latest updates</h2>
+            <div class="row row1">
+                @foreach (var item in Model.LatestUpdates.Pages)
+                {
+                    <div class="columns small-12 medium-4">
+                        <div class="card">
+                            <div class="card-section">
+                                <a href="@item.ReadMoreLink.Url" target="@item.ReadMoreLink.Target">
+                                    <h3>@item.Title</h3>
+                                    @item.Content
+                                </a>
+                                <a href="@item.ReadMoreLink.Url" class="button expanded" target="@item.ReadMoreLink.Target">Read @item.ReadMoreLink.Text</a>
+                            </div>
                         </div>
+                    </div>
+                }
+            </div>
+            @if (Model.LatestUpdates.AToZPageLink != null)
+            {
+                <div class="row">
+                    <div class="columns small-12 medium-6 medium-push-3">
+                        <a href="@Model.LatestUpdates.AToZPageLink.Url" target="@Model.LatestUpdates.AToZPageLink.Url" class="button expanded">@Model.LatestUpdates.AToZPageLink.Text</a>
                     </div>
                 </div>
             }
         </div>
-    </div>
-</section>
+    </section>
 }
