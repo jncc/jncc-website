@@ -1,4 +1,6 @@
-﻿@model ScienceLandingPageViewModel
+@model ScienceLandingPageViewModel
+@if (Model.LatestUpdates.Pages.Any())
+{
 <section class="articles-section resources latest-updates">
     <div class="container">
         <h2 style="margin-bottom:2rem">Latest updates</h2>
@@ -20,3 +22,4 @@
         </div>
     </div>
 </section>
+}
