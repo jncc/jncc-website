@@ -21,6 +21,15 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public LatestNewsSectionViewModel GetViewModel(HomePage model)
         {
+            if (model == null)
+            {
+                return new LatestNewsSectionViewModel
+                {
+                    LatestNews = Enumerable.Empty<LatestNewsItemViewModel>(),
+                    SocialFeed = new SocialFeedViewModel()
+                };
+            }
+
             return new LatestNewsSectionViewModel
             {
                 LatestNews = GetLatestNewsItems(model),
