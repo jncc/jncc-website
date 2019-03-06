@@ -1313,7 +1313,7 @@
     <Content Include="Views\Partials\CookieBannerTemplate.cshtml" />
     <Content Include="Views\Partials\PageAttributes.cshtml" />
     <Content Include="Views\Partials\Home\Carousel.cshtml" />
-    <Content Include="Views\Partials\Home\CalloutCards.cshtml" />
+    <Content Include="Views\Partials\CalloutCards.cshtml" />
     <Content Include="Views\Partials\Home\Resources.cshtml" />
     <Content Include="Views\Partials\Home\LatestNewsAndSocialFeed.cshtml" />
     <Content Include="PostDeploy.ps1" />
