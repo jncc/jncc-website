@@ -55,15 +55,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Resources: The key resources for this collection.
-		///</summary>
-		[ImplementPropertyType("resources")]
-		public IEnumerable<IPublishedContent> Resources
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("resources"); }
-		}
-
-		///<summary>
 		/// Title: The title of this resources collection.
 		///</summary>
 		[ImplementPropertyType("title")]
