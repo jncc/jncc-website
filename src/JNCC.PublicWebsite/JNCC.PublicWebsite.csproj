@@ -1315,7 +1315,7 @@
     <Content Include="Views\Partials\Home\Carousel.cshtml" />
     <Content Include="Views\Partials\CalloutCards.cshtml" />
     <Content Include="Views\Partials\Home\Resources.cshtml" />
-    <Content Include="Views\Partials\Home\LatestNewsAndSocialFeed.cshtml" />
+    <Content Include="Views\Partials\LatestNewsAndSocialFeed.cshtml" />
     <Content Include="PostDeploy.ps1" />
     <Content Include="Views\Partials\NoPageHeroHeadline.cshtml" />
     <Content Include="Umbraco\Plugins\courier\masterpages\CourierDialog.Master" />
