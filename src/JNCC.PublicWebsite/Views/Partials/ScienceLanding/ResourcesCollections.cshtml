@@ -1,0 +1,52 @@
+﻿@model ScienceLandingPageViewModel
+@if (Model.ResourcesCollections.Any())
+{
+    foreach (var collection in Model.ResourcesCollections)
+    {
+        <section class="articles-section resources science-group">
+            <div class="container">
+                <h2 style="margin-bottom:2rem">@collection.Title</h2>
+                @if (collection.Resources.Any())
+                {
+                    <div class="row row1">
+                        @foreach (var resource in collection.Resources)
+                        {
+                            <div class="columns small-12 medium-4">
+                                <div class="card">
+                                    @if (resource.ReadMoreButton != null)
+                                    {
+                                        <a href="@resource.ReadMoreButton.Url">@RenderResource(resource)</a>
+                                    }
+                                    else
+                                    {
+                                        @RenderResource(resource)
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </section>
+        if (collection.ReadMoreLink != null)
+        {
+            <div class="row">
+                <div class="columns small-12 medium-6 medium-push-3">
+                    <a href="@collection.ReadMoreLink.Url" class="button expanded" target="@collection.ReadMoreLink.Target">@collection.ReadMoreLink.Text</a>
+                </div>
+            </div>
+        }
+    }
+}
+
+@helper RenderResource(CalloutCardViewModel resource)
+{
+    if (resource.Image != null)
+    {
+        <div class="img-holder" style="background-image: url(@resource.Image.Url);"></div>
+    }
+    <div class="card-section">
+        <h3>@resource.Title</h3>
+        @resource.Content
+    </div>
+}

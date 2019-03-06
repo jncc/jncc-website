@@ -1399,6 +1399,7 @@
     <Content Include="Views\Partials\GetInTouch.cshtml" />
     <Content Include="Views\GenericListingPage.cshtml" />
     <Content Include="Views\Partials\ScienceLanding\LatestUpdates.cshtml" />
+    <Content Include="Views\Partials\ScienceLanding\ResourcesCollections.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
