@@ -6,10 +6,12 @@ namespace JNCC.PublicWebsite.Core.Services
     internal sealed class ScienceLandingPageService
     {
         private readonly CalloutCardsService _calloutCardsService;
+        private readonly LatestNewsSectionService _latestNewsSectionService;
 
-        public ScienceLandingPageService(CalloutCardsService calloutCardsService)
+        public ScienceLandingPageService(CalloutCardsService calloutCardsService, LatestNewsSectionService latestNewsSectionService)
         {
             _calloutCardsService = calloutCardsService;
+            _latestNewsSectionService = latestNewsSectionService;
         }
 
         public ScienceLandingPageViewModel GetViewModel(ScienceLandingPage model)
