@@ -9,18 +9,17 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
     {
         private readonly NavigationItemService _navigationItemService;
         private readonly CalloutCardsService _calloutCardsService;
-        private readonly ScienceLandingPageService _scienceLandingPageService;
 
         public ScienceLandingPageController()
         {
             _navigationItemService = new NavigationItemService();
             _calloutCardsService = new CalloutCardsService(_navigationItemService);
-            _scienceLandingPageService = new ScienceLandingPageService(_calloutCardsService);
         }
 
         public ActionResult Index(ScienceLandingPage model)
         {
-            var viewModel = _scienceLandingPageService.GetViewModel(model);
+            var scienceLandingPageService = new ScienceLandingPageService(_calloutCardsService);
+            var viewModel = scienceLandingPageService.GetViewModel(model);
 
             return CurrentTemplate(viewModel);
         }
