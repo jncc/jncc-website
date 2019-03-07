@@ -46,6 +46,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Main Content
+		///</summary>
+		[ImplementPropertyType("mainContent")]
+		public IEnumerable<IPublishedContent> MainContent
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("mainContent"); }
+		}
+
+		///<summary>
+		/// Preamble: Introductory content for careers section.
+		///</summary>
+		[ImplementPropertyType("preamble")]
+		public IHtmlString Preamble
+		{
+			get { return this.GetPropertyValue<IHtmlString>("preamble"); }
+		}
+
+		///<summary>
 		/// Get in Touch Button: The link & text for the Get in Touch button which accompanies the Get in Touch content below the main content of the page.
 		///</summary>
 		[ImplementPropertyType("getInTouchButton")]
