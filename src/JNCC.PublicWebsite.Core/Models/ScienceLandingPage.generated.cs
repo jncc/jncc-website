@@ -55,6 +55,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Featured Quote: A featured quote which highlights the scientific research work done by JNCC.  This is optional and if no quote is provided it will not be displayed on the page.
+		///</summary>
+		[ImplementPropertyType("featuredQuote")]
+		public string FeaturedQuote
+		{
+			get { return this.GetPropertyValue<string>("featuredQuote"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
