@@ -1402,6 +1402,7 @@
     <Content Include="Views\Partials\ScienceLanding\ResourcesCollections.cshtml" />
     <Content Include="Views\Partials\ScienceLanding\FeaturedQuote.cshtml" />
     <Content Include="Views\IndividualJobPage.cshtml" />
+    <Content Include="Views\CareersLandingPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
