@@ -1,0 +1,47 @@
+﻿@model IndividualJobPageViewModel
+@{
+    Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @if (Model.KeyData.Any())
+                {
+                    <table>
+                        @foreach (var item in Model.KeyData)
+                        {
+                            <tr>
+                                <td>@item.Key:</td>
+                                <td>@item.Value</td>
+                            </tr>
+                        }
+                    </table>
+                }
+                @if (Model.TabbedContent.Any())
+                {
+                    <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-tabs" id="profile-tabs">
+                        @foreach (IAccordionHeaderViewModel header in Model.TabbedContent)
+                        {
+                            <li class="@Html.IfElse(Model.TabbedContent.IsFirst(header), "tabs-title is-active", "tabs-title")"><a href="#@header.HtmlId">@header.Title</a></li>
+                        }
+                    </ul>
+                    <div class="tabs-content" data-tabs-content="profile-tabs">
+                        @foreach (var tab in Model.TabbedContent)
+                        {
+                            <div class="@Html.IfElse(Model.TabbedContent.IsFirst(tab), "tabs-panel is-active", "tabs-panel")" id="@tab.HtmlId">
+                                @tab.Content
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+        @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>
