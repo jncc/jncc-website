@@ -33,13 +33,7 @@ Copy-Item -Path $UmbracoLicensesPath -Destination $destination -Recurse -Force -
 Write-Host "Applying permissions."
 ApplyPermissions "$destination\views" $permissionsUsers "Modify";
 
-$courierRepoVisible = $OctopusParameters["COURIER_REPO_VISIBLE"];
-
-if ($courierRepoVisible -like $true) {
-    Write-Host "Creating Courier App_Data folder."
-    New-Item "$destination\App_Data\Courier" -ItemType "directory";
-} else {
-    Write-Host "Skipping Courier App_Data folder creation. Courier is not visible on this web application."
-}
+Write-Host "Creating Courier App_Data folder."
+New-Item "$destination\App_Data\Courier" -ItemType "directory";
 
 Write-Host "== Octopus PostDeploy script completed. =="
