@@ -1,8 +1,8 @@
-@model ScienceLandingPageViewModel
+﻿@model ScienceLandingPageViewModel
 @{
     Layout = "Master.cshtml";
 }
-<main id="main">
+<main id="main" class="science-landing">
     @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
     <div class="container">
         @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
