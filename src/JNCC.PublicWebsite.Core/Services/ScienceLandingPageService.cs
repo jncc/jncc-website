@@ -32,6 +32,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
             return new ScienceLandingPageViewModel()
             {
+                FeaturedQuote = model.FeaturedQuote,
                 CalloutCards = _calloutCardsService.GetCalloutCards(model.CalloutCards),
                 LatestNewsSection = _latestNewsSectionService.GetViewModel(homePage),
                 LatestUpdates = GetLatestUpdates(model),
