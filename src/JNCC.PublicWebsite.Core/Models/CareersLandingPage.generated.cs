@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Careers Landing Page</summary>
 	[PublishedContentModel("careersLandingPage")]
-	public partial class CareersLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISeoComposition, ISidebarComposition
+	public partial class CareersLandingPage : PublishedContentModel, IGetInTouchComposition, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISeoComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "careersLandingPage";
@@ -43,6 +43,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CareersLandingPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Get in Touch Button: The link & text for the Get in Touch button which accompanies the Get in Touch content below the main content of the page.
+		///</summary>
+		[ImplementPropertyType("getInTouchButton")]
+		public RJP.MultiUrlPicker.Models.Link GetInTouchButton
+		{
+			get { return JNCC.PublicWebsite.Core.Models.GetInTouchComposition.GetGetInTouchButton(this); }
+		}
+
+		///<summary>
+		/// Get In Touch Content: Optional content which appears below the main content of the page. This content is specifically for encouraging website users to navigate to the contact form.
+		///</summary>
+		[ImplementPropertyType("getInTouchContent")]
+		public IHtmlString GetInTouchContent
+		{
+			get { return JNCC.PublicWebsite.Core.Models.GetInTouchComposition.GetGetInTouchContent(this); }
 		}
 
 		///<summary>
