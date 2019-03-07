@@ -1,4 +1,4 @@
-﻿@model ScienceLandingPageViewModel
+@model ScienceLandingPageViewModel
 @{
     Layout = "Master.cshtml";
 }
@@ -8,6 +8,7 @@
         @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
         @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
     </div>
+    @Html.Partial("~/Views/Partials/ScienceLanding/FeaturedQuote.cshtml")
     @Html.Partial("~/Views/Partials/CalloutCards.cshtml")
     @Html.Partial("~/Views/Partials/ScienceLanding/LatestUpdates.cshtml")
     @Html.Partial("~/Views/Partials/ScienceLanding/ResourcesCollections.cshtml")

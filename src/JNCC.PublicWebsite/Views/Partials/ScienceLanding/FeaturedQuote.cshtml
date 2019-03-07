@@ -1,0 +1,13 @@
+﻿@model ScienceLandingPageViewModel
+@if (string.IsNullOrWhiteSpace(Model.FeaturedQuote) == false)
+{
+    <div style="background-image: linear-gradient(to right, #c9e6cc, #e0f0e7); padding:2rem 0;" class="featured-quote">
+        <div class="row">
+            <div class="columns small-8 small-push-2 text-center">
+                <p style="font-weight:100; font-style:italic">
+                    @Model.FeaturedQuote
+                </p>
+            </div>
+        </div>
+    </div>
+}
