@@ -377,6 +377,7 @@
     <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="Services\ScienceLandingPageService.cs" />
     <Compile Include="Services\ScienceSidebarService.cs" />
+    <Compile Include="Services\UmbracoContextFullUrlResolverService.cs" />
     <Compile Include="ViewModels\CareersLandingPageViewModel.cs" />
     <Compile Include="ViewModels\CareersListItemViewModel.cs" />
     <Compile Include="ViewModels\CareersSidebarViewModel.cs" />
@@ -485,7 +486,6 @@
     <Compile Include="Providers\UmbracoBlogCategoriesProvider.cs" />
     <Compile Include="Providers\UmbracoBlogTagsProvider.cs" />
     <Compile Include="Providers\UmbracoSciencePageCategoriesProvider.cs" />
-    <Compile Include="Services\FullUrlResolverService.cs" />
     <Compile Include="Services\GenericListingPageService.cs" />
     <Compile Include="Services\IContentFullUrlResolver.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />

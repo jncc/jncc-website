@@ -4,12 +4,12 @@ using Umbraco.Web.Routing;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class FullUrlResolverService : IMediaFullUrlResolver, IContentFullUrlResolver
+    internal sealed class UmbracoContextFullUrlResolverService : IMediaFullUrlResolver, IContentFullUrlResolver
     {
         private readonly string _leftPart;
         private readonly UrlProvider _urlProvider;
 
-        public FullUrlResolverService(UmbracoContext umbracoContext)
+        public UmbracoContextFullUrlResolverService(UmbracoContext umbracoContext)
         {
             _urlProvider = umbracoContext.UrlProvider;
             _leftPart = umbracoContext.HttpContext.Request.Url.GetLeftPart(UriPartial.Authority);
