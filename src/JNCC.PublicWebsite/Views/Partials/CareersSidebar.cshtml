@@ -1,0 +1,38 @@
+﻿@model CareersSidebarViewModel
+@if (Model.HasPrimaryCallToActionButton == false
+    && Model.HasLatestJobs == false
+    && Model.HasSeeAlsoLinks == false)
+{
+    return;
+}
+<aside id="sidebar">
+    @if (Model.HasPrimaryCallToActionButton)
+    {
+        <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
+    }
+    @if (Model.HasLatestJobs)
+    {
+        <nav class="holder" aria-label="aside-navigation">
+            <h2>Latest Vacancies</h2>
+            <ul class="aside-nav no-bullet">
+                @foreach (var job in Model.LatestJobs)
+                {
+                    <li><a href="@job.Url">@job.JobTitle</a> <i class="fi-info top" aria-hidden="true" data-tooltip title="Location: @job.Location &#013;&#010; Grade: @job.Grade"></i></li>
+                }
+            </ul>
+            <p><a href="#vacancies">See all</a></p>
+        </nav>
+    }
+    @if (Model.HasSeeAlsoLinks)
+    {
+        <nav class="holder" aria-label="aside-navigation">
+            <h2>See also</h2>
+            <ul class="aside-nav no-bullet">
+                @foreach (var link in Model.SeeAlsoLinks)
+                {
+                    <li><a href="@link.Url" target="@link.Target">@link.Text</a></li>
+                }
+            </ul>
+        </nav>
+    }
+</aside>
