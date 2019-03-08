@@ -370,6 +370,7 @@
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
     <Compile Include="Providers\UmbracoScienceDetailsPageProvider.cs" />
     <Compile Include="Services\CalloutCardsService.cs" />
+    <Compile Include="Services\CareersLandingPageService.cs" />
     <Compile Include="Services\LatestNewsSectionService.cs" />
     <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="Services\ScienceLandingPageService.cs" />
