@@ -377,6 +377,7 @@
     <Compile Include="Services\ScienceLandingPageService.cs" />
     <Compile Include="Services\ScienceSidebarService.cs" />
     <Compile Include="ViewModels\CareersLandingPageViewModel.cs" />
+    <Compile Include="ViewModels\CareersLandingSidebarViewModel.cs" />
     <Compile Include="ViewModels\CareersListItemViewModel.cs" />
     <Compile Include="ViewModels\IHasCalloutCardsViewModel.cs" />
     <Compile Include="ViewModels\IHasLatestNewsSectionViewModel.cs" />
