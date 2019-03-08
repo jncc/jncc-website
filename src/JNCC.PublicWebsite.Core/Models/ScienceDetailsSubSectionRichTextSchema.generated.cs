@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	/// <summary>Science Details Section Rich Text Schema</summary>
-	[PublishedContentModel("scienceDetailsSectionRichTextSchema")]
-	public partial class ScienceDetailsSectionRichTextSchema : ScienceDetailsSectionBaseSchema
+	/// <summary>Science Details Sub Section Rich Text Schema</summary>
+	[PublishedContentModel("scienceDetailsSubSectionRichTextSchema")]
+	public partial class ScienceDetailsSubSectionRichTextSchema : ScienceDetailsSectionBaseSchema
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "scienceDetailsSectionRichTextSchema";
+		public new const string ModelTypeAlias = "scienceDetailsSubSectionRichTextSchema";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public ScienceDetailsSectionRichTextSchema(IPublishedContent content)
+		public ScienceDetailsSubSectionRichTextSchema(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +40,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ScienceDetailsSectionRichTextSchema, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ScienceDetailsSubSectionRichTextSchema, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -52,15 +52,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IHtmlString Content
 		{
 			get { return this.GetPropertyValue<IHtmlString>("content"); }
-		}
-
-		///<summary>
-		/// Sub Sections
-		///</summary>
-		[ImplementPropertyType("subSections")]
-		public IEnumerable<IPublishedContent> SubSections
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("subSections"); }
 		}
 	}
 }
