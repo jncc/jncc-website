@@ -38,10 +38,10 @@ namespace JNCC.PublicWebsite.Core.Services
             };
         }
 
-        private IEnumerable<NavigationItemViewModel> GetLatestJobs(CareersLandingPage model)
+        private IEnumerable<JobItemViewModel> GetLatestJobs(CareersLandingPage model)
         {
             var latestJobs = model.Children<IndividualJobPage>().OrderBy(x => x.UpdateDate).Take(NumberOfLatestJobs);
-            var viewModels = new List<NavigationItemViewModel>();
+            var viewModels = new List<JobItemViewModel>();
 
             if (latestJobs.Any() == false)
             {
@@ -50,10 +50,12 @@ namespace JNCC.PublicWebsite.Core.Services
 
             foreach (var job in latestJobs)
             {
-                var viewModel = new NavigationItemViewModel()
+                var viewModel = new JobItemViewModel()
                 {
-                    Text = job.GetHeadline(),
-                    Url = job.Url
+                    JobTitle = job.GetHeadline(),
+                    Url = job.Url,
+                    Grade = job.Grade,
+                    Location = job.Location
                 };
 
                 viewModels.Add(viewModel);
