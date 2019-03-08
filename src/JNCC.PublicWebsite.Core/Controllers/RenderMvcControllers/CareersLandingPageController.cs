@@ -7,7 +7,14 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 {
     public sealed class CareersLandingPageController : RenderMvcController
     {
-        private readonly CareersLandingPageService _careersLandingPageService = new CareersLandingPageService();
+        private readonly NavigationItemService _navigationItemService;
+        private readonly CareersLandingPageService _careersLandingPageService;
+
+        public CareersLandingPageController()
+        {
+            _navigationItemService = new NavigationItemService();
+            _careersLandingPageService = new CareersLandingPageService(_navigationItemService);
+        }
 
         public ActionResult Index(CareersLandingPage model)
         {

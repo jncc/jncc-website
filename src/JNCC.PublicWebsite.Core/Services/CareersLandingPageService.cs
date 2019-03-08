@@ -1,6 +1,7 @@
 ﻿using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Web;
@@ -9,6 +10,14 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class CareersLandingPageService
     {
+        private const int NumberOfLatestJobs = 5;
+        private readonly NavigationItemService _navigationItemService;
+
+        public CareersLandingPageService(NavigationItemService navigationItemService)
+        {
+            _navigationItemService = navigationItemService;
+        }
+
         public CareersLandingPageViewModel GetViewModel(CareersLandingPage model)
         {
             return new CareersLandingPageViewModel()
@@ -17,6 +26,40 @@ namespace JNCC.PublicWebsite.Core.Services
                 MainContent = model.MainContent,
                 Careers = GetCareers(model)
             };
+        }
+
+        public CareersSidebarViewModel GetSidebarViewModel(CareersLandingPage model)
+        {
+            return new CareersSidebarViewModel
+            {
+                PrimaryCallToActionButton = _navigationItemService.GetViewModel(model.SidebarPrimaryCallToActionButton),
+                LatestJobs = GetLatestJobs(model),
+                SeeAlsoLinks = _navigationItemService.GetViewModels(model.SidebarSeeAlsoLinks)
+            };
+        }
+
+        private IEnumerable<NavigationItemViewModel> GetLatestJobs(CareersLandingPage model)
+        {
+            var latestJobs = model.Children<IndividualJobPage>().OrderBy(x => x.UpdateDate).Take(NumberOfLatestJobs);
+            var viewModels = new List<NavigationItemViewModel>();
+
+            if (latestJobs.Any() == false)
+            {
+                return viewModels;
+            }
+
+            foreach (var job in latestJobs)
+            {
+                var viewModel = new NavigationItemViewModel()
+                {
+                    Text = job.GetHeadline(),
+                    Url = job.Url
+                };
+
+                viewModels.Add(viewModel);
+            }
+
+            return viewModels;
         }
 
         private IEnumerable<CareersListItemViewModel> GetCareers(CareersLandingPage model)
