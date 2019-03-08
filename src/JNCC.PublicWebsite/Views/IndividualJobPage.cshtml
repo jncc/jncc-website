@@ -39,8 +39,8 @@
                     </div>
                 }
             </div>
+            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
         </div>
-        @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
     </div>
     @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
     @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
