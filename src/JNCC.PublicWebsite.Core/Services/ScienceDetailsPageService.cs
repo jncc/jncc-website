@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core;
+using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -45,6 +46,16 @@ namespace JNCC.PublicWebsite.Core.Services
             return _navigationItemService.GetViewModels(categories);
         }
 
+        private DateTime? GetReviewedDate(DateTime reviewDate)
+        {
+            if (reviewDate == default(DateTime))
+            {
+                return null;
+            }
+
+            return reviewDate;
+        }
+
         private IEnumerable<ScienceDetailsSectionViewModel> GetSectionViewModels(IEnumerable<ScienceDetailsSectionBaseSchema> mainContent)
         {
             var viewModels = new List<ScienceDetailsSectionViewModel>();
@@ -58,18 +69,15 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 ScienceDetailsSectionViewModel viewModel = null;
 
-                if (section is ScienceDetailsSectionRichTextSchema)
+                switch (section)
                 {
-                    viewModel = new ScienceDetailsRichTextSectionViewModel()
-                    {
-                        Content = (section as ScienceDetailsSectionRichTextSchema).Content
-                    };
+                    case ScienceDetailsSectionRichTextSchema richText:
+                        viewModel = CreateRichTextSection(richText);
+                        break;
                 }
 
                 if (viewModel != null)
                 {
-                    viewModel.Headline = section.Headline;
-                    viewModel.HtmlId = section.Headline.ToUrlSegment();
                     viewModels.Add(viewModel);
                 }
             }
@@ -77,14 +85,75 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
-        private DateTime? GetReviewedDate(DateTime reviewDate)
+        private IEnumerable<ScienceDetailsSubSectionViewModel> GetSubSectionViewModels(IEnumerable<IPublishedContent> subSections, string parentHtmlId)
         {
-            if (reviewDate == default(DateTime))
+            var viewModels = new List<ScienceDetailsSubSectionViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(subSections))
             {
-                return null;
+                return viewModels;
             }
 
-            return reviewDate;
+            foreach (var section in subSections)
+            {
+                ScienceDetailsSubSectionViewModel viewModel = null;
+
+                switch (section)
+                {
+                    case ScienceDetailsSubSectionRichTextSchema richText:
+                        viewModel = CreateRichTextSubSection(richText, parentHtmlId);
+                        break;
+                }
+
+                if (viewModel != null)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
+        }
+
+        private TViewModel CreateSection<TViewModel>(ScienceDetailsSectionBaseSchema schema, string parentSectionHtmlId = null) where TViewModel : ScienceDetailsSectionViewModelBase, new()
+        {
+            var section = new TViewModel()
+            {
+                Headline = schema.Headline
+            };
+
+            var sectionHtmlId = schema.Headline.ToUrlSegment();
+
+            if (string.IsNullOrWhiteSpace(parentSectionHtmlId))
+            {
+                section.HtmlId = sectionHtmlId;
+            }
+            else
+            {
+                section.HtmlId = string.Join("-", parentSectionHtmlId, sectionHtmlId);
+            }
+
+
+            return section;
+        }
+
+        private ScienceDetailsRichTextSectionViewModel CreateRichTextSection(ScienceDetailsSectionRichTextSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsRichTextSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceDetailsSubSectionViewModel CreateRichTextSubSection(ScienceDetailsSubSectionRichTextSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Content = schema.Content;
+
+            return model;
         }
     }
 }
