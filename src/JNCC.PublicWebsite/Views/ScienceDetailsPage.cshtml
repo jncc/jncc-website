@@ -1,4 +1,4 @@
-﻿@model ScienceDetailsPageViewModel
+@model ScienceDetailsPageViewModel
 @{
     Layout = "Master.cshtml";
 }
@@ -18,7 +18,20 @@
                             <ol>
                                 @foreach (var section in Model.Sections)
                                 {
-                                    <li><a href="#@(section.HtmlId)">@(section.Headline)</a></li>
+                                    <li>
+                                        <a href="#@(section.HtmlId)">@(section.Headline)</a>
+                                        @if (section.SubSections.Any())
+                                        {
+                                            <ol>
+                                                @foreach (var subSection in section.SubSections)
+                                                {
+                                                    <li>
+                                                        <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                    </li>
+                                                }
+                                            </ol>
+                                        }
+                                    </li>
                                 }
                             </ol>
                         </div>
