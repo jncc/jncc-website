@@ -502,6 +502,7 @@
     <Compile Include="ViewModels\ScienceDetailsRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsSectionViewModelBase.cs" />
+    <Compile Include="ViewModels\ScienceDetailsSubSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceLandingPageViewModel.cs" />
     <Compile Include="ViewModels\ScienceLatestUpdatedPageItemViewModel.cs" />
     <Compile Include="ViewModels\ScienceLatestUpdatesSectionViewModel.cs" />
