@@ -1404,6 +1404,7 @@
     <Content Include="Views\IndividualJobPage.cshtml" />
     <Content Include="Views\CareersLandingPage.cshtml" />
     <Content Include="Views\Partials\CareersSidebar.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ScienceDetailsRichTextSubSectionViewModel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
