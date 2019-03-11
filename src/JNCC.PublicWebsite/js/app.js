@@ -2,6 +2,7 @@ jQuery(function() {
 	initFoundation();
     initSlickCarousel();
     initAjaxFiltering();
+    initScienceDetailsSlickCarousel();
 });
 
 function initFoundation() {
@@ -30,6 +31,52 @@ function initSlickCarousel() {
 		centerPadding: '0px',
 		adaptiveHeight: true
 	});
+}
+
+function initScienceDetailsSlickCarousel() {
+    $('.science-details-image-gallery').on('init', function (event, slick) {
+        var $firstDot = getSlickDotByIndex(0, slick.$dots);
+
+        if ($firstDot) {
+            $firstDot.addClass('current');
+        }
+    });
+    
+    $('.science-details-image-gallery').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        centerMode: true,
+        adaptiveHeight: true,
+        slidesToScroll: 1,
+        dotsClass: 'slick pagination text-center',
+        customPaging: function (slider, i) {
+            var readableIndex = i + 1;
+            return $('<a href="#" />').text(readableIndex)
+                .attr('aria-label', "Page " + readableIndex);
+        }
+    }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        var $currentDot = getSlickDotByIndex(currentSlide, slick.$dots);
+        var $nextDot = getSlickDotByIndex(nextSlide, slick.$dots);
+
+        if ($currentDot) {
+            $currentDot.removeClass('current');
+        }
+
+        if ($nextDot) {
+            $nextDot.addClass('current');
+        }
+    });
+
+    $('.science-details-image-gallery').on('click', '.pagination a', function (e) {
+        e.preventDefault();
+    });
+}
+
+function getSlickDotByIndex(index, $dots) {
+    return $('li:eq(' + index + ')', $dots);
 }
 
 // Ajax Filtering init
