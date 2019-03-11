@@ -4,6 +4,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
 {
     public interface IScienceDetailsImageGallerySectionViewModel
     {
-        IEnumerable<ImageViewModel> Images { get; set; }
+        IEnumerable<ImageGalleryItemViewModel> Images { get; set; }
     }
 }
