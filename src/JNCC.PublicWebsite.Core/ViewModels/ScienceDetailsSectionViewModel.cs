@@ -1,8 +1,9 @@
-﻿namespace JNCC.PublicWebsite.Core.ViewModels
+﻿using System.Collections.Generic;
+
+namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public abstract class ScienceDetailsSectionViewModel
+    public abstract class ScienceDetailsSectionViewModel : ScienceDetailsSectionViewModelBase
     {
-        public string HtmlId { get; set; }
-        public string Headline { get; set; }
+        public IEnumerable<ScienceDetailsSubSectionViewModel> SubSections { get; set; }
     }
 }
