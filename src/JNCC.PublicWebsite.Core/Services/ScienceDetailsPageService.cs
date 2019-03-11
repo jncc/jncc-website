@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -118,7 +119,8 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var section = new TViewModel()
             {
-                Headline = schema.Headline
+                Headline = schema.Headline,
+                PartialViewName = GetPartialViewName(schema)
             };
 
             var sectionHtmlId = schema.Headline.ToUrlSegment();
@@ -134,6 +136,21 @@ namespace JNCC.PublicWebsite.Core.Services
 
 
             return section;
+        }
+
+        private string GetPartialViewName(ScienceDetailsSectionBaseSchema schema)
+        {
+            switch (schema.DocumentTypeAlias)
+            {
+                case ScienceDetailsSectionRichTextSchema.ModelTypeAlias:
+                case ScienceDetailsSubSectionRichTextSchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.RichText;
+                case ScienceDetailsSubSectionImageGallerySchema.ModelTypeAlias:
+                case ScienceDetailsSectionImageGallerySchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.ImageGallery;
+                default:
+                    throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
+            }
         }
 
         private ScienceDetailsRichTextSectionViewModel CreateRichTextSection(ScienceDetailsSectionRichTextSchema schema)
