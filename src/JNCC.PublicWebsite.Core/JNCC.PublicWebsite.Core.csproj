@@ -368,7 +368,9 @@
     <Compile Include="Models\ResourcesCollectionSchema.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />
     <Compile Include="Models\ScienceCategoryPage.cs" />
+    <Compile Include="Models\ScienceDetailsSectionImageGallerySchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSectionSubSectionsSchemaComposition.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSubSectionImageGallerySchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSubSectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceLandingPage.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
