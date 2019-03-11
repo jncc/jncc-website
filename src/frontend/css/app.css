@@ -9024,6 +9024,23 @@ html {
 	margin-bottom: 2rem;
 }
 
+.slick.pagination {
+	margin-top: 1rem;
+}
+
+.slick.pagination .current a {
+	color: #fefefe;
+}
+
+.slick.pagination .current a:hover {
+	background-color: inherit;
+	text-decoration: underline;
+}
+
+#image-modal-body img {
+	min-width: 100%;
+}
+
 img.float-left {
 	margin-bottom: 1rem;
 	margin-right: 1rem;

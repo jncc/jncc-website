@@ -102,3 +102,24 @@ h2#toc {
 		margin-bottom: 2rem;
 	}
 }
+
+.slick {
+    &.pagination {
+        margin-top: $pagination-margin-bottom;
+
+        .current {
+            a {
+                color: $white;
+
+                &:hover {
+                    background-color: inherit;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+#image-modal-body img {
+    min-width: 100%;
+}
