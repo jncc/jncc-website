@@ -1,4 +1,4 @@
-using JNCC.PublicWebsite.Core.Constants;
+﻿using JNCC.PublicWebsite.Core.Constants;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
@@ -75,6 +75,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceDetailsSectionRichTextSchema richText:
                         viewModel = CreateRichTextSection(richText);
                         break;
+                    case ScienceDetailsSectionImageGallerySchema imageGallery:
+                        viewModel = CreateImageGallerySection(imageGallery);
+                        break;
                 }
 
                 if (viewModel != null)
@@ -103,6 +106,9 @@ namespace JNCC.PublicWebsite.Core.Services
                 {
                     case ScienceDetailsSubSectionRichTextSchema richText:
                         viewModel = CreateRichTextSubSection(richText, parentHtmlId);
+                        break;
+                    case ScienceDetailsSubSectionImageGallerySchema imageGallery:
+                        viewModel = CreateImageGallerySubSection(imageGallery, parentHtmlId);
                         break;
                 }
 
@@ -164,13 +170,59 @@ namespace JNCC.PublicWebsite.Core.Services
             return model;
         }
 
-        private ScienceDetailsSubSectionViewModel CreateRichTextSubSection(ScienceDetailsSubSectionRichTextSchema schema, string parentSectionHtmlId)
+        private ScienceDetailsImageGallerySectionViewModel CreateImageGallerySection(ScienceDetailsSectionImageGallerySchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageGallerySectionViewModel>(schema);
+
+            model.Images = CreateSectionImageGallery(schema.Images);
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceDetailsRichTextSubSectionViewModel CreateRichTextSubSection(ScienceDetailsSubSectionRichTextSchema schema, string parentSectionHtmlId)
         {
             var model = CreateSection<ScienceDetailsRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
 
             model.Content = schema.Content;
 
             return model;
+        }
+
+        private ScienceDetailsImageGallerySubSectionViewModel CreateImageGallerySubSection(ScienceDetailsSubSectionImageGallerySchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsImageGallerySubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Images = CreateSectionImageGallery(schema.Images);
+
+            return model;
+        }
+
+        private IEnumerable<ImageViewModel> CreateSectionImageGallery(IEnumerable<IPublishedContent> images)
+        {
+            var viewModels = new List<ImageViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(images))
+            {
+                return viewModels;
+            }
+
+            foreach (var image in images)
+            {
+                var viewModel = new ImageViewModel()
+                {
+                    Url = image.Url,
+                    AlternativeText = image.Name
+                };
+
+                if (string.IsNullOrEmpty(image.Url) == false)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
         }
     }
 }
