@@ -20,16 +20,24 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	/// <summary>Science Details Section Rich Text Schema</summary>
-	[PublishedContentModel("scienceDetailsSectionRichTextSchema")]
-	public partial class ScienceDetailsSectionRichTextSchema : ScienceDetailsSectionBaseSchema, IScienceDetailsSectionSubSectionsSchemaComposition
+	// Mixin content Type 1205 with alias "scienceDetailsSectionSubSectionsSchemaComposition"
+	/// <summary>Science Details Section Sub Sections Schema Composition</summary>
+	public partial interface IScienceDetailsSectionSubSectionsSchemaComposition : IPublishedContent
+	{
+		/// <summary>Sub Sections</summary>
+		IEnumerable<IPublishedContent> SubSections { get; }
+	}
+
+	/// <summary>Science Details Section Sub Sections Schema Composition</summary>
+	[PublishedContentModel("scienceDetailsSectionSubSectionsSchemaComposition")]
+	public partial class ScienceDetailsSectionSubSectionsSchemaComposition : PublishedContentModel, IScienceDetailsSectionSubSectionsSchemaComposition
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "scienceDetailsSectionRichTextSchema";
+		public new const string ModelTypeAlias = "scienceDetailsSectionSubSectionsSchemaComposition";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public ScienceDetailsSectionRichTextSchema(IPublishedContent content)
+		public ScienceDetailsSectionSubSectionsSchemaComposition(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +48,9 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ScienceDetailsSectionRichTextSchema, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ScienceDetailsSectionSubSectionsSchemaComposition, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Content: The main content for the section.
-		///</summary>
-		[ImplementPropertyType("content")]
-		public IHtmlString Content
-		{
-			get { return this.GetPropertyValue<IHtmlString>("content"); }
 		}
 
 		///<summary>
@@ -60,7 +59,10 @@ namespace JNCC.PublicWebsite.Core.Models
 		[ImplementPropertyType("subSections")]
 		public IEnumerable<IPublishedContent> SubSections
 		{
-			get { return JNCC.PublicWebsite.Core.Models.ScienceDetailsSectionSubSectionsSchemaComposition.GetSubSections(this); }
+			get { return GetSubSections(this); }
 		}
+
+		/// <summary>Static getter for Sub Sections</summary>
+		public static IEnumerable<IPublishedContent> GetSubSections(IScienceDetailsSectionSubSectionsSchemaComposition that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("subSections"); }
 	}
 }
