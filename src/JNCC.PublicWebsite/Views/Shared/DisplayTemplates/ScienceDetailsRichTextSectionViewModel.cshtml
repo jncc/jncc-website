@@ -1,10 +1,2 @@
 ﻿@model JNCC.PublicWebsite.Core.ViewModels.ScienceDetailsRichTextSectionViewModel
 @Model.Content
-@if (Model.SubSections.Any())
-{
-    foreach (var section in Model.SubSections)
-    {
-        <h3 id="@(section.HtmlId)">@(section.Headline)</h3>
-        @Html.DisplayFor(model => section)
-    }
-}

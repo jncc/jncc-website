@@ -40,6 +40,14 @@
                     {
                         <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
                         @Html.DisplayFor(model => section)
+                        if (section.SubSections.Any())
+                        {
+                            foreach (var subSection in section.SubSections)
+                            {
+                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                @Html.DisplayFor(model => subSection)
+                            }
+                        }
                         <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
                     }
                 }
