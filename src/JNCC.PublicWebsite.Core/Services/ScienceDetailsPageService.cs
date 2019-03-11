@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -199,9 +200,9 @@ namespace JNCC.PublicWebsite.Core.Services
             return model;
         }
 
-        private IEnumerable<ImageViewModel> CreateSectionImageGallery(IEnumerable<IPublishedContent> images)
+        private IEnumerable<ImageGalleryItemViewModel> CreateSectionImageGallery(IEnumerable<IPublishedContent> images)
         {
-            var viewModels = new List<ImageViewModel>();
+            var viewModels = new List<ImageGalleryItemViewModel>();
 
             if (ExistenceUtility.IsNullOrEmpty(images))
             {
@@ -210,9 +211,10 @@ namespace JNCC.PublicWebsite.Core.Services
 
             foreach (var image in images)
             {
-                var viewModel = new ImageViewModel()
+                var viewModel = new ImageGalleryItemViewModel()
                 {
                     Url = image.Url,
+                    ThumbnailImageUrl = image.GetCropUrl(cropAlias: ImageCropAliases.Square),
                     AlternativeText = image.Name
                 };
 
