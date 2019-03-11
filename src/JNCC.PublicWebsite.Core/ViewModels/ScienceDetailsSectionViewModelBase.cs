@@ -4,5 +4,6 @@
     {
         public string HtmlId { get; set; }
         public string Headline { get; set; }
+        public string PartialViewName { get; set; }
     }
 }
