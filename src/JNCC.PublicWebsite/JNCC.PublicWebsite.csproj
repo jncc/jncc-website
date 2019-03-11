@@ -1394,7 +1394,6 @@
     <Content Include="Views\ScienceCategoryPage.cshtml" />
     <Content Include="Views\ScienceDetailsPage.cshtml" />
     <Content Include="Views\ScienceLandingPage.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\ScienceDetailsRichTextSectionViewModel.cshtml" />
     <Content Include="Views\Partials\ScienceSidebar.cshtml" />
     <Content Include="Views\Partials\GetInTouch.cshtml" />
     <Content Include="Views\GenericListingPage.cshtml" />
@@ -1404,7 +1403,8 @@
     <Content Include="Views\IndividualJobPage.cshtml" />
     <Content Include="Views\CareersLandingPage.cshtml" />
     <Content Include="Views\Partials\CareersSidebar.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\ScienceDetailsRichTextSubSectionViewModel.cshtml" />
+    <Content Include="Views\Partials\ScienceDetails\ImageGallery.cshtml" />
+    <Content Include="Views\Partials\ScienceDetails\RichText.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
