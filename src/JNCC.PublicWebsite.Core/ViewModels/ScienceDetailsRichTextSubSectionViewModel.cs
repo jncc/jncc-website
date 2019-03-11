@@ -2,7 +2,7 @@
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public sealed class ScienceDetailsRichTextSubSectionViewModel : ScienceDetailsSubSectionViewModel
+    public sealed class ScienceDetailsRichTextSubSectionViewModel : ScienceDetailsSubSectionViewModel, IScienceDetailsRichTextSectionViewModel
     {
         public IHtmlString Content { get; set; }
     }
