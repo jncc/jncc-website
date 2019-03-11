@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -380,7 +380,9 @@
     <Compile Include="Services\CareersLandingPageService.cs" />
     <Compile Include="Services\LatestNewsSectionService.cs" />
     <Compile Include="Services\ScienceCategoryPageService.cs" />
+    <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsImageGallerySubSectionViewModel.cs" />
     <Compile Include="Services\ScienceLandingPageService.cs" />
     <Compile Include="Services\ScienceSidebarService.cs" />
     <Compile Include="Services\UmbracoContextFullUrlResolverService.cs" />
@@ -504,6 +506,7 @@
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="Services\ScienceDetailsPageService.cs" />
     <Compile Include="ViewModels\ScienceDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsRichTextSubSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsSectionViewModel.cs" />
