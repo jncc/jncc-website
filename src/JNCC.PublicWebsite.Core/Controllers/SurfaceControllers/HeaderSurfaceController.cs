@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Services;
+﻿using JNCC.PublicWebsite.Core.Providers;
+using JNCC.PublicWebsite.Core.Services;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Web.Mvc;
@@ -45,6 +46,22 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         public PartialViewResult RenderSearch()
         {
             return PartialView("~/Views/Partials/Header/Search.cshtml");
+        }
+
+        [ChildActionOnly]
+        public ActionResult RenderEditPageBar()
+        {
+            IConfigurationProvider applicationSettingsProvider = new AppSettingsConfigurationProvider();
+            var enableEditPageBar = applicationSettingsProvider.GetValue<bool>("EnableEditPageBar");
+
+            if (enableEditPageBar == false)
+            {
+                return EmptyResult();
+            }
+
+            var editPageUrl = string.Format("/umbraco/#/content/content/edit/{0}", CurrentPage.Id);
+
+            return PartialView("~/Views/Partials/Header/EditPageBar.cshtml", editPageUrl);
         }
     }
 }
