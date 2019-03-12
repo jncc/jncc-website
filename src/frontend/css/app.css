@@ -8625,12 +8625,17 @@ button.slick-arrow {
 }
 
 .header-top.logged-in p,
-.header-top.logged-in form {
+.header-top.logged-in form,
+.header-top.edit-page-bar p,
+.header-top.edit-page-bar form {
 	display: inline-block;
 	vertical-align: middle;
 }
 
-.header-top.logged-in form .button.hollow {
+.header-top.logged-in p .button.hollow,
+.header-top.logged-in form .button.hollow,
+.header-top.edit-page-bar p .button.hollow,
+.header-top.edit-page-bar form .button.hollow {
 	color: #fefefe;
 	border-color: #fefefe;
 	margin: 0;

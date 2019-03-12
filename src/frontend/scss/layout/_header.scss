@@ -43,13 +43,11 @@
 		text-decoration: underline;
 	}
 
-	&.logged-in {
+	&.logged-in, &.edit-page-bar {
 		p, form {
 			display: inline-block;
 			vertical-align: middle;
-		}
-
-		form {
+			
 			.button.hollow {
 				color: $white;
 				border-color: $white;
