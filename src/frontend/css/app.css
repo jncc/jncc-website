@@ -6732,7 +6732,11 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 	display: block;
 }
 
-.thumbnail {
+.thumbnail,
+img.float-left,
+img.float-right,
+.float-left img,
+.float-right img {
 	display: inline-block;
 	max-width: 100%;
 	margin-bottom: 1rem;
@@ -9039,6 +9043,34 @@ html {
 
 #image-modal-body img {
 	min-width: 100%;
+}
+
+.thumbnail,
+img.float-left,
+img.float-right,
+.float-left img,
+.float-right img {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 1rem;
+	border: solid 4px #fefefe;
+	border-radius: 0;
+	box-shadow: 0 0 0 1px rgba(102, 98, 98, .2);
+	line-height: 0;
+}
+
+a.thumbnail {
+	-webkit-transition: box-shadow 200ms ease-out;
+	transition: box-shadow 200ms ease-out;
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus {
+	box-shadow: 0 0 6px 1px rgba(45, 122, 41, .5);
+}
+
+a.thumbnail image {
+	box-shadow: none;
 }
 
 img.float-left {

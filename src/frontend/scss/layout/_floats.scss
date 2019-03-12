@@ -1,13 +1,17 @@
 
+@include foundation-thumbnail;
+
 $floating-image-margin: 1rem;
 
 img {
     &.float-left {
+        @extend .thumbnail;
         margin-bottom: $floating-image-margin;
         margin-right: $floating-image-margin;
     }
 
     &.float-right {
+        @extend .thumbnail;
         margin-bottom: $floating-image-margin;
         margin-left: $floating-image-margin;
     }
@@ -15,6 +19,7 @@ img {
 
 .float-left {
     img {
+        @extend .thumbnail;
         margin-bottom: $floating-image-margin;
         margin-right: $floating-image-margin;
     }
@@ -22,6 +27,7 @@ img {
 
 .float-right {
     img {
+        @extend .thumbnail;
         margin-bottom: $floating-image-margin;
         margin-left: $floating-image-margin;
     }
