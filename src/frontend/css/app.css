@@ -8026,8 +8026,20 @@ a {
 	flex-wrap: wrap;
 }
 
-.aside-nav {
+.aside-nav,
+#sidebar p {
 	font-size: 1rem;
+}
+
+.aside-nav a,
+#sidebar p a {
+	color: #666262;
+	text-decoration: underline;
+}
+
+.aside-nav a:hover,
+#sidebar p a:hover {
+	color: #2d7a29;
 }
 
 .aside-nav li {
@@ -8035,15 +8047,6 @@ a {
 }
 
 .aside-nav li.active a {
-	color: #2d7a29;
-}
-
-.aside-nav a {
-	color: #666262;
-	text-decoration: underline;
-}
-
-.aside-nav a:hover {
 	color: #2d7a29;
 }
 
