@@ -365,6 +365,7 @@
     <Compile Include="Controllers\SurfaceControllers\ScienceSidebarSurfaceController.cs" />
     <Compile Include="Extensions\PageHeroExtensions.cs" />
     <Compile Include="Extensions\SciencePagesExtensions.cs" />
+    <Compile Include="Models\AboutUsPage.generated.cs" />
     <Compile Include="Models\CareersLandingPage.generated.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />

@@ -1406,6 +1406,7 @@
     <Content Include="Views\Partials\ScienceDetails\ImageGallery.cshtml" />
     <Content Include="Views\Partials\ScienceDetails\RichText.cshtml" />
     <Content Include="Views\Partials\Header\EditPageBar.cshtml" />
+    <Content Include="Views\AboutUsPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
