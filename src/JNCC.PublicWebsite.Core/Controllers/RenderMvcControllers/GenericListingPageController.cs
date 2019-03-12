@@ -3,7 +3,7 @@ using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
 using Umbraco.Web.Mvc;
 
-namespace JNCC.PublicWebsite.Core.Controllers
+namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
 {
     public sealed class GenericListingPageController : RenderMvcController
     {
