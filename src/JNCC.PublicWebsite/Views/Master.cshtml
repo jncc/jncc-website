@@ -24,6 +24,7 @@
     <div id="wrapper">
         <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
         <header id="header" class="js-cookie-banner-container">
+            @(Html.Action<HeaderSurfaceController>("RenderEditPageBar"))
             @(Html.Action<HeaderSurfaceController>("RenderMemberLoggedInBar"))
             <div class="container">
                 <strong class="logo">
