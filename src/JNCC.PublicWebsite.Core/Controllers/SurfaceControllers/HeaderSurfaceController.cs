@@ -51,7 +51,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderEditPageBar()
         {
-            IConfigurationProvider applicationSettingsProvider = new AppSettingsConfigurationProvider();
+            var applicationSettingsProvider = new AppSettingsConfigurationProvider();
             var enableEditPageBar = applicationSettingsProvider.GetValue<bool>("EnableEditPageBar");
 
             if (enableEditPageBar == false)
