@@ -3,6 +3,19 @@ html {
 }
 
 #content {
+    a.return-to-top {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+
+            i {
+                text-decoration: underline;
+            }
+        }
+
+    }
+
     table {
         display: block;
         width: 100%;

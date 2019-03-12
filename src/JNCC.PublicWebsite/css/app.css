@@ -8934,6 +8934,18 @@ html {
 	scroll-behavior: smooth;
 }
 
+#content a.return-to-top {
+	text-decoration: none;
+}
+
+#content a.return-to-top:hover {
+	text-decoration: underline;
+}
+
+#content a.return-to-top:hover i {
+	text-decoration: underline;
+}
+
 #content table {
 	display: block;
 	width: 100%;
