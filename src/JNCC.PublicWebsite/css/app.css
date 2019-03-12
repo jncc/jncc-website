@@ -9061,6 +9061,10 @@ img.float-right {
 	margin-left: 1rem;
 }
 
+.clearfix {
+	clear: both;
+}
+
 @media screen and (orientation: landscape) {
 	.show-for-landscape,
 	.hide-for-portrait {

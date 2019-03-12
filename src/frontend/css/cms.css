@@ -42,3 +42,6 @@ img.float-right {
 .float-right img {
   margin-bottom: 1rem;
   margin-left: 1rem; }
+
+.clearfix {
+  clear: both; }
