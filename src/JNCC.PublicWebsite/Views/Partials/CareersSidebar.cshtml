@@ -17,7 +17,7 @@
             <ul class="aside-nav no-bullet">
                 @foreach (var job in Model.LatestJobs)
                 {
-                    <li><a href="@job.Url">@job.JobTitle</a> <i class="fi-info top" aria-hidden="true" data-tooltip title="Location: @job.Location &#013;&#010; Grade: @job.Grade"></i></li>
+                    <li><a href="@job.Url" top" aria-hidden="true" data-tooltip title="Location: @job.Location &#013;&#010; Grade: @job.Grade">@job.JobTitle</a></li>
                 }
             </ul>
             <p><a href="#vacancies">See all</a></p>
