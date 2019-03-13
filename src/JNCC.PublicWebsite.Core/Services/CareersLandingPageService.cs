@@ -40,7 +40,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IEnumerable<JobItemViewModel> GetLatestJobs(CareersLandingPage model)
         {
-            var latestJobs = model.Children<IndividualJobPage>().OrderBy(x => x.UpdateDate).Take(NumberOfLatestJobs);
+            var latestJobs = model.Children<IndividualJobPage>().OrderByDescending(x => x.UpdateDate).Take(NumberOfLatestJobs);
             var viewModels = new List<JobItemViewModel>();
 
             if (latestJobs.Any() == false)
