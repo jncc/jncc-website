@@ -8969,6 +8969,12 @@ html {
 	margin-right: .5rem;
 }
 
+#content table.no-auto-scroll {
+	display: table;
+	max-height: inherit;
+	overflow: inherit;
+}
+
 #table-modal .expand-table {
 	display: none;
 }
