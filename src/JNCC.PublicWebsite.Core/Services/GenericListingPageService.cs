@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 using System.Linq;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -6,7 +6,7 @@ using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class GenericListingPageService : ListingService<GenericListingPage, IPublishedContent, NavigationItemViewModel, FilteringModel>
+    internal sealed class GenericListingPageService : ListingService<GenericListingPage, IPublishedContent, GenericListingPageItemViewModel, FilteringModel>
     {
         public override NameValueCollection ConvertFiltersToNameValueCollection(FilteringModel filteringModel)
         {
@@ -34,13 +34,15 @@ namespace JNCC.PublicWebsite.Core.Services
             return parent.Children.OrderBy(x => x.SortOrder);
         }
 
-        protected override NavigationItemViewModel ToViewModel(IPublishedContent content)
+        protected override GenericListingPageItemViewModel ToViewModel(IPublishedContent content)
         {
-            return new NavigationItemViewModel()
+            var viewModel = new GenericListingPageItemViewModel()
             {
-                Text = content.Name,
+                Title = content.Name,
                 Url = content.Url
             };
+
+            return viewModel;
         }
     }
 }
