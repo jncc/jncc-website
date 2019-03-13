@@ -1,7 +1,7 @@
+﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Specialized;
 using System.Linq;
-using JNCC.PublicWebsite.Core.Models;
-using JNCC.PublicWebsite.Core.ViewModels;
 using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
