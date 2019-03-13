@@ -2,6 +2,7 @@
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Web;
@@ -99,13 +100,36 @@ namespace JNCC.PublicWebsite.Core.Services
                 {
                     Title = collection.Title,
                     Resources = _calloutCardsService.GetCalloutCards(collection.Resources),
-                    ReadMoreLink = _navigationItemService.GetViewModel(collection.ReadMoreLink)
+                    ReadMoreLink = GetViewModelReadMoreLink(collection)
                 };
 
                 viewModels.Add(viewModel);
             }
 
             return viewModels;
+        }
+
+        private NavigationItemViewModel GetViewModelReadMoreLink(ResourcesCollectionSchema collection)
+        {
+            if (collection.MainCategoryPage == null)
+            {
+                return null;
+            }
+
+            var mainCategoryPageContent = collection.MainCategoryPage.AsPublishedContent()
+                                                                     .OfType<ScienceCategoryPage>()
+                                                                     .FirstOrDefault();
+
+            if (mainCategoryPageContent == null)
+            {
+                return null;
+            }
+
+            return new NavigationItemViewModel()
+            {
+                Text = string.Format("All References Resources in {0}", mainCategoryPageContent.GetHeadline()),
+                Url = mainCategoryPageContent.Url
+            };
         }
     }
 }
