@@ -29,6 +29,12 @@ html {
                 margin-right: 0.5rem;
             }
         }
+
+        &.no-auto-scroll {
+            display: table;
+            max-height: inherit;
+            overflow: inherit;
+        }
     }
 }
 
