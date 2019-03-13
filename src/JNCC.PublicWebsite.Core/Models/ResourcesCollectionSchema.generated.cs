@@ -46,12 +46,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Read More Link: The link to a key page for this resource collection.
+		/// Main Category Page: This page contains all other science details pages for this resources collection.
 		///</summary>
-		[ImplementPropertyType("readMoreLink")]
-		public RJP.MultiUrlPicker.Models.Link ReadMoreLink
+		[ImplementPropertyType("mainCategoryPage")]
+		public nuPickers.Picker MainCategoryPage
 		{
-			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("readMoreLink"); }
+			get { return this.GetPropertyValue<nuPickers.Picker>("mainCategoryPage"); }
 		}
 
 		///<summary>
