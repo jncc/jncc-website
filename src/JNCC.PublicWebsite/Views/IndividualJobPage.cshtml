@@ -11,7 +11,7 @@
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 @if (Model.KeyData.Any())
                 {
-                    <table>
+                    <table class="no-auto-scroll">
                         @foreach (var item in Model.KeyData)
                         {
                             <tr>
