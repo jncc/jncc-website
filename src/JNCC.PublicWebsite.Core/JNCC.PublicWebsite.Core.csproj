@@ -392,6 +392,7 @@
     <Compile Include="ViewModels\ImageGalleryItemViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceAtoZPageViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsImageGallerySubSectionViewModel.cs" />
     <Compile Include="Services\ScienceLandingPageService.cs" />
     <Compile Include="Services\ScienceSidebarService.cs" />
