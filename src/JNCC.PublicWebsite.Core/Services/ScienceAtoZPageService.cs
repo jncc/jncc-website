@@ -1,5 +1,9 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
+using System.Collections.Generic;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -11,7 +15,29 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public ScienceAtoZPageViewModel GetViewModel(ScienceAtoZpage model)
         {
-            return new ScienceAtoZPageViewModel();
+            return new ScienceAtoZPageViewModel()
+            {
+                Headline = model.GetHeadline(),
+                CategorisedPages = GetCategorisedPages(model)
+            };
+        }
+
+        private IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> GetCategorisedPages(ScienceAtoZpage model)
+        {
+            var scienceLandingPage = model.Parent<ScienceLandingPage>();
+
+            if (scienceLandingPage == null)
+            {
+                return null;
+            }
+
+            var categorisablePages = scienceLandingPage.Children<IScienceCategorisablePage>();
+            if (ExistenceUtility.IsNullOrEmpty(categorisablePages))
+            {
+                return null;
+            }
+
+            return categorisablePages.CategorisePages();
         }
     }
 }
