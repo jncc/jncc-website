@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -18,6 +18,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return new ScienceAtoZPageViewModel()
             {
                 Headline = model.GetHeadline(),
+                Preamble = model.Preamble,
                 CategorisedPages = GetCategorisedPages(model)
             };
         }
