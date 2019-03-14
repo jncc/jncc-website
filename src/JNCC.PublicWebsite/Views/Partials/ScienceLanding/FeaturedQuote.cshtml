@@ -1,0 +1,11 @@
+﻿@model ScienceLandingPageViewModel
+@if (string.IsNullOrWhiteSpace(Model.FeaturedQuote) == false)
+{
+    <div class="featured-quote">
+        <div class="row">
+            <div class="columns small-8 small-push-2 text-center">
+                <p>@Model.FeaturedQuote</p>
+            </div>
+        </div>
+    </div>
+}

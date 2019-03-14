@@ -189,18 +189,8 @@ a {
 	}
 }
 
-.aside-nav {
+.aside-nav, #sidebar p {
 	font-size: 1rem;
-
-	li {
-		margin-bottom: rem-calc(12px);
-
-		&.active {
-			a {
-				color: $green;
-			}
-		}
-	}
 
 	a {
 		color: $black;
@@ -211,6 +201,19 @@ a {
 		}
 	}
 }
+
+.aside-nav {
+	li {
+		margin-bottom: rem-calc(12px);
+
+		&.active {
+			a {
+				color: $green;
+			}
+		}
+	}
+}
+
 
 .visual-section {
 	background-size: cover;
@@ -558,8 +561,20 @@ a {
 	position: relative;
 	font-size: 0.875rem;
 
+	&.generic-listing {
+		font-size: inherit;
+
+		.loader {
+			top: 2.5rem;
+		}
+	}
+
 	@include breakpoint(xlarge) {
 		padding-top: rem-calc(40px);
+		
+		&.generic-listing {
+			padding-top: 0;
+		}
 	}
 
 	.card {

@@ -1,0 +1,83 @@
+@model ScienceDetailsPageViewModel
+@{
+    Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Preamble
+                @if (Model.HasSections)
+                {
+                    <div class="row">
+                        <div class="columns small-12 medium-6 callout toc">
+                            <h2 id="toc">Contents</h2>
+                            <ol>
+                                @foreach (var section in Model.Sections)
+                                {
+                                    <li>
+                                        <a href="#@(section.HtmlId)">@(section.Headline)</a>
+                                        @if (section.SubSections.Any())
+                                        {
+                                            <ol>
+                                                @foreach (var subSection in section.SubSections)
+                                                {
+                                                    <li>
+                                                        <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                    </li>
+                                                }
+                                            </ol>
+                                        }
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                    </div>
+                    foreach (var section in Model.Sections)
+                    {
+                        <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                        @RenderScienceDetailsSection(section)
+                        if (section.SubSections.Any())
+                        {
+                            foreach (var subSection in section.SubSections)
+                            {
+                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                @RenderScienceDetailsSection(subSection)
+                            }
+                        }
+                        <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
+                    }
+                }
+                <div id="meta" class="callout secondary">
+                    @if (Model.HasCategories)
+                    {
+                        <p><strong>Categories:</strong></p>
+                        <p class="tags">@foreach (var category in Model.Categories) {<a class="label location" href="@category.Url">@category.Text</a> }</p>
+                    }
+
+                    <div class="row collapse">
+                        <div class="column small-12 medium-6">
+                            <p><span data-tooltip title="The date this page was first published">Published</span>: @Html.DisplayFor(model => model.PublishedDate). </p>
+                        </div>
+                        @if (Model.ReviewedDate.HasValue)
+                        {
+                            <div class="column small-12 medium-6">
+                                <p><span data-tooltip title="The date the content last had a meaningful editorial review">Reviewed</span>: @Html.DisplayFor(model => model.ReviewedDate.Value).</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            @(Html.Action<ScienceSidebarSurfaceController>("RenderScienceDetailsPageSidebar"))
+        </div>
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>
+@helper RenderScienceDetailsSection(ScienceDetailsSectionViewModelBase section)
+{
+    @Html.Partial(string.Format("~/Views/Partials/ScienceDetails/{0}.cshtml", section.PartialViewName), section)
+}

@@ -1,0 +1,144 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#content {
+    a.return-to-top {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+
+            i {
+                text-decoration: underline;
+            }
+        }
+
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        max-height: 30rem;
+        overflow: auto;
+
+        caption {
+            text-align: left;
+
+            .expand-table {
+                margin-right: 0.5rem;
+            }
+        }
+
+        &.no-auto-scroll {
+            display: table;
+            max-height: inherit;
+            overflow: inherit;
+        }
+    }
+}
+
+#table-modal .expand-table {
+    display: none;
+
+    table {
+        max-height: inherit;
+        overflow-y: inherit;
+        
+        caption {
+            text-align: center;
+        }
+    }
+}
+
+#meta {
+    padding-bottom: 1rem;
+
+    a.label:hover {
+        cursor: pointer;
+        color: white;
+        text-decoration: underline;
+    }
+
+    p {
+        margin-bottom: 0;
+        
+        &.tags {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+h2#toc {
+    @extend h4;
+}
+
+.science-landing {
+	.articles-section {
+		&.resources {
+			&.latest-updates {
+				padding: 3rem 0;
+				h3 {
+					font-size: 1.5rem;
+					border-bottom: 2px solid #2d7a29;
+				}
+			}
+			.card {
+				margin-bottom: 2rem !important;
+				height: calc(100% - 2rem);
+			}
+			.card-section p {
+				margin-bottom: 1rem;
+			}
+		
+            &.science-group {
+                padding: 3rem 0;
+                background-image: none;
+            }
+        }
+    }
+    
+    .featured-quote {
+        background-image: linear-gradient(to right, #c9e6cc, #e0f0e7); 
+        padding:2rem 0;
+
+        p {
+            @extend h3;
+
+            font-weight: 100; 
+            font-style: italic;
+            margin: 0;
+        }
+    }
+
+	.row1 {
+		h3,
+		p {
+			color: rgb(102, 98, 98) !important;
+		}
+	}
+	.widget-section h2 {
+		margin-bottom: 2rem;
+	}
+}
+
+.slick {
+    &.pagination {
+        margin-top: $pagination-margin-bottom;
+
+        .current {
+            a {
+                color: $white;
+
+                &:hover {
+                    background-color: inherit;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+#image-modal-body img {
+    min-width: 100%;
+}

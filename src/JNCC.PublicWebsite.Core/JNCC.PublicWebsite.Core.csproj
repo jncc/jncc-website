@@ -284,6 +284,9 @@
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\TidyNet.dll</HintPath>
     </Reference>
+    <Reference Include="uComponents.nuPickers, Version=1.7.1.327, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\nuPickers.1.7.1\lib\net45\uComponents.nuPickers.dll</HintPath>
+    </Reference>
     <Reference Include="umbraco, Version=1.0.6879.21989, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.dll</HintPath>
     </Reference>
@@ -346,16 +349,64 @@
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
     <Compile Include="Constants\ResetPasswordRequestStatusCDs.cs" />
+    <Compile Include="Constants\ScienceDetailsPartialViewNames.cs" />
     <Compile Include="Constants\SearchIndexingVerbs.cs" />
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\ApiControllers\ImagePickerApiController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\GenericListingPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\CareersLandingPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\IndividualJobPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\ScienceCategoryPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\ScienceLandingPageController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\CareersSidebarSurfaceController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\ScienceSidebarSurfaceController.cs" />
+    <Compile Include="DataSources\OrderedXmlDataSource.cs" />
+    <Compile Include="Extensions\PageHeroExtensions.cs" />
+    <Compile Include="Extensions\SciencePagesExtensions.cs" />
+    <Compile Include="Models\AboutUsPage.generated.cs" />
+    <Compile Include="Models\CareersLandingPage.generated.cs" />
+    <Compile Include="Models\ResourcesCollectionSchema.cs" />
+    <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />
+    <Compile Include="Models\ScienceCategoryPage.cs" />
+    <Compile Include="Models\ScienceDetailsSectionImageGallerySchema.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSectionSubSectionsSchemaComposition.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSubSectionImageGallerySchema.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSubSectionRichTextSchema.generated.cs" />
+    <Compile Include="Models\ScienceLandingPage.cs" />
+    <Compile Include="Providers\AppSettingsConfigurationProvider.cs" />
+    <Compile Include="Providers\IConfigurationProvider.cs" />
+    <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
+    <Compile Include="Providers\UmbracoScienceDetailsPageProvider.cs" />
+    <Compile Include="Services\CalloutCardsService.cs" />
+    <Compile Include="Services\CareersLandingPageService.cs" />
+    <Compile Include="Services\LatestNewsSectionService.cs" />
+    <Compile Include="Services\ScienceCategoryPageService.cs" />
+    <Compile Include="ViewModels\GenericListingPageItemViewModel.cs" />
+    <Compile Include="ViewModels\ImageGalleryItemViewModel.cs" />
+    <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
+    <Compile Include="ViewModels\IScienceDetailsRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsImageGallerySubSectionViewModel.cs" />
+    <Compile Include="Services\ScienceLandingPageService.cs" />
+    <Compile Include="Services\ScienceSidebarService.cs" />
+    <Compile Include="Services\UmbracoContextFullUrlResolverService.cs" />
+    <Compile Include="ViewModels\CareersLandingPageViewModel.cs" />
+    <Compile Include="ViewModels\CareersListItemViewModel.cs" />
+    <Compile Include="ViewModels\CareersSidebarViewModel.cs" />
+    <Compile Include="ViewModels\IHasCalloutCardsViewModel.cs" />
+    <Compile Include="ViewModels\IHasLatestNewsSectionViewModel.cs" />
+    <Compile Include="ViewModels\JobItemViewModel.cs" />
+    <Compile Include="ViewModels\LatestNewsSectionViewModel.cs" />
+    <Compile Include="ViewModels\ResourcesCollectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceCategoryPageViewModel.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\ScienceDetailsPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\SearchResultsPageController.cs" />
+    <Compile Include="Services\IndividualJobPageService.cs" />
     <Compile Include="Controllers\RenderMvcControllers\StaffProfilePageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BlogUmbracoCommentsSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\BreadcrumbsSurfaceController.cs" />
@@ -408,12 +459,15 @@
     <Compile Include="Models\File.generated.cs" />
     <Compile Include="Models\FilteringModel.cs" />
     <Compile Include="Models\Folder.generated.cs" />
+    <Compile Include="Models\GenericListingPage.cs" />
+    <Compile Include="Models\GenericListingPage.generated.cs" />
     <Compile Include="Models\GetInTouchComposition.generated.cs" />
     <Compile Include="Models\GlobalIncludesComposition.generated.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\HomePage.generated.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Image.generated.cs" />
+    <Compile Include="Models\IndividualJobPage.generated.cs" />
     <Compile Include="Models\InitialResetPasswordModel.cs" />
     <Compile Include="Models\InternalTextPage.generated.cs" />
     <Compile Include="Models\LoginFormModel.cs" />
@@ -426,6 +480,7 @@
     <Compile Include="Models\NewsAndInsightsLandingPage.generated.cs" />
     <Compile Include="Models\PageHeroCarouselComposition.generated.cs" />
     <Compile Include="Models\PageHeroComposition.generated.cs" />
+    <Compile Include="Models\PageMetaInformationComposition.generated.cs" />
     <Compile Include="Models\PageSpecificIncludesComposition.generated.cs" />
     <Compile Include="Models\RelatedItemSchema.generated.cs" />
     <Compile Include="Models\RelatedItemsComposition.generated.cs" />
@@ -433,19 +488,44 @@
     <Compile Include="Models\ResetPasswordPage.generated.cs" />
     <Compile Include="Models\ResetPasswordRequestModel.cs" />
     <Compile Include="Models\ResourceItemSchema.generated.cs" />
+    <Compile Include="Models\ScienceCategoryPage.generated.cs" />
+    <Compile Include="Models\ScienceDetailsPage.cs" />
+    <Compile Include="Models\ScienceDetailsPage.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSectionBaseSchema.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSectionRichTextSchema.generated.cs" />
+    <Compile Include="Models\ScienceLandingPage.generated.cs" />
+    <Compile Include="Models\SciencePageCategorisationComposition.generated.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SearchResultsPage.generated.cs" />
     <Compile Include="Providers\IBlogCategoriesProvider.cs" />
     <Compile Include="Providers\IBlogTagsProvider.cs" />
+    <Compile Include="Providers\ISciencePageCategoriesProvider.cs" />
     <Compile Include="Providers\UmbracoBlogCategoriesProvider.cs" />
     <Compile Include="Providers\UmbracoBlogTagsProvider.cs" />
-    <Compile Include="Services\FullUrlResolverService.cs" />
+    <Compile Include="Providers\UmbracoSciencePageCategoriesProvider.cs" />
+    <Compile Include="Services\GenericListingPageService.cs" />
     <Compile Include="Services\IContentFullUrlResolver.cs" />
     <Compile Include="Services\ImagePickerApiService.cs" />
     <Compile Include="Services\IMediaFullUrlResolver.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
+    <Compile Include="ViewModels\BasicSidebarViewModel.cs" />
+    <Compile Include="ViewModels\GenericListingPageViewModel.cs" />
+    <Compile Include="ViewModels\AccordionItemViewModel.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
+    <Compile Include="Services\ScienceDetailsPageService.cs" />
+    <Compile Include="ViewModels\ScienceDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsImageGallerySectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsRichTextSubSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsSectionViewModelBase.cs" />
+    <Compile Include="ViewModels\ScienceDetailsSubSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceLandingPageViewModel.cs" />
+    <Compile Include="ViewModels\ScienceLatestUpdatedPageItemViewModel.cs" />
+    <Compile Include="ViewModels\ScienceLatestUpdatesSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceSidebarViewModel.cs" />
+    <Compile Include="ViewModels\IndividualJobPageViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Models\SeoComposition.generated.cs" />
