@@ -6,6 +6,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         public string Title { get; set; }
         public string Url { get; set; }
-        public IHtmlString Content { get; set; }
+        public string Content { get; set; }
     }
 }
