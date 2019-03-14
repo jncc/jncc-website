@@ -30,7 +30,7 @@ namespace JNCC.PublicWebsite.Core.Extensions
                         {
                             Text = y.GetHeadline(),
                             Url = y.Url
-                        }));
+                        }).OrderBy(y => y.Text) as IEnumerable<NavigationItemViewModel>);
         }
     }
 }
