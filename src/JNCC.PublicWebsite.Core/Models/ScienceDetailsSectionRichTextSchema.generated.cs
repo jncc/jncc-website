@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Science Details Section Rich Text Schema</summary>
 	[PublishedContentModel("scienceDetailsSectionRichTextSchema")]
-	public partial class ScienceDetailsSectionRichTextSchema : ScienceDetailsSectionBaseSchema
+	public partial class ScienceDetailsSectionRichTextSchema : ScienceDetailsSectionBaseSchema, IScienceDetailsSectionSubSectionsSchemaComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "scienceDetailsSectionRichTextSchema";
@@ -52,6 +52,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IHtmlString Content
 		{
 			get { return this.GetPropertyValue<IHtmlString>("content"); }
+		}
+
+		///<summary>
+		/// Sub Sections: Optional sub sections which will be rendered below the content of this section.
+		///</summary>
+		[ImplementPropertyType("subSections")]
+		public IEnumerable<IPublishedContent> SubSections
+		{
+			get { return JNCC.PublicWebsite.Core.Models.ScienceDetailsSectionSubSectionsSchemaComposition.GetSubSections(this); }
 		}
 	}
 }

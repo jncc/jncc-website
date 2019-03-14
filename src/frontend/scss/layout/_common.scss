@@ -189,18 +189,8 @@ a {
 	}
 }
 
-.aside-nav {
+.aside-nav, #sidebar p {
 	font-size: 1rem;
-
-	li {
-		margin-bottom: rem-calc(12px);
-
-		&.active {
-			a {
-				color: $green;
-			}
-		}
-	}
 
 	a {
 		color: $black;
@@ -211,6 +201,19 @@ a {
 		}
 	}
 }
+
+.aside-nav {
+	li {
+		margin-bottom: rem-calc(12px);
+
+		&.active {
+			a {
+				color: $green;
+			}
+		}
+	}
+}
+
 
 .visual-section {
 	background-size: cover;

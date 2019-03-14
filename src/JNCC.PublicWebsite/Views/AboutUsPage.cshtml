@@ -1,0 +1,31 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.AboutUsPage>
+@using ContentModels = JNCC.PublicWebsite.Core.Models;
+@{
+    Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Content.Preamble
+                @if (Model.Content.MainContent != null && Model.Content.MainContent.Any())
+                {
+                    <ul class="articles-list no-bullet">
+                        @foreach (var item in Model.Content.MainContent)
+                        {
+                            <li>
+                                @Html.DisplayFor(model => item)
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
+        </div>
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>

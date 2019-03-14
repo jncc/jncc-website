@@ -3164,6 +3164,7 @@ li,
 h1,
 h2,
 h3,
+.science-landing .featured-quote p,
 h4,
 h2#toc,
 h5,
@@ -3207,6 +3208,7 @@ h1,
 h2,
 .h2,
 h3,
+.science-landing .featured-quote p,
 .h3,
 h4,
 h2#toc,
@@ -3227,6 +3229,7 @@ h1 small,
 h2 small,
 .h2 small,
 h3 small,
+.science-landing .featured-quote p small,
 .h3 small,
 h4 small,
 h2#toc small,
@@ -3256,6 +3259,7 @@ h2,
 }
 
 h3,
+.science-landing .featured-quote p,
 .h3 {
 	font-size: 1.125rem;
 	line-height: 1.4;
@@ -6728,7 +6732,11 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 	display: block;
 }
 
-.thumbnail {
+.thumbnail,
+img.float-left,
+img.float-right,
+.float-left img,
+.float-right img {
 	display: inline-block;
 	max-width: 100%;
 	margin-bottom: 1rem;
@@ -7862,7 +7870,8 @@ a.thumbnail image {
 }
 
 h2,
-h3 {
+h3,
+.science-landing .featured-quote p {
 	font-weight: 500;
 }
 
@@ -8017,8 +8026,20 @@ a {
 	flex-wrap: wrap;
 }
 
-.aside-nav {
+.aside-nav,
+#sidebar p {
 	font-size: 1rem;
+}
+
+.aside-nav a,
+#sidebar p a {
+	color: #666262;
+	text-decoration: underline;
+}
+
+.aside-nav a:hover,
+#sidebar p a:hover {
+	color: #2d7a29;
 }
 
 .aside-nav li {
@@ -8026,15 +8047,6 @@ a {
 }
 
 .aside-nav li.active a {
-	color: #2d7a29;
-}
-
-.aside-nav a {
-	color: #666262;
-	text-decoration: underline;
-}
-
-.aside-nav a:hover {
 	color: #2d7a29;
 }
 
@@ -8258,7 +8270,9 @@ a {
 	border-top: none;
 }
 
-.filtration-section .card h3 {
+.filtration-section .card h3,
+.filtration-section .card .science-landing .featured-quote p,
+.science-landing .featured-quote .filtration-section .card p {
 	font-size: 1.125rem;
 	font-weight: 700;
 	margin-bottom: .625rem;
@@ -8500,7 +8514,9 @@ input[type="checkbox"]:focus + .fake-input {
 	padding-top: 62%;
 }
 
-.news-holder h3 {
+.news-holder h3,
+.news-holder .science-landing .featured-quote p,
+.science-landing .featured-quote .news-holder p {
 	color: #495651;
 	font-size: 1.125rem;
 }
@@ -8564,7 +8580,9 @@ button.slick-arrow {
 	margin-bottom: 1rem;
 }
 
-.comment-section .comment .comment-meta h3 {
+.comment-section .comment .comment-meta h3,
+.comment-section .comment .comment-meta .science-landing .featured-quote p,
+.science-landing .featured-quote .comment-section .comment .comment-meta p {
 	font-size: inherit;
 }
 
@@ -8610,12 +8628,17 @@ button.slick-arrow {
 }
 
 .header-top.logged-in p,
-.header-top.logged-in form {
+.header-top.logged-in form,
+.header-top.edit-page-bar p,
+.header-top.edit-page-bar form {
 	display: inline-block;
 	vertical-align: middle;
 }
 
-.header-top.logged-in form .button.hollow {
+.header-top.logged-in p .button.hollow,
+.header-top.logged-in form .button.hollow,
+.header-top.edit-page-bar p .button.hollow,
+.header-top.edit-page-bar form .button.hollow {
 	color: #fefefe;
 	border-color: #fefefe;
 	margin: 0;
@@ -8806,7 +8829,9 @@ input[type="search"]::-webkit-search-cancel-button {
 	text-decoration: underline;
 }
 
-#footer h3 {
+#footer h3,
+#footer .science-landing .featured-quote p,
+.science-landing .featured-quote #footer p {
 	font-size: 1.125rem;
 	text-transform: uppercase;
 	margin-bottom: 1.1875rem;
@@ -8917,6 +8942,18 @@ html {
 	scroll-behavior: smooth;
 }
 
+#content a.return-to-top {
+	text-decoration: none;
+}
+
+#content a.return-to-top:hover {
+	text-decoration: underline;
+}
+
+#content a.return-to-top:hover i {
+	text-decoration: underline;
+}
+
 #content table {
 	display: block;
 	width: 100%;
@@ -8930,6 +8967,12 @@ html {
 
 #content table caption .expand-table {
 	margin-right: .5rem;
+}
+
+#content table.no-auto-scroll {
+	display: table;
+	max-height: inherit;
+	overflow: inherit;
 }
 
 #table-modal .expand-table {
@@ -8963,6 +9006,99 @@ html {
 	margin-bottom: .5rem;
 }
 
+.science-landing .articles-section.resources.latest-updates {
+	padding: 3rem 0;
+}
+
+.science-landing .articles-section.resources.latest-updates h3,
+.science-landing .articles-section.resources.latest-updates .featured-quote p,
+.science-landing .featured-quote .articles-section.resources.latest-updates p {
+	font-size: 1.5rem;
+	border-bottom: 2px solid #2d7a29;
+}
+
+.science-landing .articles-section.resources .card {
+	margin-bottom: 2rem !important;
+	height: calc(100% - 2rem);
+}
+
+.science-landing .articles-section.resources .card-section p {
+	margin-bottom: 1rem;
+}
+
+.science-landing .articles-section.resources.science-group {
+	padding: 3rem 0;
+	background-image: none;
+}
+
+.science-landing .featured-quote {
+	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
+	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
+	padding: 2rem 0;
+}
+
+.science-landing .featured-quote p {
+	font-weight: 100;
+	font-style: italic;
+	margin: 0;
+}
+
+.science-landing .row1 h3,
+.science-landing .row1 .featured-quote p,
+.science-landing .featured-quote .row1 p,
+.science-landing .row1 p {
+	color: #666262 !important;
+}
+
+.science-landing .widget-section h2 {
+	margin-bottom: 2rem;
+}
+
+.slick.pagination {
+	margin-top: 1rem;
+}
+
+.slick.pagination .current a {
+	color: #fefefe;
+}
+
+.slick.pagination .current a:hover {
+	background-color: inherit;
+	text-decoration: underline;
+}
+
+#image-modal-body img {
+	min-width: 100%;
+}
+
+.thumbnail,
+img.float-left,
+img.float-right,
+.float-left img,
+.float-right img {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 1rem;
+	border: solid 4px #fefefe;
+	border-radius: 0;
+	box-shadow: 0 0 0 1px rgba(102, 98, 98, .2);
+	line-height: 0;
+}
+
+a.thumbnail {
+	-webkit-transition: box-shadow 200ms ease-out;
+	transition: box-shadow 200ms ease-out;
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus {
+	box-shadow: 0 0 6px 1px rgba(45, 122, 41, .5);
+}
+
+a.thumbnail image {
+	box-shadow: none;
+}
+
 img.float-left {
 	margin-bottom: 1rem;
 	margin-right: 1rem;
@@ -8981,6 +9117,10 @@ img.float-right {
 .float-right img {
 	margin-bottom: 1rem;
 	margin-left: 1rem;
+}
+
+.clearfix {
+	clear: both;
 }
 
 @media screen and (orientation: landscape) {
@@ -10900,6 +11040,7 @@ img.float-right {
 	}
 
 	h3,
+	.science-landing .featured-quote p,
 	.h3 {
 		font-size: 1.75rem;
 	}
@@ -13448,7 +13589,9 @@ img.float-right {
 		padding-bottom: 2.5rem;
 	}
 
-	.news-holder h3 {
+	.news-holder h3,
+	.news-holder .science-landing .featured-quote p,
+	.science-landing .featured-quote .news-holder p {
 		margin-bottom: .9375rem;
 	}
 
@@ -13896,13 +14039,15 @@ img.float-right {
 
 	p,
 	h2,
-	h3 {
+	h3,
+	.science-landing .featured-quote p {
 		orphans: 3;
 		widows: 3;
 	}
 
 	h2,
-	h3 {
+	h3,
+	.science-landing .featured-quote p {
 		page-break-after: avoid;
 	}
 

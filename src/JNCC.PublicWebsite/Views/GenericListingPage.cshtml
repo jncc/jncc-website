@@ -18,7 +18,13 @@
                                 <ul>
                                     @foreach (var item in Model.Items.Items)
                                     {
-                                        <li><a href="@item.Url">@item.Text</a></li>
+                                        <li>
+                                            <a href="@item.Url">@item.Title</a>
+                                            @if (string.IsNullOrEmpty(item.Content) == false)
+                                            {
+                                                <br />@item.Content
+                                            }
+                                        </li>
                                     }
                                 </ul>
                             </div>

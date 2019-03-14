@@ -1,5 +1,16 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ScienceLandingPage>
-@using ContentModels = JNCC.PublicWebsite.Core.Models;
+﻿@model ScienceLandingPageViewModel
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
+<main id="main" class="science-landing">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+    </div>
+    @Html.Partial("~/Views/Partials/ScienceLanding/FeaturedQuote.cshtml")
+    @Html.Partial("~/Views/Partials/CalloutCards.cshtml")
+    @Html.Partial("~/Views/Partials/ScienceLanding/LatestUpdates.cshtml")
+    @Html.Partial("~/Views/Partials/ScienceLanding/ResourcesCollections.cshtml")
+    @Html.Partial("~/Views/Partials/LatestNewsAndSocialFeed.cshtml")
+</main>

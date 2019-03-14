@@ -1,0 +1,69 @@
+﻿@model CareersLandingPageViewModel
+@{
+    Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+
+                @if (Model.Careers.Any())
+                {
+                    <div class="row">
+                        <div class="columns small-12 medium-6 callout toc">
+                            <h2 id="toc">Contents</h2>
+                            <ol>
+                                <li><a href="#vacancies">Current vacancies</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                }
+
+                @Model.Preamble
+                <ul class="articles-list no-bullet">
+                    @foreach (var item in Model.MainContent)
+                    {
+                        <li>
+                            @Html.DisplayFor(model => item)
+                        </li>
+                    }
+                </ul>
+            </div>
+            @(Html.Action<CareersSidebarSurfaceController>("RenderSidebar"))
+        </div>
+    </div>
+
+    @if (Model.Careers.Any())
+    {
+        <div class="info-section" style="background-color:white">
+            <div class="container">
+                <h2 id="vacancies">Current vacancies</h2>
+                <table style="width:100%">
+                    <tbody>
+                        <tr>
+                            <th>Job title</th>
+                            <th>Grade</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Team</th>
+                        </tr>
+                        @foreach (var item in Model.Careers)
+                        {
+                            <tr>
+                                <td><a href="@item.Url">@item.JobTitle</a></td>
+                                <td>@item.Grade</td>
+                                <td>@item.Type</td>
+                                <td>@item.Location</td>
+                                <td>@item.Team</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+</main>

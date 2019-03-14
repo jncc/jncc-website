@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Science Landing Page</summary>
 	[PublishedContentModel("scienceLandingPage")]
-	public partial class ScienceLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageSpecificIncludesComposition, ISeoComposition
+	public partial class ScienceLandingPage : PublishedContentModel, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "scienceLandingPage";
@@ -46,6 +46,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// A to Z Page Link: The link to the A to Z directory of all science pages.  This link appears below the latest update items. If no link is authored then the link will not be displayed.
+		///</summary>
+		[ImplementPropertyType("aToZPageLink")]
+		public RJP.MultiUrlPicker.Models.Link AToZpageLink
+		{
+			get { return this.GetPropertyValue<RJP.MultiUrlPicker.Models.Link>("aToZPageLink"); }
+		}
+
+		///<summary>
+		/// Featured Quote: A featured quote which highlights the scientific research work done by JNCC.  This is optional and if no quote is provided it will not be displayed on the page.
+		///</summary>
+		[ImplementPropertyType("featuredQuote")]
+		public string FeaturedQuote
+		{
+			get { return this.GetPropertyValue<string>("featuredQuote"); }
+		}
+
+		///<summary>
 		/// Hide Children from Navigation: Hides any child pages from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNavi")]
@@ -61,6 +79,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// Headline: A headline that appears above the main content of the page.  If no value is provided the page name will be used instead.  If a hero image is also provided then this headline appears over the hero image. Otherwise it appears just above the main content.
+		///</summary>
+		[ImplementPropertyType("headline")]
+		public string Headline
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeadline(this); }
+		}
+
+		///<summary>
+		/// Hero Image: The hero image which is displayed above the main content of the page.
+		///</summary>
+		[ImplementPropertyType("heroImage")]
+		public IPublishedContent HeroImage
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
 		}
 
 		///<summary>

@@ -1,4 +1,4 @@
-﻿@model ScienceDetailsPageViewModel
+@model ScienceDetailsPageViewModel
 @{
     Layout = "Master.cshtml";
 }
@@ -18,7 +18,20 @@
                             <ol>
                                 @foreach (var section in Model.Sections)
                                 {
-                                    <li><a href="#@(section.HtmlId)">@(section.Headline)</a></li>
+                                    <li>
+                                        <a href="#@(section.HtmlId)">@(section.Headline)</a>
+                                        @if (section.SubSections.Any())
+                                        {
+                                            <ol>
+                                                @foreach (var subSection in section.SubSections)
+                                                {
+                                                    <li>
+                                                        <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                    </li>
+                                                }
+                                            </ol>
+                                        }
+                                    </li>
                                 }
                             </ol>
                         </div>
@@ -26,8 +39,16 @@
                     foreach (var section in Model.Sections)
                     {
                         <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
-                        @Html.DisplayFor(model => section)
-                        <p class="text-right"><a href="#toc">Top <i class="step fi-arrow-up"></i></a></p>
+                        @RenderScienceDetailsSection(section)
+                        if (section.SubSections.Any())
+                        {
+                            foreach (var subSection in section.SubSections)
+                            {
+                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                @RenderScienceDetailsSection(subSection)
+                            }
+                        }
+                        <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
                     }
                 }
                 <div id="meta" class="callout secondary">
@@ -56,3 +77,7 @@
     @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
     @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
 </main>
+@helper RenderScienceDetailsSection(ScienceDetailsSectionViewModelBase section)
+{
+    @Html.Partial(string.Format("~/Views/Partials/ScienceDetails/{0}.cshtml", section.PartialViewName), section)
+}

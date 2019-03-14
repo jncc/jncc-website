@@ -15,7 +15,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
         public IHttpActionResult Get(int id)
         {
             var leftPart = Request.RequestUri.GetLeftPart(UriPartial.Authority);
-            var mediaUrlResolverService = new FullUrlResolverService(UmbracoContext);
+            var mediaUrlResolverService = new UmbracoContextFullUrlResolverService(UmbracoContext);
             var service = new ImagePickerApiService(Umbraco, mediaUrlResolverService);
             IPublishedContent root;
 

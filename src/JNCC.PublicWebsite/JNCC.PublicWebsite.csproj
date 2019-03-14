@@ -335,6 +335,9 @@
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\TidyNet.dll</HintPath>
     </Reference>
+    <Reference Include="uComponents.nuPickers, Version=1.7.1.327, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\nuPickers.1.7.1\lib\net45\uComponents.nuPickers.dll</HintPath>
+    </Reference>
     <Reference Include="umbraco, Version=1.0.6879.21989, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.dll</HintPath>
     </Reference>
@@ -1313,9 +1316,9 @@
     <Content Include="Views\Partials\CookieBannerTemplate.cshtml" />
     <Content Include="Views\Partials\PageAttributes.cshtml" />
     <Content Include="Views\Partials\Home\Carousel.cshtml" />
-    <Content Include="Views\Partials\Home\CalloutCards.cshtml" />
+    <Content Include="Views\Partials\CalloutCards.cshtml" />
     <Content Include="Views\Partials\Home\Resources.cshtml" />
-    <Content Include="Views\Partials\Home\LatestNewsAndSocialFeed.cshtml" />
+    <Content Include="Views\Partials\LatestNewsAndSocialFeed.cshtml" />
     <Content Include="PostDeploy.ps1" />
     <Content Include="Views\Partials\NoPageHeroHeadline.cshtml" />
     <Content Include="Umbraco\Plugins\courier\masterpages\CourierDialog.Master" />
@@ -1394,10 +1397,19 @@
     <Content Include="Views\ScienceCategoryPage.cshtml" />
     <Content Include="Views\ScienceDetailsPage.cshtml" />
     <Content Include="Views\ScienceLandingPage.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\ScienceDetailsRichTextSectionViewModel.cshtml" />
     <Content Include="Views\Partials\ScienceSidebar.cshtml" />
     <Content Include="Views\Partials\GetInTouch.cshtml" />
     <Content Include="Views\GenericListingPage.cshtml" />
+    <Content Include="Views\Partials\ScienceLanding\LatestUpdates.cshtml" />
+    <Content Include="Views\Partials\ScienceLanding\ResourcesCollections.cshtml" />
+    <Content Include="Views\Partials\ScienceLanding\FeaturedQuote.cshtml" />
+    <Content Include="Views\IndividualJobPage.cshtml" />
+    <Content Include="Views\CareersLandingPage.cshtml" />
+    <Content Include="Views\Partials\CareersSidebar.cshtml" />
+    <Content Include="Views\Partials\ScienceDetails\ImageGallery.cshtml" />
+    <Content Include="Views\Partials\ScienceDetails\RichText.cshtml" />
+    <Content Include="Views\Partials\Header\EditPageBar.cshtml" />
+    <Content Include="Views\AboutUsPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

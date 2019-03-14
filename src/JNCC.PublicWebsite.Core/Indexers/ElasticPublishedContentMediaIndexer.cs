@@ -93,7 +93,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         protected void AddNodesToQueue(IEnumerable<XElement> nodes, string type)
         {
-            var fullUrlResolverService = new FullUrlResolverService(UmbracoContext.Current);
+            var fullUrlResolverService = new UmbracoContextFullUrlResolverService(UmbracoContext.Current);
 
             foreach (var node in nodes)
             {

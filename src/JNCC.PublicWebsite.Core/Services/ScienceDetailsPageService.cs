@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -6,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core;
+using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -45,6 +48,16 @@ namespace JNCC.PublicWebsite.Core.Services
             return _navigationItemService.GetViewModels(categories);
         }
 
+        private DateTime? GetReviewedDate(DateTime reviewDate)
+        {
+            if (reviewDate == default(DateTime))
+            {
+                return null;
+            }
+
+            return reviewDate;
+        }
+
         private IEnumerable<ScienceDetailsSectionViewModel> GetSectionViewModels(IEnumerable<ScienceDetailsSectionBaseSchema> mainContent)
         {
             var viewModels = new List<ScienceDetailsSectionViewModel>();
@@ -58,18 +71,18 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 ScienceDetailsSectionViewModel viewModel = null;
 
-                if (section is ScienceDetailsSectionRichTextSchema)
+                switch (section)
                 {
-                    viewModel = new ScienceDetailsRichTextSectionViewModel()
-                    {
-                        Content = (section as ScienceDetailsSectionRichTextSchema).Content
-                    };
+                    case ScienceDetailsSectionRichTextSchema richText:
+                        viewModel = CreateRichTextSection(richText);
+                        break;
+                    case ScienceDetailsSectionImageGallerySchema imageGallery:
+                        viewModel = CreateImageGallerySection(imageGallery);
+                        break;
                 }
 
                 if (viewModel != null)
                 {
-                    viewModel.Headline = section.Headline;
-                    viewModel.HtmlId = section.Headline.ToUrlSegment();
                     viewModels.Add(viewModel);
                 }
             }
@@ -77,14 +90,141 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
-        private DateTime? GetReviewedDate(DateTime reviewDate)
+        private IEnumerable<ScienceDetailsSubSectionViewModel> GetSubSectionViewModels(IEnumerable<IPublishedContent> subSections, string parentHtmlId)
         {
-            if (reviewDate == default(DateTime))
+            var viewModels = new List<ScienceDetailsSubSectionViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(subSections))
             {
-                return null;
+                return viewModels;
             }
 
-            return reviewDate;
+            foreach (var section in subSections)
+            {
+                ScienceDetailsSubSectionViewModel viewModel = null;
+
+                switch (section)
+                {
+                    case ScienceDetailsSubSectionRichTextSchema richText:
+                        viewModel = CreateRichTextSubSection(richText, parentHtmlId);
+                        break;
+                    case ScienceDetailsSubSectionImageGallerySchema imageGallery:
+                        viewModel = CreateImageGallerySubSection(imageGallery, parentHtmlId);
+                        break;
+                }
+
+                if (viewModel != null)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
+        }
+
+        private TViewModel CreateSection<TViewModel>(ScienceDetailsSectionBaseSchema schema, string parentSectionHtmlId = null) where TViewModel : ScienceDetailsSectionViewModelBase, new()
+        {
+            var section = new TViewModel()
+            {
+                Headline = schema.Headline,
+                PartialViewName = GetPartialViewName(schema)
+            };
+
+            var sectionHtmlId = schema.Headline.ToUrlSegment();
+
+            if (string.IsNullOrWhiteSpace(parentSectionHtmlId))
+            {
+                section.HtmlId = sectionHtmlId;
+            }
+            else
+            {
+                section.HtmlId = string.Join("-", parentSectionHtmlId, sectionHtmlId);
+            }
+
+
+            return section;
+        }
+
+        private string GetPartialViewName(ScienceDetailsSectionBaseSchema schema)
+        {
+            switch (schema.DocumentTypeAlias)
+            {
+                case ScienceDetailsSectionRichTextSchema.ModelTypeAlias:
+                case ScienceDetailsSubSectionRichTextSchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.RichText;
+                case ScienceDetailsSubSectionImageGallerySchema.ModelTypeAlias:
+                case ScienceDetailsSectionImageGallerySchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.ImageGallery;
+                default:
+                    throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
+            }
+        }
+
+        private ScienceDetailsRichTextSectionViewModel CreateRichTextSection(ScienceDetailsSectionRichTextSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsRichTextSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceDetailsImageGallerySectionViewModel CreateImageGallerySection(ScienceDetailsSectionImageGallerySchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageGallerySectionViewModel>(schema);
+
+            model.Images = CreateSectionImageGallery(schema.Images);
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceDetailsRichTextSubSectionViewModel CreateRichTextSubSection(ScienceDetailsSubSectionRichTextSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Content = schema.Content;
+
+            return model;
+        }
+
+        private ScienceDetailsImageGallerySubSectionViewModel CreateImageGallerySubSection(ScienceDetailsSubSectionImageGallerySchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsImageGallerySubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Images = CreateSectionImageGallery(schema.Images);
+
+            return model;
+        }
+
+        private IEnumerable<ImageGalleryItemViewModel> CreateSectionImageGallery(IEnumerable<IPublishedContent> images)
+        {
+            var viewModels = new List<ImageGalleryItemViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(images))
+            {
+                return viewModels;
+            }
+
+            foreach (var image in images)
+            {
+                var viewModel = new ImageGalleryItemViewModel()
+                {
+                    Url = image.Url,
+                    ThumbnailImageUrl = image.GetCropUrl(cropAlias: ImageCropAliases.Square),
+                    AlternativeText = image.Name
+                };
+
+                if (string.IsNullOrEmpty(image.Url) == false)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
         }
     }
 }
