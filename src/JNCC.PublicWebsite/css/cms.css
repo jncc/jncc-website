@@ -62,3 +62,7 @@ img.float-right {
 
 .clearfix {
   clear: both; }
+
+.highlight {
+  background-color: #ffff0080;
+  padding: 0.4rem; }
