@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Preamble: Introductory content that appears the A to Z section.
+		///</summary>
+		[ImplementPropertyType("preamble")]
+		public IHtmlString Preamble
+		{
+			get { return this.GetPropertyValue<IHtmlString>("preamble"); }
+		}
+
+		///<summary>
 		/// Get in Touch Button: The link & text for the Get in Touch button which accompanies the Get in Touch content below the main content of the page.
 		///</summary>
 		[ImplementPropertyType("getInTouchButton")]
