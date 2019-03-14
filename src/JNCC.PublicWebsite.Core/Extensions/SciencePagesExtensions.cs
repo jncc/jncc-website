@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Extensions
             return firstAvailableName.ToUpper().First();
         }
 
-        public static IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> CategorisePages<T>(this IEnumerable<T> pages) where T : ISciencePageCategorisationComposition, IPageHeroComposition
+        public static IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> CategorisePages(this IEnumerable<IScienceCategorisablePage> pages)
         {
             return pages.GroupBy(x => x.GetCategorisationCharacter())
                         .OrderBy(x => x.Key)
