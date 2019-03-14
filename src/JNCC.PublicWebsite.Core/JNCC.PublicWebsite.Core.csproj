@@ -362,6 +362,7 @@
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\ScienceAtoZPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceCategoryPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceLandingPageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\CareersSidebarSurfaceController.cs" />
