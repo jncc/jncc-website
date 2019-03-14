@@ -1,7 +1,36 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ScienceAtoZpage>
-@using ContentModels = JNCC.PublicWebsite.Core.Models;
+﻿@model ScienceAtoZPageViewModel
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
-
-                
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Preamble
+                @if (Model.HasCategorisedPages)
+                {
+                    <div class="row small-collapse small-up-1 medium-up-2">
+                        @foreach (var kvp in Model.CategorisedPages)
+                        {
+                            <div class="column">
+                                <h3>@kvp.Key</h3>
+                                <ul>
+                                    @foreach (var page in kvp.Value)
+                                    {
+                                        <li><a href="@page.Url">@page.Text</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
+        </div>
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>      
