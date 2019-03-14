@@ -1,7 +1,10 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
+using SEOChecker.MVC;
+using System;
 using System.Collections.Specialized;
 using System.Linq;
+using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -39,10 +42,35 @@ namespace JNCC.PublicWebsite.Core.Services
             var viewModel = new GenericListingPageItemViewModel()
             {
                 Title = content.Name,
-                Url = content.Url
+                Url = content.Url,
+                Content = GetViewModelContent(content)
             };
 
             return viewModel;
+        }
+
+        private string GetViewModelContent(IPublishedContent model)
+        {
+
+            string content = null;
+
+            if (model is ISeoComposition == false)
+            {
+                return content;
+            }
+
+            try
+            {
+                var seoMetaData = new MetaData(model.Id);
+                content = seoMetaData.Description;
+            }
+            catch (Exception ex)
+            {
+                var message = string.Format("Unable to access SEO data for node ID {0}", model.Id);
+                LogHelper.Error<GenericListingPage>(message, ex);
+            }
+
+            return content;
         }
     }
 }
