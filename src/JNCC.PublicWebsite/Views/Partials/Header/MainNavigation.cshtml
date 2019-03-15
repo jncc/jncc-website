@@ -1,21 +1,26 @@
 ﻿@model MainNavigationViewModel
 <nav class="top-bar nav @Html.If(Model.HasPageHero == false, "no-page-hero")" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
     <div class="container">
-        <ul class="vertical medium-horizontal menu">
+        <ul class="vertical medium-horizontal dropdown menu" data-dropdown-menu data-click-open data-alignment="left">
             @foreach (var navigationItem in Model.Items)
             {
-                if (navigationItem.IsActive)
-                {
-                    <li class="active">@RenderHyperlink(navigationItem)</li>
-                }
-                else
-                {
-                    <li>@RenderHyperlink(navigationItem)</li>
-                }
+                <li class="@Html.If(navigationItem.IsActive, "active") @Html.If(navigationItem.HasChildren, "is-dropdown-submenu-parent")">@RenderHyperlink(navigationItem)@RenderSubMenu(navigationItem)</li>
             }
         </ul>
     </div>
 </nav>
+@helper RenderSubMenu(MainNavigationItemViewModel navigationItem)
+{
+    if (navigationItem.HasChildren)
+    {
+        <ul class="vertical menu nested">
+            @foreach (var item in navigationItem.Children)
+            {
+                <li class="@Html.If(item.IsActive, "active")">@RenderHyperlink(item)</li>
+            }
+        </ul>
+    }
+}
 @helper RenderHyperlink(NavigationItemViewModel navigationItem)
 {
     <a href="@navigationItem.Url" target="@navigationItem.Target" accesskey="@navigationItem.AccessKey">@navigationItem.Text</a>
