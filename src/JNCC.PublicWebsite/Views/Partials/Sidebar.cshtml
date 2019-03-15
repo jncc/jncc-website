@@ -2,6 +2,7 @@
 @if (Model.HasPrimaryCallToActionButton == false
     && Model.HasInThisSectionLinks == false
     && Model.HasAlsoInLinks == false
+    && Model.HasDataHubLinks == false
     && Model.HasSeeAlsoLinks == false)
 {
     return;
@@ -32,6 +33,19 @@
                 @foreach (var link in Model.AlsoInLinks)
                 {
                     <li><a href="@link.Url">@link.Text</a></li>
+                }
+            </ul>
+        </nav>
+    }
+
+    @if (Model.HasDataHubLinks)
+    {
+        <nav class="holder" aria-label="aside-navigation">
+            <h2>Data Hub Links</h2>
+            <ul class="aside-nav no-bullet">
+                @foreach (var link in Model.DataHubLinks)
+                {
+                    <li><a href="@link.Url" target="@link.Target">@link.Text</a></li>
                 }
             </ul>
         </nav>
