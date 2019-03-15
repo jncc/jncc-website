@@ -1,4 +1,4 @@
-﻿using Amazon;
+using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.SQS;
@@ -317,7 +317,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
-        public SearchModel GetByRawQuery(string query, int numberOfItems)
+        public SearchModel GetByRawQuery(string rawQuery, int numberOfItems)
         {
             throw new NotImplementedException();
         }

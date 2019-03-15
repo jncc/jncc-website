@@ -4,6 +4,6 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     public interface IDataHubRawQueryService
     {
-        SearchModel GetByRawQuery(string query, int numberOfItems);
+        SearchModel GetByRawQuery(string rawQuery, int numberOfItems);
     }
 }
