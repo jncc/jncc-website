@@ -317,7 +317,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
-        public IEnumerable<SearchModel> GetByRawQuery(string query, int numberOfItems)
+        public SearchModel GetByRawQuery(string query, int numberOfItems)
         {
             throw new NotImplementedException();
         }
