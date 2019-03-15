@@ -11,7 +11,7 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         private const int _sectionRootLevel = 2;
 
-        public SidebarService(NavigationItemService navigationItemService) : base(navigationItemService)
+        public SidebarService(NavigationItemService navigationItemService, IDataHubRawQueryService dataHubRawQueryService) : base(navigationItemService, dataHubRawQueryService)
         {
         }
 
