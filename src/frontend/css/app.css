@@ -5411,7 +5411,7 @@ a.button:focus {
 }
 
 .dropdown.menu > li > a {
-	background: #fefefe;
+	background: transparent;
 	padding: .7rem 1rem;
 }
 
@@ -8590,6 +8590,14 @@ button.slick-arrow {
 	margin: 0;
 }
 
+.is-dropdown-submenu-parent .menu {
+	display: none;
+}
+
+.is-dropdown-submenu-parent.is-active .menu {
+	display: block;
+}
+
 #header {
 	position: relative;
 	z-index: 500;
@@ -8747,7 +8755,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	padding: 0 .9375rem;
 }
 
-.menu li.active a {
+.menu li.active > a {
 	border-bottom: .1875rem solid #2d7a29;
 }
 
@@ -11516,9 +11524,13 @@ img.float-right {
 		background-color: rgba(255, 255, 255, .72);
 	}
 
-	.menu {
+	#menu .dropdown.menu {
 		margin-left: -.9375rem;
 		background: transparent !important;
+	}
+
+	.menu {
+		margin-left: -.9375rem; /*background: transparent !important;*/
 	}
 
 	.nav-opener {

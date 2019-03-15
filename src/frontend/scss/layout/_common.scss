@@ -1155,3 +1155,15 @@ button.slick-arrow {
 		}
 	}
 }
+
+.is-dropdown-submenu-parent {
+	.menu {
+		display: none;
+	}
+
+	&.is-active {
+		.menu {
+			display: block;
+		}
+	}
+}
