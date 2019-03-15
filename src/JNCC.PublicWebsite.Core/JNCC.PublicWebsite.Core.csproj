@@ -567,11 +567,8 @@
     <Compile Include="ViewModels\BlogCommentViewModel.cs" />
     <Compile Include="ViewModels\CalloutCardViewModel.cs" />
     <Compile Include="Services\HomePageService.cs" />
-    <Compile Include="Services\IDataHubQueryRelatedItemsService.cs" />
-    <Compile Include="Services\IManuallyAuthoredRelatedItemsService.cs" />
     <Compile Include="Services\ListingService.cs" />
     <Compile Include="Services\MainNavigationService.cs" />
-    <Compile Include="Services\ManuallyAuthoredRelatedItemsService.cs" />
     <Compile Include="Services\NavigationItemService.cs" />
     <Compile Include="Services\NewsAndInsightsLandingService.cs" />
     <Compile Include="Services\PageHeroService.cs" />
