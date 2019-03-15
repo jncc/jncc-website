@@ -7,26 +7,20 @@ using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class SidebarService
+    internal sealed class SidebarService : SidebarServiceBase
     {
-        private readonly NavigationItemService _navigationItemService;
         private const int _sectionRootLevel = 2;
 
-        public SidebarService(NavigationItemService navigationItemService)
+        public SidebarService(NavigationItemService navigationItemService) : base(navigationItemService)
         {
-            _navigationItemService = navigationItemService;
         }
 
         public SidebarViewModel GetViewModel(ISidebarComposition composition)
         {
             var sectionRoot = GetSectionAncestor(composition);
 
-            var viewModel = new SidebarViewModel()
-            {
-                PrimaryCallToActionButton = _navigationItemService.GetViewModel(composition.SidebarPrimaryCallToActionButton),
-                InThisSectionLinks = GetInThisSectionLinks(composition),
-                SeeAlsoLinks = _navigationItemService.GetViewModels(composition.SidebarSeeAlsoLinks)
-            };
+            var viewModel = CreateViewModel<SidebarViewModel>(composition);
+            viewModel.InThisSectionLinks = GetInThisSectionLinks(composition);
 
             if (sectionRoot != null && sectionRoot.IsNotEqual(composition))
             {
