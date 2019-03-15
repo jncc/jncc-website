@@ -19,7 +19,7 @@ using Umbraco.Core.Logging;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class SearchService
+    internal sealed class SearchService : IDataHubRawQueryService
     {
         private readonly ISearchConfiguration _searchConfiguration;
 
@@ -315,6 +315,11 @@ namespace JNCC.PublicWebsite.Core.Services
             }
 
             return viewModels;
+        }
+
+        public IEnumerable<SearchModel> GetByRawQuery(string query, int numberOfItems)
+        {
+            throw new NotImplementedException();
         }
     }
 }
