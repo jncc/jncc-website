@@ -24,11 +24,11 @@ namespace JNCC.PublicWebsite.Core.Models
 	/// <summary>Navigation Settings Composition</summary>
 	public partial interface INavigationSettingsComposition : IPublishedContent
 	{
-		/// <summary>Hide Children from Navigation</summary>
-		bool UmbracoNavi { get; }
-
 		/// <summary>Hide from Navigation</summary>
 		bool UmbracoNaviHide { get; }
+
+		/// <summary>Hide Children from Navigation</summary>
+		bool UmbracoNaviHideChildren { get; }
 	}
 
 	/// <summary>Navigation Settings Composition</summary>
@@ -57,18 +57,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Hide Children from Navigation: Hides any child pages from the main navigation.
-		///</summary>
-		[ImplementPropertyType("umbracoNavi")]
-		public bool UmbracoNavi
-		{
-			get { return GetUmbracoNavi(this); }
-		}
-
-		/// <summary>Static getter for Hide Children from Navigation</summary>
-		public static bool GetUmbracoNavi(INavigationSettingsComposition that) { return that.GetPropertyValue<bool>("umbracoNavi"); }
-
-		///<summary>
 		/// Hide from Navigation: Hides the page from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -79,5 +67,17 @@ namespace JNCC.PublicWebsite.Core.Models
 
 		/// <summary>Static getter for Hide from Navigation</summary>
 		public static bool GetUmbracoNaviHide(INavigationSettingsComposition that) { return that.GetPropertyValue<bool>("umbracoNaviHide"); }
+
+		///<summary>
+		/// Hide Children from Navigation: Hides any child pages from the main navigation.
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHideChildren")]
+		public bool UmbracoNaviHideChildren
+		{
+			get { return GetUmbracoNaviHideChildren(this); }
+		}
+
+		/// <summary>Static getter for Hide Children from Navigation</summary>
+		public static bool GetUmbracoNaviHideChildren(INavigationSettingsComposition that) { return that.GetPropertyValue<bool>("umbracoNaviHideChildren"); }
 	}
 }
