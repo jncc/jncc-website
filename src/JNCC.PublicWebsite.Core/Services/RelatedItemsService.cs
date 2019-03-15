@@ -2,52 +2,48 @@
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class RelatedItemsService
     {
-        private const int _maxNumberOfRelatedItems = 3;
-        private readonly IManuallyAuthoredRelatedItemsService _manuallyAuthoredRelatedItemsService;
-        private readonly IDataHubQueryRelatedItemsService _dataHubQueryRelatedItemsService;
+        private readonly NavigationItemService _navigationItemService;
 
-        public RelatedItemsService(IManuallyAuthoredRelatedItemsService manuallyAuthoredRelatedItemsService = null, IDataHubQueryRelatedItemsService dataHubQueryRelatedItemsService = null)
+        public RelatedItemsService(NavigationItemService navigationItemService)
         {
-            _manuallyAuthoredRelatedItemsService = manuallyAuthoredRelatedItemsService;
-            _dataHubQueryRelatedItemsService = dataHubQueryRelatedItemsService;
+            _navigationItemService = navigationItemService;
         }
 
         public IEnumerable<RelatedItemViewModel> GetViewModels(IRelatedItemsComposition composition)
         {
             var viewModels = new List<RelatedItemViewModel>();
+            var relatedItems = composition.RelatedItems;
 
-            if (_manuallyAuthoredRelatedItemsService == null)
+            if (relatedItems == null)
             {
                 return viewModels;
             }
 
-            var manuallyAuthoredViewModels = _manuallyAuthoredRelatedItemsService.GetViewModels(composition.RelatedItemsManuallyAuthoredItems);
-
-            if (manuallyAuthoredViewModels.Any())
-            {
-                viewModels.AddRange(manuallyAuthoredViewModels);
-            }
-
-            var currentNumberOfRelatedItems = viewModels.Count();
-
-            if (currentNumberOfRelatedItems == _maxNumberOfRelatedItems || _dataHubQueryRelatedItemsService == null)
+            var typedItems = relatedItems.OfType<RelatedItemSchema>();
+            if (typedItems.Any() == false)
             {
                 return viewModels;
             }
 
-            var numberOfItemsRequiredFromDataHub = _maxNumberOfRelatedItems - currentNumberOfRelatedItems;
-            var dataHubQueryViewModels = _dataHubQueryRelatedItemsService.GetViewModels(composition.RelatedItemsDataHubQuery, numberOfItemsRequiredFromDataHub);
-
-            if (dataHubQueryViewModels.Any())
+            foreach (var item in typedItems)
             {
-                viewModels.AddRange(dataHubQueryViewModels);
+                var viewModel = new RelatedItemViewModel()
+                {
+                    Content = item.Content,
+                    Link = _navigationItemService.GetViewModel(item.Link)
+                };
+
+                if (item.Image != null)
+                {
+                    viewModel.ImageUrl = item.Image.Url;
+                }
+
+                viewModels.Add(viewModel);
             }
 
             return viewModels;
