@@ -163,6 +163,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Data Hub Query: An optional query which pulls links from the data hub.  If no data hub query is authored or no items are found from the data hub query then no links will be displayed.
+		///</summary>
+		[ImplementPropertyType("sidebarDataHubQuery")]
+		public string SidebarDataHubQuery
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarDataHubQuery(this); }
+		}
+
+		///<summary>
 		/// Primary Call To Action Button: Link & Text for an optional Call to Action button.  This could be various purposes, for example "Get in Touch" or "Download Data".
 		///</summary>
 		[ImplementPropertyType("sidebarPrimaryCallToActionButton")]
