@@ -1,4 +1,4 @@
-using Amazon;
+﻿using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.SQS;
@@ -12,6 +12,7 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,15 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             return Task.Run(() => ESGetAsync(q, size, start)).Result;
         }
+        public SearchModel EsGetByRawQuery(string query)
+        {
+            return Task.Run(() => EsGetByRawQueryAsync(query)).Result;
+        }
+        public async Task<SearchModel> EsGetByRawQueryAsync(string rawQuery)
+        {
+            return await PerformSearchAsync(rawQuery);
+        }
+
         public async Task<SearchModel> ESGetAsync(string query, int size, int start)
         {
             var q = new
@@ -72,11 +82,18 @@ namespace JNCC.PublicWebsite.Core.Services
                 }
             };
 
+            var serializedQuery = JsonConvert.SerializeObject(q, Formatting.None);
+
+            return await PerformSearchAsync(serializedQuery);
+        }
+
+        private async Task<SearchModel> PerformSearchAsync(string query)
+        {
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(_searchConfiguration.AWSESEndpoint + _searchConfiguration.AWSESIndex + "/_search/"),
-                Content = new StringContent(JsonConvert.SerializeObject(q, Formatting.None), Encoding.UTF8, "application/json")
+                Content = new StringContent(query, Encoding.UTF8, "application/json")
             };
 
             var signedRequest = await GetSignedRequest(request);
@@ -319,7 +336,14 @@ namespace JNCC.PublicWebsite.Core.Services
 
         public SearchModel GetByRawQuery(string rawQuery, int numberOfItems)
         {
-            throw new NotImplementedException();
+            var completeRawQuery = string.Format(@"
+            {{
+                ""from"": {0},
+                ""size"": {1},
+                ""query"": {2}
+            }}", 0, numberOfItems, rawQuery);
+
+            return EsGetByRawQuery(completeRawQuery);
         }
     }
 }
