@@ -388,6 +388,7 @@
     <Compile Include="Providers\UmbracoScienceDetailsPageProvider.cs" />
     <Compile Include="Services\CalloutCardsService.cs" />
     <Compile Include="Services\CareersLandingPageService.cs" />
+    <Compile Include="Services\CareersSidebarService.cs" />
     <Compile Include="Services\IDataHubQueryService.cs" />
     <Compile Include="Services\LatestNewsSectionService.cs" />
     <Compile Include="Services\ScienceAtoZPageService.cs" />

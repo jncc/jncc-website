@@ -1,10 +1,6 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Configuration;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -12,12 +8,15 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
     public sealed class CareersSidebarSurfaceController : CoreSurfaceController
     {
         private readonly NavigationItemService _navigationItemService;
-        private readonly CareersLandingPageService _careersLandingPageService;
+        private readonly CareersSidebarService _careersSidebarService;
+        private readonly IDataHubRawQueryService _dataHubRawQueryService;
 
         public CareersSidebarSurfaceController()
         {
+            var config = SearchConfiguration.GetConfig();
+            _dataHubRawQueryService = new SearchService(config);
             _navigationItemService = new NavigationItemService();
-            _careersLandingPageService = new CareersLandingPageService(_navigationItemService);
+            _careersSidebarService = new CareersSidebarService(_navigationItemService, _dataHubRawQueryService);
         }
 
         [ChildActionOnly]
@@ -28,7 +27,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
                 return EmptyResult();
             }
 
-            var viewModel = _careersLandingPageService.GetSidebarViewModel(CurrentPage as CareersLandingPage);
+            var viewModel = _careersSidebarService.GetViewModel(CurrentPage as CareersLandingPage);
             return PartialView("~/Views/Partials/CareersSidebar.cshtml", viewModel);
         }
     }
