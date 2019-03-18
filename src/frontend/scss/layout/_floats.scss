@@ -22,6 +22,10 @@ img {
     &.float-right {
         @extend %img-float-right;
     }
+
+    &.with-border {
+        @extend .thumbnail;
+    }
 }
 
 .float-left {
@@ -36,29 +40,9 @@ img {
     }
 }
 
-img {
-    &.float-left-with-border {
-        @extend .thumbnail;
-        @extend %img-float-left;
-    }
-
-    &.float-right-with-border {
-        @extend .thumbnail;
-        @extend %img-float-right;
-    }
-}
-
-.float-left-with-border {
+.with-border {
     img {
         @extend .thumbnail;
-        @extend %img-float-left;
-    }
-}
-
-.float-right-with-border {
-    img {
-        @extend .thumbnail;
-        @extend %img-float-right;
     }
 }
 

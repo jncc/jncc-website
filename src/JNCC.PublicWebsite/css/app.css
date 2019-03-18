@@ -6712,10 +6712,8 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 }
 
 .thumbnail,
-img.float-left-with-border,
-img.float-right-with-border,
-.float-left-with-border img,
-.float-right-with-border img {
+img.with-border,
+.with-border img {
 	display: inline-block;
 	max-width: 100%;
 	margin-bottom: 1rem;
@@ -9064,10 +9062,8 @@ html {
 }
 
 .thumbnail,
-img.float-left-with-border,
-img.float-right-with-border,
-.float-left-with-border img,
-.float-right-with-border img {
+img.with-border,
+.with-border img {
 	display: inline-block;
 	max-width: 100%;
 	margin-bottom: 1rem;
@@ -9092,17 +9088,13 @@ a.thumbnail image {
 }
 
 img.float-left,
-.float-left img,
-img.float-left-with-border,
-.float-left-with-border img {
+.float-left img {
 	margin-bottom: 1rem;
 	margin-right: 1rem;
 }
 
 img.float-right,
-.float-right img,
-img.float-right-with-border,
-.float-right-with-border img {
+.float-right img {
 	margin-bottom: 1rem;
 	margin-left: 1rem;
 }
