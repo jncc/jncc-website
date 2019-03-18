@@ -11,6 +11,7 @@
             <div id="content">
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 @Model.Content.MainContent
+                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
             </div>
             @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
         </div>
