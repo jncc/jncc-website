@@ -1,4 +1,4 @@
-using JNCC.PublicWebsite.Core.Extensions;
+﻿using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
@@ -43,7 +43,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 return menuItems;
             }
 
-            foreach (var item in parent.VisibleChildren())
+            foreach (var item in parent.VisibleChildren()
+                                       .Where(x => DisallowedDocumentTypeAliases.Contains(x.DocumentTypeAlias) == false))
             {
                 var menuItem = ToMenuItem(item, currentPage);
 
