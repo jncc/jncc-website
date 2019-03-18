@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Generic Listing Page</summary>
 	[PublishedContentModel("genericListingPage")]
-	public partial class GenericListingPage : PublishedContentModel, IGetInTouchComposition, INavigationSettingsComposition, IPageHeroComposition, IPageSpecificIncludesComposition, IRelatedItemsComposition, ISeoComposition, ISidebarComposition
+	public partial class GenericListingPage : PublishedContentModel, IGetInTouchComposition, INavigationSettingsComposition, IPageHeroComposition, IPageMetaInformationComposition, IPageSpecificIncludesComposition, IRelatedItemsComposition, ISeoComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "genericListingPage";
@@ -115,6 +115,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IPublishedContent HeroImage
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageHeroComposition.GetHeroImage(this); }
+		}
+
+		///<summary>
+		/// Published Date: The date is when the page was first published.   This is a required property as a page with a Meta Information must have a published date.
+		///</summary>
+		[ImplementPropertyType("publishedDate")]
+		public DateTime PublishedDate
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageMetaInformationComposition.GetPublishedDate(this); }
 		}
 
 		///<summary>
