@@ -7880,6 +7880,11 @@ a {
 	transition: color .3s ease-in-out;
 }
 
+a:hover > .label {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .button {
 	-webkit-transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
 	transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
@@ -8590,11 +8595,11 @@ button.slick-arrow {
 	margin: 0;
 }
 
-.is-dropdown-submenu-parent .menu {
+.is-dropdown-submenu-parent > .menu {
 	display: none;
 }
 
-.is-dropdown-submenu-parent.is-active .menu {
+.is-dropdown-submenu-parent.is-active > .menu {
 	display: block;
 }
 

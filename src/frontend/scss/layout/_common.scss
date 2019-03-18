@@ -22,6 +22,13 @@ h2,h3 {
 
 a {
 	@include animate(color);
+
+	&:hover {
+		> .label {		
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
 }
 
 .button {
@@ -1157,12 +1164,12 @@ button.slick-arrow {
 }
 
 .is-dropdown-submenu-parent {
-	.menu {
+	> .menu {
 		display: none;
 	}
 
 	&.is-active {
-		.menu {
+		> .menu {
 			display: block;
 		}
 	}
