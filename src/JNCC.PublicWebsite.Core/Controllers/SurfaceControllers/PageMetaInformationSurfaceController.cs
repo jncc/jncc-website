@@ -9,7 +9,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderPageMetaInformation()
         {
-            if (CurrentPage is IPageMetaInformationComposition)
+            if (CurrentPage is IPageMetaInformationComposition == false)
             {
                 return EmptyResult();
             }
