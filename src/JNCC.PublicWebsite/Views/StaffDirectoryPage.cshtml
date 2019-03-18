@@ -13,7 +13,6 @@
                 <section class="staff-holder">
                     @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                     @Model.Content.Preamble
-                    @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
                     @(Html.Action<StaffDirectorySurfaceController>("RenderListing"))
                 </section>
             </div>
