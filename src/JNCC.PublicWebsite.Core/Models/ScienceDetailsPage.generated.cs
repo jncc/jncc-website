@@ -55,6 +55,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Reviewed Date: The date the page last had a meaningful editorial review.
+		///</summary>
+		[ImplementPropertyType("reviewedDate")]
+		public DateTime ReviewedDate
+		{
+			get { return this.GetPropertyValue<DateTime>("reviewedDate"); }
+		}
+
+		///<summary>
 		/// Get in Touch Button: The link & text for the Get in Touch button which accompanies the Get in Touch content below the main content of the page.
 		///</summary>
 		[ImplementPropertyType("getInTouchButton")]
@@ -115,15 +124,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		public DateTime PublishedDate
 		{
 			get { return JNCC.PublicWebsite.Core.Models.PageMetaInformationComposition.GetPublishedDate(this); }
-		}
-
-		///<summary>
-		/// Reviewed Date: The date the page last had a meaningful editorial review.
-		///</summary>
-		[ImplementPropertyType("reviewedDate")]
-		public DateTime ReviewedDate
-		{
-			get { return JNCC.PublicWebsite.Core.Models.PageMetaInformationComposition.GetReviewedDate(this); }
 		}
 
 		///<summary>
