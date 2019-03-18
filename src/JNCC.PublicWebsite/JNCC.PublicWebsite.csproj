@@ -1412,6 +1412,7 @@
     <Content Include="Views\Partials\Header\EditPageBar.cshtml" />
     <Content Include="Views\AboutUsPage.cshtml" />
     <Content Include="Views\ScienceAToZPage.cshtml" />
+    <Content Include="Views\Partials\PageMetaInformation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
