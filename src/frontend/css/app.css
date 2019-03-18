@@ -9091,21 +9091,13 @@ a.thumbnail image {
 	box-shadow: none;
 }
 
-img.float-left {
-	margin-bottom: 1rem;
-	margin-right: 1rem;
-}
-
-img.float-right {
-	margin-bottom: 1rem;
-	margin-left: 1rem;
-}
-
+img.float-left,
 .float-left img {
 	margin-bottom: 1rem;
 	margin-right: 1rem;
 }
 
+img.float-right,
 .float-right img {
 	margin-bottom: 1rem;
 	margin-left: 1rem;
