@@ -3143,7 +3143,7 @@ li,
 h1,
 h2,
 h3,
-.science-landing .featured-quote p,
+.landing-page .featured-quote p,
 h4,
 h2#toc,
 h5,
@@ -3187,7 +3187,7 @@ h1,
 h2,
 .h2,
 h3,
-.science-landing .featured-quote p,
+.landing-page .featured-quote p,
 .h3,
 h4,
 h2#toc,
@@ -3208,7 +3208,7 @@ h1 small,
 h2 small,
 .h2 small,
 h3 small,
-.science-landing .featured-quote p small,
+.landing-page .featured-quote p small,
 .h3 small,
 h4 small,
 h2#toc small,
@@ -3238,7 +3238,7 @@ h2,
 }
 
 h3,
-.science-landing .featured-quote p,
+.landing-page .featured-quote p,
 .h3 {
 	font-size: 1.125rem;
 	line-height: 1.4;
@@ -7848,7 +7848,7 @@ a.thumbnail image {
 
 h2,
 h3,
-.science-landing .featured-quote p {
+.landing-page .featured-quote p {
 	font-weight: 500;
 }
 
@@ -8253,8 +8253,8 @@ a:hover > .label {
 }
 
 .filtration-section .card h3,
-.filtration-section .card .science-landing .featured-quote p,
-.science-landing .featured-quote .filtration-section .card p {
+.filtration-section .card .landing-page .featured-quote p,
+.landing-page .featured-quote .filtration-section .card p {
 	font-size: 1.125rem;
 	font-weight: 700;
 	margin-bottom: .625rem;
@@ -8457,8 +8457,8 @@ button.slick-arrow {
 }
 
 .comment-section .comment .comment-meta h3,
-.comment-section .comment .comment-meta .science-landing .featured-quote p,
-.science-landing .featured-quote .comment-section .comment .comment-meta p {
+.comment-section .comment .comment-meta .landing-page .featured-quote p,
+.landing-page .featured-quote .comment-section .comment .comment-meta p {
 	font-size: inherit;
 }
 
@@ -8714,8 +8714,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 #footer h3,
-#footer .science-landing .featured-quote p,
-.science-landing .featured-quote #footer p {
+#footer .landing-page .featured-quote p,
+.landing-page .featured-quote #footer p {
 	font-size: 1.125rem;
 	text-transform: uppercase;
 	margin-bottom: 1.1875rem;
@@ -8907,42 +8907,6 @@ html {
 	min-width: 100%;
 }
 
-.home-a h2 {
-	color: #495651;
-}
-
-.home-a .card-section {
-	border: 1px solid #dae3df;
-	border-top: none;
-	font-size: .875rem;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-}
-
-.home-a .card-section p {
-	line-height: 1.82352941;
-}
-
-.home-a .card-section .button {
-	font-size: .875rem;
-	text-transform: none;
-	border-radius: .1875rem;
-	padding-top: .8125rem;
-	font-weight: 400;
-}
-
-.home-a .row {
-	margin: 0 -.625rem;
-}
-
 .home-a .visual-section .container {
 	position: relative;
 	z-index: 6;
@@ -8991,8 +8955,8 @@ html {
 }
 
 .news-holder h3,
-.news-holder .science-landing .featured-quote p,
-.science-landing .featured-quote .news-holder p {
+.news-holder .landing-page .featured-quote p,
+.landing-page .featured-quote .news-holder p {
 	color: #495651;
 	font-size: 1.125rem;
 }
@@ -9013,51 +8977,51 @@ html {
 	position: relative;
 }
 
-.science-landing .articles-section.resources.latest-updates {
+.landing-page .articles-section.resources.latest-updates {
 	padding: 3rem 0;
 }
 
-.science-landing .articles-section.resources.latest-updates h3,
-.science-landing .articles-section.resources.latest-updates .featured-quote p,
-.science-landing .featured-quote .articles-section.resources.latest-updates p {
+.landing-page .articles-section.resources.latest-updates h3,
+.landing-page .articles-section.resources.latest-updates .featured-quote p,
+.landing-page .featured-quote .articles-section.resources.latest-updates p {
 	font-size: 1.5rem;
 	border-bottom: 2px solid #2d7a29;
 }
 
-.science-landing .articles-section.resources .card {
+.landing-page .articles-section.resources .card {
 	margin-bottom: 2rem !important;
 	height: calc(100% - 2rem);
 }
 
-.science-landing .articles-section.resources .card-section p {
+.landing-page .articles-section.resources .card-section p {
 	margin-bottom: 1rem;
 }
 
-.science-landing .articles-section.resources.science-group {
+.landing-page .articles-section.resources.science-group {
 	padding: 3rem 0;
 	background-image: none;
 }
 
-.science-landing .featured-quote {
+.landing-page .featured-quote {
 	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
 	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
 	padding: 2rem 0;
 }
 
-.science-landing .featured-quote p {
+.landing-page .featured-quote p {
 	font-weight: 100;
 	font-style: italic;
 	margin: 0;
 }
 
-.science-landing .row1 h3,
-.science-landing .row1 .featured-quote p,
-.science-landing .featured-quote .row1 p,
-.science-landing .row1 p {
+.landing-page .row1 h3,
+.landing-page .row1 .featured-quote p,
+.landing-page .featured-quote .row1 p,
+.landing-page .row1 p {
 	color: #666262 !important;
 }
 
-.science-landing .widget-section h2 {
+.landing-page .widget-section h2 {
 	margin-bottom: 2rem;
 }
 
@@ -11020,7 +10984,7 @@ img.float-right,
 	}
 
 	h3,
-	.science-landing .featured-quote p,
+	.landing-page .featured-quote p,
 	.h3 {
 		font-size: 1.75rem;
 	}
@@ -13545,20 +13509,6 @@ img.float-right,
 		padding: 1.625rem 0;
 	}
 
-	.home-a h2 {
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-	}
-
-	.home-a .card-section {
-		padding: 1.8125rem;
-	}
-
-	.home-a .card-section p {
-		margin-bottom: 2.3125rem;
-	}
-
 	.articles-section {
 		padding: 6.25rem 0 5.1875rem;
 	}
@@ -13602,8 +13552,8 @@ img.float-right,
 	}
 
 	.news-holder h3,
-	.news-holder .science-landing .featured-quote p,
-	.science-landing .featured-quote .news-holder p {
+	.news-holder .landing-page .featured-quote p,
+	.landing-page .featured-quote .news-holder p {
 		margin-bottom: .9375rem;
 	}
 
@@ -14024,14 +13974,14 @@ img.float-right,
 	p,
 	h2,
 	h3,
-	.science-landing .featured-quote p {
+	.landing-page .featured-quote p {
 		orphans: 3;
 		widows: 3;
 	}
 
 	h2,
 	h3,
-	.science-landing .featured-quote p {
+	.landing-page .featured-quote p {
 		page-break-after: avoid;
 	}
 

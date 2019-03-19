@@ -1,47 +1,4 @@
 .home-a {
-	h2 {
-		color: #495651;
-
-		@include breakpoint(large) {
-			font-size: rem-calc(24px);
-			font-weight: 700;
-			margin-bottom: rem-calc(16px);
-		}
-	}
-
-	.card-section {
-		border: 1px solid #dae3df;
-		border-top: none;
-		font-size: rem-calc(14px);
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-
-		@include breakpoint(large) {
-			padding: rem-calc(29px);
-		}
-
-		p {
-			line-height: 1.82352941;
-
-			@include breakpoint(large) {
-				margin-bottom: rem-calc(37px);
-			}
-		}
-
-		.button {
-			font-size: rem-calc(14px);
-			text-transform: none;
-			border-radius: rem-calc(3px);
-			padding-top: rem-calc(13px);
-			font-weight: 400;
-		}
-	}
-
-	.row {
-		margin: 0 -.625rem;
-	}
-
 	.visual-section {
 		.container {
 			position: relative;
@@ -253,7 +210,7 @@
 	}
 }
 
-.science-landing {
+.landing-page {
 	.articles-section {
 		&.resources {
 			&.latest-updates {
