@@ -8890,54 +8890,6 @@ html {
 	margin-bottom: .5rem;
 }
 
-.science-landing .articles-section.resources.latest-updates {
-	padding: 3rem 0;
-}
-
-.science-landing .articles-section.resources.latest-updates h3,
-.science-landing .articles-section.resources.latest-updates .featured-quote p,
-.science-landing .featured-quote .articles-section.resources.latest-updates p {
-	font-size: 1.5rem;
-	border-bottom: 2px solid #2d7a29;
-}
-
-.science-landing .articles-section.resources .card {
-	margin-bottom: 2rem !important;
-	height: calc(100% - 2rem);
-}
-
-.science-landing .articles-section.resources .card-section p {
-	margin-bottom: 1rem;
-}
-
-.science-landing .articles-section.resources.science-group {
-	padding: 3rem 0;
-	background-image: none;
-}
-
-.science-landing .featured-quote {
-	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
-	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
-	padding: 2rem 0;
-}
-
-.science-landing .featured-quote p {
-	font-weight: 100;
-	font-style: italic;
-	margin: 0;
-}
-
-.science-landing .row1 h3,
-.science-landing .row1 .featured-quote p,
-.science-landing .featured-quote .row1 p,
-.science-landing .row1 p {
-	color: #666262 !important;
-}
-
-.science-landing .widget-section h2 {
-	margin-bottom: 2rem;
-}
-
 .slick.pagination {
 	margin-top: 1rem;
 }
@@ -9059,6 +9011,54 @@ html {
 
 .widget-section .container {
 	position: relative;
+}
+
+.science-landing .articles-section.resources.latest-updates {
+	padding: 3rem 0;
+}
+
+.science-landing .articles-section.resources.latest-updates h3,
+.science-landing .articles-section.resources.latest-updates .featured-quote p,
+.science-landing .featured-quote .articles-section.resources.latest-updates p {
+	font-size: 1.5rem;
+	border-bottom: 2px solid #2d7a29;
+}
+
+.science-landing .articles-section.resources .card {
+	margin-bottom: 2rem !important;
+	height: calc(100% - 2rem);
+}
+
+.science-landing .articles-section.resources .card-section p {
+	margin-bottom: 1rem;
+}
+
+.science-landing .articles-section.resources.science-group {
+	padding: 3rem 0;
+	background-image: none;
+}
+
+.science-landing .featured-quote {
+	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
+	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
+	padding: 2rem 0;
+}
+
+.science-landing .featured-quote p {
+	font-weight: 100;
+	font-style: italic;
+	margin: 0;
+}
+
+.science-landing .row1 h3,
+.science-landing .row1 .featured-quote p,
+.science-landing .featured-quote .row1 p,
+.science-landing .row1 p {
+	color: #666262 !important;
+}
+
+.science-landing .widget-section h2 {
+	margin-bottom: 2rem;
 }
 
 .thumbnail,
