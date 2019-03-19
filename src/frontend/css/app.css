@@ -5391,7 +5391,7 @@ a.button:focus {
 
 .dropdown.menu > li > a {
 	background: transparent;
-	padding: .7rem 1rem;
+	padding: 1.5625rem 0 1.3125rem;
 }
 
 .dropdown.menu > li.is-active > a {
