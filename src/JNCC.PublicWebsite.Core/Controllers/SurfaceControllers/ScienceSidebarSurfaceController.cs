@@ -46,5 +46,18 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             return PartialView("~/Views/Partials/ScienceSidebar.cshtml", viewModel);
         }
+
+        [ChildActionOnly]
+        public ActionResult RenderScienceAtoZPageSidebar()
+        {
+            if (CurrentPage is ScienceAtoZpage == false)
+            {
+                return EmptyResult();
+            }
+
+            var viewModel = _sidebarService.GetSidebarViewModel(CurrentPage as ScienceAtoZpage);
+
+            return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
+        }
     }
 }
