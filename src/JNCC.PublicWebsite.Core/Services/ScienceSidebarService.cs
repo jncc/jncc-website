@@ -32,6 +32,11 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModel;
         }
 
+        public SidebarViewModel GetSidebarViewModel(ScienceAtoZpage model)
+        {
+            return CreateViewModel<SidebarViewModel>(model);
+        }
+
         private IEnumerable<MainNavigationItemViewModel> GetCategoriesWithFeaturedPages(ScienceDetailsPage model)
         {
             var categories = _sciencePageCategoriesProvider.GetCategories(model);
