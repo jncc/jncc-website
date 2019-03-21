@@ -10,6 +10,7 @@
             <div id="content">
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 @Model.Preamble
+                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
                 @if (Model.HasCategorisedPages)
                 {
                     <h2>Pages in @Model.Headline</h2>

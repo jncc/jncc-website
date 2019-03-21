@@ -1,4 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,16 @@ namespace JNCC.PublicWebsite.Core.Services
     internal sealed class MainNavigationService
     {
         private const int _maximumMenuLevel = 3;
+        private readonly string[] DisallowedDocumentTypeAliases;
+
+        public MainNavigationService()
+        {
+            DisallowedDocumentTypeAliases = new string[]
+            {
+                ScienceCategoryPage.ModelTypeAlias,
+                ScienceDetailsPage.ModelTypeAlias
+            };
+        }
 
         public IEnumerable<MainNavigationItemViewModel> GetRootMenuItems(IPublishedContent root, IPublishedContent currentPage)
         {
@@ -32,7 +43,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 return menuItems;
             }
 
-            foreach (var item in parent.VisibleChildren())
+            foreach (var item in parent.VisibleChildren()
+                                       .Where(x => DisallowedDocumentTypeAliases.Contains(x.DocumentTypeAlias) == false))
             {
                 var menuItem = ToMenuItem(item, currentPage);
 

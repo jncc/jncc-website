@@ -1,0 +1,36 @@
+﻿@model ScienceAtoZPageViewModel
+@{
+    Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Preamble
+                @if (Model.HasCategorisedPages)
+                {
+                    <div class="row small-collapse small-up-1 medium-up-2">
+                        @foreach (var kvp in Model.CategorisedPages)
+                        {
+                            <div class="column">
+                                <h2>@kvp.Key</h2>
+                                <ul>
+                                    @foreach (var page in kvp.Value)
+                                    {
+                                        <li><a href="@page.Url">@page.Text</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            @(Html.Action<ScienceSidebarSurfaceController>("RenderScienceAtoZPageSidebar"))
+        </div>
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>      

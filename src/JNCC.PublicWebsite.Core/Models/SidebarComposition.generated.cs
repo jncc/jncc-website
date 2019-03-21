@@ -20,10 +20,13 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1109 with alias "sidebarComposition"
+	// Mixin content Type 1129 with alias "sidebarComposition"
 	/// <summary>Sidebar Composition</summary>
 	public partial interface ISidebarComposition : IPublishedContent
 	{
+		/// <summary>Data Hub Query</summary>
+		string SidebarDataHubQuery { get; }
+
 		/// <summary>Primary Call To Action Button</summary>
 		RJP.MultiUrlPicker.Models.Link SidebarPrimaryCallToActionButton { get; }
 
@@ -55,6 +58,18 @@ namespace JNCC.PublicWebsite.Core.Models
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Data Hub Query: An optional query which pulls links from the data hub.  If no data hub query is authored or no items are found from the data hub query then no links will be displayed.
+		///</summary>
+		[ImplementPropertyType("sidebarDataHubQuery")]
+		public string SidebarDataHubQuery
+		{
+			get { return GetSidebarDataHubQuery(this); }
+		}
+
+		/// <summary>Static getter for Data Hub Query</summary>
+		public static string GetSidebarDataHubQuery(ISidebarComposition that) { return that.GetPropertyValue<string>("sidebarDataHubQuery"); }
 
 		///<summary>
 		/// Primary Call To Action Button: Link & Text for an optional Call to Action button.  This could be various purposes, for example "Get in Touch" or "Download Data".

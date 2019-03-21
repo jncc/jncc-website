@@ -21,6 +21,7 @@
                         }
                     </table>
                 }
+                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
                 @if (Model.TabbedContent.Any())
                 {
                     <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-tabs" id="profile-tabs">

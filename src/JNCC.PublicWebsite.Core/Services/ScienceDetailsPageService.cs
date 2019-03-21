@@ -1,4 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Utilities;
@@ -28,7 +29,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 Preamble = model.Preamble,
                 Sections = GetSectionViewModels(model.MainContent),
-                PublishedDate = model.PublishedDate,
+                PublishedDate = model.GetPublishedDateOrDefault(),
                 ReviewedDate = GetReviewedDate(model.ReviewedDate),
                 Categories = GetCategories(model)
             };

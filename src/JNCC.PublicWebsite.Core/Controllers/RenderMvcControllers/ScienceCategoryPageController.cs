@@ -1,9 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Services;
-using JNCC.PublicWebsite.Core.Utilities;
-using JNCC.PublicWebsite.Core.ViewModels;
-using System.Linq;
 using System.Web.Mvc;
 using Umbraco.Web.Mvc;
 

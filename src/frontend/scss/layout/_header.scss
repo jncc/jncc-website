@@ -156,6 +156,14 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 }
 
+@include breakpoint(medium) {
+	#menu .dropdown.menu {
+		margin-left: rem-calc(-15px);
+		background: transparent !important;
+	}
+}
+
+
 .menu {
 	font-size: 1rem;
 	font-weight: 500;
@@ -163,7 +171,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 	@include breakpoint(medium) {
 		margin-left: rem-calc(-15px);
-		background: transparent !important;
+		/*background: transparent !important;*/
 	}
 	
 	@include breakpoint(large) {
@@ -178,7 +186,7 @@ input[type="search"]::-webkit-search-cancel-button {
 		}
 
 		&.active {
-			a {
+			> a {
 				border-bottom: rem-calc(3px) solid $green;
 			}
 		}

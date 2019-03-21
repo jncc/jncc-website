@@ -23,14 +23,17 @@
                 }
 
                 @Model.Preamble
-                <ul class="articles-list no-bullet">
-                    @foreach (var item in Model.MainContent)
-                    {
-                        <li>
-                            @Html.DisplayFor(model => item)
-                        </li>
-                    }
-                </ul>
+                @if (Model.MainContent != null && Model.MainContent.Any())
+                {
+                    <ul class="articles-list no-bullet">
+                        @foreach (var item in Model.MainContent)
+                        {
+                            <li>
+                                @Html.DisplayFor(model => item)
+                            </li>
+                        }
+                    </ul>
+                }
             </div>
             @(Html.Action<CareersSidebarSurfaceController>("RenderSidebar"))
         </div>

@@ -7,35 +7,34 @@ using Umbraco.Core;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class ScienceSidebarService
+    internal sealed class ScienceSidebarService : SidebarServiceBase
     {
-        private readonly NavigationItemService _navigationItemService;
         private readonly ISciencePageCategoriesProvider _sciencePageCategoriesProvider;
 
-        public ScienceSidebarService(NavigationItemService navigationItemService, ISciencePageCategoriesProvider sciencePageCategoriesProvider)
+        public ScienceSidebarService(NavigationItemService navigationItemService, IDataHubRawQueryService dataHubRawQueryService, ISciencePageCategoriesProvider sciencePageCategoriesProvider) : base(navigationItemService, dataHubRawQueryService)
         {
-            _navigationItemService = navigationItemService;
             _sciencePageCategoriesProvider = sciencePageCategoriesProvider;
         }
 
         public ScienceSidebarViewModel GetSidebarViewModel(ScienceDetailsPage model)
         {
-            return new ScienceSidebarViewModel
-            {
-                PrimaryCallToActionButton = _navigationItemService.GetViewModel(model.SidebarPrimaryCallToActionButton),
-                Categories = GetCategoriesWithFeaturedPages(model),
-                SeeAlsoLinks = _navigationItemService.GetViewModels(model.SidebarSeeAlsoLinks)
-            };
+            var viewModel = CreateViewModel<ScienceSidebarViewModel>(model);
+            viewModel.Categories = GetCategoriesWithFeaturedPages(model);
+
+            return viewModel;
         }
 
         public ScienceSidebarViewModel GetSidebarViewModel(ScienceCategoryPage model)
         {
-            return new ScienceSidebarViewModel
-            {
-                PrimaryCallToActionButton = _navigationItemService.GetViewModel(model.SidebarPrimaryCallToActionButton),
-                Categories = GetCategoriesWithFeaturedPages(model),
-                SeeAlsoLinks = _navigationItemService.GetViewModels(model.SidebarSeeAlsoLinks)
-            };
+            var viewModel = CreateViewModel<ScienceSidebarViewModel>(model);
+            viewModel.Categories = GetCategoriesWithFeaturedPages(model);
+
+            return viewModel;
+        }
+
+        public SidebarViewModel GetSidebarViewModel(ScienceAtoZpage model)
+        {
+            return CreateViewModel<SidebarViewModel>(model);
         }
 
         private IEnumerable<MainNavigationItemViewModel> GetCategoriesWithFeaturedPages(ScienceDetailsPage model)

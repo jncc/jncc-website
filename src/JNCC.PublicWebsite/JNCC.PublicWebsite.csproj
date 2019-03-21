@@ -736,6 +736,7 @@
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="css\app.css" />
     <Content Include="css\cms.css" />
+    <Content Include="css\highlighting.css" />
     <Content Include="css\floats.css" />
     <Content Include="css\foundation-icons.css" />
     <Content Include="css\foundation-icons.svg" />
@@ -1410,6 +1411,8 @@
     <Content Include="Views\Partials\ScienceDetails\RichText.cshtml" />
     <Content Include="Views\Partials\Header\EditPageBar.cshtml" />
     <Content Include="Views\AboutUsPage.cshtml" />
+    <Content Include="Views\ScienceAToZPage.cshtml" />
+    <Content Include="Views\Partials\PageMetaInformation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

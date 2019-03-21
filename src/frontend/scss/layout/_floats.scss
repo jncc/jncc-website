@@ -3,33 +3,46 @@
 
 $floating-image-margin: 1rem;
 
+
+%img-float-left {    
+    margin-bottom: $floating-image-margin;
+    margin-right: $floating-image-margin;
+}
+
+%img-float-right {
+    margin-bottom: $floating-image-margin;
+    margin-left: $floating-image-margin;
+}
+
 img {
     &.float-left {
-        @extend .thumbnail;
-        margin-bottom: $floating-image-margin;
-        margin-right: $floating-image-margin;
+        @extend %img-float-left;
     }
 
     &.float-right {
+        @extend %img-float-right;
+    }
+
+    &.with-border {
         @extend .thumbnail;
-        margin-bottom: $floating-image-margin;
-        margin-left: $floating-image-margin;
     }
 }
 
 .float-left {
     img {
-        @extend .thumbnail;
-        margin-bottom: $floating-image-margin;
-        margin-right: $floating-image-margin;
+        @extend %img-float-left;
     }
 }
 
 .float-right {
     img {
+        @extend %img-float-right;
+    }
+}
+
+.with-border {
+    img {
         @extend .thumbnail;
-        margin-bottom: $floating-image-margin;
-        margin-left: $floating-image-margin;
     }
 }
 

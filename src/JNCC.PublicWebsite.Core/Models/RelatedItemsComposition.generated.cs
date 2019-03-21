@@ -24,11 +24,8 @@ namespace JNCC.PublicWebsite.Core.Models
 	/// <summary>Related Items Composition</summary>
 	public partial interface IRelatedItemsComposition : IPublishedContent
 	{
-		/// <summary>Data Hub Query</summary>
-		string RelatedItemsDataHubQuery { get; }
-
-		/// <summary>Manually Authored Items</summary>
-		IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems { get; }
+		/// <summary>Items</summary>
+		IEnumerable<IPublishedContent> RelatedItems { get; }
 	}
 
 	/// <summary>Related Items Composition</summary>
@@ -57,27 +54,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Data Hub Query: A query which pulls related items from the data hub. This can be used with or instead of manually authored items.   If the maximum number of items have been manually authored then this query is ignored.   If no items are manually authored, no data hub query is authored or no items are found from the data hub query then no related items will be displayed.
+		/// Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored.  If no items are provided then the related items section will not be rendered.
 		///</summary>
-		[ImplementPropertyType("relatedItemsDataHubQuery")]
-		public string RelatedItemsDataHubQuery
+		[ImplementPropertyType("relatedItems")]
+		public IEnumerable<IPublishedContent> RelatedItems
 		{
-			get { return GetRelatedItemsDataHubQuery(this); }
+			get { return GetRelatedItems(this); }
 		}
 
-		/// <summary>Static getter for Data Hub Query</summary>
-		public static string GetRelatedItemsDataHubQuery(IRelatedItemsComposition that) { return that.GetPropertyValue<string>("relatedItemsDataHubQuery"); }
-
-		///<summary>
-		/// Manually Authored Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored and/or optionally populated by an data hub query below.  If no manually authored are provided then the data hub query will be used instead.
-		///</summary>
-		[ImplementPropertyType("relatedItemsManuallyAuthoredItems")]
-		public IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems
-		{
-			get { return GetRelatedItemsManuallyAuthoredItems(this); }
-		}
-
-		/// <summary>Static getter for Manually Authored Items</summary>
-		public static IEnumerable<IPublishedContent> GetRelatedItemsManuallyAuthoredItems(IRelatedItemsComposition that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("relatedItemsManuallyAuthoredItems"); }
+		/// <summary>Static getter for Items</summary>
+		public static IEnumerable<IPublishedContent> GetRelatedItems(IRelatedItemsComposition that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("relatedItems"); }
 	}
 }

@@ -82,21 +82,21 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Hide Children from Navigation: Hides any child pages from the main navigation.
-		///</summary>
-		[ImplementPropertyType("umbracoNavi")]
-		public bool UmbracoNavi
-		{
-			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNavi(this); }
-		}
-
-		///<summary>
 		/// Hide from Navigation: Hides the page from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNaviHide")]
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// Hide Children from Navigation: Hides any child pages from the main navigation.
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHideChildren")]
+		public bool UmbracoNaviHideChildren
+		{
+			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHideChildren(this); }
 		}
 
 		///<summary>
@@ -142,6 +142,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public SEOChecker.MVC.MetaData SeoSettings
 		{
 			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
+		}
+
+		///<summary>
+		/// Data Hub Query: An optional query which pulls links from the data hub.  If no data hub query is authored or no items are found from the data hub query then no links will be displayed.
+		///</summary>
+		[ImplementPropertyType("sidebarDataHubQuery")]
+		public string SidebarDataHubQuery
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarDataHubQuery(this); }
 		}
 
 		///<summary>

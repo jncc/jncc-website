@@ -1,4 +1,4 @@
-/**
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,400,400i,500,500i,700,700i");/**
  * Foundation for Sites by ZURB
  * Version 6.5.0
  * foundation.zurb.com
@@ -897,27 +897,6 @@
 	content: "\e971";
 }
 
-@font-face {
-	font-family: "robotoregular";
-	src: url("../fonts/roboto-regular-webfont.woff2") format("woff2"), url("../fonts/roboto-regular-webfont.woff") format("woff");
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "robotoregular";
-	src: url("../fonts/roboto-bold-webfont.woff2") format("woff2"), url("../fonts/roboto-bold-webfont.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "robotoregular";
-	src: url("../fonts/roboto-medium-webfont.woff2") format("woff2"), url("../fonts/roboto-medium-webfont.woff") format("woff");
-	font-weight: 500;
-	font-style: normal;
-}
-
 .slick-slider {
 	position: relative;
 	display: block;
@@ -1215,7 +1194,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #fefefe;
-	font-family: "robotoregular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	line-height: 1.52631579;
 	color: #666262;
@@ -3164,7 +3143,7 @@ li,
 h1,
 h2,
 h3,
-.science-landing .featured-quote p,
+.landing-page .featured-quote p,
 h4,
 h2#toc,
 h5,
@@ -3208,7 +3187,7 @@ h1,
 h2,
 .h2,
 h3,
-.science-landing .featured-quote p,
+.landing-page .featured-quote p,
 .h3,
 h4,
 h2#toc,
@@ -3217,7 +3196,7 @@ h5,
 .h5,
 h6,
 .h6 {
-	font-family: "robotoregular", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	color: inherit;
@@ -3229,7 +3208,7 @@ h1 small,
 h2 small,
 .h2 small,
 h3 small,
-.science-landing .featured-quote p small,
+.landing-page .featured-quote p small,
 .h3 small,
 h4 small,
 h2#toc small,
@@ -3259,7 +3238,7 @@ h2,
 }
 
 h3,
-.science-landing .featured-quote p,
+.landing-page .featured-quote p,
 .h3 {
 	font-size: 1.125rem;
 	line-height: 1.4;
@@ -5411,8 +5390,8 @@ a.button:focus {
 }
 
 .dropdown.menu > li > a {
-	background: #fefefe;
-	padding: .7rem 1rem;
+	background: transparent;
+	padding: 1.5625rem 0 1.3125rem;
 }
 
 .dropdown.menu > li.is-active > a {
@@ -6733,10 +6712,8 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 }
 
 .thumbnail,
-img.float-left,
-img.float-right,
-.float-left img,
-.float-right img {
+img.with-border,
+.with-border img {
 	display: inline-block;
 	max-width: 100%;
 	margin-bottom: 1rem;
@@ -7871,13 +7848,18 @@ a.thumbnail image {
 
 h2,
 h3,
-.science-landing .featured-quote p {
+.landing-page .featured-quote p {
 	font-weight: 500;
 }
 
 a {
 	-webkit-transition: color .3s ease-in-out;
 	transition: color .3s ease-in-out;
+}
+
+a:hover > .label {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .button {
@@ -8271,8 +8253,8 @@ a {
 }
 
 .filtration-section .card h3,
-.filtration-section .card .science-landing .featured-quote p,
-.science-landing .featured-quote .filtration-section .card p {
+.filtration-section .card .landing-page .featured-quote p,
+.landing-page .featured-quote .filtration-section .card p {
 	font-size: 1.125rem;
 	font-weight: 700;
 	margin-bottom: .625rem;
@@ -8431,112 +8413,6 @@ input[type="checkbox"]:focus + .fake-input {
 	height: 100%;
 }
 
-.home-a h2 {
-	color: #495651;
-}
-
-.home-a .card-section {
-	border: 1px solid #dae3df;
-	border-top: none;
-	font-size: .875rem;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-}
-
-.home-a .card-section p {
-	line-height: 1.82352941;
-}
-
-.home-a .card-section .button {
-	font-size: .875rem;
-	text-transform: none;
-	border-radius: .1875rem;
-	padding-top: .8125rem;
-	font-weight: 400;
-}
-
-.home-a .row {
-	margin: 0 -.625rem;
-}
-
-.home-a .visual-section .container {
-	position: relative;
-	z-index: 6;
-}
-
-.articles-section {
-	padding: 2rem 0;
-}
-
-.articles-section.resources {
-	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
-	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
-}
-
-.articles-section.resources .card .img-holder {
-	padding-top: 62%;
-}
-
-.articles-section.resources .card-section p {
-	line-height: 1.82352941;
-	font-weight: 500;
-	font-size: 1rem;
-}
-
-.news-holder {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-}
-
-.news-holder .card {
-	width: 100%;
-	-webkit-box-flex: 0;
-	-ms-flex-positive: 0;
-	flex-grow: 0;
-	height: auto;
-}
-
-.news-holder .card .img-holder {
-	padding-top: 62%;
-}
-
-.news-holder h3,
-.news-holder .science-landing .featured-quote p,
-.science-landing .featured-quote .news-holder p {
-	color: #495651;
-	font-size: 1.125rem;
-}
-
-.widget-section {
-	padding: 4rem 0 2rem;
-	position: relative;
-}
-
-.widget-section .decor {
-	width: 30%;
-	position: absolute;
-	top: 2.5rem;
-	left: -1.25rem;
-}
-
-.widget-section .container {
-	position: relative;
-}
-
 button.slick-arrow {
 	text-indent: -100000px;
 }
@@ -8581,13 +8457,21 @@ button.slick-arrow {
 }
 
 .comment-section .comment .comment-meta h3,
-.comment-section .comment .comment-meta .science-landing .featured-quote p,
-.science-landing .featured-quote .comment-section .comment .comment-meta p {
+.comment-section .comment .comment-meta .landing-page .featured-quote p,
+.landing-page .featured-quote .comment-section .comment .comment-meta p {
 	font-size: inherit;
 }
 
 .comment-section .comment p:last-child {
 	margin: 0;
+}
+
+.is-dropdown-submenu-parent > .menu {
+	display: none;
+}
+
+.is-dropdown-submenu-parent.is-active > .menu {
+	display: block;
 }
 
 #header {
@@ -8747,7 +8631,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	padding: 0 .9375rem;
 }
 
-.menu li.active a {
+.menu li.active > a {
 	border-bottom: .1875rem solid #2d7a29;
 }
 
@@ -8830,8 +8714,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 #footer h3,
-#footer .science-landing .featured-quote p,
-.science-landing .featured-quote #footer p {
+#footer .landing-page .featured-quote p,
+.landing-page .featured-quote #footer p {
 	font-size: 1.125rem;
 	text-transform: uppercase;
 	margin-bottom: 1.1875rem;
@@ -9006,54 +8890,6 @@ html {
 	margin-bottom: .5rem;
 }
 
-.science-landing .articles-section.resources.latest-updates {
-	padding: 3rem 0;
-}
-
-.science-landing .articles-section.resources.latest-updates h3,
-.science-landing .articles-section.resources.latest-updates .featured-quote p,
-.science-landing .featured-quote .articles-section.resources.latest-updates p {
-	font-size: 1.5rem;
-	border-bottom: 2px solid #2d7a29;
-}
-
-.science-landing .articles-section.resources .card {
-	margin-bottom: 2rem !important;
-	height: calc(100% - 2rem);
-}
-
-.science-landing .articles-section.resources .card-section p {
-	margin-bottom: 1rem;
-}
-
-.science-landing .articles-section.resources.science-group {
-	padding: 3rem 0;
-	background-image: none;
-}
-
-.science-landing .featured-quote {
-	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
-	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
-	padding: 2rem 0;
-}
-
-.science-landing .featured-quote p {
-	font-weight: 100;
-	font-style: italic;
-	margin: 0;
-}
-
-.science-landing .row1 h3,
-.science-landing .row1 .featured-quote p,
-.science-landing .featured-quote .row1 p,
-.science-landing .row1 p {
-	color: #666262 !important;
-}
-
-.science-landing .widget-section h2 {
-	margin-bottom: 2rem;
-}
-
 .slick.pagination {
 	margin-top: 1rem;
 }
@@ -9071,11 +8907,127 @@ html {
 	min-width: 100%;
 }
 
+.home-a .visual-section .container {
+	position: relative;
+	z-index: 6;
+}
+
+.articles-section {
+	padding: 2rem 0;
+}
+
+.articles-section.resources {
+	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
+	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
+}
+
+.articles-section.resources .card .img-holder {
+	padding-top: 62%;
+}
+
+.articles-section.resources .card-section p {
+	line-height: 1.82352941;
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+.news-holder {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.news-holder .card {
+	width: 100%;
+	-webkit-box-flex: 0;
+	-ms-flex-positive: 0;
+	flex-grow: 0;
+	height: auto;
+}
+
+.news-holder .card .img-holder {
+	padding-top: 62%;
+}
+
+.news-holder h3,
+.news-holder .landing-page .featured-quote p,
+.landing-page .featured-quote .news-holder p {
+	color: #495651;
+	font-size: 1.125rem;
+}
+
+.widget-section {
+	padding: 4rem 0 2rem;
+	position: relative;
+}
+
+.widget-section .decor {
+	width: 30%;
+	position: absolute;
+	top: 2.5rem;
+	left: -1.25rem;
+}
+
+.widget-section .container {
+	position: relative;
+}
+
+.landing-page .articles-section.resources.latest-updates {
+	padding: 3rem 0;
+}
+
+.landing-page .articles-section.resources.latest-updates h3,
+.landing-page .articles-section.resources.latest-updates .featured-quote p,
+.landing-page .featured-quote .articles-section.resources.latest-updates p {
+	font-size: 1.5rem;
+	border-bottom: 2px solid #2d7a29;
+}
+
+.landing-page .articles-section.resources .card {
+	margin-bottom: 2rem !important;
+	height: calc(100% - 2rem);
+}
+
+.landing-page .articles-section.resources .card-section p {
+	margin-bottom: 1rem;
+}
+
+.landing-page .articles-section.resources.science-group {
+	padding: 3rem 0;
+	background-image: none;
+}
+
+.landing-page .featured-quote {
+	background-image: -webkit-linear-gradient(left, #c9e6cc, #e0f0e7);
+	background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
+	padding: 2rem 0;
+}
+
+.landing-page .featured-quote p {
+	font-weight: 100;
+	font-style: italic;
+	margin: 0;
+}
+
+.landing-page .row1 h3,
+.landing-page .row1 .featured-quote p,
+.landing-page .featured-quote .row1 p,
+.landing-page .row1 p {
+	color: #666262 !important;
+}
+
+.landing-page .widget-section h2 {
+	margin-bottom: 2rem;
+}
+
 .thumbnail,
-img.float-left,
-img.float-right,
-.float-left img,
-.float-right img {
+img.with-border,
+.with-border img {
 	display: inline-block;
 	max-width: 100%;
 	margin-bottom: 1rem;
@@ -9099,21 +9051,13 @@ a.thumbnail image {
 	box-shadow: none;
 }
 
-img.float-left {
-	margin-bottom: 1rem;
-	margin-right: 1rem;
-}
-
-img.float-right {
-	margin-bottom: 1rem;
-	margin-left: 1rem;
-}
-
+img.float-left,
 .float-left img {
 	margin-bottom: 1rem;
 	margin-right: 1rem;
 }
 
+img.float-right,
 .float-right img {
 	margin-bottom: 1rem;
 	margin-left: 1rem;
@@ -11040,7 +10984,7 @@ img.float-right {
 	}
 
 	h3,
-	.science-landing .featured-quote p,
+	.landing-page .featured-quote p,
 	.h3 {
 		font-size: 1.75rem;
 	}
@@ -11478,19 +11422,6 @@ img.float-right {
 		transform: translateY(-50%);
 	}
 
-	.home-a .visual-section .container {
-		margin: 0 4rem !important;
-		width: auto;
-	}
-
-	.widget-section {
-		padding-top: 6rem;
-	}
-
-	.widget-section .decor {
-		left: -1.875rem;
-	}
-
 	#header > .container {
 		-webkit-box-align: end;
 		-ms-flex-align: end;
@@ -11516,9 +11447,13 @@ img.float-right {
 		background-color: rgba(255, 255, 255, .72);
 	}
 
-	.menu {
+	#menu .dropdown.menu {
 		margin-left: -.9375rem;
 		background: transparent !important;
+	}
+
+	.menu {
+		margin-left: -.9375rem; /*background: transparent !important;*/
 	}
 
 	.nav-opener {
@@ -11553,6 +11488,19 @@ img.float-right {
 
 	.footer-bottom-list.info li {
 		padding: 0 .5625rem;
+	}
+
+	.home-a .visual-section .container {
+		margin: 0 4rem !important;
+		width: auto;
+	}
+
+	.widget-section {
+		padding-top: 6rem;
+	}
+
+	.widget-section .decor {
+		left: -1.875rem;
 	}
 }
 
@@ -13533,18 +13481,32 @@ img.float-right {
 		padding: 1.875rem;
 	}
 
-	.home-a h2 {
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
+	#header .search-form {
+		margin-bottom: .25rem;
 	}
 
-	.home-a .card-section {
-		padding: 1.8125rem;
+	.menu {
+		margin-left: -1.25rem;
 	}
 
-	.home-a .card-section p {
-		margin-bottom: 2.3125rem;
+	.menu li {
+		padding: 0 1.25rem;
+	}
+
+	#footer {
+		padding-top: 3.6875rem;
+	}
+
+	#footer > .container {
+		padding-bottom: 3.4375rem;
+	}
+
+	.footer-nav li {
+		margin-bottom: .8125rem;
+	}
+
+	.footer-bottom {
+		padding: 1.625rem 0;
 	}
 
 	.articles-section {
@@ -13590,8 +13552,8 @@ img.float-right {
 	}
 
 	.news-holder h3,
-	.news-holder .science-landing .featured-quote p,
-	.science-landing .featured-quote .news-holder p {
+	.news-holder .landing-page .featured-quote p,
+	.landing-page .featured-quote .news-holder p {
 		margin-bottom: .9375rem;
 	}
 
@@ -13614,34 +13576,6 @@ img.float-right {
 
 	.widget-section h2 {
 		margin-bottom: 3.4375rem;
-	}
-
-	#header .search-form {
-		margin-bottom: .25rem;
-	}
-
-	.menu {
-		margin-left: -1.25rem;
-	}
-
-	.menu li {
-		padding: 0 1.25rem;
-	}
-
-	#footer {
-		padding-top: 3.6875rem;
-	}
-
-	#footer > .container {
-		padding-bottom: 3.4375rem;
-	}
-
-	.footer-nav li {
-		margin-bottom: .8125rem;
-	}
-
-	.footer-bottom {
-		padding: 1.625rem 0;
 	}
 }
 
@@ -13734,10 +13668,6 @@ img.float-right {
 		margin-top: -.625rem;
 	}
 
-	.home-a .visual-section .container .row {
-		margin: 0 -.625rem !important;
-	}
-
 	#footer .row {
 		margin: 0 -2.3125rem;
 	}
@@ -13748,6 +13678,10 @@ img.float-right {
 
 	#footer .holder.holder-p {
 		padding-left: 4.375rem;
+	}
+
+	.home-a .visual-section .container .row {
+		margin: 0 -.625rem !important;
 	}
 }
 
@@ -14040,14 +13974,14 @@ img.float-right {
 	p,
 	h2,
 	h3,
-	.science-landing .featured-quote p {
+	.landing-page .featured-quote p {
 		orphans: 3;
 		widows: 3;
 	}
 
 	h2,
 	h3,
-	.science-landing .featured-quote p {
+	.landing-page .featured-quote p {
 		page-break-after: avoid;
 	}
 

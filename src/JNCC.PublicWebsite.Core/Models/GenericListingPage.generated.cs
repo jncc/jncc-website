@@ -82,21 +82,21 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Hide Children from Navigation: Hides any child pages from the main navigation.
-		///</summary>
-		[ImplementPropertyType("umbracoNavi")]
-		public bool UmbracoNavi
-		{
-			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNavi(this); }
-		}
-
-		///<summary>
 		/// Hide from Navigation: Hides the page from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNaviHide")]
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// Hide Children from Navigation: Hides any child pages from the main navigation.
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHideChildren")]
+		public bool UmbracoNaviHideChildren
+		{
+			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHideChildren(this); }
 		}
 
 		///<summary>
@@ -136,21 +136,12 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Data Hub Query: A query which pulls related items from the data hub. This can be used with or instead of manually authored items.   If the maximum number of items have been manually authored then this query is ignored.   If no items are manually authored, no data hub query is authored or no items are found from the data hub query then no related items will be displayed.
+		/// Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored.  If no items are provided then the related items section will not be rendered.
 		///</summary>
-		[ImplementPropertyType("relatedItemsDataHubQuery")]
-		public string RelatedItemsDataHubQuery
+		[ImplementPropertyType("relatedItems")]
+		public IEnumerable<IPublishedContent> RelatedItems
 		{
-			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsDataHubQuery(this); }
-		}
-
-		///<summary>
-		/// Manually Authored Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored and/or optionally populated by an data hub query below.  If no manually authored are provided then the data hub query will be used instead.
-		///</summary>
-		[ImplementPropertyType("relatedItemsManuallyAuthoredItems")]
-		public IEnumerable<IPublishedContent> RelatedItemsManuallyAuthoredItems
-		{
-			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsManuallyAuthoredItems(this); }
+			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItems(this); }
 		}
 
 		///<summary>
@@ -160,6 +151,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public SEOChecker.MVC.MetaData SeoSettings
 		{
 			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetSeoSettings(this); }
+		}
+
+		///<summary>
+		/// Data Hub Query: An optional query which pulls links from the data hub.  If no data hub query is authored or no items are found from the data hub query then no links will be displayed.
+		///</summary>
+		[ImplementPropertyType("sidebarDataHubQuery")]
+		public string SidebarDataHubQuery
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SidebarComposition.GetSidebarDataHubQuery(this); }
 		}
 
 		///<summary>

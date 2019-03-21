@@ -7,9 +7,12 @@
             {
                 <div class="columns medium-6 large-4 js-listing-item">
                     <a href="@article.Url" class="card">
-                        <div class="img-holder">
-                            <img src="@article.ImageUrl" alt="@article.Title thumbnail">
-                        </div>
+                        @if (string.IsNullOrWhiteSpace(article.ImageUrl) == false)
+                        {
+                            <div class="img-holder">
+                                <img src="@article.ImageUrl" alt="@article.Title thumbnail">
+                            </div>
+                        }
                         <div class="card-section">
                             <h3>@article.Title</h3>
                             <span class="subtitle">@Html.DisplayFor(model => article.PublishDate)</span>

@@ -73,55 +73,6 @@ h2#toc {
     @extend h4;
 }
 
-.science-landing {
-	.articles-section {
-		&.resources {
-			&.latest-updates {
-				padding: 3rem 0;
-				h3 {
-					font-size: 1.5rem;
-					border-bottom: 2px solid #2d7a29;
-				}
-			}
-			.card {
-				margin-bottom: 2rem !important;
-				height: calc(100% - 2rem);
-			}
-			.card-section p {
-				margin-bottom: 1rem;
-			}
-		
-            &.science-group {
-                padding: 3rem 0;
-                background-image: none;
-            }
-        }
-    }
-    
-    .featured-quote {
-        background-image: linear-gradient(to right, #c9e6cc, #e0f0e7); 
-        padding:2rem 0;
-
-        p {
-            @extend h3;
-
-            font-weight: 100; 
-            font-style: italic;
-            margin: 0;
-        }
-    }
-
-	.row1 {
-		h3,
-		p {
-			color: rgb(102, 98, 98) !important;
-		}
-	}
-	.widget-section h2 {
-		margin-bottom: 2rem;
-	}
-}
-
 .slick {
     &.pagination {
         margin-top: $pagination-margin-bottom;

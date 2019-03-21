@@ -46,21 +46,21 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Hide Children from Navigation: Hides any child pages from the main navigation.
-		///</summary>
-		[ImplementPropertyType("umbracoNavi")]
-		public bool UmbracoNavi
-		{
-			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNavi(this); }
-		}
-
-		///<summary>
 		/// Hide from Navigation: Hides the page from the main navigation.
 		///</summary>
 		[ImplementPropertyType("umbracoNaviHide")]
 		public bool UmbracoNaviHide
 		{
 			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHide(this); }
+		}
+
+		///<summary>
+		/// Hide Children from Navigation: Hides any child pages from the main navigation.
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHideChildren")]
+		public bool UmbracoNaviHideChildren
+		{
+			get { return JNCC.PublicWebsite.Core.Models.NavigationSettingsComposition.GetUmbracoNaviHideChildren(this); }
 		}
 	}
 }

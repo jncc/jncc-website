@@ -27,7 +27,7 @@
 .clearfix::after {
   clear: both; }
 
-.thumbnail, img.float-left, img.float-right, .float-left img, .float-right img {
+.thumbnail, img.with-border, .with-border img {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 1rem;
@@ -44,21 +44,17 @@ a.thumbnail {
   a.thumbnail image {
     box-shadow: none; }
 
-img.float-left {
+img.float-left, .float-left img {
   margin-bottom: 1rem;
   margin-right: 1rem; }
 
-img.float-right {
-  margin-bottom: 1rem;
-  margin-left: 1rem; }
-
-.float-left img {
-  margin-bottom: 1rem;
-  margin-right: 1rem; }
-
-.float-right img {
+img.float-right, .float-right img {
   margin-bottom: 1rem;
   margin-left: 1rem; }
 
 .clearfix {
   clear: both; }
+
+.highlight {
+  background-color: #ffff0080;
+  padding: 0.4rem; }

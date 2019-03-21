@@ -22,7 +22,7 @@ namespace JNCC.PublicWebsite.Core.Models
 {
 	/// <summary>Staff Profile Page</summary>
 	[PublishedContentModel("StaffProfilePage")]
-	public partial class StaffProfilePage : PublishedContentModel, IPageSpecificIncludesComposition, ISeoComposition
+	public partial class StaffProfilePage : PublishedContentModel, IPageMetaInformationComposition, IPageSpecificIncludesComposition, ISeoComposition
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "StaffProfilePage";
@@ -142,6 +142,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public string SortName
 		{
 			get { return this.GetPropertyValue<string>("sortName"); }
+		}
+
+		///<summary>
+		/// Published Date: The date is when the page was first published.   This is a required property as a page with a Meta Information must have a published date.
+		///</summary>
+		[ImplementPropertyType("publishedDate")]
+		public DateTime PublishedDate
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageMetaInformationComposition.GetPublishedDate(this); }
 		}
 
 		///<summary>

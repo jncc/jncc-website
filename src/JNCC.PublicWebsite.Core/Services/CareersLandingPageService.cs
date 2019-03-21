@@ -10,7 +10,6 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class CareersLandingPageService
     {
-        private const int NumberOfLatestJobs = 5;
         private readonly NavigationItemService _navigationItemService;
 
         public CareersLandingPageService(NavigationItemService navigationItemService)
@@ -26,42 +25,6 @@ namespace JNCC.PublicWebsite.Core.Services
                 MainContent = model.MainContent,
                 Careers = GetCareers(model)
             };
-        }
-
-        public CareersSidebarViewModel GetSidebarViewModel(CareersLandingPage model)
-        {
-            return new CareersSidebarViewModel
-            {
-                PrimaryCallToActionButton = _navigationItemService.GetViewModel(model.SidebarPrimaryCallToActionButton),
-                LatestJobs = GetLatestJobs(model),
-                SeeAlsoLinks = _navigationItemService.GetViewModels(model.SidebarSeeAlsoLinks)
-            };
-        }
-
-        private IEnumerable<JobItemViewModel> GetLatestJobs(CareersLandingPage model)
-        {
-            var latestJobs = model.Children<IndividualJobPage>().OrderByDescending(x => x.UpdateDate).Take(NumberOfLatestJobs);
-            var viewModels = new List<JobItemViewModel>();
-
-            if (latestJobs.Any() == false)
-            {
-                return viewModels;
-            }
-
-            foreach (var job in latestJobs)
-            {
-                var viewModel = new JobItemViewModel()
-                {
-                    JobTitle = job.GetHeadline(),
-                    Url = job.Url,
-                    Grade = job.Grade,
-                    Location = job.Location
-                };
-
-                viewModels.Add(viewModel);
-            }
-
-            return viewModels;
         }
 
         private IEnumerable<CareersListItemViewModel> GetCareers(CareersLandingPage model)

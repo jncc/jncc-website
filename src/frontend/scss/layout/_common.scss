@@ -22,6 +22,13 @@ h2,h3 {
 
 a {
 	@include animate(color);
+
+	&:hover {
+		> .label {		
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
 }
 
 .button {
@@ -845,260 +852,6 @@ input[type="checkbox"]:focus + .fake-input {
 	height: 100%;
 }
 
-.home-a {
-	h2 {
-		color: #495651;
-
-		@include breakpoint(large) {
-			font-size: rem-calc(24px);
-			font-weight: 700;
-			margin-bottom: rem-calc(16px);
-		}
-	}
-
-	.card-section {
-		border: 1px solid #dae3df;
-		border-top: none;
-		font-size: rem-calc(14px);
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-
-		@include breakpoint(large) {
-			padding: rem-calc(29px);
-		}
-
-		p {
-			line-height: 1.82352941;
-
-			@include breakpoint(large) {
-				margin-bottom: rem-calc(37px);
-			}
-		}
-
-		.button {
-			font-size: rem-calc(14px);
-			text-transform: none;
-			border-radius: rem-calc(3px);
-			padding-top: rem-calc(13px);
-			font-weight: 400;
-		}
-	}
-
-	.row {
-		margin: 0 -.625rem;
-	}
-
-	.visual-section {
-		.container {
-			position: relative;
-			z-index: 6;
-
-			@include breakpoint(medium) {
-				margin: 0 4rem !important;
-				width: auto;
-			}
-
-			@media screen and (min-width: 1300px) {
-				margin: 0 auto !important;
-				width: 100%;
-			}
-
-			.row {
-				@include breakpoint(xlarge) {
-					margin: 0 -.625rem !important;
-				}
-
-				@include breakpoint(xxlarge) {
-					margin: 0 -2.34375rem !important;
-				}
-			}
-		}
-	}
-}
-
-.articles-section {
-	padding: 2rem 0;
-
-	@include breakpoint(large) {
-		padding: rem-calc(100px 0 83px);
-	}
-
-	.row {
-		@include breakpoint(large) {
-			margin: rem-calc(0 -17px);
-		}
-	}
-
-	.columns {
-		@media screen and (max-width: 768px) {
-			flex: 0 0 50%;
-		}
-
-		@media screen and (max-width: 480px) {
-			flex: 0 0 100%;
-		}
-	}
-
-	&.resources {
-		background-image: linear-gradient(to right, #c9e6cc, #e0f0e7);
-
-		@include breakpoint(large) {
-			padding: rem-calc(119px 0 54px);
-		}
-		
-		.columns {
-			@include breakpoint(large) {
-				padding-left: rem-calc(22px);
-				padding-right: rem-calc(22px);
-			}
-		}
-
-		.row {
-			@include breakpoint(large) {
-				margin: rem-calc(0 -22px);
-			}
-		}
-
-		h2 {
-			@include breakpoint(large) {
-				margin-bottom: rem-calc(55px);
-			}
-		}
-
-		.card {
-			.img-holder {
-				padding-top: 62%;
-			}
-		}
-
-		.card-section {
-			p {
-				line-height: 1.82352941;
-				font-weight: 500;
-				font-size: rem-calc(16px); 
-
-				@include breakpoint(large) {
-					margin-bottom: rem-calc(41px);
-				}
-			}
-		}
-	}
-
-	.card {
-		@include breakpoint(large) {
-			margin-bottom: rem-calc(68px);
-			height: calc(100% - 4.25rem);
-		}
-
-		.img-holder {
-			@include breakpoint(large) {
-				padding-top: 42.4%;
-			}
-		}
-	}
-}
-
-.news-holder {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-
-	@media screen and (min-width: 550px) {
-		margin: rem-calc(0 -15px);
-	}
-
-	.card {
-		width: 100%;
-		flex-grow: 0;
-		height: auto;
-
-		@media screen and (min-width: 550px) {
-			width: calc(50% - 1.875rem);
-			margin-left: rem-calc(15px);
-			margin-right: rem-calc(15px);
-		}
-
-		.img-holder {
-			padding-top: 62%;
-		}
-
-		.card-section {
-			@include breakpoint(large) {
-				padding-bottom: rem-calc(40px);
-			}
-		}
-	}
-
-	h3 {
-		color: #495651;
-		font-size: rem-calc(18px);
-
-		@include breakpoint(large) {
-			margin-bottom: rem-calc(15px);
-		}
-	}
-}
-
-.widget-section {
-	padding: 4rem 0 2rem;
-	position: relative;
-
-	@include breakpoint(medium) {
-		padding-top: 6rem;
-	}
-
-	@include breakpoint(large) {
-		padding: rem-calc(147px 0 133px);
-	}
-
-	.decor {
-		width: 30%;
-		position: absolute;
-		top: rem-calc(40px);
-		left: rem-calc(-20px);
-
-		@media screen and (min-width: 550px) {
-			top: rem-calc(20px);
-		}
-
-		@include breakpoint(medium) {
-			left: rem-calc(-30px);
-		}
-
-		@include breakpoint(large) {
-			left: rem-calc(-70px);
-			width: auto;
-		}
-
-		@include breakpoint(xxlarge) {
-			top: rem-calc(60px);
-			left: -7.5%;
-		}
-	}
-
-	.row {
-		@include breakpoint(large) {
-			margin: rem-calc(0 -24px);
-		}
-	}
-
-	.columns {
-		@include breakpoint(large) {
-			padding: rem-calc(0 24px);
-		}
-	}
-
-	h2 {
-		@include breakpoint(large) {
-			margin-bottom: rem-calc(55px);
-		}
-	}
-
-	.container {
-		position: relative;
-	}
-}
 button.slick-arrow {
 	text-indent: -100000px;
 }
@@ -1152,6 +905,18 @@ button.slick-arrow {
 
 		p:last-child() {
 			margin: 0;
+		}
+	}
+}
+
+.is-dropdown-submenu-parent {
+	> .menu {
+		display: none;
+	}
+
+	&.is-active {
+		> .menu {
+			display: block;
 		}
 	}
 }
