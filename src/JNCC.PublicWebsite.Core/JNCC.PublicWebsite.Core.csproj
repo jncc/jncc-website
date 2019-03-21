@@ -335,6 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBootstrap.cs" />
+    <Compile Include="Attributes\Filters\AllowXRequestsEveryXSecondsAttribute.cs" />
     <Compile Include="Attributes\Routing\RequireParameterAttribute.cs" />
     <Compile Include="Attributes\WebApi\SimpleEnableCorsAttribute.cs" />
     <Compile Include="Configuration\IResetPasswordConfiguration.cs" />
