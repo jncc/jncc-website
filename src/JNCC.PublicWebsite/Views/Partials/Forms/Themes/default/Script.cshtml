@@ -13,11 +13,11 @@
                         .SelectMany(x => x.Fields)
                         .ToDictionary(f => f.Id, f => string.IsNullOrWhiteSpace(f.Value) == false ? f.ValueAsHtmlString.ToHtmlString() : string.Empty);
 
-    var fieldSetConditions = Html.Raw(Model.FieldsetConditionsAsJson());
-    var fieldConditions = Html.Raw(Model.FieldConditionsAsJson());
+    var fieldSetConditions = Html.RawSanitized(Model.FieldsetConditionsAsJson());
+    var fieldConditions = Html.RawSanitized(Model.FieldConditionsAsJson());
     var formId = Model.FormClientId;
     var dateFormat = Html.ConvertDateFormat();
-    var recordValues = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(fieldsNotDisplayed));
+    var recordValues = Html.RawSanitized(Newtonsoft.Json.JsonConvert.SerializeObject(fieldsNotDisplayed));
 
 
     var jsCommand = string.Format(@"
@@ -89,7 +89,7 @@
             (function () {
             @foreach (var cmd in commands.Values)
             {
-          <text>@Html.Raw(cmd)</text>
+          <text>@Html.RawSanitized(cmd)</text>
             }
             }());
         </script>
