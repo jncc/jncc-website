@@ -1,4 +1,6 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Attributes.Filters;
+using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
 using System;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -24,6 +26,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [HttpPost]
         [ChildActionOnly]
         [ActionName("RenderLoginForm")]
+        [AllowXRequestsEveryXSeconds(Name = nameof(RenderPostLoginForm), Requests = RequestThrottling.NumberOfRequests, Seconds = RequestThrottling.NumberOfSeconds)]
         public ActionResult RenderPostLoginForm(LoginFormModel model)
         {
             return PartialView("~/Views/Partials/LoginForm.cshtml", model);
@@ -31,6 +34,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowXRequestsEveryXSeconds(Name = nameof(PerformLogin), Requests = RequestThrottling.NumberOfRequests, Seconds = RequestThrottling.NumberOfSeconds)]
         public ActionResult PerformLogin(LoginFormModel model)
         {
             if (ModelState.IsValid == false)
