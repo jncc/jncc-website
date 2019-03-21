@@ -349,6 +349,7 @@
     <Compile Include="Constants\HtmlAnchorTargets.cs" />
     <Compile Include="Constants\HtmlTextDirectionalities.cs" />
     <Compile Include="Constants\ImageCropAliases.cs" />
+    <Compile Include="Constants\RequestThrottling.cs" />
     <Compile Include="Constants\ResetPasswordRequestStatusCDs.cs" />
     <Compile Include="Constants\ScienceDetailsPartialViewNames.cs" />
     <Compile Include="Constants\SearchIndexingVerbs.cs" />
