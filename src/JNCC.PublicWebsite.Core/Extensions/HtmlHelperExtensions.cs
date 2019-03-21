@@ -41,9 +41,20 @@ namespace JNCC.PublicWebsite.Core.Extensions
             return htmlHelper.ValidationSummary(string.Empty, new { @class = "callout alert validation-summary" });
         }
 
+        public static IHtmlString RawSanitized(this HtmlHelper htmlHelper, object value)
+        {
+            if (value == null)
+            {
+                return MvcHtmlString.Empty;
+            }
+
+            return htmlHelper.RawSanitized(value.ToString());
+        }
+
         public static IHtmlString RawSanitized(this HtmlHelper htmlHelper, string value)
         {
-            if (string.IsNullOrWhiteSpace(value)) {
+            if (string.IsNullOrWhiteSpace(value))
+            {
                 return MvcHtmlString.Empty;
             }
 
