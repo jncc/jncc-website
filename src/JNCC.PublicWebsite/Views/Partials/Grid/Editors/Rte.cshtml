@@ -1,4 +1,4 @@
 ﻿@model dynamic
 @using Umbraco.Web.Templates
 
-@Html.Raw(TemplateUtilities.ParseInternalLinks(Model.value.ToString()))
+@HtmlHelperExtensions.RawSanitized(Html, TemplateUtilities.ParseInternalLinks(Model.value.ToString()))

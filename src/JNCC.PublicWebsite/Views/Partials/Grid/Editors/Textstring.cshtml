@@ -6,14 +6,14 @@
     string markup = Model.editor.config.markup.ToString();
     var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
     markup = markup.Replace("#value#", umbracoHelper.ReplaceLineBreaksForHtml(HttpUtility.HtmlEncode(Model.value.ToString())));
-    
+
     if (Model.editor.config.style != null)
     {
         markup = markup.Replace("#style#", Model.editor.config.style.ToString());
     }
 
     <text>
-        @Html.Raw(markup)
+        @HtmlHelperExtensions.RawSanitized(Html, markup)
     </text>
 }
 else

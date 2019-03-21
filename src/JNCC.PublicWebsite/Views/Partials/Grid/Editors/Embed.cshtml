@@ -3,5 +3,5 @@
 
 
 <div class="video-wrapper">
-	@Html.Raw(Model.value)
+    @HtmlHelperExtensions.RawSanitized(Html, Model.value)
 </div>
