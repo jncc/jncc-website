@@ -2,7 +2,6 @@ using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using JNCC.PublicWebsite.Core.Utilities;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
