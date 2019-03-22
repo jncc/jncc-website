@@ -221,12 +221,6 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         private UmbracoContext GetUmbracoContext()
         {
-            if (UmbracoContext.Current != null)
-            {
-                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Using existing UmbracoContext.Current.");
-                return UmbracoContext.Current;
-            }
-
             LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Creating new UmbracoContext using UmbracoContext.EnsureContext.");
 
             var httpContext = new HttpContextWrapper(HttpContext.Current ?? new HttpContext(new SimpleWorkerRequest("temp.aspx", "", new StringWriter())));
