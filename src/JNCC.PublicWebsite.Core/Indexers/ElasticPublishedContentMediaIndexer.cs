@@ -227,22 +227,30 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         private UmbracoContext GetUmbracoContext()
         {
-            if (HttpContext.Current == null || HttpContext.Current.Request == null)
+            try
             {
-                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Skipped creating UmbracoContext as HttpContext is unavailable.");
+                if (HttpContext.Current == null || HttpContext.Current.Request == null)
+                {
+                    LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Skipped creating UmbracoContext as HttpContext is unavailable.");
+                    return null;
+                }
+
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Creating new UmbracoContext using UmbracoContext.EnsureContext.");
+
+                var httpContext = new HttpContextWrapper(HttpContext.Current);
+
+                return UmbracoContext.EnsureContext(httpContext,
+                                                    ApplicationContext.Current,
+                                                    new WebSecurity(httpContext, ApplicationContext.Current),
+                                                    UmbracoConfig.For.UmbracoSettings(),
+                                                    UrlProviderResolver.Current.Providers,
+                                                    false);
+            }
+            catch (HttpException ex)
+            {
+                LogHelper.Error<ElasticPublishedContentMediaIndexer>("Skipped creating UmbracoContext as HttpContext is unavailable.", ex);
                 return null;
             }
-
-            LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Creating new UmbracoContext using UmbracoContext.EnsureContext.");
-
-            var httpContext = new HttpContextWrapper(HttpContext.Current);
-
-            return UmbracoContext.EnsureContext(httpContext,
-                                                ApplicationContext.Current,
-                                                new WebSecurity(httpContext, ApplicationContext.Current),
-                                                UmbracoConfig.For.UmbracoSettings(),
-                                                UrlProviderResolver.Current.Providers,
-                                                false);
         }
 
         private string ProcessJsonValue(object obj)
