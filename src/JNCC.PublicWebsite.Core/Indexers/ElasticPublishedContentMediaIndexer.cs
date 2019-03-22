@@ -172,13 +172,13 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     if (HasNode(fileExtension) == false)
                     {
-                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
+                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
                         continue;
                     }
 
                     if (!SupportedExtensions.Contains(fileExtension.Value, StringComparer.OrdinalIgnoreCase))
                     {
-                        LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
+                        LogHelper.Info<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
                         continue;
                     }
 
@@ -197,7 +197,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     if (HasNode(filePath) == false)
                     {
-                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
+                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
                         continue;
                     }
 
@@ -206,7 +206,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     if (System.IO.File.Exists(fullPath) == false)
                     {
-                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
+                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
                         continue;
                     }
 
@@ -309,7 +309,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         public override void RebuildIndex()
         {
-            LogHelper.Info<SearchService>($"Rebuild Elastic Index triggered");
+            LogHelper.Info<ElasticPublishedContentMediaIndexer>($"Rebuild Elastic Index triggered");
 
             base.RebuildIndex();
         }
