@@ -9,11 +9,16 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Web.Hosting;
 using System.Xml.Linq;
 using Umbraco.Core;
+using Umbraco.Core.Configuration;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Umbraco.Web.Routing;
+using Umbraco.Web.Security;
 using static Umbraco.Core.Constants;
 
 namespace JNCC.PublicWebsite.Core.Indexers
@@ -92,13 +97,10 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         protected void AddNodesToQueue(IEnumerable<XElement> nodes, string type)
         {
-            if (UmbracoContext.Current == null)
-            {
-                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => string.Format("Skipping node indexing for type {0}. No UmbracoContext.Current available.", type));
-                return;
-            }
+            /* v7.3+ */
+            var umbracoContext = GetUmbracoContext();
 
-            var fullUrlResolverService = new UmbracoContextFullUrlResolverService(UmbracoContext.Current);
+            var fullUrlResolverService = new UmbracoContextFullUrlResolverService(umbracoContext);
 
             foreach (var node in nodes)
             {
@@ -216,6 +218,23 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                 }
             }
+        }
+
+        private UmbracoContext GetUmbracoContext()
+        {
+            if (UmbracoContext.Current != null)
+            {
+                return UmbracoContext.Current;
+            }
+
+            var httpContext = new HttpContextWrapper(HttpContext.Current ?? new HttpContext(new SimpleWorkerRequest("temp.aspx", "", new StringWriter())));
+
+            return UmbracoContext.EnsureContext(httpContext,
+                                                ApplicationContext.Current,
+                                                new WebSecurity(httpContext, ApplicationContext.Current),
+                                                UmbracoConfig.For.UmbracoSettings(),
+                                                UrlProviderResolver.Current.Providers,
+                                                false);
         }
 
         private string ProcessJsonValue(object obj)
