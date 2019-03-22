@@ -99,6 +99,12 @@ namespace JNCC.PublicWebsite.Core.Indexers
         {
             var umbracoContext = GetUmbracoContext();
 
+            if (umbracoContext == null)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Skipping AddNodesToQueue as a valid UmbracoContext was unobtainable.");
+                return;
+            }
+
             var fullUrlResolverService = new UmbracoContextFullUrlResolverService(umbracoContext);
 
             foreach (var node in nodes)
@@ -221,9 +227,15 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         private UmbracoContext GetUmbracoContext()
         {
+            if (HttpContext.Current == null || HttpContext.Current.Request == null)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Skipped creating UmbracoContext as HttpContext is unavailable.");
+                return null;
+            }
+
             LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Creating new UmbracoContext using UmbracoContext.EnsureContext.");
 
-            var httpContext = new HttpContextWrapper(HttpContext.Current ?? new HttpContext(new SimpleWorkerRequest("temp.aspx", "", new StringWriter())));
+            var httpContext = new HttpContextWrapper(HttpContext.Current);
 
             return UmbracoContext.EnsureContext(httpContext,
                                                 ApplicationContext.Current,
