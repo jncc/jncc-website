@@ -92,6 +92,12 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         protected void AddNodesToQueue(IEnumerable<XElement> nodes, string type)
         {
+            if (UmbracoContext.Current == null)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => string.Format("Skipping node indexing for type {0}. No UmbracoContext.Current available.", type));
+                return;
+            }
+
             var fullUrlResolverService = new UmbracoContextFullUrlResolverService(UmbracoContext.Current);
 
             foreach (var node in nodes)
