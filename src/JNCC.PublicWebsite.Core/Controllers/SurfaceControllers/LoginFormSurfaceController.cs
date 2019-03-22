@@ -25,6 +25,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
         [HttpPost]
         [ChildActionOnly]
+        [ValidateAntiForgeryToken]
         [ActionName("RenderLoginForm")]
         [AllowXRequestsEveryXSeconds(Name = nameof(RenderPostLoginForm), Requests = RequestThrottling.NumberOfRequests, Seconds = RequestThrottling.NumberOfSeconds)]
         public ActionResult RenderPostLoginForm(LoginFormModel model)
