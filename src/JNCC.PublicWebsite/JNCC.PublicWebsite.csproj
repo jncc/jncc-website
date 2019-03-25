@@ -101,6 +101,9 @@
     <Reference Include="DTG.Spreadsheet, Version=2.7.0.0, Culture=neutral, PublicKeyToken=7b835b529fb706c3, processorArchitecture=MSIL">
       <HintPath>..\packages\SEOChecker.2.2.1\lib\DTG.Spreadsheet.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\EPPlus.dll</HintPath>
     </Reference>
@@ -714,6 +717,7 @@
     <Content Include="App_Plugins\uSync\uSyncDashboard.html" />
     <Content Include="App_Plugins\uSync\uSyncDashboardController.js" />
     <Content Include="App_Plugins\uSync\uSyncDashboardService.js" />
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\hideProperties.rules.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
