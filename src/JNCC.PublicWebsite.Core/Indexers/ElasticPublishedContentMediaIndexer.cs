@@ -2,7 +2,6 @@ using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Services;
 using JNCC.PublicWebsite.Core.Utilities;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -10,11 +9,16 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Web.Hosting;
 using System.Xml.Linq;
 using Umbraco.Core;
+using Umbraco.Core.Configuration;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Umbraco.Web.Routing;
+using Umbraco.Web.Security;
 using static Umbraco.Core.Constants;
 
 namespace JNCC.PublicWebsite.Core.Indexers
@@ -93,7 +97,15 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         protected void AddNodesToQueue(IEnumerable<XElement> nodes, string type)
         {
-            var fullUrlResolverService = new UmbracoContextFullUrlResolverService(UmbracoContext.Current);
+            var umbracoContext = GetUmbracoContext();
+
+            if (umbracoContext == null)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Skipping AddNodesToQueue as a valid UmbracoContext was unobtainable.");
+                return;
+            }
+
+            var fullUrlResolverService = new UmbracoContextFullUrlResolverService(umbracoContext);
 
             foreach (var node in nodes)
             {
@@ -167,13 +179,13 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     if (HasNode(fileExtension) == false)
                     {
-                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
+                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
                         continue;
                     }
 
                     if (!SupportedExtensions.Contains(fileExtension.Value, StringComparer.OrdinalIgnoreCase))
                     {
-                        LogHelper.Info<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
+                        LogHelper.Info<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
                         continue;
                     }
 
@@ -192,7 +204,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     if (HasNode(filePath) == false)
                     {
-                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
+                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
                         continue;
                     }
 
@@ -201,7 +213,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
                     if (System.IO.File.Exists(fullPath) == false)
                     {
-                        LogHelper.Warn<SearchService>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
+                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
                         continue;
                     }
 
@@ -210,6 +222,34 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     // index the node
                     _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                 }
+            }
+        }
+
+        private UmbracoContext GetUmbracoContext()
+        {
+            try
+            {
+                if (HttpContext.Current == null || HttpContext.Current.Request == null)
+                {
+                    LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Skipped creating UmbracoContext as HttpContext is unavailable.");
+                    return null;
+                }
+
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>(() => "Creating new UmbracoContext using UmbracoContext.EnsureContext.");
+
+                var httpContext = new HttpContextWrapper(HttpContext.Current);
+
+                return UmbracoContext.EnsureContext(httpContext,
+                                                    ApplicationContext.Current,
+                                                    new WebSecurity(httpContext, ApplicationContext.Current),
+                                                    UmbracoConfig.For.UmbracoSettings(),
+                                                    UrlProviderResolver.Current.Providers,
+                                                    false);
+            }
+            catch (HttpException ex)
+            {
+                LogHelper.Error<ElasticPublishedContentMediaIndexer>("Skipped creating UmbracoContext as HttpContext is unavailable.", ex);
+                return null;
             }
         }
 
@@ -304,7 +344,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         public override void RebuildIndex()
         {
-            LogHelper.Info<SearchService>($"Rebuild Elastic Index triggered");
+            LogHelper.Info<ElasticPublishedContentMediaIndexer>($"Rebuild Elastic Index triggered");
 
             base.RebuildIndex();
         }

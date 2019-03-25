@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Attributes.Routing;
+﻿using JNCC.PublicWebsite.Core.Attributes.Filters;
+using JNCC.PublicWebsite.Core.Attributes.Routing;
 using JNCC.PublicWebsite.Core.Configuration;
 using JNCC.PublicWebsite.Core.Constants;
 using JNCC.PublicWebsite.Core.Extensions;
@@ -25,6 +26,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         [ActionName("RenderForm")]
         [RequireParameter("requestToken")]
+        [AllowXRequestsEveryXSeconds(Name = nameof(RenderForm), Requests = RequestThrottling.NumberOfRequests, Seconds = RequestThrottling.NumberOfSeconds)]
         public ActionResult RenderForm(string requestToken)
         {
             var config = ResetPasswordConfiguration.GetConfig();
@@ -41,6 +43,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowXRequestsEveryXSeconds(Name = nameof(PerformInitialResetPassword), Requests = RequestThrottling.NumberOfRequests, Seconds = RequestThrottling.NumberOfSeconds)]
         public ActionResult PerformInitialResetPassword(InitialResetPasswordModel model)
         {
             if (ModelState.IsValid == false)
@@ -77,6 +80,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RequireParameter("requestToken")]
+        [AllowXRequestsEveryXSeconds(Name = nameof(PerformResetPassword), Requests = RequestThrottling.NumberOfRequests, Seconds = RequestThrottling.NumberOfSeconds)]
         public ActionResult PerformResetPassword(ResetPasswordModel model, string requestToken)
         {
             if (ModelState.IsValid == false)

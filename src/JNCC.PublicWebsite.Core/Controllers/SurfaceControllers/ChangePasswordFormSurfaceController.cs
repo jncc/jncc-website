@@ -1,6 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
-using System;
 using System.Web.Mvc;
 using Umbraco.Core.Logging;
 using Umbraco.Web.Models;
@@ -10,7 +9,6 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
     public sealed class ChangePasswordFormSurfaceController : CoreSurfaceController
     {
-        [HttpGet]
         [ChildActionOnly]
         public ActionResult RenderChangePasswordForm()
         {
@@ -19,6 +17,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
         [HttpPost]
         [ChildActionOnly]
+        [ValidateAntiForgeryToken]
         [ActionName("RenderChangePasswordForm")]
         public ActionResult RenderPostChangePasswordForm(ChangePasswordModel model)
         {

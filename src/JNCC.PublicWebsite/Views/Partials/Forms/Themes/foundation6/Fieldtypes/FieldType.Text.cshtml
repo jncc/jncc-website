@@ -15,6 +15,6 @@
     }
     @if (hasBody)
     {
-        <p>@Html.Raw(settings["BodyText"].ParsePlaceHolders().Replace(System.Environment.NewLine, "<br />"))</p>
+        <p>@Html.RawSanitized(settings["BodyText"].ParsePlaceHolders().Replace(System.Environment.NewLine, "<br />"))</p>
     }
 </div>

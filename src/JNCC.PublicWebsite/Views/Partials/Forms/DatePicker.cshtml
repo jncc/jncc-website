@@ -18,9 +18,9 @@
 			default: {
 				previousMonth: "<<",
 				nextMonth: ">>",
-				months: ["@Html.Raw(string.Join("\",\"", CultureInfo.CurrentCulture.DateTimeFormat.MonthNames))"],
-				weekdays: ["@Html.Raw(string.Join("\",\"", CultureInfo.CurrentCulture.DateTimeFormat.DayNames))"],
-				weekdaysShort: ["@Html.Raw(string.Join("\",\"", CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedDayNames))"]
+				months: ["@Html.RawSanitized(string.Join("\",\"", CultureInfo.CurrentCulture.DateTimeFormat.MonthNames))"],
+				weekdays: ["@Html.RawSanitized(string.Join("\",\"", CultureInfo.CurrentCulture.DateTimeFormat.DayNames))"],
+				weekdaysShort: ["@Html.RawSanitized(string.Join("\",\"", CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedDayNames))"]
 			}
 		};
 

@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Constants;
+﻿using Ganss.XSS;
+using JNCC.PublicWebsite.Core.Constants;
 using System.Globalization;
 using System.Web;
 using System.Web.Mvc;
@@ -38,6 +39,29 @@ namespace JNCC.PublicWebsite.Core.Extensions
         public static IHtmlString FoundationValidationSummary(this HtmlHelper htmlHelper)
         {
             return htmlHelper.ValidationSummary(string.Empty, new { @class = "callout alert validation-summary" });
+        }
+
+        public static IHtmlString RawSanitized(this HtmlHelper htmlHelper, object value)
+        {
+            if (value == null)
+            {
+                return MvcHtmlString.Empty;
+            }
+
+            return htmlHelper.RawSanitized(value.ToString());
+        }
+
+        public static IHtmlString RawSanitized(this HtmlHelper htmlHelper, string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return MvcHtmlString.Empty;
+            }
+
+            var sanitizer = new HtmlSanitizer();
+            var valueSanitized = sanitizer.Sanitize(value);
+
+            return MvcHtmlString.Create(value);
         }
     }
 }
