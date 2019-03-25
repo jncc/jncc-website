@@ -127,6 +127,13 @@ namespace JNCC.PublicWebsite.Core.Services
                 LogHelper.Info<SearchService>("Skipping indexing for Content name " + nodeName + " with ID " + pageId + ". EnableIndexing is disabled.");
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(mainContent))
+            {
+                LogHelper.Info<SearchService>("Skipping indexing for Content name " + nodeName + " with ID " + pageId + ". Content is Null or WhiteSpace.");
+                return;
+            }
+
             var credentials = new BasicAWSCredentials(_searchConfiguration.AWSSQSAccessKey, _searchConfiguration.AWSSQSSecretKey);
             var region = RegionEndpoint.GetBySystemName(_searchConfiguration.AWSESRegion);
             var s3 = new AmazonS3Client(credentials, region);
