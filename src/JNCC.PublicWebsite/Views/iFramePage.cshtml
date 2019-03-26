@@ -1,4 +1,4 @@
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.IFramePage>
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.IFramePage>
 @using ContentModels = JNCC.PublicWebsite.Core.Models;
 @{
     Layout = "Base.cshtml";
@@ -12,14 +12,22 @@
 }
 <main id="main">
     <script>
-        $(document).ready(mapFrame);
-        $(window).on('resize', mapFrame);
-        function mapFrame() {
-            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            var newH = h - 151.375;
-            document.getElementById('mainContent').setAttribute("style", "height:" + newH + "px" + ";");
-        };
-        $("body").css("overflow", "hidden");
+        (function () {
+            var iFrame = document.getElementById("mainContent");
+            if (!iFrame) {
+                return;
+            }
+
+            $(document).ready(resizeIFrame);
+            $(window).on("resize", resizeIFrame);
+            function resizeIFrame() {
+                var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                var newH = h - 151.375;
+
+                iFrame.setAttribute("style", "height: " + newH + "px;");
+            };
+            $("body").css("overflow", "hidden");
+        })();
     </script>
     <div class="row expanded collapse is-display-block">
         <div class="responsive-embed no-margin">
