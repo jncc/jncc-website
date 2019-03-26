@@ -366,6 +366,7 @@
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\CareersLandingPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\HomePageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\IFramePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\IndividualJobPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
@@ -382,6 +383,7 @@
     <Compile Include="Extensions\SciencePagesExtensions.cs" />
     <Compile Include="Models\AboutUsPage.generated.cs" />
     <Compile Include="Models\CareersLandingPage.generated.cs" />
+    <Compile Include="Models\IFramePage.generated.cs" />
     <Compile Include="Models\IScienceCategorisablePage.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />
@@ -400,11 +402,13 @@
     <Compile Include="Services\CareersLandingPageService.cs" />
     <Compile Include="Services\CareersSidebarService.cs" />
     <Compile Include="Services\IDataHubQueryService.cs" />
+    <Compile Include="Services\IFramePageService.cs" />
     <Compile Include="Services\LatestNewsSectionService.cs" />
     <Compile Include="Services\ScienceAtoZPageService.cs" />
     <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="Services\SidebarServiceBase.cs" />
     <Compile Include="ViewModels\GenericListingPageItemViewModel.cs" />
+    <Compile Include="ViewModels\IFramePageViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryItemViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsRichTextSectionViewModel.cs" />

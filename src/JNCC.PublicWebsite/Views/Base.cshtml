@@ -1,0 +1,39 @@
+﻿@using ClientDependency.Core.Mvc
+@{
+    Layout = null;
+    Html.RequiresJs("/js/lib/jquery-2.2.4.min.js", 1);
+    Html.RequiresJs("/js/lib/foundation-6.5.0.min.js");
+}
+<!doctype html>
+<html @(Html.Action<PageAttributesSurfaceController>("RenderAttributes"))>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @(Html.Action<SeoMetaDataSurfaceController>("RenderSeoMetaData"))
+    <link rel="stylesheet" href="~/css/app.css">
+    <link rel="stylesheet" href="~/css/foundation-icons.css">
+    <link rel="shortcut icon" href="~~/favicon.ico" type="image/x-icon">
+    @RenderSection("AdditionalHeadIncludes", false)
+    @Html.RenderJsHere()
+    @(Html.Action<PageIncludesSurfaceController>("RenderHeadIncludes"))
+</head>
+<body>
+    <noscript><div>Javascript must be enabled for the correct page display</div></noscript>
+    <div id="wrapper">
+        <a class="accessibility" href="#main" accesskey="S">Skip to Content</a>
+        <header id="header" class="js-cookie-banner-container">
+            @(Html.Action<HeaderSurfaceController>("RenderEditPageBar"))
+            @(Html.Action<HeaderSurfaceController>("RenderMemberLoggedInBar"))
+            @RenderSection("Header")
+        </header>
+        @RenderBody()
+        @RenderSection("Footer", false)
+    </div>
+    <a class="accessibility" href="#wrapper">Back to top</a>
+    @RenderSection("EndOfBodyIncludes", false)
+    @(Html.Action<CookieBannerTemplateSurfaceController>("RenderCookieBannerTemplate"))
+    <script src="~/js/app.js"></script>
+    @(Html.Action<PageIncludesSurfaceController>("RenderBodyIncludes"))
+</body>
+</html>

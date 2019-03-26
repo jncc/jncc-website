@@ -1,0 +1,37 @@
+﻿@model IFramePageViewModel
+@{
+    Layout = "Base.cshtml";
+}
+@section Header {
+    <div class="container">
+        <strong class="logo">
+            <a href="/" accesskey="1"><img src="~/images/logo.png" alt="JNCC"></a>
+        </strong>
+    </div>
+    @Html.Partial("~/Views/Partials/Header/MainNavigation.cshtml", Model.Navigation)
+}
+<main id="main">
+    <script>
+        (function () {
+            var iFrame = document.getElementById("mainContent");
+            if (!iFrame) {
+                return;
+            }
+
+            $(document).ready(resizeIFrame);
+            $(window).on("resize", resizeIFrame);
+            function resizeIFrame() {
+                var currentHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                var newHeight = currentHeight - 151.375;
+
+                iFrame.setAttribute("style", "height: " + newHeight + "px;");
+            };
+            $("body").css("overflow", "hidden");
+        })();
+    </script>
+    <div class="row expanded collapse is-display-block">
+        <div class="responsive-embed no-margin">
+            <iframe id="mainContent" src="@Model.SourceUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</main>
