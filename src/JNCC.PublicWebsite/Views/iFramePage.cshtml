@@ -21,10 +21,10 @@
             $(document).ready(resizeIFrame);
             $(window).on("resize", resizeIFrame);
             function resizeIFrame() {
-                var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-                var newH = h - 151.375;
+                var currentHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                var newHeight = currentHeight - 151.375;
 
-                iFrame.setAttribute("style", "height: " + newH + "px;");
+                iFrame.setAttribute("style", "height: " + newHeight + "px;");
             };
             $("body").css("overflow", "hidden");
         })();
