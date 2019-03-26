@@ -406,6 +406,7 @@
     <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="Services\SidebarServiceBase.cs" />
     <Compile Include="ViewModels\GenericListingPageItemViewModel.cs" />
+    <Compile Include="ViewModels\IFrameViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryItemViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsRichTextSectionViewModel.cs" />
