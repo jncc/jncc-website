@@ -382,6 +382,7 @@
     <Compile Include="Extensions\SciencePagesExtensions.cs" />
     <Compile Include="Models\AboutUsPage.generated.cs" />
     <Compile Include="Models\CareersLandingPage.generated.cs" />
+    <Compile Include="Models\IFramePage.generated.cs" />
     <Compile Include="Models\IScienceCategorisablePage.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />

@@ -1420,6 +1420,7 @@
     <Content Include="Views\AboutUsPage.cshtml" />
     <Content Include="Views\ScienceAToZPage.cshtml" />
     <Content Include="Views\Partials\PageMetaInformation.cshtml" />
+    <Content Include="Views\iFramePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
