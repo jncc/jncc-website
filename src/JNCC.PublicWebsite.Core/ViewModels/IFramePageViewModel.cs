@@ -2,7 +2,7 @@
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
-    public sealed class IFrameViewModel
+    public sealed class IFramePageViewModel
     {
         public IEnumerable<NavigationItemViewModel> Navigation { get; set; }
         public string SourceUrl { get; set; }
