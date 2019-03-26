@@ -1,5 +1,4 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.IFramePage>
-@using ContentModels = JNCC.PublicWebsite.Core.Models;
+﻿@model IFramePageViewModel
 @{
     Layout = "Base.cshtml";
 }
@@ -31,7 +30,7 @@
     </script>
     <div class="row expanded collapse is-display-block">
         <div class="responsive-embed no-margin">
-            <iframe id="mainContent" src="@Model.Content.SourceUrl" frameborder="0" allowfullscreen></iframe>
+            <iframe id="mainContent" src="@Model.SourceUrl" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </main>
