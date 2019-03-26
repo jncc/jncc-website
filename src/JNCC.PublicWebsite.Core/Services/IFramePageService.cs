@@ -1,4 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,17 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             return new IFramePageViewModel()
             {
+                Navigation = GetNavigation(model),
                 SourceUrl = GetSourceUrl(model, currentUrl)
+            };
+        }
+
+        private MainNavigationViewModel GetNavigation(IFramePage model)
+        {
+            return new MainNavigationViewModel()
+            {
+                Items = _navigationItemService.GetViewModels<MainNavigationItemViewModel>(model.Navigation),
+                HasPageHero = false
             };
         }
 
