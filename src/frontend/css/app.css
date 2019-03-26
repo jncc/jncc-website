@@ -8474,6 +8474,10 @@ button.slick-arrow {
 	display: block;
 }
 
+.row.is-display-block {
+	display: block;
+}
+
 #header {
 	position: relative;
 	z-index: 500;

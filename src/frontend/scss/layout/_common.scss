@@ -920,3 +920,9 @@ button.slick-arrow {
 		}
 	}
 }
+
+.row {
+	&.is-display-block {
+		display: block;
+	}
+}
