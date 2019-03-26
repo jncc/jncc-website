@@ -1032,6 +1032,7 @@
     <Content Include="css\svgs\fi-zoom-in.svg" />
     <Content Include="css\svgs\fi-zoom-out.svg" />
     <Content Include="default.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="js\app.js" />
