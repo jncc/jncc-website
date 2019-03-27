@@ -2,7 +2,6 @@
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
-using System;
 using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -11,11 +10,13 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class RelatedItemsService
     {
+        private readonly ISearchQueryService _searchQueryService;
         private readonly SeoMetaDataService _seoMetaDataService;
         private const int MaximumRelatedItems = 3;
 
-        public RelatedItemsService(SeoMetaDataService seoMetaDataService)
+        public RelatedItemsService(SeoMetaDataService seoMetaDataService, ISearchQueryService searchQueryService)
         {
+            _searchQueryService = searchQueryService;
             _seoMetaDataService = seoMetaDataService;
         }
 
