@@ -32,14 +32,6 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             return Task.Run(() => QueryAsync(query, size, start)).Result;
         }
-        public SearchModel EsGetByRawQuery(string query)
-        {
-            return Task.Run(() => EsGetByRawQueryAsync(query)).Result;
-        }
-        public async Task<SearchModel> EsGetByRawQueryAsync(string rawQuery)
-        {
-            return await PerformSearchAsync(rawQuery);
-        }
 
         public async Task<SearchModel> QueryAsync(string query, int size, int start)
         {
@@ -84,6 +76,16 @@ namespace JNCC.PublicWebsite.Core.Services
             var serializedQuery = JsonConvert.SerializeObject(q, Formatting.None);
 
             return await PerformSearchAsync(serializedQuery);
+        }
+
+        public SearchModel EsGetByRawQuery(string query)
+        {
+            return Task.Run(() => EsGetByRawQueryAsync(query)).Result;
+        }
+
+        public async Task<SearchModel> EsGetByRawQueryAsync(string rawQuery)
+        {
+            return await PerformSearchAsync(rawQuery);
         }
 
         private async Task<SearchModel> PerformSearchAsync(string query)
