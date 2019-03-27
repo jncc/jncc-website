@@ -47,17 +47,13 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var viewModel = new RelatedItemViewModel()
             {
+                Content = _seoMetaDataService.GetSeoDescription(item),
                 Link = new NavigationItemViewModel()
                 {
                     Url = item.Url,
                     Text = "Read More"
                 }
             };
-
-            if (item is ISeoComposition)
-            {
-                viewModel.Content = _seoMetaDataService.GetSeoDescription(item);
-            }
 
             return viewModel;
         }
