@@ -1,8 +1,9 @@
-using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -62,6 +63,17 @@ namespace JNCC.PublicWebsite.Core.Services
                     Text = "Read More"
                 }
             };
+
+            if (item is IPageHeroComposition)
+            {
+                var hero = (item as IPageHeroComposition);
+                var heroImage = hero.HeroImage;
+
+                if (heroImage != null)
+                {
+                    viewModel.ImageUrl = hero.HeroImage.GetCropUrl(Constants.ImageCropAliases.ListingThumbnail);
+                }
+            }
 
             return viewModel;
         }
