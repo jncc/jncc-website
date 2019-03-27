@@ -1,4 +1,4 @@
-﻿using Amazon;
+using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.SQS;
@@ -152,7 +152,7 @@ namespace JNCC.PublicWebsite.Core.Services
                     document = new
                     {
                         id = pageId.ToString(), // ID managed by Umbraco
-                        site = "website", // as opposed to datahub|sac|mhc
+                        site = SearchIndexingSites.Website,
                         title = nodeName,
                         content = mainContent,
                         url = url, // the URL of the page, for clicking through
@@ -211,7 +211,7 @@ namespace JNCC.PublicWebsite.Core.Services
                     document = new
                     {
                         id = pageId.ToString(), // ID managed by Umbraco
-                        site = "website", // as opposed to datahub|sac|mhc
+                        site = SearchIndexingSites.Website,
                         title = nodeName,
                         content = "Umbraco Media Content",
                         url = url, // the URL of the page, for clicking through
