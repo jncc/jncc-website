@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,12 @@ namespace JNCC.PublicWebsite.Core.Services
     internal sealed class RelatedItemsService
     {
         private readonly NavigationItemService _navigationItemService;
+        private readonly SeoMetaDataService _seoMetaDataService;
 
-        public RelatedItemsService(NavigationItemService navigationItemService)
+        public RelatedItemsService(NavigationItemService navigationItemService, SeoMetaDataService seoMetaDataService)
         {
             _navigationItemService = navigationItemService;
+            _seoMetaDataService = seoMetaDataService;
         }
 
         public IEnumerable<RelatedItemViewModel> GetViewModels(IRelatedItemsComposition composition)

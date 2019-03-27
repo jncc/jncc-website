@@ -9,11 +9,13 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
     {
         private readonly NavigationItemService _navigationItemService;
         private readonly RelatedItemsService _relatedItemsService;
+        private readonly SeoMetaDataService _seoMetaDataService;
 
         public RelatedItemsSurfaceController()
         {
             _navigationItemService = new NavigationItemService();
-            _relatedItemsService = new RelatedItemsService(_navigationItemService);
+            _seoMetaDataService = new SeoMetaDataService();
+            _relatedItemsService = new RelatedItemsService(_navigationItemService, _seoMetaDataService);
         }
 
         [ChildActionOnly]
