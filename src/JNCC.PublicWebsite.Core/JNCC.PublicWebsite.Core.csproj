@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -404,6 +404,7 @@
     <Compile Include="Services\CareersSidebarService.cs" />
     <Compile Include="Services\IDataHubQueryService.cs" />
     <Compile Include="Services\IFramePageService.cs" />
+    <Compile Include="Services\ISearchQueryService.cs" />
     <Compile Include="Services\LatestNewsSectionService.cs" />
     <Compile Include="Services\ScienceAtoZPageService.cs" />
     <Compile Include="Services\ScienceCategoryPageService.cs" />
