@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -88,11 +88,7 @@ namespace JNCC.PublicWebsite.Core.Services
             var viewModel = new RelatedItemViewModel()
             {
                 Content = _seoMetaDataService.GetSeoDescription(item),
-                Link = new NavigationItemViewModel()
-                {
-                    Url = item.Url,
-                    Text = "Read More"
-                }
+                Url = item.Url
             };
 
             if (item is IPageHeroComposition)
