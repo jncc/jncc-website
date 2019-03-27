@@ -5,8 +5,8 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal interface ISearchQueryService
     {
-        SearchModel EsGet(string q, int size, int start);
+        SearchModel Query(string query, int size, int start);
 
-        Task<SearchModel> ESGetAsync(string q, int size, int start);
+        Task<SearchModel> QueryAsync(string query, int size, int start);
     }
 }

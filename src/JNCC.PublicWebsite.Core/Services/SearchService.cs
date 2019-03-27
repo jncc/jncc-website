@@ -28,9 +28,9 @@ namespace JNCC.PublicWebsite.Core.Services
             _searchConfiguration = searchConfiguration;
         }
 
-        public SearchModel EsGet(string q, int size, int start)
+        public SearchModel Query(string query, int size, int start)
         {
-            return Task.Run(() => ESGetAsync(q, size, start)).Result;
+            return Task.Run(() => QueryAsync(query, size, start)).Result;
         }
         public SearchModel EsGetByRawQuery(string query)
         {
@@ -41,7 +41,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return await PerformSearchAsync(rawQuery);
         }
 
-        public async Task<SearchModel> ESGetAsync(string query, int size, int start)
+        public async Task<SearchModel> QueryAsync(string query, int size, int start)
         {
             var q = new
             {
