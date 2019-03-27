@@ -12,7 +12,6 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +19,7 @@ using Umbraco.Core.Logging;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class SearchService : IDataHubRawQueryService
+    internal sealed class SearchService : IDataHubRawQueryService, ISearchQueryService
     {
         private readonly ISearchConfiguration _searchConfiguration;
 
