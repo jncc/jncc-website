@@ -7,15 +7,13 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
     public sealed class RelatedItemsSurfaceController : CoreSurfaceController
     {
-        private readonly NavigationItemService _navigationItemService;
         private readonly RelatedItemsService _relatedItemsService;
         private readonly SeoMetaDataService _seoMetaDataService;
 
         public RelatedItemsSurfaceController()
         {
-            _navigationItemService = new NavigationItemService();
             _seoMetaDataService = new SeoMetaDataService();
-            _relatedItemsService = new RelatedItemsService(_navigationItemService, _seoMetaDataService);
+            _relatedItemsService = new RelatedItemsService(_seoMetaDataService);
         }
 
         [ChildActionOnly]

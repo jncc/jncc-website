@@ -1,4 +1,4 @@
-using JNCC.PublicWebsite.Core.Extensions;
+﻿using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -11,13 +11,11 @@ namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class RelatedItemsService
     {
-        private readonly NavigationItemService _navigationItemService;
         private readonly SeoMetaDataService _seoMetaDataService;
         private const int MaximumRelatedItems = 3;
 
-        public RelatedItemsService(NavigationItemService navigationItemService, SeoMetaDataService seoMetaDataService)
+        public RelatedItemsService(SeoMetaDataService seoMetaDataService)
         {
-            _navigationItemService = navigationItemService;
             _seoMetaDataService = seoMetaDataService;
         }
 
