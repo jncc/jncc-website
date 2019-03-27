@@ -1,6 +1,8 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -11,6 +13,7 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         private readonly NavigationItemService _navigationItemService;
         private readonly SeoMetaDataService _seoMetaDataService;
+        private const int MaximumRelatedItems = 3;
 
         public RelatedItemsService(NavigationItemService navigationItemService, SeoMetaDataService seoMetaDataService)
         {
@@ -30,7 +33,28 @@ namespace JNCC.PublicWebsite.Core.Services
             var pickedRelatedItemViewModels = GetPickedRelatedItemViewModels(composition.RelatedItems);
             viewModels.AddRange(pickedRelatedItemViewModels);
 
+            if (viewModels.Count < MaximumRelatedItems)
+            {
+                var numberOfItemsToSearchFor = MaximumRelatedItems - viewModels.Count;
+                var searchQuery = GetSearchQuery(composition);
+                var searchedRelatedItemsViewModels = GetSearchQueryRelatedItemViewModels(searchQuery, numberOfItemsToSearchFor);
+
+                viewModels.AddRange(searchedRelatedItemsViewModels);
+            }
+
             return viewModels;
+        }
+
+        private string GetSearchQuery(IRelatedItemsComposition composition)
+        {
+            var searchTerm = composition.RelatedItemsSearchQuery;
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return composition.GetHeadline();
+            }
+
+            return searchTerm;
         }
 
         private IEnumerable<RelatedItemViewModel> GetPickedRelatedItemViewModels(IEnumerable<IPublishedContent> relatedItems)
@@ -48,6 +72,13 @@ namespace JNCC.PublicWebsite.Core.Services
 
                 viewModels.Add(viewModel);
             }
+
+            return viewModels;
+        }
+
+        private IEnumerable<RelatedItemViewModel> GetSearchQueryRelatedItemViewModels(string searchQuery, int numberOfItemsToSearchFor)
+        {
+            var viewModels = new List<RelatedItemViewModel>();
 
             return viewModels;
         }
