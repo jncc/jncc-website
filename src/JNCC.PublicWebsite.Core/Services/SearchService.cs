@@ -1,4 +1,4 @@
-using Amazon;
+﻿using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.SQS;
@@ -274,7 +274,8 @@ namespace JNCC.PublicWebsite.Core.Services
                     index = _searchConfiguration.AWSESIndex,
                     document = new
                     {
-                        id = pageId // ID managed by Umbraco
+                        id = pageId, // ID managed by Umbraco
+                        site = SearchIndexingSites.Website
                     }
                 };
 
