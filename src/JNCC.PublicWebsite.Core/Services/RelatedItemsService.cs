@@ -1,8 +1,8 @@
-using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
+using Umbraco.Core.Models;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -33,29 +33,33 @@ namespace JNCC.PublicWebsite.Core.Services
                 return viewModels;
             }
 
-            var typedItems = relatedItems.OfType<RelatedItemSchema>();
-            if (typedItems.Any() == false)
+            foreach (var item in relatedItems)
             {
-                return viewModels;
-            }
-
-            foreach (var item in typedItems)
-            {
-                var viewModel = new RelatedItemViewModel()
-                {
-                    Content = item.Content,
-                    Link = _navigationItemService.GetViewModel(item.Link)
-                };
-
-                if (item.Image != null)
-                {
-                    viewModel.ImageUrl = item.Image.Url;
-                }
+                var viewModel = GetViewModel(item);
 
                 viewModels.Add(viewModel);
             }
 
             return viewModels;
+        }
+
+        private RelatedItemViewModel GetViewModel(IPublishedContent item)
+        {
+            var viewModel = new RelatedItemViewModel()
+            {
+                Link = new NavigationItemViewModel()
+                {
+                    Url = item.Url,
+                    Text = "Read More"
+                }
+            };
+
+            if (item is ISeoComposition)
+            {
+                viewModel.Content = _seoMetaDataService.GetSeoDescription(item);
+            }
+
+            return viewModel;
         }
     }
 }
