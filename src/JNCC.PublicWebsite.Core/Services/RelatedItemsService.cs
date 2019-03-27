@@ -20,6 +20,12 @@ namespace JNCC.PublicWebsite.Core.Services
         public IEnumerable<RelatedItemViewModel> GetViewModels(IRelatedItemsComposition composition)
         {
             var viewModels = new List<RelatedItemViewModel>();
+
+            if (composition.ShowRelatedItems == false)
+            {
+                return viewModels;
+            }
+
             var relatedItems = composition.RelatedItems;
 
             if (ExistenceUtility.IsNullOrEmpty(relatedItems))
