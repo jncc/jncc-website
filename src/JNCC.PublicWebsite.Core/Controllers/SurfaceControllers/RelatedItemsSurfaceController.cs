@@ -27,7 +27,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
                 return EmptyResult();
             }
 
-            var viewModels = _relatedItemsService.GetViewModels(CurrentPage as IRelatedItemsComposition);
+            var viewModels = _relatedItemsService.GetViewModels(CurrentPage as IRelatedItemsComposition, Root);
 
             if (ExistenceUtility.IsNullOrEmpty(viewModels))
             {

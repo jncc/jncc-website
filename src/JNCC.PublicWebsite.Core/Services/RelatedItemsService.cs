@@ -25,7 +25,7 @@ namespace JNCC.PublicWebsite.Core.Services
             _umbracoHelper = umbracoHelper;
         }
 
-        public IEnumerable<RelatedItemViewModel> GetViewModels(IRelatedItemsComposition composition)
+        public IEnumerable<RelatedItemViewModel> GetViewModels(IRelatedItemsComposition composition, HomePage homePage)
         {
             var viewModels = new List<RelatedItemViewModel>();
 
@@ -33,7 +33,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 return viewModels;
             }
-            var pickedRelatedItemViewModels = GetPickedRelatedItemViewModels(composition.RelatedItems);
+            var pickedRelatedItemViewModels = GetPickedRelatedItemViewModels(composition.RelatedItems, homePage);
             viewModels.AddRange(pickedRelatedItemViewModels);
 
             if (viewModels.Count < MaximumRelatedItems)
@@ -41,7 +41,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 var excludedNodeIds = GetNodeIdsToExcludeFromSearchResults(composition);
                 var searchQuery = GetSearchQuery(composition);
                 var numberOfItemsToTake = MaximumNumberOfSearchResults - viewModels.Count();
-                var searchedRelatedItemsViewModels = GetSearchQueryRelatedItemViewModels(searchQuery, MaximumNumberOfSearchResults, numberOfItemsToTake, excludedNodeIds);
+                var searchedRelatedItemsViewModels = GetSearchQueryRelatedItemViewModels(searchQuery, MaximumNumberOfSearchResults, numberOfItemsToTake, excludedNodeIds, homePage);
 
                 viewModels.AddRange(searchedRelatedItemsViewModels);
             }
@@ -79,7 +79,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return searchTerm;
         }
 
-        private IEnumerable<RelatedItemViewModel> GetPickedRelatedItemViewModels(IEnumerable<IPublishedContent> relatedItems)
+        private IEnumerable<RelatedItemViewModel> GetPickedRelatedItemViewModels(IEnumerable<IPublishedContent> relatedItems, HomePage homePage)
         {
             var viewModels = new List<RelatedItemViewModel>();
 
@@ -90,7 +90,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
             foreach (var item in relatedItems)
             {
-                var viewModel = GetViewModel(item);
+                var viewModel = GetViewModel(item, homePage);
 
                 viewModels.Add(viewModel);
             }
@@ -98,7 +98,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
-        private IEnumerable<RelatedItemViewModel> GetSearchQueryRelatedItemViewModels(string searchQuery, int numberOfItemsToSearchFor, int numberOfItemsToTake, IEnumerable<string> excludedNodeIds)
+        private IEnumerable<RelatedItemViewModel> GetSearchQueryRelatedItemViewModels(string searchQuery, int numberOfItemsToSearchFor, int numberOfItemsToTake, IEnumerable<string> excludedNodeIds, HomePage homePage)
         {
             var viewModels = new List<RelatedItemViewModel>();
             var searchResults = _searchQueryService.Query(searchQuery, numberOfItemsToSearchFor, 0);
@@ -110,7 +110,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
                 if (content != null)
                 {
-                    var viewModel = GetViewModel(content);
+                    var viewModel = GetViewModel(content, homePage);
 
                     viewModels.Add(viewModel);
                 }
@@ -119,7 +119,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
-        private RelatedItemViewModel GetViewModel(IPublishedContent item)
+        private RelatedItemViewModel GetViewModel(IPublishedContent item, HomePage homePage)
         {
             var viewModel = new RelatedItemViewModel()
             {
@@ -137,6 +137,11 @@ namespace JNCC.PublicWebsite.Core.Services
                 {
                     viewModel.ImageUrl = hero.HeroImage.GetCropUrl(Constants.ImageCropAliases.ListingThumbnail);
                 }
+            }
+
+            if (string.IsNullOrWhiteSpace(viewModel.ImageUrl) && homePage.RelatedItemsFallbackImage != null)
+            {
+                viewModel.ImageUrl = homePage.RelatedItemsFallbackImage.GetCropUrl(Constants.ImageCropAliases.ListingThumbnail);
             }
 
             return viewModel;
