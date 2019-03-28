@@ -40,7 +40,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 var excludedNodeIds = GetNodeIdsToExcludeFromSearchResults(composition);
                 var searchQuery = GetSearchQuery(composition);
-                var numberOfItemsToTake = MaximumNumberOfSearchResults - viewModels.Count();
+                var numberOfItemsToTake = MaximumRelatedItems - viewModels.Count();
                 var searchedRelatedItemsViewModels = GetSearchQueryRelatedItemViewModels(searchQuery, MaximumNumberOfSearchResults, numberOfItemsToTake, excludedNodeIds, homePage);
 
                 viewModels.AddRange(searchedRelatedItemsViewModels);
