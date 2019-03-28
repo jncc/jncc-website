@@ -16,7 +16,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         {
             _searchQueryService = new SearchService(SearchConfiguration.GetConfig());
             _seoMetaDataService = new SeoMetaDataService();
-            _relatedItemsService = new RelatedItemsService(_seoMetaDataService, _searchQueryService);
+            _relatedItemsService = new RelatedItemsService(_seoMetaDataService, _searchQueryService, Umbraco);
         }
 
         [ChildActionOnly]

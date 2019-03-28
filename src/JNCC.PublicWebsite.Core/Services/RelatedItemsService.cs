@@ -1,4 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Extensions;
 using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
@@ -12,12 +12,14 @@ namespace JNCC.PublicWebsite.Core.Services
     {
         private readonly ISearchQueryService _searchQueryService;
         private readonly SeoMetaDataService _seoMetaDataService;
+        private readonly UmbracoHelper _umbracoHelper;
         private const int MaximumRelatedItems = 3;
 
-        public RelatedItemsService(SeoMetaDataService seoMetaDataService, ISearchQueryService searchQueryService)
+        public RelatedItemsService(SeoMetaDataService seoMetaDataService, ISearchQueryService searchQueryService, UmbracoHelper umbracoHelper)
         {
             _searchQueryService = searchQueryService;
             _seoMetaDataService = seoMetaDataService;
+            _umbracoHelper = umbracoHelper;
         }
 
         public IEnumerable<RelatedItemViewModel> GetViewModels(IRelatedItemsComposition composition)
