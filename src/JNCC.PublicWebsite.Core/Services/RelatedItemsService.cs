@@ -5,6 +5,8 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using System.Linq;
+using System;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -14,6 +16,7 @@ namespace JNCC.PublicWebsite.Core.Services
         private readonly SeoMetaDataService _seoMetaDataService;
         private readonly UmbracoHelper _umbracoHelper;
         private const int MaximumRelatedItems = 3;
+        private const int MaximumNumberOfSearchResults = 6;
 
         public RelatedItemsService(SeoMetaDataService seoMetaDataService, ISearchQueryService searchQueryService, UmbracoHelper umbracoHelper)
         {
@@ -30,20 +33,38 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 return viewModels;
             }
-
             var pickedRelatedItemViewModels = GetPickedRelatedItemViewModels(composition.RelatedItems);
             viewModels.AddRange(pickedRelatedItemViewModels);
 
             if (viewModels.Count < MaximumRelatedItems)
             {
-                var numberOfItemsToSearchFor = MaximumRelatedItems - viewModels.Count;
+                var excludedNodeIds = GetNodeIdsToExcludeFromSearchResults(composition);
                 var searchQuery = GetSearchQuery(composition);
-                var searchedRelatedItemsViewModels = GetSearchQueryRelatedItemViewModels(searchQuery, numberOfItemsToSearchFor);
+                var numberOfItemsToTake = MaximumNumberOfSearchResults - viewModels.Count();
+                var searchedRelatedItemsViewModels = GetSearchQueryRelatedItemViewModels(searchQuery, MaximumNumberOfSearchResults, numberOfItemsToTake, excludedNodeIds);
 
                 viewModels.AddRange(searchedRelatedItemsViewModels);
             }
 
             return viewModels;
+        }
+
+        private IEnumerable<string> GetNodeIdsToExcludeFromSearchResults(IRelatedItemsComposition composition)
+        {
+            var nodeIds = new List<string>
+            {
+                composition.Id.ToString()
+            };
+
+            if (ExistenceUtility.IsNullOrEmpty(composition.RelatedItems))
+            {
+                return nodeIds;
+            }
+
+            var pickedRelatedItemIds = composition.RelatedItems.Select(x => x.Id.ToString());
+            nodeIds.AddRange(pickedRelatedItemIds);
+
+            return nodeIds;
         }
 
         private string GetSearchQuery(IRelatedItemsComposition composition)
@@ -77,12 +98,13 @@ namespace JNCC.PublicWebsite.Core.Services
             return viewModels;
         }
 
-        private IEnumerable<RelatedItemViewModel> GetSearchQueryRelatedItemViewModels(string searchQuery, int numberOfItemsToSearchFor)
+        private IEnumerable<RelatedItemViewModel> GetSearchQueryRelatedItemViewModels(string searchQuery, int numberOfItemsToSearchFor, int numberOfItemsToTake, IEnumerable<string> excludedNodeIds)
         {
             var viewModels = new List<RelatedItemViewModel>();
             var searchResults = _searchQueryService.Query(searchQuery, numberOfItemsToSearchFor, 0);
+            var filteredSearchResults = searchResults.Hits.Results.Where(x => excludedNodeIds.Contains(x.Id) == false).Take(numberOfItemsToTake);
 
-            foreach (var result in searchResults.Hits.Results)
+            foreach (var result in filteredSearchResults)
             {
                 var content = _umbracoHelper.TypedContent(result.Id);
 
