@@ -6,12 +6,12 @@
             @foreach (var item in Model)
             {
                 <div class="columns small-12 medium-4">
-                    <a href="@item.Link.Url" target="@item.Link.Target" class="card">
-                        <span class="img-holder" style="background-image: url(@item.ImageUrl);"></span>
-                        @if (item.Content != null)
+                    <a href="@item.Url" class="card">
+                        @if (string.IsNullOrWhiteSpace(item.ImageUrl) == false)
                         {
-                            <span class="card-section">@item.Content</span>
+                            <span class="img-holder" style="background-image: url(@item.ImageUrl);"></span>
                         }
+                        <span class="card-section"><strong>@item.Title</strong> @Html.RawSanitized(item.Content)</span>
                     </a>
                 </div>
             }

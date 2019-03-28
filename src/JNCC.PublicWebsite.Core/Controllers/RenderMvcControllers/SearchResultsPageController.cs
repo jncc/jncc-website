@@ -28,7 +28,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
             currentPage = int.TryParse(Request["p"], out int parsedInt) ? parsedInt : 1;
 
             // Call to search ES Index
-            var searchResults = _searchService.EsGet(searchTerm, 10, (currentPage - 1) * 10);
+            var searchResults = _searchService.Query(searchTerm, 10, (currentPage - 1) * 10);
 
             var viewModel = _searchService.GetViewModel(searchResults, searchTerm, 10, currentPage);
 

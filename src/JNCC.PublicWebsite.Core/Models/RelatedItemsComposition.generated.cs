@@ -20,12 +20,18 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1112 with alias "relatedItemsComposition"
+	// Mixin content Type 1127 with alias "relatedItemsComposition"
 	/// <summary>Related Items Composition</summary>
 	public partial interface IRelatedItemsComposition : IPublishedContent
 	{
 		/// <summary>Items</summary>
 		IEnumerable<IPublishedContent> RelatedItems { get; }
+
+		/// <summary>Search Query</summary>
+		string RelatedItemsSearchQuery { get; }
+
+		/// <summary>Show Related Items</summary>
+		bool ShowRelatedItems { get; }
 	}
 
 	/// <summary>Related Items Composition</summary>
@@ -54,7 +60,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored.  If no items are provided then the related items section will not be rendered.
+		/// Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored.  If less than 3 items are provided then a query will be made to find the remaining items needed.
 		///</summary>
 		[ImplementPropertyType("relatedItems")]
 		public IEnumerable<IPublishedContent> RelatedItems
@@ -64,5 +70,29 @@ namespace JNCC.PublicWebsite.Core.Models
 
 		/// <summary>Static getter for Items</summary>
 		public static IEnumerable<IPublishedContent> GetRelatedItems(IRelatedItemsComposition that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("relatedItems"); }
+
+		///<summary>
+		/// Search Query: A search term used to find related items. If no term is used the page headline or name will be used instead.
+		///</summary>
+		[ImplementPropertyType("relatedItemsSearchQuery")]
+		public string RelatedItemsSearchQuery
+		{
+			get { return GetRelatedItemsSearchQuery(this); }
+		}
+
+		/// <summary>Static getter for Search Query</summary>
+		public static string GetRelatedItemsSearchQuery(IRelatedItemsComposition that) { return that.GetPropertyValue<string>("relatedItemsSearchQuery"); }
+
+		///<summary>
+		/// Show Related Items
+		///</summary>
+		[ImplementPropertyType("showRelatedItems")]
+		public bool ShowRelatedItems
+		{
+			get { return GetShowRelatedItems(this); }
+		}
+
+		/// <summary>Static getter for Show Related Items</summary>
+		public static bool GetShowRelatedItems(IRelatedItemsComposition that) { return that.GetPropertyValue<bool>("showRelatedItems"); }
 	}
 }

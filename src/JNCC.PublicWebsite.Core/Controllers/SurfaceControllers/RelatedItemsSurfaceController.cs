@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Configuration;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
 using JNCC.PublicWebsite.Core.Utilities;
 using System.Web.Mvc;
@@ -7,13 +8,15 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
     public sealed class RelatedItemsSurfaceController : CoreSurfaceController
     {
-        private readonly NavigationItemService _navigationItemService;
+        private readonly ISearchQueryService _searchQueryService;
         private readonly RelatedItemsService _relatedItemsService;
+        private readonly SeoMetaDataService _seoMetaDataService;
 
         public RelatedItemsSurfaceController()
         {
-            _navigationItemService = new NavigationItemService();
-            _relatedItemsService = new RelatedItemsService(_navigationItemService);
+            _searchQueryService = new SearchService(SearchConfiguration.GetConfig());
+            _seoMetaDataService = new SeoMetaDataService();
+            _relatedItemsService = new RelatedItemsService(_seoMetaDataService, _searchQueryService, Umbraco);
         }
 
         [ChildActionOnly]
@@ -24,7 +27,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
                 return EmptyResult();
             }
 
-            var viewModels = _relatedItemsService.GetViewModels(CurrentPage as IRelatedItemsComposition);
+            var viewModels = _relatedItemsService.GetViewModels(CurrentPage as IRelatedItemsComposition, Root);
 
             if (ExistenceUtility.IsNullOrEmpty(viewModels))
             {

@@ -91,6 +91,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Fallback Image: This is used by related items that do not have an image associated with them .
+		///</summary>
+		[ImplementPropertyType("relatedItemsFallbackImage")]
+		public IPublishedContent RelatedItemsFallbackImage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("relatedItemsFallbackImage"); }
+		}
+
+		///<summary>
 		/// Title: A title to be given to the resources section.
 		///</summary>
 		[ImplementPropertyType("resourcesTitle")]

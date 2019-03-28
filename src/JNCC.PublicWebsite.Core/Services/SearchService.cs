@@ -12,7 +12,6 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +19,7 @@ using Umbraco.Core.Logging;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
-    internal sealed class SearchService : IDataHubRawQueryService
+    internal sealed class SearchService : IDataHubRawQueryService, ISearchQueryService
     {
         private readonly ISearchConfiguration _searchConfiguration;
 
@@ -29,62 +28,91 @@ namespace JNCC.PublicWebsite.Core.Services
             _searchConfiguration = searchConfiguration;
         }
 
-        public SearchModel EsGet(string q, int size, int start)
+        public SearchModel Query(string query, int size, int start)
         {
-            return Task.Run(() => ESGetAsync(q, size, start)).Result;
-        }
-        public SearchModel EsGetByRawQuery(string query)
-        {
-            return Task.Run(() => EsGetByRawQueryAsync(query)).Result;
-        }
-        public async Task<SearchModel> EsGetByRawQueryAsync(string rawQuery)
-        {
-            return await PerformSearchAsync(rawQuery);
+            return Task.Run(() => QueryAsync(query, size, start)).Result;
         }
 
-        public async Task<SearchModel> ESGetAsync(string query, int size, int start)
+        public async Task<SearchModel> QueryAsync(string query, int size, int start)
         {
             var q = new
             {
                 from = start,
-                size,
+                size = size,
+                highlight = new
+                {
+                    pre_tags = new[] { "<strong>" },
+                    post_tags = new[] { "</strong>" },
+                    fields = new
+                    {
+                        content = new
+                        {
+                            number_of_fragments = 1,
+                            order = "score",
+                            type = "fvh"
+                        },
+                        title = new
+                        {
+
+                        }
+                    }
+                },
+                _source = new
+                {
+                    includes = new[] { "*" },
+                    excludes = new[] { "content" }
+                },
                 query = new
                 {
                     @bool = new
                     {
-                        must = new[] {
+                        should = new object[] {
                             new {
                                 common = new {
                                     content = new {
-                                        query,
+                                        query = query,
+                                        cutoff_frequency = 0.001,
+                                        low_freq_operator = "or"
+                                    }
+                                }
+                            },
+                            new {
+                                common = new {
+                                    title = new {
+                                        query = query,
                                         cutoff_frequency = 0.001,
                                         low_freq_operator = "or"
                                     }
                                 }
                             }
                         },
-                        should = new[] {
+                        filter = new[] {
                             new {
-                                common = new {
-                                    title = new {
-                                        query,
-                                        cutoff_frequency = 0.001,
-                                        low_freq_operator = "or"
+                                match = new {
+                                    site = new {
+                                        query = SearchIndexingSites.Website
                                     }
                                 }
                             }
-                        }
+                        },
+                        minimum_should_match = 1
                     }
-                },
-                highlight = new
-                {
-                    fields = new { content = new { } }
                 }
             };
 
             var serializedQuery = JsonConvert.SerializeObject(q, Formatting.None);
 
             return await PerformSearchAsync(serializedQuery);
+        }
+
+        public SearchModel EsGetByRawQuery(string query)
+        {
+            return Task.Run(() => EsGetByRawQueryAsync(query)).Result;
+        }
+
+        public async Task<SearchModel> EsGetByRawQueryAsync(string rawQuery)
+        {
+            return await PerformSearchAsync(rawQuery);
         }
 
         private async Task<SearchModel> PerformSearchAsync(string query)

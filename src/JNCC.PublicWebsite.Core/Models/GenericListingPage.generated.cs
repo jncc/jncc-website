@@ -136,12 +136,30 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored.  If no items are provided then the related items section will not be rendered.
+		/// Items: Provides related items for the current page. These items are manually authored. A maximum of 3 items can be authored.  If less than 3 items are provided then a query will be made to find the remaining items needed.
 		///</summary>
 		[ImplementPropertyType("relatedItems")]
 		public IEnumerable<IPublishedContent> RelatedItems
 		{
 			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItems(this); }
+		}
+
+		///<summary>
+		/// Search Query: A search term used to find related items. If no term is used the page headline or name will be used instead.
+		///</summary>
+		[ImplementPropertyType("relatedItemsSearchQuery")]
+		public string RelatedItemsSearchQuery
+		{
+			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetRelatedItemsSearchQuery(this); }
+		}
+
+		///<summary>
+		/// Show Related Items
+		///</summary>
+		[ImplementPropertyType("showRelatedItems")]
+		public bool ShowRelatedItems
+		{
+			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetShowRelatedItems(this); }
 		}
 
 		///<summary>
