@@ -38,38 +38,65 @@ namespace JNCC.PublicWebsite.Core.Services
             var q = new
             {
                 from = start,
-                size,
+                size = size,
+                highlight = new
+                {
+                    pre_tags = new[] { "<strong>" },
+                    post_tags = new[] { "</strong>" },
+                    fields = new
+                    {
+                        content = new
+                        {
+                            number_of_fragments = 1,
+                            order = "score",
+                            type = "fvh"
+                        },
+                        title = new
+                        {
+
+                        }
+                    }
+                },
+                _source = new
+                {
+                    includes = new[] { "*" },
+                    excludes = new[] { "content" }
+                },
                 query = new
                 {
                     @bool = new
                     {
-                        must = new[] {
+                        should = new object[] {
                             new {
                                 common = new {
                                     content = new {
-                                        query,
+                                        query = query,
+                                        cutoff_frequency = 0.001,
+                                        low_freq_operator = "or"
+                                    }
+                                }
+                            },
+                            new {
+                                common = new {
+                                    title = new {
+                                        query = query,
                                         cutoff_frequency = 0.001,
                                         low_freq_operator = "or"
                                     }
                                 }
                             }
                         },
-                        should = new[] {
+                        filter = new[] {
                             new {
-                                common = new {
-                                    title = new {
-                                        query,
-                                        cutoff_frequency = 0.001,
-                                        low_freq_operator = "or"
+                                match = new {
+                                    site = new {
+                                        query = SearchIndexingSites.Website
                                     }
                                 }
                             }
-                        }
+                        },
+                        minimum_should_match = 1
                     }
-                },
-                highlight = new
-                {
-                    fields = new { content = new { } }
                 }
             };
 
