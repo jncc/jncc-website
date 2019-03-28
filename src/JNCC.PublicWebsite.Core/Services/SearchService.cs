@@ -152,7 +152,7 @@ namespace JNCC.PublicWebsite.Core.Services
                     document = new
                     {
                         id = pageId.ToString(), // ID managed by Umbraco
-                        site = "website", // as opposed to datahub|sac|mhc
+                        site = SearchIndexingSites.Website,
                         title = nodeName,
                         content = mainContent,
                         url = url, // the URL of the page, for clicking through
@@ -211,7 +211,7 @@ namespace JNCC.PublicWebsite.Core.Services
                     document = new
                     {
                         id = pageId.ToString(), // ID managed by Umbraco
-                        site = "website", // as opposed to datahub|sac|mhc
+                        site = SearchIndexingSites.Website,
                         title = nodeName,
                         content = "Umbraco Media Content",
                         url = url, // the URL of the page, for clicking through
@@ -274,7 +274,8 @@ namespace JNCC.PublicWebsite.Core.Services
                     index = _searchConfiguration.AWSESIndex,
                     document = new
                     {
-                        id = pageId // ID managed by Umbraco
+                        id = pageId, // ID managed by Umbraco
+                        site = SearchIndexingSites.Website
                     }
                 };
 
