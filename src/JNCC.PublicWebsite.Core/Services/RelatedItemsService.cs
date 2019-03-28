@@ -102,7 +102,9 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             var viewModels = new List<RelatedItemViewModel>();
             var searchResults = _searchQueryService.Query(searchQuery, numberOfItemsToSearchFor, 0);
-            var filteredSearchResults = searchResults.Hits.Results.Where(x => excludedNodeIds.Contains(x.Id) == false).Take(numberOfItemsToTake);
+            var filteredSearchResults = searchResults.Hits.Results.Where(x => excludedNodeIds.Contains(x.Id) == false)
+                                                                  .Take(numberOfItemsToTake)
+                                                                  .ToList();
 
             foreach (var result in filteredSearchResults)
             {
