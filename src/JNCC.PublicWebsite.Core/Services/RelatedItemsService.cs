@@ -80,6 +80,19 @@ namespace JNCC.PublicWebsite.Core.Services
         private IEnumerable<RelatedItemViewModel> GetSearchQueryRelatedItemViewModels(string searchQuery, int numberOfItemsToSearchFor)
         {
             var viewModels = new List<RelatedItemViewModel>();
+            var searchResults = _searchQueryService.Query(searchQuery, numberOfItemsToSearchFor, 0);
+
+            foreach (var result in searchResults.Hits.Results)
+            {
+                var content = _umbracoHelper.TypedContent(result.Id);
+
+                if (content != null)
+                {
+                    var viewModel = GetViewModel(content);
+
+                    viewModels.Add(viewModel);
+                }
+            }
 
             return viewModels;
         }
