@@ -11,7 +11,7 @@
                         {
                             <span class="img-holder" style="background-image: url(@item.ImageUrl);"></span>
                         }
-                        <span class="card-section"><strong>@item.Title</strong> @item.Content</span>
+                        <span class="card-section"><strong>@item.Title</strong> @Html.RawSanitized(item.Content)</span>
                     </a>
                 </div>
             }
