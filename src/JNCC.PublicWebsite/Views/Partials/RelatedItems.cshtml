@@ -11,10 +11,7 @@
                         {
                             <span class="img-holder" style="background-image: url(@item.ImageUrl);"></span>
                         }
-                        @if (string.IsNullOrWhiteSpace(item.Content) == false)
-                        {
-                            <span class="card-section">@item.Content</span>
-                        }
+                        <span class="card-section"><strong>@item.Title</strong> @item.Content</span>
                     </a>
                 </div>
             }

@@ -124,6 +124,7 @@ namespace JNCC.PublicWebsite.Core.Services
             var viewModel = new RelatedItemViewModel()
             {
                 Content = _seoMetaDataService.GetSeoDescription(item),
+                Title = item.GetHeadline(),
                 Url = item.Url
             };
 
