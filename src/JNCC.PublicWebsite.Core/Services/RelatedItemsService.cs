@@ -7,6 +7,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using System.Linq;
 using System;
+using JNCC.PublicWebsite.Core.Constants;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -101,7 +102,7 @@ namespace JNCC.PublicWebsite.Core.Services
         private IEnumerable<RelatedItemViewModel> GetSearchQueryRelatedItemViewModels(string searchQuery, int numberOfItemsToSearchFor, int numberOfItemsToTake, IEnumerable<string> excludedNodeIds, HomePage homePage)
         {
             var viewModels = new List<RelatedItemViewModel>();
-            var searchResults = _searchQueryService.Query(searchQuery, numberOfItemsToSearchFor, 0);
+            var searchResults = _searchQueryService.Query(searchQuery, numberOfItemsToSearchFor, 0, SearchIndexingSites.Website);
             var filteredSearchResults = searchResults.Hits.Results.Where(x => excludedNodeIds.Contains(x.Id) == false)
                                                                   .Take(numberOfItemsToTake)
                                                                   .ToList();
