@@ -28,12 +28,12 @@ namespace JNCC.PublicWebsite.Core.Services
             _searchConfiguration = searchConfiguration;
         }
 
-        public SearchModel Query(string query, int size, int start)
+        public SearchModel Query(string query, int size, int start, string siteFilter = "")
         {
             return Task.Run(() => QueryAsync(query, size, start)).Result;
         }
 
-        public async Task<SearchModel> QueryAsync(string query, int size, int start)
+        public async Task<SearchModel> QueryAsync(string query, int size, int start, string siteFilter = "")
         {
             var q = new
             {
@@ -86,15 +86,7 @@ namespace JNCC.PublicWebsite.Core.Services
                                 }
                             }
                         },
-                        filter = new[] {
-                            new {
-                                match = new {
-                                    site = new {
-                                        query = SearchIndexingSites.Website
-                                    }
-                                }
-                            }
-                        },
+                        filter = GetQuerySiteFilter(siteFilter),
                         minimum_should_match = 1
                     }
                 }
@@ -103,6 +95,24 @@ namespace JNCC.PublicWebsite.Core.Services
             var serializedQuery = JsonConvert.SerializeObject(q, Formatting.None);
 
             return await PerformSearchAsync(serializedQuery);
+        }
+
+        private object GetQuerySiteFilter(string siteFilter)
+        {
+            if (string.IsNullOrWhiteSpace(siteFilter))
+            {
+                return null;
+            }
+
+            return new[] {
+                new {
+                    match = new {
+                        site = new {
+                            query = siteFilter
+                        }
+                    }
+                }
+            };
         }
 
         public SearchModel EsGetByRawQuery(string query)
