@@ -21,15 +21,27 @@ namespace JNCC.PublicWebsite.Core.Services
         public SeoMetaDataViewModel GetViewModelFromSeoSettings(ISeoComposition composition)
         {
             var settings = composition.SeoSettings;
+            var Title = "";
 
             if (settings == null)
             {
                 return GetViewModel(composition);
             }
 
+            if(string.IsNullOrWhiteSpace(settings.Title) == false)
+            {
+                Title = settings.Title; 
+            } else if (composition.Name.ToLower() == "home")
+            {
+                Title = "JNCC - Adviser to Government on Nature Conservation";
+            } else
+            {
+                Title = composition.Name + " - Adviser to Government on Nature Conservation";
+            }
+
             return new SeoMetaDataViewModel
             {
-                Title = settings.Title,
+                Title = Title,
                 Description = settings.Description,
                 Keywords = settings.Keywords
             };
