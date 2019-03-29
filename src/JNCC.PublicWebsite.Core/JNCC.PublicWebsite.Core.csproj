@@ -396,6 +396,7 @@
     <Compile Include="Models\ScienceDetailsSubSectionImageGallerySchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSubSectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceLandingPage.cs" />
+    <Compile Include="Models\SearchIndexDocumentModel.cs" />
     <Compile Include="Providers\AppSettingsConfigurationProvider.cs" />
     <Compile Include="Providers\IConfigurationProvider.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
