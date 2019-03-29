@@ -131,7 +131,7 @@ namespace JNCC.PublicWebsite.Core.Services
             return JsonConvert.DeserializeObject<SearchModel>(responseString);
         }
 
-        internal async Task<HttpRequestMessage> GetSignedRequest(HttpRequestMessage request)
+        private async Task<HttpRequestMessage> GetSignedRequest(HttpRequestMessage request)
         {
             var signer = new AWS4RequestSigner(_searchConfiguration.AWSESAccessKey, _searchConfiguration.AWSESSecretKey);
             return await signer.Sign(request, "es", _searchConfiguration.AWSESRegion);
