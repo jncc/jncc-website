@@ -378,6 +378,7 @@
     <Compile Include="Controllers\SurfaceControllers\CareersSidebarSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\PageMetaInformationSurfaceController.cs" />
     <Compile Include="Controllers\SurfaceControllers\ScienceSidebarSurfaceController.cs" />
+    <Compile Include="Converters\CustomDateTimeConverter.cs" />
     <Compile Include="DataSources\OrderedXmlDataSource.cs" />
     <Compile Include="Extensions\PageHeroExtensions.cs" />
     <Compile Include="Extensions\PageMetaInformationExtensions.cs" />
