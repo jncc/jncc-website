@@ -1,5 +1,7 @@
 using Examine;
 using JNCC.PublicWebsite.Core.Configuration;
+using JNCC.PublicWebsite.Core.Constants;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.Services;
 using JNCC.PublicWebsite.Core.Utilities;
 using Newtonsoft.Json.Linq;
@@ -10,7 +12,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
-using System.Web.Hosting;
 using System.Xml.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Configuration;
@@ -26,17 +27,14 @@ namespace JNCC.PublicWebsite.Core.Indexers
     public class ElasticPublishedContentMediaIndexer : UmbracoExamine.UmbracoContentIndexer
     {
         private readonly ISearchConfiguration _searchConfiguration = SearchConfiguration.GetConfig();
+        private const string _site = SearchIndexingSites.Website;
 
         public ElasticPublishedContentMediaIndexer() : base()
         {
-            _searchService = new SearchService(_searchConfiguration);
-
             SupportedExtensions = new[] { "pdf" };
             UmbracoFileProperty = Conventions.Media.File;
             UmbracoExtensionProperty = Conventions.Media.Extension;
         }
-
-        private SearchService _searchService;
 
         // Let Umbraco know that we support Content and Media
         private static List<string> _supportedTypes = new List<string>() { UmbracoExamine.IndexTypes.Content, UmbracoExamine.IndexTypes.Media };
@@ -67,8 +65,11 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         public override void ReIndexNode(XElement node, string type)
         {
-            // Check to make sure we're running on PRD-WEB
-            //TODO: Check to make sure we're running on PRD-WEB
+            if (_searchConfiguration.EnableIndexing == false)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>("Skipping ReIndexNode. EnableIndexing is configured to disabled.");
+                return;
+            }
 
             // Check to make sure it's a supported type (Content or Media)
             if (!_supportedTypes.Contains(type))
@@ -97,6 +98,12 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         protected void AddNodesToQueue(IEnumerable<XElement> nodes, string type)
         {
+            if (_searchConfiguration.EnableIndexing == false)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>("Skipping AddNodesToQueue. EnableIndexing is configured to disabled.");
+                return;
+            }
+
             var umbracoContext = GetUmbracoContext();
 
             if (umbracoContext == null)
@@ -107,120 +114,144 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
             var fullUrlResolverService = new UmbracoContextFullUrlResolverService(umbracoContext);
 
-            foreach (var node in nodes)
+            using (var searchIndexingQueueService = new SearchIndexingQueueService(_searchConfiguration))
             {
-                DataService.LogService.AddVerboseLog((int)node.Attribute("id"), string.Format("AddSingleNodeToIndex with type: {0}", type));
-
-                int nodeId = int.Parse(node.Attribute(XName.Get("id")).Value);
-
-                var values = GetDataToIndex(node, type);
-                //raise the event and assign the value to the returned data from the event
-                var indexingNodeDataArgs = new IndexingNodeDataEventArgs(node, nodeId, values, type);
-                OnGatheringNodeData(indexingNodeDataArgs);
-                values = indexingNodeDataArgs.Fields;
-
-                // Determine if this is content or media
-                if (string.Equals(type, UmbracoExamine.IndexTypes.Content, StringComparison.OrdinalIgnoreCase))
+                foreach (var node in nodes)
                 {
-                    var url = fullUrlResolverService.ResolveContentFullUrlById(nodeId);
+                    DataService.LogService.AddVerboseLog((int)node.Attribute("id"), string.Format("AddSingleNodeToIndex with type: {0}", type));
+
+                    int nodeId = int.Parse(node.Attribute(XName.Get("id")).Value);
+
+                    var values = GetDataToIndex(node, type);
+                    //raise the event and assign the value to the returned data from the event
+                    var indexingNodeDataArgs = new IndexingNodeDataEventArgs(node, nodeId, values, type);
+                    OnGatheringNodeData(indexingNodeDataArgs);
+                    values = indexingNodeDataArgs.Fields;
+
                     values.TryGetValue("nodeName", out string nodeName);
                     values.TryGetValue("updateDate", out string publishDate);
 
-                    // Get content based on content fields in order of priority
-                    var contentBuilder = new StringBuilder();
-
-                    foreach (var contentField in values.Where(x => IndexerData.UserFields.Select(y => y.Name).Contains(x.Key)))
+                    var document = new SearchIndexDocumentModel()
                     {
-                        var contentFieldValue = contentField.Value;
-                        // Check if it has a value and append it
-                        if (string.IsNullOrEmpty(contentFieldValue) == false)
-                        {
-                            if (contentFieldValue.DetectIsJson() && JsonUtility.TryParseJson(contentFieldValue, out object parsedJson))
-                            {
-                                var processedJsonValue = ProcessJsonValue(parsedJson);
+                        NodeId = nodeId,
+                        Site = _site,
+                        Published = DateTime.Parse(publishDate),
+                        Title = nodeName
+                    };
 
-                                if (string.IsNullOrEmpty(processedJsonValue) == false)
+                    // Determine if this is content or media
+                    if (string.Equals(type, UmbracoExamine.IndexTypes.Content, StringComparison.OrdinalIgnoreCase))
+                    {
+                        var url = "#";// fullUrlResolverService.ResolveContentFullUrlById(nodeId);
+
+                        // Get content based on content fields in order of priority
+                        var contentBuilder = new StringBuilder();
+
+                        foreach (var contentField in values.Where(x => IndexerData.UserFields.Select(y => y.Name).Contains(x.Key)))
+                        {
+                            var contentFieldValue = contentField.Value;
+                            // Check if it has a value and append it
+                            if (string.IsNullOrEmpty(contentFieldValue) == false)
+                            {
+                                if (contentFieldValue.DetectIsJson() && JsonUtility.TryParseJson(contentFieldValue, out object parsedJson))
                                 {
-                                    contentBuilder.AppendLine(processedJsonValue);
+                                    var processedJsonValue = ProcessJsonValue(parsedJson);
+
+                                    if (string.IsNullOrEmpty(processedJsonValue) == false)
+                                    {
+                                        contentBuilder.AppendLine(processedJsonValue);
+                                    }
                                 }
+                                else
+                                {
+                                    var sanitisedValue = contentFieldValue.StripHtml().Trim();
+
+                                    if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
+                                    {
+                                        contentBuilder.AppendLine(sanitisedValue);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        string content = contentBuilder.ToString().Trim();
+
+                        document.Url = url;
+                        document.Content = content;
+
+                        // index the node
+                        searchIndexingQueueService.QueueUpsert(document);
+                    }
+                    else if (string.Equals(type, UmbracoExamine.IndexTypes.Media, StringComparison.OrdinalIgnoreCase))
+                    {
+                        var fileExtension = node.Elements().FirstOrDefault(x =>
+                        {
+                            if (x.Attribute("alias") != null)
+                            {
+                                return (string)x.Attribute("alias") == this.UmbracoExtensionProperty;
                             }
                             else
                             {
-                                var sanitisedValue = contentFieldValue.StripHtml().Trim();
-
-                                if (string.IsNullOrWhiteSpace(sanitisedValue) == false)
-                                {
-                                    contentBuilder.AppendLine(sanitisedValue);
-                                }
+                                return x.Name == this.UmbracoExtensionProperty;
                             }
-                        }
-                    }
-                    string content = contentBuilder.ToString().Trim();
+                        });
 
-                    // index the node
-                    _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, content);
-                }
-                else if (string.Equals(type, UmbracoExamine.IndexTypes.Media, StringComparison.OrdinalIgnoreCase))
-                {
-                    values.TryGetValue("nodeName", out string nodeName);
-                    values.TryGetValue("updateDate", out string publishDate);
-
-                    var fileExtension = node.Elements().FirstOrDefault(x =>
-                    {
-                        if (x.Attribute("alias") != null)
+                        if (HasNode(fileExtension) == false)
                         {
-                            return (string)x.Attribute("alias") == this.UmbracoExtensionProperty;
+                            LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
+                            continue;
                         }
-                        else
+
+                        if (!SupportedExtensions.Contains(fileExtension.Value, StringComparer.OrdinalIgnoreCase))
                         {
-                            return x.Name == this.UmbracoExtensionProperty;
+                            LogHelper.Info<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
+                            continue;
                         }
-                    });
 
-                    if (HasNode(fileExtension) == false)
-                    {
-                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoExtensionProperty + " value was not present.");
-                        continue;
-                    }
-
-                    if (!SupportedExtensions.Contains(fileExtension.Value, StringComparer.OrdinalIgnoreCase))
-                    {
-                        LogHelper.Info<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: File extension, " + fileExtension.Value + ", is not supported.");
-                        continue;
-                    }
-
-                    var filePath = node.Elements().FirstOrDefault(x =>
-                    {
-                        if (x.Attribute("alias") != null)
+                        var filePath = node.Elements().FirstOrDefault(x =>
                         {
-                            return (string)x.Attribute("alias") == this.UmbracoFileProperty;
-                        }
-                        else
+                            if (x.Attribute("alias") != null)
+                            {
+                                return (string)x.Attribute("alias") == this.UmbracoFileProperty;
+                            }
+                            else
+                            {
+                                return x.Name == this.UmbracoFileProperty;
+                            }
+                        });
+
+
+                        if (HasNode(filePath) == false)
                         {
-                            return x.Name == this.UmbracoFileProperty;
+                            LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
+                            continue;
                         }
-                    });
 
+                        //get the file path from the data service
+                        var fullPath = this.DataService.MapPath((string)filePath);
 
-                    if (HasNode(filePath) == false)
-                    {
-                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: " + UmbracoFileProperty + " value was not present.");
-                        continue;
+                        if (System.IO.File.Exists(fullPath) == false)
+                        {
+                            LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
+                            continue;
+                        }
+
+                        var fileInfo = new FileInfo(fullPath);
+                        var url = fullUrlResolverService.ResolveMediaFullUrl(filePath.Value);
+                        // index the node
+
+                        var pdf = System.IO.File.ReadAllBytes(fullPath);
+                        var pdfEncoded = Convert.ToBase64String(pdf);
+
+                        document.Url = url;
+                        document.Content = "Umbraco Media File";
+                        document.FileBase64Encoded = pdfEncoded;
+                        document.FileExtension = fileInfo.Extension;
+                        document.FileSizeInBytes = fileInfo.Length;
+
+                        searchIndexingQueueService.QueueUpsert(document);
                     }
-
-                    //get the file path from the data service
-                    var fullPath = this.DataService.MapPath((string)filePath);
-
-                    if (System.IO.File.Exists(fullPath) == false)
-                    {
-                        LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Media name " + nodeName + " with ID " + nodeId + " has not been pushed up to SQS. Reason: Physical file does not exist.");
-                        continue;
-                    }
-
-                    var fileInfo = new FileInfo(fullPath);
-                    var url = fullUrlResolverService.ResolveMediaFullUrl(filePath.Value);
-                    // index the node
-                    _searchService.UpdateIndex(nodeId, nodeName, DateTime.Parse(publishDate), url, fullPath, fileInfo.Extension, fileInfo.Length.ToString());
                 }
             }
         }
@@ -344,9 +375,15 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         public override void RebuildIndex()
         {
-            LogHelper.Info<ElasticPublishedContentMediaIndexer>($"Rebuild Elastic Index triggered");
+            if (_searchConfiguration.EnableIndexing == false)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>("Skipping RebuildIndex. EnableIndexing is configured to disabled.");
+                return;
+            }
 
+            LogHelper.Info<ElasticPublishedContentMediaIndexer>("Rebuild Elastic Index started");
             base.RebuildIndex();
+            LogHelper.Info<ElasticPublishedContentMediaIndexer>("Rebuild Elastic Index completed");
         }
 
         protected override void PerformIndexAll(string type)
@@ -424,22 +461,43 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
         public override void DeleteFromIndex(string nodeId)
         {
-            var internalSearcher = ExamineManager.Instance.SearchProviderCollection["InternalSearcher"];
+            if (_searchConfiguration.EnableIndexing == false)
+            {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>("Skipping DeleteFromIndex. EnableIndexing is configured to disabled.");
+                return;
+            }
 
-            var descendantPath = string.Format(@"\-1\,*{0}\,*", nodeId);
+            var internalSearcher = ExamineManager.Instance.SearchProviderCollection["InternalSearcher"];
+            var parsedNodeId = int.Parse(nodeId);
+            var descendantPath = string.Format(@"\-1\,*{0}\,*", parsedNodeId);
             var rawQuery = string.Format("{0}:{1}", IndexPathFieldName, descendantPath);
             var c = internalSearcher.CreateSearchCriteria();
             var filtered = c.RawQuery(rawQuery);
             var descendants = internalSearcher.Search(filtered);
 
-            DataService.LogService.AddVerboseLog(int.Parse(nodeId), string.Format("DeleteFromIndex with query: {0} (found {1} descandant(s))", rawQuery, descendants.Count()));
+            DataService.LogService.AddVerboseLog(parsedNodeId, string.Format("DeleteFromIndex with query: {0} (found {1} descandant(s))", rawQuery, descendants.Count()));
 
-            _searchService.DeleteFromIndex(nodeId);
-
-            //need to create a delete queue item for each one found
-            foreach (var node in descendants)
+            var document = new SearchIndexDocumentModel()
             {
-                _searchService.DeleteFromIndex(node.Id.ToString());
+                NodeId = parsedNodeId,
+                Site = _site
+            };
+
+            using (var searchIndexingQueueService = new SearchIndexingQueueService(_searchConfiguration))
+            {
+                searchIndexingQueueService.QueueDelete(document);
+
+                //need to create a delete queue item for each one found
+                foreach (var node in descendants)
+                {
+                    var descendantDocument = new SearchIndexDocumentModel()
+                    {
+                        NodeId = node.Id,
+                        Site = _site
+                    };
+
+                    searchIndexingQueueService.QueueDelete(document);
+                }
             }
         }
 
