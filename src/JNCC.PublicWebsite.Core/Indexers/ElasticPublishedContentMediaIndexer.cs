@@ -383,7 +383,22 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
             LogHelper.Info<ElasticPublishedContentMediaIndexer>("Rebuild Elastic Index started");
             base.RebuildIndex();
+            PostRebuildIndexCleanUp();
             LogHelper.Info<ElasticPublishedContentMediaIndexer>("Rebuild Elastic Index completed");
+        }
+
+        private void PostRebuildIndexCleanUp()
+        {
+            var cacheKey = "temp_indexing_op_" + Name;
+
+            if (ApplicationContext.Current == null)
+            {
+                LogHelper.Warn<ElasticPublishedContentMediaIndexer>("Unable to perform post-Rebuild Index clean up");
+                return;
+            }
+
+            LogHelper.Info<ElasticPublishedContentMediaIndexer>("Post-Rebuild Index clean up completed");
+            ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheItem(cacheKey);
         }
 
         protected override void PerformIndexAll(string type)
