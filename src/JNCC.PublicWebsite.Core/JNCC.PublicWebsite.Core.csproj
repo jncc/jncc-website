@@ -412,6 +412,7 @@
     <Compile Include="Services\LatestNewsSectionService.cs" />
     <Compile Include="Services\ScienceAtoZPageService.cs" />
     <Compile Include="Services\ScienceCategoryPageService.cs" />
+    <Compile Include="Services\SearchIndexingQueueService.cs" />
     <Compile Include="Services\SidebarServiceBase.cs" />
     <Compile Include="ViewModels\GenericListingPageItemViewModel.cs" />
     <Compile Include="ViewModels\IFramePageViewModel.cs" />
