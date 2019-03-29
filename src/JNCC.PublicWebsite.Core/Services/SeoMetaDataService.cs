@@ -36,7 +36,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 Title = "JNCC - Adviser to Government on Nature Conservation";
             } else
             {
-                Title = composition.Name + " - Adviser to Government on Nature Conservation";
+                Title = composition.Name + " | JNCC - Adviser to Government on Nature Conservation";
             }
 
             return new SeoMetaDataViewModel
