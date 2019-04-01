@@ -378,6 +378,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
             if (_searchConfiguration.EnableIndexing == false)
             {
                 LogHelper.Info<ElasticPublishedContentMediaIndexer>("Skipping RebuildIndex. EnableIndexing is configured to disabled.");
+                PostRebuildIndexCleanUp();
                 return;
             }
 
