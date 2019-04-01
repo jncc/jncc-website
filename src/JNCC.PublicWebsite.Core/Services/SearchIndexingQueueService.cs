@@ -1,4 +1,4 @@
-﻿using Amazon;
+using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.SQS;
@@ -79,10 +79,12 @@ namespace JNCC.PublicWebsite.Core.Services
 
             if (response.HttpStatusCode != System.Net.HttpStatusCode.OK)
             {
-                LogHelper.Warn<SearchIndexingQueueService>("Failed to push up to SQS. Document Request (ID: {0}, Title: {1}). MD5 of message attributes: {2}. MD5 of message body: {3}.", () => request.Document.NodeId, () => request.Document.Title, () => response.MD5OfMessageAttributes, () => response.MD5OfMessageBody);
+                LogHelper.Warn<SearchIndexingQueueService>("[Failure] Document Request (ID: {0}, Title: {1}) has not been pushed up to SQS. Response HTTP Status Code: {2}. MD5 of message attributes: {3}. MD5 of message body: {4}.", () => request.Document.NodeId, () => request.Document.Title, () => response.HttpStatusCode, () => response.MD5OfMessageAttributes, () => response.MD5OfMessageBody);
             }
-
-            LogHelper.Info<SearchIndexingQueueService>("Document Request (ID: {0}, Title: {1}) has been pushed up to SQS.", () => request.Document.NodeId, () => request.Document.Title);
+            else
+            {
+                LogHelper.Info<SearchIndexingQueueService>("[Success] Document Request (ID: {0}, Title: {1}) has been pushed up to SQS.", () => request.Document.NodeId, () => request.Document.Title);
+            }
         }
 
         private AmazonSQSExtendedClient CreateExtendedClient()
