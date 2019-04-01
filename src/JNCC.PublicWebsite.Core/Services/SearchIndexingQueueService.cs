@@ -1,4 +1,4 @@
-using Amazon;
+﻿using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.SQS;
@@ -68,7 +68,18 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private void QueueRequest(SearchIndexQueueRequestModel request)
         {
-            Task.Run(() => QueueRequestAsync(request));
+            var message = JsonConvert.SerializeObject(request, Formatting.None, _jsonSettings);
+
+            var response = _sqsExtendedClient.SendMessage(_searchConfiguration.AWSSQSEndpoint, message);
+
+            if (response.HttpStatusCode != System.Net.HttpStatusCode.OK)
+            {
+                LogHelper.Warn<SearchIndexingQueueService>("[Failure] Document Request (ID: {0}, Title: {1}) has not been pushed up to SQS. Response HTTP Status Code: {2}. MD5 of message attributes: {3}. MD5 of message body: {4}.", () => request.Document.NodeId, () => request.Document.Title, () => response.HttpStatusCode, () => response.MD5OfMessageAttributes, () => response.MD5OfMessageBody);
+            }
+            else
+            {
+                LogHelper.Info<SearchIndexingQueueService>("[Success] Document Request (ID: {0}, Title: {1}) has been pushed up to SQS.", () => request.Document.NodeId, () => request.Document.Title);
+            }
         }
 
         private async Task QueueRequestAsync(SearchIndexQueueRequestModel request)
