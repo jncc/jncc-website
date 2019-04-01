@@ -116,6 +116,8 @@ namespace JNCC.PublicWebsite.Core.Indexers
 
             using (var searchIndexingQueueService = new SearchIndexingQueueService(_searchConfiguration))
             {
+                LogHelper.Info<ElasticPublishedContentMediaIndexer>("AddNodesToQueue: {0} node(s) for index type {1}.", () => nodes.Count(), () => type);
+
                 foreach (var node in nodes)
                 {
                     DataService.LogService.AddVerboseLog((int)node.Attribute("id"), string.Format("AddSingleNodeToIndex with type: {0}", type));
