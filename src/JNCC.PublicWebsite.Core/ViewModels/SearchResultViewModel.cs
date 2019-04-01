@@ -18,5 +18,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public string Url { get; set; }
         public string DataType { get; set; }
         public string Site { get; set; }
+        public string FileExtension { get; set; }
     }
 }
