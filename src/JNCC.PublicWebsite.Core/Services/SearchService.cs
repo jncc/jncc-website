@@ -180,14 +180,25 @@ namespace JNCC.PublicWebsite.Core.Services
                     DataType = result.Source.DataType,
                     Site = result.Source.Site,
                     Url = result.Source.Url,
-                    PublishDate = result.Source.PublishedDate
-
+                    PublishDate = result.Source.PublishedDate,
+                    FileExtension = FormatFileExtension(result.Source.FileExtension)
                 };
 
                 viewModels.Add(viewModel);
             }
 
             return viewModels;
+        }
+
+        private string FormatFileExtension(string fileExtension)
+        {
+            if (string.IsNullOrWhiteSpace(fileExtension))
+            {
+                return null;
+            }
+
+            return fileExtension.TrimStart('.')
+                                .ToUpper();
         }
 
         public SearchModel GetByRawQuery(string rawQuery, int numberOfItems)
