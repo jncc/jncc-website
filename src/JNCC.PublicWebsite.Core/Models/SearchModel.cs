@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-    public class SearchModel
+    internal sealed class SearchModel
     {
         [JsonProperty("hits")]
         public Hits Hits { get; set; }
     }
 
-    public class Source
+    internal sealed class Source
     {
         [JsonProperty("site")]
         public string Site { get; set; }
@@ -25,10 +25,12 @@ namespace JNCC.PublicWebsite.Core.Models
         public string DataType { get; set; }
         [JsonProperty("url")]
         public string Url { get; set; }
+        [JsonProperty("file_extension")]
+        public string FileExtension { get; set; }
         //public List<DatahubKeyword> datahub_keywords { get; set; }
     }
 
-    public class Hit
+    internal sealed class Hit
     {
         //public string _index { get; set; }
         //public string _type { get; set; }
@@ -39,7 +41,7 @@ namespace JNCC.PublicWebsite.Core.Models
         public Source Source { get; set; }
     }
 
-    public class Hits
+    internal sealed class Hits
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -48,13 +50,13 @@ namespace JNCC.PublicWebsite.Core.Models
         public List<Hit> Results { get; set; }
     }
 
-    public class Keyword
+    internal sealed class Keyword
     {
         public string vocab { get; set; }
         public string value { get; set; }
     }
 
-    public class DatahubKeyword
+    internal sealed class DatahubKeyword
     {
         public string vocab { get; set; }
         public string value { get; set; }

@@ -24,9 +24,7 @@
                         foreach (var result in Model.PagedResults)
                         {
                             <h3><a href="@result.Url">@result.Title</a></h3>
-                            <p>
-                                <span>Source:</span> <a href="/"><span class="label datahub">@result.Site</span></a> | Published: @result.PublishDate.ToString("dd MMMM yyyy")
-                            </p>
+                            <p>Published: @result.PublishDate.ToString("dd MMMM yyyy") @if (string.IsNullOrWhiteSpace(result.FileExtension) == false) {<text>| File Extension: </text>@result.FileExtension}</p>
                             <p class="resultContent">@result.Content</p>
                             <hr />
                         }
