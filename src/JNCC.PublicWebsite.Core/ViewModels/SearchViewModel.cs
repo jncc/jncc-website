@@ -1,7 +1,4 @@
-﻿using JNCC.PublicWebsite.Core.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
@@ -14,8 +11,5 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public int PageSize { get; set; }
         public string SearchTerm { get; set; }
         public int CurrentPage { get; set; }
-
-    }
-
-    
+    }   
 }

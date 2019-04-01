@@ -1,16 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System;
 
 namespace JNCC.PublicWebsite.Core.ViewModels
 {
     public sealed class SearchResultViewModel
     {
-        // Page properties
         public string Title { get; set; }
         public string ImageUrl { get; set; }
         public DateTime PublishDate { get; set; }
