@@ -25,6 +25,8 @@ namespace JNCC.PublicWebsite.Core.Models
         public string DataType { get; set; }
         [JsonProperty("url")]
         public string Url { get; set; }
+        [JsonProperty("file_extension")]
+        public string FileExtension { get; set; }
         //public List<DatahubKeyword> datahub_keywords { get; set; }
     }
 
