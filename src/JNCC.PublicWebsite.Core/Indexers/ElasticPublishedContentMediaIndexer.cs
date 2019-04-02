@@ -144,7 +144,7 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     // Determine if this is content or media
                     if (string.Equals(type, UmbracoExamine.IndexTypes.Content, StringComparison.OrdinalIgnoreCase))
                     {
-                        var url = "#";// fullUrlResolverService.ResolveContentFullUrlById(nodeId);
+                        var url = fullUrlResolverService.ResolveContentFullUrlById(nodeId);
 
                         // Get content based on content fields in order of priority
                         var contentBuilder = new StringBuilder();

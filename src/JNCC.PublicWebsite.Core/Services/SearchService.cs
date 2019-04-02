@@ -180,7 +180,7 @@ namespace JNCC.PublicWebsite.Core.Services
                     DataType = result.Source.DataType,
                     Site = result.Source.Site,
                     Url = result.Source.Url,
-                    PublishDate = result.Source.PublishedDate,
+                    PublishedDate = result.Source.PublishedDate,
                     FileExtension = FormatFileExtension(result.Source.FileExtension)
                 };
 

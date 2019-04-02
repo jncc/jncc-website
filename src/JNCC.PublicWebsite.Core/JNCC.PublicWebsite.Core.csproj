@@ -383,6 +383,9 @@
     <Compile Include="Extensions\PageHeroExtensions.cs" />
     <Compile Include="Extensions\PageMetaInformationExtensions.cs" />
     <Compile Include="Extensions\SciencePagesExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="HttpModules\CsvRedirectsHttpModule.cs" />
+    <Compile Include="HttpModules\RedirectsHttpModuleBase.cs" />
     <Compile Include="Models\AboutUsPage.generated.cs" />
     <Compile Include="Models\CareersLandingPage.generated.cs" />
     <Compile Include="Models\IFramePage.generated.cs" />
@@ -396,6 +399,7 @@
     <Compile Include="Models\ScienceDetailsSubSectionImageGallerySchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSubSectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceLandingPage.cs" />
+    <Compile Include="Models\SearchIndexDocumentKeywordModel.cs" />
     <Compile Include="Models\SearchIndexDocumentModel.cs" />
     <Compile Include="Models\SearchIndexQueueRequestModel.cs" />
     <Compile Include="Providers\AppSettingsConfigurationProvider.cs" />
