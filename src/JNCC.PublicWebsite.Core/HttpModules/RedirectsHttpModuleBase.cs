@@ -24,7 +24,10 @@ namespace JNCC.PublicWebsite.Core.HttpModules
         /// <param name="context"></param>
         public void Init(HttpApplication context)
         {
-            context.EndRequest += ContextOnEndRequest;
+            if (IsEnabled())
+            {
+                context.EndRequest += ContextOnEndRequest;
+            }
         }
 
         // <summary>
@@ -131,6 +134,12 @@ namespace JNCC.PublicWebsite.Core.HttpModules
         {
             return url.Replace("http://", "").Replace("https://", "");
         }
+
+        /// <summary>
+        /// Determines if the HTTP Module should be registered.
+        /// </summary>
+        /// <returns></returns>
+        protected abstract bool IsEnabled();
 
         public void Dispose() { }
     }
