@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using Umbraco.Core;
+using Umbraco.Core.Logging;
 
 namespace JNCC.PublicWebsite.Core.HttpModules
 {
@@ -27,6 +28,11 @@ namespace JNCC.PublicWebsite.Core.HttpModules
             if (IsEnabled())
             {
                 context.EndRequest += ContextOnEndRequest;
+                LogHelper.Info(GetType(), $"Enabled. HttpApplication.EndRequest event registered.");
+            }
+            else
+            {
+                LogHelper.Info(GetType(), $"Disabled. HttpApplication.EndRequest event ignored.");
             }
         }
 
