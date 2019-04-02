@@ -20,7 +20,7 @@ namespace JNCC.PublicWebsite.Core.Models
         public string Content { get; set; }
         //public List<Keyword> keywords { get; set; }
         [JsonProperty("published_date")]
-        public DateTime PublishedDate { get; set; }
+        public string PublishedDate { get; set; }
         [JsonProperty("data_type")]
         public string DataType { get; set; }
         [JsonProperty("url")]
