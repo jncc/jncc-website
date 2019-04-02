@@ -1,6 +1,7 @@
 ﻿using JNCC.PublicWebsite.Core.Converters;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
@@ -33,5 +34,8 @@ namespace JNCC.PublicWebsite.Core.Models
 
         [JsonProperty("file_bytes")]
         public long FileSizeInBytes { get; set; }
+
+        [JsonProperty("keywords")]
+        public IEnumerable<SearchIndexDocumentKeywordModel> Keywords { get; set; }
     }
 }
