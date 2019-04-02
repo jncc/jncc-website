@@ -72,7 +72,7 @@ namespace JNCC.PublicWebsite.Core.HttpModules
 
         private string GetFilePath()
         {
-            var filePath = _configurationProvider.GetValue<string>("RedirectsModule:FilePath");
+            var filePath = _configurationProvider.GetValue<string>("RedirectsHttpModule:FilePath");
 
             if (string.IsNullOrEmpty(filePath))
             {
@@ -89,7 +89,7 @@ namespace JNCC.PublicWebsite.Core.HttpModules
 
         protected override bool IsEnabled()
         {
-            return _configurationProvider.GetValue<bool>("RedirectsModule:Enabled");
+            return _configurationProvider.GetValue<bool>("RedirectsHttpModule:Enabled");
         }
 
         private string PrepareUrlForDictionary(string url, string currentDomain)
