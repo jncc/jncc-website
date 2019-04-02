@@ -4,6 +4,7 @@
     Html.RequiresJs("/js/lib/jquery.validate-1.15.0.min.js");
     Html.RequiresJs("/js/lib/jquery.validate.unobtrusive.min.js");
 }
+@section AdditionalHeadIncludes{@RenderSection("AdditionalHeadIncludes", false)}
 @section Header {
     <div class="container">
         <strong class="logo">
