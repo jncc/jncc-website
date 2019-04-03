@@ -16,7 +16,6 @@
     <file src="umbraco_client\**" target="umbraco_client" />
     <file src="uSync\**" target="uSync" />
     <file src="sql\**" target="sql" />
-    <file src="demo\**" target="demo" />
     <file src="images\**" target="images" />
   </files>
 </package>
