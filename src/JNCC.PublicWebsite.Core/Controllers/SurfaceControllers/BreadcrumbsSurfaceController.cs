@@ -3,7 +3,6 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
 using Umbraco.Web;
-using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
@@ -14,11 +13,14 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderBreadcrumbs()
         {
-            var orderedAncestors = CurrentPage.Ancestors()
-                                                  .OrderBy(x => x.Level);
+            var visibleOrderedAncestors = CurrentPage.Ancestors()
+                                                     .Where(x => x.IsVisible())
+                                                     .OrderBy(x => x.Level)
+                                                     .ToList();
+
             var viewModel = new BreadcrumbsViewModel()
             {
-                Ancestors = _navigationItemService.GetViewModels(orderedAncestors),
+                Ancestors = _navigationItemService.GetViewModels(visibleOrderedAncestors),
                 CurrentPage = CurrentPage.Name
             };
 

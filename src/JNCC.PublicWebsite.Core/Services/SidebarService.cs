@@ -1,4 +1,5 @@
-﻿using JNCC.PublicWebsite.Core.Models;
+﻿using JNCC.PublicWebsite.Core.Extensions;
+using JNCC.PublicWebsite.Core.Models;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +52,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IEnumerable<NavigationItemViewModel> GetInThisSectionLinks(ISidebarComposition composition)
         {
-            return _navigationItemService.GetViewModels(composition.Children);
+            return _navigationItemService.GetViewModels(composition.VisibleChildren());
         }
 
         private string GetAlsoInLinksTitle(IPublishedContent root)
@@ -61,7 +62,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private IEnumerable<NavigationItemViewModel> GetAlsoInLinks(IPublishedContent root)
         {
-            return _navigationItemService.GetViewModels(root.Children);
+            return _navigationItemService.GetViewModels(root.VisibleChildren());
         }
     }
 }
