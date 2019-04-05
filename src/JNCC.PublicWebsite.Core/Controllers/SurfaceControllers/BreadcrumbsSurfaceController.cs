@@ -1,9 +1,8 @@
-using JNCC.PublicWebsite.Core.Services;
+﻿using JNCC.PublicWebsite.Core.Services;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
 using Umbraco.Web;
-using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 {
