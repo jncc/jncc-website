@@ -17,6 +17,6 @@
     <file src="uSync\**" target="uSync" />
     <file src="sql\**" target="sql" />
     <file src="images\**" target="images" />
-    <file src="app_data\redirects.csv" target="app_data\redirects.csv" />
+    <file src="App_Data\redirects.csv" target="App_Data\redirects.csv" />
   </files>
 </package>
