@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\uSync.4.0.9\build\uSync.props" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.props')" />
   <Import Project="..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.12.4\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -1212,6 +1212,12 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Web.config" />
     <Content Include="config\uSyncCore.Config" />
     <Content Include="config\uSyncBackOffice.Config" />
+    <None Include="App_Plugins\seochecker\Config\SEOChecker.Debug.config">
+      <DependentUpon>SEOChecker.config</DependentUpon>
+    </None>
+    <None Include="App_Plugins\seochecker\Config\SEOChecker.Release.config">
+      <DependentUpon>SEOChecker.config</DependentUpon>
+    </None>
     <None Include="config\courier.Release.config">
       <DependentUpon>courier.config</DependentUpon>
     </None>
@@ -1494,6 +1500,7 @@
     <TransformXml Source="Config\UmbracoSettings.config" Transform="Config\UmbracoSettings.$(Configuration).config" Destination="Config\UmbracoSettings.config" />
     <TransformXml Source="Config\uSyncBackOffice.config" Transform="Config\uSyncBackOffice.$(Configuration).config" Destination="Config\uSyncBackOffice.config" />
     <TransformXml Source="App_Plugins\UmbracoForms\UmbracoForms.config" Transform="App_Plugins\UmbracoForms\UmbracoForms.$(Configuration).config" Destination="App_Plugins\UmbracoForms\UmbracoForms.config" />
+    <TransformXml Source="App_Plugins\SEOChecker\Config\SEOChecker.config" Transform="App_Plugins\SEOChecker\Config\SEOChecker.$(Configuration).config" Destination="App_Plugins\SEOChecker\Config\SEOChecker.config" />
   </Target>
   <Import Project="..\packages\uSync.4.0.9\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.9\build\uSync.targets')" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
