@@ -24,6 +24,7 @@ function ApplyPermissions
 Write-Host "== Octopus PostDeploy script started. =="
 
 $octopusActionName = $OctopusParameters["Octopus.Action.Name"]
+$previousDestination = $OctopusParameters["Octopus.Tentacle.PreviousInstallation.OriginalInstalledPath"]
 $destination = $OctopusParameters["Octopus.Action[" + $octopusActionName + "].Output.Package.InstallationDirectoryPath"]
 $permissionsUsers = "IIS_IUSRS,NETWORK SERVICE,IUSR";
 
@@ -33,7 +34,7 @@ Copy-Item -Path $UmbracoLicensesPath -Destination $destination -Recurse -Force -
 Write-Host "Applying permissions."
 ApplyPermissions "$destination\views" $permissionsUsers "Modify";
 
-Write-Host "Creating Courier App_Data folder."
-New-Item "$destination\App_Data\Courier" -ItemType "directory";
+Write-Host "Copy Courier App_Data folder data from previous app to new app."
+Copy-Item -Path "$previousDestination\App_Data\Courier" -Destination "$destination\App_Data\Courier" -Recurse -Force -Verbose;
 
 Write-Host "== Octopus PostDeploy script completed. =="
