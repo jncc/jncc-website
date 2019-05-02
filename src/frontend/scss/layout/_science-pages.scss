@@ -17,10 +17,12 @@ html {
     }
 
     table {
-        display: block;
-        width: 100%;
-        max-height: 30rem;
-        overflow: auto;
+        &.scroll {
+            display: block;
+            width: 100%;
+            max-height: 30rem;
+            overflow: auto;
+        }
 
         caption {
             text-align: left;
@@ -28,12 +30,6 @@ html {
             .expand-table {
                 margin-right: 0.5rem;
             }
-        }
-
-        &.no-auto-scroll {
-            display: table;
-            max-height: inherit;
-            overflow: inherit;
         }
     }
 }
