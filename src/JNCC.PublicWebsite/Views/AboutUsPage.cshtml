@@ -11,7 +11,6 @@
             <div id="content">
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 @Model.Content.Preamble
-                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
                 @if (Model.Content.MainContent != null && Model.Content.MainContent.Any())
                 {
                     <ul class="articles-list no-bullet">
@@ -23,6 +22,7 @@
                         }
                     </ul>
                 }
+                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
             </div>
             @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
         </div>
