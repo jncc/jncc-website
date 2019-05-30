@@ -1,6 +1,7 @@
 ﻿using JNCC.PublicWebsite.Core.Extensions;
 using System.Collections.Generic;
 using Umbraco.ModelsBuilder;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
@@ -13,6 +14,15 @@ namespace JNCC.PublicWebsite.Core.Models
         public IEnumerable<ScienceCategoryPage> RelatedCategories
         {
             get { return this.GetPropertyValueOfTypeOrDefault<ScienceCategoryPage>("relatedCategories"); }
+        }
+
+        ///<summary>
+        /// Main Content: The main content for the page. Each section added here will be used to create an entry in the table of contents.  If no sections are authored then no table of content will be created.
+        ///</summary>
+        [ImplementPropertyType("mainContent")]
+        public IEnumerable<ScienceCategorySectionBaseSchema> MainContent
+        {
+            get { return this.GetPropertyValueOfTypeOrDefault<ScienceCategorySectionBaseSchema>("mainContent"); }
         }
     }
 }
