@@ -1,0 +1,12 @@
+﻿@model IScienceCategoryImageGallerySectionViewModel
+@if (Model.Images.Any())
+{
+    <div class="science-details-image-gallery">
+        <div class="row expand">
+            @foreach (var image in Model.Images)
+            {
+                <div class="columns small-6 medium-4 "><a href="#" class="thumbnail"><img src="@image.ThumbnailImageUrl" data-image-url="@image.Url" alt="@image.AlternativeText" /></a></div>
+            }
+        </div>
+    </div>
+}

@@ -8,6 +8,14 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         public string Headline { get; set; }
         public IHtmlString Preamble { get; set; }
+        public IEnumerable<ScienceCategorySectionViewModel> Sections { get; set; }
+        public bool HasSections
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(Sections) == false;
+            }
+        }
         public IReadOnlyDictionary<char, IEnumerable<NavigationItemViewModel>> CategorisedPages { get; set; }
         public bool HasCategorisedPages
         {
