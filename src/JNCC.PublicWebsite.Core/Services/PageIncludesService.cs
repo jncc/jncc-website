@@ -15,7 +15,6 @@ namespace JNCC.PublicWebsite.Core.Services
             var viewmodel = new PageAttributesViewModel() {
 
                 HTMLLangRef = pageSpecificIncludesComposition.HTmllangRef,
-                NoIndex = pageSpecificIncludesComposition.NoIndex,
                 LTRValue = pageSpecificIncludesComposition.GetCulture(),
             };
 
