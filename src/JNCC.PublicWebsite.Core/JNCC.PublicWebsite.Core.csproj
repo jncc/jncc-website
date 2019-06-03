@@ -391,6 +391,7 @@
     <Compile Include="Models\CareersLandingPage.generated.cs" />
     <Compile Include="Models\IFramePage.generated.cs" />
     <Compile Include="Models\IScienceCategorisablePage.cs" />
+    <Compile Include="Models\PageAttributes.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />
     <Compile Include="Models\ScienceAtoZpage.generated.cs" />
@@ -432,6 +433,7 @@
     <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceCategoryRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\PageAttributesViewModel.cs" />
     <Compile Include="ViewModels\ScienceAtoZPageViewModel.cs" />
     <Compile Include="ViewModels\ScienceCategoryImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceCategoryImageGallerySubSectionViewModel.cs" />
