@@ -20,10 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1279 with alias "pageSpecificIncludesComposition"
+	// Mixin content Type 1126 with alias "pageSpecificIncludesComposition"
 	/// <summary>Page-Specific Includes Composition</summary>
 	public partial interface IPageSpecificIncludesComposition : IPublishedContent
 	{
+		/// <summary>HTML Lang Ref</summary>
+		string HTmllangRef { get; }
+
+		/// <summary>No Index</summary>
+		bool NoIndex { get; }
+
 		/// <summary>Page-specific BODY Includes</summary>
 		string PageSpecificBodyIncludes { get; }
 
@@ -55,6 +61,30 @@ namespace JNCC.PublicWebsite.Core.Models
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// HTML Lang Ref: This field should be used when the page is of another language.  When a value is not present in this field, the default value will be "en-GB".
+		///</summary>
+		[ImplementPropertyType("hTMLLangRef")]
+		public string HTmllangRef
+		{
+			get { return GetHTmllangRef(this); }
+		}
+
+		/// <summary>Static getter for HTML Lang Ref</summary>
+		public static string GetHTmllangRef(IPageSpecificIncludesComposition that) { return that.GetPropertyValue<string>("hTMLLangRef"); }
+
+		///<summary>
+		/// No Index: The default value for this is False, if the checkbox is set to true the NoIndex property will be added to this page
+		///</summary>
+		[ImplementPropertyType("noIndex")]
+		public bool NoIndex
+		{
+			get { return GetNoIndex(this); }
+		}
+
+		/// <summary>Static getter for No Index</summary>
+		public static bool GetNoIndex(IPageSpecificIncludesComposition that) { return that.GetPropertyValue<bool>("noIndex"); }
 
 		///<summary>
 		/// Page-specific BODY Includes: Authored code includes which will only appear on this page and will be rendered at the end of the BODY tag in the HTML.  This is useful for adding tracking code. Styling should not be authored here and should instead be authored in the head.  This should be edited by administrators only.
