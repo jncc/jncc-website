@@ -10,7 +10,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     public class PageAttributesViewModel
     {
         public string HTMLLangRef { get; set; }
-        public bool NoIndex { get; set; }
         public CultureInfo LTRValue { get; internal set; }
     }
 }

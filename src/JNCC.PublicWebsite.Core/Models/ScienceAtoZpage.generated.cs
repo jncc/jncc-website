@@ -118,15 +118,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// No Index: The default value for this is False, if the checkbox is set to true the NoIndex property will be added to this page
-		///</summary>
-		[ImplementPropertyType("noIndex")]
-		public bool NoIndex
-		{
-			get { return JNCC.PublicWebsite.Core.Models.PageSpecificIncludesComposition.GetNoIndex(this); }
-		}
-
-		///<summary>
 		/// Page-specific BODY Includes: Authored code includes which will only appear on this page and will be rendered at the end of the BODY tag in the HTML.  This is useful for adding tracking code. Styling should not be authored here and should instead be authored in the head.  This should be edited by administrators only.
 		///</summary>
 		[ImplementPropertyType("pageSpecificBodyIncludes")]
@@ -169,6 +160,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool ShowRelatedItems
 		{
 			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetShowRelatedItems(this); }
+		}
+
+		///<summary>
+		/// NoIndex: The default value for this is False, if the checkbox is set to true the NoIndex property will be added to this page
+		///</summary>
+		[ImplementPropertyType("noIndex")]
+		public bool NoIndex
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetNoIndex(this); }
 		}
 
 		///<summary>
