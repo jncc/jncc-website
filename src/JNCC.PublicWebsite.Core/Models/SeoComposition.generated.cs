@@ -20,7 +20,7 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1142 with alias "seoComposition"
+	// Mixin content Type 1128 with alias "seoComposition"
 	/// <summary>SEO Composition</summary>
 	public partial interface ISeoComposition : IPublishedContent
 	{

@@ -20,7 +20,7 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1149 with alias "pageHeroCarouselComposition"
+	// Mixin content Type 1124 with alias "pageHeroCarouselComposition"
 	/// <summary>Page Hero Carousel Composition</summary>
 	public partial interface IPageHeroCarouselComposition : IPublishedContent
 	{

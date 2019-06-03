@@ -20,7 +20,7 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1278 with alias "globalIncludesComposition"
+	// Mixin content Type 1122 with alias "globalIncludesComposition"
 	/// <summary>Global Includes Composition</summary>
 	public partial interface IGlobalIncludesComposition : IPublishedContent
 	{
