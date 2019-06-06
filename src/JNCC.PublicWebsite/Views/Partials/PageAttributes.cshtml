@@ -1,2 +1,14 @@
-﻿@model System.Globalization.CultureInfo
- lang="@Model" dir="@Html.Directionality(Model)"
+﻿@model JNCC.PublicWebsite.Core.ViewModels.PageAttributesViewModel
+@{
+    string languageCode;
+}
+
+@if(string.IsNullOrEmpty(Model.HTMLLangRef))
+{
+    languageCode = "en-GB";
+}
+else
+{
+    languageCode = Model.HTMLLangRef;
+}
+lang="@languageCode" dir="@Html.Directionality(Model.LTRValue)"

@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Services;
+using JNCC.PublicWebsite.Core.ViewModels;
+using System.Web.Mvc;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
@@ -8,7 +11,15 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         [ChildActionOnly]
         public ActionResult RenderAttributes()
         {
-            return PartialView("~/Views/Partials/PageAttributes.cshtml", CurrentPage.GetCulture());
+
+            PageAttributesViewModel viewModel = new PageAttributesViewModel();
+
+            if (CurrentPage is IPageSpecificIncludesComposition)
+            {
+                viewModel = PageIncludesService.GetPageAttributesViewModel(CurrentPage as IPageSpecificIncludesComposition);
+            }
+
+            return PartialView("~/Views/Partials/PageAttributes.cshtml", viewModel);
         }
     }
 }

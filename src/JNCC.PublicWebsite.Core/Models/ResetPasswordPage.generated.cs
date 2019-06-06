@@ -82,6 +82,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// NoIndex: The default value for this is False, if the checkbox is set to true the NoIndex property will be added to this page
+		///</summary>
+		[ImplementPropertyType("noIndex")]
+		public bool NoIndex
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetNoIndex(this); }
+		}
+
+		///<summary>
 		/// SEO Settings
 		///</summary>
 		[ImplementPropertyType("seoSettings")]

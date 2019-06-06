@@ -1,12 +1,26 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.ViewModels;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
     internal sealed class PageIncludesService
     {
+
+        public static PageAttributesViewModel GetPageAttributesViewModel(IPageSpecificIncludesComposition pageSpecificIncludesComposition)
+        {
+            var viewmodel = new PageAttributesViewModel() {
+
+                HTMLLangRef = pageSpecificIncludesComposition.HTmllangRef,
+                LTRValue = pageSpecificIncludesComposition.GetCulture(),
+            };
+
+            return viewmodel;
+        }
+
         public IHtmlString GetHeadIncludes(IGlobalIncludesComposition globalIncludes, IPageSpecificIncludesComposition pageSpecificIncludes)
         {
             var includesBuilder = new StringBuilder();

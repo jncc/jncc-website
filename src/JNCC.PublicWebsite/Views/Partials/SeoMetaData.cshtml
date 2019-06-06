@@ -8,3 +8,7 @@
 {
     <meta name="keywords" content="@Model.Keywords" />
 }
+@if (Model.NoIndex == true)
+{
+    <meta name="robots" content="noindex" />
+}

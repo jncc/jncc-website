@@ -127,6 +127,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// HTML Lang Ref: This field should be used when the page is of another language.  When a value is not present in this field, the default value will be "en-GB".
+		///</summary>
+		[ImplementPropertyType("hTMLLangRef")]
+		public string HTmllangRef
+		{
+			get { return JNCC.PublicWebsite.Core.Models.PageSpecificIncludesComposition.GetHTmllangRef(this); }
+		}
+
+		///<summary>
 		/// Page-specific BODY Includes: Authored code includes which will only appear on this page and will be rendered at the end of the BODY tag in the HTML.  This is useful for adding tracking code. Styling should not be authored here and should instead be authored in the head.  This should be edited by administrators only.
 		///</summary>
 		[ImplementPropertyType("pageSpecificBodyIncludes")]
@@ -169,6 +178,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public bool ShowRelatedItems
 		{
 			get { return JNCC.PublicWebsite.Core.Models.RelatedItemsComposition.GetShowRelatedItems(this); }
+		}
+
+		///<summary>
+		/// NoIndex: The default value for this is False, if the checkbox is set to true the NoIndex property will be added to this page
+		///</summary>
+		[ImplementPropertyType("noIndex")]
+		public bool NoIndex
+		{
+			get { return JNCC.PublicWebsite.Core.Models.SeoComposition.GetNoIndex(this); }
 		}
 
 		///<summary>
