@@ -20,10 +20,13 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1142 with alias "seoComposition"
+	// Mixin content Type 1128 with alias "seoComposition"
 	/// <summary>SEO Composition</summary>
 	public partial interface ISeoComposition : IPublishedContent
 	{
+		/// <summary>NoIndex</summary>
+		bool NoIndex { get; }
+
 		/// <summary>SEO Settings</summary>
 		SEOChecker.MVC.MetaData SeoSettings { get; }
 	}
@@ -52,6 +55,18 @@ namespace JNCC.PublicWebsite.Core.Models
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// NoIndex: The default value for this is False, if the checkbox is set to true the NoIndex property will be added to this page
+		///</summary>
+		[ImplementPropertyType("noIndex")]
+		public bool NoIndex
+		{
+			get { return GetNoIndex(this); }
+		}
+
+		/// <summary>Static getter for NoIndex</summary>
+		public static bool GetNoIndex(ISeoComposition that) { return that.GetPropertyValue<bool>("noIndex"); }
 
 		///<summary>
 		/// SEO Settings

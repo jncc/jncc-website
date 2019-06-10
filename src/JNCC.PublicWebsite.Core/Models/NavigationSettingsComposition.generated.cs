@@ -20,7 +20,7 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1057 with alias "navigationSettingsComposition"
+	// Mixin content Type 1123 with alias "navigationSettingsComposition"
 	/// <summary>Navigation Settings Composition</summary>
 	public partial interface INavigationSettingsComposition : IPublishedContent
 	{

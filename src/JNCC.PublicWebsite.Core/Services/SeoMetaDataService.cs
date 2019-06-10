@@ -43,7 +43,8 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 Title = Title,
                 Description = settings.Description,
-                Keywords = settings.Keywords
+                Keywords = settings.Keywords,
+                NoIndex = composition.NoIndex,
             };
         }
 
