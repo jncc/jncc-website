@@ -18,12 +18,13 @@
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             var newH = h - 211.375;
             document.getElementById('map-frame').setAttribute("style", "height:" + newH + "px" + ";");
+            document.getElementById('map-holder').setAttribute("style", "height:" + newH + "px" + ";");
         };
         $("body").css("overflow", "hidden");
     </script>
-    <div class="row expanded collapse is-display-block">
-        <div class="responsive-embed no-margin">
-            <iframe id="map-frame" src="@Model.SourceUrl"></iframe>
+    <div id="map-holder" class="row expanded collapse is-display-block">
+        <div id="map-holder" class="responsive-embed no-margin">
+            <iframe id="map-frame" style="width:100%;height:100%" src="@Model.SourceUrl"></iframe>
         </div>
     </div>
     <script>
