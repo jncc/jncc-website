@@ -131,7 +131,13 @@ namespace JNCC.PublicWebsite.Core.Indexers
                     values = indexingNodeDataArgs.Fields;
 
                     values.TryGetValue("nodeName", out string nodeName);
-                    values.TryGetValue("updateDate", out string publishDate);
+                    string publishDate = string.Empty;
+                    if (!values.TryGetValue("reviewedDate", out publishDate))
+                        if (!values.TryGetValue("publishedDate", out publishDate))
+                            if (values.TryGetValue("updateDate", out publishDate))
+                            {
+                                // Defaulted to updateDate property
+                            }
 
                     var document = new SearchIndexDocumentModel()
                     {
