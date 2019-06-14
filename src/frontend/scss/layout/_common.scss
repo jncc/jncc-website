@@ -926,3 +926,21 @@ button.slick-arrow {
 		display: block;
 	}
 }
+
+.umbraco-forms-field .umbraco-forms-label {
+	font-size: 1.1875rem;
+font-weight:bold;
+}
+
+.umbraco-forms-field .field-validation-error {
+	font-size: 1.1875rem;
+color:red;
+}
+
+.umbraco-forms-field .umbraco-forms-tooltip {
+font-size:0.875rem;
+}
+
+.umbraco-forms-field .umbraco-forms-indicator {
+color:red;
+}
