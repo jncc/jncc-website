@@ -12,26 +12,55 @@
 }
 <main id="main">
     <script>
-        (function () {
-            var iFrame = document.getElementById("mainContent");
-            if (!iFrame) {
-                return;
-            }
-
-            $(document).ready(resizeIFrame);
-            $(window).on("resize", resizeIFrame);
-            function resizeIFrame() {
-                var currentHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-                var newHeight = currentHeight - 151.375;
-
-                iFrame.setAttribute("style", "height: " + newHeight + "px;");
-            };
-            $("body").css("overflow", "hidden");
-        })();
+        $(document).ready(mapFrame);
+        $(window).on('resize', mapFrame);
+        function mapFrame() {
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            var newH = h - 211.375;
+            document.getElementById('map-frame').setAttribute("style", "height:" + newH + "px" + ";");
+            document.getElementById('map-holder').setAttribute("style", "height:" + newH + "px" + ";");
+        };
+        $("body").css("overflow", "hidden");
     </script>
-    <div class="row expanded collapse is-display-block">
-        <div class="responsive-embed no-margin">
-            <iframe id="mainContent" src="@Model.SourceUrl" frameborder="0" allowfullscreen></iframe>
+    <div id="map-holder" class="row expanded collapse is-display-block">
+        <div id="map-holder" class="responsive-embed no-margin">
+            <iframe id="map-frame" style="width:100%;height:100%" src="@Model.SourceUrl"></iframe>
         </div>
     </div>
+    <script>
+        function getSearchParameters() {
+            var prmstr = window.location.search.substr(1);
+            return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+        }
+        function transformToAssocArray(prmstr) {
+            var params = {};
+            var prmarr = prmstr.split("&");
+            for (var i = 0; i < prmarr.length; i++) {
+                var tmparr = prmarr[i].split("=");
+                params[tmparr[0]] = tmparr[1];
+            }
+            return params;
+        }
+        function applyParameters(paramlist) {
+            out = "";
+            for (i = 0; i < paramlist.length; i++) {
+                if (params[paramlist[i]]) {
+                    out += String.fromCharCode(38) + paramlist[i] + "=" + params[paramlist[i]];
+                    delete params[paramlist[i]];
+                }
+            }
+            return out;
+        }
+        var params = getSearchParameters();
+        var mapsrc = applyParameters(['zoom', 'center', 'layerIds', 'baseLayerId', 'activeFilters']);
+        var ifp = window.location.origin + window.location.pathname;
+        if (Object.keys(params).length) {
+            ifp += "?";
+            for (var key in params) ifp += key + "=" + params[key] + String.fromCharCode(38);
+            ifp = ifp.substr(0, ifp.length - 1);
+        }
+        var p = document.getElementById('map-frame');
+        p.src = p.src + "?ifp=" + btoa(ifp) + mapsrc;
+    </script>
 </main>
+
