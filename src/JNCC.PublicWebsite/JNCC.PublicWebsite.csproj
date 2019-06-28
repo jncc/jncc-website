@@ -425,6 +425,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="400.aspx" />
+    <Content Include="500.aspx" />
     <Content Include="App_Plugins\Articulate\Assets\md-editor.css" />
     <Content Include="App_Plugins\Articulate\Assets\md-editor.js" />
     <Content Include="App_Plugins\Articulate\BackOffice\ArticulateThemes\create.controller.js" />
@@ -1043,7 +1045,7 @@
     <Content Include="Media\articulate\7406981406_1aff1cb527_o.jpg" />
     <Content Include="Media\articulate\capture3.png" />
     <Content Include="Media\articulate\random-mask.jpg" />
-    <Content Include="error-page.html" />
+    <Content Include="500.html" />
     <Content Include="Umbraco\Plugins\cmsimport\dashboardcontrols\CMSImportDashboardControl.ascx" />
     <Content Include="Umbraco\Plugins\cmsimport\images\add.png" />
     <Content Include="Umbraco\Plugins\cmsimport\images\cancel.png" />
@@ -1593,6 +1595,7 @@
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
