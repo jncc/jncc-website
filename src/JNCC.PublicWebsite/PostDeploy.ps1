@@ -24,7 +24,7 @@ function ApplyPermissions
 Write-Host "== Octopus PostDeploy script started. =="
 
 $octopusActionName = $OctopusParameters["Octopus.Action.Name"]
-$previousDestination = $OctopusParameters["Octopus.Tentacle.PreviousInstallation.OriginalInstalledPath"]
+$previousDestination = $OctopusParameters["Octopus.Tentacle.PreviousSuccessfulInstallation.OriginalInstalledPath"]
 $destination = $OctopusParameters["Octopus.Action[" + $octopusActionName + "].Output.Package.InstallationDirectoryPath"]
 $permissionsUsers = "IIS_IUSRS,NETWORK SERVICE,IUSR";
 
