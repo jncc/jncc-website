@@ -18,6 +18,5 @@
     <file src="sql\**" target="sql" />
     <file src="images\**" target="images" />
     <file src="App_Data\redirects.csv" target="App_Data\redirects.csv" />
-    <file src="robots.txt" target="robots.txt" />
   </files>
 </package>
