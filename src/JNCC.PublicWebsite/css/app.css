@@ -4493,12 +4493,13 @@ a.button:focus {
 }
 
 .submenu-toggle {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    padding-top: 25px;
 }
 
 .submenu-toggle::after {
@@ -5409,13 +5410,19 @@ a.button:focus {
 }
 
 .dropdown.menu.vertical > li .is-dropdown-submenu {
-	top: 0;
+    border: none;
+    width: 100%;
+    padding-left:0px
+}
+
+active is-dropdown-submenu-parent is-accordion-submenu-parent has-submenu-toggle .a {
+    padding-bottom: 10.2px!important;
 }
 
 .dropdown.menu.vertical > li.opens-left > .is-dropdown-submenu {
-	top: 0;
-	right: 100%;
-	left: auto;
+    top: 0;
+    right: 100%;
+    left: auto;
 }
 
 .dropdown.menu.vertical > li.opens-right > .is-dropdown-submenu {
@@ -8649,19 +8656,20 @@ input[type="search"]::-webkit-search-cancel-button {
 	letter-spacing: 1px;
 }
 
-.menu li {
-	padding: 0 .9375rem;
-}
+    .menu li {
+        padding: 0 .9375rem;
+    }
 
 .menu li.active > a {
 	border-bottom: .1875rem solid #2d7a29;
+    width: 100%;
 }
 
 .menu a {
 	-webkit-transition: color .3s ease-in-out, border-color .3s ease-in-out;
 	transition: color .3s ease-in-out, border-color .3s ease-in-out;
 	color: #444;
-	padding: 1.5625rem 0 1.3125rem;
+	padding: 1.5625rem 0 0.625rem;
 	border-bottom: .1875rem solid transparent;
 }
 
