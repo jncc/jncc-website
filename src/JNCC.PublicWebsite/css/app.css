@@ -4433,7 +4433,7 @@ a.button:focus {
 }
 
 .accordion-menu .is-accordion-submenu a {
-	padding: .7rem 1rem;
+	padding: .7rem 0rem;
 }
 
 .accordion-menu .nested.is-accordion-submenu {
@@ -5499,15 +5499,19 @@ active is-dropdown-submenu-parent is-accordion-submenu-parent has-submenu-toggle
 	left: 100%;
 }
 
+.menu .is-accordion-submenu-item {
+    padding: 0 0rem !important;
+}
+
 .is-dropdown-submenu {
-	position: absolute;
-	top: 0;
-	left: 100%;
-	z-index: 1;
-	display: none;
-	min-width: 200px;
-	border: 1px solid #cacaca;
-	background: #fefefe;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 1;
+    display: none;
+    min-width: 200px;
+    border: 1px solid #cacaca;
+    background: #fefefe;
 }
 
 .dropdown .is-dropdown-submenu a {

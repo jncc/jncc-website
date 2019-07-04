@@ -3,9 +3,10 @@
 {
     return;
 }
+
 <nav class="top-bar nav @Html.If(Model.HasPageHero == false, "no-page-hero")" id="menu" data-animate="hinge-in-from-top spin-out" aria-label="main-navigation">
     <div class="container">
-        <ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown" data-submenu-toggle="true" data-click-open data-alignment="left">
+        <ul class="vertical medium-horizontal menu" data-click-open data-responsive-menu="accordion medium-dropdown" data-alignment="left">
             @foreach (var navigationItem in Model.Items)
             {
                 <li class="@Html.If(navigationItem.IsActive, "active") @Html.If(navigationItem.HasChildren, "is-dropdown-submenu-parent")">@RenderHyperlink(navigationItem)@RenderSubMenu(navigationItem)</li>
@@ -29,3 +30,10 @@
 {
     <a href="@navigationItem.Url" target="@navigationItem.Target" accesskey="@navigationItem.AccessKey">@navigationItem.Text</a>
 }
+
+<script>
+    $('li a').click(function () {
+        $(this).unbind('click');
+    });
+</script>
+
