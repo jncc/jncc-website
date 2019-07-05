@@ -5410,9 +5410,10 @@ a.button:focus {
 }
 
 .dropdown.menu.vertical > li .is-dropdown-submenu {
+    top: 0;
     border: none;
     width: 100%;
-    padding-left:0px
+    padding-left: 0px
 }
 
 active is-dropdown-submenu-parent is-accordion-submenu-parent has-submenu-toggle .a {
@@ -5503,15 +5504,30 @@ active is-dropdown-submenu-parent is-accordion-submenu-parent has-submenu-toggle
     padding: 0 0rem !important;
 }
 
-.is-dropdown-submenu {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    z-index: 1;
-    display: none;
-    min-width: 200px;
-    border: 1px solid #cacaca;
-    background: #fefefe;
+@media only screen and (max-width:768px){
+    .is-dropdown-submenu {
+        position: relative;
+        top: 0;
+        left: 100%;
+        z-index: 1;
+        display: none;
+        min-width: 200px;
+        border: 1px solid #cacaca;
+        background: #fefefe;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .is-dropdown-submenu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 1;
+        display: none;
+        min-width: 200px;
+        border: 1px solid #cacaca;
+        background: #fefefe;
+    }
 }
 
 .dropdown .is-dropdown-submenu a {
@@ -8661,7 +8677,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
     .menu li {
-        padding: 0 .9375rem;
+        padding: 0 .125rem;
     }
 
 .menu li.active > a {
