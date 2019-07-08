@@ -7873,10 +7873,14 @@ a.thumbnail image {
 	margin: 0 auto;
 }
 
+.mobileNavContainer {
+    padding: 0 1.5rem;
+}
+
 h2,
 h3,
 .landing-page .featured-quote p {
-	font-weight: 500;
+    font-weight: 500;
 }
 
 a {
