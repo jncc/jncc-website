@@ -16,7 +16,7 @@
         $(window).on('resize', mapFrame);
         function mapFrame() {
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            var newH = h - 211.375;
+            var newH = h - 151.375;
             document.getElementById('map-frame').setAttribute("style", "height:" + newH + "px" + ";");
             document.getElementById('map-holder').setAttribute("style", "height:" + newH + "px" + ";");
         };
