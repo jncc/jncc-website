@@ -1174,6 +1174,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="RewriteMaps.config" />
+    <Content Include="RewriteRules.config" />
+    <Content Include="robots.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,15 @@
+Sitemap: https://jncc.gov.uk/sitemap.xml
+User-Agent: *
+Allow: DependencyHandler.axd
+Disallow: /aspnet_client/
+Disallow: /bin/
+Disallow: /config/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /media/
+Disallow: /js/
+Disallow: /umbraco/
+Disallow: /umbraco_client/
+Disallow: /usercontrols/
+Disallow: /*.axd
