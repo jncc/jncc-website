@@ -1,0 +1,12 @@
+﻿@model IScienceDetailsImageRichTextSectionViewModel
+
+
+    <div class="row">
+
+        <div class="columns small-6">
+            @Model.Content
+        </div>
+        <div class="columns small-6">
+            <img src="@Model.Image.Url" alt="" />
+        </div>
+    </div>
