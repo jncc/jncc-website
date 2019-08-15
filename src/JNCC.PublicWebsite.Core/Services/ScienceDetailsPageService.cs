@@ -10,6 +10,7 @@ using System.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using JNCC.PublicWebsite.Core.PropertyValueConverters;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -80,6 +81,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceDetailsSectionImageGallerySchema imageGallery:
                         viewModel = CreateImageGallerySection(imageGallery);
                         break;
+                    case ScienceDetailsSectionImageTextSchema imageRichText:
+                        viewModel = CreateImageRichTextSection(imageRichText);
+                        break;
                 }
 
                 if (viewModel != null)
@@ -90,7 +94,6 @@ namespace JNCC.PublicWebsite.Core.Services
 
             return viewModels;
         }
-
         private IEnumerable<ScienceDetailsSubSectionViewModel> GetSubSectionViewModels(IEnumerable<IPublishedContent> subSections, string parentHtmlId)
         {
             var viewModels = new List<ScienceDetailsSubSectionViewModel>();
@@ -111,6 +114,9 @@ namespace JNCC.PublicWebsite.Core.Services
                         break;
                     case ScienceDetailsSubSectionImageGallerySchema imageGallery:
                         viewModel = CreateImageGallerySubSection(imageGallery, parentHtmlId);
+                        break;
+                    case ScienceDetailsSubSectionImageRichTextSchema imageRichText:
+                        viewModel = CreateImageRichTextSubSection(imageRichText, parentHtmlId);
                         break;
                 }
 
@@ -156,6 +162,9 @@ namespace JNCC.PublicWebsite.Core.Services
                 case ScienceDetailsSubSectionImageGallerySchema.ModelTypeAlias:
                 case ScienceDetailsSectionImageGallerySchema.ModelTypeAlias:
                     return ScienceDetailsPartialViewNames.ImageGallery;
+                case ScienceDetailsSectionImageTextSchema.ModelTypeAlias:
+                case ScienceDetailsSubSectionImageRichTextSchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.ImageRichText;
                 default:
                     throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
             }
@@ -226,6 +235,38 @@ namespace JNCC.PublicWebsite.Core.Services
             }
 
             return viewModels;
+        }
+
+        private ScienceDetailsImageRichTextSectionViewModel CreateImageRichTextSection(ScienceDetailsSectionImageTextSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageRichTextSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.Image = new ImageViewModel()
+            {
+                Url = schema.Image.Url,
+                AlternativeText = schema.Image.Name
+            };
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceDetailsImageRichTextSubSectionViewModel CreateImageRichTextSubSection(ScienceDetailsSubSectionImageRichTextSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsImageRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Content = schema.Content;
+            model.Image = new ImageViewModel()
+            {
+                Url = schema.Image.Url,
+                AlternativeText = schema.Image.Name
+            };
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            return model;
         }
     }
 }

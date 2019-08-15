@@ -403,13 +403,16 @@
     <Compile Include="Models\ScienceCategorySubSectionImageGallerySchema.generated.cs" />
     <Compile Include="Models\ScienceCategorySubSectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSectionImageGallerySchema.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSectionImageTextSchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSectionSubSectionsSchemaComposition.generated.cs" />
     <Compile Include="Models\ScienceDetailsSubSectionImageGallerySchema.generated.cs" />
+    <Compile Include="Models\ScienceDetailsSubSectionImageRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSubSectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceLandingPage.cs" />
     <Compile Include="Models\SearchIndexDocumentKeywordModel.cs" />
     <Compile Include="Models\SearchIndexDocumentModel.cs" />
     <Compile Include="Models\SearchIndexQueueRequestModel.cs" />
+    <Compile Include="PropertyValueConverters\RadioButtonValueConverter.cs" />
     <Compile Include="Providers\AppSettingsConfigurationProvider.cs" />
     <Compile Include="Providers\IConfigurationProvider.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
@@ -432,6 +435,7 @@
     <Compile Include="ViewModels\IScienceCategoryImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceCategoryRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\IScienceDetailsImageRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\PageAttributesViewModel.cs" />
     <Compile Include="ViewModels\ScienceAtoZPageViewModel.cs" />
@@ -560,6 +564,8 @@
     <Compile Include="ViewModels\AccordionItemViewModel.cs" />
     <Compile Include="ViewModels\ImagePickerApiViewModel.cs" />
     <Compile Include="Services\ScienceDetailsPageService.cs" />
+    <Compile Include="ViewModels\ScienceDetailsImageRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceDetailsImageRichTextSubSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceCategoryRichTextSectionViewModel.cs" />

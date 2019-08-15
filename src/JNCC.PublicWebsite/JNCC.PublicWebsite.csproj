@@ -1592,6 +1592,7 @@
     <Content Include="uSync\data\Template\base\master\searchresultspage\SearchResultsPage.config" />
     <Content Include="uSync\data\Template\base\master\staffdirectorypage\StaffDirectoryPage.config" />
     <Content Include="uSync\data\Template\base\master\staffprofilepage\StaffProfilePage.config" />
+    <Content Include="Views\Partials\ScienceDetails\ImageRichText.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
