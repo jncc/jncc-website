@@ -10,6 +10,7 @@ using System.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using JNCC.PublicWebsite.Core.PropertyValueConverters;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -243,9 +244,10 @@ namespace JNCC.PublicWebsite.Core.Services
             model.Content = schema.Content;
             model.Image = new ImageViewModel()
             {
-                Url = schema.Image.GetCropUrl(cropAlias: ImageCropAliases.Square)
+                Url = schema.Image.Url,
+                AlternativeText = schema.Image.Name
             };
-            //model.ImagePosition = schema.ImagePosition
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
 
@@ -254,14 +256,15 @@ namespace JNCC.PublicWebsite.Core.Services
 
         private ScienceDetailsImageRichTextSubSectionViewModel CreateImageRichTextSubSection(ScienceDetailsSubSectionImageRichTextSchema schema, string parentSectionHtmlId)
         {
-            var model = CreateSection<ScienceDetailsImageRichTextSubSectionViewModel>(schema);
+            var model = CreateSection<ScienceDetailsImageRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
 
             model.Content = schema.Content;
             model.Image = new ImageViewModel()
             {
-                Url = schema.Url
+                Url = schema.Image.Url,
+                AlternativeText = schema.Image.Name
             };
-            //model.ImagePosition = schema.ImagePosition
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             return model;
         }

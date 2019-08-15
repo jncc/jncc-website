@@ -7,7 +7,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         ImageViewModel Image { get; set; }
 
-        IEnumerable<int> ImagePosition { get; set; }
+        string ImagePosition { get; set; }
 
         IHtmlString Content { get; set; }
     }

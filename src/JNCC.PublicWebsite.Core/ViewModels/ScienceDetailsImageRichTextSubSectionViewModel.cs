@@ -10,7 +10,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     public sealed class ScienceDetailsImageRichTextSubSectionViewModel : ScienceDetailsSubSectionViewModel, IScienceDetailsImageRichTextSectionViewModel
     {
         public ImageViewModel Image { get; set; }
-        public IEnumerable<int> ImagePosition { get; set; }
+        public string ImagePosition { get; set; }
         public IHtmlString Content { get; set; }
     }
 }

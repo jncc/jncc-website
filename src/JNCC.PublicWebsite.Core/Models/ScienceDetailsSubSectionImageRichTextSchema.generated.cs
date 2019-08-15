@@ -67,9 +67,9 @@ namespace JNCC.PublicWebsite.Core.Models
 		/// Image Position
 		///</summary>
 		[ImplementPropertyType("imagePosition")]
-		public int ImagePosition
+		public IEnumerable<int> ImagePosition
 		{
-			get { return this.GetPropertyValue<int>("imagePosition"); }
+			get { return this.GetPropertyValue<IEnumerable<int>>("imagePosition"); }
 		}
 	}
 }

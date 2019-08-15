@@ -412,6 +412,7 @@
     <Compile Include="Models\SearchIndexDocumentKeywordModel.cs" />
     <Compile Include="Models\SearchIndexDocumentModel.cs" />
     <Compile Include="Models\SearchIndexQueueRequestModel.cs" />
+    <Compile Include="PropertyValueConverters\RadioButtonValueConverter.cs" />
     <Compile Include="Providers\AppSettingsConfigurationProvider.cs" />
     <Compile Include="Providers\IConfigurationProvider.cs" />
     <Compile Include="Providers\IScienceDetailsPageProvider.cs" />
