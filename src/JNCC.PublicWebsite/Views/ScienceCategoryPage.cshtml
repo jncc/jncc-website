@@ -18,37 +18,49 @@
                             <ol>
                                 @foreach (var section in Model.Sections)
                                 {
-                                    <li>
-                                        <a href="#@(section.HtmlId)">@(section.Headline)</a>
-                                        @if (section.SubSections.Any())
-                                        {
-                                            <ol>
-                                                @foreach (var subSection in section.SubSections)
-                                                {
-                                                    <li>
-                                                        <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
-                                                    </li>
-                                                }
-                                            </ol>
-                                        }
-                                    </li>
+                                    if (!section.HideHeadline)
+                                    {
+                                        <li>
+                                            <a href="#@(section.HtmlId)">@(section.Headline)</a>
+                                            @if (section.SubSections.Any())
+                                            {
+                                                <ol>
+                                                    @foreach (var subSection in section.SubSections)
+                                                    {
+                                                        <li>
+                                                            <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                        </li>
+                                                    }
+                                                </ol>
+                                            }
+                                        </li>
+                                    }
                                 }
                             </ol>
                         </div>
                     </div>
                     foreach (var section in Model.Sections)
                     {
-                        <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                        if (!section.HideHeadline)
+                        {
+                            <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                        }
                         @RenderScienceCategorySection(section)
                         if (section.SubSections.Any())
                         {
                             foreach (var subSection in section.SubSections)
                             {
-                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                if (!subSection.HideHeadline)
+                                {
+                                    <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                }
                                 @RenderScienceCategorySection(subSection)
                             }
                         }
-                        <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
+                        if (!section.HideHeadline)
+                        {
+                            <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
+                        }
                     }
                 }
                 @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))

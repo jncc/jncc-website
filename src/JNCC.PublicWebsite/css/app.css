@@ -8955,6 +8955,14 @@ html {
 	min-width: 100%;
 }
 
+div#content div.row.collapse .right-pad {
+    padding-right: 1rem;
+}
+
+div#content div.row.collapse .left-pad {
+    padding-left: 1rem;
+}
+
 .home-a .visual-section .container {
 	position: relative;
 	z-index: 6;

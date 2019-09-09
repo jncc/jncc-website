@@ -76,6 +76,11 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceCategorySectionImageGallerySchema imageGallery:
                         viewModel = CreateImageGallerySection(imageGallery);
                         break;
+                    case ScienceCategorySectionImageTextSchema imageRichText:
+                        viewModel = CreateImageRichTextSection(imageRichText);
+                        break;
+
+
                 }
 
                 if (viewModel != null)
@@ -108,6 +113,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceCategorySubSectionImageGallerySchema imageGallery:
                         viewModel = CreateImageGallerySubSection(imageGallery, parentHtmlId);
                         break;
+                    case ScienceCategorySubSectionImageRichTextSchema imageRichText:
+                        viewModel = CreateImageRichTextSubSection(imageRichText, parentHtmlId);
+                        break;
                 }
 
                 if (viewModel != null)
@@ -124,7 +132,8 @@ namespace JNCC.PublicWebsite.Core.Services
             var section = new TViewModel()
             {
                 Headline = schema.Headline,
-                PartialViewName = GetPartialViewName(schema)
+                PartialViewName = GetPartialViewName(schema),
+                HideHeadline = schema.HideHeadline
             };
 
             var sectionHtmlId = schema.Headline.ToUrlSegment();
@@ -152,6 +161,9 @@ namespace JNCC.PublicWebsite.Core.Services
                 case ScienceCategorySubSectionImageGallerySchema.ModelTypeAlias:
                 case ScienceCategorySectionImageGallerySchema.ModelTypeAlias:
                     return ScienceCategoryPartialViewNames.ImageGallery;
+                case ScienceCategorySectionImageTextSchema.ModelTypeAlias:
+                case ScienceCategorySubSectionImageRichTextSchema.ModelTypeAlias:
+                    return ScienceCategoryPartialViewNames.ImageRichText;
                 default:
                     throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
             }
@@ -222,6 +234,37 @@ namespace JNCC.PublicWebsite.Core.Services
             }
 
             return viewModels;
+        }
+
+        private ScienceCategoryImageRichTextSectionViewModel CreateImageRichTextSection(ScienceCategorySectionImageTextSchema schema)
+        {
+            var model = CreateSection<ScienceCategoryImageRichTextSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.Image = new ImageViewModel()
+            {
+                Url = schema.Image.Url,
+                AlternativeText = schema.Image.Name
+            };
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+        private ScienceCategoryImageRichTextSubSectionViewModel CreateImageRichTextSubSection(ScienceCategorySubSectionImageRichTextSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceCategoryImageRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Content = schema.Content;
+            model.Image = new ImageViewModel()
+            {
+                Url = schema.Image.Url,
+                AlternativeText = schema.Image.Name
+            };
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            return model;
         }
     }
 }

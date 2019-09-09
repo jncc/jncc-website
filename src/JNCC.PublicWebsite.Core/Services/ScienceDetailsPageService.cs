@@ -134,7 +134,8 @@ namespace JNCC.PublicWebsite.Core.Services
             var section = new TViewModel()
             {
                 Headline = schema.Headline,
-                PartialViewName = GetPartialViewName(schema)
+                PartialViewName = GetPartialViewName(schema),
+                HideHeadline = schema.HideHeadline
             };
 
             var sectionHtmlId = schema.Headline.ToUrlSegment();
