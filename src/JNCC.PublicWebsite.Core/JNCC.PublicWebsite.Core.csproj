@@ -398,9 +398,11 @@
     <Compile Include="Models\ScienceCategoryPage.cs" />
     <Compile Include="Models\ScienceCategorySectionBaseSchema.generated.cs" />
     <Compile Include="Models\ScienceCategorySectionImageGallerySchema.generated.cs" />
+    <Compile Include="Models\ScienceCategorySectionImageTextSchema.generated.cs" />
     <Compile Include="Models\ScienceCategorySectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceCategorySectionSubSectionsSchemaComposition.generated.cs" />
     <Compile Include="Models\ScienceCategorySubSectionImageGallerySchema.generated.cs" />
+    <Compile Include="Models\ScienceCategorySubSectionImageRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceCategorySubSectionRichTextSchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSectionImageGallerySchema.generated.cs" />
     <Compile Include="Models\ScienceDetailsSectionImageTextSchema.generated.cs" />
@@ -433,6 +435,7 @@
     <Compile Include="ViewModels\IFramePageViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryItemViewModel.cs" />
     <Compile Include="ViewModels\IScienceCategoryImageGallerySectionViewModel.cs" />
+    <Compile Include="ViewModels\IScienceCategoryImageRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceCategoryRichTextSectionViewModel.cs" />
     <Compile Include="ViewModels\IScienceDetailsImageRichTextSectionViewModel.cs" />
@@ -441,6 +444,8 @@
     <Compile Include="ViewModels\ScienceAtoZPageViewModel.cs" />
     <Compile Include="ViewModels\ScienceCategoryImageGallerySectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceCategoryImageGallerySubSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceCategoryImageRichTextSectionViewModel.cs" />
+    <Compile Include="ViewModels\ScienceCategoryImageRichTextSubSectionViewModel.cs" />
     <Compile Include="ViewModels\ScienceDetailsImageGallerySubSectionViewModel.cs" />
     <Compile Include="Services\ScienceLandingPageService.cs" />
     <Compile Include="Services\ScienceSidebarService.cs" />
