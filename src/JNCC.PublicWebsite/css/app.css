@@ -8955,14 +8955,6 @@ html {
 	min-width: 100%;
 }
 
-div#content div.row.collapse .right-pad {
-    padding-right: 1rem;
-}
-
-div#content div.row.collapse .left-pad {
-    padding-left: 1rem;
-}
-
 .home-a .visual-section .container {
 	position: relative;
 	z-index: 6;
@@ -9157,6 +9149,16 @@ img.float-right,
 	.show-for-small-only {
 		display: none !important;
 	}
+}
+
+@media screen and (min-width: 40em) {
+    div#content div.row.collapse .right-pad {
+        padding-right: 1rem;
+    }
+
+    div#content div.row.collapse .left-pad {
+        padding-left: 1rem;
+    }
 }
 
 @media screen and (max-width: 47.99875em), screen and (min-width: 64em) {

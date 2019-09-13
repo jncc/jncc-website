@@ -27,9 +27,12 @@
                                                 <ol>
                                                     @foreach (var subSection in section.SubSections)
                                                     {
-                                                        <li>
-                                                            <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
-                                                        </li>
+                                                        if (!subSection.HideHeadline)
+                                                        {
+                                                            <li>
+                                                                <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                            </li>
+                                                        }
                                                     }
                                                 </ol>
                                             }
