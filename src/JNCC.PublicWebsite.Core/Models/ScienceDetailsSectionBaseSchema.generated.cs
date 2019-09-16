@@ -53,5 +53,14 @@ namespace JNCC.PublicWebsite.Core.Models
 		{
 			get { return this.GetPropertyValue<string>("headline"); }
 		}
+
+		///<summary>
+		/// Hide Headline?: When selected, this will hide the headline from the table of contents and header of the block
+		///</summary>
+		[ImplementPropertyType("hideHeadline")]
+		public bool HideHeadline
+		{
+			get { return this.GetPropertyValue<bool>("hideHeadline"); }
+		}
 	}
 }

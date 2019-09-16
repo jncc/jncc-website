@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	/// <summary>Science Category Section Base Schema</summary>
-	[PublishedContentModel("scienceCategorySectionBaseSchema")]
-	public partial class ScienceCategorySectionBaseSchema : PublishedContentModel
+	/// <summary>Science Category Sub Section Image & Rich Text Schema</summary>
+	[PublishedContentModel("scienceCategorySubSectionImageRichTextSchema")]
+	public partial class ScienceCategorySubSectionImageRichTextSchema : ScienceCategorySectionBaseSchema
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "scienceCategorySectionBaseSchema";
+		public new const string ModelTypeAlias = "scienceCategorySubSectionImageRichTextSchema";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public ScienceCategorySectionBaseSchema(IPublishedContent content)
+		public ScienceCategorySubSectionImageRichTextSchema(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,27 +40,36 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ScienceCategorySectionBaseSchema, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ScienceCategorySubSectionImageRichTextSchema, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Headline: The headline for the section. This is used in the generated Table of Contents.
+		/// Content
 		///</summary>
-		[ImplementPropertyType("headline")]
-		public string Headline
+		[ImplementPropertyType("content")]
+		public IHtmlString Content
 		{
-			get { return this.GetPropertyValue<string>("headline"); }
+			get { return this.GetPropertyValue<IHtmlString>("content"); }
 		}
 
 		///<summary>
-		/// Hide Headline?: When selected, this will hide the headline from the table of contents and header of the block
+		/// Image
 		///</summary>
-		[ImplementPropertyType("hideHeadline")]
-		public bool HideHeadline
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
 		{
-			get { return this.GetPropertyValue<bool>("hideHeadline"); }
+			get { return this.GetPropertyValue<IPublishedContent>("image"); }
+		}
+
+		///<summary>
+		/// Image Position
+		///</summary>
+		[ImplementPropertyType("imagePosition")]
+		public IEnumerable<int> ImagePosition
+		{
+			get { return this.GetPropertyValue<IEnumerable<int>>("imagePosition"); }
 		}
 	}
 }

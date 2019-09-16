@@ -18,44 +18,64 @@
                             <ol>
                                 @foreach (var section in Model.Sections)
                                 {
-                                    <li>
-                                        <a href="#@(section.HtmlId)">@(section.Headline)</a>
-                                        @if (section.SubSections.Any())
-                                        {
-                                            <ol>
-                                                @foreach (var subSection in section.SubSections)
-                                                {
-                                                    <li>
-                                                        <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
-                                                    </li>
-                                                }
-                                            </ol>
-                                        }
-                                    </li>
+                                    if (!section.HideHeadline)
+                                    {
+                                        <li>
+                                            <a href="#@(section.HtmlId)">@(section.Headline)</a>
+                                            @if (section.SubSections.Any())
+                                            {
+                                                <ol>
+                                                    @foreach (var subSection in section.SubSections)
+                                                    {
+                                                        if (!subSection.HideHeadline)
+                                                        {
+                                                            <li>
+                                                                <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ol>
+                                            }
+                                        </li>
+                                    }
                                 }
                             </ol>
                         </div>
                     </div>
                     foreach (var section in Model.Sections)
                     {
-                        <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                        if (!section.HideHeadline)
+                        {
+                            <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                        }
                         @RenderScienceDetailsSection(section)
                         if (section.SubSections.Any())
                         {
                             foreach (var subSection in section.SubSections)
                             {
-                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                if (!subSection.HideHeadline)
+                                {
+                                    <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                }
+
                                 @RenderScienceDetailsSection(subSection)
                             }
                         }
-                        <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
+                        if (!section.HideHeadline)
+                        {
+                            <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
+                        }
+
                     }
                 }
                 <div id="meta" class="callout secondary">
                     @if (Model.HasCategories)
                     {
                         <p><strong>Categories:</strong></p>
-                        <p class="tags">@foreach (var category in Model.Categories) {<a class="label location" href="@category.Url">@category.Text</a> }</p>
+                        <p class="tags">
+                            @foreach (var category in Model.Categories)
+                            {<a class="label location" href="@category.Url">@category.Text</a>}
+                        </p>
                     }
 
                     <div class="row collapse">
