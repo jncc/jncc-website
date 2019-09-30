@@ -326,7 +326,7 @@ header#header .row.expanded span.iframe-header-toggle > a::after{
 		top: 22%;
 	}
 	@include breakpoint(small) {
-		top: 15%;
+		top: 6%;
 	}
     right: 5px;
     left: auto;
@@ -355,10 +355,10 @@ header#header .row.expanded span.iframe-header-toggle-on > a::after{
 		top: 69%;
 		}
 		@include breakpoint(medium) {
-			top: 22%;
+			top: 67%;
 		}
 		@include breakpoint(small) {
-			top: 15%;
+			top: 58%;
 		}
     right: 5px;
     left: auto;

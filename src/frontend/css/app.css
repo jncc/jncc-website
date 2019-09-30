@@ -8745,7 +8745,7 @@ header#header .row.expanded span.iframe-header-toggle > a::after {
 	right: 5px;
 	left: auto;
 	position: absolute;
-	top: 15%;
+	top: 6%;
 	right: 5px;
 	left: auto;
 	margin-top: -6px;
@@ -8769,7 +8769,7 @@ header#header .row.expanded span.iframe-header-toggle-on > a::after {
 	right: 5px;
 	left: auto;
 	position: absolute;
-	top: 15%;
+	top: 58%;
 	right: 5px;
 	left: auto;
 	margin-top: -6px;
@@ -11566,7 +11566,7 @@ img.float-right,
 	}
 
 	header#header .row.expanded span.iframe-header-toggle-on > a::after {
-		top: 22%;
+		top: 67%;
 	}
 
 	.social-media {
@@ -14602,4 +14602,4 @@ img.float-right,
 		box-shadow: 0 -2.6em 0 0 rgba(192, 192, 192, .2), 1.8em -1.8em 0 0 rgba(192, 192, 192, .2), 2.5em 0 0 0 rgba(192, 192, 192, .2), 1.75em 1.75em 0 0 rgba(192, 192, 192, .2), 0 2.5em 0 0 rgba(192, 192, 192, .2), -1.8em 1.8em 0 0 rgba(192, 192, 192, .5), -2.6em 0 0 0 rgba(192, 192, 192, .7), -1.8em -1.8em 0 0 #c0c0c0;
 	}
 }
-
+

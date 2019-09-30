@@ -8777,7 +8777,7 @@ header#header .row.expanded span.iframe-header-toggle > a::after {
 	right: 5px;
 	left: auto;
 	position: absolute;
-	top: 15%;
+	top: 6%;
 	right: 5px;
 	left: auto;
 	margin-top: -6px;
@@ -8801,7 +8801,7 @@ header#header .row.expanded span.iframe-header-toggle-on > a::after {
 	right: 5px;
 	left: auto;
 	position: absolute;
-	top: 15%;
+	top: 58%;
 	right: 5px;
 	left: auto;
 	margin-top: -6px;
@@ -11598,7 +11598,7 @@ img.float-right,
 	}
 
 	header#header .row.expanded span.iframe-header-toggle-on > a::after {
-		top: 22%;
+		top: 67%;
 	}
 
 	.social-media {
