@@ -2,13 +2,23 @@
 @{
     Layout = "Base.cshtml";
 }
+
 @section Header {
-    <div class="container">
-        <strong class="logo">
-            <a href="/" accesskey="1"><img src="~/images/logo.png" alt="JNCC"></a>
-        </strong>
+    <div class="row expanded">
+        <div class="small-1 small-offset-11">
+            <span class="float-right iframe-header-toggle"><a class="openMenu">Hide</a></span>
+        </div>
     </div>
-    @Html.Partial("~/Views/Partials/Header/MainNavigation.cshtml", Model.Navigation)
+    <div class="row">
+        <div class="large-offset-1 large-2 medium-3 small-12 columns iframe-header-logo iframe-menu">
+            <strong class="logo">
+                <a href="/" accesskey="1"><img src="~/images/logo.png" alt="JNCC"></a>
+            </strong>
+        </div>
+        <div class="large-9 medium-9 small-12 columns iframe-header-nav iframe-menu">
+            @Html.Partial("~/Views/Partials/Header/MainNavigation.cshtml", Model.Navigation)
+        </div>
+    </div>
 }
 <main id="main">
     <script>
@@ -16,7 +26,7 @@
         $(window).on('resize', mapFrame);
         function mapFrame() {
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            var newH = h - 151.375;
+            var newH = h - 68.375;
             document.getElementById('map-frame').setAttribute("style", "height:" + newH + "px" + ";");
             document.getElementById('map-holder').setAttribute("style", "height:" + newH + "px" + ";");
         };
