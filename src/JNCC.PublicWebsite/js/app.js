@@ -5,6 +5,47 @@ jQuery(function() {
     initScienceDetailsSlickCarousel();
 });
 
+$(document).ready(function(){
+    $('.openMenu').click(function(){
+    
+       $('.iframe-menu').slideToggle();
+       if($(this).text() == 'Hide')
+       {
+           $(this).text('Show');
+
+           $('.iframe-header-toggle').addClass('iframe-header-toggle-on')
+           $('.iframe-header-toggle-on').removeClass('iframe-header-toggle')
+
+           $(document).ready(mapFrame);
+        $(window).on('resize', mapFrame);
+        function mapFrame() {
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            var newH = h - 32.375;
+            document.getElementById('map-frame').setAttribute("style", "height:" + newH + "px" + ";");
+            document.getElementById('map-holder').setAttribute("style", "height:" + newH + "px" + ";");
+        };
+        $("body").css("overflow", "hidden");
+       }
+       else
+       {
+           $(this).text('Hide');
+
+           $('.iframe-header-toggle-on').addClass('iframe-header-toggle')
+           $('.iframe-header-toggle').removeClass('iframe-header-toggle-on')
+           
+           $(document).ready(mapFrame);
+        $(window).on('resize', mapFrame);
+        function mapFrame() {
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            var newH = h - 68.375;
+            document.getElementById('map-frame').setAttribute("style", "height:" + newH + "px" + ";");
+            document.getElementById('map-holder').setAttribute("style", "height:" + newH + "px" + ";");
+        };
+        $("body").css("overflow", "hidden");
+       }
+     });
+});
+
 function initFoundation() {
 	jQuery(document).foundation();
 
