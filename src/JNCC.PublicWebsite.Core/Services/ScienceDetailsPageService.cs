@@ -30,6 +30,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 Preamble = model.Preamble,
                 Sections = GetSectionViewModels(model.MainContent),
+                ImageTextSection = GetImageTextSectionViewModels(model.ImageAndTextSection),
                 PublishedDate = model.GetPublishedDateOrDefault(),
                 ReviewedDate = GetReviewedDate(model.ReviewedDate),
                 Categories = GetCategories(model)
@@ -83,6 +84,34 @@ namespace JNCC.PublicWebsite.Core.Services
                         break;
                     case ScienceDetailsSectionImageTextSchema imageRichText:
                         viewModel = CreateImageRichTextSection(imageRichText);
+                        break;
+                }
+
+                if (viewModel != null)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
+        }
+        private IEnumerable<ScienceDetailsSectionViewModel> GetImageTextSectionViewModels(IEnumerable<ScienceDetailsSectionBaseSchema> imageTextSection)
+        {
+            var viewModels = new List<ScienceDetailsSectionViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(imageTextSection))
+            {
+                return viewModels;
+            }
+
+            foreach (var section in imageTextSection)
+            {
+                ScienceDetailsSectionViewModel viewModel = null;
+
+                switch (section)
+                {
+                    case ScienceDetailsIndividualSectionImageTextSchema imageRichText:
+                        viewModel = CreateIndividualImageRichTextSection(imageRichText);
                         break;
                 }
 
@@ -163,6 +192,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 case ScienceDetailsSubSectionImageGallerySchema.ModelTypeAlias:
                 case ScienceDetailsSectionImageGallerySchema.ModelTypeAlias:
                     return ScienceDetailsPartialViewNames.ImageGallery;
+                case ScienceDetailsIndividualSectionImageTextSchema.ModelTypeAlias:
                 case ScienceDetailsSectionImageTextSchema.ModelTypeAlias:
                 case ScienceDetailsSubSectionImageRichTextSchema.ModelTypeAlias:
                     return ScienceDetailsPartialViewNames.ImageRichText;
@@ -243,11 +273,52 @@ namespace JNCC.PublicWebsite.Core.Services
             var model = CreateSection<ScienceDetailsImageRichTextSectionViewModel>(schema);
 
             model.Content = schema.Content;
-            model.Image = new ImageViewModel()
+            if (schema.Image != null)
             {
-                Url = schema.Image.Url,
-                AlternativeText = schema.Image.Name
-            };
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+        private ScienceDetailsImageRichTextSectionViewModel CreateIndividualImageRichTextSection(ScienceDetailsIndividualSectionImageTextSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageRichTextSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+
+            if (schema.Image != null)
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
+
+
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
@@ -260,11 +331,22 @@ namespace JNCC.PublicWebsite.Core.Services
             var model = CreateSection<ScienceDetailsImageRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
 
             model.Content = schema.Content;
-            model.Image = new ImageViewModel()
+            if (schema.Image != null)
             {
-                Url = schema.Image.Url,
-                AlternativeText = schema.Image.Name
-            };
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             return model;
