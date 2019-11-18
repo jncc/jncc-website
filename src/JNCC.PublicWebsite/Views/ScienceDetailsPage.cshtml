@@ -10,6 +10,26 @@
             <div id="content">
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
                 @Model.Preamble
+                @foreach (var section in Model.ImageTextSection)
+                {
+                    if (!section.HideHeadline)
+                    {
+                        <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                    }
+                    @RenderScienceDetailsSection(section)
+                    if (section.SubSections.Any())
+                    {
+                        foreach (var subSection in section.SubSections)
+                        {
+                            if (!subSection.HideHeadline)
+                            {
+                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                            }
+
+                            @RenderScienceDetailsSection(subSection)
+                        }
+                    }
+                }
                 @if (Model.HasSections)
                 {
                     <div class="row">
