@@ -6,6 +6,6 @@ module.exports = {
     cssMainFileName:  'app',
     jsDir:            'js/',
     imgDir:           'images/',
-    imgSourceDir:     'sourceimages/',
+    imgSourceDir:     '{,/}.{png,jpg,jpeg,gif}',
     hasBower: {includePaths: ['bower_components']}
   };
