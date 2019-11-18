@@ -64,7 +64,7 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Image Position
+		/// Image Position: Accepted written positions are: 'Left', 'Right', 'Top'
 		///</summary>
 		[ImplementPropertyType("imagePosition")]
 		public string ImagePosition
