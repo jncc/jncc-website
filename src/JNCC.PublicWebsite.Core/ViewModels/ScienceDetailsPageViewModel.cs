@@ -27,5 +27,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
                 return ExistenceUtility.IsNullOrEmpty(Categories) == false;
             }
         }
+        public IEnumerable<ScienceDetailsSectionViewModel> ImageTextSection { get; set; }
+
     }
 }

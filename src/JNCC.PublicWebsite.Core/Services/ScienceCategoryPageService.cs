@@ -27,6 +27,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 Headline = scienceCategoryPage.GetHeadline(),
                 Preamble = scienceCategoryPage.Preamble,
+                ImageTextSection = GetImageTextSectionViewModels(scienceCategoryPage.ImageAndTextSection),
                 Sections = GetSectionViewModels(scienceCategoryPage.MainContent),
                 CategorisedPages = GetCategorisedPages(scienceCategoryPage),
                 RelatedCategories = GetRelatedCategories(scienceCategoryPage)
@@ -55,6 +56,35 @@ namespace JNCC.PublicWebsite.Core.Services
             return scienceCategoryPage.RelatedCategories.CategorisePages();
         }
 
+        private IEnumerable<ScienceCategorySectionViewModel> GetImageTextSectionViewModels(IEnumerable<ScienceCategorySectionBaseSchema> imageTextSection)
+        {
+            var viewModels = new List<ScienceCategorySectionViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(imageTextSection))
+            {
+                return viewModels;
+            }
+
+            foreach (var section in imageTextSection)
+            {
+                ScienceCategorySectionViewModel viewModel = null;
+
+                switch (section)
+                {
+                    case ScienceCategoryIndividualSectionImageTextSchema imageRichText:
+                        viewModel = CreateIndividualImageRichTextSection(imageRichText);
+                        break;
+                }
+
+                if (viewModel != null)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
+        }
+
         private IEnumerable<ScienceCategorySectionViewModel> GetSectionViewModels(IEnumerable<ScienceCategorySectionBaseSchema> mainContent)
         {
             var viewModels = new List<ScienceCategorySectionViewModel>();
@@ -79,7 +109,6 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceCategorySectionImageTextSchema imageRichText:
                         viewModel = CreateImageRichTextSection(imageRichText);
                         break;
-
 
                 }
 
@@ -155,12 +184,14 @@ namespace JNCC.PublicWebsite.Core.Services
         {
             switch (schema.DocumentTypeAlias)
             {
+                
                 case ScienceCategorySectionRichTextSchema.ModelTypeAlias:
                 case ScienceCategorySubSectionRichTextSchema.ModelTypeAlias:
                     return ScienceCategoryPartialViewNames.RichText;
                 case ScienceCategorySubSectionImageGallerySchema.ModelTypeAlias:
                 case ScienceCategorySectionImageGallerySchema.ModelTypeAlias:
                     return ScienceCategoryPartialViewNames.ImageGallery;
+                case ScienceCategoryIndividualSectionImageTextSchema.ModelTypeAlias:
                 case ScienceCategorySectionImageTextSchema.ModelTypeAlias:
                 case ScienceCategorySubSectionImageRichTextSchema.ModelTypeAlias:
                     return ScienceCategoryPartialViewNames.ImageRichText;
@@ -241,27 +272,81 @@ namespace JNCC.PublicWebsite.Core.Services
             var model = CreateSection<ScienceCategoryImageRichTextSectionViewModel>(schema);
 
             model.Content = schema.Content;
-            model.Image = new ImageViewModel()
+            if (schema.Image != null)
             {
-                Url = schema.Image.Url,
-                AlternativeText = schema.Image.Name
-            };
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
 
             return model;
         }
+
+        private ScienceCategoryImageRichTextSectionViewModel CreateIndividualImageRichTextSection(ScienceCategoryIndividualSectionImageTextSchema schema)
+        {
+            var model = CreateSection<ScienceCategoryImageRichTextSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+
+            if (schema.Image != null)
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
+
+
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
         private ScienceCategoryImageRichTextSubSectionViewModel CreateImageRichTextSubSection(ScienceCategorySubSectionImageRichTextSchema schema, string parentSectionHtmlId)
         {
             var model = CreateSection<ScienceCategoryImageRichTextSubSectionViewModel>(schema, parentSectionHtmlId);
 
             model.Content = schema.Content;
-            model.Image = new ImageViewModel()
+            if (schema.Image != null)
             {
-                Url = schema.Image.Url,
-                AlternativeText = schema.Image.Name
-            };
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             return model;
