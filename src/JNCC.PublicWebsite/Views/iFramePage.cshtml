@@ -70,7 +70,13 @@
             ifp = ifp.substr(0, ifp.length - 1);
         }
         var p = document.getElementById('map-frame');
-        p.src = p.src + "?ifp=" + btoa(ifp) + mapsrc ;
+        if (p.src.includes("?")) {
+            p.src = p.src + "&ifp=" + btoa(ifp) + mapsrc;
+        }
+        else
+        {
+            p.src = p.src + "?ifp=" + btoa(ifp) + mapsrc;
+        }
     </script>
 </main>
 
