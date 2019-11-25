@@ -24,5 +24,14 @@ namespace JNCC.PublicWebsite.Core.Models
         {
             get { return this.GetPropertyValueOfTypeOrDefault<ScienceCategorySectionBaseSchema>("mainContent"); }
         }
+
+        ///<summary>
+		/// Image and Text Section: Used to display an Image and Text section between the Preamble and the Contents listing block.
+		///</summary>
+        [ImplementPropertyType("imageAndTextSection")]
+        public IEnumerable<ScienceCategorySectionBaseSchema> ImageAndTextSection
+        {
+            get { return this.GetPropertyValueOfTypeOrDefault<ScienceCategorySectionBaseSchema>("imageAndTextSection"); }
+        }
     }
 }
