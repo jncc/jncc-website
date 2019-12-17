@@ -8496,6 +8496,50 @@ button.slick-arrow {
 	color: red;
 }
 
+.sticky-cookie {
+	background-color: #2d7a29;
+	color: #fff;
+	z-index: 100;
+}
+
+.cookie-button-container {
+	padding-top: 20px !important;
+}
+
+.sticky-cookie {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	font-size: 16px;
+}
+
+.sticky-cookie a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.sticky-cookie .buttonLink {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.cookie-banner-text {
+	padding-top: 20px !important;
+}
+
+.cookie-button {
+	border: 3px solid #fff;
+	color: #fff;
+	border-radius: 0;
+	padding: 10px;
+	margin-bottom: 0 !important;
+}
+
+.cookie-button :hover {
+	text-decoration: underline;
+}
+
 #header {
 	position: relative;
 	z-index: 500;
@@ -13855,6 +13899,16 @@ img.float-right,
 	}
 }
 
+@media screen and (max-width: 768px) and (min-width: 641px) {
+	.cookie-button-container {
+		padding-top: 20px !important;
+	}
+
+	.cookie-banner-text {
+		padding-top: 20px !important;
+	}
+}
+
 @media screen and (min-width: 1300px) {
 	.home-a .visual-section .container {
 		margin: 0 auto !important;
@@ -13879,6 +13933,16 @@ img.float-right,
 		-webkit-box-flex: 0;
 		-ms-flex: 0 0 50%;
 		flex: 0 0 50%;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.cookie-button-container {
+		padding-top: 0 !important;
+	}
+
+	.cookie-banner-text {
+		padding-top: 0 !important;
 	}
 }
 
