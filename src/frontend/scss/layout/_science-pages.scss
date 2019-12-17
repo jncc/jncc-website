@@ -100,3 +100,18 @@ div#content div.row.collapse .left-pad{
     padding-left: 1rem;
 }
 }
+
+.science-subsection{
+    h3{
+        font-size:26px;
+        @media screen and (max-width: 48em) {
+            font-size:18px;
+        }
+    }
+    p{
+        font-size:17px;
+        @media screen and (max-width: 48em) {
+            font-size:15px;
+        }
+    }
+}
