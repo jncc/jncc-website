@@ -289,64 +289,161 @@ function initAjaxFiltering() {
         });
     };
 }(jQuery));
+//Invalidators
+var _invalidators = _invalidators || (function () {
+    var isUndefined = function (value) {
+        return typeof (value) === "undefined";
+    };
+
+    return {
+        isUndefined: function (value) {
+            return isUndefined(value);
+        },
+
+        isUndefinedOrNegative: function (value) {
+            return isUndefined(value) || value <= 0;
+        },
+
+        isUndefinedOrLengthIsZero: function (value) {
+            return isUndefined(value) || value.length === 0;
+        }
+    };
+})();
+
+var _querystringUtilities = _querystringUtilities || (function (invalidators) {
+    return {
+        parse: function (url) {
+            var querystringValues = {};
+
+            var querystringIndex = url.lastIndexOf('?');
+            if (querystringIndex === -1) {
+                return querystringValues;
+            }
+            var hashIndex = url.indexOf('#');
+
+            var querystringValue = hashIndex === -1 ?
+                url.substring(querystringIndex + 1)
+                : url.substring(querystringIndex + 1, hashIndex - 1);
+
+            var rawValues = querystringValue.split("&");
+
+            for (var i = 0; i < rawValues.length; i++) {
+                var item = rawValues[i];
+                var split = item.split("=");
+                var key = split[0].toLowerCase();
+
+                if (invalidators.isUndefined(querystringValues[key])) {
+                    querystringValues[key] = [];
+                }
+
+                querystringValues[key].push(split[1]);
+            }
+
+            return querystringValues;
+        }
+    }
+})(_invalidators);
+
+var _arrayUtility = _arrayUtility || (function () {
+    var indexOfItemInArrayCaseInsensitive = function (item, arr) {
+        var defaultResult = -1;
+        var result = defaultResult;
+        $.each(arr, function (index, value) {
+            if (result == defaultResult && value.toLowerCase() == item.toLowerCase()) {
+                result = index;
+            }
+        });
+        return result;
+    };
+
+    return {
+        indexOfItemInArrayCaseInsensitive: function (item, arr) {
+            return indexOfItemInArrayCaseInsensitive(item, arr)
+        },
+        inArrayCaseInsensitive: function (item, arr) {
+            return indexOfItemInArrayCaseInsensitive(item, arr) !== -1;
+        }
+    };
+})();
+
 
 // Cookie Policy Banner
-(function ($) {
-    var $cookieBannerContainer = $('.js-cookie-banner-container');
+(function ($, invalidators) {
+    var $cookieBannerContainer = $('[data-cookie-banner-container]');
 
-    if ($cookieBannerContainer.length === 0) {
+    if (invalidators.isUndefinedOrLengthIsZero($cookieBannerContainer)) {
         return;
     }
 
     var $bannerTemplate = $("#cookie-banner-template");
 
-    var cookieDuration = getDataAttributeValueOrDefault($cookieBannerContainer, "cookieDuration", 14);
-    var cookieName = getDataAttributeValueOrDefault($bannerTemplate, "cookieName", "complianceCookie");
-    var cookieValue = getDataAttributeValueOrDefault($bannerTemplate, "cookieValue", "true");
-
-    if (checkCookie(cookieName) === cookieValue || $bannerTemplate.length === 0) {
-        return;
-    }
-
     displayCookieBanner($cookieBannerContainer, $bannerTemplate);
-    createCookie(cookieName, cookieValue, cookieDuration);
-
-    function createCookie(name, value, days) {
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            var expires = "; expires=" + date.toGMTString();
-
-            document.cookie = name + "=" + value + expires + "; path=/";
-        }
-    }
-
-    function checkCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
 
     function displayCookieBanner($container, $bannerTemplate) {
         var htmlContent = $bannerTemplate.text();
         $container.prepend(htmlContent);
     }
 
-    function getDataAttributeValueOrDefault($element, key, defaultValue) {
-        var dataAttribute = $element.data(key);
+})($, _invalidators);
 
-        if (dataAttribute === undefined) {
-            return defaultValue;
-        }
 
-        return dataAttribute;
+function getDataAttributeValueOrDefault($element, key, defaultValue, invalidator) {
+    var dataAttribute = $element.data(key);
+
+    return dataAttribute;
+}
+function eraseCookie(name) {
+    createCookie(name, "", -1);
+}
+function createCookie(name, value, days) {
+
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+
+        document.cookie = name + "=" + value + expires + "; path=/";
     }
-})($);
+}
+
+function checkCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function CookieAgreement() {
+    console.log("Cookies Agreed");
+    var $cookieBannerContainer = $('[data-cookie-banner-container]');
+
+    var $bannerTemplate = $("#cookie-banner-template");
+
+    var cookieDuration = 14;
+    var cookieName = "cookiePolicyAcceptance";
+    var cookieValue = "true";
+
+    createCookie(cookieName, cookieValue, cookieDuration);
+    location.reload();
+}
+
+function CookieDisagreement() {
+    console.log("Cookies Disagreed");
+    var $cookieBannerContainer = $('[data-cookie-banner-container]');
+
+    var $bannerTemplate = $("#cookie-banner-template");
+
+    var cookieDuration = 14;
+    var cookieName = "cookiePolicyAcceptance";
+    var cookieValue = "false";
+
+    createCookie(cookieName, cookieValue, cookieDuration);
+    location.reload();
+}
 
 // Image Lightbox
 (function ($) {
