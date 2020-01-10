@@ -944,3 +944,70 @@ font-size:0.875rem;
 .umbraco-forms-field .umbraco-forms-indicator {
 color:red;
 }
+
+.buttonLink{
+	color: #2d7a29;
+}
+
+//Cookie Banner
+.sticky-cookie{
+	background-color: #2d7a29; 
+	color: #ffffff;
+	z-index: 505;
+}
+
+.cookie-button-container {
+	padding-top: 20px !important;
+}
+
+@media screen and (max-width: 768px) and (min-width: 641px) {
+    .cookie-button-container {
+        padding-top: 20px!important;
+	}
+	.cookie-banner-text{
+        padding-top: 20px!important;
+	}
+}
+
+@media screen and (max-width: 640px) {
+    .cookie-button-container {
+        padding-top: 0px !important;
+	}
+	.cookie-banner-text{
+        padding-top: 10px!important;
+	}
+}
+
+.sticky-cookie {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+	width: 100%;
+	font-size: 16px;
+
+	a {
+		color: #ffffff;
+		text-decoration: underline;
+	}
+
+	.buttonLink{
+		color: #ffffff;
+		text-decoration: underline;
+	}
+}
+
+.cookie-banner-text{
+	padding-top: 20px !important;
+}
+
+.cookie-button {
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    border-radius: 0;
+	padding: 10px;
+	margin-bottom: 0px!important;
+}
+
+.cookie-button :hover {
+	text-decoration: underline;
+}
