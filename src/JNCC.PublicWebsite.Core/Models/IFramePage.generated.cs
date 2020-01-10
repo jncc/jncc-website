@@ -46,6 +46,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Cookie Disabled Error: This is the message displayed if the user has not accepted the cookies on the website
+		///</summary>
+		[ImplementPropertyType("cookieDisabledError")]
+		public IHtmlString CookieDisabledError
+		{
+			get { return this.GetPropertyValue<IHtmlString>("cookieDisabledError"); }
+		}
+
+		///<summary>
 		/// Navigation: An optional collection of navigation links which is independent of the main navigation and will only appear on this iFrame page.
 		///</summary>
 		[ImplementPropertyType("navigation")]

@@ -3,6 +3,12 @@
     Layout = null;
     Html.RequiresJs("/js/lib/jquery-2.2.4.min.js", 1);
     Html.RequiresJs("/js/lib/foundation-6.5.0.min.js");
+    var cookiePolicyAcceptance = "false";
+    var value = Request.Cookies["cookiePolicyAcceptance"];
+    if (Request.Cookies["cookiePolicyAcceptance"] != null)
+    {
+        cookiePolicyAcceptance = Request.Cookies["cookiePolicyAcceptance"].Value;
+    }
 }
 <!doctype html>
 <html @(Html.Action<PageAttributesSurfaceController>("RenderAttributes"))>
@@ -12,11 +18,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @(Html.Action<SeoMetaDataSurfaceController>("RenderSeoMetaData"))
-    <link rel="stylesheet" href="~/css/app.css">
+    <link rel="stylesheet" href="~/css/app.css?v=4">
     <link rel="stylesheet" href="~/css/foundation-icons.css">
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
     @RenderSection("AdditionalHeadIncludes", false)
-    @Html.RenderJsHere()
+    @if (cookiePolicyAcceptance == "true")
+    {
+        @Html.RenderJsHere()
+    }
+    else
+    {
+        <script src="/js/lib/foundation-6.5.0.min.js" defer></script>
+        <script src="/js/lib/jquery-2.2.4.min.js"></script>
+    }
     @(Html.Action<PageIncludesSurfaceController>("RenderHeadIncludes"))
 </head>
 <body>
@@ -32,9 +46,14 @@
         @RenderSection("Footer", false)
     </div>
     <a class="accessibility" href="#wrapper">Back to top</a>
+
+    <div data-cookie-banner-container class="sticky-cookie"></div>
     @RenderSection("EndOfBodyIncludes", false)
-    @(Html.Action<CookieBannerTemplateSurfaceController>("RenderCookieBannerTemplate"))
-    <script src="~/js/app.js"></script>
+    @if (Request.Cookies["cookiePolicyAcceptance"] == null)
+    {
+        @(Html.Action<CookieBannerTemplateSurfaceController>("RenderCookieBannerTemplate"))
+    }
+    <script src="~/js/app.js?v=3.2"></script>
     @(Html.Action<PageIncludesSurfaceController>("RenderBodyIncludes"))
 </body>
 </html>
