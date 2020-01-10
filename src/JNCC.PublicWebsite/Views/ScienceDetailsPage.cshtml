@@ -33,7 +33,7 @@
                 @if (Model.HasSections)
                 {
                     <div class="row">
-                        <div class="columns small-12 medium-6 callout toc">
+                        <div class="columns small-12 medium-12 callout toc">
                             <h2 id="toc">Contents</h2>
                             <ol>
                                 @foreach (var section in Model.Sections)
@@ -71,15 +71,17 @@
                         @RenderScienceDetailsSection(section)
                         if (section.SubSections.Any())
                         {
-                            foreach (var subSection in section.SubSections)
-                            {
+                            <div class="science-subsection">
+                                @foreach (var subSection in section.SubSections)
+                                {
                                 if (!subSection.HideHeadline)
                                 {
-                                    <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
                                 }
 
                                 @RenderScienceDetailsSection(subSection)
-                            }
+                                }
+                            </div>
                         }
                         if (!section.HideHeadline)
                         {
