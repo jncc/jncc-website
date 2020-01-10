@@ -8994,6 +8994,29 @@ html {
 	font-size: 17px;
 }
 
+/*Adding 1.1 numbering to the Science Details Table of Contents */
+
+.toc ol li {
+	display: block;
+}
+
+.toc ol > li:first-child {
+	counter-reset: item;
+}
+
+.toc ol > li {
+	counter-increment: item;
+	position: relative;
+	padding-left: 15px;
+}
+
+.toc ol > li:before {
+	content: counters(item, ".") ". ";
+	position: absolute;
+	margin-right: 100%;
+	right: 0;
+}
+
 .home-a .visual-section .container {
 	position: relative;
 	z-index: 6;
