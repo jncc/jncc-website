@@ -24,7 +24,8 @@ namespace JNCC.PublicWebsite.Core.Services
             return new IFramePageViewModel()
             {
                 Navigation = GetNavigation(model),
-                SourceUrl = GetSourceUrl(model, currentUrl)
+                SourceUrl = GetSourceUrl(model, currentUrl),
+                CookieError = model.CookieDisabledError
             };
         }
 

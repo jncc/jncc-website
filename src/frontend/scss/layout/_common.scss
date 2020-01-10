@@ -945,11 +945,15 @@ font-size:0.875rem;
 color:red;
 }
 
+.buttonLink{
+	color: #2d7a29;
+}
+
 //Cookie Banner
 .sticky-cookie{
 	background-color: #2d7a29; 
 	color: #ffffff;
-	z-index: 100;
+	z-index: 505;
 }
 
 .cookie-button-container {
@@ -970,7 +974,7 @@ color:red;
         padding-top: 0px !important;
 	}
 	.cookie-banner-text{
-        padding-top: 0px!important;
+        padding-top: 10px!important;
 	}
 }
 

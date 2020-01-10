@@ -8496,10 +8496,14 @@ button.slick-arrow {
 	color: red;
 }
 
+.buttonLink {
+	color: #2d7a29;
+}
+
 .sticky-cookie {
 	background-color: #2d7a29;
 	color: #fff;
-	z-index: 100;
+	z-index: 505;
 }
 
 .cookie-button-container {
@@ -13942,7 +13946,7 @@ img.float-right,
 	}
 
 	.cookie-banner-text {
-		padding-top: 0 !important;
+		padding-top: 10px !important;
 	}
 }
 
