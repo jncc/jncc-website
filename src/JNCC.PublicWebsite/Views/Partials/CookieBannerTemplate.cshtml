@@ -1,8 +1,15 @@
 ﻿@model IHtmlString
-<script type="text/html" id="cookie-banner-template" data-cookie-name="cookiePolicyAcceptance" data-cookie-duration="20">
-    <div class="header-top">
-        <div class="container">
-            @Model
+<script type="text/html" class="sticky-cookie" id="cookie-banner-template" data-cookie-name="cookiePolicyAcceptance" data-cookie-duration="20">
+    <div class="row expanded cookie-policy" data-closable>
+        <div class="container row">
+            <div class="cookie-banner-text columns small-12 medium-9 large-9">
+                @Model
+            </div>
+            <div class="columns small-12 medium-3 large-3">
+                <p class="cookie-button-container">
+                    <button class="cookie-button" onclick="CookieAgreement()" id="Agree">Agree &amp; Close</button>
+                </p>
+            </div>
         </div>
     </div>
 </script>
