@@ -9032,16 +9032,6 @@ html {
 	min-width: 100%;
 }
 
-.science-subsection h3,
-.science-subsection .landing-page .featured-quote p,
-.landing-page .featured-quote .science-subsection p {
-	font-size: 26px;
-}
-
-.science-subsection p {
-	font-size: 17px;
-}
-
 /*Adding 1.1 numbering to the Science Details Table of Contents */
 
 .toc ol li {
@@ -9063,6 +9053,14 @@ html {
 	position: absolute;
 	margin-right: 100%;
 	right: 0;
+}
+
+.toc ol > li > ol {
+	font-size: 18px;
+}
+
+.science-subsection a {
+	text-decoration: underline;
 }
 
 .home-a .visual-section .container {
@@ -13973,6 +13971,12 @@ img.float-right,
 	}
 }
 
+@media screen and (max-width: 767px) {
+	.toc ol > li > ol {
+		font-size: 15px;
+	}
+}
+
 @media screen and (max-width: 640px) {
 	.cookie-button-container {
 		padding-top: 0 !important;
@@ -14069,18 +14073,6 @@ img.float-right,
 
 	.show-for-large {
 		display: none !important;
-	}
-}
-
-@media screen and (max-width: 48em) {
-	.science-subsection h3,
-	.science-subsection .landing-page .featured-quote p,
-	.landing-page .featured-quote .science-subsection p {
-		font-size: 18px;
-	}
-
-	.science-subsection p {
-		font-size: 15px;
 	}
 }
 
