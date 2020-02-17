@@ -92,30 +92,14 @@ h2#toc {
 
 @media screen and (min-width: 48em) {
 
-div#content div.row.collapse .right-pad{
-    padding-right: 1rem;
-}
-
-div#content div.row.collapse .left-pad{
-    padding-left: 1rem;
-}
-}
-
-.science-subsection{
-    h3{
-        font-size:26px;
-        @media screen and (max-width: 48em) {
-            font-size:18px;
-        }
+    div#content div.row.collapse .right-pad{
+        padding-right: 1rem;
     }
-    p{
-        font-size:17px;
-        @media screen and (max-width: 48em) {
-            font-size:15px;
-        }
+
+    div#content div.row.collapse .left-pad{
+        padding-left: 1rem;
     }
 }
-
 
 /*Adding 1.1 numbering to the Science Details Table of Contents */
 .toc ol li {display:block;} 
