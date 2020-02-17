@@ -106,3 +106,16 @@ h2#toc {
 .toc ol > li:first-child {counter-reset: item;}
 .toc ol > li {counter-increment: item; position: relative;padding-left: 15px;}
 .toc ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-right: 100%; right: 0px;} 
+
+.toc ol > li > ol {
+    font-size:18px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 15px;
+    
+    }
+}
+
+.science-subsection a{
+    text-decoration: underline;
+}

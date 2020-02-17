@@ -9055,6 +9055,14 @@ html {
 	right: 0;
 }
 
+.toc ol > li > ol {
+	font-size: 18px;
+}
+
+.science-subsection a {
+	text-decoration: underline;
+}
+
 .home-a .visual-section .container {
 	position: relative;
 	z-index: 6;
@@ -13960,6 +13968,12 @@ img.float-right,
 		-webkit-box-flex: 0;
 		-ms-flex: 0 0 50%;
 		flex: 0 0 50%;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.toc ol > li > ol {
+		font-size: 15px;
 	}
 }
 
