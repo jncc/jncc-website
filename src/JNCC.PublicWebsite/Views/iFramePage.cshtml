@@ -6,27 +6,119 @@
     {
         cookiePolicyAcceptance = Request.Cookies["cookiePolicyAcceptance"].Value;
     }
+
+    string fallbackCss = "";
+    string iFrameCss = "";
+
+
+    if (Model.showOnMedium && Model.showOnSmall)
+    {
+        fallbackCss = "show-for-small-only show-for-medium-only hide-for-large";
+        iFrameCss = "hide-for-small-only hide-for-medium-only";
+    }
+    else if(Model.showOnMedium)
+    {
+        fallbackCss = "show-for-medium-only hide-for-large";
+        iFrameCss = "hide-for-medium-only";
+    }
+    else if(Model.showOnSmall)
+    {
+        fallbackCss = "show-for-small-only hide-for-large";
+        iFrameCss = "hide-for-small-only";
+    }
+    else
+    {
+        fallbackCss = "hide-for-all";
+        <script>
+            $("body").css("overflow", "hidden")
+        </script>
+    }
 }
 
 @section Header {
-    <div class="row expanded">
-        <div class="small-1 small-offset-11">
-            <span class="float-right iframe-header-toggle"><a class="openMenu">Hide</a></span>
+    <div class="">
+        <div class="row expanded">
+            <div class="small-1 small-offset-11">
+                <span class="float-right iframe-header-toggle"><a class="openMenu">Hide</a></span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="large-offset-1 large-2 medium-3 small-4 columns iframe-header-logo iframe-menu">
-            <strong class="logo">
-                <a href="/" accesskey="1"><img src="~/images/logo.png" alt="JNCC"></a>
-            </strong>
-        </div>
-        <div class="large-9 medium-9 small-12 columns iframe-header-nav iframe-menu">
-            @Html.Partial("~/Views/Partials/Header/MainNavigation.cshtml", Model.Navigation)
+        <div class="row">
+            <div class="large-offset-1 large-2 medium-3 small-4 columns iframe-header-logo iframe-menu">
+                <strong class="logo">
+                    <a href="/" accesskey="1"><img src="~/images/logo.png" alt="JNCC"></a>
+                </strong>
+            </div>
+            <div class="large-9 medium-9 small-12 columns iframe-header-nav iframe-menu">
+                @Html.Partial("~/Views/Partials/Header/MainNavigation.cshtml", Model.Navigation)
+            </div>
         </div>
     </div>
 }
 <main id="main">
-    @if (cookiePolicyAcceptance == "true")
+
+    @if (Model.HasSections)
+    {
+        <div class="container @fallbackCss">
+            <div class="two-columns">
+                <div id="content">
+                    <div class="columns small-12 medium-12 callout toc">
+                        <h2 id="toc">Contents</h2>
+                        <ol>
+                            @foreach (var section in Model.Sections)
+                            {
+                                if (!section.HideHeadline)
+                                {
+                                    <li>
+                                        <a href="#@(section.HtmlId)">@(section.Headline)</a>
+                                        @if (section.SubSections.Any())
+                                        {
+                                            <ol>
+                                                @foreach (var subSection in section.SubSections)
+                                                {
+                                                    if (!subSection.HideHeadline)
+                                                    {
+                                                        <li>
+                                                            <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                        </li>
+                                                    }
+                                                }
+                                            </ol>
+                                        }
+                                    </li>
+                                }
+                            }
+                        </ol>
+                    </div>
+
+                    @foreach (var section in Model.Sections)
+                    {
+                        if (!section.HideHeadline)
+                        {
+                            <h2 id="@(section.HtmlId)" style="display: block">@(section.Headline)</h2>
+                        }
+                        @RenderScienceIFrameSection(section)
+                        if (section.SubSections.Any())
+                        {
+                            foreach (var subSection in section.SubSections)
+                            {
+                                if (!subSection.HideHeadline)
+                                {
+                                    <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3><br />
+                                }
+                                @RenderScienceIFrameSection(subSection)
+                            }
+                        }
+                        if (!section.HideHeadline)
+                        {
+                            <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (cookiePolicyAcceptance == "true" && iFrameCss.IsNullOrWhiteSpace())
     {
         <script>
             $(document).ready(mapFrame);
@@ -37,10 +129,9 @@
                 document.getElementById('map-frame').setAttribute("style", "height:" + newH + "px" + ";");
                 document.getElementById('map-holder').setAttribute("style", "height:" + newH + "px" + ";");
             };
-            $("body").css("overflow", "hidden");
         </script>
 
-        <div id="map-holder" class="row expanded collapse is-display-block">
+        <div id="map-holder" class="@iFrameCss expanded collapse is-display-block">
             <div id="map-holder" class="responsive-embed no-margin">
                 <iframe id="map-frame" style="width:100%;height:100%" src="@Model.SourceUrl"></iframe>
             </div>
@@ -91,14 +182,22 @@
     {
         if (Model.CookieError != null && !Model.CookieError.ToString().IsNullOrWhiteSpace())
         {
-            @Model.CookieError
+            <div class="@iFrameCss">
+                @Model.CookieError
+            </div>
         }
         else
         {
-            <p> </p>
-            <h2 style="text-align: center;">Mapper Disabled</h2>
-            <p style="text-align: center;">The mapper cannot be displayed because cookies are needed to display the map. Please <button class="buttonLink" onclick="CookieAgreement()"> click here</button>, to enable cookies.</p>
+            <div class="@iFrameCss">
+                <p> </p>
+                <h2 style="text-align: center;">Mapper Disabled</h2>
+                <p style="text-align: center;">The mapper cannot be displayed because cookies are needed to display the map. Please <button class="buttonLink" onclick="CookieAgreement()"> click here</button>, to enable cookies.</p>
+            </div>
         }
     }
 </main>
 
+@helper RenderScienceIFrameSection(ScienceIFrameSectionViewModelBase section)
+{
+    @Html.Partial(string.Format("~/Views/Partials/IFrame/{0}.cshtml", section.PartialViewName), section)
+}
