@@ -55,6 +55,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Display on Medium Devices ?: Set to true, to display above fallback content on medium devices (Tablet)
+		///</summary>
+		[ImplementPropertyType("displayOnMediumDevices")]
+		public bool DisplayOnMediumDevices
+		{
+			get { return this.GetPropertyValue<bool>("displayOnMediumDevices"); }
+		}
+
+		///<summary>
+		/// Display on Small Devices ?: Set to true, to display above fallback content on small devices (Mobile)
+		///</summary>
+		[ImplementPropertyType("displayOnSmallDevices")]
+		public bool DisplayOnSmallDevices
+		{
+			get { return this.GetPropertyValue<bool>("displayOnSmallDevices"); }
+		}
+
+		///<summary>
 		/// Navigation: An optional collection of navigation links which is independent of the main navigation and will only appear on this iFrame page.
 		///</summary>
 		[ImplementPropertyType("navigation")]
