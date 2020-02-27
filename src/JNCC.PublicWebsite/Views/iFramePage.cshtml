@@ -15,7 +15,7 @@
 
     if (Model.showOnMedium && Model.showOnSmall)
     {
-        fallbackCss = "show-for-small-only show-for-medium-only hide-for-large";
+        fallbackCss = "hide-for-large";
         iFrameCss = "hide-for-small-only hide-for-medium-only";
         <script>
             if (w >= 1023) { $("body").css("overflow", "hidden") }
@@ -151,7 +151,7 @@
         </script>
 
         <div id="map-holder" class="@iFrameCss expanded collapse is-display-block">
-            <div id="map-holder" class="responsive-embed no-margin" style="overflow: unset">
+            <div id="map-holder" class="responsive-embed no-margin" style="overflow: visible">
                 <iframe id="map-frame" style="width:100%;height:100%" src="@Model.SourceUrl"></iframe>
             </div>
         </div>
@@ -189,7 +189,7 @@
                 ifp = ifp.substr(0, ifp.length - 1);
             }
             var p = document.getElementById('map-frame');
-            if (p.src.includes("?")) {
+            if (p.src.indexOf("?") != -1) {
                 p.src = p.src + "&ifp=" + btoa(ifp) + mapsrc;
             }
             else {
