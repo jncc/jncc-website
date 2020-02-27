@@ -8807,7 +8807,7 @@ header#header .row.expanded span.iframe-header-toggle > a::after {
 	right: 5px;
 	left: auto;
 	position: absolute;
-	top: 6%;
+	top: 15px;
 	right: 5px;
 	left: auto;
 	margin-top: -6px;
@@ -8835,6 +8835,17 @@ header#header .row.expanded span.iframe-header-toggle-on > a::after {
 	right: 5px;
 	left: auto;
 	margin-top: -6px;
+}
+
+.iframe-toggle-menu-holder {
+	display: inline;
+	right: 0;
+	position: absolute;
+	margin-right: 3%;
+}
+
+.iframe-toggle-menu {
+	padding-top: 25px;
 }
 
 #footer {
