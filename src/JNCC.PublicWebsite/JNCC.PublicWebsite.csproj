@@ -1594,6 +1594,9 @@
     <Content Include="uSync\data\Template\base\master\staffprofilepage\StaffProfilePage.config" />
     <Content Include="Views\Partials\ScienceDetails\ImageRichText.cshtml" />
     <Content Include="Views\Partials\ScienceCategory\ImageRichText.cshtml" />
+    <Content Include="Views\Partials\IFrame\ImageGallery.cshtml" />
+    <Content Include="Views\Partials\IFrame\ImageRichText.cshtml" />
+    <Content Include="Views\Partials\IFrame\RichText.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

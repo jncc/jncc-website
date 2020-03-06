@@ -1,4 +1,5 @@
 ﻿using JNCC.PublicWebsite.Core.Models;
+using JNCC.PublicWebsite.Core.Providers;
 using JNCC.PublicWebsite.Core.Services;
 using System.Web.Mvc;
 using Umbraco.Web.Mvc;
@@ -19,6 +20,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
         public ActionResult Index(IFramePage model)
         {
             var viewModel = _iframePageService.GetViewModel(model, Request.Url);
+            var provider = new UmbracoScienceDetailsPageProvider(Umbraco, ApplicationContext.ApplicationCache.RequestCache);
 
             return CurrentTemplate(viewModel);
         }
