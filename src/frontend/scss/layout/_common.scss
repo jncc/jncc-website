@@ -1011,3 +1011,66 @@ color:red;
 .cookie-button :hover {
 	text-decoration: underline;
 }
+
+.hide-for-small{
+	@include breakpoint(small) {
+		display: none;
+	}
+}
+
+.hide-for-medium{
+	@include breakpoint(medium) {
+		display: none;
+	}
+}
+
+.hide-for-large{
+	@include breakpoint(large) {
+		display: none;
+	}
+}
+
+.hide-for-xlarge{
+	@include breakpoint(xlarge) {
+		display: none;
+	}
+}
+
+.hide-for-xxlarge{
+	@include breakpoint(xxlarge) {
+		display: none;
+	}
+}
+.show-for-small{
+	@include breakpoint(small) {
+		display: block;
+	}
+}
+
+.show-for-medium{
+	@include breakpoint(medium) {
+		display: block;
+	}
+}
+
+.show-for-large{
+	@include breakpoint(large) {
+		display: block;
+	}
+}
+
+.show-for-xlarge{
+	@include breakpoint(xlarge) {
+		display: block;
+	}
+}
+
+.show-for-xxlarge{
+	@include breakpoint(xxlarge) {
+		display: block;
+	}
+}
+
+.hide-for-all{
+	display: none;
+}
