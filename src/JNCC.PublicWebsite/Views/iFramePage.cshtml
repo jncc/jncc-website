@@ -51,7 +51,7 @@
     <div class="">
         <div class="row expanded">
             <div class="small-1 small-offset-11">
-                <span class="float-right iframe-header-toggle"><a class="openMenu">Hide</a></span>
+                <span class="float-right iframe-header-toggle"><a class="openMenu @iFrameCss">Hide</a></span>
             </div>
         </div>
         <div class="row">
@@ -80,35 +80,7 @@
         <div class="container @fallbackCss">
             <div class="two-columns">
                 <div id="content">
-                    <div class="columns small-12 medium-12 callout toc">
-                        <h2 id="toc">Contents</h2>
-                        <ol>
-                            @foreach (var section in Model.Sections)
-                            {
-                                if (!section.HideHeadline)
-                                {
-                                    <li>
-                                        <a href="#@(section.HtmlId)">@(section.Headline)</a>
-                                        @if (section.SubSections.Any())
-                                        {
-                                            <ol>
-                                                @foreach (var subSection in section.SubSections)
-                                                {
-                                                    if (!subSection.HideHeadline)
-                                                    {
-                                                        <li>
-                                                            <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
-                                                        </li>
-                                                    }
-                                                }
-                                            </ol>
-                                        }
-                                    </li>
-                                }
-                            }
-                        </ol>
-                    </div>
-
+                    
                     @foreach (var section in Model.Sections)
                     {
                         if (!section.HideHeadline)
@@ -126,10 +98,6 @@
                                 }
                                 @RenderScienceIFrameSection(subSection)
                             }
-                        }
-                        if (!section.HideHeadline)
-                        {
-                            <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
                         }
                     }
                 </div>
