@@ -85,6 +85,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceDetailsSectionImageTextSchema imageRichText:
                         viewModel = CreateImageRichTextSection(imageRichText);
                         break;
+                    case ScienceDetailsSectionImageCodeSchema imageCode:
+                        viewModel = CreateImageCodeSection(imageCode);
+                        break;
                 }
 
                 if (viewModel != null)
@@ -113,6 +116,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceDetailsIndividualSectionImageTextSchema imageRichText:
                         viewModel = CreateIndividualImageRichTextSection(imageRichText);
                         break;
+                    case ScienceDetailsIndividualSectionImageCodeSchema imageCode:
+                        viewModel = CreateIndividualImageCodeSection(imageCode);
+                        break;
                 }
 
                 if (viewModel != null)
@@ -123,6 +129,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
             return viewModels;
         }
+
         private IEnumerable<ScienceDetailsSubSectionViewModel> GetSubSectionViewModels(IEnumerable<IPublishedContent> subSections, string parentHtmlId)
         {
             var viewModels = new List<ScienceDetailsSubSectionViewModel>();
@@ -146,6 +153,9 @@ namespace JNCC.PublicWebsite.Core.Services
                         break;
                     case ScienceDetailsSubSectionImageRichTextSchema imageRichText:
                         viewModel = CreateImageRichTextSubSection(imageRichText, parentHtmlId);
+                        break;
+                    case ScienceDetailsSubSectionImageCodeSchema imageCode:
+                        viewModel = CreateImageCodeSubSection(imageCode, parentHtmlId);
                         break;
                 }
 
@@ -196,6 +206,10 @@ namespace JNCC.PublicWebsite.Core.Services
                 case ScienceDetailsSectionImageTextSchema.ModelTypeAlias:
                 case ScienceDetailsSubSectionImageRichTextSchema.ModelTypeAlias:
                     return ScienceDetailsPartialViewNames.ImageRichText;
+                case ScienceDetailsIndividualSectionImageCodeSchema.ModelTypeAlias:
+                case ScienceDetailsSectionImageCodeSchema.ModelTypeAlias:
+                case ScienceDetailsSubSectionImageCodeSchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.ImageCode;
                 default:
                     throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
             }
@@ -347,6 +361,40 @@ namespace JNCC.PublicWebsite.Core.Services
                     AlternativeText = null
                 };
             }
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            return model;
+        }
+
+        private ScienceDetailsImageCodeSectionViewModel CreateImageCodeSection(ScienceDetailsSectionImageCodeSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageCodeSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+        private ScienceDetailsImageCodeSectionViewModel CreateIndividualImageCodeSection(ScienceDetailsIndividualSectionImageCodeSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageCodeSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceDetailsImageCodeSubSectionViewModel CreateImageCodeSubSection(ScienceDetailsSubSectionImageCodeSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsImageCodeSubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             return model;
