@@ -119,6 +119,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceIframeSectionImageTextSchema imageRichText:
                         viewModel = CreateImageRichTextSection(imageRichText);
                         break;
+                    case ScienceIframeSectionImageCodeSchema imageCode:
+                        viewModel = CreateImageCodeSection(imageCode);
+                        break;
 
                 }
 
@@ -154,6 +157,9 @@ namespace JNCC.PublicWebsite.Core.Services
                         break;
                     case ScienceIframeSubSectionImageRichTextSchema imageRichText:
                         viewModel = CreateImageRichTextSubSection(imageRichText, parentHtmlId);
+                        break;
+                    case ScienceIframeSubSectionImageCodeSchema imageCode:
+                        viewModel = CreateImageCodeSubSection(imageCode, parentHtmlId);
                         break;
                 }
 
@@ -204,6 +210,9 @@ namespace JNCC.PublicWebsite.Core.Services
                 case ScienceIframeSectionImageTextSchema.ModelTypeAlias:
                 case ScienceIframeSubSectionImageRichTextSchema.ModelTypeAlias:
                     return ScienceIFramePartialViewNames.ImageRichText;
+                case ScienceIframeSectionImageCodeSchema.ModelTypeAlias:
+                case ScienceIframeSubSectionImageCodeSchema.ModelTypeAlias:
+                    return ScienceIFramePartialViewNames.ImageCode;
                 default:
                     throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
             }
@@ -325,6 +334,30 @@ namespace JNCC.PublicWebsite.Core.Services
                     AlternativeText = null
                 };
             }
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            return model;
+        }
+
+        private ScienceIFrameImageCodeSectionViewModel CreateImageCodeSection(ScienceIframeSectionImageCodeSchema schema)
+        {
+            var model = CreateSection<ScienceIFrameImageCodeSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceIFrameImageCodeSubSectionViewModel CreateImageCodeSubSection(ScienceIframeSubSectionImageCodeSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceIFrameImageCodeSubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
 
             return model;
