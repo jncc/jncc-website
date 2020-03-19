@@ -6,5 +6,6 @@
         public const string ImageGallery = "ImageGallery";
         public const string ImageRichText = "ImageRichText";
         public const string ImageCode = "ImageCode";
+        public const string Slider = "Slider";
     }
 }
