@@ -58,9 +58,9 @@ namespace JNCC.PublicWebsite.Core.Models
 		/// Text
 		///</summary>
 		[ImplementPropertyType("text")]
-		public IHtmlString Text
+		public string Text
 		{
-			get { return this.GetPropertyValue<IHtmlString>("text"); }
+			get { return this.GetPropertyValue<string>("text"); }
 		}
 	}
 }
