@@ -128,6 +128,13 @@ h2#toc {
     background: #EAEAEA;
 }
 
+.slider-items-row{
+  scrollbar-color: #666262 #EAEAEA;
+  scrollbar-width: thin;
+  scrollbar-face-color: #666262;
+  scrollbar-arrow-color: #EAEAEA;
+}
+
 .slider-items-row::-webkit-scrollbar-thumb:horizontal{
     background: #666262;
     border-radius: 10px;
@@ -135,7 +142,7 @@ h2#toc {
   
 .slider-headline-text-section {
     height: 100%;
-
+    font-size: 17px!important;
     .slider-item {
         .headline {
             height: 30%;
@@ -143,6 +150,7 @@ h2#toc {
 
         .text {
             height: 70%;
+            font-weight: 400!important;
         }
     }
 }
@@ -193,6 +201,7 @@ h2#toc {
 
 .slider-item {
     min-width: 40% !important;
+    max-width: 40%;
     padding-right: 15px;
     padding-left: 15px;
     text-align: center;
@@ -218,11 +227,9 @@ h2#toc {
     
     .post-img {
         height: 130px;
-        margin-bottom: 10px;
 
         img {
             object-fit: cover;
-            width: 100% !important;
             height: 100% !important;
         }
     }   

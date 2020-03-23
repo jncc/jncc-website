@@ -9092,6 +9092,13 @@ html {
 	background: #eaeaea;
 }
 
+.slider-items-row {
+	scrollbar-color: #666262 #eaeaea;
+	scrollbar-width: thin;
+	scrollbar-face-color: #666262;
+	scrollbar-arrow-color: #eaeaea;
+}
+
 .slider-items-row::-webkit-scrollbar-thumb:horizontal {
 	background: #666262;
 	border-radius: 10px;
@@ -9099,6 +9106,7 @@ html {
 
 .slider-headline-text-section {
 	height: 100%;
+	font-size: 17px !important;
 }
 
 .slider-headline-text-section .slider-item .headline {
@@ -9107,6 +9115,7 @@ html {
 
 .slider-headline-text-section .slider-item .text {
 	height: 70%;
+	font-weight: 400 !important;
 }
 
 .image-bottom {
@@ -9157,6 +9166,7 @@ html {
 
 .slider-item {
 	min-width: 40% !important;
+	max-width: 40%;
 	padding-right: 15px;
 	padding-left: 15px;
 	text-align: center;
@@ -9164,12 +9174,10 @@ html {
 
 .slider-item .post-img {
 	height: 130px;
-	margin-bottom: 10px;
 }
 
 .slider-item .post-img img {
 	object-fit: cover;
-	width: 100% !important;
 	height: 100% !important;
 }
 
