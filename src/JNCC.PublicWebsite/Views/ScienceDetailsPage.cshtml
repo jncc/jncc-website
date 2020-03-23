@@ -74,12 +74,12 @@
                             <div class="science-subsection">
                                 @foreach (var subSection in section.SubSections)
                                 {
-                                if (!subSection.HideHeadline)
-                                {
-                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
-                                }
+                                    if (!subSection.HideHeadline)
+                                    {
+                                        <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                                    }
 
-                                @RenderScienceDetailsSection(subSection)
+                                    @RenderScienceDetailsSection(subSection)
                                 }
                             </div>
                         }
