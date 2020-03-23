@@ -1,0 +1,86 @@
+﻿@model IScienceCategorySliderSectionViewModel
+
+@{
+    var backgroundCss = "";
+    if (Model.ShowBackground)
+    {
+        backgroundCss = "slider-background";
+    }
+}
+
+@Model.Content
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@if (Model.SliderItems != null)
+{
+    <div class="col-xs-12 no-padding slider-items-row items">
+        @foreach (var item in Model.SliderItems)
+        {
+            if (item.ImageTextSection)
+            {
+                if (item.ImagePosition)
+                {
+                    <div class="col-xs-12 col-md-2 slider-item">
+                        <div class="col-xs-12 no-padding slider-section @backgroundCss">
+                            <div class="post-title text-top"><p>@item.Text</p></div>
+                            <div class="post-img" style="padding-top: 0px;">
+                                @if (item.Image != null)
+                                {
+                                    if (item.ImageLink != null)
+                                    {
+                                        <a href="@item.ImageLink.Url" title="@item.ImageLink.Text" target="@item.ImageLink.Target"><img src="@item.Image.Url" alt="@item.Image.AlternativeText"></a>
+                                    }
+                                    else
+                                    {
+                                        <img src="@item.Image.Url" alt="@item.Image.AlternativeText">
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-12 col-md-2 slider-item">
+                        <div class="col-xs-12 no-padding slider-section @backgroundCss">
+                            <div class="post-img image-top">
+                                @if (item.ImageLink != null)
+                                {
+                                    <a href="@item.ImageLink.Url" title="@item.ImageLink.Text" target="@item.ImageLink.Target"><img src="@item.Image.Url" alt="@item.Image.AlternativeText"></a>
+                                }
+                                else
+                                {
+                                    <img src="@item.Image.Url" alt="@item.Image.AlternativeText">
+                                }
+                            </div>
+                            <div class="post-title">@item.Text</div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-xs-12 col-md-2 slider-item">
+                    <div class="col-xs-12 no-padding slider-section slider-headline-text-section @backgroundCss">
+                        <div class="post-title text-top headline">
+                            @item.Heading
+                        </div>
+                        <div class="post-title text">
+                            @item.Text
+                        </div>
+                    </div>
+                </div>
+            }
+
+            if (Model.ShowTimelineArrows && Model.SliderItems.Last() != item)
+            {
+                <div class="col-xs-1">
+                    <div class="col-xs-1 timeline-arrow-wrapper">
+                        <i class="fa fa-caret-right timeline-arrow"></i>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
