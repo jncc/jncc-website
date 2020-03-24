@@ -115,6 +115,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceCategorySectionImageCodeSchema imageCode:
                         viewModel = CreateImageCodeSection(imageCode);
                         break;
+                    case ScienceCategorySectionSliderSchema slider:
+                        viewModel = CreateSliderSection(slider);
+                        break;
 
                 }
 
@@ -153,6 +156,9 @@ namespace JNCC.PublicWebsite.Core.Services
                         break;
                     case ScienceCategorySubSectionImageCodeSchema imageCode:
                         viewModel = CreateImageCodeSubSection(imageCode, parentHtmlId);
+                        break;
+                    case ScienceCategorySubSectionSliderSchema slider:
+                        viewModel = CreateSliderSubSection(slider, parentHtmlId);
                         break;
                 }
 
@@ -208,6 +214,9 @@ namespace JNCC.PublicWebsite.Core.Services
                 case ScienceCategorySectionImageCodeSchema.ModelTypeAlias:
                 case ScienceCategorySubSectionImageCodeSchema.ModelTypeAlias:
                     return ScienceCategoryPartialViewNames.ImageCode;
+                case ScienceCategorySectionSliderSchema.ModelTypeAlias:
+                case ScienceCategorySubSectionSliderSchema.ModelTypeAlias:
+                    return ScienceCategoryPartialViewNames.Slider;
                 default:
                     throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
             }
@@ -323,6 +332,104 @@ namespace JNCC.PublicWebsite.Core.Services
             return model;
         }
 
+        private ScienceCategorySliderSectionViewModel CreateSliderSection(ScienceCategorySectionSliderSchema schema)
+        {
+            var model = CreateSection<ScienceCategorySliderSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ShowBackground = schema.ShowGreyBackground;
+            model.ShowTimelineArrows = schema.ShowTimelineArrows;
+            model.SliderItems = GetSliderItemViewModels(schema.SliderItems);
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private IEnumerable<ScienceSliderSchemaViewModel> GetSliderItemViewModels(IEnumerable<IPublishedContent> sliderItems)
+        {
+            var viewModels = new List<ScienceSliderSchemaViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(sliderItems))
+            {
+                return viewModels;
+            }
+
+            foreach (var section in sliderItems)
+            {
+                ScienceSliderSchemaViewModel viewModel = null;
+
+                switch (section)
+                {
+                    case ScienceSliderSchemaHeadingText headingText:
+                        viewModel = CreateHeadingTextSliderItem(headingText);
+                        break;
+                    case ScienceSliderSchemaImageText imageText:
+                        viewModel = CreateImageTextSliderItem(imageText);
+                        break;
+                }
+
+                if (viewModel != null)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
+        }
+
+        private ScienceSliderSchemaViewModel CreateHeadingTextSliderItem(ScienceSliderSchemaHeadingText schema)
+        {
+            var model = new ScienceSliderSchemaViewModel();
+
+            model.Heading = schema.Heading;
+            model.ImageTextSection = false;
+            model.Text = schema.Text;
+
+            return model;
+        }
+
+        private ScienceSliderSchemaViewModel CreateImageTextSliderItem(ScienceSliderSchemaImageText schema)
+        {
+            var model = new ScienceSliderSchemaViewModel();
+
+            model.ImageTextSection = true;
+            model.Text = schema.Text;
+            model.ImagePosition = schema.ImagePosition;
+
+            if (schema.Image != null)
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
+
+            if (schema.ImageLink != null)
+            {
+                model.ImageLink = new NavigationItemViewModel()
+                {
+                    Url = schema.ImageLink.Url,
+                    Text = schema.ImageLink.Name,
+                    Target = schema.ImageLink.Target,
+                };
+            }
+            else
+            {
+                model.ImageLink = new NavigationItemViewModel(){Url = null, Text = null, Target = null};
+            }
+
+            return model;
+        }
+
         private ScienceCategoryImageRichTextSectionViewModel CreateIndividualImageRichTextSection(ScienceCategoryIndividualSectionImageTextSchema schema)
         {
             var model = CreateSection<ScienceCategoryImageRichTextSectionViewModel>(schema);
@@ -404,6 +511,17 @@ namespace JNCC.PublicWebsite.Core.Services
             model.ImageCode = schema.ImageCode;
            
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            return model;
+        }
+        private ScienceCategorySliderSubSectionViewModel CreateSliderSubSection(ScienceCategorySubSectionSliderSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceCategorySliderSubSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ShowBackground = schema.ShowGreyBackground;
+            model.ShowTimelineArrows = schema.ShowTimelineArrows;
+            model.SliderItems = GetSliderItemViewModels(schema.SliderItems);
 
             return model;
         }
