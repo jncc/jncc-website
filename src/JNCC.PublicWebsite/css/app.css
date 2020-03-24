@@ -14101,6 +14101,7 @@ img.float-right,
 @media only screen and (min-width: 426px) and (max-width: 1024px) {
 	.slider-item {
 		min-width: 50% !important;
+		max-width: 50% !important;
 	}
 
 	.slider-item .post-title {
@@ -14194,6 +14195,7 @@ img.float-right,
 @media only screen and (max-width: 425px) {
 	.slider-item {
 		min-width: 80% !important;
+		max-width: 80% !important;
 	}
 
 	.slider-item .post-title {
