@@ -9106,7 +9106,7 @@ html {
 
 .slider-headline-text-section {
 	height: 100%;
-	font-size: 17px !important;
+	font-size: 15px !important;
 }
 
 .slider-headline-text-section .slider-item .headline {
@@ -9147,7 +9147,7 @@ html {
 }
 
 .related-title {
-	font-size: 24px;
+	font-size: 17px;
 	padding-bottom: 4px;
 	font-weight: 500 !important;
 	border-bottom: 1px solid #ccc;
@@ -9179,6 +9179,7 @@ html {
 .slider-item .post-img img {
 	object-fit: cover;
 	height: 100% !important;
+	width: 100% !important;
 }
 
 .slider-item .post-title {
@@ -9186,14 +9187,14 @@ html {
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
-	font-size: 17px;
+	font-size: 15px;
 	line-height: 1.1;
 	font-weight: bold;
 	text-align: center;
 }
 
 .slider-item .post-title .text {
-	font-size: 15px;
+	font-size: 14px;
 	line-height: 1;
 	font-weight: 500;
 	padding: 0 15px;
@@ -9207,6 +9208,7 @@ html {
 
 .fa-caret-right:before {
 	content: "\f0da";
+	padding-left: 8px;
 }
 
 .home-a .visual-section .container {

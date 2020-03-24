@@ -142,7 +142,7 @@ h2#toc {
   
 .slider-headline-text-section {
     height: 100%;
-    font-size: 17px!important;
+    font-size: 15px!important;
     .slider-item {
         .headline {
             height: 30%;
@@ -184,7 +184,7 @@ h2#toc {
 }
 
 .related-title {
-    font-size: 24px;
+    font-size: 17px;
     padding-bottom: 4px;
     font-weight: 500 !important;
     border-bottom: 1px solid #ccc;
@@ -231,6 +231,7 @@ h2#toc {
         img {
             object-fit: cover;
             height: 100% !important;
+            width: 100% !important;
         }
     }   
 
@@ -239,12 +240,12 @@ h2#toc {
         padding-top: 20px;
         padding-left: 10px;
         padding-right: 10px;
-        font-size: 17px;
+        font-size: 15px;
         line-height: 1.1;
         font-weight: bold;
         text-align: center;
         .text {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1;
             font-weight: 500;
             padding: 0px 15px;
@@ -260,4 +261,5 @@ h2#toc {
 
 .fa-caret-right:before {
     content: "\f0da";
+    padding-left: 8px;
 }
