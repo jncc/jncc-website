@@ -14192,8 +14192,8 @@ img.float-right,
 		min-width: 80% !important;
 	}
 
-	.post-title {
-		height: 120px;
+	.slider-item .post-title {
+		height: 120px !important;
 	}
 }
 
