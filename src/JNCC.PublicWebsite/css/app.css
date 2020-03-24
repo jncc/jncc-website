@@ -14102,6 +14102,10 @@ img.float-right,
 	.slider-item {
 		min-width: 50% !important;
 	}
+
+	.slider-item .post-title {
+		height: 120px !important;
+	}
 }
 
 @media screen and (min-width: 550px) {
@@ -14193,7 +14197,7 @@ img.float-right,
 	}
 
 	.slider-item .post-title {
-		height: 120px !important;
+		height: 130px !important;
 	}
 }
 
