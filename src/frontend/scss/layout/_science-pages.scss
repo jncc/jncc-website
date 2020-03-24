@@ -210,7 +210,7 @@ h2#toc {
 @media only screen and (max-width: 425px) {
     .slider-item {
         min-width: 80% !important;
-
+        max-width: 80% !important;
         .post-title{
             height: 130px!important;
         }
@@ -220,6 +220,7 @@ h2#toc {
 @media only screen and (min-width: 426px) and (max-width: 1024px) {
     .slider-item {
         min-width: 50% !important;
+        max-width: 50% !important;
         .post-title{
             height: 120px!important;
         }
