@@ -9106,7 +9106,6 @@ html {
 
 .slider-headline-text-section {
 	height: 100%;
-	font-size: 15px !important;
 }
 
 .slider-headline-text-section .slider-item .headline {
@@ -9116,6 +9115,13 @@ html {
 .slider-headline-text-section .slider-item .text {
 	height: 70%;
 	font-weight: 400 !important;
+}
+
+.slider-headline-text-section .text-section {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	font-size: 15px !important;
 }
 
 .image-bottom {
@@ -9134,6 +9140,7 @@ html {
 .slider-section {
 	padding-left: 0;
 	padding-right: 0;
+	height: 100%;
 }
 
 .timeline-arrow-wrapper {
@@ -9165,8 +9172,8 @@ html {
 }
 
 .slider-item {
-	min-width: 40% !important;
-	max-width: 40%;
+	min-width: 275px !important;
+	max-width: 35%;
 	padding-right: 15px;
 	padding-left: 15px;
 	text-align: center;
@@ -9187,7 +9194,6 @@ html {
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
-	font-size: 15px;
 	line-height: 1.1;
 	font-weight: bold;
 	text-align: center;
@@ -14100,8 +14106,8 @@ img.float-right,
 
 @media only screen and (min-width: 426px) and (max-width: 1024px) {
 	.slider-item {
-		min-width: 50% !important;
-		max-width: 50% !important;
+		min-width: 300px !important;
+		max-width: 45% !important;
 	}
 
 	.slider-item .post-title {
@@ -14194,8 +14200,8 @@ img.float-right,
 
 @media only screen and (max-width: 425px) {
 	.slider-item {
-		min-width: 80% !important;
-		max-width: 80% !important;
+		min-width: 90% !important;
+		max-width: 90% !important;
 	}
 
 	.slider-item .post-title {
