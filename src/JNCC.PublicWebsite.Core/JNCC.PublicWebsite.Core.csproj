@@ -373,6 +373,7 @@
     <Compile Include="Controllers\RenderMvcControllers\IndividualJobPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\LoginPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\MemberAccountPageController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\RedirectorController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ResetPasswordPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceAtoZPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ScienceCategoryPageController.cs" />
@@ -393,6 +394,7 @@
     <Compile Include="Models\IFramePage.generated.cs" />
     <Compile Include="Models\IScienceCategorisablePage.cs" />
     <Compile Include="Models\PageAttributes.cs" />
+    <Compile Include="Models\Redirector.generated.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />
     <Compile Include="Models\ScienceAtoZpage.generated.cs" />
