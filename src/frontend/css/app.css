@@ -9191,6 +9191,7 @@ html {
 
 .slider-item .post-title {
 	height: 100px;
+	margin-bottom: 20px;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -14112,6 +14113,7 @@ img.float-right,
 
 	.slider-item .post-title {
 		height: 120px !important;
+		margin-bottom: 0;
 	}
 }
 
@@ -14206,6 +14208,7 @@ img.float-right,
 
 	.slider-item .post-title {
 		height: 130px !important;
+		margin-bottom: 0;
 	}
 }
 
