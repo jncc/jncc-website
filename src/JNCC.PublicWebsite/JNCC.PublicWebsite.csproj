@@ -1597,6 +1597,11 @@
     <Content Include="Views\Partials\IFrame\ImageGallery.cshtml" />
     <Content Include="Views\Partials\IFrame\ImageRichText.cshtml" />
     <Content Include="Views\Partials\IFrame\RichText.cshtml" />
+    <Content Include="Views\Partials\ScienceCategory\ImageCode.cshtml" />
+    <Content Include="Views\Partials\ScienceDetails\ImageCode.cshtml" />
+    <Content Include="Views\Partials\IFrame\ImageCode.cshtml" />
+    <Content Include="Views\Partials\ScienceCategory\Slider.cshtml" />
+    <Content Include="Views\Partials\ScienceDetails\Slider.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

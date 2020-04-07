@@ -119,3 +119,160 @@ h2#toc {
 .science-subsection a{
     text-decoration: underline;
 }
+
+//Slider Component
+
+.slider-items-row::-webkit-scrollbar{
+    height: 8px;
+    width: 4px;
+    background: #EAEAEA;
+}
+
+.slider-items-row{
+  scrollbar-color: #666262 #EAEAEA;
+  scrollbar-width: thin;
+  scrollbar-face-color: #666262;
+  scrollbar-arrow-color: #EAEAEA;
+}
+
+.slider-items-row::-webkit-scrollbar-thumb:horizontal{
+    background: #666262;
+    border-radius: 10px;
+}
+  
+.slider-headline-text-section {
+    height: 100%;
+    .slider-item {
+        .headline {
+            height: 30%;
+        }
+
+        .text {
+            height: 70%;
+            font-weight: 400!important;
+        }
+    }
+
+    .text-section {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        font-size: 15px!important;
+    }
+}
+
+.image-bottom {
+    margin-bottom: 0px !important;
+    margin-top: 5px;
+}
+
+.image-top {
+    padding-top: 0px;
+}
+
+.slider-background {
+    background-color: #EAEAEA;
+}
+
+.slider-section {
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 100%;
+}
+
+.timeline-arrow-wrapper {
+    padding-top: 400%;
+}
+
+.timeline-arrow {
+    font-size: 48px!important;
+    color: #cccccc;
+    vertical-align: middle;
+}
+
+.related-title {
+    font-size: 17px;
+    padding-bottom: 4px;
+    font-weight: 500 !important;
+    border-bottom: 1px solid #ccc;
+}
+
+.slider-items-row {
+    display: flex !important;
+    overflow-x: auto !important;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px
+}
+
+.slider-item {
+    min-width: 275px !important;
+    max-width: 35%;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 425px) {
+    .slider-item {
+        min-width: 90% !important;
+        max-width: 90% !important;
+        .post-title{
+            height: 130px!important;
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 1024px) {
+    .slider-item {
+        min-width: 300px !important;
+        max-width: 45% !important;
+        .post-title{
+            height: 120px!important;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.slider-item {
+    
+    .post-img {
+        height: 130px;
+
+        img {
+            object-fit: cover;
+            height: 100% !important;
+            width: 100% !important;
+        }
+    }   
+
+    .post-title {
+        height: 100px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        line-height: 1.1;
+        font-weight: bold;
+        text-align: center;
+        .text {
+            font-size: 14px;
+            line-height: 1;
+            font-weight: 500;
+            padding: 0px 15px;
+        }
+    }
+
+    .post-description {
+        font-size: 14px;
+        line-height: 1.3;
+        margin-top: 5px !important;
+    } 
+}
+
+.fa-caret-right:before {
+    content: "\f0da";
+    padding-left: 8px;
+}

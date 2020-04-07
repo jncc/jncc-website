@@ -3,23 +3,74 @@
     Layout = "Master.cshtml";
 }
 
-    <main id="main">
-        @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
-        <div class="container">
-            @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
-            <div class="two-columns">
-                <div id="content">
-                    @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
-                    @Model.Preamble
-                    @foreach (var section in Model.ImageTextSection)
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+                @Model.Preamble
+                @foreach (var section in Model.ImageTextSection)
+                {
+                    if (!section.HideHeadline)
+                    {
+                        <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
+                    }
+
+                    @RenderScienceCategorySection(section)
+
+                    if (section.SubSections.Any())
+                    {
+                        foreach (var subSection in section.SubSections)
+                        {
+                            if (!subSection.HideHeadline)
+                            {
+                                <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
+                            }
+                            @RenderScienceCategorySection(subSection)
+                        }
+                    }
+                }
+                @if (Model.HasSections)
+                {
+                    <div class="row">
+                        <div class="columns small-12 medium-12 callout toc">
+                            <h2 id="toc">Contents</h2>
+                            <ol>
+                                @foreach (var section in Model.Sections)
+                                {
+                                    if (!section.HideHeadline)
+                                    {
+                                        <li>
+                                            <a href="#@(section.HtmlId)">@(section.Headline)</a>
+                                            @if (section.SubSections.Any())
+                                            {
+                                                <ol>
+                                                    @foreach (var subSection in section.SubSections)
+                                                    {
+                                                        if (!subSection.HideHeadline)
+                                                        {
+                                                            <li>
+                                                                <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ol>
+                                            }
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        </div>
+                    </div>
+                    foreach (var section in Model.Sections)
                     {
                         if (!section.HideHeadline)
                         {
                             <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
                         }
-
                         @RenderScienceCategorySection(section)
-
                         if (section.SubSections.Any())
                         {
                             foreach (var subSection in section.SubSections)
@@ -31,107 +82,56 @@
                                 @RenderScienceCategorySection(subSection)
                             }
                         }
-                    }
-                    @if (Model.HasSections)
-                    {
-                        <div class="row">
-                            <div class="columns small-12 medium-12 callout toc">
-                                <h2 id="toc">Contents</h2>
-                                <ol>
-                                    @foreach (var section in Model.Sections)
-                                    {
-                                        if (!section.HideHeadline)
-                                        {
-                                            <li>
-                                                <a href="#@(section.HtmlId)">@(section.Headline)</a>
-                                                @if (section.SubSections.Any())
-                                                {
-                                                    <ol>
-                                                        @foreach (var subSection in section.SubSections)
-                                                        {
-                                                            if (!subSection.HideHeadline)
-                                                            {
-                                                                <li>
-                                                                    <a href="#@(subSection.HtmlId)">@(subSection.Headline)</a>
-                                                                </li>
-                                                            }
-                                                        }
-                                                    </ol>
-                                                }
-                                            </li>
-                                        }
-                                    }
-                                </ol>
-                            </div>
-                        </div>
-                        foreach (var section in Model.Sections)
+                        if (!section.HideHeadline)
                         {
-                            if (!section.HideHeadline)
-                            {
-                                <h2 id="@(section.HtmlId)">@(section.Headline)</h2>
-                            }
-                            @RenderScienceCategorySection(section)
-                            if (section.SubSections.Any())
-                            {
-                                foreach (var subSection in section.SubSections)
-                                {
-                                    if (!subSection.HideHeadline)
-                                    {
-                                        <h3 id="@(subSection.HtmlId)">@(subSection.Headline)</h3>
-                                    }
-                                    @RenderScienceCategorySection(subSection)
-                                }
-                            }
-                            if (!section.HideHeadline)
-                            {
-                                <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
-                            }
+                            <p class="text-right"><a href="#toc" class="return-to-top">Top <i class="step fi-arrow-up"></i></a></p>
                         }
                     }
-                    @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
-                    @if (Model.HasCategorisedPages)
-                    {
-                        <h2>Pages in @Model.Headline</h2>
-                        <div class="row small-collapse small-up-1 medium-up-2">
-                            @foreach (var kvp in Model.CategorisedPages)
-                            {
-                                <div class="column">
-                                    <h3>@kvp.Key</h3>
-                                    <ul>
-                                        @foreach (var page in kvp.Value)
-                                        {
-                                            <li><a href="@page.Url">@page.Text</a></li>
-                                        }
-                                    </ul>
-                                </div>
-                            }
-                        </div>
-                    }
-                    @if (Model.HasRelatedCategories)
-                    {
-                        <h2>Related Categories</h2>
-                        <div class="row small-collapse small-up-1 medium-up-2">
-                            @foreach (var kvp in Model.RelatedCategories)
-                            {
-                                <div class="column">
-                                    <h3>@kvp.Key</h3>
-                                    <ul>
-                                        @foreach (var page in kvp.Value)
-                                        {
-                                            <li><a href="@page.Url">@page.Text</a></li>
-                                        }
-                                    </ul>
-                                </div>
-                            }
-                        </div>
-                    }
-                </div>
-                @(Html.Action<ScienceSidebarSurfaceController>("RenderScienceCategoryPageSidebar"))
+                }
+                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
+                @if (Model.HasCategorisedPages)
+                {
+                    <h2>Pages in @Model.Headline</h2>
+                    <div class="row small-collapse small-up-1 medium-up-2">
+                        @foreach (var kvp in Model.CategorisedPages)
+                        {
+                            <div class="column">
+                                <h3>@kvp.Key</h3>
+                                <ul>
+                                    @foreach (var page in kvp.Value)
+                                    {
+                                        <li><a href="@page.Url">@page.Text</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                }
+                @if (Model.HasRelatedCategories)
+                {
+                    <h2>Related Categories</h2>
+                    <div class="row small-collapse small-up-1 medium-up-2">
+                        @foreach (var kvp in Model.RelatedCategories)
+                        {
+                            <div class="column">
+                                <h3>@kvp.Key</h3>
+                                <ul>
+                                    @foreach (var page in kvp.Value)
+                                    {
+                                        <li><a href="@page.Url">@page.Text</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                }
             </div>
+            @(Html.Action<ScienceSidebarSurfaceController>("RenderScienceCategoryPageSidebar"))
         </div>
-        @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
-        @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
-    </main>
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>
 
 @helper RenderScienceCategorySection(ScienceCategorySectionViewModelBase section)
 {

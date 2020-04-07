@@ -85,6 +85,12 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceDetailsSectionImageTextSchema imageRichText:
                         viewModel = CreateImageRichTextSection(imageRichText);
                         break;
+                    case ScienceDetailsSectionImageCodeSchema imageCode:
+                        viewModel = CreateImageCodeSection(imageCode);
+                        break;
+                    case ScienceDetailsSectionSliderSchema slider:
+                        viewModel = CreateSliderSection(slider);
+                        break;
                 }
 
                 if (viewModel != null)
@@ -113,6 +119,9 @@ namespace JNCC.PublicWebsite.Core.Services
                     case ScienceDetailsIndividualSectionImageTextSchema imageRichText:
                         viewModel = CreateIndividualImageRichTextSection(imageRichText);
                         break;
+                    case ScienceDetailsIndividualSectionImageCodeSchema imageCode:
+                        viewModel = CreateIndividualImageCodeSection(imageCode);
+                        break;
                 }
 
                 if (viewModel != null)
@@ -123,6 +132,7 @@ namespace JNCC.PublicWebsite.Core.Services
 
             return viewModels;
         }
+
         private IEnumerable<ScienceDetailsSubSectionViewModel> GetSubSectionViewModels(IEnumerable<IPublishedContent> subSections, string parentHtmlId)
         {
             var viewModels = new List<ScienceDetailsSubSectionViewModel>();
@@ -146,6 +156,12 @@ namespace JNCC.PublicWebsite.Core.Services
                         break;
                     case ScienceDetailsSubSectionImageRichTextSchema imageRichText:
                         viewModel = CreateImageRichTextSubSection(imageRichText, parentHtmlId);
+                        break;
+                    case ScienceDetailsSubSectionImageCodeSchema imageCode:
+                        viewModel = CreateImageCodeSubSection(imageCode, parentHtmlId);
+                        break;
+                    case ScienceDetailsSubSectionSliderSchema slider:
+                        viewModel = CreateSliderSubSection(slider, parentHtmlId);
                         break;
                 }
 
@@ -196,6 +212,13 @@ namespace JNCC.PublicWebsite.Core.Services
                 case ScienceDetailsSectionImageTextSchema.ModelTypeAlias:
                 case ScienceDetailsSubSectionImageRichTextSchema.ModelTypeAlias:
                     return ScienceDetailsPartialViewNames.ImageRichText;
+                case ScienceDetailsIndividualSectionImageCodeSchema.ModelTypeAlias:
+                case ScienceDetailsSectionImageCodeSchema.ModelTypeAlias:
+                case ScienceDetailsSubSectionImageCodeSchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.ImageCode;
+                case ScienceDetailsSectionSliderSchema.ModelTypeAlias:
+                case ScienceDetailsSubSectionSliderSchema.ModelTypeAlias:
+                    return ScienceDetailsPartialViewNames.Slider;
                 default:
                     throw new NotSupportedException($"Document Type, {schema.DocumentTypeAlias}, is not currently supported.");
             }
@@ -348,6 +371,150 @@ namespace JNCC.PublicWebsite.Core.Services
                 };
             }
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            return model;
+        }
+
+        private ScienceDetailsImageCodeSectionViewModel CreateImageCodeSection(ScienceDetailsSectionImageCodeSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageCodeSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+        private ScienceDetailsImageCodeSectionViewModel CreateIndividualImageCodeSection(ScienceDetailsIndividualSectionImageCodeSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsImageCodeSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private ScienceDetailsImageCodeSubSectionViewModel CreateImageCodeSubSection(ScienceDetailsSubSectionImageCodeSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsImageCodeSubSectionViewModel>(schema, parentSectionHtmlId);
+
+            model.Content = schema.Content;
+            model.ImageCode = schema.ImageCode;
+            model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
+
+            return model;
+        }
+
+        private ScienceDetailsSliderSectionViewModel CreateSliderSection(ScienceDetailsSectionSliderSchema schema)
+        {
+            var model = CreateSection<ScienceDetailsSliderSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ShowBackground = schema.ShowGreyBackground;
+            model.ShowTimelineArrows = schema.ShowTimelineArrows;
+            model.SliderItems = GetSliderItemViewModels(schema.SliderItems);
+            model.SubSections = GetSubSectionViewModels(schema.SubSections, model.HtmlId);
+
+            return model;
+        }
+
+        private IEnumerable<ScienceSliderSchemaViewModel> GetSliderItemViewModels(IEnumerable<IPublishedContent> sliderItems)
+        {
+            var viewModels = new List<ScienceSliderSchemaViewModel>();
+
+            if (ExistenceUtility.IsNullOrEmpty(sliderItems))
+            {
+                return viewModels;
+            }
+
+            foreach (var section in sliderItems)
+            {
+                ScienceSliderSchemaViewModel viewModel = null;
+
+                switch (section)
+                {
+                    case ScienceSliderSchemaHeadingText headingText:
+                        viewModel = CreateHeadingTextSliderItem(headingText);
+                        break;
+                    case ScienceSliderSchemaImageText imageText:
+                        viewModel = CreateImageTextSliderItem(imageText);
+                        break;
+                }
+
+                if (viewModel != null)
+                {
+                    viewModels.Add(viewModel);
+                }
+            }
+
+            return viewModels;
+        }
+
+        private ScienceSliderSchemaViewModel CreateHeadingTextSliderItem(ScienceSliderSchemaHeadingText schema)
+        {
+            var model = new ScienceSliderSchemaViewModel();
+
+            model.Heading = schema.Heading;
+            model.ImageTextSection = false;
+            model.Text = schema.Text;
+
+            return model;
+        }
+
+        private ScienceSliderSchemaViewModel CreateImageTextSliderItem(ScienceSliderSchemaImageText schema)
+        {
+            var model = new ScienceSliderSchemaViewModel();
+
+            model.ImageTextSection = true;
+            model.Text = schema.Text;
+            model.ImagePosition = schema.ImagePosition;
+
+            if (schema.Image != null)
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = schema.Image.Url,
+                    AlternativeText = schema.Image.Name
+                };
+            }
+            else
+            {
+                model.Image = new ImageViewModel()
+                {
+                    Url = null,
+                    AlternativeText = null
+                };
+            }
+
+            if (schema.ImageLink != null)
+            {
+                model.ImageLink = new NavigationItemViewModel()
+                {
+                    Url = schema.ImageLink.Url,
+                    Text = schema.ImageLink.Name,
+                    Target = schema.ImageLink.Target,
+                };
+            }
+            else
+            {
+                model.ImageLink = new NavigationItemViewModel() { Url = null, Text = null, Target = null };
+            }
+
+            return model;
+        }
+
+        private ScienceDetailsSliderSubSectionViewModel CreateSliderSubSection(ScienceDetailsSubSectionSliderSchema schema, string parentSectionHtmlId)
+        {
+            var model = CreateSection<ScienceDetailsSliderSubSectionViewModel>(schema);
+
+            model.Content = schema.Content;
+            model.ShowBackground = schema.ShowGreyBackground;
+            model.ShowTimelineArrows = schema.ShowTimelineArrows;
+            model.SliderItems = GetSliderItemViewModels(schema.SliderItems);
 
             return model;
         }
