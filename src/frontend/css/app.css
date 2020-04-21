@@ -9121,6 +9121,7 @@ html {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 10px;
+	padding-bottom: 20px;
 	font-size: 15px !important;
 }
 
@@ -9144,13 +9145,20 @@ html {
 }
 
 .timeline-arrow-wrapper {
-	padding-top: 400%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	height: 100%;
 }
 
 .timeline-arrow {
 	font-size: 48px !important;
 	color: #ccc;
 	vertical-align: middle;
+	position: relative;
+	margin-top: -20px;
+	height: 50%;
+	top: 50%;
 }
 
 .related-title {
@@ -9180,7 +9188,7 @@ html {
 }
 
 .slider-item .post-img {
-	height: 130px;
+	max-height: 130px;
 }
 
 .slider-item .post-img img {
@@ -9190,7 +9198,7 @@ html {
 }
 
 .slider-item .post-title {
-	height: 100px;
+	max-height: 100px;
 	margin-bottom: 20px;
 	padding-top: 20px;
 	padding-left: 10px;
@@ -14112,8 +14120,9 @@ img.float-right,
 	}
 
 	.slider-item .post-title {
-		height: 120px !important;
+		max-height: 120px !important;
 		margin-bottom: 0;
+		padding-bottom: 20px;
 	}
 }
 
@@ -14207,8 +14216,9 @@ img.float-right,
 	}
 
 	.slider-item .post-title {
-		height: 130px !important;
+		max-height: 130px !important;
 		margin-bottom: 0;
+		padding-bottom: 20px;
 	}
 }
 
