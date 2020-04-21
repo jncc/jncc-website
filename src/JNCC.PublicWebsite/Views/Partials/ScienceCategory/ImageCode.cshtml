@@ -6,12 +6,12 @@
         <div class="columns small-12">
             <div class="row collapse display-end">
                 <div class="columns small-12">
-                    @Html.Raw(Model.ImageCode)
+                    <p>@Html.Raw(Model.ImageCode)</p>
                 </div>
             </div>
             <div class="row collapse">
                 <div class="columns small-12">
-                    @Model.Content
+                    <p>@Model.Content</p>
                 </div>
             </div>
         </div>
@@ -19,19 +19,19 @@
     else if (Model.ImagePosition == "Right")
     {
         <div class="columns small-12 medium-6 small-order-2 medium-order-1 right-pad">
-            @Model.Content
+            <p>@Model.Content</p>
         </div>
         <div class="columns small-12 medium-6 small-order-1 medium-order-2">
-            @Html.Raw(Model.ImageCode)
+            <p>@Html.Raw(Model.ImageCode)</p>
         </div>
     }
     else
     {
         <div class="columns small-12 medium-6 small-order-1 medium-order-1">
-            @Html.Raw(Model.ImageCode)
+            <p>@Html.Raw(Model.ImageCode)</p>
         </div>
         <div class="columns small-12 medium-6 small-order-2 medium-order-2 left-pad">
-            @Model.Content
+            <p>@Model.Content</p>
         </div>
     }
 
