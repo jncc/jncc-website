@@ -46,6 +46,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Alt text: This text will be used as the alt text for the image when the image is rendered on the website
+		///</summary>
+		[ImplementPropertyType("altText")]
+		public string AltText
+		{
+			get { return this.GetPropertyValue<string>("altText"); }
+		}
+
+		///<summary>
+		/// Title Text: This text will be used as the title text for the image when the image is rendered on the website
+		///</summary>
+		[ImplementPropertyType("titleText")]
+		public string TitleText
+		{
+			get { return this.GetPropertyValue<string>("titleText"); }
+		}
+
+		///<summary>
 		/// Type
 		///</summary>
 		[ImplementPropertyType("umbracoExtension")]

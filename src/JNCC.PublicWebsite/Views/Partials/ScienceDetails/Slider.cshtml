@@ -28,11 +28,11 @@
                                 {
                                     if (item.ImageLink != null)
                                     {
-                                        <a href="@item.ImageLink.Url" title="@item.ImageLink.Text" target="@item.ImageLink.Target"><img src="@item.Image.Url" alt="@item.Image.AlternativeText"></a>
+                                        <a href="@item.ImageLink.Url" title="@item.ImageLink.Text" target="@item.ImageLink.Target"><img src="@item.Image.Url" alt="@item.Image.AlternativeText" title="@item.Image.TitleText"></a>
                                     }
                                     else
                                     {
-                                        <img src="@item.Image.Url" alt="@item.Image.AlternativeText">
+                                        <img src="@item.Image.Url" alt="@item.Image.AlternativeText" title="@item.Image.TitleText">
                                     }
                                 }
                             </div>
@@ -46,11 +46,11 @@
                             <div class="post-img image-top">
                                 @if (item.ImageLink != null)
                                 {
-                                    <a href="@item.ImageLink.Url" title="@item.ImageLink.Text" target="@item.ImageLink.Target"><img src="@item.Image.Url" alt="@item.Image.AlternativeText"></a>
+                                    <a href="@item.ImageLink.Url" title="@item.ImageLink.Text" target="@item.ImageLink.Target"><img src="@item.Image.Url" alt="@item.Image.AlternativeText" title="@item.Image.TitleText"></a>
                                 }
                                 else
                                 {
-                                    <img src="@item.Image.Url" alt="@item.Image.AlternativeText">
+                                    <img src="@item.Image.Url" alt="@item.Image.AlternativeText" title="@item.Image.TitleText">
                                 }
                             </div>
                             <div class="post-title">@item.Text</div>

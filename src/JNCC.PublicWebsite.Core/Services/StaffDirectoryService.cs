@@ -89,6 +89,8 @@ namespace JNCC.PublicWebsite.Core.Services
             if (content.ProfilePicture != null)
             {
                 viewModel.ImageUrl = content.ProfilePicture.GetCropUrl(ImageCropAliases.ListingThumbnail);
+                viewModel.ImageAltText = content.ProfilePicture.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? viewModel.Name : content.ProfilePicture.GetPropertyValue<string>("altText");
+                viewModel.ImageTitleText = content.ProfilePicture.GetPropertyValue<string>("titleText").IsNullOrWhiteSpace() ? viewModel.Name : content.ProfilePicture.GetPropertyValue<string>("titleText");
             }
 
             return viewModel;

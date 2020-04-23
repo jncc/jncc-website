@@ -2,6 +2,8 @@
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
+using Umbraco.Core;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -37,7 +39,8 @@ namespace JNCC.PublicWebsite.Core.Services
                     viewModel.Image = new ImageViewModel()
                     {
                         Url = card.Image.Image.Url,
-                        AlternativeText = card.Image.ImageAlternativeText
+                        AlternativeText = card.Image.ImageAlternativeText.IsNullOrWhiteSpace() ? card.Image.Image.GetPropertyValue<string>("altText") : card.Image.ImageAlternativeText,
+                        TitleText = card.Image.Image.GetPropertyValue<string>("titleText"),
                     };
                 };
 
