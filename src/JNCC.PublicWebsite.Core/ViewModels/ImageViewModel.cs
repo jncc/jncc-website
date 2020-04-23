@@ -4,5 +4,6 @@
     {
         public string Url { get; set; }
         public string AlternativeText { get; set; }
+        public string TitleText { get; set; }
     }
 }
