@@ -103,6 +103,8 @@ namespace JNCC.PublicWebsite.Core.Services
             if (content.HeroImage != null)
             {
                 viewModel.ImageUrl = content.HeroImage.GetCropUrl(ImageCropAliases.ListingThumbnail);
+                viewModel.ImageAltText = content.HeroImage.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? viewModel.Title : content.HeroImage.GetPropertyValue<string>("altText");
+                viewModel.ImageTitleText = content.HeroImage.GetPropertyValue<string>("titleText");
             }
 
             return viewModel;

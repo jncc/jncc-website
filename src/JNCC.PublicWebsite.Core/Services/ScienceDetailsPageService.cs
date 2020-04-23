@@ -279,7 +279,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 {
                     Url = image.Url,
                     ThumbnailImageUrl = image.GetCropUrl(cropAlias: ImageCropAliases.Square),
-                    AlternativeText = image.Name
+                    AlternativeText = image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? image.Name : image.GetPropertyValue<string>("altText"),
+                    TitleText = image.GetPropertyValue<string>("titleText"),
                 };
 
                 if (string.IsNullOrEmpty(image.Url) == false)
@@ -301,7 +302,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = schema.Image.Url,
-                    AlternativeText = schema.Image.Name
+                    AlternativeText = schema.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? schema.Image.Name : schema.Image.GetPropertyValue<string>("altText"),
+                    TitleText = schema.Image.GetPropertyValue<string>("titleText"),
                 };
             }
             else
@@ -309,7 +311,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = null,
-                    AlternativeText = null
+                    AlternativeText = null,
+                    TitleText = null,
                 };
             }
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
@@ -329,7 +332,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = schema.Image.Url,
-                    AlternativeText = schema.Image.Name
+                    AlternativeText = schema.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? schema.Image.Name : schema.Image.GetPropertyValue<string>("altText"),
+                    TitleText = schema.Image.GetPropertyValue<string>("titleText"),
                 };
             }
             else
@@ -337,7 +341,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = null,
-                    AlternativeText = null
+                    AlternativeText = null,
+                    TitleText = null,
                 };
             }
 
@@ -359,7 +364,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = schema.Image.Url,
-                    AlternativeText = schema.Image.Name
+                    AlternativeText = schema.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? schema.Image.Name : schema.Image.GetPropertyValue<string>("altText"),
+                    TitleText = schema.Image.GetPropertyValue<string>("titleText"),
                 };
             }
             else
@@ -367,7 +373,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = null,
-                    AlternativeText = null
+                    AlternativeText = null,
+                    TitleText = null,
                 };
             }
             model.ImagePosition = schema.GetPropertyValue<string>("imagePosition");
@@ -478,7 +485,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = schema.Image.Url,
-                    AlternativeText = schema.Image.Name
+                    AlternativeText = schema.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? schema.Image.Name : schema.Image.GetPropertyValue<string>("altText"),
+                    TitleText = schema.Image.GetPropertyValue<string>("titleText"),
                 };
             }
             else
@@ -486,7 +494,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 model.Image = new ImageViewModel()
                 {
                     Url = null,
-                    AlternativeText = null
+                    AlternativeText = null,
+                    TitleText = null
                 };
             }
 
