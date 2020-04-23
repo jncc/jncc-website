@@ -23,9 +23,10 @@
                                 @if (string.IsNullOrWhiteSpace(newsItem.ImageUrl) == false)
                                 {
                                     <div class="img-holder img-for-print">
-                                        <img src="@newsItem.ImageUrl" alt="@newsItem.Title thumbnail">
+                                        <img src="@newsItem.ImageUrl" alt="@newsItem.ImageAltText" title="@newsItem.ImageTitleText">
                                     </div>
                                 }
+
                                 <div class="card-section">
                                     <h3>@newsItem.Title</h3>
                                     <ul class="footer-list no-bullet">

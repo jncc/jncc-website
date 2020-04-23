@@ -10,7 +10,7 @@
                         @if (string.IsNullOrWhiteSpace(article.ImageUrl) == false)
                         {
                             <div class="img-holder">
-                                <img src="@article.ImageUrl" alt="@article.Title thumbnail">
+                                <img src="@article.ImageUrl" alt="@article.ImageAltText" title="@article.ImageTitleText">
                             </div>
                         }
                         <div class="card-section">
