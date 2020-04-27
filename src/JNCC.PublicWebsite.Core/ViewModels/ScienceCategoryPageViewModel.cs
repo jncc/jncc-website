@@ -33,5 +33,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
                 return ExistenceUtility.IsNullOrEmpty(RelatedCategories) == false;
             }
         }
+
+        public bool TurnOffAZSection { get; set; }
     }
 }
