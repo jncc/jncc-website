@@ -396,6 +396,7 @@
     <Compile Include="Models\IFramePage.generated.cs" />
     <Compile Include="Models\IScienceCategorisablePage.cs" />
     <Compile Include="Models\PageAttributes.cs" />
+    <Compile Include="Models\Redirector.generated.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.cs" />
     <Compile Include="Models\ResourcesCollectionSchema.generated.cs" />
     <Compile Include="Models\ScienceAtoZpage.generated.cs" />
