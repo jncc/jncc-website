@@ -53,14 +53,5 @@ namespace JNCC.PublicWebsite.Core.Models
 		{
 			get { return this.GetPropertyValue<IPublishedContent>("image"); }
 		}
-
-		///<summary>
-		/// Image Alternative Text
-		///</summary>
-		[ImplementPropertyType("imageAlternativeText")]
-		public string ImageAlternativeText
-		{
-			get { return this.GetPropertyValue<string>("imageAlternativeText"); }
-		}
 	}
 }
