@@ -3,7 +3,7 @@
     @if (Model.Image != null && Model.Image.Image != null)
     {
         <div class="img-holder">
-            <img src="@Model.Image.Image.Url" alt="@Model.Image.ImageAlternativeText" title="@(Model.Image.GetPropertyValue<string>("titleText"))">
+            <img src="@Model.Image.Image.Url" alt="@(Model.Image.Image.GetPropertyValue<string>("altText"))" title="@(Model.Image.Image.GetPropertyValue<string>("titleText"))">
         </div>
     }
     <div class="text-holder">
