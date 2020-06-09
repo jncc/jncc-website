@@ -3,6 +3,7 @@
 @{
     Layout = "Master.cshtml";
     Response.StatusCode = 404;
+    Response.TrySkipIisCustomErrors = true;
 }
 <main id="main">
     @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
