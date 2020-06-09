@@ -1,9 +1,12 @@
 ﻿@model JNCC.PublicWebsite.Core.Models.ContentItemSchema
+
 <article class="article">
-    @if (Model.Image != null && Model.Image.Image != null)
+    @if (Model.Image != null & Model.Image.Image != null)
     {
+        var altText = Model.Image.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? Model.Image.Image.GetPropertyValue<string>("altText") : Model.Image.Image.Name;
+       
         <div class="img-holder">
-            <img src="@Model.Image.Image.Url" alt="@Model.Image.ImageAlternativeText" title="@(Model.Image.GetPropertyValue<string>("titleText"))">
+            <img src="@Model.Image.Image.Url" alt="@altText" title="@(Model.Image.Image.GetPropertyValue<string>("titleText"))">
         </div>
     }
     <div class="text-holder">
