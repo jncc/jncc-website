@@ -202,7 +202,9 @@ a {
 	a {
 		color: $black;
 		text-decoration: underline;
-
+		&.active {
+			color: $green;
+		}
 		&:hover {
 			color: $green;
 		}

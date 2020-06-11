@@ -4,6 +4,7 @@ using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using Umbraco.Core;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -84,6 +85,8 @@ namespace JNCC.PublicWebsite.Core.Services
                 if (newsItem.HeroImage != null)
                 {
                     viewModel.ImageUrl = newsItem.HeroImage.GetCropUrl(ImageCropAliases.ListingThumbnail);
+                    viewModel.ImageAltText = newsItem.HeroImage.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? newsItem.Headline : newsItem.HeroImage.GetPropertyValue<string>("altText");
+                    viewModel.ImageTitleText = newsItem.HeroImage.GetPropertyValue<string>("titleText");
                 }
 
                 viewModels.Add(viewModel);

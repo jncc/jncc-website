@@ -2,6 +2,8 @@
 using JNCC.PublicWebsite.Core.Utilities;
 using JNCC.PublicWebsite.Core.ViewModels;
 using System.Collections.Generic;
+using Umbraco.Core;
+using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
 {
@@ -32,12 +34,13 @@ namespace JNCC.PublicWebsite.Core.Services
                     ReadMoreButton = _navigationItemService.GetViewModel(card.ReadMoreButton)
                 };
 
-                if (card.Image != null)
+                if (card.Image.Image != null)
                 {
                     viewModel.Image = new ImageViewModel()
                     {
                         Url = card.Image.Image.Url,
-                        AlternativeText = card.Image.ImageAlternativeText
+                        AlternativeText = card.Image.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? card.Image.Image.GetPropertyValue<string>("altText") : card.Image.Image.Name,
+                        TitleText = card.Image.Image.GetPropertyValue<string>("titleText"),
                     };
                 };
 

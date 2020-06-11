@@ -23,5 +23,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
                 return ExistenceUtility.IsNullOrEmpty(AlsoInLinks) == false;
             }
         }
+
+        public string CurrentPageUrl { get; set; }
     }
 }

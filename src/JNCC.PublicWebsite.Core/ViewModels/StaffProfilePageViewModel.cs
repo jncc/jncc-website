@@ -8,6 +8,8 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         public string Name { get; set; }
         public string ImageUrl { get; set; }
+        public string ImageAltText { get; set; }
+        public string ImageTitleText { get; set; }
         public string JobTitle { get; set; }
         public IEnumerable<string> Locations { get; set; }
         public IEnumerable<string> Teams { get; set; }

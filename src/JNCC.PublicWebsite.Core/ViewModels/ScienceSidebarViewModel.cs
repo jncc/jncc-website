@@ -14,5 +14,7 @@ namespace JNCC.PublicWebsite.Core.ViewModels
                 return ExistenceUtility.IsNullOrEmpty(Categories) == false;
             }
         }
+
+        public string CurrentPageUrl { get; set; }
     }
 }

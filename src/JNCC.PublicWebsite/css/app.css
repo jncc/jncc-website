@@ -8019,6 +8019,11 @@ a:hover > .label {
 	text-decoration: underline;
 }
 
+.aside-nav a.active,
+#sidebar p a.active {
+	color: #2d7a29;
+}
+
 .aside-nav a:hover,
 #sidebar p a:hover {
 	color: #2d7a29;
