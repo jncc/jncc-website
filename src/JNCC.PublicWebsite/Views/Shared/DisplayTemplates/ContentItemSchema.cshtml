@@ -1,25 +1,30 @@
 ﻿@model JNCC.PublicWebsite.Core.Models.ContentItemSchema
 
-<article class="article">
-    @if (Model.Image != null & Model.Image.Image != null)
-    {
-        var altText = Model.Image.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? Model.Image.Image.Name : Model.Image.Image.GetPropertyValue<string>("altText");
+@if (Model.Image != null)
+{
+    <article class="article">
 
-        <div class="img-holder">
-            <img src="@Model.Image.Image.Url" alt="@altText" title="@(Model.Image.Image.GetPropertyValue<string>("titleText"))">
-        </div>
+        @if (Model.Image.Image != null)
+        {
+            var altText = Model.Image.Image.GetPropertyValue<string>("altText").IsNullOrWhiteSpace() ? Model.Image.Image.Name : Model.Image.Image.GetPropertyValue<string>("altText");
+
+            <div class="img-holder">
+                <img src="@Model.Image.Image.Url" alt="@altText" title="@(Model.Image.Image.GetPropertyValue<string>("titleText"))">
+            </div>
         }
+
         <div class="text-holder">
             @Model.Content
             <div class="button-group no-bullet">
                 @if (Model.ReadMoreButton != null)
                 {
-                <a href="@Model.ReadMoreButton.Url" class="button hollow secondary read-more" target="@Model.ReadMoreButton.Target">read more<i class="icon-arrow-right"></i></a>
+                    <a href="@Model.ReadMoreButton.Url" class="button hollow secondary read-more" target="@Model.ReadMoreButton.Target">read more<i class="icon-arrow-right"></i></a>
                 }
                 @if (Model.GetInTouchButton != null)
                 {
-                <a href="@Model.GetInTouchButton.Url" class="button primary" target="@Model.GetInTouchButton.Target">get in touch</a>
+                    <a href="@Model.GetInTouchButton.Url" class="button primary" target="@Model.GetInTouchButton.Target">get in touch</a>
                 }
             </div>
         </div>
-</article>
+    </article>
+}
