@@ -553,21 +553,21 @@ let startX;
 let scrollLeft;
 
 if (slider != null) {
-    slider.addEventListener('mousedown', (e) => {
+    slider.addEventListener('mousedown', function(e) {
         isDown = true;
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
     });
 
-    slider.addEventListener('mouseleave', () => {
+    slider.addEventListener('mouseleave', function() {
         isDown = false;
     });
 
-    slider.addEventListener('mouseup', () => {
+    slider.addEventListener('mouseup', function() {
         isDown = false;
     });
 
-    slider.addEventListener('mousemove', (e) => {
+    slider.addEventListener('mousemove', function(e) {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
