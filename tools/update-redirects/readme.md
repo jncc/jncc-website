@@ -2,7 +2,7 @@
 update-redirects
 ================
 
-This tool updates the redirects in `src/JNCC.PublicWebsite/RewriteMaps.config` from the latest `redirect-list-new-website.xlsx` Excel spreadsheet. 
+This tool updates the redirects in `src/JNCC.PublicWebsite/RewriteMaps.config` from the latest `redirect-list-new-website.xlsx` Excel spreadsheet.
 
 Restore packages:
 
