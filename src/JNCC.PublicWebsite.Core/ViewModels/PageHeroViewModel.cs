@@ -4,5 +4,6 @@
     {
         public string Headline { get; set; }
         public string ImageUrl { get; set; }
+        public string ImageCopyrightText { get; set; }
     }
 }
