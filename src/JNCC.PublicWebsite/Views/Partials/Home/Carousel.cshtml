@@ -21,11 +21,15 @@
                 <div class="slide">
                     <div class="slider-image" style="background-image: url(@image.Url);"></div>
 
-                    <div class="carousel-copyright-statement" >
-                        <div class="text">
-                            @image.TitleText
+                    @if (!image.TitleText.IsNullOrWhiteSpace())
+                    {
+                        <div class="carousel-copyright-statement">
+                            <div class="text">
+                                @image.TitleText
+                            </div>
                         </div>
-                    </div>
+                    }
+
                 </div>
             }
         </div>
