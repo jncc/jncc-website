@@ -14217,10 +14217,6 @@ img.float-right,
 	.slick-prev {
 		bottom: 3rem;
 	}
-
-	.carousel-copyright-statement .text {
-		margin-right: 0;
-	}
 }
 
 @media screen and (max-width: 640px) {
