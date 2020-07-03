@@ -7,6 +7,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         public string Headline { get; set; }
         public IHtmlString Text { get; set; }
-        public IEnumerable<string> ImageUrls { get; set; }
+        public IEnumerable<ImageViewModel> Images { get; set; }
     }
 }

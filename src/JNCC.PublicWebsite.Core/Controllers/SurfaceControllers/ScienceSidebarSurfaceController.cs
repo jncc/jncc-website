@@ -30,7 +30,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             }
 
             var viewModel = _sidebarService.GetSidebarViewModel(CurrentPage as ScienceDetailsPage);
-
+            viewModel.CurrentPageUrl = CurrentPage.Url;
             return PartialView("~/Views/Partials/ScienceSidebar.cshtml", viewModel);
         }
 

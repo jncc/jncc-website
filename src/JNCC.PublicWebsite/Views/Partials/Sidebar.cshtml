@@ -19,7 +19,14 @@
             <ul class="aside-nav no-bullet">
                 @foreach (var link in Model.InThisSectionLinks)
                 {
-                    <li><a href="@link.Url">@link.Text</a></li>
+                    if (Model.CurrentPageUrl.Contains(link.Url))
+                    {
+                        <li><a href="@link.Url" class="active">@link.Text</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@link.Url">@link.Text</a></li>
+                    }
                 }
             </ul>
         </nav>
@@ -32,7 +39,14 @@
             <ul class="aside-nav no-bullet">
                 @foreach (var link in Model.AlsoInLinks)
                 {
-                    <li><a href="@link.Url">@link.Text</a></li>
+                    if (Model.CurrentPageUrl.Contains(link.Url))
+                    {
+                        <li><a href="@link.Url" class="active">@link.Text</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@link.Url">@link.Text</a></li>
+                    }
                 }
             </ul>
         </nav>

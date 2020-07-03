@@ -19,12 +19,19 @@
                 <h2><a href="@category.Url">@category.Text</a></h2>
                 @if (category.HasChildren)
                 {
-                    <ul class="aside-nav no-bullet">
-                        @foreach (var link in category.Children)
-                        {
-                            <li><a href="@link.Url">@link.Text</a></li>
-                        }
-                    </ul>
+            <ul class="aside-nav no-bullet">
+                @foreach (var link in category.Children)
+                {
+                    if (link.Url.Equals(Model.CurrentPageUrl))
+                    {
+                        <li><a href="@link.Url" class="active">@link.Text</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@link.Url">@link.Text</a></li>
+                    }
+                }
+            </ul>
                 }
             </nav>
         }

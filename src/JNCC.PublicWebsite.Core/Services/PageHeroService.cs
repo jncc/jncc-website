@@ -44,7 +44,8 @@ namespace JNCC.PublicWebsite.Core.Services
             return new PageHeroViewModel()
             {
                 Headline = articulate.Name,
-                ImageUrl = articulate.GetCropUrl("blogBanner", "wide")
+                ImageUrl = articulate.GetCropUrl("blogBanner", "wide"),
+               //ImageCopyrightText = ?,
             };
         }
 
@@ -59,6 +60,7 @@ namespace JNCC.PublicWebsite.Core.Services
             {
                 Headline = articulatePost.Name,
                 ImageUrl = articulatePost.GetCropUrl("postImage", "wide")
+                //ImageCopyrightText = ?;
             };
         }
 
@@ -76,7 +78,8 @@ namespace JNCC.PublicWebsite.Core.Services
             return new PageHeroViewModel()
             {
                 Headline = headline,
-                ImageUrl = pageHeroComposition.HeroImage.Url
+                ImageUrl = pageHeroComposition.HeroImage.Url,
+                ImageCopyrightText = pageHeroComposition.HeroImage.GetPropertyValue<string>("titleText"),
             };
         }
 

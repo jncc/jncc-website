@@ -29,6 +29,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             var viewModel = _sidebarService.GetViewModel(CurrentPage as ISidebarComposition);
 
+            viewModel.CurrentPageUrl = CurrentPage.Url;
+
             return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
         }
 
@@ -41,6 +43,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             }
 
             var viewModel = _sidebarService.GetViewModelForArticlePage(CurrentPage as ArticlePage);
+
+            viewModel.CurrentPageUrl = CurrentPage.Url;
 
             return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
         }

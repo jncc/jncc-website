@@ -20,7 +20,7 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	// Mixin content Type 1282 with alias "scienceIFrameSectionSubSectionsSchemaComposition"
+	// Mixin content Type 1286 with alias "scienceIFrameSectionSubSectionsSchemaComposition"
 	/// <summary>Science iFrame Section Sub Sections Schema Composition</summary>
 	public partial interface IScienceIframeSectionSubSectionsSchemaComposition : IPublishedContent
 	{

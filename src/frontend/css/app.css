@@ -8019,6 +8019,11 @@ a:hover > .label {
 	text-decoration: underline;
 }
 
+.aside-nav a.active,
+#sidebar p a.active {
+	color: #2d7a29;
+}
+
 .aside-nav a:hover,
 #sidebar p a:hover {
 	color: #2d7a29;
@@ -8554,6 +8559,28 @@ button.slick-arrow {
 
 .hide-for-all {
 	display: none;
+}
+
+.copyright-statement {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: rgba(255, 255, 255, .8);
+	padding: 5px;
+}
+
+.carousel-copyright-statement {
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+	text-align: right;
+}
+
+.carousel-copyright-statement .text {
+	padding: 5px;
+	background: rgba(255, 255, 255, .8);
+	display: inline-block;
+	margin-right: 14px;
 }
 
 #header {
@@ -14182,6 +14209,13 @@ img.float-right,
 @media screen and (max-width: 767px) {
 	.toc ol > li > ol {
 		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 764px) {
+	.slick-next,
+	.slick-prev {
+		bottom: 3rem;
 	}
 }
 
