@@ -8561,6 +8561,30 @@ button.slick-arrow {
 	display: none;
 }
 
+.copyright-statement {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: rgba(255, 255, 255, .8);
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.carousel-copyright-statement {
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+	text-align: right;
+}
+
+.carousel-copyright-statement .text {
+	padding: 5px;
+	background: rgba(255, 255, 255, .8);
+	display: inline-block;
+	margin-right: 14px;
+}
+
 #header {
 	position: relative;
 	z-index: 500;
@@ -14187,6 +14211,13 @@ img.float-right,
 @media screen and (max-width: 767px) {
 	.toc ol > li > ol {
 		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 764px) {
+	.slick-next,
+	.slick-prev {
+		bottom: 3rem;
 	}
 }
 

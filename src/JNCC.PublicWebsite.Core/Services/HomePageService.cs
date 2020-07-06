@@ -71,12 +71,25 @@ namespace JNCC.PublicWebsite.Core.Services
                 return null;
             }
 
-            var viewModel = new CarouselViewModel()
+            var viewModel = new CarouselViewModel();
+
+            viewModel.Headline = content.Headline;
+            viewModel.Text = content.HeroContent;
+
+            List<ImageViewModel> images = new List<ImageViewModel>();
+
+            foreach(var image in content.HeroImages)
             {
-                ImageUrls = content.HeroImages.WhereNotNull().Select(x => x.Url),
-                Headline = content.Headline,
-                Text = content.HeroContent
-            };
+                ImageViewModel imageModel = new ImageViewModel()
+                {
+                    Url = image.Url,
+                    TitleText = image.GetPropertyValue<string>("titleText"),
+                };
+
+                images.Add(imageModel);
+            }
+
+            viewModel.Images = images;
 
             return viewModel;
         }

@@ -790,9 +790,18 @@ input[type="checkbox"]:focus + .fake-input {
 	bottom: 1rem;
 	z-index: 8;
 
-	@include breakpoint(medium) {
-		top: 50%;
-		transform: translateY(-50%);
+	 @include breakpoint(medium) {
+	 	top: 50%;
+	 	transform: translateY(-50%);
+	 }
+
+	// @include breakpoint(small) {
+	// 	top: 50%;
+	// 	transform: translateY(-50%);
+	// }
+
+	@media screen and (max-width: 764px) {
+		bottom: rem-calc(48px);
 	}
 
 	&:before {
@@ -1076,3 +1085,32 @@ color:red;
 .hide-for-all{
 	display: none;
 }
+
+.copyright-statement {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	background: rgba(255, 255, 255, .8);
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.carousel-copyright-statement {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    text-align: right;
+}
+
+.carousel-copyright-statement .text {
+    padding: 5px;
+    background: rgba(255, 255, 255, .8);
+	display: inline-block;
+	margin-right: 14px;
+}
+
+// @media screen and (max-width: 764px) {
+//     .carousel-copyright-statement .text {
+// 		margin-right: 0px;
+// 	}
+// }

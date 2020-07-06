@@ -16,12 +16,38 @@
             </div>
         </div>
         <div class="main-slider">
-            @foreach (var url in Model.Carousel.ImageUrls)
+            @foreach (var image in Model.Carousel.Images)
             {
                 <div class="slide">
-                    <div class="slider-image" style="background-image: url(@url);"></div>
+                    <div class="slider-image" style="background-image: url(@image.Url);"></div>
+
+                    @if (!image.TitleText.IsNullOrWhiteSpace())
+                    {
+                        <div class="carousel-copyright-statement">
+                            <div class="text">
+                                @image.TitleText
+                            </div>
+                        </div>
+                    }
+
                 </div>
             }
         </div>
     </div>
 }
+
+<script>
+    var visualsection = document.getElementsByClassName("visual-section");
+    
+    if (visualsection != undefined)
+    {
+        $("<style>")
+        .prop("type", "text/css")
+        .html("\
+        .carousel-copyright-statement {\
+           top:" + visualsection.clientHeight + "; \
+        }")
+        .appendTo("head");
+    }
+</script>
+
