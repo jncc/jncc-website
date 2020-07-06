@@ -32,6 +32,7 @@ namespace JNCC.PublicWebsite.Core.Services
                 CategorisedPages = GetCategorisedPages(scienceCategoryPage),
                 RelatedCategories = GetRelatedCategories(scienceCategoryPage),
                 TurnOffAZSection = scienceCategoryPage.TurnOffAzsection,
+                SimpleAZSection = scienceCategoryPage.SimpleAzsection,
             };
         }
 

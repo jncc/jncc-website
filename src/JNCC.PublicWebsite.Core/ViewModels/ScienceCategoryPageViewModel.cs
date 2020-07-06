@@ -35,5 +35,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         }
 
         public bool TurnOffAZSection { get; set; }
+        public bool SimpleAZSection { get; set; }
     }
 }

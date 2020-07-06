@@ -64,7 +64,16 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Turn off A-Z Section: By setting this value to "True", the A-Z will display the pages alphabetically in a list without the letter headings
+		/// Simple A-Z Section: By setting this value to "True", the A-Z will display the pages alphabetically in a list without the letter headings
+		///</summary>
+		[ImplementPropertyType("simpleAZSection")]
+		public bool SimpleAzsection
+		{
+			get { return this.GetPropertyValue<bool>("simpleAZSection"); }
+		}
+
+		///<summary>
+		/// Turn off A-Z Section: By setting this value to "True", the A-Z will be hidden
 		///</summary>
 		[ImplementPropertyType("turnOffAZSection")]
 		public bool TurnOffAzsection
