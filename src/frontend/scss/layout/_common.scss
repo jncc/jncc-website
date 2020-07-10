@@ -1094,6 +1094,7 @@ color:red;
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
+	font-size: 14px;
 }
 .carousel-copyright-statement {
     position: absolute;
@@ -1107,10 +1108,11 @@ color:red;
     background: rgba(255, 255, 255, .8);
 	display: inline-block;
 	margin-right: 14px;
+	font-size: 14px;
 }
 
-// @media screen and (max-width: 764px) {
-//     .carousel-copyright-statement .text {
-// 		margin-right: 0px;
-// 	}
-// }
+ @media screen and (max-width: 764px) {
+     .carousel-copyright-statement {
+ 		top: 23.2em;
+ 	}
+ }
