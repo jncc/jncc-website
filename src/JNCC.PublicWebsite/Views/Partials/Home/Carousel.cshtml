@@ -35,19 +35,3 @@
         </div>
     </div>
 }
-
-<script>
-    var visualsection = document.getElementsByClassName("visual-section");
-    
-    if (visualsection != undefined)
-    {
-        $("<style>")
-        .prop("type", "text/css")
-        .html("\
-        .carousel-copyright-statement {\
-           top:" + visualsection.clientHeight + "; \
-        }")
-        .appendTo("head");
-    }
-</script>
-
