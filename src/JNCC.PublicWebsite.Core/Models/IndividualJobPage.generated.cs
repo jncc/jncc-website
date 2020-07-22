@@ -55,15 +55,6 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
-		/// Content
-		///</summary>
-		[ImplementPropertyType("competencesContent")]
-		public IHtmlString CompetencesContent
-		{
-			get { return this.GetPropertyValue<IHtmlString>("competencesContent"); }
-		}
-
-		///<summary>
 		/// Grade
 		///</summary>
 		[ImplementPropertyType("grade")]
@@ -91,6 +82,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Preamble text: Content displayed above the job table
+		///</summary>
+		[ImplementPropertyType("preambleText")]
+		public IHtmlString PreambleText
+		{
+			get { return this.GetPropertyValue<IHtmlString>("preambleText"); }
+		}
+
+		///<summary>
 		/// Reference Number
 		///</summary>
 		[ImplementPropertyType("referenceNumber")]
@@ -106,6 +106,15 @@ namespace JNCC.PublicWebsite.Core.Models
 		public IHtmlString SalaryBenefitsContent
 		{
 			get { return this.GetPropertyValue<IHtmlString>("salaryBenefitsContent"); }
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("successProfilesContent")]
+		public IHtmlString SuccessProfilesContent
+		{
+			get { return this.GetPropertyValue<IHtmlString>("successProfilesContent"); }
 		}
 
 		///<summary>

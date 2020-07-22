@@ -7,74 +7,88 @@
 {
     return;
 }
-<aside id="sidebar">
-    @if (Model.HasPrimaryCallToActionButton)
-    {
-        <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
-    }
-    @if (Model.HasInThisSectionLinks)
-    {
-        <nav class="holder" aria-label="aside-navigation">
-            <h2>In this section</h2>
-            <ul class="aside-nav no-bullet">
-                @foreach (var link in Model.InThisSectionLinks)
-                {
-                    if (Model.CurrentPageUrl.Contains(link.Url))
-                    {
-                        <li><a href="@link.Url" class="active">@link.Text</a></li>
-                    }
-                    else
-                    {
-                        <li><a href="@link.Url">@link.Text</a></li>
-                    }
-                }
-            </ul>
-        </nav>
-    }
+    <aside id="sidebar">
+        @if (Model.HasPrimaryCallToActionButton)
+        {
+            <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
+        }
 
-    @if (Model.HasAlsoInLinks)
-    {
-        <nav class="holder" aria-label="aside-navigation">
-            <h2>@Model.AlsoInLinksTitle</h2>
-            <ul class="aside-nav no-bullet">
-                @foreach (var link in Model.AlsoInLinks)
-                {
-                    if (Model.CurrentPageUrl.Contains(link.Url))
+        @if (Model.HasLatestVacancies)
+        {
+            <nav class="holder" aria-label="aside-navigation">
+                <h2>Latest Vacancies</h2>
+                <ul class="aside-nav no-bullet">
+                    @foreach (var job in Model.LatestVacancies)
                     {
-                        <li><a href="@link.Url" class="active">@link.Text</a></li>
+                        <li><a href="@job.Url" top" aria-hidden="true" data-tooltip title="Location: @job.Location &#013;&#010; Grade: @job.Grade">@job.JobTitle</a></li>
                     }
-                    else
+                </ul>
+            </nav>
+        }
+
+        @if (Model.HasInThisSectionLinks)
+        {
+            <nav class="holder" aria-label="aside-navigation">
+                <h2>In this section</h2>
+                <ul class="aside-nav no-bullet">
+                    @foreach (var link in Model.InThisSectionLinks)
                     {
-                        <li><a href="@link.Url">@link.Text</a></li>
+                        if (Model.CurrentPageUrl.Contains(link.Url))
+                        {
+                            <li><a href="@link.Url" class="active">@link.Text</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@link.Url">@link.Text</a></li>
+                        }
                     }
-                }
-            </ul>
-        </nav>
-    }
+                </ul>
+            </nav>
+        }
 
-    @if (Model.HasDataHubLinks)
-    {
-        <nav class="holder" aria-label="aside-navigation">
-            <h2>Data Hub Links</h2>
-            <ul class="aside-nav no-bullet">
-                @foreach (var link in Model.DataHubLinks)
-                {
-                    <li><a href="@link.Url" target="@link.Target">@link.Text</a></li>
-                }
-            </ul>
-        </nav>
-    }
+        @if (Model.HasAlsoInLinks)
+        {
+            <nav class="holder" aria-label="aside-navigation">
+                <h2>@Model.AlsoInLinksTitle</h2>
+                <ul class="aside-nav no-bullet">
+                    @foreach (var link in Model.AlsoInLinks)
+                    {
+                        if (Model.CurrentPageUrl.Contains(link.Url))
+                        {
+                            <li><a href="@link.Url" class="active">@link.Text</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@link.Url">@link.Text</a></li>
+                        }
+                    }
+                </ul>
+            </nav>
+        }
 
-    @if (Model.HasSeeAlsoLinks)
-    {
-        <nav class="holder" aria-label="aside-navigation">
-            <h2>See also</h2>
-            <ul class="aside-nav no-bullet">
-                @foreach (var link in Model.SeeAlsoLinks)
-                {
-                    <li><a href="@link.Url" target="@link.Target">@link.Text</a></li>
-                }
-            </ul>
-        </nav>
-    }
-</aside>
+        @if (Model.HasDataHubLinks)
+        {
+            <nav class="holder" aria-label="aside-navigation">
+                <h2>Data Hub Links</h2>
+                <ul class="aside-nav no-bullet">
+                    @foreach (var link in Model.DataHubLinks)
+                    {
+                        <li><a href="@link.Url" target="@link.Target">@link.Text</a></li>
+                    }
+                </ul>
+            </nav>
+        }
+
+        @if (Model.HasSeeAlsoLinks)
+        {
+            <nav class="holder" aria-label="aside-navigation">
+                <h2>See also</h2>
+                <ul class="aside-nav no-bullet">
+                    @foreach (var link in Model.SeeAlsoLinks)
+                    {
+                        <li><a href="@link.Url" target="@link.Target">@link.Text</a></li>
+                    }
+                </ul>
+            </nav>
+        }
+    </aside>

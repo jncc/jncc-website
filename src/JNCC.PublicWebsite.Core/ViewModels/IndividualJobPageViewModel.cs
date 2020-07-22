@@ -7,5 +7,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
     {
         public IReadOnlyDictionary<string, string> KeyData { get; set; }
         public IEnumerable<AccordionItemViewModel> TabbedContent { get; set; }
+        public IHtmlString PreambleText { get; set; }
     }
 }
