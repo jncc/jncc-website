@@ -24,7 +24,7 @@ namespace JNCC.PublicWebsite.Core.Services
             };
         }
 
-        private IEnumerable<JobItemViewModel> GetLatestJobs(CareersLandingPage model)
+        public IEnumerable<JobItemViewModel> GetLatestJobs(CareersLandingPage model)
         {
             var latestJobs = model.Children<IndividualJobPage>().OrderByDescending(x => x.UpdateDate).Take(NumberOfLatestJobs);
             var viewModels = new List<JobItemViewModel>();

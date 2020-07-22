@@ -9,6 +9,9 @@
         <div class="two-columns">
             <div id="content">
                 @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+
+                @Model.PreambleText
+
                 @if (Model.KeyData.Any())
                 {
                     <table>
@@ -21,7 +24,6 @@
                         }
                     </table>
                 }
-                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
                 @if (Model.TabbedContent.Any())
                 {
                     <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-tabs" id="profile-tabs">
@@ -39,8 +41,12 @@
                         }
                     </div>
                 }
+                <br />
+                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
             </div>
+
             @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
+        
         </div>
     </div>
     @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))

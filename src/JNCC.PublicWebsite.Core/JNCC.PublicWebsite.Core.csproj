@@ -365,6 +365,7 @@
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
     <Compile Include="Controllers\ApiControllers\ImagePickerApiController.cs" />
+    <Compile Include="Controllers\RenderMvcControllers\HowToApplyController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\GenericListingPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\CareersLandingPageController.cs" />
@@ -393,6 +394,7 @@
     <Compile Include="Models\CalloutCardSchema.cs" />
     <Compile Include="Models\CareersLandingPage.generated.cs" />
     <Compile Include="Models\ContentItemSchema.cs" />
+    <Compile Include="Models\HowToApplyPage.generated.cs" />
     <Compile Include="Models\IFramePage.generated.cs" />
     <Compile Include="Models\IScienceCategorisablePage.cs" />
     <Compile Include="Models\PageAttributes.cs" />
@@ -463,6 +465,7 @@
     <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="Services\SearchIndexingQueueService.cs" />
     <Compile Include="Services\SidebarServiceBase.cs" />
+    <Compile Include="ViewModels\HowToApplyViewModel.cs" />
     <Compile Include="ViewModels\GenericListingPageItemViewModel.cs" />
     <Compile Include="ViewModels\IFramePageViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryItemViewModel.cs" />

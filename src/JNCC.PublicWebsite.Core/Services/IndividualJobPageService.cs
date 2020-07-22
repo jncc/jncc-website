@@ -15,7 +15,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.Services
             return new IndividualJobPageViewModel()
             {
                 KeyData = GetKeyData(model),
-                TabbedContent = GetTabbedContent(model)
+                TabbedContent = GetTabbedContent(model),
+                PreambleText = model.PreambleText,
             };
         }
 
@@ -25,7 +26,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.Services
             {
                 new AccordionItemViewModel ( "background", "Background", model.BackgroundContent ),
                 new AccordionItemViewModel ( "post-duties", "Post Duties", model.PostDutiesContent ),
-                new AccordionItemViewModel ( "competences", "Competences", model.CompetencesContent ),
+                new AccordionItemViewModel ( "successprofiles", "Success Profiles", model.SuccessProfilesContent ),
                 new AccordionItemViewModel ( "salary-and-benefits", "Salary & Benefits", model.SalaryBenefitsContent )
             };
 

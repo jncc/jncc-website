@@ -9,5 +9,6 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         public IHtmlString Preamble { get; set; }
         public IEnumerable<IPublishedContent> MainContent { get; set; }
         public IEnumerable<CareersListItemViewModel> Careers { get; set; }
+        public CareersListItemViewModel FeaturedJob { get; set; }
     }
 }
