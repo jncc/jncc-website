@@ -13,19 +13,6 @@
             <a href="@Model.PrimaryCallToActionButton.Url" class="button primary large medium-expanded" target="@Model.PrimaryCallToActionButton.Target">@Model.PrimaryCallToActionButton.Text</a>
         }
 
-        @if (Model.HasLatestVacancies)
-        {
-            <nav class="holder" aria-label="aside-navigation">
-                <h2>Latest Vacancies</h2>
-                <ul class="aside-nav no-bullet">
-                    @foreach (var job in Model.LatestVacancies)
-                    {
-                        <li><a href="@job.Url" top" aria-hidden="true" data-tooltip title="Location: @job.Location &#013;&#010; Grade: @job.Grade">@job.JobTitle</a></li>
-                    }
-                </ul>
-            </nav>
-        }
-
         @if (Model.HasInThisSectionLinks)
         {
             <nav class="holder" aria-label="aside-navigation">
@@ -87,6 +74,19 @@
                     @foreach (var link in Model.SeeAlsoLinks)
                     {
                         <li><a href="@link.Url" target="@link.Target">@link.Text</a></li>
+                    }
+                </ul>
+            </nav>
+        }
+
+        @if (Model.HasLatestVacancies)
+        {
+            <nav class="holder" aria-label="aside-navigation">
+                <h2>Latest Vacancies</h2>
+                <ul class="aside-nav no-bullet">
+                    @foreach (var job in Model.LatestVacancies)
+                    {
+                        <li><a href="@job.Url" top" aria-hidden="true" data-tooltip title="Location: @job.Location &#013;&#010; Grade: @job.Grade">@job.JobTitle</a></li>
                     }
                 </ul>
             </nav>

@@ -33,7 +33,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             viewModel.CurrentPageUrl = CurrentPage.Url;
 
-            if(CurrentPage.DocumentTypeAlias == IndividualJobPage.ModelTypeAlias)
+            if(CurrentPage.DocumentTypeAlias == IndividualJobPage.ModelTypeAlias || CurrentPage.DocumentTypeAlias == HowToApplyPage.ModelTypeAlias)
             {
                 viewModel.LatestVacancies = _careersSidebarService.GetLatestJobs(CurrentPage.Parent as CareersLandingPage);
             }

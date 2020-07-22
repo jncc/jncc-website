@@ -4,6 +4,7 @@ using JNCC.PublicWebsite.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Umbraco.Core;
 using Umbraco.Web;
 
 namespace JNCC.PublicWebsite.Core.Services
@@ -53,6 +54,28 @@ namespace JNCC.PublicWebsite.Core.Services
             }
 
             return viewModels;
+        }
+
+        public CareersListItemViewModel GetFeaturedJob(CareersLandingPage model, string id)
+        {
+            if (id.IsNullOrWhiteSpace()) { return null; }
+            
+            var jobs = model.Children<IndividualJobPage>().Where(x => x.Id.ToString().Equals(id));
+
+            if (jobs == null && !jobs.Any()) { return null; }
+            
+            var job = jobs.First();
+            var viewModel = new CareersListItemViewModel()
+            {
+                Grade = job.Grade,
+                JobTitle = job.GetHeadline(),
+                Location = job.Location,
+                Team = job.Team,
+                Type = job.TypeOfAppointment,
+                Url = job.Url
+            };
+
+            return viewModel;
         }
     }
 }

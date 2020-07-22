@@ -1602,6 +1602,7 @@
     <Content Include="Views\Partials\IFrame\ImageCode.cshtml" />
     <Content Include="Views\Partials\ScienceCategory\Slider.cshtml" />
     <Content Include="Views\Partials\ScienceDetails\Slider.cshtml" />
+    <Content Include="Views\JobApplicationPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
