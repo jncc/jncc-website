@@ -62,20 +62,25 @@ namespace JNCC.PublicWebsite.Core.Services
             
             var jobs = model.Children<IndividualJobPage>().Where(x => x.Id.ToString().Equals(id));
 
-            if (jobs == null && !jobs.Any()) { return null; }
-            
-            var job = jobs.First();
-            var viewModel = new CareersListItemViewModel()
-            {
-                Grade = job.Grade,
-                JobTitle = job.GetHeadline(),
-                Location = job.Location,
-                Team = job.Team,
-                Type = job.TypeOfAppointment,
-                Url = job.Url
-            };
+            if (jobs == null) { return null; }
 
-            return viewModel;
+            if (jobs.Any())
+            {
+                var job = jobs.First();
+                var viewModel = new CareersListItemViewModel()
+                {
+                    Grade = job.Grade,
+                    JobTitle = job.GetHeadline(),
+                    Location = job.Location,
+                    Team = job.Team,
+                    Type = job.TypeOfAppointment,
+                    Url = job.Url
+                };
+
+                return viewModel;
+            }
+
+            return null;
         }
     }
 }
