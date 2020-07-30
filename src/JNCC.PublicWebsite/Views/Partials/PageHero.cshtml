@@ -1,12 +1,16 @@
 ﻿@model PageHeroViewModel
-@{ var textLength = Model.ImageCopyrightText.Length; }
-<div class="visual-section" style="background-image: url(@Model.ImageUrl);">
-    <div class="container">
-        <h1>@Model.Headline</h1>
-    </div>
-    <div class="copyright-statement">
-        <div class="text-left">
-            @Model.ImageCopyrightText
+    <div class="visual-section" style="background-image: url(@Model.ImageUrl);">
+        <div class="container">
+            <h1>@Model.Headline</h1>
         </div>
+
+        @if (!Model.ImageCopyrightText.IsNullOrWhiteSpace())
+        {
+            <div class="copyright-statement">
+                <div class="text-left">
+                    @Model.ImageCopyrightText
+                </div>
+            </div>
+        }
+
     </div>
-</div>
