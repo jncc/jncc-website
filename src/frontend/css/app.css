@@ -8584,6 +8584,8 @@ button.slick-arrow {
 	background: rgba(255, 255, 255, .8);
 	display: inline-block;
 	margin-right: 14px;
+	padding-left: 10px;
+	padding-right: 10px;
 	font-size: 14px;
 	padding-left: 10px;
 	padding-right: 10px;
