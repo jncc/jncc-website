@@ -30,7 +30,9 @@ namespace JNCC.PublicWebsite.Core.Services
                 ImageTextSection = GetImageTextSectionViewModels(scienceCategoryPage.ImageAndTextSection),
                 Sections = GetSectionViewModels(scienceCategoryPage.MainContent),
                 CategorisedPages = GetCategorisedPages(scienceCategoryPage),
-                RelatedCategories = GetRelatedCategories(scienceCategoryPage)
+                RelatedCategories = GetRelatedCategories(scienceCategoryPage),
+                TurnOffAZSection = scienceCategoryPage.TurnOffAzsection,
+                SimpleAZSection = scienceCategoryPage.SimpleAzsection,
             };
         }
 

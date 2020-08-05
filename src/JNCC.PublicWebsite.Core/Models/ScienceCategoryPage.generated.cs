@@ -64,6 +64,24 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 
 		///<summary>
+		/// Simple A-Z Section: By setting this value to "True", the A-Z will display the pages alphabetically in a list without the letter headings
+		///</summary>
+		[ImplementPropertyType("simpleAZSection")]
+		public bool SimpleAzsection
+		{
+			get { return this.GetPropertyValue<bool>("simpleAZSection"); }
+		}
+
+		///<summary>
+		/// Turn off A-Z Section: By setting this value to "True", the A-Z will be hidden
+		///</summary>
+		[ImplementPropertyType("turnOffAZSection")]
+		public bool TurnOffAzsection
+		{
+			get { return this.GetPropertyValue<bool>("turnOffAZSection"); }
+		}
+
+		///<summary>
 		/// Get in Touch Button: The link & text for the Get in Touch button which accompanies the Get in Touch content below the main content of the page.
 		///</summary>
 		[ImplementPropertyType("getInTouchButton")]

@@ -13,7 +13,6 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
             var provider = new UmbracoScienceDetailsPageProvider(Umbraco, ApplicationContext.ApplicationCache.RequestCache);
             var service = new ScienceCategoryPageService(provider);
             var viewModel = service.GetViewModel(model);
-
             return CurrentTemplate(viewModel);
         }
     }

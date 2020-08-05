@@ -89,41 +89,80 @@
                     }
                 }
                 @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
-                @if (Model.HasCategorisedPages)
+
+                @if (!Model.TurnOffAZSection)
                 {
-                    <h2>Pages in @Model.Headline</h2>
-                    <div class="row small-collapse small-up-1 medium-up-2">
-                        @foreach (var kvp in Model.CategorisedPages)
-                        {
-                            <div class="column">
-                                <h3>@kvp.Key</h3>
+                    if (Model.HasCategorisedPages)
+                    {
+                        <h2>Pages in @Model.Headline</h2>
+                        <div class="row small-collapse small-up-1 medium-up-2">
+                            @if (Model.SimpleAZSection)
+                            {
                                 <ul>
-                                    @foreach (var page in kvp.Value)
+                                    @foreach (var kvp in Model.CategorisedPages)
                                     {
-                                        <li><a href="@page.Url">@page.Text</a></li>
+                                        foreach (var page in kvp.Value)
+                                        {
+                                            <li><a href="@page.Url">@page.Text</a></li>
+                                        }
                                     }
                                 </ul>
-                            </div>
-                        }
-                    </div>
+                            }
+                            else
+                            {
+                                foreach (var kvp in Model.CategorisedPages)
+                                {
+                                    <div class="column">
+                                        <h3>@kvp.Key</h3>
+                                        <ul>
+                                            @foreach (var page in kvp.Value)
+                                            {
+                                                <li><a href="@page.Url">@page.Text</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
                 }
-                @if (Model.HasRelatedCategories)
+
+                @if (!Model.TurnOffAZSection)
                 {
-                    <h2>Related Categories</h2>
-                    <div class="row small-collapse small-up-1 medium-up-2">
-                        @foreach (var kvp in Model.RelatedCategories)
-                        {
-                            <div class="column">
-                                <h3>@kvp.Key</h3>
+                    if (Model.HasRelatedCategories)
+                    {
+                        <h2>Related Categories</h2>
+                        <div class="row small-collapse small-up-1 medium-up-2">
+                            @if (Model.SimpleAZSection)
+                            {
                                 <ul>
-                                    @foreach (var page in kvp.Value)
+                                    @foreach (var kvp in Model.RelatedCategories)
                                     {
-                                        <li><a href="@page.Url">@page.Text</a></li>
+                                        foreach (var page in kvp.Value)
+                                        {
+                                            <li><a href="@page.Url">@page.Text</a></li>
+                                        }
                                     }
                                 </ul>
-                            </div>
-                        }
-                    </div>
+                            }
+                            else
+                            {
+                                foreach (var kvp in Model.RelatedCategories)
+                                {
+                                    <div class="column">
+                                        <h3>@kvp.Key</h3>
+                                        <ul>
+                                            @foreach (var page in kvp.Value)
+                                            {
+                                                <li><a href="@page.Url">@page.Text</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                    }
                 }
             </div>
             @(Html.Action<ScienceSidebarSurfaceController>("RenderScienceCategoryPageSidebar"))
