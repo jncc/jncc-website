@@ -53,9 +53,7 @@ namespace update_redirects
 
         static void WriteMapFile(IEnumerable<XElement> redirects)
         {
-            // get groups of up to 2000 redirects
-            // to try to stay below the maximum map file size!
-            // also, IIS will break if there any duplicate map keys
+            // IIS will break if there any duplicate map keys
             var distinctRedirects = redirects
                 .DistinctBy(r => r.Attribute("key").Value);
 

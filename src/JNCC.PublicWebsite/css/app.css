@@ -8567,6 +8567,9 @@ button.slick-arrow {
 	right: 0;
 	background: rgba(255, 255, 255, .8);
 	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
 }
 
 .carousel-copyright-statement {
@@ -8581,6 +8584,9 @@ button.slick-arrow {
 	background: rgba(255, 255, 255, .8);
 	display: inline-block;
 	margin-right: 14px;
+	font-size: 14px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #header {
@@ -14216,6 +14222,10 @@ img.float-right,
 	.slick-next,
 	.slick-prev {
 		bottom: 3rem;
+	}
+
+	.carousel-copyright-statement {
+		top: 23.2em;
 	}
 }
 

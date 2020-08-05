@@ -1,0 +1,48 @@
+﻿@model HowToApplyPageViewModel
+@{
+    Layout = "Master.cshtml";
+}
+<main id="main">
+    @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
+    <div class="container">
+        @(Html.Action<BreadcrumbsSurfaceController>("RenderBreadcrumbs"))
+        <div class="two-columns">
+            <div id="content">
+                @(Html.Action<PageHeroSurfaceController>("RenderNoPageHeroHeadline"))
+
+                @if (Model.FeaturedJob != null)
+                {
+                    <div style="background-color:white">
+                            <h2 id="vacancies">Thank you for your interest in our vacancy</h2>
+                            <table style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <th>Job title</th>
+                                        <th>Grade</th>
+                                        <th>Type</th>
+                                        <th>Location</th>
+                                        <th>Team</th>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="@Model.FeaturedJob.Url">@Model.FeaturedJob.JobTitle</a></td>
+                                        <td>@Model.FeaturedJob.Grade</td>
+                                        <td>@Model.FeaturedJob.Type</td>
+                                        <td>@Model.FeaturedJob.Location</td>
+                                        <td>@Model.FeaturedJob.Team</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                }
+
+
+                @Model.Content.MainContent
+
+                @(Html.Action<PageMetaInformationSurfaceController>("RenderPageMetaInformation"))
+            </div>
+            @(Html.Action<SidebarSurfaceController>("RenderSidebar"))
+        </div>
+    </div>
+    @(Html.Action<GetInTouchSurfaceController>("RenderGetInTouch"))
+    @(Html.Action<RelatedItemsSurfaceController>("RenderRelatedItems"))
+</main>

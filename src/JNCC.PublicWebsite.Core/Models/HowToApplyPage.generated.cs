@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace JNCC.PublicWebsite.Core.Models
 {
-	/// <summary>Individual Job Page</summary>
-	[PublishedContentModel("individualJobPage")]
-	public partial class IndividualJobPage : PublishedContentModel, IGetInTouchComposition, INavigationSettingsComposition, IPageHeroComposition, IPageMetaInformationComposition, IPageSpecificIncludesComposition, IRelatedItemsComposition, ISeoComposition, ISidebarComposition
+	/// <summary>How to Apply Page</summary>
+	[PublishedContentModel("howToApplyPage")]
+	public partial class HowToApplyPage : PublishedContentModel, IGetInTouchComposition, INavigationSettingsComposition, IPageHeroComposition, IPageMetaInformationComposition, IPageSpecificIncludesComposition, IRelatedItemsComposition, ISeoComposition, ISidebarComposition
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "individualJobPage";
+		public new const string ModelTypeAlias = "howToApplyPage";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public IndividualJobPage(IPublishedContent content)
+		public HowToApplyPage(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,99 +40,18 @@ namespace JNCC.PublicWebsite.Core.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<IndividualJobPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HowToApplyPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Content
+		/// Main Content: The main content of the page
 		///</summary>
-		[ImplementPropertyType("backgroundContent")]
-		public IHtmlString BackgroundContent
+		[ImplementPropertyType("mainContent")]
+		public IHtmlString MainContent
 		{
-			get { return this.GetPropertyValue<IHtmlString>("backgroundContent"); }
-		}
-
-		///<summary>
-		/// Grade
-		///</summary>
-		[ImplementPropertyType("grade")]
-		public string Grade
-		{
-			get { return this.GetPropertyValue<string>("grade"); }
-		}
-
-		///<summary>
-		/// Location
-		///</summary>
-		[ImplementPropertyType("location")]
-		public string Location
-		{
-			get { return this.GetPropertyValue<string>("location"); }
-		}
-
-		///<summary>
-		/// Content
-		///</summary>
-		[ImplementPropertyType("postDutiesContent")]
-		public IHtmlString PostDutiesContent
-		{
-			get { return this.GetPropertyValue<IHtmlString>("postDutiesContent"); }
-		}
-
-		///<summary>
-		/// Preamble text: Content displayed above the job table
-		///</summary>
-		[ImplementPropertyType("preambleText")]
-		public IHtmlString PreambleText
-		{
-			get { return this.GetPropertyValue<IHtmlString>("preambleText"); }
-		}
-
-		///<summary>
-		/// Reference Number
-		///</summary>
-		[ImplementPropertyType("referenceNumber")]
-		public string ReferenceNumber
-		{
-			get { return this.GetPropertyValue<string>("referenceNumber"); }
-		}
-
-		///<summary>
-		/// Content
-		///</summary>
-		[ImplementPropertyType("salaryBenefitsContent")]
-		public IHtmlString SalaryBenefitsContent
-		{
-			get { return this.GetPropertyValue<IHtmlString>("salaryBenefitsContent"); }
-		}
-
-		///<summary>
-		/// Content
-		///</summary>
-		[ImplementPropertyType("successProfilesContent")]
-		public IHtmlString SuccessProfilesContent
-		{
-			get { return this.GetPropertyValue<IHtmlString>("successProfilesContent"); }
-		}
-
-		///<summary>
-		/// Team
-		///</summary>
-		[ImplementPropertyType("team")]
-		public string Team
-		{
-			get { return this.GetPropertyValue<string>("team"); }
-		}
-
-		///<summary>
-		/// Type of Appointment
-		///</summary>
-		[ImplementPropertyType("typeOfAppointment")]
-		public string TypeOfAppointment
-		{
-			get { return this.GetPropertyValue<string>("typeOfAppointment"); }
+			get { return this.GetPropertyValue<IHtmlString>("mainContent"); }
 		}
 
 		///<summary>

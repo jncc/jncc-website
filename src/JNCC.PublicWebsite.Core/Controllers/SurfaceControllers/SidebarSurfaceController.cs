@@ -10,6 +10,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
         private readonly NavigationItemService _navigationItemService;
         private readonly IDataHubRawQueryService _dataHubRawQueryService;
         private readonly SidebarService _sidebarService;
+        private readonly CareersSidebarService _careersSidebarService;
 
         public SidebarSurfaceController()
         {
@@ -17,6 +18,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
             _dataHubRawQueryService = new SearchService(config);
             _navigationItemService = new NavigationItemService();
             _sidebarService = new SidebarService(_navigationItemService, _dataHubRawQueryService);
+            _careersSidebarService = new CareersSidebarService(_navigationItemService, _dataHubRawQueryService);
         }
 
         [ChildActionOnly]
@@ -31,6 +33,10 @@ namespace JNCC.PublicWebsite.Core.Controllers.SurfaceControllers
 
             viewModel.CurrentPageUrl = CurrentPage.Url;
 
+            if(CurrentPage.DocumentTypeAlias == IndividualJobPage.ModelTypeAlias || CurrentPage.DocumentTypeAlias == HowToApplyPage.ModelTypeAlias)
+            {
+                viewModel.LatestVacancies = _careersSidebarService.GetLatestJobs(CurrentPage.Parent as CareersLandingPage);
+            }
             return PartialView("~/Views/Partials/Sidebar.cshtml", viewModel);
         }
 

@@ -25,5 +25,14 @@ namespace JNCC.PublicWebsite.Core.ViewModels
         }
 
         public string CurrentPageUrl { get; set; }
+
+        public IEnumerable<JobItemViewModel> LatestVacancies { get; set; }
+        public bool HasLatestVacancies
+        {
+            get
+            {
+                return ExistenceUtility.IsNullOrEmpty(LatestVacancies) == false;
+            }
+        }
     }
 }

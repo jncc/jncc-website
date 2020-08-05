@@ -1092,12 +1092,15 @@ color:red;
 	right: 0px;
 	background: rgba(255, 255, 255, .8);
 	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
 }
 .carousel-copyright-statement {
     position: absolute;
     bottom: 0;
     width: 100vw;
-    text-align: right;
+	text-align: right;
 }
 
 .carousel-copyright-statement .text {
@@ -1105,10 +1108,13 @@ color:red;
     background: rgba(255, 255, 255, .8);
 	display: inline-block;
 	margin-right: 14px;
+	font-size: 14px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
-// @media screen and (max-width: 764px) {
-//     .carousel-copyright-statement .text {
-// 		margin-right: 0px;
-// 	}
-// }
+ @media screen and (max-width: 764px) {
+     .carousel-copyright-statement {
+ 		top: 23.2em;
+ 	}
+ }
