@@ -1,12 +1,4 @@
 ﻿@model IHasLatestNewsSectionViewModel
-@{
-    var cookiePolicyAcceptance = "false";
-    var value = Request.Cookies["cookiePolicyAcceptance"];
-    if (Request.Cookies["cookiePolicyAcceptance"] != null)
-    {
-        cookiePolicyAcceptance = Request.Cookies["cookiePolicyAcceptance"].Value;
-    }
-}
 
 <section class="widget-section">
     <img src="/images/logo-decor.png" alt="decoration" class="decor">
@@ -42,7 +34,7 @@
                     </div>
                 </div>
             }
-            @if (Model.LatestNewsSection.SocialFeed != null && Model.LatestNewsSection.SocialFeed.HasTwitterFeedUrl && cookiePolicyAcceptance == "true")
+            @if (Model.LatestNewsSection.SocialFeed != null && Model.LatestNewsSection.SocialFeed.HasTwitterFeedUrl)
             {
                 <div class="columns small-12 large-4 twitter-print-hide">
                     <h2>Twitter</h2>

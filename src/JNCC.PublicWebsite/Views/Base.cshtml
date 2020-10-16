@@ -3,12 +3,6 @@
     Layout = null;
     Html.RequiresJs("/js/lib/jquery-2.2.4.min.js", 1);
     Html.RequiresJs("/js/lib/foundation-6.5.0.min.js");
-    var cookiePolicyAcceptance = "false";
-    var value = Request.Cookies["cookiePolicyAcceptance"];
-    if (Request.Cookies["cookiePolicyAcceptance"] != null)
-    {
-        cookiePolicyAcceptance = Request.Cookies["cookiePolicyAcceptance"].Value;
-    }
 }
 <!doctype html>
 <html @(Html.Action<PageAttributesSurfaceController>("RenderAttributes"))>
@@ -22,17 +16,9 @@
     <link rel="stylesheet" href="~/css/foundation-icons.css">
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
     @RenderSection("AdditionalHeadIncludes", false)
-    @if (cookiePolicyAcceptance == "true")
-    {
-        @Html.RenderJsHere()
-    }
-    else
-    {
-        <script src="/js/lib/foundation-6.5.0.min.js" defer></script>
-        <script src="/js/lib/jquery-2.2.4.min.js"></script>
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
-        <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>    
-    }
+    
+    @Html.RenderJsHere()
+    
     @(Html.Action<PageIncludesSurfaceController>("RenderHeadIncludes"))
 </head>
 <body>
@@ -49,12 +35,8 @@
     </div>
     <a class="accessibility" href="#wrapper">Back to top</a>
 
-    <div data-cookie-banner-container class="sticky-cookie"></div>
     @RenderSection("EndOfBodyIncludes", false)
-    @if (Request.Cookies["cookiePolicyAcceptance"] == null)
-    {
-        @(Html.Action<CookieBannerTemplateSurfaceController>("RenderCookieBannerTemplate"))
-    }
+    
     <script src="~/js/app.js?v=1.3"></script>
     @(Html.Action<PageIncludesSurfaceController>("RenderBodyIncludes"))
 </body>
