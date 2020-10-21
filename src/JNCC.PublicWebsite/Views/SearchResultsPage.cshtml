@@ -2,6 +2,9 @@
 @{
     Layout = "Master.cshtml";
 }
+
+@using JNCC.PublicWebsite.Utilities
+
 <main id="main">
     @(Html.Action<PageHeroSurfaceController>("RenderPageHero"))
     <div class="container">
@@ -23,7 +26,7 @@
                     {
                         foreach (var result in Model.PagedResults)
                         {
-                            <h3><a href="@result.Url">@result.Title</a></h3>
+                            <h3><a href="@LinkUtility.EnsureHttpsForJnccLinks(result.Url)">@result.Title</a></h3>
                             <p>Published: @result.PublishedDate @if (string.IsNullOrWhiteSpace(result.FileExtension) == false) {<text>| File Extension: </text>@result.FileExtension}</p>
                             <p class="resultContent">@result.Content</p>
                             <hr />
