@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace JNCC.PublicWebsite.Core.Utilities
 {
-    internal static class LinkUtility
+    public static class LinkUtility
     {
         public static string EnsureHttpsForJnccLinks(string url)
         {
