@@ -1,6 +1,8 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace JNCC.PublicWebsite.Utilities
+namespace JNCC.PublicWebsite.Core.Utilities
 {
     internal static class LinkUtility
     {
