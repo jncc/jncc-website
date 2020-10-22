@@ -25,7 +25,7 @@
                         foreach (var result in Model.PagedResults)
                         {
                             <h3><a href="@LinkUtility.EnsureHttpsForJnccLinks(result.Url)">@result.Title</a></h3>
-                            <p>Published: @result.PublishedDate @if (string.IsNullOrWhiteSpace(result.FileExtension) == false){<text>| File Extension: </text>@result.FileExtension}</p>
+                            <p>Published: @result.PublishedDate @if (string.IsNullOrWhiteSpace(result.FileExtension) == false) {<text>| File Extension: </text>@result.FileExtension}</p>
                             <p class="resultContent">@result.Content</p>
                             <hr />
                         }
