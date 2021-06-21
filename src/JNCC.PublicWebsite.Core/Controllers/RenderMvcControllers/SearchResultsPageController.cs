@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using System.Web.Security.AntiXss;
 using Umbraco.Web.Mvc;
 
 namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
@@ -22,7 +23,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.RenderMvcControllers
         public ActionResult Index(string searchTerm, int currentPage = 1)
         {
             // Cleanese the search term, removing HTML etc
-            searchTerm = CleanseSearchTerm(("" + Request["q"]).ToLower(CultureInfo.InvariantCulture));
+            searchTerm = AntiXssEncoder.HtmlEncode(CleanseSearchTerm(("" + Request["q"]).ToLower(CultureInfo.InvariantCulture)), true);
+
             // Tokenize the search term
             Tokenize(searchTerm);
             currentPage = int.TryParse(Request["p"], out int parsedInt) ? parsedInt : 1;
