@@ -8570,6 +8570,8 @@ button.slick-arrow {
 	padding-left: 10px;
 	padding-right: 10px;
 	font-size: 14px;
+	color: #444;
+	font-weight: 500;
 }
 
 .carousel-copyright-statement {
@@ -8577,6 +8579,8 @@ button.slick-arrow {
 	bottom: 0;
 	width: 100vw;
 	text-align: right;
+	color: #444;
+	font-weight: 500;
 }
 
 .carousel-copyright-statement .text {
@@ -14978,4 +14982,17 @@ img.float-right,
 		box-shadow: 0 -2.6em 0 0 rgba(192, 192, 192, .2), 1.8em -1.8em 0 0 rgba(192, 192, 192, .2), 2.5em 0 0 0 rgba(192, 192, 192, .2), 1.75em 1.75em 0 0 rgba(192, 192, 192, .2), 0 2.5em 0 0 rgba(192, 192, 192, .2), -1.8em 1.8em 0 0 rgba(192, 192, 192, .5), -2.6em 0 0 0 rgba(192, 192, 192, .7), -1.8em -1.8em 0 0 #c0c0c0;
 	}
 }
-
+
+.search-form ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #444;
+	font-weight: 500;
+	opacity: 1; /* Firefox */
+}
+
+.search-form :-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: #444;
+}
+
+.search-form ::-ms-input-placeholder { /* Microsoft Edge */
+	color: #444;
+}
