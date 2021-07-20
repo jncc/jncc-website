@@ -89,7 +89,7 @@
       <HintPath>..\packages\SEOChecker.Core.2.2.1\lib\DTG.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\EPPlus.dll</HintPath>
+      <HintPath>..\packages\UmbracoForms.Core.7.0.7\lib\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>
@@ -308,20 +308,20 @@
     <Reference Include="umbraco.editorControls, Version=1.0.6879.21992, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.editorControls.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.Forms.Core, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Core.dll</HintPath>
+    <Reference Include="Umbraco.Forms.Core, Version=7.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.7\lib\Umbraco.Forms.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.Forms.Core.Providers, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Core.Providers.dll</HintPath>
+    <Reference Include="Umbraco.Forms.Core.Providers, Version=7.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.7\lib\Umbraco.Forms.Core.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.Forms.Web, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Web.dll</HintPath>
+    <Reference Include="Umbraco.Forms.Web, Version=7.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.7\lib\Umbraco.Forms.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.Forms.Web.XmlSerializers, Version=7.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
+    <Reference Include="Umbraco.Forms.Web.XmlSerializers, Version=7.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.7.0.7\lib\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Licensing, Version=2.0.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoForms.Core.7.0.5\lib\Umbraco.Licensing.dll</HintPath>
+      <HintPath>..\packages\UmbracoForms.Core.7.0.7\lib\Umbraco.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.MacroEngines, Version=1.0.6879.21992, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\umbraco.MacroEngines.dll</HintPath>

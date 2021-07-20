@@ -7,9 +7,9 @@
 @using Umbraco.Forms.Core.Extensions
 @using Umbraco.Forms.Web
 
-<input type="hidden" id="fsConditions_@Model.FormClientId" value='@Html.RawSanitized(Model.FieldsetConditionsAsJson())' />
-<input type="hidden" id="fieldConditions_@Model.FormClientId" value='@Html.RawSanitized(Model.FieldConditionsAsJson())' />
-<input type="hidden" id="values_@Model.FormClientId" value='@Html.RawSanitized(Model.AllFieldsAsJson())'/>
+<input type="hidden" id="fsConditions_@Model.FormClientId" value='@Html.Raw(Model.FieldsetConditionsAsJson())' />
+<input type="hidden" id="fieldConditions_@Model.FormClientId" value='@Html.Raw(Model.FieldConditionsAsJson())' />
+<input type="hidden" id="values_@Model.FormClientId" value='@Html.Raw(Model.AllFieldsAsJson())'/>
 
 <script src="@Url.Content("~/App_Plugins/UmbracoForms/Assets/umbracoforms-dependencies.js")" type="text/javascript"></script>
 

@@ -17,7 +17,7 @@
 {
     if (Model.RenderMode == "full" || Model.RenderMode == "form")
     {
-        <p class="contourMessageOnSubmit">@Html.RawSanitized(Model.MessageOnSubmit)</p>
+        <p class="contourMessageOnSubmit">@Html.Raw(Model.MessageOnSubmit)</p>
     }
 }
 else
@@ -43,7 +43,7 @@ else
 
                     @if (string.IsNullOrEmpty(Model.CurrentPage.Caption) == false)
                     {
-                        <h4 class="contourPageName">@Html.RawSanitized(Model.CurrentPage.Caption)</h4>
+                        <h4 class="contourPageName">@Html.Raw(Model.CurrentPage.Caption)</h4>
                     }
 
                     @if (Model.ShowValidationSummary)
@@ -56,7 +56,7 @@ else
                         <fieldset class="contourFieldSet" id="@fs.Id">
                             @if (string.IsNullOrEmpty(fs.Caption) == false)
                             {
-                                <legend>@Html.RawSanitized(fs.Caption)</legend>
+                                <legend>@Html.Raw(fs.Caption)</legend>
                             }
 
                             <div class="row-fluid">
@@ -73,7 +73,7 @@ else
                                                 @if (!f.HideLabel)
                                                 {
                                                     <label for="@f.Id" class="fieldLabel">
-                                                        @Html.RawSanitized(f.Caption) @if (f.ShowIndicator)
+                                                        @Html.Raw(f.Caption) @if (f.ShowIndicator)
                                                         {
                                                             <span class="contourIndicator">@Model.Indicator</span>
                                                         }
@@ -168,7 +168,7 @@ else
             <script type="text/javascript">
                 @foreach (var cmd in Model.CurrentPage.JavascriptCommands)
                 {
-                    <text>@Html.RawSanitized(cmd)</text>
+                    <text>@Html.Raw(cmd)</text>
                 }
 
             </script>
