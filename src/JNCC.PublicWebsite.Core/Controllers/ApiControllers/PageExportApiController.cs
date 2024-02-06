@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using umbraco.cms.businesslogic.property;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
@@ -14,11 +15,11 @@ using Umbraco.Web.WebApi;
 
 namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
 {
-    //[UmbracoAuthorize]
-    public sealed class PageExportApiController : UmbracoApiController
-    {
+    public sealed class PageExportApiController : UmbracoAuthorizedApiController
+	{
 		[HttpGet]
-        public IHttpActionResult Export()
+        [ActionName("Export")]
+		public IHttpActionResult Export()
         {
 			IContentService _contentService = Services.ContentService;
             IUserService _userService = Services.UserService;
@@ -30,7 +31,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
 
             CSVExportService.GenericExport(formatted.ToArray(), "Pages", true);
 
-            return Ok("Hello");
+            return InternalServerError(new Exception("There was an issue generating the report"));
         }
     }
 
@@ -54,6 +55,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
             BackofficeUrl = url + "/umbraco#/content/content/edit/" + model.Id;
             Author = model.GetCreatorProfile(userService)?.Name;
             DateCreated = model.CreateDate.ToString("dd/MM/yyyy HH:mm");
+            LastUpdated = model.UpdateDate.ToString("dd/MM/yyyy HH:mm");
             TemplateUsed = model.Template.Name;
 		}
 
@@ -64,7 +66,8 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
         public string BackofficeUrl { get; set; }   
         public string Author { get; set; }
         public string DateCreated { get; set; }
-        public string TemplateUsed { get; set; }
+        public string LastUpdated { get; set; }
+		public string TemplateUsed { get; set; }
 	}
 
 }

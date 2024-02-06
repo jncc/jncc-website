@@ -459,6 +459,8 @@
     <Content Include="App_Plugins\DiploTraceLogViewer\backoffice\diplotracelog\plugins\smart-table.min.js" />
     <Content Include="App_Plugins\DiploTraceLogViewer\backoffice\diplotracelog\tracelog3.css" />
     <Content Include="App_Plugins\DiploTraceLogViewer\readme.txt" />
+    <Content Include="App_Plugins\ExportDashboard\ExportDashboard.html" />
+    <Content Include="App_Plugins\ExportDashboard\Lang\en-US.xml" />
     <Content Include="App_Plugins\InnerContent\css\innercontent.css" />
     <Content Include="App_Plugins\InnerContent\js\innercontent.js" />
     <Content Include="App_Plugins\InnerContent\views\innercontent.create.html" />
