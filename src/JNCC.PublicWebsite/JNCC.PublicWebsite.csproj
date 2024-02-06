@@ -17,10 +17,10 @@
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44350</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -743,6 +743,7 @@
     <Content Include="config\Lang\ru-RU.user.xml" />
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
+    <Content Include="config\secrets\Readme.txt" />
     <Content Include="css\app.css" />
     <Content Include="css\cms.css" />
     <Content Include="css\highlighting.css" />
@@ -1231,6 +1232,11 @@
     <None Include="config\courier.Debug.config">
       <DependentUpon>courier.config</DependentUpon>
     </None>
+    <Content Include="config\secrets\ConnectionStrings.config" />
+    <Content Include="config\secrets\MachineKey.config" />
+    <Content Include="config\secrets\ResetPassword.config" />
+    <Content Include="config\secrets\Search.config" />
+    <Content Include="config\secrets\Smtp.config" />
     <None Include="config\uSyncBackOffice.Debug.config">
       <DependentUpon>uSyncBackOffice.config</DependentUpon>
     </None>
@@ -1636,7 +1642,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55462</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55462/</IISUrl>
+          <IISUrl>https://localhost:44350</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>https://localhost:44350</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
