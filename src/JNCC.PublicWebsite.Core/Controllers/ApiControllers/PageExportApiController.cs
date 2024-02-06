@@ -1,5 +1,6 @@
 ﻿using JNCC.PublicWebsite.Core.Attributes.WebApi;
 using JNCC.PublicWebsite.Core.Services;
+using SEOChecker.Core.Extensions;
 using SEOChecker.Core.Extensions.UmbracoExtensions;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using umbraco.cms.businesslogic.property;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
+using Umbraco.Web;
 using Umbraco.Web.WebApi;
 
 namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
@@ -23,11 +25,11 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
         {
 			IContentService _contentService = Services.ContentService;
             IUserService _userService = Services.UserService;
-
+            
             var pages = _contentService.GetRootContent().SelectRecursive(c => c.Descendants());
-            var url = HttpContext.Current.Request.Url.Host;
+            var url = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.GetHostAndPort();
 
-            var formatted = pages.Select(p => new PageExportModel(p, _userService, url));
+            var formatted = pages.Select(p => new PageExportModel(p, _userService, Umbraco, url));
 
             CSVExportService.GenericExport(formatted.ToArray(), "Pages", true);
 
@@ -46,17 +48,22 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
 	
     public class PageExportModel
     {
-        public PageExportModel(IContent model, IUserService userService, string url)
+        public PageExportModel(IContent model, IUserService userService, UmbracoHelper umbracoHelper, string url)
         {
             Id = model.Id;
             Name = model.Name;
-            PublishedStatus = model.Status.ToString();
-            FrontendUrl = model.GetUrlName();
+            Status = model.Status.ToString();
+            FrontendUrl = "";
             BackofficeUrl = url + "/umbraco#/content/content/edit/" + model.Id;
             Author = model.GetCreatorProfile(userService)?.Name;
             DateCreated = model.CreateDate.ToString("dd/MM/yyyy HH:mm");
             LastUpdated = model.UpdateDate.ToString("dd/MM/yyyy HH:mm");
             TemplateUsed = model.Template.Name;
+
+            if (model.HasPublishedVersion)
+            {
+                FrontendUrl = umbracoHelper.TypedContent(model.Id)?.UrlAbsolute();
+            }
 		}
 
         public int Id { get; set; }

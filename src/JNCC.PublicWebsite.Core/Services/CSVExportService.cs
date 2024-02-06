@@ -67,7 +67,7 @@ namespace JNCC.PublicWebsite.Core.Services
 				count++;
 
 				if (count != limit)
-				{ HeaderText += ", "; }
+				{ HeaderText += ","; }
 
 			}
 
@@ -135,7 +135,7 @@ namespace JNCC.PublicWebsite.Core.Services
 						newText.Append(' ');
 				newText.Append(text[i]);
 			}
-			return newText.ToString();
+			return newText.ToString().Trim();
 		}
 
 	}
