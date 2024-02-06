@@ -68,7 +68,7 @@ namespace JNCC.PublicWebsite.Core.Controllers.ApiControllers
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string PublishedStatus { get; set; }
+        public string Status { get; set; }
         public string FrontendUrl { get; set; }
         public string BackofficeUrl { get; set; }   
         public string Author { get; set; }
