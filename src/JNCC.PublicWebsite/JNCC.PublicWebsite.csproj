@@ -17,10 +17,10 @@
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44350</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -459,6 +459,8 @@
     <Content Include="App_Plugins\DiploTraceLogViewer\backoffice\diplotracelog\plugins\smart-table.min.js" />
     <Content Include="App_Plugins\DiploTraceLogViewer\backoffice\diplotracelog\tracelog3.css" />
     <Content Include="App_Plugins\DiploTraceLogViewer\readme.txt" />
+    <Content Include="App_Plugins\ExportDashboard\ExportDashboard.html" />
+    <Content Include="App_Plugins\ExportDashboard\Lang\en-US.xml" />
     <Content Include="App_Plugins\InnerContent\css\innercontent.css" />
     <Content Include="App_Plugins\InnerContent\js\innercontent.js" />
     <Content Include="App_Plugins\InnerContent\views\innercontent.create.html" />
@@ -743,6 +745,7 @@
     <Content Include="config\Lang\ru-RU.user.xml" />
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
+    <Content Include="config\secrets\Readme.txt" />
     <Content Include="css\app.css" />
     <Content Include="css\cms.css" />
     <Content Include="css\highlighting.css" />
@@ -1231,6 +1234,11 @@
     <None Include="config\courier.Debug.config">
       <DependentUpon>courier.config</DependentUpon>
     </None>
+    <Content Include="config\secrets\ConnectionStrings.config" />
+    <Content Include="config\secrets\MachineKey.config" />
+    <Content Include="config\secrets\ResetPassword.config" />
+    <Content Include="config\secrets\Search.config" />
+    <Content Include="config\secrets\Smtp.config" />
     <None Include="config\uSyncBackOffice.Debug.config">
       <DependentUpon>uSyncBackOffice.config</DependentUpon>
     </None>
@@ -1602,7 +1610,6 @@
     <Content Include="Views\Partials\IFrame\ImageCode.cshtml" />
     <Content Include="Views\Partials\ScienceCategory\Slider.cshtml" />
     <Content Include="Views\Partials\ScienceDetails\Slider.cshtml" />
-    <Content Include="Views\JobApplicationPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1637,7 +1644,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55462</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55462/</IISUrl>
+          <IISUrl>https://localhost:44350</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>https://localhost:44350</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
