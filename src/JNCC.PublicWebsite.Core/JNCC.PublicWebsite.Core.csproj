@@ -364,8 +364,8 @@
     <Compile Include="Constants\SearchIndexingVerbs.cs" />
     <Compile Include="Constants\SuccessFlags.cs" />
     <Compile Include="Constants\TagGroups.cs" />
+    <Compile Include="Controllers\ApiControllers\PageExportApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ImagePickerApiController.cs" />
-    <Compile Include="Controllers\RenderMvcControllers\HowToApplyController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\GenericListingPageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\ArticlePageController.cs" />
     <Compile Include="Controllers\RenderMvcControllers\CareersLandingPageController.cs" />
@@ -394,7 +394,6 @@
     <Compile Include="Models\CalloutCardSchema.cs" />
     <Compile Include="Models\CareersLandingPage.generated.cs" />
     <Compile Include="Models\ContentItemSchema.cs" />
-    <Compile Include="Models\HowToApplyPage.generated.cs" />
     <Compile Include="Models\IFramePage.generated.cs" />
     <Compile Include="Models\IScienceCategorisablePage.cs" />
     <Compile Include="Models\PageAttributes.cs" />
@@ -456,8 +455,10 @@
     <Compile Include="Services\CalloutCardsService.cs" />
     <Compile Include="Services\CareersLandingPageService.cs" />
     <Compile Include="Services\CareersSidebarService.cs" />
+    <Compile Include="Services\CSVExportService.cs" />
     <Compile Include="Services\IDataHubQueryService.cs" />
     <Compile Include="Services\IFramePageService.cs" />
+    <Compile Include="Services\Interfaces\ICSVExportService.cs" />
     <Compile Include="Services\ISearchIndexingQueueService.cs" />
     <Compile Include="Services\ISearchQueryService.cs" />
     <Compile Include="Services\LatestNewsSectionService.cs" />
@@ -465,7 +466,6 @@
     <Compile Include="Services\ScienceCategoryPageService.cs" />
     <Compile Include="Services\SearchIndexingQueueService.cs" />
     <Compile Include="Services\SidebarServiceBase.cs" />
-    <Compile Include="ViewModels\HowToApplyViewModel.cs" />
     <Compile Include="ViewModels\GenericListingPageItemViewModel.cs" />
     <Compile Include="ViewModels\IFramePageViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryItemViewModel.cs" />
