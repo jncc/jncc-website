@@ -93,9 +93,17 @@ namespace JNCC.PublicWebsite.Core.Services
 					else
 					{
 						//Format certain values certain ways.
-						if (piType.IsEquivalentTo(typeof(DateTime)))
-						{
-							sbOutput.Append(FormatLine(((DateTime)propValue).ToString("dd.MM.yy")));
+						if (piType.IsEquivalentTo(typeof(DateTime))) { 
+
+							if (((DateTime)propValue).TimeOfDay > new TimeSpan())
+							{
+								sbOutput.Append(FormatLine(((DateTime)propValue).ToString("HH:mm dd.MM.yy")));
+
+							}
+							else
+							{
+								sbOutput.Append(FormatLine(((DateTime)propValue).ToString("dd.MM.yy")));
+							}
 						}
 						else if (piType.IsEquivalentTo(typeof(decimal)))
 						{
